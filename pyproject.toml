@@ -1,0 +1,10 @@
+[project]
+name = "msr-skills-md"
+version = "0.1.0"
+description = "Mine GitHub repositories for SKILL.md files using SEART CSV exports"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.32.5",
+    "tqdm>=4.67.3",
+]
