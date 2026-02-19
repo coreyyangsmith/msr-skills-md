@@ -12,14 +12,33 @@ See [`.cursor/skills/msr/SKILL.md`](.cursor/skills/msr/SKILL.md) for the full de
 
 - [uv](https://docs.astral.sh/uv/) (Python project manager)
 - Python 3.10 or later (managed automatically by uv)
-- A GitHub personal access token (strongly recommended to avoid rate limits)
+- One or more GitHub personal access tokens (strongly recommended to avoid rate limits)
 
-Set your token in the environment before running:
+### Single token (backward-compatible)
 
 ```sh
 export GH_TOKEN=ghp_yourtoken   # macOS/Linux
 $env:GH_TOKEN = "ghp_yourtoken" # PowerShell
 ```
+
+### Multiple tokens (recommended for large scans)
+
+Each GitHub token grants 5,000 API requests per hour. Supplying multiple tokens
+allows the scanner to rotate between them automatically as each one's quota is
+exhausted, multiplying effective throughput:
+
+```sh
+export GH_TOKENS=ghp_token1,ghp_token2,ghp_token3   # macOS/Linux
+$env:GH_TOKENS = "ghp_token1,ghp_token2,ghp_token3" # PowerShell
+```
+
+Token priority resolution order:
+1. `--github-tokens` CLI flag (comma-separated)
+2. `--github-token` CLI flag (single token)
+3. `GH_TOKENS` environment variable (comma-separated)
+4. `GH_TOKEN` environment variable
+5. `GITHUB_TOKEN` environment variable
+6. Unauthenticated (60 req/hr – not recommended for bulk scans)
 
 ---
 
@@ -64,7 +83,7 @@ uv run python src/find_skills_md.py \
   --resume
 ```
 
-uv run python src/find_skills_md.py --seart-dir data/seart_csvs --out-csv outputs/skill_md_scan_results.csv --shortlist-csv outputs/skill_md_shortlist.csv --match-name SKILL.md --search-path /SKILL.md --enable-code-search --include-negative-results --resume
+uv run python src/find_skills_md.py --seart-dir data/seart_csvs --out-csv outputs/skill_md_scan_results.csv --shortlist-csv outputs/skill_md_shortlist.csv --match-name SKILL.md --search-path /SKILL.md --include-negative-results --resume
 
 
 > **Note on filename convention**: The script defaults to searching for `SKILLS.md` (plural). Pass `--match-name SKILL.md --search-path /SKILL.md` to search for the singular form used in this project's own spec.
@@ -88,7 +107,8 @@ uv run python src/find_skills_md.py --seart-dir data/seart_csvs --out-csv output
 | `--resume` | off | Skip repos already present in `--out-csv` |
 | `--include-negative-results` | off | Write `found=false` rows to output (in addition to `found=true`) |
 | `--concurrency N` | `4` | Number of parallel worker threads |
-| `--github-token TOKEN` | *(env)* | GitHub token; overrides `GH_TOKEN` / `GITHUB_TOKEN` env vars |
+| `--github-token TOKEN` | *(env)* | Single GitHub token; overrides `GH_TOKEN` / `GITHUB_TOKEN` env vars |
+| `--github-tokens TOKENS` | *(env)* | Comma-separated GitHub tokens for multi-token rotation; overrides `GH_TOKENS` env var |
 
 ---
 
@@ -152,4 +172,20 @@ The script uses a two-tier approach:
 - **Tier A (always on)** — GitHub Contents API: `GET /repos/{owner}/{repo}/contents/{path}`. Fast, cheap, exact-path matching.
 - **Tier B (opt-in, `--enable-code-search`)** — GitHub Code Search API: `GET /search/code?q=repo:owner/repo+filename:SKILL.md`. Finds the file anywhere in the repository tree.
 
-Rate limiting is handled automatically with exponential backoff on `403`/`429` responses and respect for `X-RateLimit-Reset` and `Retry-After` headers.
+Rate limiting is handled automatically by the `github_client` module:
+
+- Each token's remaining quota is tracked from `X-RateLimit-Remaining` headers.
+- When a token is exhausted, the pool immediately rotates to the next available token.
+- When all tokens are exhausted, the pool sleeps until the earliest `X-RateLimit-Reset` time (plus a 2-second buffer) before retrying.
+- If the required wait exceeds the configurable maximum (default 15 minutes), a `RateLimitExhaustedError` is raised so the scan fails fast rather than blocking indefinitely.
+
+### Module structure
+
+```
+src/
+  find_skills_md.py          # scan orchestration and CLI
+  github_client/
+    __init__.py              # public re-exports
+    token_pool.py            # TokenBucket, TokenPool, load_tokens_from_env
+    client.py                # GitHubClient (HTTP + pool integration)
+```

@@ -1,20 +1,4 @@
 repo,source_csv,found,match_name,match_path,default_branch,ref_scanned,match_url,match_sha,match_size_bytes,scan_method,http_status,error_type,error_message,scanned_at_utc,stars,fork,archived
-000pp/Apepe,results.csv,False,SKILL.md,,main,main,,,,contents_api,401,auth,Requires authentication,2026-02-18T15:07:38Z,140,false,false
-05bit/peewee-async,results.csv,False,SKILL.md,,master,master,,,,contents_api,401,auth,Requires authentication,2026-02-18T15:07:38Z,764,false,false
-0101/pipetools,results.csv,False,SKILL.md,,master,master,,,,contents_api,401,auth,Requires authentication,2026-02-18T15:07:38Z,211,false,false
-0x24a/WarpPlusKeyGenerator-NG,results.csv,False,SKILL.md,,main,main,,,,contents_api,401,auth,Requires authentication,2026-02-18T15:07:38Z,254,false,false
-0russwest0/Agent-R1,results.csv,False,SKILL.md,,main,main,,,,contents_api,401,auth,Requires authentication,2026-02-18T15:07:38Z,1228,false,false
-0xMarcio/cve,results.csv,False,SKILL.md,,main,main,,,,contents_api,401,auth,Requires authentication,2026-02-18T15:07:39Z,1131,false,false
-0x48piraj/jiraffe,results.csv,False,SKILL.md,,master,master,,,,contents_api,401,auth,Requires authentication,2026-02-18T15:07:39Z,199,false,false
-0xabu/pdfannots,results.csv,False,SKILL.md,,main,main,,,,contents_api,401,auth,Requires authentication,2026-02-18T15:07:39Z,642,false,false
-0xdea/tactical-exploitation,results.csv,False,SKILL.md,,master,master,,,,contents_api,401,auth,Requires authentication,2026-02-18T15:07:39Z,858,false,false
-10000ge10000/iptv-api,results.csv,False,SKILL.md,,master,master,,,,contents_api,401,auth,Requires authentication,2026-02-18T15:07:39Z,297,true,false
-100nm/python-injection,results.csv,False,SKILL.md,,prod,prod,,,,contents_api,401,auth,Requires authentication,2026-02-18T15:07:39Z,123,false,false
-10der/homeassistant-custom_components-awtrix,results.csv,False,SKILL.md,,main,main,,,,contents_api,401,auth,Requires authentication,2026-02-18T15:07:39Z,146,false,false
-1517005260/graph-rag-agent,results.csv,False,SKILL.md,,master,master,,,,contents_api,401,auth,Requires authentication,2026-02-18T15:07:39Z,1883,false,false
-1014TaoTao/fastapi_vue3_admin,results.csv,False,SKILL.md,,master,master,,,,contents_api,401,auth,Requires authentication,2026-02-18T15:07:39Z,418,false,false
-1779387745/Italia-,results.csv,False,SKILL.md,,main,main,,,,contents_api,401,auth,Requires authentication,2026-02-18T15:07:39Z,258,false,false
-17theword/nonebot-plugin-mcqq,results.csv,False,SKILL.md,,main,main,,,,contents_api,401,auth,Requires authentication,2026-02-18T15:07:40Z,128,false,false
 1812z/PCTools,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:08:04Z,135,false,false
 1PingSun/HackMaster-Pi,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:08:04Z,192,false,false
 1andrevich/Re-filter-lists,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:08:04Z,979,false,false
@@ -41,7 +25,6 @@ repo,source_csv,found,match_name,match_path,default_branch,ref_scanned,match_url
 51bitquant/howtrader,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:10:09Z,886,false,false
 4n4nd/prometheus-api-client-python,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T15:10:09Z,270,false,false
 54yyyu/zotero-mcp,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:10:09Z,1413,false,false
-8080713/iptv-api666,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T15:10:10Z,,,
 567-labs/instructor,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:10:10Z,12389,false,false
 7h30th3r0n3/Raspyjack,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:10:10Z,308,false,false
 8421BCD/ReasonRank,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:10:10Z,170,false,false
@@ -74,7 +57,6 @@ Agions/CineAIStudio,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,no
 AkagawaTsurunaki/ZerolanLiveRobot,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:13:16Z,544,false,false
 Akascape/Rembg-Fuse,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:13:16Z,126,false,false
 Alano-i/Plugins,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:13:16Z,135,false,false
-Alban1911/Rose,results.csv,False,SKILL.md,,,,,,,,451,other,Repository access blocked,2026-02-18T15:14:17Z,,,
 AleksaMCode/Preferred-Network-List-Sniffer,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:14:17Z,166,false,false
 AlexandrErohin/home-assistant-tplink-router,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:14:17Z,316,false,false
 AlexandrErohin/home-assistant-flightradar24,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:14:17Z,366,false,false
@@ -101,17 +83,13 @@ AppOmni-Labs/heisenberg-ssc-health-check,results.csv,False,SKILL.md,,main,main,,
 ArcInstitute/cell-eval,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:16:22Z,122,false,false
 Anytop2025/Anytop,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:16:22Z,333,false,false
 Aratako/T5Gemma-TTS,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:16:22Z,274,false,false
-ArcInstitute/SRAgent,results.csv,True,SKILL.md,/claude-skill/SKILL.md,main,main,https://github.com/ArcInstitute/SRAgent/blob/ba13533302277494949b29e898529957b94c3b65/claude-skill/SKILL.md,980350cc939e2aaa198db4af942467f87aaba7a2,,code_search,200,none,,2026-02-18T15:16:22Z,149,false,false
 ArjunCodess/WebCrawlAI,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:17:23Z,120,false,false
 Arindam200/awesome-ai-apps,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:17:23Z,8961,false,false
 Arindam200/reddit-mcp,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:17:23Z,265,false,false
 ArcadeAI/arcade-mcp,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:17:23Z,810,false,false
 AstraBert/PdfItDown,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:17:24Z,220,false,false
 AsyncFuncAI/deepwiki-open,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:17:24Z,14338,false,false
-ArtificialAnalysis/Stirrup,results.csv,True,SKILL.md,/skills/data_analysis/SKILL.md,main,main,https://github.com/ArtificialAnalysis/Stirrup/blob/f02a66ba1ab5da76d72814a6e01691fe81e9648d/skills/data_analysis/SKILL.md,bcf67a5c4b186ce087ee7eb2aa66925e99072739,,code_search,200,none,,2026-02-18T15:17:24Z,306,false,false
 Ascend-Research/Turtle,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:17:24Z,121,false,false
-AsyncFuncAI/AsyncReview,results.csv,True,SKILL.md,/skills/asyncreview/SKILL.md,main,main,https://github.com/AsyncFuncAI/AsyncReview/blob/616d9c965151aee5080da1ed4fc47bde9fd8ea9e/skills/asyncreview/SKILL.md,2fc46f6a31816107c160f6ed228c365d95843730,,code_search,200,none,,2026-02-18T15:17:24Z,189,false,false
-AvivK5498/The-Claude-Protocol,results.csv,True,SKILL.md,/SKILL.md,main,main,https://github.com/AvivK5498/The-Claude-Protocol/blob/main/SKILL.md,8bab5b946eaab1fe81cff156931f5f2b6c8ed544,8662,contents_api,200,none,,2026-02-18T15:18:25Z,133,false,false
 AvaLovelace1/BrickGPT,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:18:25Z,1599,false,false
 Azr43lKn1ght/DFIR-LABS,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:18:25Z,427,false,false
 AzulGarza/TimeCopilot,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:18:25Z,0,false,false
@@ -120,7 +98,6 @@ Azure-Samples/aisearch-openai-rag-audio,results.csv,False,SKILL.md,,main,main,,,
 Azure-Samples/chat-with-your-data-solution-accelerator,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:18:26Z,1152,false,false
 Azure-Samples/healthcare-agent-orchestrator,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:18:27Z,179,false,false
 Azure-Samples/azure-video-indexer-samples,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T15:18:26Z,182,false,false
-Azure-Samples/azure-search-openai-demo,results.csv,True,SKILL.md,/.github/skills/github-pr-inline-reply/SKILL.md,main,main,https://github.com/Azure-Samples/azure-search-openai-demo/blob/03c2e2c35d7a1d1cb11a8da33c18a18518f57ccd/.github/skills/github-pr-inline-reply/SKILL.md,3b6b08c18bf564bc3c1afe5c545e799e9574f923,,code_search,200,none,,2026-02-18T15:18:26Z,7571,false,false
 Azure-Samples/python-openai-demos,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:19:27Z,312,false,false
 Azure/co-op-translator,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:19:27Z,588,false,false
 Azure-Samples/rag-postgres-openai-python,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:19:27Z,481,false,false
@@ -130,7 +107,6 @@ BGU-CS-VIL/WTConv,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none
 BESSER-PEARL/BESSER,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T15:19:28Z,142,false,false
 BAAI-DCAI/SegVol,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:19:28Z,366,false,false
 AzureCosmosDB/CosmosAIGraph,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:19:28Z,137,false,false
-BayramAnnakov/claude-reflect,results.csv,True,SKILL.md,/SKILL.md,main,main,https://github.com/BayramAnnakov/claude-reflect/blob/main/SKILL.md,c82175904c103cbffad29e5221d9817f06ea4ff6,2508,contents_api,200,none,,2026-02-18T15:20:29Z,692,false,false
 BICLab/SpikingBrain-7B,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:20:29Z,1254,false,false
 Barca0412/Introduction-to-Quantitative-Finance,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:20:29Z,1171,false,false
 BambuTools/bambulabs_api,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:20:29Z,272,false,false
@@ -140,7 +116,6 @@ BioHapHazard/Freedify,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,
 BinitDOX/Manga-Colorizer,results.csv,False,SKILL.md,,revamp,revamp,,,,contents_api,200,none,,2026-02-18T15:20:30Z,139,false,false
 BigCiLeng/bilateral-driving,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:20:30Z,143,false,false
 Bklieger/infinite-bookshelf,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:20:31Z,1354,false,false
-BlackSky-Jose/PolyMarket-trading-by-AI-model,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T15:21:31Z,,,
 Bl3f/yato,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:21:31Z,337,false,false
 Blaizzy/mlx-audio,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:21:31Z,5984,false,false
 BlessedRebuS/Krawl,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:21:32Z,457,false,false
@@ -148,7 +123,6 @@ BlueArchiveArisHelper/BAAH,results.csv,False,SKILL.md,,main,main,,,,contents_api
 BottleCapAI/NoCap-Test,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T15:21:32Z,139,true,false
 BrownFineSecurity/onvifscan,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T15:21:32Z,123,false,false
 ByteDance-Seed/Triton-distributed,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:21:32Z,1359,false,false
-BrownFineSecurity/iothackbot,results.csv,True,SKILL.md,/skills/jadx/SKILL.md,master,master,https://github.com/BrownFineSecurity/iothackbot/blob/fdd25f8c2ee3559bfcabb5f231ff9aba512bfeda/skills/jadx/SKILL.md,fba542fc5976c8872e9c506a09275927cf855c61,,code_search,200,none,,2026-02-18T15:21:32Z,639,false,false
 C2SAgent/c2sagent,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:21:33Z,229,false,false
 CDonosoK/astroviz,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:22:33Z,156,false,false
 CNChTu/FCPE,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:22:33Z,188,false,false
@@ -163,7 +137,6 @@ ChatFAQ/ChatFAQ,results.csv,False,SKILL.md,,develop,develop,,,,contents_api,200,
 CatchTheTornado/text-extract-api,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:23:35Z,2975,false,false
 ChatMol/ChatMol,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:23:36Z,245,false,false
 Chaoses-Ib/ComfyScript,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:23:36Z,653,false,false
-Chen-zexi/open-ptc-agent,results.csv,True,SKILL.md,/skills/pdf/SKILL.md,main,main,https://github.com/Chen-zexi/open-ptc-agent/blob/425b9575bfdcaf949b0a4053e981cf8070c70e03/skills/pdf/SKILL.md,f6a22ddf88fdc7e7b7603f4c9064cc51bd930ad9,,code_search,200,none,,2026-02-18T15:23:36Z,652,false,false
 Chenyu-Wang567/MLLM-Tool,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:23:37Z,138,false,false
 Chernobyllight/SaMam,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:23:37Z,126,false,false
 Chen-zexi/vllm-cli,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:23:37Z,472,false,false
@@ -195,7 +168,6 @@ Curiosity-Ai-BV/localOCR,results.csv,False,SKILL.md,,main,main,,,,contents_api,2
 CrystalWindSnake/ex4nicegui,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:26:42Z,212,false,false
 CursorTouch/Android-MCP,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T15:26:43Z,377,false,false
 CrowdStrike/falcon-mcp,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:26:42Z,107,false,false
-CursorTouch/Windows-Use,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T15:27:43Z,,,
 CursorTouch/Windows-MCP,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:27:43Z,4366,false,false
 D-Ogi/WatermarkRemover-AI,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:27:43Z,1062,false,false
 D-Star-AI/dsRAG,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:27:43Z,1559,false,false
@@ -223,7 +195,6 @@ DeepSourceCorp/good-first-issue,results.csv,False,SKILL.md,,master,master,,,,con
 DerwenAI/strwythura,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:29:48Z,206,false,false
 Dev-shrm07/SkyNetMEC,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:29:48Z,153,false,false
 Dexmal/dexbotic,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:29:48Z,743,false,false
-Dicklesworthstone/mcp_agent_mail,results.csv,True,SKILL.md,/SKILL.md,main,main,https://github.com/Dicklesworthstone/mcp_agent_mail/blob/main/SKILL.md,63c0da5d891572dfffe16a42420bc1cb0a971a4d,13492,contents_api,200,none,,2026-02-18T15:30:49Z,1695,false,false
 Dicklesworthstone/llm_aided_ocr,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:30:49Z,2860,false,false
 Dicklesworthstone/ultimate_mcp_client,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:30:49Z,147,false,false
 Dexmal/realtime-vla,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:30:49Z,416,false,false
@@ -295,7 +266,6 @@ ForzaETH/race_stack,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,no
 FoundationVision/Infinity,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:38:04Z,1546,false,false
 FoundationAgents/AFlow,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:38:04Z,431,false,false
 FoundationAgents/OpenManus,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:38:04Z,54521,false,false
-FoundationAgents/MetaGPT,results.csv,True,SKILL.md,/metagpt/prompts/generate_skill.md,main,main,https://github.com/FoundationAgents/MetaGPT/blob/11cdf466d042aece04fc6cfd13b28e1a70341b1f/metagpt/prompts/generate_skill.md,e96f8181a6cbf9cba625a5aa36d5e391d169499c,,code_search,200,none,,2026-02-18T15:38:04Z,64276,false,false
 FoundationVision/InfinityStar,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:39:05Z,718,false,false
 FozerG/WinYandexMusicRPC,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:39:06Z,267,false,false
 FoundationVision/Liquid,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:39:05Z,637,false,false
@@ -341,7 +311,6 @@ HKUDS/Agentic-AIGC,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,non
 HKUDS/AutoAgent,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:43:14Z,8578,false,false
 HKUDS/AnyTool,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:43:14Z,508,false,false
 HKUDS/AI-Trader,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:43:14Z,11308,false,false
-HKUDS/DeepCode,results.csv,True,SKILL.md,/nanobot/nanobot/skills/cron/SKILL.md,main,main,https://github.com/HKUDS/DeepCode/blob/76d30cdac88217ff5919ddd2b93b5546946ded84/nanobot/nanobot/skills/cron/SKILL.md,c8beecb6f02da69f85091227ff494d44b035ecf9,,code_search,200,none,,2026-02-18T15:44:15Z,14522,false,false
 HKUDS/LightReasoner,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:44:15Z,589,false,false
 HKUDS/LightRAG,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:44:15Z,28426,false,false
 HKUDS/MiniRAG,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:44:15Z,1716,false,false
@@ -364,13 +333,11 @@ Haoming02/sd-webui-mosaic-outpaint,results.csv,False,SKILL.md,,master,master,,,,
 Haoming02/comfyui-diffusion-cg,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:46:19Z,103,false,false
 HappyQuQu/jellyfin-library-poster,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:46:20Z,246,false,false
 HarrisonKramer/optiland,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T15:46:20Z,545,false,false
-Hi-Dolphin/datamax,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T15:46:20Z,,,
 HexRaysSA/ida-domain,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:46:20Z,241,false,false
 HayesBarber/spaced-repetition-learning,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:46:20Z,186,false,false
 High-Logic/Genie-TTS,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T15:46:21Z,1373,false,false
 Henry-23/VideoChat,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T15:46:20Z,1207,false,false
 Hmbown/aleph,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:47:21Z,164,false,false
-Hmbown/Hegelion,results.csv,True,SKILL.md,/skills/hegelion/SKILL.md,main,main,https://github.com/Hmbown/Hegelion/blob/d51a5af594747b2d4e8e89aeb734cf564a449ad7/skills/hegelion/SKILL.md,5a810a8e4aba39e0a034d4a7b628f5af78abf4d2,,code_search,200,none,,2026-02-18T15:47:21Z,115,false,false
 HogaStack/magic-dash,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:47:21Z,115,false,false
 Hommy-master/capcut-mate,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:47:21Z,223,false,false
 Hoper-J/AI-Guide-and-Demos-zh_CN,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T15:47:22Z,3554,false,false
@@ -385,7 +352,6 @@ IBM/ibm-watsonx-orchestrate-adk,results.csv,False,SKILL.md,,main,main,,,,content
 ITSpecialist111/ai_automation_suggester,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:48:24Z,690,false,false
 ImprintLab/Medical-Graph-RAG,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:48:24Z,732,false,false
 IatomicreactorI/CSGOTrading,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T15:48:24Z,138,false,false
-ImCa0/just-laws,results.csv,True,SKILL.md,/.claude/skills/addlaws/SKILL.md,master,master,https://github.com/ImCa0/just-laws/blob/23d998cefc6ef2fc883545b594726e7dc47ac458/.claude/skills/addlaws/SKILL.md,68e207a645c75e630aaab15065b90892aa9437c8,,code_search,200,none,,2026-02-18T15:48:24Z,708,false,false
 IINemo/lm-polygraph,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:48:24Z,438,false,false
 Infosys/Infosys-Responsible-AI-Toolkit,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T15:49:25Z,274,false,false
 Insta360-Research-Team/DiT360,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:49:25Z,211,false,false
@@ -417,7 +383,6 @@ JayGarland/Autoreply_Sydneybot_Reddit,results.csv,False,SKILL.md,,Master_RedditR
 JefferyHcool/BiliNote,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T15:52:31Z,5058,false,false
 JeffreyXiang/FlexGEMM,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:52:31Z,107,false,false
 JetAstra/SDAR,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:52:31Z,332,false,false
-Jeffallan/claude-skills,results.csv,True,SKILL.md,/skills/cpp-pro/SKILL.md,main,main,https://github.com/Jeffallan/claude-skills/blob/c9616024d961bed5738e45ae56093bd96290dffb/skills/cpp-pro/SKILL.md,79107d0f460c023ced99fe1debc573728dcea4f9,,code_search,200,none,,2026-02-18T15:52:31Z,3095,false,false
 Jezza34000/homeassistant_petkit,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:52:32Z,166,false,false
 Jianghanxiao/PhysTwin,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:52:32Z,371,false,false
 JiayuXu0/FastAPI-Template,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:52:32Z,409,false,false
@@ -439,8 +404,6 @@ JourneyDocker/Plex-Auto-Languages,results.csv,False,SKILL.md,,main,main,,,,conte
 JustAJobApp/jobseeker-analytics,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:54:36Z,177,false,false
 K-Dense-AI/agentic-data-scientist,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:54:36Z,533,false,false
 K-Dense-AI/claude-skills-mcp,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:54:36Z,316,false,false
-K-Dense-AI/claude-scientific-skills,results.csv,True,SKILL.md,/scientific-skills/esm/SKILL.md,main,main,https://github.com/K-Dense-AI/claude-scientific-skills/blob/22b0ad54abaf56c60884c19707aa5a03e1355d95/scientific-skills/esm/SKILL.md,35d4b9721f6ea0ba72469403c0d8b774cf85bb42,,code_search,200,none,,2026-02-18T15:54:36Z,8833,false,false
-K-Dense-AI/claude-scientific-writer,results.csv,True,SKILL.md,/skills/markitdown/SKILL.md,main,main,https://github.com/K-Dense-AI/claude-scientific-writer/blob/2ae9407efbb2991cadadd2163bd94d74705826e4/skills/markitdown/SKILL.md,eb42c4c15edec13157c99a84ad96c939ed0925ea,,code_search,200,none,,2026-02-18T15:54:36Z,811,false,false
 K3YOMI/Wall-of-Flippers,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:55:37Z,987,false,false
 K-Dense-AI/karpathy,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:55:37Z,1214,false,false
 KRLabsOrg/verbatim-rag,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T15:55:37Z,169,false,false
@@ -515,7 +478,6 @@ MCG-NJU/PixNerd,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,
 MAC-VO/MAC-VO,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:02:52Z,862,false,false
 MGXlab/CAT_pack,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T16:03:53Z,224,false,false
 MDIL-SNU/SEVENNet,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:03:53Z,223,false,false
-MGdaasLab/WHartTest,results.csv,True,SKILL.md,/WHartTest_Skills/playwright-skill/SKILL.md,master,master,https://github.com/MGdaasLab/WHartTest/blob/9946c0628f18b419afed61d1b78ae5ad6e90bea9/WHartTest_Skills/playwright-skill/SKILL.md,a6fc84a74b238a6309d47cc6babb65f2af3aca93,,code_search,200,none,,2026-02-18T16:03:53Z,626,false,false
 MINT-SJTU/Evo-1,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:03:53Z,214,false,false
 MK60DN/NAVIEDU,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:03:54Z,201,false,false
 MLIT-DATA-PLATFORM/mlit-dpf-mcp,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:03:54Z,125,false,false
@@ -528,7 +490,6 @@ MaaGF1/MaaGF1,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,20
 MadeAgents/mobile-use,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:04:56Z,133,false,false
 Majjcom/BiliDownloader,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:04:56Z,518,false,false
 MaksimZayats/modern-django-template,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:04:56Z,185,false,false
-MaksimZayats/fastdjango,results.csv,True,SKILL.md,/.claude/skills/docs-reader/SKILL.md,main,main,https://github.com/maksimzayats/fastdjango/blob/727828547f239629df5a46392709f2c7f7db03e9/.claude/skills/docs-reader/SKILL.md,d5fbbb69548d146858b67b46338c004460339f5e,,code_search,200,none,,2026-02-18T16:04:56Z,185,false,false
 Mangaba-ai/mangaba_ai,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T16:04:57Z,184,false,false
 MandiZhao/dexmachina,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:04:56Z,189,false,false
 ManiMozaffar/aioclock,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:05:57Z,233,false,false
@@ -576,7 +537,6 @@ Mirzadzare/robofinder,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,
 MiroPsota/torch_packages_builder,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:10:06Z,332,false,false
 MiroMindAI/MiroThinker,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:10:06Z,6297,false,false
 Mirzadzare/writeup-miner,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:10:06Z,141,false,false
-Mist-kail/PolyMarket-trading-AI-model,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T16:11:07Z,,,
 Mode8fx/EzRO-gui,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:11:07Z,132,false,false
 Modalities/modalities,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:11:07Z,104,false,false
 MizzenAI/HPSv3,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:11:07Z,266,false,false
@@ -596,7 +556,6 @@ NISPLab/JBShield,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,
 NASA-IMPACT/Prithvi-WxC,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:12:10Z,179,false,false
 NJU-PCALab/RAG-Diffusion,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:12:11Z,620,false,false
 NPC-Worldwide/npcpy,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:13:11Z,1197,false,false
-NPC-Worldwide/npcsh,results.csv,True,SKILL.md,/npcsh/npc_team/jinxs/skills/debugging/SKILL.md,main,main,https://github.com/NPC-Worldwide/npcsh/blob/34443499b1ffebf80c98f4a1c449412fe0096936/npcsh/npc_team/jinxs/skills/debugging/SKILL.md,ea6995ae01445db9eefbe36599366fb3fb319786,,code_search,200,none,,2026-02-18T16:13:11Z,217,false,false
 NVIDIA/personaplex,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:13:11Z,5324,false,false
 NVlabs/physical_ai_av,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:13:11Z,282,false,false
 Naapperas/zon,results.csv,False,SKILL.md,,develop,develop,,,,contents_api,200,none,,2026-02-18T16:13:12Z,108,false,false
@@ -635,7 +594,6 @@ Olivia5k/doge,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,20
 OpenBB-finance/agents-for-openbb,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:17:19Z,254,false,false
 Olshansk/rss-feeds,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:17:19Z,342,false,false
 Olow304/memvid,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:17:19Z,13146,false,false
-OpenBB-finance/backends-for-openbb,results.csv,True,SKILL.md,/.claude/skills/openbb-app-builder/SKILL.md,main,main,https://github.com/OpenBB-finance/backends-for-openbb/blob/a02df3bcd57d6734950f4e6634db3f55bb5c4652/.claude/skills/openbb-app-builder/SKILL.md,2d13c448be503d70eccba43f05e729a376c0127d,,code_search,200,none,,2026-02-18T16:17:20Z,146,false,false
 OpenGVLab/OmniQuant,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:17:20Z,887,false,false
 OpenDataArena/OpenDataArena-Tool,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:17:20Z,131,false,false
 OpenBMB/DeepThinkVLA,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:17:20Z,488,false,false
@@ -649,17 +607,14 @@ OpenMatch/ThinkNote,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,no
 OpenHelix-Team/VLA-Adapter,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:18:22Z,1990,false,false
 OpenImagingLab/4DSloMo,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:18:22Z,133,false,false
 OpenMOSS/VLABench,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:18:22Z,385,false,false
-OpenSQZ/GTPlanner,results.csv,True,SKILL.md,/.claude/skills/gtplanner/SKILL.md,main,main,https://github.com/OpenSQZ/GTPlanner/blob/e8771e89c85cfca450c4f3e0cf11b33d1a122465/.claude/skills/gtplanner/SKILL.md,00d3053871505e315b5b221893e0e1d2ba2aafbd,,code_search,200,none,,2026-02-18T16:19:23Z,211,false,false
 OpenPrintTag/openprinttag-specification,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:19:23Z,240,false,false
 OpenTabular/DeepTab,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T16:19:23Z,290,false,false
 OpenTabular/DeepTabular,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T16:19:23Z,290,false,false
 OpenWSGR/AutoWSGR,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:19:24Z,175,false,false
 OrionStarAI/DeepV-Ki,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:19:25Z,303,false,false
 Optima-CityU/llm4ad,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:19:24Z,606,false,false
-OriNachum/autonomous-intelligence,results.csv,True,SKILL.md,/qq/skills/coding/SKILL.md,main,main,https://github.com/OriNachum/autonomous-intelligence/blob/7e1c9b6f5ecf27613802e9a1705ca0097044a92c/qq/skills/coding/SKILL.md,6c4d6a1a805976f08de308c297d1bf3615252a2b,,code_search,200,none,,2026-02-18T16:19:24Z,211,false,false
 Oqura-ai/deepdoc,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:19:24Z,173,false,false
 Osilly/Vision-DeepResearch,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:20:25Z,350,false,false
-OthmanAdi/planning-with-files,results.csv,True,SKILL.md,/skills/planning-with-files/SKILL.md,master,master,https://github.com/OthmanAdi/planning-with-files/blob/4292f000a15ecf07a6d0900ab495b80864de2a15/skills/planning-with-files/SKILL.md,7f4024a5f9c480ef3b6763f2a354bf60ba84ea41,,code_search,200,none,,2026-02-18T16:20:25Z,14060,false,false
 OvertureMaps/overturemaps-py,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:20:25Z,221,false,false
 OvertureMaps/data,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:20:25Z,1100,false,false
 PCrnjak/CM6_COBOT_ROBOT,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:20:26Z,224,false,false
@@ -671,7 +626,6 @@ PacktPublishing/LLM-Engineers-Handbook,results.csv,False,SKILL.md,,main,main,,,,
 PacktPublishing/ChatGPT-for-Cybersecurity-Cookbook,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:21:27Z,163,false,false
 Pandalin98/ITFormer-ICML25,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:21:27Z,393,false,false
 PRIME-RL/SimpleVLA-RL,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:21:27Z,1393,false,false
-Pangu-Immortal/hunter-ai-content-factory,results.csv,True,SKILL.md,/src/factory/skills/skill.md,main,main,https://github.com/Pangu-Immortal/hunter-ai-content-factory/blob/21cebd438f668083f7307870bf079ff7f766166d/src/factory/skills/skill.md,198e197e807e90e8dc651be9c290caa6cbc15600,,code_search,200,none,,2026-02-18T16:21:28Z,243,false,false
 Parskatt/RoMaV2,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:21:28Z,455,false,false
 Paper2Poster/Paper2Poster,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:21:28Z,3090,false,false
 Passer1072/RookieAI_yolov8,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:21:28Z,633,false,false
@@ -685,7 +639,6 @@ PhialsBasement/LibreCrawl,results.csv,False,SKILL.md,,main,main,,,,contents_api,
 PharMolix/OpenBioMed,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:22:30Z,970,false,false
 Physical-Intelligence/real-time-chunking-kinetix,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:22:30Z,395,false,false
 Phrogz/NeatJSON,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T16:22:30Z,114,false,false
-PleasePrompto/notebooklm-skill,results.csv,True,SKILL.md,/SKILL.md,master,master,https://github.com/PleasePrompto/notebooklm-skill/blob/master/SKILL.md,2be7e1615889f128c87c6938ca2c4f262f861a9a,9442,contents_api,200,none,,2026-02-18T16:23:31Z,3581,false,false
 PierreGode/Ragnar,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:23:31Z,174,false,false
 PicnicSupermarket/dbt-score,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T16:23:31Z,207,false,false
 PoemMistyMoon/Netlib-Keep-Alive,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:23:31Z,93,false,false
@@ -768,7 +721,6 @@ SWE-agent/SWE-agent,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,no
 SYSTRAN/faster-whisper,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T16:31:49Z,21015,false,false
 SWE-agent/mini-swe-agent,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:31:48Z,2920,false,false
 SagiPolaczek/NeuralSVG,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:32:49Z,1403,false,false
-Saik0s/mcp-browser-use,results.csv,True,SKILL.md,/skills/browser-use/SKILL.md,main,main,https://github.com/Saik0s/mcp-browser-use/blob/03e0dad7f429568f922e0cc09b72849472cb867c/skills/browser-use/SKILL.md,2a13f7151b86ea5f868480067193aa3fb442b417,,code_search,200,none,,2026-02-18T16:32:49Z,893,false,false
 SamsungSAILMontreal/TinyRecursiveModels,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:32:49Z,6329,false,false
 SaFoLab-WISC/AutoDAN-Turbo,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:32:49Z,347,false,false
 SamurAIGPT/AI-Youtube-Shorts-Generator,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:32:50Z,3031,false,false
@@ -818,13 +770,11 @@ Stability-AI/stable-codec,results.csv,False,SKILL.md,,main,main,,,,contents_api,
 StanfordMIMI/MedVAE,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:37:59Z,176,false,false
 Starlight0798/gymRL,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:38:00Z,143,false,false
 StanfordMIMI/Merlin,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:38:00Z,190,false,false
-SterlingChin/marvin-template,results.csv,True,SKILL.md,/skills/start/SKILL.md,main,main,https://github.com/SterlingChin/marvin-template/blob/b7e37f2981cf778ef850f3f37a7801edb38ef1b6/skills/start/SKILL.md,09d491568579ca0e97e703692519a6f5de8d9436,,code_search,200,none,,2026-02-18T16:38:00Z,883,false,false
 Suge8/Bubble,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:38:00Z,126,false,false
 StavrosOrf/EV2Gym,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:38:00Z,185,false,false
 SukramJ/homematicip_local,results.csv,False,SKILL.md,,devel,devel,,,,contents_api,200,none,,2026-02-18T16:39:01Z,546,false,false
 SunOner/sunone_aimbot,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:39:01Z,791,false,false
 SumeLabs/FastApps,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:39:01Z,215,false,false
-SuperClaude-Org/SuperClaude_Framework,results.csv,True,SKILL.md,/skills/confidence-check/SKILL.md,master,master,https://github.com/SuperClaude-Org/SuperClaude_Framework/blob/55c658c77f88c538cf9d90a3736c1b24f8f64f44/skills/confidence-check/SKILL.md,cd64d562509b574b6733dc18789c640f5cfc4c2e,,code_search,200,none,,2026-02-18T16:39:01Z,20854,false,false
 SuperClaude-Org/SuperGemini_Framework,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:39:02Z,231,false,false
 Surfboardv2ray/Proxy-sorter,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:39:02Z,199,false,false
 SwayStar123/SpeedrunDiT,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:39:02Z,123,false,false
@@ -857,7 +807,6 @@ Textualize/textual-serve,results.csv,False,SKILL.md,,main,main,,,,contents_api,2
 Tenzer/alga,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:42:08Z,126,false,false
 TextArena/TextArena,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:42:08Z,352,false,false
 TextArena/UnstableBaselines,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:42:08Z,118,false,false
-ThanhNguyxn/SheerID-Verification-Tool,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T16:43:09Z,,,
 The-Pocket/PocketFlow,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:43:09Z,10032,false,false
 TheAgentArk/Toucan,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:43:09Z,226,false,false
 The-Pocket/PocketFlow-Tutorial-Codebase-Knowledge,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:43:09Z,12070,false,false
@@ -865,7 +814,6 @@ The-Swarm-Corporation/AutoHedge,results.csv,False,SKILL.md,,main,main,,,,content
 TheAgentCompany/TheAgentCompany,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:43:10Z,640,false,false
 TheSmallHanCat/flow2api,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:43:10Z,1142,false,false
 TheSmallHanCat/sora2api,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:43:11Z,1008,false,false
-TheCraigHewitt/seomachine,results.csv,True,SKILL.md,/.claude/skills/form-cro/SKILL.md,main,main,https://github.com/TheCraigHewitt/seomachine/blob/f40d9f6de5e36f336161b314292a300a95989a7b/.claude/skills/form-cro/SKILL.md,31cd48e67a420120565bd0d0bc918e33ed88d643,,code_search,200,none,,2026-02-18T16:43:10Z,349,false,false
 TheDuckAI/DuckTrack,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:43:10Z,162,false,false
 TheWicklowWolf/Lidify,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:44:11Z,517,false,false
 TheWicklowWolf/SpotTube,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:44:12Z,137,false,false
@@ -891,7 +839,6 @@ Trustworthy-AI-Group/TransferAttack,results.csv,False,SKILL.md,,main,main,,,,con
 TristanBilot/mlx-benchmark,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:46:15Z,214,false,false
 Ttl/torchbp,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T16:46:16Z,175,false,false
 UCSC-VLAA/story-adapter,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:46:16Z,946,false,false
-TurixAI/TuriX-CUA,results.csv,True,SKILL.md,/OpenCLaw_TuriX_skill/SKILL.md,main,main,https://github.com/TurixAI/TuriX-CUA/blob/fff3ba3cdaa706b788cdf3336ebd0f14edcb7f24/OpenCLaw_TuriX_skill/SKILL.md,e0a6e8b3c14e73ccec1f476c15bbff70cbf19e17,,code_search,200,none,,2026-02-18T16:46:16Z,620,false,false
 TypQxQ/Sigenergy-Local-Modbus,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:46:16Z,182,false,false
 TutteInstitute/datamapplot,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:46:16Z,979,false,false
 UKGovernmentBEIS/control-arena,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:47:17Z,153,false,false
@@ -983,7 +930,6 @@ Zaloog/kanban-python,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,n
 ZenGuard-AI/fast-llm-security-guardrails,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:56:36Z,151,false,false
 ZeroAd-06/ArknightsCostBarRuler,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T16:56:36Z,166,false,false
 ZeroIntensity/view.py,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:56:37Z,212,false,false
-Zaloog/kanban-tui,results.csv,True,SKILL.md,/src/kanban_tui/assets/SKILL.md,main,main,https://github.com/Zaloog/kanban-tui/blob/b1a8b3d926933ebcf0adecdea068fa6438a95bfb/src/kanban_tui/assets/SKILL.md,fef38ad23835f50a349d37f4b8e0423c5b4237d4,,code_search,200,none,,2026-02-18T16:56:36Z,198,false,false
 Zeus-Deus/gazelle-tui,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:57:37Z,111,false,false
 Zhangyanbo/MLP-KAN,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:57:37Z,108,false,false
 ZhengPeng7/BiRefNet,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:57:37Z,3166,false,false
@@ -991,7 +937,6 @@ ZhengdiYu/Dyn-HaMR,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,non
 Zhiyuan-Zeng/RLVE,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:57:38Z,181,false,false
 Ziems/arbor,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:57:38Z,315,false,false
 Zie619/n8n-workflows,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:57:38Z,51612,false,false
-ZhuoZhuoCrayon/throttled-py,results.csv,True,SKILL.md,/.claude/skills/pre-release/SKILL.md,main,main,https://github.com/ZhuoZhuoCrayon/throttled-py/blob/b5a1cfd6acaebebb8d501ad97e9c6e5c05178d65/.claude/skills/pre-release/SKILL.md,4e8bf0ae71ebf40a0c469cee0e40e33071a838b3,,code_search,200,none,,2026-02-18T16:57:38Z,614,false,false
 Zihao-Felix-Zhou/UavNetSim-v1,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T16:57:39Z,287,false,false
 ZinYY/StreamingWavelet,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:58:39Z,121,false,false
 ZitengWangNYU/Scale-RAE,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T16:58:39Z,207,false,false
@@ -1015,7 +960,6 @@ aashutoshrathi/testcase-generator,results.csv,False,SKILL.md,,master,master,,,,c
 abao1999/panda,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:00:43Z,167,false,false
 abey79/vpype,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:00:43Z,872,false,false
 abathur/resholve,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:00:43Z,254,false,false
-abracadabra50/claude-code-voice-skill,results.csv,True,SKILL.md,/SKILL.md,main,main,https://github.com/abracadabra50/claude-code-voice-skill/blob/main/SKILL.md,0531a48cf07181b46891757ebc4503d7a7f72a17,2713,contents_api,200,none,,2026-02-18T17:00:44Z,155,false,false
 abrignoni/aleapp,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:00:44Z,762,false,false
 absadiki/pywhispercpp,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:00:44Z,322,false,false
 absolomb/FindMeAccess,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:00:45Z,197,false,false
@@ -1029,7 +973,6 @@ accordbox/python-webpack-boilerplate,results.csv,False,SKILL.md,,master,master,,
 acenglish/truvari,results.csv,False,SKILL.md,,develop,develop,,,,contents_api,200,none,,2026-02-18T17:01:46Z,396,false,false
 acehoss/rnsh,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:01:46Z,131,false,false
 achimnol/aiotools,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:01:47Z,167,false,false
-ace-step/ACE-Step-1.5,results.csv,True,SKILL.md,/.claude/skills/acestep/SKILL.md,main,main,https://github.com/ace-step/ACE-Step-1.5/blob/816825b121c50c6aec547a5bbd0e34cbd21561c5/.claude/skills/acestep/SKILL.md,9967e54ba4fabd39fdb569ae4b0153edd7ced098,,code_search,200,none,,2026-02-18T17:01:46Z,5808,false,false
 acl-org/aclpubcheck,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:02:47Z,899,false,false
 aconrad/pycobertura,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:02:47Z,131,false,false
 act-now-coalition/covid-data-model,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:02:47Z,149,false,false
@@ -1058,11 +1001,9 @@ adaptive-intelligent-robotics/qdax,results.csv,False,SKILL.md,,main,main,,,,cont
 adhikasp/mcp-client-cli,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:04:52Z,665,false,false
 addok/addok,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:04:52Z,367,false,false
 adityatelange/evil-winrm-py,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:05:53Z,327,false,false
-adithya-s-k/manim_skill,results.csv,True,SKILL.md,/skills/manim-composer/SKILL.md,main,main,https://github.com/adithya-s-k/manim_skill/blob/cef045011722d285692e3381d12d4d637da56e18/skills/manim-composer/SKILL.md,aefb1fd04f557ee19b84a96d50494a5fedd750a0,,code_search,200,none,,2026-02-18T17:05:53Z,596,false,false
 adoptai/zapi,results.csv,False,SKILL.md,,dev,dev,,,,contents_api,200,none,,2026-02-18T17:05:53Z,470,false,false
 adrienbrault/geekmagic-hacs,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:05:53Z,130,false,false
 adrn/gala,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:05:54Z,145,false,false
-aeromomo/claw-compactor,results.csv,True,SKILL.md,/SKILL.md,main,main,https://github.com/aeromomo/claw-compactor/blob/main/SKILL.md,c431129b26329dd7fbaabbec825b3bde06c9b0f9,7993,contents_api,200,none,,2026-02-18T17:05:54Z,772,false,false
 aeolusguan/BridgeDepth,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:05:54Z,128,false,false
 adspiceprospice/localOCR,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:05:54Z,136,false,false
 aeturrell/skimpy,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:05:54Z,500,false,false
@@ -1073,7 +1014,6 @@ africastalkingltd/africastalking-python,results.csv,False,SKILL.md,,develop,deve
 agconti/cookiecutter-django-rest,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:06:56Z,1603,false,false
 ag2ai/Agents_Failure_Attribution,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:06:56Z,342,false,false
 agiletec-inc/airis-mcp-gateway,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:06:56Z,120,false,false
-agentic-mcp-tools/memora,results.csv,True,SKILL.md,/.claude/skills/memora/SKILL.md,main,main,https://github.com/agentic-mcp-tools/memora/blob/902f364de5ee16d33cd6cd2d457ff8396e1cc72d/.claude/skills/memora/SKILL.md,f7be85dcdd0504dc66aefc72e14fece43f49943e,,code_search,200,none,,2026-02-18T17:06:56Z,286,false,false
 agi-brain/xuance,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:06:56Z,1036,false,false
 ag-ui-protocol/ag-ui,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:06:56Z,12047,false,false
 agilexrobotics/piper_sdk,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:07:57Z,263,false,false
@@ -1107,7 +1047,6 @@ ailothaen/redditarchiver-standalone,results.csv,False,SKILL.md,,main,main,,,,con
 aim-uofa/PM-Loss,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:11:03Z,159,false,false
 aimagelab/mammoth,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:11:03Z,781,false,false
 aio-libs/aiodns,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:11:04Z,588,false,false
-aiming-lab/SimpleMem,results.csv,True,SKILL.md,/SKILL/simplemem-skill/SKILL.md,main,main,https://github.com/aiming-lab/SimpleMem/blob/a4f707d9329bb88c1a9291df18ba73f3dabce1b4/SKILL/simplemem-skill/SKILL.md,64907da416c7647f7a991ae8e119ba670d5f95c2,,code_search,200,none,,2026-02-18T17:11:04Z,2947,false,false
 aio-libs/async-lru,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:11:04Z,932,false,false
 aiogram/aiogram,results.csv,False,SKILL.md,,dev-3.x,dev-3.x,,,,contents_api,200,none,,2026-02-18T17:11:04Z,5582,false,false
 aiokitchen/aiomisc,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:11:05Z,419,false,false
@@ -1120,7 +1059,6 @@ aisa-group/PostTrainBench,results.csv,False,SKILL.md,,main,main,,,,contents_api,
 akanz1/klib,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:12:06Z,520,false,false
 aisk/pick,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:12:06Z,783,false,false
 akascape/datamosher-pro,results.csv,False,SKILL.md,,Datamosher-Pro-master,Datamosher-Pro-master,,,,contents_api,200,none,,2026-02-18T17:12:06Z,431,false,false
-aitytech/agentkits-marketing,results.csv,True,SKILL.md,/.claude/skills/form-cro/SKILL.md,main,main,https://github.com/aitytech/agentkits-marketing/blob/5bd154681d112eb4f33939f533f770c23f153974/.claude/skills/form-cro/SKILL.md,5cb2c1030a5d02bd47d029b79ce3fd2fe2f43b10,,code_search,200,none,,2026-02-18T17:12:06Z,295,false,false
 akashblackhat/gmail-hack.py,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:13:07Z,339,false,false
 akfamily/akshare,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:13:07Z,16306,false,false
 akfamily/aktools,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:13:07Z,1205,false,false
@@ -1141,7 +1079,6 @@ albrateanu/LYT-Net,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,non
 albertan017/LLM4Decompile,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:14:10Z,6341,false,false
 alchemiststudiosDOTai/tunacode,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:15:11Z,113,false,false
 alejandroautalan/pygubu,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:15:11Z,2169,false,false
-albumentations-team/albumentations_examples,results.csv,True,SKILL.md,/.cursor/skills/notebook-metadata/SKILL.md,main,main,https://github.com/albumentations-team/albumentations_examples/blob/d43a0435cd49be4b770a6d4edea55f852c5c985b/.cursor/skills/notebook-metadata/SKILL.md,38cacf70d207f046f388989feeb320031a6b5afa,,code_search,200,none,,2026-02-18T17:15:11Z,445,false,false
 ales-tsurko/cells,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:15:11Z,168,false,false
 alexander-akhmetov/python-telegram,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:15:12Z,708,false,false
 alexaplin/nndownload,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:15:12Z,299,false,false
@@ -1179,21 +1116,17 @@ alibabaresearch/damo-convai,results.csv,False,SKILL.md,,main,main,,,,contents_ap
 alipay/PainlessInferenceAcceleration,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:19:20Z,372,false,false
 alihoseiny/word_cloud_fa,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:19:19Z,144,false,false
 alirezadir/Agentic-AI-Systems,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:19:20Z,232,false,false
-alirezarezvani/ClaudeForge,results.csv,True,SKILL.md,/skill/SKILL.md,dev,dev,https://github.com/alirezarezvani/ClaudeForge/blob/e7512689c18cf78b0421e778852f0089ed20bab6/skill/SKILL.md,a1a23bb8f76ac8b5304d1f0ae67136501db80900,,code_search,200,none,,2026-02-18T17:19:20Z,152,false,false
 alisaifee/flask-limiter,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:19:20Z,1199,false,false
 alisaifee/limits,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:19:21Z,605,false,false
-alirezarezvani/claude-skills,results.csv,True,SKILL.md,/ra-qm-team/capa-officer/SKILL.md,main,main,https://github.com/alirezarezvani/claude-skills/blob/0bea02d2b6ab9647300dc10d71e4336ddd61c68c/ra-qm-team/capa-officer/SKILL.md,4acf62e38b7b99e79d7699d86a79b03282285b92,,code_search,200,none,,2026-02-18T17:19:20Z,1855,false,false
 alisaifee/coredis,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:19:20Z,105,false,false
 aliyun/aliyun-log-python-sdk,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:20:21Z,176,false,false
 allmonday/fastapi-voyager,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:20:21Z,429,false,false
 alkaline-ml/pmdarima,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:20:21Z,1713,false,false
 allmonday/pydantic-resolve,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:20:21Z,311,false,false
-alonw0/web-asset-generator,results.csv,True,SKILL.md,/skills/web-asset-generator/SKILL.md,main,main,https://github.com/alonw0/web-asset-generator/blob/c6d56dc54ab86eae4eeb1393d9c8cdc71ae8d1a8/skills/web-asset-generator/SKILL.md,923f281083a293cf1b550eede1293ed2c214d97e,,code_search,200,none,,2026-02-18T17:20:22Z,184,false,false
 alstr/todo-to-issue-action,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:20:22Z,788,false,false
 alpacahq/alpaca-mcp-server,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:20:22Z,512,false,false
 alorence/django-modern-rpc,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:20:22Z,108,false,false
 altair-viz/vega_datasets,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:20:23Z,188,false,true
-alvarobartt/hf-mem,results.csv,True,SKILL.md,/SKILL.md,main,main,https://github.com/alvarobartt/hf-mem/blob/main/SKILL.md,25d7495274c040febb4ce9f84206d239bb0f187c,1264,contents_api,200,none,,2026-02-18T17:21:23Z,740,false,false
 althonos/pronto,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:21:23Z,251,false,false
 alttch/rapidtables,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:21:23Z,288,false,false
 alumnium-hq/alumnium,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:21:23Z,542,false,false
@@ -1202,7 +1135,6 @@ alxndrTL/mamba.py,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none
 alzayats/deepfish,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:21:24Z,133,false,false
 amazon-far/TWIST2,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:21:24Z,662,false,false
 amanvirparhar/chaplin,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:21:24Z,705,false,false
-ambient-code/agentready,results.csv,True,SKILL.md,/.skills-proposals/setup-claude-md/SKILL.md,main,main,https://github.com/ambient-code/agentready/blob/5c684f9d602fba5967b1d64e6ad5669d67236c6e/.skills-proposals/setup-claude-md/SKILL.md,f3f1b3506dc44a4702b6f95c1e1cd6cfacbb43f2,,code_search,200,none,,2026-02-18T17:21:25Z,112,false,false
 ambv/aiotone,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:22:25Z,123,false,false
 amd/Quark,results.csv,False,SKILL.md,,release/0.11,release/0.11,,,,contents_api,200,none,,2026-02-18T17:22:25Z,112,false,false
 amd/gaia,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:22:25Z,929,false,false
@@ -1220,7 +1152,6 @@ amrzv/awesome-colab-notebooks,results.csv,False,SKILL.md,,main,main,,,,contents_
 amueller/word_cloud,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:23:28Z,10517,false,false
 amplify-education/python-hcl2,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:23:28Z,300,false,false
 amscotti/local-LLM-with-RAG,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:23:28Z,271,false,false
-amszuidas/mini-opencode,results.csv,True,SKILL.md,/skills/skill-creator/SKILL.md,main,main,https://github.com/amszuidas/mini-opencode/blob/d09f3e96eca1ac3fb40f7e9ab3740ef67daedc86/skills/skill-creator/SKILL.md,7ae68a43e117f11d9757d92df53faad3c2879ee1,,code_search,200,none,,2026-02-18T17:23:28Z,110,false,false
 anbuinfosec/wipwn,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:24:29Z,400,false,false
 amyasnikov/validity,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:24:29Z,171,false,false
 andarius/piou,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:24:29Z,319,false,false
@@ -1238,7 +1169,6 @@ andrewannex/spiceypy,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,n
 andrewrowlinson/mplsoccer,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:25:33Z,503,false,false
 andrew-codechimp/HA-Battery-Notes,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:25:32Z,979,false,false
 andrew-dickinson/nyct-gtfs,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:25:32Z,115,false,false
-andrewm4894/anomstack,results.csv,True,SKILL.md,/.claude/skills/debug-demo-instance/SKILL.md,main,main,https://github.com/andrewm4894/anomstack/blob/08d38ffef33f7728bc2b46515506ff6962a8b230/.claude/skills/debug-demo-instance/SKILL.md,80b438dcc7456825de43d734251c38cb40d74aac,,code_search,200,none,,2026-02-18T17:25:32Z,107,false,false
 andrewyng/aisuite,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:26:33Z,13462,false,false
 andy-landy/traceback_with_variables,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:26:33Z,708,false,false
 andrivet/python-asn1,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:26:33Z,108,true,false
@@ -1334,7 +1264,6 @@ asadullah-dal17/eyes-position-estimator-mediapipe,results.csv,False,SKILL.md,,ma
 arxiv/arxiv-search,results.csv,False,SKILL.md,,develop,develop,,,,contents_api,200,none,,2026-02-18T17:36:53Z,138,false,false
 asahilinux/m1n1,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:36:53Z,3992,false,false
 askannz/optimus-manager,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:36:54Z,2445,false,false
-asklokesh/claudeskill-loki-mode,results.csv,True,SKILL.md,/SKILL.md,main,main,https://github.com/asklokesh/loki-mode/blob/main/SKILL.md,0b9b8c1c7a98066a17a31fea895b72ff977f029f,10745,contents_api,200,none,,2026-02-18T17:36:54Z,634,false,false
 asaini/apriori,results.csv,False,SKILL.md,,python3,python3,,,,contents_api,200,none,,2026-02-18T17:36:54Z,784,false,false
 askui/vision-agent,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:36:55Z,507,false,false
 asavinov/intelligent-trading-bot,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:36:54Z,1616,false,false
@@ -1365,7 +1294,6 @@ atiilla/sqlmap-ai,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none
 atilaahmettaner/tradingview-mcp,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:40:00Z,381,false,false
 atnikos/motionfix,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:40:01Z,155,false,false
 atapas/fork-me,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:40:00Z,177,false,false
-athola/claude-night-market,results.csv,True,SKILL.md,/plugins/imbue/skills/catchup/SKILL.md,master,master,https://github.com/athola/claude-night-market/blob/d9d89b507f2afda65e3892bd89485e7f2d429858/plugins/imbue/skills/catchup/SKILL.md,2a722d4a19bff3ea9dad22e81c7f5b2676211a43,,code_search,200,none,,2026-02-18T17:40:00Z,174,false,false
 atong01/conditional-flow-matching,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:41:01Z,2304,false,false
 atpuxiner/docsloader,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:41:01Z,150,false,false
 atpuxiner/fastapi-scaff,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:41:01Z,1371,false,false
@@ -1431,7 +1359,6 @@ ballsdex-team/ballsdex-discordbot,results.csv,False,SKILL.md,,v3,v3,,,,contents_
 bambinos/bambi,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:47:14Z,1243,false,false
 bandoche/pypinksign,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:48:15Z,109,false,false
 banesullivan/localtileserver,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:48:15Z,344,false,false
-banteg/takopi,results.csv,True,SKILL.md,/.codex/skills/takopi-release/SKILL.md,master,master,https://github.com/banteg/takopi/blob/3e85848292a5137093974e4ab69bac248f93ce94/.codex/skills/takopi-release/SKILL.md,ba5bd2d48f2bf9ae8623e2ab0c6eb4f923376cb7,,code_search,200,none,,2026-02-18T17:48:15Z,746,false,false
 baoguangsheng/fast-detect-gpt,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:48:15Z,378,false,false
 barebaric/rayforge,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:48:16Z,142,false,false
 barrust/mediawiki,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T17:48:16Z,186,false,false
@@ -1446,7 +1373,6 @@ basicswap/basicswap,results.csv,False,SKILL.md,,master,master,,,,contents_api,20
 basicwolf/hexagonal-architecture-django,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:49:18Z,129,false,false
 basnijholt/compose-farm,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:49:18Z,291,false,false
 basnijholt/markdown-code-runner,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:49:18Z,123,false,false
-basnijholt/agent-cli,results.csv,True,SKILL.md,/agent_cli/dev/skill/SKILL.md,main,main,https://github.com/basnijholt/agent-cli/blob/7b5a8704b250b1c88f43373148c45eff965d4ac2/agent_cli/dev/skill/SKILL.md,9c4e52f55d5185d3cd16059e6a66ae785d560ed1,,code_search,200,none,,2026-02-18T17:49:18Z,113,false,false
 batstateu-is/2025-BatstateU-IS,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:50:19Z,300,false,false
 baverman/sqlbind,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:50:19Z,132,false,false
 basnijholt/tuitorial,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T17:50:19Z,521,false,false
@@ -1572,7 +1498,6 @@ bluedabadi/SchwabAutoTrading,results.csv,False,SKILL.md,,main,main,,,,contents_a
 bluenote10/yachalk,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T18:03:47Z,170,false,false
 bluekeyes/fusion360-exportcutlist,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T18:03:46Z,116,false,false
 bloodaxe/pytorch-toolbelt,results.csv,False,SKILL.md,,develop,develop,,,,contents_api,200,none,,2026-02-18T18:03:46Z,1565,false,false
-blueman82/ai-counsel,results.csv,True,SKILL.md,/.claude/skills/adapter-factory/SKILL.md,main,main,https://github.com/blueman82/ai-counsel/blob/a3c69af3698f5ca9f9185017a97ff07c920c5225/.claude/skills/adapter-factory/SKILL.md,e323ad701104f3203739eef314e1b20f46b1ede7,,code_search,200,none,,2026-02-18T18:03:46Z,186,false,false
 blueswen/mkdocs-glightbox,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:04:47Z,187,false,false
 bnkc/handlefinder,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T18:04:47Z,184,false,false
 bnpr/abnormal,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T18:04:47Z,466,false,false
@@ -1586,7 +1511,6 @@ boolangery/py-lua-parser,results.csv,False,SKILL.md,,master,master,,,,contents_a
 bonsanto/polygon-geohasher,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T18:05:49Z,114,false,false
 bootmortis/iran-hosted-domains,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:05:50Z,963,false,false
 borntohonk/switch-ghidra-guides,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T18:05:50Z,146,false,false
-boringdata/boring-semantic-layer,results.csv,True,SKILL.md,/docs/md/doc/query-agent-skill.md,main,main,https://github.com/boringdata/boring-semantic-layer/blob/47d5718c2b779ab302eb0ead48057787b4fb18cd/docs/md/doc/query-agent-skill.md,f36101f34cc464f34d05620c9af5d18b2449dd93,,code_search,200,none,,2026-02-18T18:05:50Z,398,false,false
 borntyping/python-colorlog,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:05:50Z,954,false,false
 bottlepy/bottle,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T18:05:51Z,8758,false,false
 botingw/rulebook-ai,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:05:50Z,573,false,false
@@ -1626,7 +1550,6 @@ browniebroke/deezer-python,results.csv,False,SKILL.md,,main,main,,,,contents_api
 browser-use/cdp-use,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:09:58Z,248,false,false
 browniebroke/django-codemod,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:09:58Z,186,false,false
 browserbase/stagehand-python,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:09:58Z,424,false,false
-browser-use/browser-use,results.csv,True,SKILL.md,/skills/browser-use/SKILL.md,main,main,https://github.com/browser-use/browser-use/blob/1e4cfcef652d09f831109b1f75f01b290b2eaf2e/skills/browser-use/SKILL.md,5203041ac86aeb3efa5feae9118782bc57c0ad1f,,code_search,200,none,,2026-02-18T18:09:58Z,78511,false,false
 brucepro/Memoir,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:10:59Z,223,false,false
 bryzgaloff/airflow-clickhouse-plugin,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T18:10:59Z,176,false,false
 btel/svg_utils,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T18:10:59Z,332,false,false
@@ -1739,12 +1662,7 @@ changjonathanc/flex-nano-vllm,results.csv,False,SKILL.md,,main,main,,,,contents_
 chadyi/AITradeGame,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:23:23Z,909,false,false
 chaiNNer-org/spandrel,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:23:23Z,274,false,false
 chanzuckerberg/miniwdl,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:23:23Z,200,false,false
-charIesding/MetaGPT,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T18:23:24Z,,,
-charIesding/crewAI,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T18:23:24Z,,,
-charIesding/langflow,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T18:23:24Z,,,
 chaowenguo/python-tls-client,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:23:24Z,155,false,false
-charIesding/llama_index,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T18:23:24Z,,,
-charIesding/ollama-python,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T18:23:24Z,,,
 character-ai/prompt-poet,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:23:24Z,1135,false,false
 chaoss/augur,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:23:24Z,688,false,false
 chaquo/chaquopy,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T18:23:24Z,1144,false,false
@@ -1830,7 +1748,6 @@ cltk/cltk,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,20
 closeio/tasktiger,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T18:32:42Z,1459,false,false
 cmosig/sentle,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:32:43Z,133,false,false
 cluntop/tvbox,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:32:42Z,264,false,false
-cmpnd-ai/dspy-cli,results.csv,True,SKILL.md,/.claude/skills/tmux/SKILL.md,main,main,https://github.com/cmpnd-ai/dspy-cli/blob/2b59513400a2e67cf7fd2de3b9f3490bbc57af16/.claude/skills/tmux/SKILL.md,5e80e032caabbd76677ece4f02662e2729fcb039,,code_search,200,none,,2026-02-18T18:33:43Z,117,false,false
 cmu-delphi/delphi-epidata,results.csv,False,SKILL.md,,dev,dev,,,,contents_api,200,none,,2026-02-18T18:33:43Z,104,false,false
 cmudig/draco2,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:33:43Z,107,false,false
 cnchtu/diffusion-svc,results.csv,False,SKILL.md,,v1_Stable,v1_Stable,,,,contents_api,200,none,,2026-02-18T18:33:44Z,475,false,false
@@ -1860,8 +1777,6 @@ coguardio/coguard-cli,results.csv,False,SKILL.md,,master,master,,,,contents_api,
 coldfix/udiskie,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T18:36:49Z,1014,false,false
 coleam00/Linear-Coding-Agent-Harness,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:36:49Z,189,false,false
 cole/aiosmtplib,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:36:49Z,418,false,false
-coleam00/context-engineering-intro,results.csv,True,SKILL.md,/use-cases/build-with-agent-team/SKILL.md,main,main,https://github.com/coleam00/context-engineering-intro/blob/38113371a1ac8d3f8ca1e586ec402e6d7c47370d/use-cases/build-with-agent-team/SKILL.md,e08220949211ccdfc35c8522666ea6fdc856a583,,code_search,200,none,,2026-02-18T18:36:49Z,12513,false,false
-coleam00/ottomator-agents,results.csv,True,SKILL.md,/claude-skill-archon/.claude/skills/archon/SKILL.md,main,main,https://github.com/coleam00/ottomator-agents/blob/2be20d5737fc49aa0f665a012f3ffde283d26d54/claude-skill-archon/.claude/skills/archon/SKILL.md,03ff4b23c0c5671d8b30a0fb9616781db8099297,,code_search,200,none,,2026-02-18T18:36:50Z,5353,false,false
 coleifer/peewee,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T18:36:51Z,11939,false,false
 coleifer/micawber,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T18:36:50Z,672,false,false
 coleifer/flask-peewee,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T18:36:50Z,784,false,false
@@ -1890,7 +1805,6 @@ conjuncts/gmft,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2
 conan-io/conan-center-index,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T18:39:55Z,1138,false,false
 conor-is-my-name/google-maps-scraper,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:39:56Z,258,false,false
 context-machine-lab/sleepless-agent,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:39:56Z,798,false,false
-conorluddy/ios-simulator-skill,results.csv,True,SKILL.md,/ios-simulator-skill/SKILL.md,main,main,https://github.com/conorluddy/ios-simulator-skill/blob/afcf21f5f8f69978f350cae942ac23cadedc1b65/ios-simulator-skill/SKILL.md,4a93a1d2f301da908a266a8feb4bb2c286af6d1f,,code_search,200,none,,2026-02-18T18:39:56Z,494,false,false
 containers/ramalama,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:39:56Z,2598,false,false
 constantinpape/torch-em,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:39:56Z,117,false,false
 contextlab/hypertools,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T18:40:57Z,1884,false,false
@@ -1975,7 +1889,6 @@ da-rth/yasb,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026
 d4vinci/cr3dov3r,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T18:49:14Z,2087,false,false
 d03n3rfr1tz3/hass-divoom,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:49:14Z,169,false,false
 da-z/mlx-ui,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:50:15Z,260,false,true
-daaain/claude-code-log,results.csv,True,SKILL.md,/.claude/skills/tool-renderer/SKILL.md,main,main,https://github.com/daaain/claude-code-log/blob/70bb2e044aed9e7655d8c96b0df40d5d4e368bcf/.claude/skills/tool-renderer/SKILL.md,d5b4315336d61ead162951cb35385ac5fae369f7,,code_search,200,none,,2026-02-18T18:50:15Z,735,false,false
 dadevel/mssql-spider,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:50:15Z,127,false,false
 dabit3/fabricate,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:50:15Z,243,false,false
 dadevel/wg-netns,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:50:16Z,166,false,false
@@ -2040,7 +1953,6 @@ davidhalter/jedi-vim,results.csv,False,SKILL.md,,master,master,,,,contents_api,2
 davidusb-geek/emhass,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T18:57:29Z,518,false,false
 davidteather/tiktok-api,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:57:29Z,6069,false,false
 davidvujic/python-polylith,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:57:29Z,535,false,false
-daymade/claude-code-skills,results.csv,True,SKILL.md,/qa-expert/SKILL.md,main,main,https://github.com/daymade/claude-code-skills/blob/38f96d78e1bb21b12766ae57eb905e2b35730e77/qa-expert/SKILL.md,8554a09d59826a3f105352c017791174a44b3ec8,,code_search,200,none,,2026-02-18T18:57:29Z,588,false,false
 dbccccccc/ttsfm,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:57:30Z,711,false,true
 dbos-inc/dbos-transact-py,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:57:30Z,1182,false,false
 dbos-inc/durable-swarm,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T18:57:30Z,114,false,false
@@ -2176,7 +2088,6 @@ dloss/klp,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-0
 dlr-rm/stable-baselines3,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T19:12:59Z,12753,false,false
 dlr-rm/rl-baselines3-zoo,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T19:12:59Z,2724,false,false
 dmgbuild/dmgbuild,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T19:12:59Z,194,false,false
-dmitriiweb/extract-emails,results.csv,True,SKILL.md,/.codex/skills/skill-creator/SKILL.md,main,main,https://github.com/dmitriiweb/extract-emails/blob/1f2bb4008e0231784fd78b4140780a2992f5c851/.codex/skills/skill-creator/SKILL.md,b7f86598b002c99a6be96026443217b6af3c561d,,code_search,200,none,,2026-02-18T19:13:00Z,108,false,false
 dmulyalin/ttp,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T19:13:00Z,387,false,false
 dnhkng/GlaDOS,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T19:13:00Z,5346,false,false
 dmort27/epitran,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T19:13:00Z,797,false,false
@@ -2222,7 +2133,6 @@ drfccv/mcp-server-12306,results.csv,False,SKILL.md,,main,main,,,,contents_api,20
 dreamwall-animation/dwpicker,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T19:18:09Z,228,false,false
 drivendataorg/cloudpathlib,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T19:18:09Z,606,false,false
 drmaciver/shrinkray,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T19:18:10Z,295,false,false
-droidrun/droidrun,results.csv,True,SKILL.md,/SKILL.md,main,main,https://github.com/droidrun/droidrun/blob/main/SKILL.md,07ede51c8354068d4e5370eceefb539bb5c2f8df,3766,contents_api,200,none,,2026-02-18T19:18:10Z,7682,false,false
 drndos/openspoolman,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T19:18:10Z,162,false,false
 drivendataorg/zamba,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T19:18:10Z,148,false,false
 dromara/domain-admin,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T19:18:10Z,2399,false,false
@@ -2294,7 +2204,6 @@ elephantrobotics/pymycobot,results.csv,False,SKILL.md,,main,main,,,,contents_api
 eleutherai/lm-evaluation-harness,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T19:26:25Z,11450,false,false
 elevenlabs/elevenlabs-mcp,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T19:26:25Z,1217,false,false
 elevenlabs/elevenlabs-python,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T19:26:25Z,2868,false,false
-elevenlabs/skills,results.csv,True,SKILL.md,/music/SKILL.md,main,main,https://github.com/elevenlabs/skills/blob/21a3e2fcd68448e3c1620b26a0a2cc3b4601b7d7/music/SKILL.md,8339b9100bb78a6ef1fb139aceb2426c5ff3568c,,code_search,200,none,,2026-02-18T19:26:26Z,110,false,false
 elgatito/script.elementum.burst,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T19:26:26Z,132,false,false
 elisabettafedele/superdec,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T19:26:26Z,173,false,false
 elgatito/plugin.video.elementum,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T19:26:26Z,551,true,false
@@ -2497,17 +2406,14 @@ felipenmartins/Robotics-Simulation-Labs,results.csv,False,SKILL.md,,main,main,,,
 felix-hilden/tekore,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T19:49:10Z,215,false,false
 feldroy/air,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T19:49:10Z,820,false,false
 felipecrs/hass-expose-camera-stream-source,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T19:49:10Z,157,false,false
-femto/minion,results.csv,True,SKILL.md,/examples/skills/code-review/SKILL.md,main,main,https://github.com/femto/minion/blob/1d45cfa4706f84945863f18a9901bc8bb545659c/examples/skills/code-review/SKILL.md,e6de882c25c3ce192f5800f55f198029e3392b44,,code_search,200,none,,2026-02-18T19:50:11Z,120,false,false
 fennerm/flashfocus,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T19:50:11Z,757,false,false
 femto/minion-agent,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T19:50:11Z,382,false,false
 fentechsolutions/causaldiscoverytoolbox,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T19:50:11Z,1220,false,false
 ferrolho/VL53L5CX-BNO08X-viewer,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T19:50:12Z,264,false,false
 fgaim/gpuview,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T19:50:12Z,210,false,false
 fetchai/innovation-lab-examples,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T19:50:12Z,875,false,false
-ferdousbhai/investor-agent,results.csv,True,SKILL.md,/skills/investment-analysis/SKILL.md,main,main,https://github.com/ferdousbhai/investor-agent/blob/341fe753acee2fa9c8a855dc26f71a0e8951d001/skills/investment-analysis/SKILL.md,7614d1d24ee37ceaf6ddc144bf3c35253fe600c5,,code_search,200,none,,2026-02-18T19:50:12Z,310,false,false
 fgnt/meeteval,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T19:50:12Z,141,false,false
 filiksyos/gittodoc,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T19:51:13Z,238,false,false
-filipstrand/mflux,results.csv,True,SKILL.md,/.cursor/skills/mflux-pr/SKILL.md,main,main,https://github.com/filipstrand/mflux/blob/bcdf4af465e546fc43b5fcfc7c601ab4722254fc/.cursor/skills/mflux-pr/SKILL.md,523aff3d68f231437a7f026c742d49dfc91106b6,,code_search,200,none,,2026-02-18T19:51:13Z,1832,false,false
 fillipe-gsm/python-tsp,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T19:51:13Z,225,false,false
 filipre/signalbot,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T19:51:13Z,241,false,false
 fillll/reddit2telegram,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T19:51:14Z,285,false,false
@@ -2596,7 +2502,6 @@ gabrielchua/daily-ai-papers,results.csv,False,SKILL.md,,main,main,,,,contents_ap
 gabrieldemarmiesse/python-on-whales,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T20:00:33Z,697,false,false
 gabledata/recap,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:00:32Z,350,false,false
 gabrielbaute/spotify-saver,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:00:32Z,148,false,false
-gadievron/raptor,results.csv,True,SKILL.md,/.claude/commands/create-skill.md,main,main,https://github.com/gadievron/raptor/blob/1f5105effc754d5ade95728db5a2c132dc3631e8/.claude/commands/create-skill.md,577abba780bf1cd785e1d54397333ea704ba5250,,code_search,200,none,,2026-02-18T20:01:33Z,1113,false,false
 gagebenne/pydexcom,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:01:33Z,230,false,false
 gamcil/clinker,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T20:01:33Z,635,false,false
 gagneurlab/drop,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T20:01:33Z,161,false,false
@@ -2697,9 +2602,7 @@ glomatico/gamdl,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,
 glacier-creative-git/similarity-graph-traversal-semantic-rag-research,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:11:54Z,268,false,false
 gmberton/EigenPlaces,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:12:55Z,146,false,false
 gmberton/MegaLoc,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:12:55Z,174,false,false
-gmh5225/awesome-game-security,results.csv,True,SKILL.md,/.claude/skills/overview/SKILL.md,main,main,https://github.com/gmh5225/awesome-game-security/blob/07353ae4827907ac623a50bdca2f03bc5d9e7ab7/.claude/skills/overview/SKILL.md,f61fba4642a0d492073f27848e8a950401f9eb9f,,code_search,200,none,,2026-02-18T20:12:55Z,2705,false,false
 gmberton/cosplace,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:12:55Z,370,false,false
-gmickel/gmickel-claude-marketplace,results.csv,True,SKILL.md,/plugins/flow/skills/flow-plan/SKILL.md,main,main,https://github.com/gmickel/gmickel-claude-marketplace/blob/ce315a1c3ceffb76b9c74f70b03b0376eca2507d/plugins/flow/skills/flow-plan/SKILL.md,aaed205b8197c3c0cfa4567a9edb7f6df6f7e825,,code_search,200,none,,2026-02-18T20:12:56Z,512,false,false
 gogongxt/nano-sglang,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T20:12:56Z,121,false,false
 gobii-ai/gobii-platform,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:12:56Z,315,false,false
 gogcom/galaxy-integrations-python-api,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T20:12:56Z,1324,false,false
@@ -2712,14 +2615,11 @@ googlefonts/ufo2ft,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,non
 goruck/home-generative-agent,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:13:58Z,188,false,false
 googleapis/python-bigquery-sqlalchemy,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:13:58Z,489,false,false
 gorilla-co/s3pypi,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T20:13:58Z,348,false,false
-gotalab/skillport,results.csv,True,SKILL.md,/.skills/experimental/skill-evaluator/SKILL.md,main,main,https://github.com/gotalab/skillport/blob/808598fa00c95a0951cc5267acf8824d92e9a8c6/.skills/experimental/skill-evaluator/SKILL.md,e8d142aeb8f3730f7f5ef53a5a2cde74def8c00c,,code_search,200,none,,2026-02-18T20:13:58Z,318,false,false
 gotoConversion/goto_conversion,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:14:59Z,102,false,false
 gotr00t0day/spyhunt,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:14:59Z,865,false,false
 gouline/dbt-metabase,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:14:59Z,576,false,false
 gpchelkin/scdlbot,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T20:14:59Z,418,false,false
-gptme/gptme,results.csv,True,SKILL.md,/gptme/lessons/skills/python-repl/SKILL.md,master,master,https://github.com/gptme/gptme/blob/60881e4871548c8a3e1f8390fec55b5370bd3bd2/gptme/lessons/skills/python-repl/SKILL.md,b4b844b6e28774a06d8484e3e7b147d66f14cc5b,,code_search,200,none,,2026-02-18T20:15:00Z,4193,false,false
 gradio-app/trackio,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:15:00Z,1263,false,false
-gradio-app/daggr,results.csv,True,SKILL.md,/.agents/skills/daggr/SKILL.md,main,main,https://github.com/gradio-app/daggr/blob/97a46b1de513106eeb0f3504283dd2be3528544c/.agents/skills/daggr/SKILL.md,7c35215d2ddba130b05756deef74e52242bab702,,code_search,200,none,,2026-02-18T20:15:00Z,503,false,false
 gpu-mode/reference-kernels,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:15:00Z,206,false,false
 grafana-toolbox/grafana-client,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:15:00Z,135,false,false
 graphql-python/gql,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T20:16:01Z,1665,false,false
@@ -2901,10 +2801,8 @@ huangjunsen0406/py-xiaozhi,results.csv,False,SKILL.md,,main,main,,,,contents_api
 hub-burgan-com-tr/haproxy-openmanager,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:35:40Z,172,false,false
 huangsam/ultimate-python,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:35:40Z,5798,false,false
 huanshang141/MadAssistantDuet,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:35:40Z,112,false,true
-huangrt01/cs-notes,results.csv,True,SKILL.md,/.trae/skills/fix/SKILL.md,master,master,https://github.com/huangrt01/CS-Notes/blob/ee30af804314af94b6231a7a3983baac1b7d38d5/.trae/skills/fix/SKILL.md,9be38d2dfa0b1a8a817d4db5485571160b003219,,code_search,200,none,,2026-02-18T20:35:40Z,3943,false,false
 hudsonbrendon/python-musixmatch,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T20:36:41Z,109,false,false
 hud-evals/hud-python,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:36:41Z,286,false,false
-hugohe3/ppt-master,results.csv,True,SKILL.md,/.agent/skills/ocr_image_to_markdown/SKILL.md,main,main,https://github.com/hugohe3/ppt-master/blob/325306898d7cc44e1e15458e412d9561eaf911cf/.agent/skills/ocr_image_to_markdown/SKILL.md,e650b1f633c300a3dfb52d45840cbecf1c950dbd,,code_search,200,none,,2026-02-18T20:36:41Z,1728,false,false
 huggingface/lighteval,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:36:41Z,2306,false,false
 hugovk/norwegianblue,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:36:42Z,140,false,false
 hugsy/gef,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:36:42Z,8012,false,false
@@ -2948,7 +2846,6 @@ ia-usgs/Xeno,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,202
 iamatulsingh/pinscrape,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:40:51Z,130,false,false
 iCodeCraft/telegram-init-data,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:40:50Z,179,false,false
 iapetus-11/villager-bot,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:41:51Z,139,false,false
-iamzhihuix/happy-claude-skills,results.csv,True,SKILL.md,/skills/browser/SKILL.md,main,main,https://github.com/iamzhihuix/happy-claude-skills/blob/632f2c3472ecf2af93906f4c909da53716816e14/skills/browser/SKILL.md,fb6a950302225ee1c490cf4bdb5e45a44c677c39,,code_search,200,none,,2026-02-18T20:41:51Z,254,false,false
 iamtelescope/telescope,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:41:51Z,636,false,false
 ibm/aihwkit,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T20:41:51Z,455,false,false
 ibm/import-tracker,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:41:52Z,465,false,false
@@ -3001,7 +2898,6 @@ inboxpraveen/movie-recommendation-system,results.csv,False,SKILL.md,,master,mast
 inboxpraveen/LLM-Minutes-of-Meeting,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:47:02Z,162,false,false
 imtt-dev/steer,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:47:02Z,129,false,false
 incidentbot/incidentbot,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:47:03Z,159,false,false
-inclusionAI/AWorld,results.csv,True,SKILL.md,/examples/skill_agent/skills/code/skill.md,main,main,https://github.com/inclusionAI/AWorld/blob/01a3cb685b47d3bde8e7013e8785ccc57236b597/examples/skill_agent/skills/code/skill.md,e2d5b1f88534c552e465368c025bf234ea8887b8,,code_search,200,none,,2026-02-18T20:48:03Z,1127,false,false
 indic-transliteration/indic_transliteration_py,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T20:48:03Z,201,false,false
 inclusionAI/Ming-UniAudio,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:48:03Z,428,false,false
 inclusionAI/PromptCoT,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:48:03Z,134,false,false
@@ -3058,7 +2954,6 @@ iss-mimic/mimic,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,
 itsOwen/CyberScraper-2077,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:54:15Z,2881,false,false
 itskekoff/discord-server-copy,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:54:15Z,164,false,true
 itsmehemant7/pymoviedb,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T20:54:15Z,108,false,false
-itsmostafa/aws-agent-skills,results.csv,True,SKILL.md,/skills/s3/SKILL.md,main,main,https://github.com/itsmostafa/aws-agent-skills/blob/e9e01ada13b6e64fbfe06915380625facca60ed4/skills/s3/SKILL.md,47af83a2310897d9a797cff4a04d6818fe1097da,,code_search,200,none,,2026-02-18T20:54:15Z,995,false,false
 ivan-borovets/fastapi-clean-example,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T20:54:16Z,480,false,false
 ivanbelenky/RL,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T20:54:16Z,199,false,false
 ivanfioravanti/wine_variety_classification,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:54:16Z,129,false,false
@@ -3074,7 +2969,6 @@ iwatkot/py3xui,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2
 j535d165/pyalex,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:55:18Z,346,false,false
 ixaxaar/pytorch-dnc,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T20:55:18Z,347,false,false
 jabbalaci/speedtests,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T20:56:19Z,135,false,false
-jMerta/codex-skills,results.csv,True,SKILL.md,/ci-fix/SKILL.md,main,main,https://github.com/jMerta/codex-skills/blob/1be063de2a730d61133e957dfc01a670cce7abd4/ci-fix/SKILL.md,f05dcec0168a608d3da0e0e9fbd84a6195440804,,code_search,200,none,,2026-02-18T20:56:19Z,116,false,false
 jacebrowning/gitman,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:56:19Z,222,false,false
 jacebrowning/datafiles,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:56:19Z,211,false,false
 jacebrowning/memegen,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T20:56:20Z,1646,false,false
@@ -3211,7 +3105,6 @@ jkoor/Alist-Media-Rename,results.csv,False,SKILL.md,,main,main,,,,contents_api,2
 jldbc/pybaseball,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T21:11:49Z,1589,false,false
 jlesage/docker-dupeguru,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T21:11:49Z,140,false,false
 jllorencetti/pytest-deadfixtures,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T21:11:49Z,163,false,false
-jlevy/repren,results.csv,True,SKILL.md,/repren/skills/SKILL.md,master,master,https://github.com/jlevy/repren/blob/002b76ca84967ae95f7689d4958054131322c761/repren/skills/SKILL.md,78c47ab5a5e9cca6f3a8ed06a2f894d8f34c91fb,,code_search,200,none,,2026-02-18T21:11:49Z,370,false,false
 jlu5/icoextract,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T21:11:50Z,146,false,false
 jmclong/random-fourier-features-pytorch,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T21:11:50Z,110,false,false
 jmccrohan/pysolarmanv5,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T21:11:50Z,164,false,false
@@ -3226,7 +3119,6 @@ jmuncor/tokentap,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,
 joaorb64/tournamentstreamhelper,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T21:12:52Z,124,false,false
 jobic10/e-voting-with-django,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T21:12:52Z,228,false,false
 jmuncor/sherlock,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T21:12:52Z,734,false,false
-joeseesun/anything-to-notebooklm,results.csv,True,SKILL.md,/SKILL.md,main,main,https://github.com/joeseesun/anything-to-notebooklm/blob/main/SKILL.md,d49b516d339eaa1f73b42caea6b7f5056fe924f0,16023,contents_api,200,none,,2026-02-18T21:13:53Z,341,false,false
 joealcorn/laboratory,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T21:13:53Z,1278,false,false
 joedefen/dwipe,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T21:13:53Z,145,false,false
 joelbender/bacpypes,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T21:13:53Z,321,false,false
@@ -3237,7 +3129,6 @@ john-hen/flake8-pyproject,results.csv,False,SKILL.md,,main,main,,,,contents_api,
 johnbalvin/pyairbnb,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T21:13:54Z,114,false,false
 johnan/homeassistant-wellbeing,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T21:13:54Z,107,false,false
 johndpope/VASA-1-hack,results.csv,False,SKILL.md,,nemo,nemo,,,,contents_api,200,none,,2026-02-18T21:14:55Z,310,false,false
-johnhuang316/code-index-mcp,results.csv,True,SKILL.md,/.codex/skills/release-prep/SKILL.md,master,master,https://github.com/johnhuang316/code-index-mcp/blob/428613fafb5eefd8584c45be44d1cf8fd18411f0/.codex/skills/release-prep/SKILL.md,18848fbb0052540bb8bba5132d60f2d10eb1f075,,code_search,200,none,,2026-02-18T21:14:55Z,781,false,false
 johnmaguire/cardinal,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T21:14:55Z,103,false,false
 johnthagen/python-blueprint,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T21:14:55Z,722,false,false
 johntruckenbrodt/pyrosar,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T21:14:56Z,584,false,false
@@ -3348,7 +3239,6 @@ kaiyangzhou/deep-person-reid,results.csv,False,SKILL.md,,master,master,,,,conten
 kakwa/ldapcherry,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T21:27:19Z,224,false,false
 kakulukia/pypugjs,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T21:27:19Z,270,true,false
 kalanakt/all-url-uploader,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T21:27:19Z,487,false,false
-kalil0321/reverse-api-engineer,results.csv,True,SKILL.md,/plugins/reverse-api-engineer/skills/reverse-engineering-api/SKILL.md,main,main,https://github.com/kalil0321/reverse-api-engineer/blob/2d772cea32ea092789ca68237779235127191766/plugins/reverse-api-engineer/skills/reverse-engineering-api/SKILL.md,be80b96e9f821482df9ce930d8bfb74fa4f5445d,,code_search,200,none,,2026-02-18T21:27:20Z,406,false,false
 kangtegong/pyftrace,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T21:27:20Z,195,false,false
 kandinskylab/kandinsky-5,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T21:27:20Z,707,false,false
 kanishkamisra/minicons,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T21:27:20Z,177,false,false
@@ -3362,11 +3252,9 @@ karlicoss/rexport,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,
 karlicoss/promnesia,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T21:28:22Z,1859,false,false
 karlicoss/orger,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T21:28:22Z,335,false,false
 karpathy/nanogpt,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T21:29:23Z,53409,false,false
-karpathy/nanochat,results.csv,True,SKILL.md,/.claude/skills/read-arxiv-paper/SKILL.md,master,master,https://github.com/karpathy/nanochat/blob/0a23f87643945410eb7c0e33951b5acfba05257c/.claude/skills/read-arxiv-paper/SKILL.md,6a9cda7121e3c643895fa572b0af47016b844f43,,code_search,200,none,,2026-02-18T21:29:23Z,43608,false,false
 karlicoss/hpi,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T21:28:22Z,1574,false,false
 kashifrazzaqui/json-streamer,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T21:29:23Z,226,false,false
 kaste/mockito-python,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T21:29:24Z,127,false,false
-kasperjunge/agent-resources,results.csv,True,SKILL.md,/.opencode/skill/ost/SKILL.md,main,main,https://github.com/kasperjunge/agent-resources/blob/6a2bbc674af043881958813a175f05ff480dd747/.opencode/skill/ost/SKILL.md,8a82a7e06927ac7fe78d6180da7e2af69505814e,,code_search,200,none,,2026-02-18T21:29:24Z,398,false,false
 kavore/remnawave-tg-shop,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T21:29:24Z,254,false,false
 kayba-ai/agentic-context-engine,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T21:29:24Z,1885,false,false
 kattis/problemtools,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T21:29:24Z,124,false,false
@@ -3576,8 +3464,6 @@ legion1581/unitree_webrtc_connect,results.csv,False,SKILL.md,,master,master,,,,c
 lengjibo/redteamtools,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T21:53:10Z,1461,false,false
 leochlon/hallbayes,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T21:53:10Z,13,false,false
 lenskit/lkpy,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T21:53:10Z,306,false,false
-leochlon/pythea,results.csv,True,SKILL.md,/.codex/skills/rca-fix-agent/SKILL.md,main,main,https://github.com/leochlon/pythea/blob/419343e16ed7f8c275f3194c04fbeb349396a0a1/.codex/skills/rca-fix-agent/SKILL.md,3d245933d63b1a96ba1fea51dc5911d401d92420,,code_search,200,none,,2026-02-18T21:53:10Z,1601,false,false
-leondgarse/keras_cv_attention_models,results.csv,True,SKILL.md,/.agent/skills/weight-conversion/SKILL.md,main,main,https://github.com/leondgarse/keras_cv_attention_models/blob/811933b1e11bda5df72ab090fa607c773e5e8bb3/.agent/skills/weight-conversion/SKILL.md,b41c8fae907b26c1fe75bc3864a79f0060ec2a7b,,code_search,200,none,,2026-02-18T21:53:10Z,624,false,false
 leonh/redis-streams-fastapi-chat,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T21:54:11Z,350,false,false
 leovan/scihubeva,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T21:54:11Z,1075,false,false
 leonov-av/vulristics,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T21:54:11Z,130,false,false
@@ -3686,31 +3572,8 @@ lucagoc/pypixelcolor,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,n
 lucas-c/pre-commit-hooks,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T22:05:34Z,151,false,false
 ltjed/multiagent-coaching,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:05:34Z,239,false,false
 lucas-ventura/CoVR,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T22:05:34Z,118,false,false
-lucidrains/PEER-pytorch,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T22:06:35Z,,,
-lucidrains/BS-RoFormer,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T22:06:35Z,,,
-lucidrains/autoregressive-diffusion-pytorch,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T22:06:35Z,,,
-lucidrains/adam-atan2-pytorch,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T22:06:35Z,,,
-lucidrains/dreamer4,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T22:06:36Z,,,
-lucidrains/e2-tts-pytorch,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T22:06:36Z,,,
-lucidrains/hyper-connections,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T22:06:36Z,,,
-lucidrains/ema-pytorch,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T22:06:36Z,,,
 lucasalegre/sumo-rl,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:06:35Z,988,false,false
 lucaspilla/sorting-algorithms-visualizer,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T22:06:35Z,454,false,false
-lucidrains/locoformer,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T22:06:36Z,,,
-lucidrains/minGRU-pytorch,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T22:06:36Z,,,
-lucidrains/mmdit,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T22:06:36Z,,,
-lucidrains/palm-rlhf-pytorch,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T22:06:36Z,,,
-lucidrains/pi-zero-pytorch,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T22:06:36Z,,,
-lucidrains/ppo,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T22:06:36Z,,,
-lucidrains/rotary-embedding-torch,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T22:06:36Z,,,
-lucidrains/rectified-flow-pytorch,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T22:06:36Z,,,
-lucidrains/tab-transformer-pytorch,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T22:06:36Z,,,
-lucidrains/tiny-recursive-model,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T22:06:36Z,,,
-lucidrains/titans-pytorch,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T22:06:36Z,,,
-lucidrains/transfusion-pytorch,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T22:06:36Z,,,
-lucidrains/vector-quantize-pytorch,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T22:06:36Z,,,
-lucidrains/vit-pytorch,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T22:06:36Z,,,
-lucidrains/x-transformers,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T22:06:36Z,,,
 luctia/ezarr,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:06:36Z,1026,false,false
 luckyrobots/luckyrobots,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:06:36Z,236,false,false
 lucsorel/py2puml,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:06:36Z,268,false,false
@@ -3726,7 +3589,6 @@ lukasturcani/stk,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,n
 luolingchun/flask-openapi3,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:07:38Z,259,false,false
 luolingchun/flask-openapi,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:07:38Z,259,false,false
 luoundergradxjtu/twibot-22,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T22:07:38Z,244,false,false
-luongnv89/claude-howto,results.csv,True,SKILL.md,/03-skills/refactor/SKILL.md,main,main,https://github.com/luongnv89/claude-howto/blob/20779dbf79fe1fc14e333e31c10e0ee4686773a7/03-skills/refactor/SKILL.md,1f816d3687583818ce18673618c1565ecf7fa073,,code_search,200,none,,2026-02-18T22:07:38Z,985,false,false
 lupantech/AgentFlow,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:08:39Z,1565,false,false
 lwj2015/lightron,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:08:39Z,513,false,false
 lxtharia/minegrub-theme,results.csv,False,SKILL.md,,dev,dev,,,,contents_api,200,none,,2026-02-18T22:08:39Z,4382,false,false
@@ -3787,7 +3649,6 @@ manatlan/htag,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,20
 mampfes/ha_epex_spot,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:14:51Z,282,false,false
 manbearwiz/youtube-dl-server,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:14:52Z,928,false,false
 manimcommunity/manim,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:14:52Z,36817,false,false
-mangiucugna/json_repair,results.csv,True,SKILL.md,/.agents/skills/docs-demo-local-test/SKILL.md,main,main,https://github.com/mangiucugna/json_repair/blob/529be35078ed8e5f0d30c745a003c1f294f01ba1/.agents/skills/docs-demo-local-test/SKILL.md,b3770d0f251820461c2a4c55cdb75b02674ac07d,,code_search,200,none,,2026-02-18T22:14:52Z,4517,false,false
 mandrewcito/signalrcore,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:14:52Z,129,false,false
 mandiant/speakeasy,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T22:14:52Z,1844,false,false
 manoss96/onlymaps,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:15:53Z,324,false,false
@@ -3852,7 +3713,6 @@ martinez-zacharya/trill,results.csv,False,SKILL.md,,main,main,,,,contents_api,20
 martinpacesa/BindCraft,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:22:06Z,1016,false,false
 martinmcbride/generativepy,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T22:22:06Z,111,false,false
 martineastwood/penaltyblog,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T22:22:06Z,144,false,false
-martinopiaggi/summarize,results.csv,True,SKILL.md,/.agent/skills/summarize/SKILL.md,main,main,https://github.com/martinopiaggi/summarize/blob/146d7d8ceaf829802f7b7c485ca6b2cdb7b08400/.agent/skills/summarize/SKILL.md,2dc6b4ff5131e75d41a0157714b849b853f87dfe,,code_search,200,none,,2026-02-18T22:22:06Z,144,false,false
 martinthoma/flake8-simplify,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:23:07Z,194,false,false
 martinvonk/spei,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:23:07Z,100,false,false
 martomi/chiadog,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:23:07Z,449,false,false
@@ -3900,7 +3760,6 @@ maximtrp/scikit-posthocs,results.csv,False,SKILL.md,,master,master,,,,contents_a
 maximevandegar/papers-in-100-lines-of-code,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:27:16Z,2509,false,false
 maxking/docker-mailman,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:28:17Z,264,false,false
 mayitzin/ahrs,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T22:28:17Z,697,false,false
-maxvaega/skillkit,results.csv,True,SKILL.md,/examples/skills/git-helper/SKILL.md,main,main,https://github.com/maxvaega/skillkit/blob/2a30ae54cf1a5d1d37973a96e614de055c307690/examples/skills/git-helper/SKILL.md,65dc96b84337a7f65907f330c9ee5b7e03b9c9a1,,code_search,200,none,,2026-02-18T22:28:17Z,124,false,false
 maze-agent/Maze,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:28:17Z,439,false,false
 mbanani/probe3d,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:28:18Z,349,false,false
 mbi/django-simple-captcha,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T22:28:18Z,1427,false,false
@@ -3931,7 +3790,6 @@ meituan-longcat/LongCat-Flash-Omni,results.csv,False,SKILL.md,,main,main,,,,cont
 meituan-longcat/LongCat-Video,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:31:23Z,2100,false,false
 mendhak/waveshare-epaper-display,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T22:31:24Z,525,false,false
 memory-graph/memory-graph,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:31:24Z,157,false,false
-memovai/memov,results.csv,True,SKILL.md,/skills/vibegit/SKILL.md,main,main,https://github.com/memovai/memov/blob/f25232386f04a302f36ba98023617adfc3296549/skills/vibegit/SKILL.md,1c9068249f7f11095e1920545f5c12bc9311f40f,,code_search,200,none,,2026-02-18T22:31:24Z,142,false,false
 mensfeld/code-on-incus,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T22:31:24Z,251,false,false
 meltano/meltano,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:31:24Z,2357,false,false
 meowcateatrat/elephant,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:32:25Z,866,false,false
@@ -4055,7 +3913,6 @@ microsoft/qlib,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2
 microsoft/qlib-server,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:45:51Z,342,false,false
 microsoft/restler-fuzzer,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:45:51Z,2869,false,false
 microsoft/sca-fuzzer,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:45:51Z,179,false,false
-microsoft/semantic-link-labs,results.csv,True,SKILL.md,/.claude/skills/run-tests/SKILL.md,main,main,https://github.com/microsoft/semantic-link-labs/blob/41bc0ddd0ba8de0278074a5158933b580d15c3bb/.claude/skills/run-tests/SKILL.md,b671cc19f5f3e31d53a417cbaec798555ecfc28f,,code_search,200,none,,2026-02-18T22:45:52Z,472,false,false
 microsoft/side-channel-fuzzer,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:45:52Z,179,false,false
 microsoft/superbenchmark,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:45:52Z,361,false,false
 microsoft/skala,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:45:52Z,185,false,false
@@ -4145,7 +4002,6 @@ mmschlk/shapiq,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2
 mmolenda/missalemeum,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:56:11Z,101,false,false
 mnismt/compressedcrack,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T22:56:11Z,290,false,false
 mnwato/tradingview-scraper,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:56:11Z,330,false,false
-modal-labs/llm-finetuning,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-18T22:56:12Z,,,
 moble/quaternion,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:56:12Z,656,false,false
 mobilityhouse/ocpp,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T22:56:12Z,982,false,false
 modelscope/FunASR,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T22:56:12Z,14914,false,false
@@ -4186,7 +4042,6 @@ mprajyothreddy/brainkernel,results.csv,False,SKILL.md,,main,main,,,,contents_api
 mr-fatalyst/fastopenapi,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:00:20Z,495,false,false
 mr-karan/swiggy-analytics,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:00:20Z,286,false,false
 mrdaemon/exosphere,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:00:20Z,123,false,false
-mrexodia/ida-pro-mcp,results.csv,True,SKILL.md,/skills/idapython/SKILL.md,main,main,https://github.com/mrexodia/ida-pro-mcp/blob/a4fcf2b3d566ed318106087384b800bb5aae7d2a/skills/idapython/SKILL.md,10a0e2db2e7eada1fba393d143b4fece49d2261c,,code_search,200,none,,2026-02-18T23:00:20Z,5605,false,false
 mrlesmithjr/vagrant-box-templates,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:01:21Z,141,false,false
 mrk-its/homeassistant-blitzortung,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:01:21Z,290,false,false
 mrpowers/chispa,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:01:21Z,752,false,false
@@ -4209,7 +4064,6 @@ muhammad-fiaz/logly,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,no
 mtli/html4vision,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:03:25Z,253,false,false
 muerrilla/sd-webui-detail-daemon,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:03:25Z,187,false,false
 mtrajk/coding-problems,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:03:25Z,3362,false,false
-muratcankoylan/Agent-Skills-for-Context-Engineering,results.csv,True,SKILL.md,/SKILL.md,main,main,https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering/blob/main/SKILL.md,4d4a8f6249e2ac7c94030143abf623ab6246c949,7754,contents_api,200,none,,2026-02-18T23:03:26Z,8358,false,false
 muhammadali-akbarov/payme-pkg,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:03:26Z,108,false,false
 murf-ai/murf-python-sdk,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:03:26Z,109,false,false
 munich-quantum-toolkit/qecc,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:03:26Z,194,false,false
@@ -4303,7 +4157,6 @@ neural-maze/realtime-phone-agents-course,results.csv,False,SKILL.md,,main,main,,
 neuraloperator/neuraloperator,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:13:46Z,3398,false,false
 neurrone/beets-audible,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:13:46Z,174,false,false
 nevimmu/hyprdvd,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:13:46Z,112,false,false
-neurostuff/nimare,results.csv,True,SKILL.md,/.skills/writing_code/SKILL.md,main,main,https://github.com/neurostuff/NiMARE/blob/5fac65c0eb5966613273eadceec6fb3a51c22cf1/.skills/writing_code/SKILL.md,9cce1103da75f2dc71be09f43e5d66f863b7e3a5,,code_search,200,none,,2026-02-18T23:13:46Z,203,false,false
 neurovault/neurovault,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:13:46Z,108,false,false
 new92/IGFI,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:14:47Z,290,false,false
 newam/idasen,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:14:47Z,153,false,false
@@ -4314,7 +4167,6 @@ newville/pyshortcuts,results.csv,False,SKILL.md,,master,master,,,,contents_api,2
 newpanjing/simpleui,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:14:48Z,3777,false,false
 nextcord/nextcord,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:14:48Z,1258,false,false
 nexla-opensource/ai-chunking,results.csv,False,SKILL.md,,dev,dev,,,,contents_api,200,none,,2026-02-18T23:14:48Z,128,false,false
-nextlevelbuilder/ui-ux-pro-max-skill,results.csv,True,SKILL.md,/.claude/skills/ui-ux-pro-max/SKILL.md,main,main,https://github.com/nextlevelbuilder/ui-ux-pro-max-skill/blob/6623f12b4058d09618c89cffb2de59a47c45f999/.claude/skills/ui-ux-pro-max/SKILL.md,e58d6187f3d2fa94927fccbdb06ea0314ac89b2c,,code_search,200,none,,2026-02-18T23:15:49Z,32511,false,false
 nf-core/tools,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:15:49Z,293,false,false
 nextstrain/ncov,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:15:49Z,1357,false,false
 nfc-developer/sdm-backend,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:15:49Z,107,false,false
@@ -4348,13 +4200,11 @@ nikolaik/docker-python-nodejs,results.csv,False,SKILL.md,,main,main,,,,contents_
 nimsb/baguette,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:18:56Z,128,false,false
 nimroddolev/chime_tts,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:18:56Z,308,false,false
 ning-ding/implementation-cvpr2015-cnn-for-reid,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:18:56Z,147,false,false
-ninehills/skills,results.csv,True,SKILL.md,/skills/doc/SKILL.md,main,main,https://github.com/ninehills/skills/blob/b774a799b6a9e6e05d2bb9e3d5a341bd83f2bdba/skills/doc/SKILL.md,c6d96121f0dc34f5d325bac8ee5cd54098d32ae0,,code_search,200,none,,2026-02-18T23:18:56Z,159,false,false
 nineaiyu/xadmin-server,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:18:56Z,217,false,false
 ninoseki/uv-dynamic-versioning,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:19:57Z,181,false,false
 ninoseki/eml_analyzer,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:19:57Z,339,false,false
 nissymori/JAX-CORL,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:19:57Z,166,false,false
 nix-community/buildbot-nix,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:19:57Z,233,false,false
-nkapila6/mcp-local-rag,results.csv,True,SKILL.md,/skills/local-rag-search/SKILL.md,main,main,https://github.com/nkapila6/mcp-local-rag/blob/1e96748859f3b70716d3830d3dfa7941c4e688b4/skills/local-rag-search/SKILL.md,e5b79d5a26c98e4c44ecd5a3419057d161882387,,code_search,200,none,,2026-02-18T23:19:58Z,111,false,false
 nla-group/classix,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:19:58Z,125,false,false
 nlweb-ai/NLWeb,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:19:58Z,6145,false,false
 nixonjoshua98/dexscreener,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:19:58Z,160,false,false
@@ -4393,7 +4243,6 @@ notedit/happy-coding-agent,results.csv,False,SKILL.md,,main,main,,,,contents_api
 noworneverev/graphrag-api,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:24:06Z,109,false,false
 ntegrals/hypergen,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:24:06Z,1386,false,false
 nsidc/earthaccess,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:24:06Z,579,false,false
-ntno/mkdocs-terminal,results.csv,True,SKILL.md,/.github/skills/openspec-explore/SKILL.md,main,main,https://github.com/ntno/mkdocs-terminal/blob/395485f5305cb5bee1c7f092bb8834c453c64b79/.github/skills/openspec-explore/SKILL.md,8ed4a7646532495b7ed154627843ba7cb79d9894,,code_search,200,none,,2026-02-18T23:24:06Z,301,false,false
 nsgeophysics/gprpy,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:24:06Z,260,false,false
 nupurkmr9/syncd,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:25:07Z,151,false,false
 nuhmanpk/webscrapper,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:25:07Z,190,false,false
@@ -4462,8 +4311,6 @@ onnowhere/youtube_music_playlist_downloader,results.csv,False,SKILL.md,,master,m
 oomol-lab/pdf-craft,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:32:21Z,4864,false,false
 oop7/YTSage,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:32:21Z,3013,false,false
 oomol-lab/epub-translator,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:32:21Z,636,false,false
-op7418/Document-illustrator-skill,results.csv,True,SKILL.md,/SKILL.md,main,main,https://github.com/op7418/Document-illustrator-skill/blob/main/SKILL.md,928ac9f3f5cdf6f82d26955897b6df6319c063b8,11648,contents_api,200,none,,2026-02-18T23:32:22Z,245,false,false
-op7418/Youtube-clipper-skill,results.csv,True,SKILL.md,/SKILL.md,main,main,https://github.com/op7418/Youtube-clipper-skill/blob/main/SKILL.md,79938ae5671077a080facbb8dd56427bf6d60269,10859,contents_api,200,none,,2026-02-18T23:32:22Z,1364,false,false
 open-dingtalk/dingtalk-stream-sdk-python,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:32:22Z,142,false,false
 open-edge-platform/datumaro,results.csv,False,SKILL.md,,develop,develop,,,,contents_api,200,none,,2026-02-18T23:32:22Z,657,false,false
 open-experiments/Telco-AIX,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:32:22Z,209,false,false
@@ -4486,7 +4333,6 @@ openatx/adbutils,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,n
 opencivicdata/scrapers-us-municipal,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:34:26Z,105,false,false
 openatx/uiautomator2,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:34:26Z,7860,false,false
 openatx/facebook-wda,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:34:26Z,1857,false,false
-openclaw/skills,results.csv,True,SKILL.md,/skills/kk17/nlb/SKILL.md,main,main,https://github.com/openclaw/skills/blob/1bd414f4f4b0f77fdde78ed702b7ca888d4fb662/skills/kk17/nlb/SKILL.md,39640f64ecb598d60ed53703dc3d883c8312a41d,,code_search,200,none,,2026-02-18T23:34:27Z,1138,false,false
 openclimatefix/graph_weather,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:35:27Z,284,false,false
 opencv/opencv-python,results.csv,False,SKILL.md,,4.x,4.x,,,,contents_api,200,none,,2026-02-18T23:35:27Z,5190,false,false
 openclimatefix/metnet,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:35:27Z,290,false,false
@@ -4550,7 +4396,6 @@ oslook/THIS_REPO_HAS_n_STARS,results.csv,False,SKILL.md,,main,main,,,,contents_a
 osuakatsuki/bancho.py,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:41:40Z,272,false,false
 oslomayor/pyqt5-serialport-stable,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:41:40Z,163,false,false
 ostris/ai-toolkit,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:41:40Z,9491,false,false
-otrf/threathunter-playbook,results.csv,True,SKILL.md,/.github/skills/hunt-focus-definition/SKILL.md,main,main,https://github.com/OTRF/ThreatHunter-Playbook/blob/d310f3882eb065329a6fb081fa13b205f522392d/.github/skills/hunt-focus-definition/SKILL.md,13e65f77d4352575d425e70840f644703cc9c4a1,,code_search,200,none,,2026-02-18T23:42:41Z,4476,false,false
 ottowayi/pycomm3,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:42:41Z,480,false,false
 ouhammmourachid/mermaid-py,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:42:41Z,159,false,false
 otto-torino/django-baton,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:42:41Z,983,false,false
@@ -4615,7 +4460,6 @@ pantherale0/ha-nintendoparentalcontrols,results.csv,False,SKILL.md,,main,main,,,
 pankajmishra000/vt-adl,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:48:54Z,118,false,false
 pappasam/jedi-language-server,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:49:55Z,719,false,false
 parskatt/roma,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:49:55Z,1142,false,false
-parcadei/Continuous-Claude-v3,results.csv,True,SKILL.md,/.claude/skills/fix/SKILL.md,main,main,https://github.com/parcadei/Continuous-Claude-v3/blob/d07ff4b06b62f43771bc0c927d0211b734d6149e/.claude/skills/fix/SKILL.md,513c495248fcbca30d8def75d05eeb732a81c240,,code_search,200,none,,2026-02-18T23:49:55Z,3525,false,false
 parquery/icontract,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:49:55Z,399,false,false
 particledecay/ansible-jsonpatch,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:49:56Z,121,false,false
 pat-jj/DeepRetrieval,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:49:56Z,695,false,false
@@ -4643,7 +4487,6 @@ pavdmyt/yaspin,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,non
 pbatch/clashroyalebuildabot,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:53:01Z,346,false,false
 paw-lu/nbpreview,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:53:01Z,200,false,false
 pcaversaccio/ecdsa-nonce-reuse-attack,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:53:01Z,107,false,false
-pchalasani/claude-code-tools,results.csv,True,SKILL.md,/plugins/langroid/skills/patterns/SKILL.md,main,main,https://github.com/pchalasani/claude-code-tools/blob/fe69cb0da599aa98c77f6471b778a39ff4049c47/plugins/langroid/skills/patterns/SKILL.md,1df6d6a791d752f132da07768cb89ff1c48e2786,,code_search,200,none,,2026-02-18T23:53:01Z,1458,false,false
 pdfminer/pdfminer.six,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-18T23:53:02Z,6900,false,false
 pdm-project/pdm,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:53:02Z,8542,false,false
 peaceiris/mkdocs-material-boilerplate,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-18T23:53:02Z,131,false,false
@@ -4753,7 +4596,6 @@ porimol/countryinfo,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,no
 portfolioplus/pytickersymbols,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T00:05:25Z,134,false,false
 posit-dev/chatlas,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:05:26Z,151,false,false
 posit-dev/great-tables,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:05:26Z,2600,false,false
-posit-dev/py-shiny,results.csv,True,SKILL.md,/.claude/skills/port-from-bslib/SKILL.md,main,main,https://github.com/posit-dev/py-shiny/blob/299bdbeeadc121f4d6cc15e2eff0f22dccf48adf/.claude/skills/port-from-bslib/SKILL.md,09acb7b11fa9bf73240eb7bf3b837696fc8dfb06,,code_search,200,none,,2026-02-19T00:05:26Z,1686,false,false
 posit-dev/orbital,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:05:26Z,111,false,false
 posit-dev/pointblank,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:05:26Z,355,false,false
 posit-dev/querychat,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:05:26Z,178,false,false
@@ -4794,7 +4636,6 @@ psolin/cleanco,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,non
 psf/pyperf,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:09:34Z,911,false,false
 psu-efd/pyhmt2d,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:09:34Z,108,false,false
 pthom/imgui_manual,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T00:10:35Z,374,false,false
-pthom/imgui_bundle,results.csv,True,SKILL.md,/.claude/skills/review-book/SKILL.md,main,main,https://github.com/pthom/imgui_bundle/blob/1c7282dc666995fd84c094f4e60c8bc505e1c94c/.claude/skills/review-book/SKILL.md,879117e3856233a642d17353542347f69443a505,,code_search,200,none,,2026-02-19T00:10:35Z,1075,false,false
 ptmcg/littletable,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T00:10:35Z,178,false,false
 ptmcg/logmerger,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:10:35Z,250,false,false
 purarue/browserexport,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T00:10:36Z,187,false,false
@@ -4837,7 +4678,6 @@ pydantic/logfire,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,
 pydantic/mcp-run-python,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:14:44Z,188,false,true
 pydantic/logfire-mcp,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:14:44Z,146,false,false
 pydantic/pydantic,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:14:44Z,26859,false,false
-pydantic/pydantic-ai,results.csv,True,SKILL.md,/.claude/skills/pre-push-review/SKILL.md,main,main,https://github.com/pydantic/pydantic-ai/blob/c6ff1cbf4d1a5b5ce17d72f6a43c03395bfd9740/.claude/skills/pre-push-review/SKILL.md,68cbb09f23e98409b1473222a807b48220d758e0,,code_search,200,none,,2026-02-19T00:14:44Z,14956,false,false
 pydantic/pydantic-core,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:15:45Z,1754,false,false
 pydantic/pydantic-settings,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:15:45Z,1250,false,false
 pydap/pydap,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:15:45Z,152,false,false
@@ -4987,7 +4827,6 @@ ragibson/steganography,results.csv,False,SKILL.md,,master,master,,,,contents_api
 ragpi/ragpi,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:32:17Z,244,false,false
 rails-inspire-django/django-turbo-helper,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:32:18Z,101,false,false
 raimon49/pip-licenses,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T00:32:18Z,364,false,false
-ramakay/claude-self-reflect,results.csv,True,SKILL.md,/docs/design/conversation-analyzer/SKILL.md,main,main,https://github.com/ramakay/claude-self-reflect/blob/197f716bea607d0777fdaa66a9ac9c757c8f3b45/docs/design/conversation-analyzer/SKILL.md,29e54bff26e14cce4e88e844eaf0501d4f15808e,,code_search,200,none,,2026-02-19T00:32:19Z,202,false,false
 rajaswa/drift,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:32:18Z,125,false,false
 rakuri255/ultrasinger,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:32:18Z,476,false,false
 raman-sc/vasp,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T00:32:19Z,179,false,false
@@ -4995,7 +4834,6 @@ raman325/pyvizio,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,n
 ramnes/notion-sdk-py,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:33:19Z,2143,false,false
 ramazanpolat/prodict,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T00:33:19Z,151,false,false
 ramanathanlab/genslm,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:33:19Z,140,false,false
-ran-isenberg/aws-lambda-handler-cookbook,results.csv,True,SKILL.md,/.github/skills/ai-sdlc/skill.md,main,main,https://github.com/ran-isenberg/aws-lambda-handler-cookbook/blob/edb843bcbfb1d7d2a45a8665b0f1168e35946129/.github/skills/ai-sdlc/skill.md,31fe041e47b306d7b1ca0c1686792ef87746ed37,,code_search,200,none,,2026-02-19T00:33:20Z,666,false,false
 ranahaani/gnews,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T00:33:20Z,938,false,false
 randy3k/terminus,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T00:33:21Z,1430,false,false
 ran-isenberg/aws-lambda-mcp-cookbook,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:33:20Z,124,false,false
@@ -5142,7 +4980,6 @@ rohankishore/ZenNotes,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,
 rohaquinlop/complexipy,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:49:52Z,621,false,false
 rollbar/pyrollbar,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T00:49:52Z,223,false,false
 rokbenko/ai-playground,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:49:52Z,319,false,false
-rohitg00/kubectl-mcp-server,results.csv,True,SKILL.md,/kubernetes-skills/claude/k8s-cli/SKILL.md,main,main,https://github.com/rohitg00/kubectl-mcp-server/blob/1e304f0b7884f19feb602cefa41482c264de4c08/kubernetes-skills/claude/k8s-cli/SKILL.md,6f1b61c831a51a6d6244a9952fc42818387aeaae,,code_search,200,none,,2026-02-19T00:49:52Z,822,false,false
 rohde-schwarz/examples,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:49:52Z,147,false,false
 roniemartinez/latex2mathml,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T00:50:53Z,234,false,false
 ronikobrosly/causal-curve,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:50:53Z,281,false,false
@@ -5182,7 +5019,6 @@ ruddra/docker-django,results.csv,False,SKILL.md,,master,master,,,,contents_api,2
 rubiin/Tsumiki,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T00:54:00Z,218,false,false
 ruikangliu/FlatQuant,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:55:01Z,211,false,false
 run-llama/llama_index,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:55:01Z,47057,false,false
-run-llama/vibe-llama,results.csv,True,SKILL.md,/documentation/skills/llamactl/SKILL.md,main,main,https://github.com/run-llama/vibe-llama/blob/cb28f060f3f3d6942202c48e594745511aaa2288/documentation/skills/llamactl/SKILL.md,1f64ec365f4cf9a6ec2e588c63f05d42114efeb7,,code_search,200,none,,2026-02-19T00:55:01Z,175,false,false
 run-llama/workflows-py,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:55:01Z,313,false,false
 rupeshs/fastsdcpu,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:55:02Z,1999,false,false
 runpod/runpod-python,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:55:02Z,271,false,false
@@ -5192,7 +5028,6 @@ ruolinzheng08/renpy-rhythm,results.csv,False,SKILL.md,,master,master,,,,contents
 rusty1s/pytorch_scatter,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T00:56:03Z,1725,false,false
 rustsbi/Agent,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:56:03Z,104,false,false
 rust-lang/rust-enhanced,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T00:56:03Z,818,true,false
-ruvnet/wifi-densepose,results.csv,True,SKILL.md,/.claude/skills/stream-chain/SKILL.md,main,main,https://github.com/ruvnet/wifi-densepose/blob/16c50abca362d6be1002f027d22a8fd259a809c4/.claude/skills/stream-chain/SKILL.md,6ed65fbb65df4c323f797fec6d6eba34f1ebb3f1,,code_search,200,none,,2026-02-19T00:56:03Z,7016,false,false
 rxn4chemistry/rxn4chemistry,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:56:04Z,236,false,false
 ryk4rd/grimaur,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T00:56:04Z,133,false,false
 rxn4chemistry/rxnmapper,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T00:56:04Z,354,false,false
@@ -5265,7 +5100,6 @@ sc0tfree/mentalist,results.csv,False,SKILL.md,,master,master,,,,contents_api,200
 sc0tfree/updog,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T01:04:19Z,3297,false,false
 sbrunner/deskew,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T01:04:19Z,499,false,false
 scalesim-project/SCALE-Sim,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:04:19Z,413,false,false
-scarletkc/vexor,results.csv,True,SKILL.md,/plugins/vexor/skills/vexor-cli/SKILL.md,main,main,https://github.com/scarletkc/vexor/blob/5058af0d2d6690ca51ab7766dc42f32e18b1b8f7/plugins/vexor/skills/vexor-cli/SKILL.md,e8ed34b3bfa2a7697ae19539cbcb572befc4675e,,code_search,200,none,,2026-02-19T01:04:20Z,200,false,false
 schireson/pytest-alembic,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:04:20Z,239,false,false
 schnitzel/hass-miner,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:04:20Z,115,false,false
 scanapi/scanapi,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:04:20Z,1465,false,false
@@ -5406,7 +5240,6 @@ sindresorhus/weechat-notification-center,results.csv,False,SKILL.md,,main,main,,
 single-cell-data/tiledb-soma,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:19:50Z,122,false,false
 sina-al/pynlp,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T01:19:50Z,107,false,true
 sintel-dev/orion,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T01:20:51Z,1342,false,false
-sirkirby/unifi-network-mcp,results.csv,True,SKILL.md,/.codex/skills/project-governance/SKILL.md,main,main,https://github.com/sirkirby/unifi-network-mcp/blob/3e425f50f27c422d1cde8c2a198a661ddab8f730/.codex/skills/project-governance/SKILL.md,abeb165cb51e8bacbee3d2afd27a957b2cb782a2,,code_search,200,none,,2026-02-19T01:20:51Z,162,false,false
 sirfz/tesserocr,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T01:20:51Z,2153,false,false
 sipherxyz/comfyui-art-venture,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:20:51Z,333,false,false
 sissbruecker/linkding,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T01:20:52Z,10156,false,false
@@ -5418,7 +5251,6 @@ sk-zk/streetlevel,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,
 skelsec/pypykatz,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:21:53Z,3241,false,false
 skeskinen/smartcut,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:21:53Z,255,false,false
 sketch-hq/fig2sketch,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:21:53Z,159,false,false
-skillcreatorai/Ai-Agent-Skills,results.csv,True,SKILL.md,/skills/pdf/SKILL.md,main,main,https://github.com/skillcreatorai/Ai-Agent-Skills/blob/6195a031c29c5bc11d1d4b3e4c64e660e441f087/skills/pdf/SKILL.md,1c2647e1aa6b9568468c72a2e8474fd5badb2162,,code_search,200,none,,2026-02-19T01:21:54Z,822,false,false
 skills/code-with-codespaces,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:21:54Z,388,false,false
 skills/introduction-to-codeql,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:21:54Z,121,false,false
 skills/test-with-actions,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:21:54Z,284,false,false
@@ -5471,9 +5303,7 @@ sns-sdks/python-twitter,results.csv,False,SKILL.md,,master,master,,,,contents_ap
 snu-mllab/KVzip,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:28:05Z,201,false,false
 socialsisteryi/bcut-asr,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:28:05Z,385,false,false
 soco/soco,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T01:28:05Z,1562,false,false
-softaworks/agent-toolkit,results.csv,True,SKILL.md,/skills/mui/SKILL.md,main,main,https://github.com/softaworks/agent-toolkit/blob/62b5df50daf75a28d3c0c626d6147539287575fc/skills/mui/SKILL.md,cc235b246e3887db6b37dc12c61fdb25a740a3c4,,code_search,200,none,,2026-02-19T01:28:05Z,618,false,false
 soju06/python-kis,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:28:06Z,254,false,false
-solatis/claude-config,results.csv,True,SKILL.md,/skills/planner/SKILL.md,main,main,https://github.com/solatis/claude-config/blob/6e72bc29e542f82f7936673f175a7cca5eee7499/skills/planner/SKILL.md,e53047a042da9f9b00c88a7d992e1897a456c21d,,code_search,200,none,,2026-02-19T01:28:06Z,607,false,false
 solawing/xcode-build-server,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T01:28:06Z,915,false,false
 software-mansion/starknet.py,results.csv,False,SKILL.md,,development,development,,,,contents_api,200,none,,2026-02-19T01:28:06Z,275,false,false
 soggy8/music-downloader,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:28:06Z,113,false,false
@@ -5580,7 +5410,6 @@ strawberry-graphql/strawberry-sqlalchemy,results.csv,False,SKILL.md,,main,main,,
 stringertheory/traces,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:40:29Z,553,false,false
 strnad/CrewAI-Studio,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:40:29Z,1167,false,false
 stripe/stripe-python,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T01:40:29Z,1952,false,false
-study8677/antigravity-workspace-template,results.csv,True,SKILL.md,/src/skills/research/SKILL.md,main,main,https://github.com/study8677/antigravity-workspace-template/blob/2d73960a9148b44d824563c4d133828768fe7402/src/skills/research/SKILL.md,b21f98dcd058077aa1a43496c1cf9626312e204d,,code_search,200,none,,2026-02-19T01:40:30Z,891,false,false
 stvad/crowdanki,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T01:40:30Z,617,false,false
 suaveolent/ha-hoymiles-wifi,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:40:30Z,280,false,false
 struppigel/hedgehog-tools,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:40:30Z,127,false,false
@@ -5684,7 +5513,6 @@ tconbeer/harlequin,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,non
 teabranch/open-responses-server,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:51:53Z,149,false,false
 tchlux/macos-grok-overlay,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:51:52Z,251,false,false
 tcztzy/swarmx,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:51:52Z,117,true,false
-team-attention/plugins-for-claude-natives,results.csv,True,SKILL.md,/plugins/agent-council/SKILL.md,main,main,https://github.com/team-attention/plugins-for-claude-natives/blob/c5f2d72e9995c77a119665886e2560eaca73e87c/plugins/agent-council/SKILL.md,e162bf53587b4cb8506fdda9a6b3ac4e1c5ae70b,,code_search,200,none,,2026-02-19T01:52:53Z,527,false,false
 team-tl/fotokilof,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T01:52:53Z,435,false,false
 teamhg-memex/aquarium,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T01:52:53Z,195,false,false
 teamdfir/sift-saltstack,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T01:52:53Z,107,false,false
@@ -5710,7 +5538,6 @@ tenable/pytenable,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none
 tencentblueking/blueking-dbm,results.csv,False,SKILL.md,,v1.5.0,v1.5.0,,,,contents_api,200,none,,2026-02-19T01:54:58Z,115,false,false
 tencentyun/cos-python-sdk-v5,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T01:54:58Z,216,false,false
 tencentblueking/bk-itsm,results.csv,False,SKILL.md,,develop,develop,,,,contents_api,200,none,,2026-02-19T01:54:58Z,167,false,false
-teng-lin/notebooklm-py,results.csv,True,SKILL.md,/src/notebooklm/data/SKILL.md,main,main,https://github.com/teng-lin/notebooklm-py/blob/9eb13cea51af9dad53a66c3c467b3bbb78f72b0e/src/notebooklm/data/SKILL.md,d68d47e4b9d79139dde19236b17389fa94127f87,,code_search,200,none,,2026-02-19T01:54:59Z,2009,false,false
 tensorgi/TPA,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:55:59Z,446,false,false
 tensorpool/tensorpool,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:55:59Z,149,false,false
 tequilahub/tequila,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T01:55:59Z,419,false,false
@@ -5738,7 +5565,6 @@ thawn/ttmp32gme,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,no
 thalium/symless,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:58:04Z,256,false,false
 thanhlev/keyboard_mouse_emulate_on_raspberry,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T01:58:04Z,335,false,false
 the-momentum/apple-health-mcp-server,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:58:04Z,118,false,false
-the-momentum/open-wearables,results.csv,True,SKILL.md,/.ai/skills/code-review/SKILL.md,main,main,https://github.com/the-momentum/open-wearables/blob/f3b4f75dc1c95843d18ab3f3d6831c4049b188c6/.ai/skills/code-review/SKILL.md,193f097503e2ce00667c0fc39a7a69cbb2804b9f,,code_search,200,none,,2026-02-19T01:59:05Z,522,false,false
 thealgorithms/python,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T01:59:05Z,217811,false,false
 thebrumby/HotWalletClaimer,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:59:05Z,207,false,false
 thecmdguy/Ducky,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T01:59:05Z,485,false,false
@@ -5760,7 +5586,6 @@ theriverman/django-minio-backend,results.csv,False,SKILL.md,,master,master,,,,co
 thewh1teagle/kokoro-onnx,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:01:09Z,2379,false,false
 thiagokokada/nix-alien,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:01:09Z,767,false,false
 thewebscraping/tls-requests,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:01:09Z,138,false,false
-thoddnn/ComfyUI-MLX,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-19T02:01:10Z,,,
 thicccat688/selenium-recaptcha-solver,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:01:10Z,132,false,false
 thomascamminady/letourdataset,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:01:10Z,102,false,false
 thombashi/datetimerange,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:01:10Z,113,false,false
@@ -5814,7 +5639,6 @@ timonweb/django-tailwind,results.csv,False,SKILL.md,,master,master,,,,contents_a
 timonweb/pytailwindcss,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:07:21Z,343,false,false
 timvink/mkdocs-git-revision-date-localized-plugin,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:07:21Z,261,false,false
 timqian/chinese-independent-blogs,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:07:21Z,22801,false,false
-timothywarner-org/claude-code,results.csv,True,SKILL.md,/.claude/skills/mcp-scaffold/SKILL.md,main,main,https://github.com/timothywarner-org/claude-code/blob/66e4e69f69153880a7d1401b59d3d2755399864b/.claude/skills/mcp-scaffold/SKILL.md,a485ee4ddacdc6f70f73a6a203944feeb80e9d32,,code_search,200,none,,2026-02-19T02:07:21Z,195,false,false
 timvink/mkdocs-print-site-plugin,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:07:22Z,181,false,false
 tinify/tinify-python,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:07:22Z,138,false,false
 tinted-theming/base16-qutebrowser,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:07:22Z,118,false,false
@@ -5849,7 +5673,6 @@ toki-plus/video-mover,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,
 toluaina/pgsync,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:10:29Z,1388,false,false
 tomasfarias/airflow-dbt-python,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:11:29Z,212,false,false
 tomasvotava/fastapi-sso,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:11:29Z,462,false,false
-tom-doerr/repo_posts,results.csv,True,SKILL.md,/docs/_posts/2026-02-17-ViktorAxelsen-MemSkill.md,main,main,https://github.com/tom-doerr/repo_posts/blob/6b2f9138b15605cc34f4c33df01a807f425e616c/docs/_posts/2026-02-17-ViktorAxelsen-MemSkill.md,1d448b1e4559aea292c0bd14a49e1d23c29e7406,,code_search,200,none,,2026-02-19T02:11:29Z,231,false,false
 tomasz-c/nft-blackhole,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:11:29Z,127,false,false
 tomer8007/kik-bot-api-unofficial,results.csv,False,SKILL.md,,new,new,,,,contents_api,200,none,,2026-02-19T02:11:30Z,135,false,false
 tomohiron907/g-coordinator,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:11:31Z,170,false,false
@@ -5882,14 +5705,11 @@ tox-dev/tox-uv,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2
 tox-dev/sphinx-autodoc-typehints,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:14:36Z,583,false,false
 trailofbits/protofuzz,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:14:36Z,283,false,false
 tprest/falcon.py,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:14:36Z,190,false,false
-tpvasconcelos/ridgeplot,results.csv,True,SKILL.md,/skills/dropping-and-adding-support-for-python-versions/SKILL.md,main,main,https://github.com/tpvasconcelos/ridgeplot/blob/87d5a98e2ebaaaf256898dc11c1856093ae1375b/skills/dropping-and-adding-support-for-python-versions/SKILL.md,136402d4e3adc78609b147ed3111b8f2981655b0,,code_search,200,none,,2026-02-19T02:14:36Z,239,false,false
 travelingkz6/sora2-api,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:15:37Z,298,false,false
 travitch/whole-program-llvm,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:15:37Z,731,false,false
 trekhleb/learn-python,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:15:37Z,17731,false,false
 treasure-data/treasure-boxes,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:15:37Z,116,false,false
 tri-ml/dgp,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:15:38Z,107,false,false
-tripleyak/SkillForge,results.csv,True,SKILL.md,/SKILL.md,main,main,https://github.com/tripleyak/SkillForge/blob/main/SKILL.md,41ec608dfad85261c5b5f768f0eb9bdf9172aa11,33643,contents_api,200,none,,2026-02-19T02:15:38Z,509,false,false
-truera/trulens,results.csv,True,SKILL.md,/skills/SKILL.md,main,main,https://github.com/truera/trulens/blob/6ec8e8990b464da6c8d538aaf750f0176d737512/skills/SKILL.md,a0fe7cd7778678573bbeac1b19e11439b66ade56,,code_search,200,none,,2026-02-19T02:15:39Z,3095,false,false
 trichter/rf,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:15:38Z,122,false,false
 trim21/transmission-rpc,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:15:38Z,171,false,false
 truckersmp-cli/truckersmp-cli,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:15:38Z,230,false,false
@@ -5937,7 +5757,6 @@ ucam-eo/tessera,results.csv,False,SKILL.md,,alpha_version_1.0,alpha_version_1.0,
 ucsb-seclab/greed,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:20:48Z,118,false,false
 ucsb-mlsec/VulnLLM-R,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:20:48Z,269,false,false
 ucfopen/canvasapi,results.csv,False,SKILL.md,,develop,develop,,,,contents_api,200,none,,2026-02-19T02:20:48Z,645,false,false
-ucbepic/docetl,results.csv,True,SKILL.md,/.claude/skills/docetl/SKILL.md,main,main,https://github.com/ucbepic/docetl/blob/1744bfcef77dd104ceb129cb2ab39d0fe337b0c3/.claude/skills/docetl/SKILL.md,b2fcb7ceeaecfb6b4bb9555af6287f8425a79716,,code_search,200,none,,2026-02-19T02:20:48Z,3590,false,false
 udayraj123/omrchecker,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:21:49Z,1011,false,false
 ufal/whisper_streaming,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:21:49Z,3537,false,false
 ufal/SimulStreaming,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:21:49Z,490,false,false
@@ -6000,7 +5819,6 @@ vast-ai/vast-cli,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,n
 vector35/community-plugins,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:28:02Z,563,false,false
 veighna-global/vnpy_okx,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:28:02Z,161,false,false
 velocitybolt/open-extract,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:28:02Z,182,false,false
-vectorize-io/hindsight,results.csv,True,SKILL.md,/skills/hindsight-docs/SKILL.md,main,main,https://github.com/vectorize-io/hindsight/blob/41db2960c5aa021e2cb41fc046f06d1c5bd226d0/skills/hindsight-docs/SKILL.md,10abdf9f8e54f440acd32d5890e3f60a28ffc0d4,,code_search,200,none,,2026-02-19T02:28:02Z,1445,false,false
 veraposeidon/labelme2datasets,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:29:03Z,182,false,false
 vermeille/torchelie,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:29:03Z,110,false,false
 vermiiii0n/fuckzhs,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:29:03Z,1708,false,false
@@ -6041,7 +5859,6 @@ vitorfs/parsifal,results.csv,False,SKILL.md,,dev,dev,,,,contents_api,200,none,,2
 vividfog/nordpool-predict-fi,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:33:11Z,132,false,false
 vkbottle/vkbottle,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:33:11Z,476,false,false
 vivekuppal/transcribe,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:33:11Z,249,false,false
-vladmeer/polymarket-arbitrage-bot,results.csv,False,SKILL.md,,,,,,,,404,invalid_repo,Not Found,2026-02-19T02:33:12Z,,,
 vladfi1/slippi-ai,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:33:12Z,127,false,false
 vldgroup/graph-pes,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:33:12Z,121,false,false
 vndee/local-assistant-examples,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:33:12Z,404,false,false
@@ -6062,9 +5879,7 @@ vsaveris/trading-technical-indicators,results.csv,False,SKILL.md,,master,master,
 vrnetlab/vrnetlab,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:35:15Z,1346,false,false
 vstorm-co/full-stack-fastapi-nextjs-llm-template,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:35:16Z,572,false,false
 vvaezian/metabase_api_python,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:35:16Z,157,false,false
-vuer-ai/vuer,results.csv,True,SKILL.md,/docs/guides/claude_skill.md,main,main,https://github.com/vuer-ai/vuer/blob/b84d0a2e44b72505be86d29b08fcef9016b7d01a/docs/guides/claude_skill.md,e75c6e29bfc11e9744d0760fe0baf8450eff9f53,,code_search,200,none,,2026-02-19T02:35:16Z,338,false,false
 vutran1710/pyratelimiter,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:35:16Z,476,false,false
-vstorm-co/pydantic-deepagents,results.csv,True,SKILL.md,/examples/skills/code-review/SKILL.md,main,main,https://github.com/vstorm-co/pydantic-deepagents/blob/4f7c5596eaa26a3f29f3be6ca1475a41d8ff4bc0/examples/skills/code-review/SKILL.md,4c36f82af8d8def2d22e8bc2e4c32fbe6018c0e1,,code_search,200,none,,2026-02-19T02:35:16Z,303,false,false
 vvvvvjdy/SRA,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:36:17Z,111,false,false
 vvvvvjdy/dmdr,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:36:17Z,180,false,false
 vyapp/vy,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:36:17Z,1155,false,true
@@ -6169,10 +5984,8 @@ worldcoin/open-iris,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,no
 wouterdebie/i2cssh,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:47:39Z,565,false,false
 wq/django-rest-pandas,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:47:39Z,1281,false,false
 wrabit/django-cotton,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:47:40Z,1071,false,false
-wshuyi/x-article-publisher-skill,results.csv,True,SKILL.md,/skills/x-article-publisher/SKILL.md,main,main,https://github.com/wshuyi/x-article-publisher-skill/blob/eb3197d1d8579556aea5018d5c0b141d55fc2df6/skills/x-article-publisher/SKILL.md,9c7c894bdc385bc480cec04cd7c80e623ccc7a6d,,code_search,200,none,,2026-02-19T02:47:40Z,587,false,false
 wrike/callisto,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:47:40Z,116,false,false
 wshobson/maverick-mcp,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:47:40Z,357,false,false
-wshobson/agents,results.csv,True,SKILL.md,/plugins/conductor/skills/track-management/SKILL.md,main,main,https://github.com/wshobson/agents/blob/5d65aa10638bcc1b390738e11f9bff213f61955a/plugins/conductor/skills/track-management/SKILL.md,27e5ec02c16d53c5e7bd895ebc030ad19c17bc1c,,code_search,200,none,,2026-02-19T02:47:40Z,28867,false,false
 wu-clan/httpfpt,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:48:41Z,151,false,false
 wukan1986/polars_ta,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:48:41Z,234,false,false
 wuphilipp/gello_software,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:48:41Z,409,false,false
@@ -6267,7 +6080,6 @@ yee-yore/DorkAgent,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,non
 ydkhatri/mac_apt,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:59:01Z,993,false,false
 ydexegipuloren/HacxGPT,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:59:01Z,179,false,false
 yeyt97/AirDropPlus,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T02:59:01Z,436,false,false
-yhy0/CHYing-agent,results.csv,True,SKILL.md,/chying_agent/skills/rce/SKILL.md,main,main,https://github.com/yhy0/CHYing-agent/blob/3c083114b10710203250b10deadbe98cda6cefb3/chying_agent/skills/rce/SKILL.md,876b829923bc873aab45e8af8d1ca355157a9d7f,,code_search,200,none,,2026-02-19T02:59:02Z,352,false,false
 yichuan-w/LEANN,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:59:02Z,9990,false,false
 yihong0618/bilingual_book_maker,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:59:02Z,9041,false,false
 yifan123/flow_grpo,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T02:59:02Z,2002,false,false
@@ -6307,11 +6119,9 @@ yuliangguo/depth_any_camera,results.csv,False,SKILL.md,,main,main,,,,contents_ap
 yunlong10/Awesome-Video-LMM-Post-Training,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T03:03:10Z,249,false,false
 yungwine/pytoniq,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T03:03:10Z,123,false,false
 yuri-yuzuchan/maimaidx,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T03:03:10Z,258,false,false
-yunshu0909/yunshu_skillshub,results.csv,True,SKILL.md,/ui-design/SKILL.md,master,master,https://github.com/yunshu0909/yunshu_skillshub/blob/4692832eb6ed01d125e0404bcc12fef65a0588b5/ui-design/SKILL.md,98f44c206199be4c3bf079d483351e1bbedf802c,,code_search,200,none,,2026-02-19T03:03:10Z,183,false,false
 yurijmikhalevich/rclip,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T03:04:11Z,900,false,false
 yusufkaraaslan/lazy-bird,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T03:04:11Z,204,false,false
 yutiansut/quantaxis,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T03:04:11Z,9947,false,false
-yusufkaraaslan/Skill_Seekers,results.csv,True,SKILL.md,/docs/features/BOOTSTRAP_SKILL.md,development,development,https://github.com/yusufkaraaslan/Skill_Seekers/blob/cb87a6c5b631dd6c36daa8e115fdc3a3affa556d/docs/features/BOOTSTRAP_SKILL.md,98302f6487ac329b70c88932b64be24d830b660f,,code_search,200,none,,2026-02-19T03:04:11Z,9620,false,false
 yuxumin/pointr,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T03:04:12Z,816,false,false
 ywangd/stash,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T03:04:12Z,1997,false,false
 yxdm02/EnhancedBurpGPT,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T03:04:12Z,129,false,false
@@ -6388,10 +6198,6 @@ zobweyt/textcase,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,
 zquestz/dream-prompter,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T03:12:28Z,133,false,false
 zou-group/sleepfm-clinical,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T03:12:28Z,521,false,false
 zscole/gru,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T03:12:28Z,212,false,false
-zscole/adversarial-spec,results.csv,True,SKILL.md,/skills/adversarial-spec/SKILL.md,main,main,https://github.com/zscole/adversarial-spec/blob/f90cf0c36c3999b8dc272c9c06dee9846076f369/skills/adversarial-spec/SKILL.md,9e5fe12e32d3b318177d609834d08fe83fe4e09c,,code_search,200,none,,2026-02-19T03:12:28Z,489,false,false
-zscole/model-hierarchy-skill,results.csv,True,SKILL.md,/SKILL.md,main,main,https://github.com/zscole/model-hierarchy-skill/blob/main/SKILL.md,c42e982ff635a9a865bb6582056b7d4d43053ba4,9152,contents_api,200,none,,2026-02-19T03:13:29Z,317,false,false
-zstmfhy/zlibrary-to-notebooklm,results.csv,True,SKILL.md,/SKILL.md,main,main,https://github.com/zstmfhy/zlibrary-to-notebooklm/blob/main/SKILL.md,e1b58d477b94e99a5a60dd3fd3d234d1b6c92b44,6621,contents_api,200,none,,2026-02-19T03:13:29Z,1358,false,false
-zstmfhy/annas-to-notebooklm,results.csv,True,SKILL.md,/SKILL.md,main,main,https://github.com/zstmfhy/annas-to-notebooklm/blob/main/SKILL.md,843aa31844b386ad930854f440a75f5f36a379d6,8704,contents_api,200,none,,2026-02-19T03:13:29Z,193,false,false
 zsh-git-prompt/zsh-git-prompt,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T03:13:29Z,160,true,false
 zugexiaodui/torch_flops,results.csv,False,SKILL.md,,main,main,,,,contents_api,200,none,,2026-02-19T03:13:30Z,138,false,false
 zvtvz/zvt,results.csv,False,SKILL.md,,master,master,,,,contents_api,200,none,,2026-02-19T03:13:30Z,3976,false,false

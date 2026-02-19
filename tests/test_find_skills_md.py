@@ -26,6 +26,7 @@ import os
 import shutil
 import sys
 import tempfile
+import time
 import unittest
 import unittest.mock as mock
 from pathlib import Path
@@ -36,7 +37,6 @@ import requests
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
 from find_skills_md import (
-    GitHubClient,
     OUTPUT_COLUMNS,
     RepoSource,
     ScanResult,
@@ -55,6 +55,7 @@ from find_skills_md import (
     write_header_if_needed,
     write_shortlist,
 )
+from github_client import GitHubClient, TokenPool
 
 
 # ---------------------------------------------------------------------------
@@ -309,8 +310,11 @@ class TestParseArgs(unittest.TestCase):
     def test_default_min_stars_is_zero(self):
         self.assertEqual(self._parse().min_stars, 0)
 
-    def test_enable_code_search_flag(self):
-        self.assertTrue(self._parse("--enable-code-search").enable_code_search)
+    def test_disable_code_search_flag(self):
+        self.assertTrue(self._parse("--disable-code-search").disable_code_search)
+
+    def test_code_search_on_by_default(self):
+        self.assertFalse(self._parse().disable_code_search)
 
     def test_disallow_forks_flag(self):
         self.assertTrue(self._parse("--disallow-forks").disallow_forks)
@@ -337,6 +341,14 @@ class TestParseArgs(unittest.TestCase):
 
     def test_log_level_debug(self):
         self.assertEqual(self._parse("--log-level", "DEBUG").log_level, "DEBUG")
+
+    def test_github_tokens_flag(self):
+        args = self._parse("--github-tokens", "tok1,tok2")
+        self.assertEqual(args.github_tokens, "tok1,tok2")
+
+    def test_github_token_single_flag_still_works(self):
+        args = self._parse("--github-token", "ghp_single")
+        self.assertEqual(args.github_token, "ghp_single")
 
 
 # ---------------------------------------------------------------------------
@@ -617,17 +629,48 @@ class TestWriteShortlist(unittest.TestCase):
 # ---------------------------------------------------------------------------
 
 class TestGitHubClient(unittest.TestCase):
+    """
+    Smoke tests for GitHubClient via the new TokenPool-backed API.
 
-    def test_token_added_to_auth_header(self):
-        client = GitHubClient(token="ghp_test")
-        self.assertEqual(client.session.headers["Authorization"], "Bearer ghp_test")
+    Comprehensive tests live in tests/test_github_client.py.
+    These tests verify backward-compatible behaviour from find_skills_md's
+    perspective (single token, no token, retry semantics).
+    """
+
+    def _client(self, token=None):
+        tokens = [token] if token else []
+        return GitHubClient(pool=TokenPool(tokens))
+
+    def test_token_added_to_request_header(self):
+        client = self._client("ghp_test")
+        resp = _make_http_response(200, {})
+        captured = []
+
+        def fake_request(method, url, **kwargs):
+            captured.append(kwargs.get("headers", {}))
+            return resp
+
+        with mock.patch.object(client.session, "request", side_effect=fake_request):
+            client.request_json("GET", "/rate_limit")
+
+        self.assertTrue(any("ghp_test" in str(h) for h in captured))
 
     def test_no_token_means_no_auth_header(self):
-        client = GitHubClient(token=None)
-        self.assertNotIn("Authorization", client.session.headers)
+        client = self._client(None)
+        resp = _make_http_response(200, {})
+        captured = []
+
+        def fake_request(method, url, **kwargs):
+            captured.append(kwargs.get("headers", {}))
+            return resp
+
+        with mock.patch.object(client.session, "request", side_effect=fake_request):
+            client.request_json("GET", "/rate_limit")
+
+        self.assertFalse(any("Authorization" in h for h in captured))
 
     def test_success_200_returns_json(self):
-        client = GitHubClient(token=None)
+        client = self._client(None)
         resp = _make_http_response(200, {"name": "requests"})
         with mock.patch.object(client.session, "request", return_value=resp):
             status, data, err = client.request_json("GET", "/repos/psf/requests")
@@ -636,7 +679,7 @@ class TestGitHubClient(unittest.TestCase):
         self.assertEqual(err, "")
 
     def test_404_does_not_retry(self):
-        client = GitHubClient(token=None)
+        client = self._client(None)
         resp = _make_http_response(404, {"message": "Not Found"})
         with mock.patch.object(client.session, "request", return_value=resp) as m:
             status, _, _ = client.request_json("GET", "/repos/missing/repo", max_retries=3)
@@ -644,7 +687,7 @@ class TestGitHubClient(unittest.TestCase):
         self.assertEqual(m.call_count, 1)
 
     def test_401_does_not_retry(self):
-        client = GitHubClient(token=None)
+        client = self._client(None)
         resp = _make_http_response(401, {"message": "Requires authentication"})
         with mock.patch.object(client.session, "request", return_value=resp) as m:
             status, _, _ = client.request_json("GET", "/repos/private/repo", max_retries=3)
@@ -652,7 +695,7 @@ class TestGitHubClient(unittest.TestCase):
         self.assertEqual(m.call_count, 1)
 
     def test_5xx_retries_until_success(self):
-        client = GitHubClient(token=None)
+        client = self._client(None)
         err_resp = _make_http_response(503, {}, text="Service Unavailable")
         ok_resp = _make_http_response(200, {"ok": True})
         with mock.patch.object(
@@ -664,7 +707,7 @@ class TestGitHubClient(unittest.TestCase):
         self.assertEqual(data, {"ok": True})
 
     def test_5xx_exhausted_retries_returns_error_status(self):
-        client = GitHubClient(token=None)
+        client = self._client(None)
         err_resp = _make_http_response(500, {}, text="error")
         with mock.patch.object(client.session, "request", return_value=err_resp) as m:
             with mock.patch("time.sleep"):
@@ -673,7 +716,7 @@ class TestGitHubClient(unittest.TestCase):
         self.assertEqual(m.call_count, 3)  # initial + 2 retries
 
     def test_network_error_retries_and_returns_zero(self):
-        client = GitHubClient(token=None)
+        client = self._client(None)
         with mock.patch.object(
             client.session,
             "request",
@@ -685,21 +728,23 @@ class TestGitHubClient(unittest.TestCase):
         self.assertIn("network_error", err)
         self.assertEqual(m.call_count, 3)
 
-    def test_rate_limit_403_retries(self):
-        client = GitHubClient(token=None)
-        # First call: 403 with rate-limit headers; second call: success
+    def test_rate_limit_403_retries_with_second_token(self):
+        pool = TokenPool(["tok1", "tok2"])
+        client = GitHubClient(pool=pool)
         rate_resp = _make_http_response(
             403,
             {"message": "API rate limit exceeded"},
-            headers={"X-RateLimit-Remaining": "0", "X-RateLimit-Reset": "1"},
+            headers={
+                "X-RateLimit-Remaining": "0",
+                "X-RateLimit-Reset": str(int(time.time()) + 3600),
+                "X-RateLimit-Limit": "5000",
+            },
         )
         ok_resp = _make_http_response(200, {"ok": True})
         with mock.patch.object(
             client.session, "request", side_effect=[rate_resp, ok_resp]
         ):
-            with mock.patch("time.sleep"):
-                with mock.patch("time.time", return_value=0):
-                    status, _, _ = client.request_json("GET", "/repos/x/y", max_retries=2)
+            status, _, _ = client.request_json("GET", "/repos/x/y", max_retries=2)
         self.assertEqual(status, 200)
 
 
@@ -792,7 +837,7 @@ class TestTryCodeSearch(unittest.TestCase):
 class TestScanOneRepo(unittest.TestCase):
 
     def _gh(self):
-        return GitHubClient(token=None)
+        return GitHubClient(pool=TokenPool([]))
 
     def _src(self, repo: str = "owner/repo") -> RepoSource:
         return RepoSource(repo=repo, source_csv="test.csv")
@@ -895,17 +940,37 @@ class TestScanOneRepo(unittest.TestCase):
             )
         mock_search.assert_not_called()
 
-    def test_rate_limit_on_contents_stops_scan_early(self):
+    def test_auth_error_on_contents_stops_scan_early(self):
+        """401 from the contents API is a permanent auth failure; stops immediately."""
         with mock.patch("find_skills_md.get_repo_metadata", return_value=(_make_meta(), 200, "")), \
-             mock.patch("find_skills_md.try_contents_path", return_value=(False, {}, 403, "rate limited")), \
+             mock.patch("find_skills_md.try_contents_path", return_value=(False, {}, 401, "Unauthorized")), \
              mock.patch("find_skills_md.try_code_search") as mock_search:
             result = scan_one_repo(
                 self._gh(), self._src(), "SKILL.md", ["/SKILL.md"],
                 enable_code_search=True, min_stars=0, allow_forks=True, allow_archived=True,
             )
         self.assertFalse(result.found)
-        self.assertEqual(result.error_type, "rate_limited")
+        self.assertEqual(result.error_type, "auth")
         mock_search.assert_not_called()
+
+    def test_rate_limit_on_contents_falls_through_to_code_search(self):
+        """403 from the contents API is not an early stop; the scan continues to code search.
+
+        In production, request_json retries 403 indefinitely until the rate limit
+        resets — so scan_one_repo never sees 403. In the rare case it does (e.g.
+        an unusual 403 not caused by rate limits), the scan continues rather than
+        abandoning the repository.
+        """
+        with mock.patch("find_skills_md.get_repo_metadata", return_value=(_make_meta(), 200, "")), \
+             mock.patch("find_skills_md.try_contents_path", return_value=(False, {}, 403, "rate limited")), \
+             mock.patch("find_skills_md.try_code_search", return_value=(False, None, 200, "")) as mock_search:
+            result = scan_one_repo(
+                self._gh(), self._src(), "SKILL.md", ["/SKILL.md"],
+                enable_code_search=True, min_stars=0, allow_forks=True, allow_archived=True,
+            )
+        self.assertFalse(result.found)
+        self.assertEqual(result.error_type, "none")   # clean not-found, no hard error
+        mock_search.assert_called_once()               # code search was attempted
 
     def test_metadata_populated_from_repo_meta(self):
         with mock.patch("find_skills_md.get_repo_metadata",
@@ -959,33 +1024,54 @@ class TestCheckRateLimit(unittest.TestCase):
             }
         }
 
+    def _mock_gh(self, token_count: int = 1):
+        """Return a GitHubClient with a mocked pool for check_rate_limit tests."""
+        pool = mock.MagicMock(spec=TokenPool)
+        pool.stats.return_value = {
+            "token_count": token_count,
+            "total_remaining": 4999 * token_count,
+            "total_requests": 0,
+            "tokens": [],
+        }
+        gh = GitHubClient(pool=pool)
+        # Stub out the HTTP session so no real network calls are made.
+        gh.request_json = mock.MagicMock()
+        return gh
+
     def test_returns_resources_dict_on_success(self):
-        gh = mock.MagicMock(spec=GitHubClient)
+        gh = self._mock_gh()
         gh.request_json.return_value = (200, self._make_resources(), "")
         result = check_rate_limit(gh)
         self.assertIn("core", result)
         self.assertIn("search", result)
 
     def test_logs_remaining_counts(self):
-        gh = mock.MagicMock(spec=GitHubClient)
+        gh = self._mock_gh()
         gh.request_json.return_value = (200, self._make_resources(core_remaining=1234), "")
         with self.assertLogs("find_skills_md", level="INFO") as cm:
             check_rate_limit(gh)
         self.assertTrue(any("1234" in line for line in cm.output))
 
     def test_returns_empty_dict_on_non_200(self):
-        gh = mock.MagicMock(spec=GitHubClient)
+        gh = self._mock_gh()
         gh.request_json.return_value = (403, {}, "Forbidden")
         with self.assertLogs("find_skills_md", level="WARNING"):
             result = check_rate_limit(gh)
         self.assertEqual(result, {})
 
     def test_logs_warning_on_non_200(self):
-        gh = mock.MagicMock(spec=GitHubClient)
+        gh = self._mock_gh()
         gh.request_json.return_value = (403, {}, "Forbidden")
         with self.assertLogs("find_skills_md", level="WARNING") as cm:
             check_rate_limit(gh)
         self.assertTrue(any("403" in line for line in cm.output))
+
+    def test_logs_pool_stats_for_multiple_tokens(self):
+        gh = self._mock_gh(token_count=3)
+        gh.request_json.return_value = (200, self._make_resources(), "")
+        with self.assertLogs("find_skills_md", level="INFO") as cm:
+            check_rate_limit(gh)
+        self.assertTrue(any("3" in line and "token" in line.lower() for line in cm.output))
 
 
 # ---------------------------------------------------------------------------

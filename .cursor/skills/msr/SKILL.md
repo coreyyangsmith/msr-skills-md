@@ -1,4 +1,7 @@
-# Skill: GitHub SKILL.md Miner
+---
+name: mining-software-repository
+descritpion: use when creating software repository mining scripts on GitHub.
+---
 
 ## Description
 Discover and shortlist GitHub repositories that contain a `SKILL.md` file by ingesting SEART CSV exports (repository lists), scanning each repository for matching files, and exporting results to a single output CSV for downstream processing.
@@ -156,10 +159,21 @@ Use only when APIs are unavailable, rate-limited, or you need to support GitHub 
 - Read-only operation only.
 - Ensure you have GitHub authentication for higher rate limits if scanning many repos.
 
-Environment options:
-- `GH_TOKEN` (recommended)
-- GitHub CLI `gh auth login` (recommended)
-- Direct REST calls with `Authorization: Bearer ...` (acceptable)
+Environment options (resolved in priority order):
+- `--github-tokens ghp_tok1,ghp_tok2` CLI flag — comma-separated list for multi-token rotation (5000 req/hr per token)
+- `--github-token ghp_tok` CLI flag — single token override
+- `GH_TOKENS=ghp_tok1,ghp_tok2` — env var, comma-separated (new multi-token variable)
+- `GH_TOKEN=ghp_tok` — env var, single token (backward-compatible)
+- `GITHUB_TOKEN=ghp_tok` — env var, fallback single token
+- GitHub CLI `gh auth login` — for interactive use
+- Unauthenticated — 60 core req/hr only (not suitable for bulk scans)
+
+When multiple tokens are provided, the `TokenPool` in `src/github_client/` automatically:
+- Selects the token with the highest remaining quota on each request.
+- Updates per-token quota from `X-RateLimit-*` response headers.
+- Rotates to the next available token when the current one is exhausted.
+- Sleeps until the earliest reset time when all tokens are exhausted.
+- Raises `RateLimitExhaustedError` if the wait would exceed the configurable maximum.
 
 ### Step 1: Build the repo list from SEART CSVs
 1. Enumerate input CSVs.

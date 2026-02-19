@@ -2,16 +2,19 @@
 """
 find_skills_md.py
 
-Scan GitHub repositories listed in a folder of SEART CSVs for a file named SKILL.md.
-Writes a results CSV and (optionally) a shortlist CSV (found=true only).
+Scan GitHub repositories listed in a folder of SEART CSVs for a file named SKILL.md
+anywhere in the repository tree.
 
-Primary scan method:
-- GitHub Contents API: GET /repos/{owner}/{repo}/contents/{path}?ref={default_branch}
-  NOTE: This checks an exact path only (e.g. /SKILL.md checks the repo root).
-  Use --enable-code-search to find SKILL.md in any subdirectory.
+Scan strategy (both tiers run by default):
+  Tier A – GitHub Contents API: exact path check at the repo root for a fast first hit.
+  Tier B – GitHub Code Search API: full-repo filename search that finds SKILL.md in any
+            subdirectory. On by default; suppress with --disable-code-search.
 
-Optional fallback:
-- GitHub Search Code API: GET /search/code?q=repo:owner/repo+filename:SKILL.md
+Output: one comprehensive CSV (for resume) plus three category-split CSVs written
+automatically next to it:
+  *_found.csv      – repositories where SKILL.md was found
+  *_not_found.csv  – repositories that were scanned cleanly with no match
+  *_errors.csv     – repositories that hit any API error (rate-limit, network, auth, …)
 
 Notes:
 - Read-only.
@@ -24,18 +27,18 @@ import argparse
 import csv
 import dataclasses
 import datetime as dt
-import json
 import logging
 import os
 import re
 import sys
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from typing import Dict, Iterable, List, Optional, Set, Tuple
+from typing import Dict, List, Optional, Set, Tuple
 
-import requests
 from tqdm import tqdm
 from tqdm.contrib.logging import logging_redirect_tqdm
+
+from github_client import GitHubClient, TokenPool, load_tokens_from_env
 
 log = logging.getLogger(__name__)
 
@@ -73,124 +76,6 @@ class ScanResult:
     stars: str
     fork: str
     archived: str
-
-
-# ----------------------------
-# GitHub client with backoff
-# ----------------------------
-
-class GitHubClient:
-    def __init__(self, token: Optional[str], base_url: str = "https://api.github.com") -> None:
-        self.base_url = base_url.rstrip("/")
-        self.session = requests.Session()
-        self.session.headers.update({
-            "Accept": "application/vnd.github+json",
-            # Pinning to a stable API version header is recommended by GitHub docs.
-            "X-GitHub-Api-Version": "2022-11-28",
-            "User-Agent": "skills-md-miner/1.0",
-        })
-        if token:
-            self.session.headers.update({"Authorization": f"Bearer {token}"})
-
-    def _sleep_for_rate_limit(self, resp: requests.Response) -> None:
-        # Primary rate limit exhausted
-        remaining = resp.headers.get("X-RateLimit-Remaining")
-        reset = resp.headers.get("X-RateLimit-Reset")  # epoch seconds
-        if remaining == "0" and reset:
-            try:
-                reset_epoch = int(reset)
-                now = int(time.time())
-                wait_s = max(0, reset_epoch - now) + 2
-                time.sleep(wait_s)
-                return
-            except Exception:
-                pass
-
-        # Secondary rate limits or abuse detection may provide Retry-After
-        retry_after = resp.headers.get("Retry-After")
-        if retry_after:
-            try:
-                time.sleep(int(retry_after))
-                return
-            except Exception:
-                pass
-
-        # Generic fallback
-        time.sleep(60)
-
-    def request_json(
-        self,
-        method: str,
-        path: str,
-        params: Optional[dict] = None,
-        max_retries: int = 5,
-        timeout_s: int = 30,
-    ) -> Tuple[int, dict, str]:
-        """
-        Returns (status_code, json_dict_or_empty, error_message).
-        Retries on 403/429 rate limiting and transient 5xx.
-        """
-        url = f"{self.base_url}{path}"
-        backoff = 2.0
-
-        for attempt in range(max_retries + 1):
-            try:
-                resp = self.session.request(method, url, params=params, timeout=timeout_s)
-            except requests.RequestException as e:
-                if attempt >= max_retries:
-                    return (0, {}, f"network_error: {e}")
-                time.sleep(backoff)
-                backoff = min(backoff * 2.0, 60.0)
-                continue
-
-            status = resp.status_code
-
-            # Success
-            if 200 <= status < 300:
-                if resp.content:
-                    try:
-                        return (status, resp.json(), "")
-                    except Exception:
-                        return (status, {}, "json_parse_error")
-                return (status, {}, "")
-
-            # Not found or unauthorized: do not retry
-            if status in (401, 404):
-                msg = self._safe_error_message(resp)
-                return (status, {}, msg)
-
-            # Rate limiting or abuse throttling: retry with wait
-            if status in (403, 429):
-                msg = self._safe_error_message(resp)
-                if attempt >= max_retries:
-                    return (status, {}, msg)
-                self._sleep_for_rate_limit(resp)
-                continue
-
-            # Transient server errors
-            if 500 <= status <= 599:
-                msg = self._safe_error_message(resp)
-                if attempt >= max_retries:
-                    return (status, {}, msg)
-                time.sleep(backoff)
-                backoff = min(backoff * 2.0, 60.0)
-                continue
-
-            # Other errors: do not retry
-            msg = self._safe_error_message(resp)
-            return (status, {}, msg)
-
-        return (0, {}, "unknown_error")
-
-    @staticmethod
-    def _safe_error_message(resp: requests.Response) -> str:
-        try:
-            data = resp.json()
-            if isinstance(data, dict) and "message" in data:
-                return str(data["message"])[:400]
-        except Exception:
-            pass
-        return (resp.text or "").strip()[:400]
 
 
 # ----------------------------
@@ -481,13 +366,15 @@ def scan_one_repo(
             res.scan_method = "contents_api"
             return res
 
-        # If auth/rate limiting happens here, keep the error and stop early
-        if st in (401, 403, 429):
-            res.error_type = classify_error(st, e)
+        # 401 is a permanent auth failure — stop immediately.
+        # 403/429 will never reach here: request_json retries them indefinitely
+        # (sleeping until the token resets) so they always resolve before returning.
+        if st == 401:
+            res.error_type = "auth"
             res.error_message = e
             return res
 
-    # Optional Tier B: Code search to find SKILL.md in subdirs
+    # Tier B: Code search finds SKILL.md anywhere in the repository tree (default on).
     if enable_code_search:
         found, item, st, e = try_code_search(gh, repo_src.repo, match_name)
         res.http_status = str(st) if st else res.http_status
@@ -508,8 +395,9 @@ def scan_one_repo(
             res.error_message = ""
             return res
 
-        if st in (401, 403, 429):
-            res.error_type = classify_error(st, e)
+        # 401 is the only permanent early stop (see Tier A comment above).
+        if st == 401:
+            res.error_type = "auth"
             res.error_message = e
             return res
 
@@ -589,6 +477,43 @@ def write_shortlist(results_csv: str, shortlist_csv: str) -> None:
                 writer.writerow(row)
 
 
+_ERROR_TYPES = frozenset({"rate_limited", "network", "auth", "invalid_repo", "not_found", "other"})
+
+
+def result_category(r: ScanResult) -> str:
+    """
+    Classify a scan result into one of three output categories.
+
+    Returns:
+        "found"     – SKILL.md was located anywhere in the repository.
+        "errors"    – Any API error occurred (rate_limited, network, auth, …).
+        "not_found" – Repository was scanned cleanly; file was not present
+                      (includes filtered-out repos).
+    """
+    if r.found:
+        return "found"
+    if r.error_type in _ERROR_TYPES:
+        return "errors"
+    return "not_found"
+
+
+def split_csv_paths(out_csv: str) -> Tuple[str, str, str]:
+    """
+    Derive the three category CSV paths from the main output CSV path.
+
+    Example: outputs/skill_md_scan_results.csv →
+        outputs/skill_md_scan_results_found.csv
+        outputs/skill_md_scan_results_not_found.csv
+        outputs/skill_md_scan_results_errors.csv
+    """
+    base, ext = os.path.splitext(out_csv)
+    return (
+        f"{base}_found{ext}",
+        f"{base}_not_found{ext}",
+        f"{base}_errors{ext}",
+    )
+
+
 # ----------------------------
 # Logging
 # ----------------------------
@@ -605,7 +530,11 @@ def setup_logging(level: str = "INFO") -> None:
 
 
 def check_rate_limit(gh: GitHubClient) -> dict:
-    """Query /rate_limit, log status, and return the resources dict."""
+    """
+    Query /rate_limit, log status, and return the resources dict.
+
+    Also logs per-token pool stats when multiple tokens are configured.
+    """
     status, data, err = gh.request_json("GET", "/rate_limit")
     if status != 200:
         log.warning("Could not check rate limit (HTTP %s): %s", status, err)
@@ -626,6 +555,16 @@ def check_rate_limit(gh: GitHubClient) -> dict:
         core.get("remaining", 0), core.get("limit", 0), fmt_reset(core.get("reset", 0)),
         search.get("remaining", 0), search.get("limit", 0), fmt_reset(search.get("reset", 0)),
     )
+
+    pool_stats = gh.pool.stats()
+    if pool_stats["token_count"] > 1:
+        log.info(
+            "Token pool: %d token(s) | total_remaining=%d | total_requests=%d",
+            pool_stats["token_count"],
+            pool_stats["total_remaining"],
+            pool_stats["total_requests"],
+        )
+
     return resources
 
 
@@ -636,14 +575,16 @@ def check_rate_limit(gh: GitHubClient) -> dict:
 def parse_args(argv: List[str]) -> argparse.Namespace:
     p = argparse.ArgumentParser(
         description=(
-            "Scan repos from SEART CSVs for SKILL.md. "
-            "The default --search-path (/SKILL.md) checks the repo root only. "
-            "Use --enable-code-search to find SKILL.md in any subdirectory."
+            "Scan repos from SEART CSVs for SKILL.md anywhere in the repository. "
+            "Tier A (Contents API) checks the exact root path for a fast first hit. "
+            "Tier B (Code Search API) searches the full repository tree and runs by default. "
+            "Three category CSVs (_found, _not_found, _errors) are written automatically "
+            "alongside --out-csv."
         )
     )
     p.add_argument("--seart-dir", required=True, help="Directory containing SEART CSV exports")
-    p.add_argument("--out-csv", required=True, help="Output results CSV path")
-    p.add_argument("--shortlist-csv", default="", help="Optional shortlist CSV path (found=true only)")
+    p.add_argument("--out-csv", required=True, help="Output results CSV path (all rows, used for resume)")
+    p.add_argument("--shortlist-csv", default="", help="Optional shortlist CSV path (found=true only; superseded by *_found.csv)")
 
     p.add_argument("--match-name", default="SKILL.md", help="Filename to search for")
     p.add_argument(
@@ -651,21 +592,38 @@ def parse_args(argv: List[str]) -> argparse.Namespace:
         action="append",
         default=[],
         help=(
-            "Exact path to check with the Contents API; can be repeated. "
-            "Example: /SKILL.md (root only). "
-            "Use --enable-code-search to search all subdirectories instead."
+            "Exact path to check with the Contents API (Tier A); can be repeated. "
+            "Defaults to /SKILL.md (repo root). "
+            "Tier B (code search) always runs unless --disable-code-search is set."
         ),
     )
-    p.add_argument("--enable-code-search", action="store_true", help="Use /search/code fallback")
+    p.add_argument(
+        "--disable-code-search",
+        action="store_true",
+        help="Turn off the GitHub code search API (Tier B). Only the Contents API root check runs.",
+    )
     p.add_argument("--min-stars", type=int, default=0, help="Filter: require at least N stars")
     p.add_argument("--disallow-forks", action="store_true", help="Filter: skip forks")
     p.add_argument("--disallow-archived", action="store_true", help="Filter: skip archived repos")
 
     p.add_argument("--max-repos", type=int, default=0, help="Limit repos scanned (0 means no limit)")
     p.add_argument("--resume", action="store_true", help="Skip repos already in out-csv")
-    p.add_argument("--include-negative-results", action="store_true", help="Write found=false rows too")
+    p.add_argument(
+        "--include-negative-results",
+        action="store_true",
+        help="(No-op: every row is always written to out-csv for complete resume support.)",
+    )
     p.add_argument("--concurrency", type=int, default=4, help="Worker threads. Lower if rate-limited.")
-    p.add_argument("--github-token", default="", help="Overrides GH_TOKEN env var")
+    p.add_argument("--github-token", default="", help="Single GitHub token (overrides env). Use --github-tokens for multiple.")
+    p.add_argument(
+        "--github-tokens",
+        default="",
+        help=(
+            "Comma-separated GitHub tokens for parallel rate-limit pools. "
+            "Example: --github-tokens ghp_token1,ghp_token2. "
+            "Overrides GH_TOKENS / GH_TOKEN env vars."
+        ),
+    )
     p.add_argument(
         "--log-level",
         default="INFO",
@@ -680,17 +638,28 @@ def main(argv: List[str]) -> int:
     args = parse_args(argv)
     setup_logging(args.log_level)
 
-    token = args.github_token.strip() or os.getenv("GH_TOKEN", "").strip() or os.getenv("GITHUB_TOKEN", "").strip()
-    if not token:
+    # Resolve tokens: CLI flags take priority, then env vars.
+    raw_tokens = args.github_tokens.strip() or args.github_token.strip()
+    if raw_tokens:
+        tokens = [t.strip() for t in raw_tokens.split(",") if t.strip()]
+    else:
+        tokens = load_tokens_from_env()
+
+    if not tokens:
         log.warning(
             "No GitHub token detected. Unauthenticated limits: "
             "60 core requests/hour, 10 search requests/minute. "
-            "Set GH_TOKEN or pass --github-token."
+            "Set GH_TOKENS / GH_TOKEN or pass --github-tokens / --github-token."
         )
-    gh = GitHubClient(token=token)
+
+    pool = TokenPool(tokens)
+    gh = GitHubClient(pool=pool)
 
     # Check and log current rate limit before starting.
     resources = check_rate_limit(gh)
+
+    # Code search is on by default; suppress with --disable-code-search.
+    enable_code_search = not args.disable_code_search
 
     # Default search path if none provided.
     search_paths = args.search_path if args.search_path else ["/SKILL.md"]
@@ -715,7 +684,10 @@ def main(argv: List[str]) -> int:
         log.info("Resume: skipping %d already-scanned repositories.", len(already))
     repos_to_scan = [r for r in repos if r.repo not in already]
 
-    write_header_if_needed(args.out_csv)
+    # Prepare all output CSV paths: one comprehensive file + three category splits.
+    found_csv, not_found_csv, errors_csv = split_csv_paths(args.out_csv)
+    for path in (args.out_csv, found_csv, not_found_csv, errors_csv):
+        write_header_if_needed(path)
 
     allow_forks = not args.disallow_forks
     allow_archived = not args.disallow_archived
@@ -727,8 +699,8 @@ def main(argv: List[str]) -> int:
             write_shortlist(args.out_csv, args.shortlist_csv)
         return 0
 
-    # Warn if estimated request count exceeds remaining rate limit.
-    reqs_needed = total * (1 + len(search_paths)) + (total if args.enable_code_search else 0)
+    # Estimate requests: 1 metadata + len(paths) contents + 1 code search (if on).
+    reqs_needed = total * (1 + len(search_paths) + (1 if enable_code_search else 0))
     core_remaining = resources.get("core", {}).get("remaining", 0) if resources else 0
     if core_remaining and reqs_needed > core_remaining:
         log.warning(
@@ -738,12 +710,20 @@ def main(argv: List[str]) -> int:
         )
 
     log.info(
-        "Scanning %d repositories | concurrency=%d | paths=%s | code_search=%s",
-        total, args.concurrency, search_paths, args.enable_code_search,
+        "Scanning %d repositories | concurrency=%d | tier_a_paths=%s | tier_b_code_search=%s",
+        total, args.concurrency, search_paths, enable_code_search,
+    )
+    log.info(
+        "Output CSVs: all=%s | found=%s | not_found=%s | errors=%s",
+        args.out_csv, found_csv, not_found_csv, errors_csv,
     )
 
+    # Per-category running counts for the tqdm postfix.
     found_count = 0
-    error_counts: Dict[str, int] = {}
+    not_found_count = 0
+    rate_limited_count = 0
+    error_count = 0          # non-rate-limit errors
+    error_type_counts: Dict[str, int] = {}
     scan_start = time.time()
 
     with ThreadPoolExecutor(max_workers=max(1, int(args.concurrency))) as ex:
@@ -754,7 +734,7 @@ def main(argv: List[str]) -> int:
                 repo_src,
                 args.match_name,
                 search_paths,
-                bool(args.enable_code_search),
+                enable_code_search,
                 int(args.min_stars),
                 allow_forks,
                 allow_archived,
@@ -797,23 +777,44 @@ def main(argv: List[str]) -> int:
                             archived="",
                         )
 
+                    category = result_category(r)
+
                     log.debug(
-                        "%-50s found=%-5s error=%-14s method=%s",
-                        r.repo, r.found, r.error_type, r.scan_method or "-",
+                        "%-50s  found=%-5s  category=%-9s  error_type=%-14s  method=%-13s  path=%s",
+                        r.repo, r.found, category, r.error_type,
+                        r.scan_method or "-", r.match_path or "-",
                     )
 
-                    if r.found:
+                    # Update per-category counters.
+                    if category == "found":
                         found_count += 1
-                    error_counts[r.error_type] = error_counts.get(r.error_type, 0) + 1
+                    elif category == "not_found":
+                        not_found_count += 1
+                    elif r.error_type == "rate_limited":
+                        rate_limited_count += 1
+                    else:
+                        error_count += 1
+                    error_type_counts[r.error_type] = error_type_counts.get(r.error_type, 0) + 1
 
-                    if r.found or args.include_negative_results:
-                        append_result(args.out_csv, r)
+                    # Always write every row to out_csv.
+                    # This ensures a resume run (--resume) can skip everything
+                    # already processed, regardless of outcome.
+                    append_result(args.out_csv, r)
+
+                    # Write to the appropriate category CSV (always, unconditionally).
+                    if category == "found":
+                        append_result(found_csv, r)
+                    elif category == "not_found":
+                        append_result(not_found_csv, r)
+                    else:
+                        append_result(errors_csv, r)
 
                     pbar.update(1)
-                    rl = error_counts.get("rate_limited", 0)
-                    errs = sum(v for k, v in error_counts.items() if k not in ("none", "filtered", "rate_limited"))
                     pbar.set_postfix_str(
-                        f"found={found_count} rl={rl} err={errs}",
+                        f"found={found_count}"
+                        f"  not_found={not_found_count}"
+                        f"  rate_limited={rate_limited_count}"
+                        f"  errors={error_count}",
                         refresh=False,
                     )
 
@@ -822,15 +823,32 @@ def main(argv: List[str]) -> int:
     if args.shortlist_csv:
         write_shortlist(args.out_csv, args.shortlist_csv)
 
-    pct = 100.0 * found_count / total if total else 0.0
+    scanned = found_count + not_found_count + rate_limited_count + error_count
+    pct_found = 100.0 * found_count / scanned if scanned else 0.0
+    pct_not_found = 100.0 * not_found_count / scanned if scanned else 0.0
+    pct_errors = 100.0 * (rate_limited_count + error_count) / scanned if scanned else 0.0
+
     log.info(
-        "Done | elapsed=%.1fs | scanned=%d | found=%d (%.1f%%) | rate_limited=%d",
-        elapsed, total, found_count, pct, error_counts.get("rate_limited", 0),
+        "Scan complete | elapsed=%.1fs | scanned=%d"
+        " | found=%d (%.1f%%)"
+        " | not_found=%d (%.1f%%)"
+        " | rate_limited=%d"
+        " | errors=%d"
+        " | total_errors=%.1f%%",
+        elapsed, scanned,
+        found_count, pct_found,
+        not_found_count, pct_not_found,
+        rate_limited_count,
+        error_count,
+        pct_errors,
     )
-    log.info("Error breakdown: %s", dict(sorted(error_counts.items())))
-    log.info("Results CSV: %s", args.out_csv)
+    log.info("Error type breakdown: %s", dict(sorted(error_type_counts.items())))
+    log.info("Output | all=%s", args.out_csv)
+    log.info("Output | found=%s", found_csv)
+    log.info("Output | not_found=%s", not_found_csv)
+    log.info("Output | errors=%s", errors_csv)
     if args.shortlist_csv:
-        log.info("Shortlist CSV: %s", args.shortlist_csv)
+        log.info("Output | shortlist=%s", args.shortlist_csv)
 
     return 0
 

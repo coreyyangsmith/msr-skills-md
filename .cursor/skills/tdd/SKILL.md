@@ -1,5 +1,7 @@
-# Skill: Test-Driven Development (TDD) Workflow
-
+---
+name: test-driven-development
+description: use during regular development workflow when generating new code or modifying feature behavior.
+---
 ## Description
 Implement changes using a strict Test-Driven Development loop: write or update a failing automated test that captures the desired behavior, implement the smallest change to make it pass, then refactor while keeping the test suite green.
 
