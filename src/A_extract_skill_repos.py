@@ -258,7 +258,7 @@ def try_code_search(
     repo: str,
     filename: str,
 ) -> Tuple[bool, Optional[dict], int, str]:
-    # Search API: q=repo:owner/repo filename:SKILLS.md
+    # Search API: q=repo:owner/repo filename:SKILL.md
     q = f"repo:{repo} filename:{filename}"
     status, data, err = gh.request_json("GET", "/search/code", params={"q": q, "per_page": 10})
     if status != 200 or not isinstance(data, dict):

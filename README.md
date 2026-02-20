@@ -85,8 +85,9 @@ uv run python src/A_extract_skill_repos.py \
 
 uv run python src/A_extract_skill_repos.py --seart-dir data/seart_csvs --out-csv outputs/skill_md_scan_results.csv --shortlist-csv outputs/skill_md_shortlist.csv --match-name SKILL.md --search-path /SKILL.md --resume
 
+uv run python src/B_generate_dataset.py --found-csv outputs/skill_md_scan_results_found.csv --out-csv outputs/full_skills_instances.csv --raw-data-dir outputs/raw_data --resume
 
-> **Note on filename convention**: The script defaults to searching for `SKILLS.md` (plural). Pass `--match-name SKILL.md --search-path /SKILL.md` to search for the singular form used in this project's own spec.
+> **Note on filename convention**: The script defaults to searching for `SKILL.md` (singular). Pass `--match-name SKILLS.md --search-path /SKILLS.md` to search for the plural form if needed.
 
 ---
 
@@ -97,8 +98,8 @@ uv run python src/A_extract_skill_repos.py --seart-dir data/seart_csvs --out-csv
 | `--seart-dir PATH` | *(required)* | Directory containing SEART CSV exports (searched recursively) |
 | `--out-csv PATH` | *(required)* | Output results CSV path |
 | `--shortlist-csv PATH` | *(empty)* | Optional second CSV containing only `found=true` rows |
-| `--match-name NAME` | `SKILLS.md` | Filename to search for |
-| `--search-path PATH` | `/SKILLS.md` | Explicit path to check via Contents API; repeat to check multiple paths |
+| `--match-name NAME` | `SKILL.md` | Filename to search for |
+| `--search-path PATH` | `/SKILL.md` | Explicit path to check via Contents API; repeat to check multiple paths |
 | `--enable-code-search` | off | Also query the GitHub code search API (finds files in subdirectories) |
 | `--min-stars N` | `0` | Skip repos with fewer than N stars |
 | `--disallow-forks` | off | Skip forked repositories |
