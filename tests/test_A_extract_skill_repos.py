@@ -1,5 +1,5 @@
 """
-Tests for find_skills_md.py
+Tests for A_extract_skill_repos.py
 
 Covers:
 - normalize_repo        (pure function)
@@ -36,7 +36,7 @@ import requests
 # Make src/ importable without installing the package.
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
-from find_skills_md import (
+from A_extract_skill_repos import (
     OUTPUT_COLUMNS,
     RepoSource,
     ScanResult,
@@ -852,8 +852,8 @@ class TestScanOneRepo(unittest.TestCase):
         }
 
     def test_found_via_contents_api(self):
-        with mock.patch("find_skills_md.get_repo_metadata", return_value=(_make_meta(), 200, "")), \
-             mock.patch("find_skills_md.try_contents_path", return_value=(True, self._file_data(), 200, "")):
+        with mock.patch("A_extract_skill_repos.get_repo_metadata", return_value=(_make_meta(), 200, "")), \
+             mock.patch("A_extract_skill_repos.try_contents_path", return_value=(True, self._file_data(), 200, "")):
             result = scan_one_repo(
                 self._gh(), self._src(), "SKILL.md", ["/SKILL.md"],
                 enable_code_search=False, min_stars=0, allow_forks=True, allow_archived=True,
@@ -866,8 +866,8 @@ class TestScanOneRepo(unittest.TestCase):
         self.assertEqual(result.error_type, "none")
 
     def test_not_found_contents_api_returns_found_false(self):
-        with mock.patch("find_skills_md.get_repo_metadata", return_value=(_make_meta(), 200, "")), \
-             mock.patch("find_skills_md.try_contents_path", return_value=(False, {}, 404, "")):
+        with mock.patch("A_extract_skill_repos.get_repo_metadata", return_value=(_make_meta(), 200, "")), \
+             mock.patch("A_extract_skill_repos.try_contents_path", return_value=(False, {}, 404, "")):
             result = scan_one_repo(
                 self._gh(), self._src(), "SKILL.md", ["/SKILL.md"],
                 enable_code_search=False, min_stars=0, allow_forks=True, allow_archived=True,
@@ -876,7 +876,7 @@ class TestScanOneRepo(unittest.TestCase):
         self.assertEqual(result.error_type, "none")
 
     def test_repo_metadata_404_sets_invalid_repo_error(self):
-        with mock.patch("find_skills_md.get_repo_metadata", return_value=(None, 404, "Not Found")):
+        with mock.patch("A_extract_skill_repos.get_repo_metadata", return_value=(None, 404, "Not Found")):
             result = scan_one_repo(
                 self._gh(), self._src(), "SKILL.md", ["/SKILL.md"],
                 enable_code_search=False, min_stars=0, allow_forks=True, allow_archived=True,
@@ -885,7 +885,7 @@ class TestScanOneRepo(unittest.TestCase):
         self.assertEqual(result.error_type, "invalid_repo")
 
     def test_filtered_by_min_stars(self):
-        with mock.patch("find_skills_md.get_repo_metadata", return_value=(_make_meta(stars=3), 200, "")): 
+        with mock.patch("A_extract_skill_repos.get_repo_metadata", return_value=(_make_meta(stars=3), 200, "")): 
             result = scan_one_repo(
                 self._gh(), self._src(), "SKILL.md", ["/SKILL.md"],
                 enable_code_search=False, min_stars=10, allow_forks=True, allow_archived=True,
@@ -895,7 +895,7 @@ class TestScanOneRepo(unittest.TestCase):
         self.assertIn("stars", result.error_message)
 
     def test_filtered_fork(self):
-        with mock.patch("find_skills_md.get_repo_metadata", return_value=(_make_meta(fork=True), 200, "")):
+        with mock.patch("A_extract_skill_repos.get_repo_metadata", return_value=(_make_meta(fork=True), 200, "")):
             result = scan_one_repo(
                 self._gh(), self._src(), "SKILL.md", ["/SKILL.md"],
                 enable_code_search=False, min_stars=0, allow_forks=False, allow_archived=True,
@@ -904,7 +904,7 @@ class TestScanOneRepo(unittest.TestCase):
         self.assertEqual(result.error_type, "filtered")
 
     def test_filtered_archived(self):
-        with mock.patch("find_skills_md.get_repo_metadata", return_value=(_make_meta(archived=True), 200, "")):
+        with mock.patch("A_extract_skill_repos.get_repo_metadata", return_value=(_make_meta(archived=True), 200, "")):
             result = scan_one_repo(
                 self._gh(), self._src(), "SKILL.md", ["/SKILL.md"],
                 enable_code_search=False, min_stars=0, allow_forks=True, allow_archived=False,
@@ -918,9 +918,9 @@ class TestScanOneRepo(unittest.TestCase):
             "html_url": "https://github.com/owner/repo/blob/main/docs/SKILL.md",
             "sha": "def456",
         }
-        with mock.patch("find_skills_md.get_repo_metadata", return_value=(_make_meta(), 200, "")), \
-             mock.patch("find_skills_md.try_contents_path", return_value=(False, {}, 404, "")), \
-             mock.patch("find_skills_md.try_code_search", return_value=(True, search_item, 200, "")):
+        with mock.patch("A_extract_skill_repos.get_repo_metadata", return_value=(_make_meta(), 200, "")), \
+             mock.patch("A_extract_skill_repos.try_contents_path", return_value=(False, {}, 404, "")), \
+             mock.patch("A_extract_skill_repos.try_code_search", return_value=(True, search_item, 200, "")):
             result = scan_one_repo(
                 self._gh(), self._src(), "SKILL.md", ["/SKILL.md"],
                 enable_code_search=True, min_stars=0, allow_forks=True, allow_archived=True,
@@ -931,9 +931,9 @@ class TestScanOneRepo(unittest.TestCase):
         self.assertEqual(result.match_sha, "def456")
 
     def test_code_search_not_called_when_disabled(self):
-        with mock.patch("find_skills_md.get_repo_metadata", return_value=(_make_meta(), 200, "")), \
-             mock.patch("find_skills_md.try_contents_path", return_value=(False, {}, 404, "")), \
-             mock.patch("find_skills_md.try_code_search") as mock_search:
+        with mock.patch("A_extract_skill_repos.get_repo_metadata", return_value=(_make_meta(), 200, "")), \
+             mock.patch("A_extract_skill_repos.try_contents_path", return_value=(False, {}, 404, "")), \
+             mock.patch("A_extract_skill_repos.try_code_search") as mock_search:
             scan_one_repo(
                 self._gh(), self._src(), "SKILL.md", ["/SKILL.md"],
                 enable_code_search=False, min_stars=0, allow_forks=True, allow_archived=True,
@@ -942,9 +942,9 @@ class TestScanOneRepo(unittest.TestCase):
 
     def test_auth_error_on_contents_stops_scan_early(self):
         """401 from the contents API is a permanent auth failure; stops immediately."""
-        with mock.patch("find_skills_md.get_repo_metadata", return_value=(_make_meta(), 200, "")), \
-             mock.patch("find_skills_md.try_contents_path", return_value=(False, {}, 401, "Unauthorized")), \
-             mock.patch("find_skills_md.try_code_search") as mock_search:
+        with mock.patch("A_extract_skill_repos.get_repo_metadata", return_value=(_make_meta(), 200, "")), \
+             mock.patch("A_extract_skill_repos.try_contents_path", return_value=(False, {}, 401, "Unauthorized")), \
+             mock.patch("A_extract_skill_repos.try_code_search") as mock_search:
             result = scan_one_repo(
                 self._gh(), self._src(), "SKILL.md", ["/SKILL.md"],
                 enable_code_search=True, min_stars=0, allow_forks=True, allow_archived=True,
@@ -961,9 +961,9 @@ class TestScanOneRepo(unittest.TestCase):
         an unusual 403 not caused by rate limits), the scan continues rather than
         abandoning the repository.
         """
-        with mock.patch("find_skills_md.get_repo_metadata", return_value=(_make_meta(), 200, "")), \
-             mock.patch("find_skills_md.try_contents_path", return_value=(False, {}, 403, "rate limited")), \
-             mock.patch("find_skills_md.try_code_search", return_value=(False, None, 200, "")) as mock_search:
+        with mock.patch("A_extract_skill_repos.get_repo_metadata", return_value=(_make_meta(), 200, "")), \
+             mock.patch("A_extract_skill_repos.try_contents_path", return_value=(False, {}, 403, "rate limited")), \
+             mock.patch("A_extract_skill_repos.try_code_search", return_value=(False, None, 200, "")) as mock_search:
             result = scan_one_repo(
                 self._gh(), self._src(), "SKILL.md", ["/SKILL.md"],
                 enable_code_search=True, min_stars=0, allow_forks=True, allow_archived=True,
@@ -973,9 +973,9 @@ class TestScanOneRepo(unittest.TestCase):
         mock_search.assert_called_once()               # code search was attempted
 
     def test_metadata_populated_from_repo_meta(self):
-        with mock.patch("find_skills_md.get_repo_metadata",
+        with mock.patch("A_extract_skill_repos.get_repo_metadata",
                         return_value=(_make_meta(branch="develop", stars=99, fork=True, archived=False), 200, "")), \
-             mock.patch("find_skills_md.try_contents_path", return_value=(False, {}, 404, "")):
+             mock.patch("A_extract_skill_repos.try_contents_path", return_value=(False, {}, 404, "")):
             result = scan_one_repo(
                 self._gh(), self._src(), "SKILL.md", ["/SKILL.md"],
                 enable_code_search=False, min_stars=0, allow_forks=True, allow_archived=True,
@@ -1048,28 +1048,28 @@ class TestCheckRateLimit(unittest.TestCase):
     def test_logs_remaining_counts(self):
         gh = self._mock_gh()
         gh.request_json.return_value = (200, self._make_resources(core_remaining=1234), "")
-        with self.assertLogs("find_skills_md", level="INFO") as cm:
+        with self.assertLogs("A_extract_skill_repos", level="INFO") as cm:
             check_rate_limit(gh)
         self.assertTrue(any("1234" in line for line in cm.output))
 
     def test_returns_empty_dict_on_non_200(self):
         gh = self._mock_gh()
         gh.request_json.return_value = (403, {}, "Forbidden")
-        with self.assertLogs("find_skills_md", level="WARNING"):
+        with self.assertLogs("A_extract_skill_repos", level="WARNING"):
             result = check_rate_limit(gh)
         self.assertEqual(result, {})
 
     def test_logs_warning_on_non_200(self):
         gh = self._mock_gh()
         gh.request_json.return_value = (403, {}, "Forbidden")
-        with self.assertLogs("find_skills_md", level="WARNING") as cm:
+        with self.assertLogs("A_extract_skill_repos", level="WARNING") as cm:
             check_rate_limit(gh)
         self.assertTrue(any("403" in line for line in cm.output))
 
     def test_logs_pool_stats_for_multiple_tokens(self):
         gh = self._mock_gh(token_count=3)
         gh.request_json.return_value = (200, self._make_resources(), "")
-        with self.assertLogs("find_skills_md", level="INFO") as cm:
+        with self.assertLogs("A_extract_skill_repos", level="INFO") as cm:
             check_rate_limit(gh)
         self.assertTrue(any("3" in line and "token" in line.lower() for line in cm.output))
 

@@ -59,7 +59,7 @@ This creates a virtual environment and installs all dependencies from `uv.lock`.
 Place your SEART CSV exports in `data/seart_csvs/`, then run:
 
 ```sh
-uv run python src/find_skills_md.py \
+uv run python src/A_extract_skill_repos.py \
   --seart-dir data/seart_csvs \
   --out-csv outputs/skill_md_scan_results.csv \
   --shortlist-csv outputs/skill_md_shortlist.csv \
@@ -72,7 +72,7 @@ uv run python src/find_skills_md.py \
 To also search subdirectories via the GitHub code search API:
 
 ```sh
-uv run python src/find_skills_md.py \
+uv run python src/A_extract_skill_repos.py \
   --seart-dir data/seart_csvs \
   --out-csv outputs/skill_md_scan_results.csv \
   --shortlist-csv outputs/skill_md_shortlist.csv \
@@ -83,7 +83,7 @@ uv run python src/find_skills_md.py \
   --resume
 ```
 
-uv run python src/find_skills_md.py --seart-dir data/seart_csvs --out-csv outputs/skill_md_scan_results.csv --shortlist-csv outputs/skill_md_shortlist.csv --match-name SKILL.md --search-path /SKILL.md --include-negative-results --resume
+uv run python src/A_extract_skill_repos.py --seart-dir data/seart_csvs --out-csv outputs/skill_md_scan_results.csv --shortlist-csv outputs/skill_md_shortlist.csv --match-name SKILL.md --search-path /SKILL.md --resume
 
 
 > **Note on filename convention**: The script defaults to searching for `SKILLS.md` (plural). Pass `--match-name SKILL.md --search-path /SKILL.md` to search for the singular form used in this project's own spec.
@@ -183,7 +183,7 @@ Rate limiting is handled automatically by the `github_client` module:
 
 ```
 src/
-  find_skills_md.py          # scan orchestration and CLI
+  A_extract_skill_repos.py          # scan orchestration and CLI
   github_client/
     __init__.py              # public re-exports
     token_pool.py            # TokenBucket, TokenPool, load_tokens_from_env
