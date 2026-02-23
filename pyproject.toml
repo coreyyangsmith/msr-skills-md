@@ -5,6 +5,7 @@ description = "Mine GitHub repositories for SKILL.md files using SEART CSV expor
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "python-dotenv>=1.2.1",
     "requests>=2.32.5",
     "tqdm>=4.67.3",
 ]

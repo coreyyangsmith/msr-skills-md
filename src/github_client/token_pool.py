@@ -16,11 +16,14 @@ from __future__ import annotations
 
 import dataclasses
 import datetime as dt
+import json
 import logging
 import os
 import threading
 import time
 from typing import List, Optional
+
+from dotenv import load_dotenv
 
 log = logging.getLogger(__name__)
 
@@ -47,19 +50,47 @@ class TokenBucket:
         return f"{self.token[:4]}...{self.token[-4:]}"
 
 
+def _parse_token_string(raw: str) -> List[str]:
+    """
+    Parse a token string into a list of tokens.
+
+    Accepts two formats:
+      - JSON array:       ``["ghp_tok1", "ghp_tok2"]``
+      - Comma-separated:  ``ghp_tok1,ghp_tok2``
+    """
+    raw = raw.strip()
+    if raw.startswith("["):
+        try:
+            parsed = json.loads(raw)
+            if isinstance(parsed, list):
+                return [str(t).strip() for t in parsed if str(t).strip()]
+        except json.JSONDecodeError:
+            pass
+    return [t.strip() for t in raw.split(",") if t.strip()]
+
+
 def load_tokens_from_env() -> List[str]:
     """
-    Resolve tokens from environment variables.
+    Resolve tokens from environment variables, loading ``.env`` automatically.
+
+    A ``.env`` file in the current working directory (or any parent) is loaded
+    via ``python-dotenv`` so callers do not need to source it manually.
+
+    ``GH_TOKENS`` accepts either a JSON array or a comma-separated string::
+
+        GH_TOKENS=["ghp_tok1","ghp_tok2"]   # JSON array (preferred)
+        GH_TOKENS=ghp_tok1,ghp_tok2          # comma-separated
 
     Priority:
-      1. GH_TOKENS  (comma-separated, new multi-token variable)
-      2. GH_TOKEN   (single token, backward-compatible)
-      3. GITHUB_TOKEN (single token, backward-compatible)
+      1. GH_TOKENS  – multi-token variable (JSON array or comma-separated)
+      2. GH_TOKEN   – single token, backward-compatible
+      3. GITHUB_TOKEN – single token, backward-compatible
     """
+    load_dotenv()
     for var in ("GH_TOKENS", "GH_TOKEN", "GITHUB_TOKEN"):
         raw = os.getenv(var, "").strip()
         if raw:
-            tokens = [t.strip() for t in raw.split(",") if t.strip()]
+            tokens = _parse_token_string(raw)
             if tokens:
                 return tokens
     return []

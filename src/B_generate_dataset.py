@@ -27,6 +27,17 @@ from github_client import GitHubClient, TokenPool, load_tokens_from_env
 
 log = logging.getLogger(__name__)
 
+# All columns present in a SEART CSV export (mirrors A_extract_skill_repos.py).
+SEART_COLUMNS: List[str] = [
+    "id", "name", "isFork", "commits", "branches", "releases", "forks",
+    "mainLanguage", "defaultBranch", "license", "homepage", "watchers",
+    "stargazers", "contributors", "size", "createdAt", "pushedAt", "updatedAt",
+    "totalIssues", "openIssues", "totalPullRequests", "openPullRequests",
+    "blankLines", "codeLines", "commentLines", "metrics", "lastCommit",
+    "lastCommitSHA", "hasWiki", "isArchived", "isDisabled", "isLocked",
+    "languages", "labels", "topics",
+]
+
 
 # ----------------------------
 # Data structures
@@ -65,6 +76,20 @@ class RepoDatasetRow:
     scripts_file_count: int = 0
     other_file_count: int = 0
     scanned_at_utc: str = ""
+    has_CLAUDE: int = 0
+    has_AGENTS: int = 0
+    has_COPILOT: int = 0
+    # Original SEART columns carried through from the input CSV.
+    seart_data: Dict[str, str] = dataclasses.field(default_factory=dict)
+
+
+# Ordered list of dataset-specific output columns (everything except seart_data).
+_DATASET_COLUMNS: List[str] = [
+    f.name for f in dataclasses.fields(RepoDatasetRow) if f.name != "seart_data"
+]
+
+# Full output schema: dataset columns first, then all SEART columns.
+OUTPUT_COLUMNS: List[str] = _DATASET_COLUMNS + SEART_COLUMNS
 
 
 # ----------------------------
@@ -288,7 +313,27 @@ def process_repo(
         return None, [f"Tree fetch failed: {tree_err}"]
         
     skills = find_skill_instances(tree_items, match_name)
-    
+
+    # Detect ACF files anywhere in the repo using case-insensitive basename matching.
+    # First match per target wins (covers CLAUDE.md, claude.md, Claude.md, etc.).
+    _ACF_TARGETS: Dict[str, str] = {
+        "claude.md": "has_CLAUDE",
+        "agents.md": "has_AGENTS",
+        "copilot-instructions.md": "has_COPILOT",
+    }
+    acf_found: List[Tuple[str, Dict[str, Any], str]] = []  # (path, tree_item, attr)
+    _acf_matched_attrs: Set[str] = set()
+    for item in tree_items:
+        if item.get("type") == "blob":
+            item_path = item.get("path", "")
+            attr = _ACF_TARGETS.get(os.path.basename(item_path).lower())
+            if attr and attr not in _acf_matched_attrs:
+                acf_found.append((item_path, item, attr))
+                _acf_matched_attrs.add(attr)
+
+    # Carry through every original SEART column from the input row.
+    seart_data = {col: (row.get(col) or "") for col in SEART_COLUMNS}
+
     # Create the dataset row
     dataset_row = RepoDatasetRow(
         repo=repo,
@@ -299,8 +344,13 @@ def process_repo(
         html_url=f"https://github.com/{repo}",
         skill_count=len(skills),
         skill_paths=";".join(s.skill_path for s in skills),
-        scanned_at_utc=utc_now_iso()
+        scanned_at_utc=utc_now_iso(),
+        seart_data=seart_data,
     )
+
+    # Set ACF presence flags (1/0) on the dataset row.
+    for _acf_path, _acf_item, _acf_attr in acf_found:
+        setattr(dataset_row, _acf_attr, 1)
     
     for s in skills:
         dataset_row.total_files_in_skills += s.metrics.total_files
@@ -309,11 +359,32 @@ def process_repo(
         dataset_row.scripts_file_count += s.metrics.scripts_count
         dataset_row.other_file_count += s.metrics.other_count
         
-    # Download files
+    # Download SKILL.md files
     all_dl_errors = []
     for s in skills:
         dl_errs = download_skill_files(gh, repo, s, raw_data_dir)
         all_dl_errors.extend(dl_errs)
+
+    # Download ACF files into raw_data/{repo_safe}/ACF/
+    if acf_found:
+        acf_dir = os.path.join(raw_data_dir, repo_safe, "ACF")
+        os.makedirs(acf_dir, exist_ok=True)
+        for acf_path, acf_item, _ in acf_found:
+            sha = acf_item.get("sha", "")
+            filename = os.path.basename(acf_path)
+            local_path = os.path.join(acf_dir, filename)
+            if os.path.exists(local_path) and os.path.getsize(local_path) > 0:
+                continue
+            if sha:
+                content, err = download_blob(gh, repo, sha)
+                if content is not None:
+                    try:
+                        with open(local_path, "wb") as out_f:
+                            out_f.write(content)
+                    except Exception as e:
+                        all_dl_errors.append(f"ACF: failed to write {filename}: {e}")
+                else:
+                    all_dl_errors.append(f"ACF: failed to download {acf_path} (sha {sha}): {err}")
         
     # Write metadata.json
     metadata = {
@@ -336,6 +407,11 @@ def process_repo(
             }
             for s in skills
         ],
+        "has_CLAUDE": dataset_row.has_CLAUDE,
+        "has_AGENTS": dataset_row.has_AGENTS,
+        "has_COPILOT": dataset_row.has_COPILOT,
+        "acf_files": [p for p, _, _ in acf_found],
+        "seart": seart_data,
         "generated_at_utc": dataset_row.scanned_at_utc,
         "errors": all_dl_errors
     }
@@ -368,14 +444,17 @@ def write_dataset_header(out_csv: str) -> None:
         return
     os.makedirs(os.path.dirname(out_csv) or ".", exist_ok=True)
     with open(out_csv, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=[f.name for f in dataclasses.fields(RepoDatasetRow)])
+        writer = csv.DictWriter(f, fieldnames=OUTPUT_COLUMNS)
         writer.writeheader()
 
 
 def append_dataset_row(out_csv: str, r: RepoDatasetRow) -> None:
     with open(out_csv, "a", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=[f.name for f in dataclasses.fields(RepoDatasetRow)])
-        writer.writerow(dataclasses.asdict(r))
+        writer = csv.DictWriter(f, fieldnames=OUTPUT_COLUMNS)
+        d = dataclasses.asdict(r)
+        seart = d.pop("seart_data", {})
+        d.update(seart)
+        writer.writerow(d)
 
 
 def load_already_processed(out_csv: str) -> Set[str]:

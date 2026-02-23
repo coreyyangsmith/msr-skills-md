@@ -45,6 +45,17 @@ log = logging.getLogger(__name__)
 
 REPO_RE = re.compile(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$")
 
+# All columns present in a SEART CSV export (order matches the export header).
+SEART_COLUMNS: List[str] = [
+    "id", "name", "isFork", "commits", "branches", "releases", "forks",
+    "mainLanguage", "defaultBranch", "license", "homepage", "watchers",
+    "stargazers", "contributors", "size", "createdAt", "pushedAt", "updatedAt",
+    "totalIssues", "openIssues", "totalPullRequests", "openPullRequests",
+    "blankLines", "codeLines", "commentLines", "metrics", "lastCommit",
+    "lastCommitSHA", "hasWiki", "isArchived", "isDisabled", "isLocked",
+    "languages", "labels", "topics",
+]
+
 
 # ----------------------------
 # Data structures
@@ -54,6 +65,9 @@ REPO_RE = re.compile(r"^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$")
 class RepoSource:
     repo: str               # owner/repo
     source_csv: str         # filename that contributed this repo (or MULTIPLE)
+    seart_data: Dict[str, str] = dataclasses.field(
+        default_factory=dict, hash=False, compare=False
+    )
 
 
 @dataclasses.dataclass
@@ -76,6 +90,10 @@ class ScanResult:
     stars: str
     fork: str
     archived: str
+    has_CLAUDE: str = "0"
+    has_AGENTS: str = "0"
+    has_COPILOT: str = "0"
+    seart_data: Dict[str, str] = dataclasses.field(default_factory=dict)
 
 
 # ----------------------------
@@ -171,6 +189,8 @@ def ingest_seart_csvs(seart_dir: str) -> Tuple[List[RepoSource], List[str]]:
         return ([], [f"No CSV files found under: {seart_dir}"])
 
     repo_to_sources: Dict[str, Set[str]] = {}
+    # Store the first-seen SEART row for each repo so we can carry it through.
+    repo_to_seart_data: Dict[str, Dict[str, str]] = {}
     errors: List[str] = []
 
     for path in csv_paths:
@@ -189,6 +209,10 @@ def ingest_seart_csvs(seart_dir: str) -> Tuple[List[RepoSource], List[str]]:
                         continue
                     extracted_any = True
                     repo_to_sources.setdefault(repo, set()).add(fname)
+                    if repo not in repo_to_seart_data:
+                        repo_to_seart_data[repo] = {
+                            col: (row.get(col) or "") for col in SEART_COLUMNS
+                        }
 
                 if not extracted_any:
                     errors.append(f"{fname}: no repos extracted (unsupported schema or empty rows)")
@@ -198,7 +222,11 @@ def ingest_seart_csvs(seart_dir: str) -> Tuple[List[RepoSource], List[str]]:
     repos: List[RepoSource] = []
     for repo, sources in sorted(repo_to_sources.items()):
         src = "MULTIPLE" if len(sources) > 1 else next(iter(sources))
-        repos.append(RepoSource(repo=repo, source_csv=src))
+        repos.append(RepoSource(
+            repo=repo,
+            source_csv=src,
+            seart_data=repo_to_seart_data.get(repo, {}),
+        ))
 
     return (repos, errors)
 
@@ -309,6 +337,7 @@ def scan_one_repo(
         stars="",
         fork="",
         archived="",
+        seart_data=dict(repo_src.seart_data),
     )
 
     meta, status, err = get_repo_metadata(gh, repo_src.repo)
@@ -349,6 +378,29 @@ def scan_one_repo(
         res.error_type = "filtered"
         res.error_message = "archived"
         return res
+
+    # Check for ACF files: CLAUDE.md, AGENTS.md, copilot-instructions.md.
+    # Tier A: Contents API at the canonical path for a fast first hit.
+    # Tier B: Code search for case-insensitive, full-repo coverage (when enabled).
+    _acf_checks = [
+        ("/CLAUDE.md", "CLAUDE.md", "has_CLAUDE"),
+        ("/AGENTS.md", "AGENTS.md", "has_AGENTS"),
+        ("/.github/copilot-instructions.md", "copilot-instructions.md", "has_COPILOT"),
+    ]
+    for _root_path, _filename, _attr in _acf_checks:
+        _ok, _, _st, _e = try_contents_path(gh, repo_src.repo, _root_path, default_branch)
+        if _st == 401:
+            res.error_type = "auth"
+            res.error_message = _e
+            return res
+        if not _ok and enable_code_search:
+            _cs_found, _, _cs_st, _cs_e = try_code_search(gh, repo_src.repo, _filename)
+            if _cs_st == 401:
+                res.error_type = "auth"
+                res.error_message = _cs_e
+                return res
+            _ok = _cs_found
+        setattr(res, _attr, "1" if _ok else "0")
 
     # Tier A: Contents API checks for explicit paths
     for p in search_paths:
@@ -412,7 +464,7 @@ def scan_one_repo(
 # Resume, writing, shortlist
 # ----------------------------
 
-OUTPUT_COLUMNS = [
+_SCAN_COLUMNS = [
     "repo",
     "source_csv",
     "found",
@@ -431,7 +483,13 @@ OUTPUT_COLUMNS = [
     "stars",
     "fork",
     "archived",
+    "has_CLAUDE",
+    "has_AGENTS",
+    "has_COPILOT",
 ]
+
+# Full output schema: scan columns first, then every original SEART column.
+OUTPUT_COLUMNS = _SCAN_COLUMNS + SEART_COLUMNS
 
 
 def load_already_scanned(out_csv: str) -> Set[str]:
@@ -462,7 +520,10 @@ def write_header_if_needed(out_csv: str) -> None:
 def append_result(out_csv: str, r: ScanResult) -> None:
     with open(out_csv, "a", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=OUTPUT_COLUMNS)
-        writer.writerow(dataclasses.asdict(r))
+        d = dataclasses.asdict(r)
+        seart = d.pop("seart_data", {})
+        d.update(seart)
+        writer.writerow(d)
 
 
 def write_shortlist(results_csv: str, shortlist_csv: str) -> None:
@@ -775,6 +836,7 @@ def main(argv: List[str]) -> int:
                             stars="",
                             fork="",
                             archived="",
+                            seart_data={},
                         )
 
                     category = result_category(r)
