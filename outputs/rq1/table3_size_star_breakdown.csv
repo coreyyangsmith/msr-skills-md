@@ -1,9 +1,0 @@
-tier_type,tier,total,found,prevalence_pct
-stars,<100,0,0,0.0
-stars,100–499,128,4,3.12
-stars,500–4999,49,3,6.12
-stars,≥5000,8,1,12.5
-code_lines,Small (<1K),9,0,0.0
-code_lines,Medium (1K–10K),87,3,3.45
-code_lines,Large (10K–100K),62,5,8.06
-code_lines,Very Large (>100K),27,0,0.0

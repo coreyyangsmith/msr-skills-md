@@ -20,7 +20,7 @@ from typing import Optional, Tuple
 
 import requests
 
-from .token_pool import RateLimitExhaustedError, TokenBucket, TokenPool
+from .token_pool import RateLimitExhaustedError, SearchThrottle, TokenBucket, TokenPool
 
 log = logging.getLogger(__name__)
 
@@ -42,9 +42,14 @@ class GitHubClient:
         self,
         pool: TokenPool,
         base_url: str = "https://api.github.com",
+        search_throttle: Optional[SearchThrottle] = None,
     ) -> None:
         self.pool = pool
         self.base_url = base_url.rstrip("/")
+        # One SearchThrottle per client, shared across all threads.
+        # Created automatically if not supplied; callers may inject a custom
+        # instance (e.g. shared across multiple GitHubClient instances).
+        self._search_throttle = search_throttle or SearchThrottle()
         self.session = requests.Session()
         self.session.headers.update({
             "Accept": "application/vnd.github+json",
@@ -59,6 +64,7 @@ class GitHubClient:
         params: Optional[dict] = None,
         max_retries: int = 5,
         timeout_s: int = 30,
+        is_search: bool = False,
     ) -> Tuple[int, dict, str]:
         """
         Execute a GitHub API request and return ``(status, json_body, error_msg)``.
@@ -70,6 +76,13 @@ class GitHubClient:
 
         Transient server errors (5xx) and network failures use exponential
         backoff up to ``max_retries`` attempts.
+
+        Pass ``is_search=True`` for Code Search API calls
+        (``GET /search/code``).  The ``SearchThrottle`` will then proactively
+        block until the per-token 10 req/min sliding window has capacity,
+        preventing wasted 403s from concurrent workers racing past the limit
+        simultaneously.  Note: ``/search/code`` is limited to 10 req/min per
+        token (separate from the 30 req/min for other search endpoints).
         """
         url = f"{self.base_url}{path}"
         backoff = 2.0
@@ -97,6 +110,10 @@ class GitHubClient:
             if bucket is not None:
                 extra_headers["Authorization"] = f"Bearer {bucket.token}"
 
+            # Proactively throttle search requests before they hit the wire.
+            if is_search and bucket is not None:
+                self._search_throttle.wait_if_needed(bucket.token)
+
             try:
                 resp = self.session.request(
                     method,
@@ -118,7 +135,7 @@ class GitHubClient:
             status = resp.status_code
 
             # Always update the pool with the latest rate-limit headers.
-            self.pool.update(bucket, dict(resp.headers))
+            self.pool.update(bucket, dict(resp.headers), is_search=is_search)
 
             # Success
             if 200 <= status < 300:

@@ -5,10 +5,12 @@ find_skills_md.py
 Scan GitHub repositories listed in a folder of SEART CSVs for a file named SKILL.md
 anywhere in the repository tree.
 
-Scan strategy (both tiers run by default):
-  Tier A – GitHub Contents API: exact path check at the repo root for a fast first hit.
-  Tier B – GitHub Code Search API: full-repo filename search that finds SKILL.md in any
-            subdirectory. On by default; suppress with --disable-code-search.
+Scan strategy:
+  One call per repo – GitHub Code Search API: full-repo filename search.
+  ACF files (CLAUDE.md, AGENTS.md, copilot-instructions.md) are checked via the
+  Contents API only for repositories where SKILL.md is confirmed found.
+  Repo metadata (branch, stars, fork, archived) is read from SEART CSV data —
+  no separate metadata API call is made.
 
 Output: one comprehensive CSV (for resume) plus three category-split CSVs written
 automatically next to it:
@@ -252,12 +254,9 @@ def classify_error(status: int, message: str) -> str:
     return "other"
 
 
-def get_repo_metadata(gh: GitHubClient, repo: str) -> Tuple[Optional[dict], int, str]:
-    owner, name = repo.split("/", 1)
-    status, data, err = gh.request_json("GET", f"/repos/{owner}/{name}")
-    if status == 200 and isinstance(data, dict):
-        return (data, status, "")
-    return (None, status, err)
+def _bool_seart(val: str) -> bool:
+    """Interpret a SEART boolean string ('true'/'false'/'1'/'0') as a Python bool."""
+    return str(val).strip().lower() in ("true", "1", "yes")
 
 
 def try_contents_path(
@@ -288,7 +287,7 @@ def try_code_search(
 ) -> Tuple[bool, Optional[dict], int, str]:
     # Search API: q=repo:owner/repo filename:SKILL.md
     q = f"repo:{repo} filename:{filename}"
-    status, data, err = gh.request_json("GET", "/search/code", params={"q": q, "per_page": 10})
+    status, data, err = gh.request_json("GET", "/search/code", params={"q": q, "per_page": 10}, is_search=True)
     if status != 200 or not isinstance(data, dict):
         return (False, None, status, err)
 
@@ -309,154 +308,101 @@ def scan_one_repo(
     gh: GitHubClient,
     repo_src: RepoSource,
     match_name: str,
-    search_paths: List[str],
-    enable_code_search: bool,
     min_stars: int,
     allow_forks: bool,
     allow_archived: bool,
 ) -> ScanResult:
     scanned_at = utc_now_iso()
 
-    # Defaults for output columns
+    # Pull repo attributes from SEART data — no metadata API call needed.
+    sd = repo_src.seart_data
+    default_branch = sd.get("defaultBranch") or ""
+    stars_raw = sd.get("stargazers") or ""
+    fork_raw = sd.get("isFork") or ""
+    archived_raw = sd.get("isArchived") or ""
+
     res = ScanResult(
         repo=repo_src.repo,
         source_csv=repo_src.source_csv,
         found=False,
         match_name=match_name,
         match_path="",
-        default_branch="",
-        ref_scanned="",
+        default_branch=default_branch,
+        ref_scanned=default_branch or "HEAD",
         match_url="",
         match_sha="",
         match_size_bytes="",
-        scan_method="",
+        scan_method="code_search",
         http_status="",
         error_type="none",
         error_message="",
         scanned_at_utc=scanned_at,
-        stars="",
-        fork="",
-        archived="",
-        seart_data=dict(repo_src.seart_data),
+        stars=stars_raw,
+        fork=fork_raw,
+        archived=archived_raw,
+        seart_data=dict(sd),
     )
 
-    meta, status, err = get_repo_metadata(gh, repo_src.repo)
-    res.http_status = str(status) if status else "0"
+    # Apply filters when SEART data is present.
+    if stars_raw:
+        try:
+            if int(stars_raw) < min_stars:
+                res.error_type = "filtered"
+                res.error_message = f"stars<{min_stars}"
+                return res
+        except ValueError:
+            pass
 
-    if not meta:
-        res.error_type = classify_error(status, err)
-        res.error_message = err
-        return res
-
-    default_branch = meta.get("default_branch") or ""
-    stars = meta.get("stargazers_count")
-    is_fork = meta.get("fork")
-    is_archived = meta.get("archived")
-
-    res.default_branch = str(default_branch)
-    res.ref_scanned = str(default_branch)
-    res.stars = "" if stars is None else str(stars)
-    res.fork = "" if is_fork is None else str(bool(is_fork)).lower()
-    res.archived = "" if is_archived is None else str(bool(is_archived)).lower()
-    res.scan_method = "contents_api"
-
-    # Apply filters
-    try:
-        if stars is not None and int(stars) < int(min_stars):
-            res.error_type = "filtered"
-            res.error_message = f"stars<{min_stars}"
-            return res
-    except Exception:
-        pass
-
-    if not allow_forks and bool(is_fork):
+    if fork_raw and not allow_forks and _bool_seart(fork_raw):
         res.error_type = "filtered"
         res.error_message = "fork"
         return res
 
-    if not allow_archived and bool(is_archived):
+    if archived_raw and not allow_archived and _bool_seart(archived_raw):
         res.error_type = "filtered"
         res.error_message = "archived"
         return res
 
-    # Check for ACF files: CLAUDE.md, AGENTS.md, copilot-instructions.md.
-    # Tier A: Contents API at the canonical path for a fast first hit.
-    # Tier B: Code search for case-insensitive, full-repo coverage (when enabled).
+    # Single code-search call to detect SKILL.md anywhere in the repo tree.
+    found, item, st, e = try_code_search(gh, repo_src.repo, match_name)
+    res.http_status = str(st) if st else ""
+
+    if st == 401:
+        res.error_type = "auth"
+        res.error_message = e
+        return res
+
+    if not (found and item):
+        # Not found — done; ACF checks are skipped.
+        res.found = False
+        res.error_type = "none"
+        res.error_message = ""
+        return res
+
+    # SKILL.md found — record match details.
+    res.found = True
+    res.match_path = "/" + (item.get("path") or "").lstrip("/")
+    res.match_url = str(item.get("html_url") or "")
+    res.match_sha = str(item.get("sha") or "")
+    res.error_type = "none"
+    res.error_message = ""
+
+    # ACF checks — Contents API only, run only for repos that have SKILL.md.
+    # Using the SEART-provided branch, or "HEAD" if not available.
+    ref = default_branch or "HEAD"
     _acf_checks = [
-        ("/CLAUDE.md", "CLAUDE.md", "has_CLAUDE"),
-        ("/AGENTS.md", "AGENTS.md", "has_AGENTS"),
-        ("/.github/copilot-instructions.md", "copilot-instructions.md", "has_COPILOT"),
+        ("/CLAUDE.md",                       "has_CLAUDE"),
+        ("/AGENTS.md",                       "has_AGENTS"),
+        ("/.github/copilot-instructions.md", "has_COPILOT"),
     ]
-    for _root_path, _filename, _attr in _acf_checks:
-        _ok, _, _st, _e = try_contents_path(gh, repo_src.repo, _root_path, default_branch)
+    for _path, _attr in _acf_checks:
+        _ok, _, _st, _e = try_contents_path(gh, repo_src.repo, _path, ref)
         if _st == 401:
             res.error_type = "auth"
             res.error_message = _e
             return res
-        if not _ok and enable_code_search:
-            _cs_found, _, _cs_st, _cs_e = try_code_search(gh, repo_src.repo, _filename)
-            if _cs_st == 401:
-                res.error_type = "auth"
-                res.error_message = _cs_e
-                return res
-            _ok = _cs_found
         setattr(res, _attr, "1" if _ok else "0")
 
-    # Tier A: Contents API checks for explicit paths
-    for p in search_paths:
-        ok, data, st, e = try_contents_path(gh, repo_src.repo, p, default_branch)
-        res.http_status = str(st) if st else res.http_status
-
-        if ok:
-            res.found = True
-            res.match_path = "/" + (data.get("path") or p.lstrip("/"))
-            res.match_sha = str(data.get("sha") or "")
-            res.match_size_bytes = str(data.get("size") or "")
-            res.match_url = str(data.get("html_url") or "")
-            res.error_type = "none"
-            res.error_message = ""
-            res.scan_method = "contents_api"
-            return res
-
-        # 401 is a permanent auth failure — stop immediately.
-        # 403/429 will never reach here: request_json retries them indefinitely
-        # (sleeping until the token resets) so they always resolve before returning.
-        if st == 401:
-            res.error_type = "auth"
-            res.error_message = e
-            return res
-
-    # Tier B: Code search finds SKILL.md anywhere in the repository tree (default on).
-    if enable_code_search:
-        found, item, st, e = try_code_search(gh, repo_src.repo, match_name)
-        res.http_status = str(st) if st else res.http_status
-
-        if found and item:
-            res.found = True
-            res.scan_method = "code_search"
-
-            # Search item fields
-            path = item.get("path") or ""
-            html_url = item.get("html_url") or ""
-            sha = item.get("sha") or ""
-
-            res.match_path = "/" + path.lstrip("/")
-            res.match_url = str(html_url)
-            res.match_sha = str(sha)
-            res.error_type = "none"
-            res.error_message = ""
-            return res
-
-        # 401 is the only permanent early stop (see Tier A comment above).
-        if st == 401:
-            res.error_type = "auth"
-            res.error_message = e
-            return res
-
-    # Not found
-    res.found = False
-    res.error_type = "none"
-    res.error_message = ""
     return res
 
 
@@ -636,9 +582,10 @@ def check_rate_limit(gh: GitHubClient) -> dict:
 def parse_args(argv: List[str]) -> argparse.Namespace:
     p = argparse.ArgumentParser(
         description=(
-            "Scan repos from SEART CSVs for SKILL.md anywhere in the repository. "
-            "Tier A (Contents API) checks the exact root path for a fast first hit. "
-            "Tier B (Code Search API) searches the full repository tree and runs by default. "
+            "Scan repos from SEART CSVs for SKILL.md using the GitHub Code Search API. "
+            "One search call is made per repo; ACF files are checked only for repos where "
+            "SKILL.md is found. Repo metadata is read from SEART CSV data — no separate "
+            "metadata API call is needed. "
             "Three category CSVs (_found, _not_found, _errors) are written automatically "
             "alongside --out-csv."
         )
@@ -647,25 +594,10 @@ def parse_args(argv: List[str]) -> argparse.Namespace:
     p.add_argument("--out-csv", required=True, help="Output results CSV path (all rows, used for resume)")
     p.add_argument("--shortlist-csv", default="", help="Optional shortlist CSV path (found=true only; superseded by *_found.csv)")
 
-    p.add_argument("--match-name", default="SKILL.md", help="Filename to search for")
-    p.add_argument(
-        "--search-path",
-        action="append",
-        default=[],
-        help=(
-            "Exact path to check with the Contents API (Tier A); can be repeated. "
-            "Defaults to /SKILL.md (repo root). "
-            "Tier B (code search) always runs unless --disable-code-search is set."
-        ),
-    )
-    p.add_argument(
-        "--disable-code-search",
-        action="store_true",
-        help="Turn off the GitHub code search API (Tier B). Only the Contents API root check runs.",
-    )
-    p.add_argument("--min-stars", type=int, default=0, help="Filter: require at least N stars")
-    p.add_argument("--disallow-forks", action="store_true", help="Filter: skip forks")
-    p.add_argument("--disallow-archived", action="store_true", help="Filter: skip archived repos")
+    p.add_argument("--match-name", default="SKILL.md", help="Filename to search for (default: SKILL.md)")
+    p.add_argument("--min-stars", type=int, default=0, help="Filter: require at least N stars (from SEART data)")
+    p.add_argument("--disallow-forks", action="store_true", help="Filter: skip forks (from SEART data)")
+    p.add_argument("--disallow-archived", action="store_true", help="Filter: skip archived repos (from SEART data)")
 
     p.add_argument("--max-repos", type=int, default=0, help="Limit repos scanned (0 means no limit)")
     p.add_argument("--resume", action="store_true", help="Skip repos already in out-csv")
@@ -682,7 +614,7 @@ def parse_args(argv: List[str]) -> argparse.Namespace:
         help=(
             "Comma-separated GitHub tokens for parallel rate-limit pools. "
             "Example: --github-tokens ghp_token1,ghp_token2. "
-            "Overrides GH_TOKENS / GH_TOKEN env vars."
+            "Overrides GH_TOKENS env var."
         ),
     )
     p.add_argument(
@@ -719,12 +651,6 @@ def main(argv: List[str]) -> int:
     # Check and log current rate limit before starting.
     resources = check_rate_limit(gh)
 
-    # Code search is on by default; suppress with --disable-code-search.
-    enable_code_search = not args.disable_code_search
-
-    # Default search path if none provided.
-    search_paths = args.search_path if args.search_path else ["/SKILL.md"]
-
     log.info("Ingesting SEART CSVs from: %s", args.seart_dir)
     repos, ingest_errors = ingest_seart_csvs(args.seart_dir)
     for e in ingest_errors:
@@ -760,19 +686,19 @@ def main(argv: List[str]) -> int:
             write_shortlist(args.out_csv, args.shortlist_csv)
         return 0
 
-    # Estimate requests: 1 metadata + len(paths) contents + 1 code search (if on).
-    reqs_needed = total * (1 + len(search_paths) + (1 if enable_code_search else 0))
-    core_remaining = resources.get("core", {}).get("remaining", 0) if resources else 0
-    if core_remaining and reqs_needed > core_remaining:
+    # Estimate search API requests: 1 per repo (plus up to 3 ACF calls for found repos,
+    # which use the core API and are negligible at ~2% hit rate).
+    search_remaining = resources.get("search", {}).get("remaining", 0) if resources else 0
+    if search_remaining and total > search_remaining:
         log.warning(
-            "Estimated API requests needed (%d) exceeds core rate limit remaining (%d). "
-            "Consider --max-repos to scan in batches, or wait for rate limit reset.",
-            reqs_needed, core_remaining,
+            "Estimated search requests needed (%d) exceeds search rate limit remaining (%d). "
+            "The pool will sleep until quota resets and continue automatically.",
+            total, search_remaining,
         )
 
     log.info(
-        "Scanning %d repositories | concurrency=%d | tier_a_paths=%s | tier_b_code_search=%s",
-        total, args.concurrency, search_paths, enable_code_search,
+        "Scanning %d repositories | concurrency=%d | method=code_search | match=%s",
+        total, args.concurrency, args.match_name,
     )
     log.info(
         "Output CSVs: all=%s | found=%s | not_found=%s | errors=%s",
@@ -794,8 +720,6 @@ def main(argv: List[str]) -> int:
                 gh,
                 repo_src,
                 args.match_name,
-                search_paths,
-                enable_code_search,
                 int(args.min_stars),
                 allow_forks,
                 allow_archived,
