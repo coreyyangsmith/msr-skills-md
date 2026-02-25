@@ -1,6 +1,6 @@
 # msr-skills-md
 
-Mine GitHub repositories for `SKILL.md` files using SEART CSV exports. Given a folder of SEART-generated repository lists, the pipeline scans each repository via the GitHub Code Search API and writes a results CSV recording whether the target file was found, plus metadata about each repo.
+Mine GitHub repositories for `SKILL.md` files. Given a list of repositories (from SEART CSV exports or scraped directly from the GitHub API), the pipeline scans each repository via the GitHub Code Search API and writes a results CSV recording whether the target file was found, plus metadata about each repo.
 
 Designed for read-only, resumable, rate-limit-aware bulk scanning over large repository sets.
 
@@ -64,7 +64,35 @@ This creates a virtual environment and installs all dependencies from `uv.lock`.
 
 ## Quick start
 
-Place your SEART CSV exports in `data/seart_csvs/`, then run:
+### Option 1: Starting from SEART CSV exports
+
+Place your SEART CSV exports in `data/seart_csvs/`, then jump straight to **Step A** below.
+
+### Option 2: Starting from the GitHub API (no SEART required)
+
+Use `A_github_search.py` to build the initial repository list directly from the GitHub Search API. This produces a SEART-compatible CSV that feeds into the same pipeline:
+
+**Step 0 — Scrape repositories from GitHub:**
+
+```sh
+uv run python src/A_github_search.py \
+  --out-csv data/seart_csvs/github_search_results.csv \
+  --resume
+```
+
+uv run python src/A_github_search.py --out-csv data/seart_csvs/github_search_results.csv --resume
+
+Default criteria applied:
+- 10 or more stars
+- MIT, Apache 2.0, BSD-3-Clause, or BSD-2-Clause license
+- TypeScript, Python, C#, Go, C++, JavaScript, Java, C, or PHP
+- Pushed since 2025-10-16
+
+The output CSV is written to `data/seart_csvs/github_search_results.csv` and can be used immediately as the `--seart-dir` input for Step A.
+
+Average runtime: ~360 API calls across 36 language/license combinations, at 30 req/min per token — approximately 12 minutes with one token.
+
+---
 
 **Step A — Scan for SKILL.md:**
 
@@ -94,6 +122,8 @@ uv run python src/B_generate_dataset.py \
 
 uv run python src/B_generate_dataset.py --found-csv outputs/skill_md_scan_results_found.csv --out-csv outputs/full_skills_instances.csv --raw-data-dir outputs/raw_data --resume
 
+Average runtime is 14 repos/minute (not sure if rate limits get hit or network througput is the limiting factor)
+
 **Step C — Run RQ1 prevalence and adoption analysis:**
 
 ```sh
@@ -108,6 +138,30 @@ uv run python src/rq1/C_analyze_metadata.py \
 ---
 
 ## CLI reference
+
+### `A_github_search.py`
+
+Scrapes GitHub repositories via `GET /search/repositories` and writes a SEART-compatible CSV.
+
+| Flag | Default | Description |
+|---|---|---|
+| `--out-csv PATH` | `data/seart_csvs/github_search_results.csv` | Output CSV path |
+| `--min-stars N` | `10` | Minimum star count |
+| `--pushed-since DATE` | `2025-10-16` | Only repos pushed on or after `YYYY-MM-DD` |
+| `--languages LANG ...` | TypeScript Python C# Go C++ JavaScript Java C PHP | Languages to query (space-separated) |
+| `--licenses LICENSE ...` | `mit apache-2.0 bsd-3-clause bsd-2-clause` | License SPDX keys (space-separated) |
+| `--resume` | off | Append to existing `--out-csv`, skipping already-written repos |
+| `--github-token TOKEN` | *(env)* | Single GitHub PAT; overrides env vars |
+| `--github-tokens TOKENS` | *(env)* | Comma-separated GitHub PATs for multi-token rotation |
+| `--log-level LEVEL` | `INFO` | Logging verbosity (`DEBUG`, `INFO`, `WARNING`, `ERROR`) |
+
+**Rate limit note:** `/search/repositories` allows **30 requests/minute** per authenticated token (separate from the 10 req/min `/search/code` limit). With `per_page=100` and up to 10 pages per query, 36 combinations require ~360 requests — about 12 minutes with one token.
+
+**Per-combo CSVs:** In addition to the combined `--out-csv`, one CSV per (language, license) pair is written alongside it using the naming convention `{base}_{language}_{license}.csv` (e.g. `github_search_results_typescript_mit.csv`). These files contain the same SEART-compatible schema and can be used as independent inputs to `A_extract_skill_repos.py`.
+
+**1,000-result cap:** Each query returns at most 1,000 results. When a (language, license) pair exceeds this, the script automatically bisects the star range in half and recurses into each half. Bisection continues until every sub-range returns < 1,000 results, down to single star-count values if necessary. The first-page API call doubles as a total-count probe, so no extra requests are wasted.
+
+---
 
 ### `A_extract_skill_repos.py`
 
@@ -218,6 +272,7 @@ Rate limiting is handled automatically by the `github_client` module:
 
 ```
 src/
+  A_github_search.py         # Step 0 (optional): scrape repo list from GitHub API
   A_extract_skill_repos.py   # Step A: scan repos for SKILL.md via code search
   B_generate_dataset.py      # Step B: download skill folders, compute file metrics
   rq1/

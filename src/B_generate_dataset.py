@@ -61,19 +61,24 @@ class SkillInstance:
 
 
 @dataclasses.dataclass
-class RepoDatasetRow:
+class SkillInstanceRow:
+    """One row per SKILL.md instance found in a repository."""
     repo: str
     default_branch: str
     stars: str
     fork: str
     archived: str
     html_url: str
-    skill_count: int = 0
-    skill_paths: str = ""
-    total_files_in_skills: int = 0
+    skill_path: str = ""
+    skill_parent_folder: str = ""
+    total_files: int = 0
+    has_references: int = 0
     references_file_count: int = 0
+    has_assets: int = 0
     assets_file_count: int = 0
+    has_scripts: int = 0
     scripts_file_count: int = 0
+    has_other: int = 0
     other_file_count: int = 0
     scanned_at_utc: str = ""
     has_CLAUDE: int = 0
@@ -85,7 +90,7 @@ class RepoDatasetRow:
 
 # Ordered list of dataset-specific output columns (everything except seart_data).
 _DATASET_COLUMNS: List[str] = [
-    f.name for f in dataclasses.fields(RepoDatasetRow) if f.name != "seart_data"
+    f.name for f in dataclasses.fields(SkillInstanceRow) if f.name != "seart_data"
 ]
 
 # Full output schema: dataset columns first, then all SEART columns.
@@ -142,21 +147,21 @@ def find_skill_instances(tree_items: List[Dict[str, Any]], match_name: str) -> L
         parent = os.path.dirname(sp)
         # Empty parent means it's in the root, we'll represent root as ""
         
-        # Collect all blobs under this parent
-        # If parent is "", it matches everything, but usually a skill in root means
-        # the whole repo is the skill. To be safe and avoid downloading the entire repo
-        # if SKILL.md is at root, we still download everything, but we should be mindful.
-        # Wait, the prompt says "Wherever the path is of the target SKILL.md file, the immediate parent folder (entire folder, and all its contents) should be downloaded."
-        
         prefix = parent + "/" if parent else ""
         
+        _SKILL_SUBDIRS = {"references", "assets", "scripts"}
+
         files_in_skill = []
         for item in tree_items:
             if item.get("type") == "blob":
                 item_path = item.get("path", "")
                 if parent == "":
-                    # if parent is root, all files are in it
-                    files_in_skill.append(item)
+                    # SKILL.md is at the repo root. Downloading the entire repo
+                    # tree blob-by-blob would stall on large repos, so we limit
+                    # to direct root siblings and the standard skill subdirs.
+                    parts = item_path.split("/")
+                    if len(parts) == 1 or (len(parts) >= 2 and parts[0] in _SKILL_SUBDIRS):
+                        files_in_skill.append(item)
                 elif item_path.startswith(prefix):
                     files_in_skill.append(item)
         
@@ -278,40 +283,34 @@ def download_skill_files(gh: GitHubClient, repo: str, skill: SkillInstance, raw_
 
 
 def process_repo(
-    gh: GitHubClient, 
-    row: Dict[str, str], 
-    raw_data_dir: str, 
-    match_name: str
-) -> Tuple[Optional[RepoDatasetRow], List[str]]:
+    gh: GitHubClient,
+    row: Dict[str, str],
+    raw_data_dir: str,
+    match_name: str,
+) -> Tuple[List[SkillInstanceRow], List[str]]:
     """
     Process a single repository.
-    Returns (RepoDatasetRow, list_of_errors).
+    Returns (list of one SkillInstanceRow per SKILL.md found, list_of_errors).
     """
     repo = row["repo"]
     branch = row.get("default_branch") or "main"
-    
+
     repo_safe = repo.replace("/", "__")
     metadata_path = os.path.join(raw_data_dir, repo_safe, "metadata.json")
-    
+
     # Check if already processed via metadata
     if os.path.exists(metadata_path):
         try:
             with open(metadata_path, "r", encoding="utf-8") as f:
                 json.load(f)  # ensure valid json
-                
-            # Reconstruct row from metadata
-            # This allows resume to also yield the row for the CSV if needed
-            # (Though our main loop writes CSV incrementally, we might just return None 
-            # if we assume it's already in the CSV).
-            # To be safe and simple, we'll return None so we just skip it.
-            return None, []
+            return [], []
         except Exception:
-            pass # corrupted metadata, re-process
-            
+            pass  # corrupted metadata, re-process
+
     tree_items, tree_err = fetch_repo_tree(gh, repo, branch)
     if tree_err:
-        return None, [f"Tree fetch failed: {tree_err}"]
-        
+        return [], [f"Tree fetch failed: {tree_err}"]
+
     skills = find_skill_instances(tree_items, match_name)
 
     # Detect ACF files anywhere in the repo using case-insensitive basename matching.
@@ -331,34 +330,46 @@ def process_repo(
                 acf_found.append((item_path, item, attr))
                 _acf_matched_attrs.add(attr)
 
+    # Repo-level ACF flags shared across all skill rows for this repo.
+    acf_flags: Dict[str, int] = {attr: 0 for attr in _ACF_TARGETS.values()}
+    for _, _, attr in acf_found:
+        acf_flags[attr] = 1
+
     # Carry through every original SEART column from the input row.
     seart_data = {col: (row.get(col) or "") for col in SEART_COLUMNS}
 
-    # Create the dataset row
-    dataset_row = RepoDatasetRow(
-        repo=repo,
-        default_branch=branch,
-        stars=row.get("stars", ""),
-        fork=row.get("fork", ""),
-        archived=row.get("archived", ""),
-        html_url=f"https://github.com/{repo}",
-        skill_count=len(skills),
-        skill_paths=";".join(s.skill_path for s in skills),
-        scanned_at_utc=utc_now_iso(),
-        seart_data=seart_data,
-    )
+    stars = row.get("stars", "")
+    scanned_at = utc_now_iso()
 
-    # Set ACF presence flags (1/0) on the dataset row.
-    for _acf_path, _acf_item, _acf_attr in acf_found:
-        setattr(dataset_row, _acf_attr, 1)
-    
+    # Build one output row per skill instance.
+    skill_rows: List[SkillInstanceRow] = []
     for s in skills:
-        dataset_row.total_files_in_skills += s.metrics.total_files
-        dataset_row.references_file_count += s.metrics.references_count
-        dataset_row.assets_file_count += s.metrics.assets_count
-        dataset_row.scripts_file_count += s.metrics.scripts_count
-        dataset_row.other_file_count += s.metrics.other_count
-        
+        m = s.metrics
+        skill_rows.append(SkillInstanceRow(
+            repo=repo,
+            default_branch=branch,
+            stars=stars,
+            fork=row.get("fork", ""),
+            archived=row.get("archived", ""),
+            html_url=f"https://github.com/{repo}",
+            skill_path=s.skill_path,
+            skill_parent_folder=s.parent_folder,
+            total_files=m.total_files,
+            has_references=1 if m.references_count else 0,
+            references_file_count=m.references_count,
+            has_assets=1 if m.assets_count else 0,
+            assets_file_count=m.assets_count,
+            has_scripts=1 if m.scripts_count else 0,
+            scripts_file_count=m.scripts_count,
+            has_other=1 if m.other_count else 0,
+            other_file_count=m.other_count,
+            scanned_at_utc=scanned_at,
+            has_CLAUDE=acf_flags["has_CLAUDE"],
+            has_AGENTS=acf_flags["has_AGENTS"],
+            has_COPILOT=acf_flags["has_COPILOT"],
+            seart_data=seart_data,
+        ))
+
     # Download SKILL.md files
     all_dl_errors = []
     for s in skills:
@@ -385,16 +396,16 @@ def process_repo(
                         all_dl_errors.append(f"ACF: failed to write {filename}: {e}")
                 else:
                     all_dl_errors.append(f"ACF: failed to download {acf_path} (sha {sha}): {err}")
-        
+
     # Write metadata.json
     metadata = {
         "repo": repo,
-        "html_url": dataset_row.html_url,
+        "html_url": f"https://github.com/{repo}",
         "default_branch": branch,
-        "stars": int(dataset_row.stars) if dataset_row.stars.isdigit() else 0,
-        "fork": dataset_row.fork.lower() == "true",
-        "archived": dataset_row.archived.lower() == "true",
-        "skill_count": dataset_row.skill_count,
+        "stars": int(stars) if stars.isdigit() else 0,
+        "fork": row.get("fork", "").lower() == "true",
+        "archived": row.get("archived", "").lower() == "true",
+        "skill_count": len(skills),
         "skills": [
             {
                 "skill_path": s.skill_path,
@@ -403,24 +414,24 @@ def process_repo(
                 "references_count": s.metrics.references_count,
                 "assets_count": s.metrics.assets_count,
                 "scripts_count": s.metrics.scripts_count,
-                "other_count": s.metrics.other_count
+                "other_count": s.metrics.other_count,
             }
             for s in skills
         ],
-        "has_CLAUDE": dataset_row.has_CLAUDE,
-        "has_AGENTS": dataset_row.has_AGENTS,
-        "has_COPILOT": dataset_row.has_COPILOT,
+        "has_CLAUDE": acf_flags["has_CLAUDE"],
+        "has_AGENTS": acf_flags["has_AGENTS"],
+        "has_COPILOT": acf_flags["has_COPILOT"],
         "acf_files": [p for p, _, _ in acf_found],
         "seart": seart_data,
-        "generated_at_utc": dataset_row.scanned_at_utc,
-        "errors": all_dl_errors
+        "generated_at_utc": scanned_at,
+        "errors": all_dl_errors,
     }
-    
+
     os.makedirs(os.path.dirname(metadata_path), exist_ok=True)
     with open(metadata_path, "w", encoding="utf-8") as f:
         json.dump(metadata, f, indent=2)
-        
-    return dataset_row, all_dl_errors
+
+    return skill_rows, all_dl_errors
 
 
 # ----------------------------
@@ -448,7 +459,7 @@ def write_dataset_header(out_csv: str) -> None:
         writer.writeheader()
 
 
-def append_dataset_row(out_csv: str, r: RepoDatasetRow) -> None:
+def append_dataset_row(out_csv: str, r: SkillInstanceRow) -> None:
     with open(out_csv, "a", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=OUTPUT_COLUMNS)
         d = dataclasses.asdict(r)
@@ -480,7 +491,7 @@ def parse_args(argv: List[str]) -> argparse.Namespace:
     p.add_argument("--raw-data-dir", required=True, help="Directory to save downloaded files (e.g. outputs/raw_data)")
     p.add_argument("--match-name", default="SKILL.md", help="Filename to match")
     p.add_argument("--resume", action="store_true", help="Skip repos already in out-csv or metadata.json")
-    p.add_argument("--concurrency", type=int, default=4, help="Worker threads")
+    p.add_argument("--concurrency", type=int, default=1, help="Worker threads")
     p.add_argument("--github-token", default="")
     p.add_argument("--github-tokens", default="")
     p.add_argument("--log-level", default="INFO", choices=["DEBUG", "INFO", "WARNING", "ERROR"])
@@ -522,43 +533,51 @@ def main(argv: List[str]) -> int:
     write_dataset_header(args.out_csv)
     
     processed_repos = load_already_processed(args.out_csv) if args.resume else set()
-    
+
+    # Deduplicate by repo — a found CSV can have multiple rows for the same repo
+    # (one per SKILL.md match). process_repo handles all instances in a single pass.
+    seen: Set[str] = set()
     to_process = []
     for r in repos:
-        if args.resume and r["repo"] in processed_repos:
+        repo_name = r["repo"]
+        if repo_name in seen:
+            continue
+        seen.add(repo_name)
+        if args.resume and repo_name in processed_repos:
             continue
         to_process.append(r)
-        
+
     if not to_process:
         log.info("All repos already processed.")
         return 0
-        
+
     log.info("Processing %d repositories (concurrency=%d)", len(to_process), args.concurrency)
-    
-    processed_count = 0
+
+    processed_count = 0   # skill instance rows written
     error_count = 0
-    
+
     try:
         from tqdm import tqdm
         from tqdm.contrib.logging import logging_redirect_tqdm
         has_tqdm = True
     except ImportError:
         has_tqdm = False
-        
+
     def worker(row):
+        log.info("Processing repo: %s", row["repo"])
         return process_repo(gh, row, args.raw_data_dir, args.match_name)
-        
+
     with ThreadPoolExecutor(max_workers=max(1, args.concurrency)) as ex:
         futures = {ex.submit(worker, row): row["repo"] for row in to_process}
-        
+
         if has_tqdm:
             with logging_redirect_tqdm(), tqdm(total=len(to_process), desc="Processing", unit="repo", file=sys.stderr) as pbar:
                 for fut in as_completed(futures):
                     repo = futures[fut]
                     try:
-                        row, errs = fut.result()
-                        if row is not None:
-                            append_dataset_row(args.out_csv, row)
+                        skill_rows, errs = fut.result()
+                        for skill_row in skill_rows:
+                            append_dataset_row(args.out_csv, skill_row)
                             processed_count += 1
                         if errs:
                             error_count += 1
@@ -567,15 +586,15 @@ def main(argv: List[str]) -> int:
                     except Exception as e:
                         error_count += 1
                         log.exception("[%s] Unexpected error: %s", repo, e)
-                        
+
                     pbar.update(1)
         else:
             for fut in as_completed(futures):
                 repo = futures[fut]
                 try:
-                    row, errs = fut.result()
-                    if row is not None:
-                        append_dataset_row(args.out_csv, row)
+                    skill_rows, errs = fut.result()
+                    for skill_row in skill_rows:
+                        append_dataset_row(args.out_csv, skill_row)
                         processed_count += 1
                     if errs:
                         error_count += 1
@@ -585,7 +604,7 @@ def main(argv: List[str]) -> int:
                     error_count += 1
                     log.exception("[%s] Unexpected error: %s", repo, e)
 
-    log.info("Done. Processed: %d, Errors: %d", processed_count, error_count)
+    log.info("Done. Skill rows written: %d, Repos with errors: %d", processed_count, error_count)
     return 0
 
 if __name__ == "__main__":
