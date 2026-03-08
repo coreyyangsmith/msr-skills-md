@@ -1,0 +1,8 @@
+# Blacklist of GitHub repositories to skip during scanning and dataset generation.
+# One entry per line in "owner/repo" format.
+# Blank lines and lines starting with "#" are ignored.
+#
+# Example:
+# octocat/Hello-World
+# some-org/some-repo
+openclaw/skills

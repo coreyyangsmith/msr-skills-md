@@ -4,8 +4,8 @@ C_analyze_metadata.py
 
 RQ1: Prevalence and adoption analysis of SKILL.md across open-source repositories.
 
-Reads the scan results CSV (from A_extract_skill_repos.py) and optionally the
-full_skills_instances CSV (from B_generate_dataset.py) to produce:
+Reads the scan results CSV (from B_extract_skill_repos.py) and optionally the
+full_skills_instances CSV (from C_generate_dataset.py) to produce:
   - Summary statistics tables (CSV)
   - Publication-quality figures (PNG/PDF/SVG)
 
@@ -16,6 +16,8 @@ Usage:
         --scan-csv outputs/skill_md_scan_results.csv \
         --instances-csv outputs/ss/full_skills_instances.csv \
         --out-dir outputs/rq1
+
+uv run python src/rq1/C_analyze_metadata.py --scan-csv outputs/skill_md_scan_results.csv --instances-csv outputs/ss/full_skills_instances.csv --out-dir outputs/rq1        
 """
 
 from __future__ import annotations
@@ -428,9 +430,8 @@ def analyze_acf_cooccurrence(df: pd.DataFrame, out_dir: str, fig_format: str, dp
     tbl.to_csv(os.path.join(out_dir, "table4_acf_cooccurrence.csv"), index=False)
 
     # --- Figure 3: Stacked bar chart of ACF presence ---
-    fig, axes = plt.subplots(1, 2, figsize=(13, 5))
+    fig3, ax0 = plt.subplots(figsize=(7, 5))
 
-    ax0 = axes[0]
     single_rows = [r for r in rows if "+" not in r["artifact"] and r["artifact"] != "All three"]
     labels = [r["artifact"] for r in single_rows]
     counts = [r["count"] for r in single_rows]
@@ -440,7 +441,7 @@ def analyze_acf_cooccurrence(df: pd.DataFrame, out_dir: str, fig_format: str, dp
     width = 0.5
     p1 = ax0.bar(x, counts, width, label="Has artifact", color=PALETTE_ACF[:len(labels)],
                  edgecolor="white")
-    p2 = ax0.bar(x, not_counts, width, bottom=counts, label="No artifact",
+    p2 = ax0.bar(x, not_counts, width, bottom=counts, label="No artifact",  # noqa: F841
                  color=PALETTE_NOT_FOUND, edgecolor="white")
     ax0.set_xticks(x)
     ax0.set_xticklabels(labels, rotation=15, ha="right")
@@ -453,8 +454,10 @@ def analyze_acf_cooccurrence(df: pd.DataFrame, out_dir: str, fig_format: str, dp
                      bar.get_height() / 2, str(cnt),
                      ha="center", va="center", fontsize=9, color="white", fontweight="bold")
 
-    # --- Figure 4: Heatmap of pairwise co-occurrence (if ≥2 ACF) ---
-    ax1 = axes[1]
+    out_path3 = os.path.join(out_dir, f"fig3_acf_cooccurrence.{fig_format}")
+    savefig(fig3, out_path3, dpi)
+
+    # --- Figure 4: Heatmap of pairwise co-occurrence (standalone) ---
     if len(present) >= 2:
         mat_labels = [acf_cols[c] for c in present]
         n_acf = len(present)
@@ -463,15 +466,17 @@ def analyze_acf_cooccurrence(df: pd.DataFrame, out_dir: str, fig_format: str, dp
             for j, c2 in enumerate(present):
                 mat[i, j] = int((found_df[c1] & found_df[c2]).sum())
 
+        fig4, ax4 = plt.subplots(figsize=(6, 5))
         sns.heatmap(mat, annot=True, fmt=".0f", xticklabels=mat_labels,
-                    yticklabels=mat_labels, cmap="YlOrRd", ax=ax1,
+                    yticklabels=mat_labels, cmap="YlOrRd", ax=ax4,
                     linewidths=0.5, cbar_kws={"label": "Co-occurring repos"})
-        ax1.set_title("Pairwise ACF Co-occurrence\n(SKILL.md repos only)")
+        ax4.set_title("Pairwise ACF Co-occurrence\n(SKILL.md repos only)")
+        out_path4 = os.path.join(out_dir, f"fig4_acf_pairwise_heatmap.{fig_format}")
+        savefig(fig4, out_path4, dpi)
+        log.info("Figure 4 saved: %s", out_path4)
     else:
-        ax1.axis("off")
+        log.warning("Fewer than 2 ACF columns present; skipping Fig 4 pairwise heatmap.")
 
-    out_path = os.path.join(out_dir, f"fig3_acf_cooccurrence.{fig_format}")
-    savefig(fig, out_path, dpi)
     log.info("Section 4 done.")
 
 
@@ -585,25 +590,25 @@ def analyze_temporal_trend(df: pd.DataFrame, out_dir: str, fig_format: str, dpi:
         log.warning("No dated found repos; skipping temporal analysis.")
         return
 
-    found_df["quarter"] = found_df[date_col].dt.tz_convert(None).dt.to_period("Q")
-    all_df["quarter"] = all_df[date_col].dt.tz_convert(None).dt.to_period("Q")
+    found_df["month"] = found_df[date_col].dt.tz_convert(None).dt.to_period("M")
+    all_df["month"] = all_df[date_col].dt.tz_convert(None).dt.to_period("M")
 
-    found_counts = found_df.groupby("quarter").size().rename("found")
-    all_counts = all_df.groupby("quarter").size().rename("total")
+    found_counts = found_df.groupby("month").size().rename("found")
+    all_counts = all_df.groupby("month").size().rename("total")
 
     trend = pd.concat([found_counts, all_counts], axis=1).fillna(0)
     trend["prevalence_pct"] = 100.0 * trend["found"] / trend["total"].replace(0, np.nan)
 
     trend_sorted = trend.sort_index()
 
-    fig, axes = plt.subplots(2, 1, figsize=(12, 8), sharex=True)
+    fig, axes = plt.subplots(2, 1, figsize=(14, 8), sharex=True)
 
     ax0 = axes[0]
-    quarters = [str(q) for q in trend_sorted.index]
-    x = np.arange(len(quarters))
+    months = [str(m) for m in trend_sorted.index]
+    x = np.arange(len(months))
     ax0.bar(x, trend_sorted["found"], color=PALETTE_FOUND, alpha=0.85, label="With SKILL.md")
     ax0.set_ylabel("Repositories with SKILL.md")
-    ax0.set_title(f"SKILL.md Adoption Over Time (by {date_col})")
+    ax0.set_title(f"SKILL.md Adoption Over Time (by month, {date_col})")
     ax0.legend()
 
     ax1 = axes[1]
@@ -611,7 +616,7 @@ def analyze_temporal_trend(df: pd.DataFrame, out_dir: str, fig_format: str, dpi:
              label="Total repos scanned")
     ax1.set_ylabel("Total repos in cohort")
     ax1.set_xticks(x)
-    ax1.set_xticklabels(quarters, rotation=45, ha="right", fontsize=8)
+    ax1.set_xticklabels(months, rotation=45, ha="right", fontsize=8)
     ax1.legend()
 
     out_path = os.path.join(out_dir, f"fig6_temporal_trend.{fig_format}")
@@ -872,12 +877,8 @@ def analyze_license_distribution(df: pd.DataFrame, out_dir: str, fig_format: str
 # ---------------------------------------------------------------------------
 
 def analyze_language_ecosystem(df: pd.DataFrame, out_dir: str, fig_format: str, dpi: int) -> None:
-    """Parse the 'languages' JSON column to understand multi-language composition."""
+    """Parse the 'languages' JSON column or fall back to mainLanguage repo counts."""
     log.info("=== Section 10: Language Ecosystem ===")
-
-    if "languages" not in df.columns:
-        log.warning("No 'languages' column; skipping ecosystem analysis.")
-        return
 
     def parse_lang_json(val):
         if not isinstance(val, str) or not val.strip():
@@ -890,44 +891,91 @@ def analyze_language_ecosystem(df: pd.DataFrame, out_dir: str, fig_format: str, 
     found_df = df[df["found"]].copy()
     all_df = df.copy()
 
-    def extract_lang_bytes(sub_df):
-        lang_bytes: dict[str, int] = {}
-        for val in sub_df["languages"]:
-            d = parse_lang_json(val)
-            for lang, b in d.items():
-                lang_bytes[lang] = lang_bytes.get(lang, 0) + int(b or 0)
-        return lang_bytes
+    # Try JSON 'languages' column first; fall back to mainLanguage repo counts
+    has_lang_json = (
+        "languages" in df.columns
+        and df["languages"].notna().any()
+        and df["languages"].astype(str).str.strip().replace("", pd.NA).notna().any()
+    )
 
-    found_lang_bytes = extract_lang_bytes(found_df)
-    all_lang_bytes = extract_lang_bytes(all_df)
+    if has_lang_json:
+        def extract_lang_bytes(sub_df):
+            lang_bytes: dict[str, int] = {}
+            for val in sub_df["languages"]:
+                d = parse_lang_json(val)
+                for lang, b in d.items():
+                    lang_bytes[lang] = lang_bytes.get(lang, 0) + int(b or 0)
+            return lang_bytes
 
-    if not all_lang_bytes:
-        log.warning("Could not parse any language bytes; skipping ecosystem analysis.")
-        return
+        found_lang_bytes = extract_lang_bytes(found_df)
+        all_lang_bytes = extract_lang_bytes(all_df)
 
-    # Top 15 languages by total bytes across all repos
-    top_langs = sorted(all_lang_bytes, key=all_lang_bytes.get, reverse=True)[:15]
+        if not all_lang_bytes:
+            log.warning("Could not parse any language bytes; falling back to mainLanguage counts.")
+            has_lang_json = False
 
-    tbl = pd.DataFrame({
-        "language": top_langs,
-        "all_bytes": [all_lang_bytes.get(l, 0) for l in top_langs],
-        "found_bytes": [found_lang_bytes.get(l, 0) for l in top_langs],
-    })
-    tbl["found_share_pct"] = (100.0 * tbl["found_bytes"] / tbl["all_bytes"].replace(0, np.nan)).round(1)
-    tbl.to_csv(os.path.join(out_dir, "table9_language_ecosystem.csv"), index=False)
+    if has_lang_json:
+        # --- Byte-volume mode ---
+        top_langs = sorted(all_lang_bytes, key=all_lang_bytes.get, reverse=True)[:15]  # type: ignore[arg-type]
 
-    fig, ax = plt.subplots(figsize=(10, 6))
-    x = np.arange(len(top_langs))
-    w = 0.4
-    ax.bar(x - w / 2, tbl["all_bytes"] / 1e6, w, label="All repos (MB)",
-           color=PALETTE_NOT_FOUND, edgecolor="gray")
-    ax.bar(x + w / 2, tbl["found_bytes"] / 1e6, w, label="SKILL.md repos (MB)",
-           color=PALETTE_FOUND, edgecolor="white", alpha=0.85)
-    ax.set_xticks(x)
-    ax.set_xticklabels(top_langs, rotation=40, ha="right")
-    ax.set_ylabel("Code volume (MB)")
-    ax.set_title("Language Ecosystem: Code Volume Distribution\n(All Repos vs. SKILL.md Repos)")
-    ax.legend()
+        tbl = pd.DataFrame({
+            "language": top_langs,
+            "all_bytes": [all_lang_bytes.get(l, 0) for l in top_langs],  # type: ignore[union-attr]
+            "found_bytes": [found_lang_bytes.get(l, 0) for l in top_langs],  # type: ignore[union-attr]
+        })
+        tbl["found_share_pct"] = (100.0 * tbl["found_bytes"] / tbl["all_bytes"].replace(0, np.nan)).round(1)
+        tbl.to_csv(os.path.join(out_dir, "table9_language_ecosystem.csv"), index=False)
+
+        fig, ax = plt.subplots(figsize=(10, 6))
+        x = np.arange(len(top_langs))
+        w = 0.4
+        ax.bar(x - w / 2, tbl["all_bytes"] / 1e6, w, label="All repos (MB)",
+               color=PALETTE_NOT_FOUND, edgecolor="gray")
+        ax.bar(x + w / 2, tbl["found_bytes"] / 1e6, w, label="SKILL.md repos (MB)",
+               color=PALETTE_FOUND, edgecolor="white", alpha=0.85)
+        ax.set_xticks(x)
+        ax.set_xticklabels(top_langs, rotation=40, ha="right")
+        ax.set_ylabel("Code volume (MB)")
+        ax.set_title("Language Ecosystem: Code Volume Distribution\n(All Repos vs. SKILL.md Repos)")
+        ax.legend()
+
+    else:
+        # --- Fallback: repo-count mode using mainLanguage ---
+        lang_col = "mainLanguage" if "mainLanguage" in df.columns else None
+        if lang_col is None:
+            log.warning("No 'languages' or 'mainLanguage' column; skipping ecosystem analysis.")
+            return
+
+        log.info("Falling back to mainLanguage repo counts for Fig 10.")
+
+        all_lang = all_df[lang_col].fillna("(unknown)")
+        found_lang = found_df[lang_col].fillna("(unknown)")
+
+        all_counts = all_lang.value_counts()
+        found_counts_map = found_lang.value_counts()
+
+        top_langs = all_counts.head(15).index.tolist()
+
+        tbl = pd.DataFrame({
+            "language": top_langs,
+            "all_repos": [int(all_counts.get(l, 0)) for l in top_langs],
+            "found_repos": [int(found_counts_map.get(l, 0)) for l in top_langs],
+        })
+        tbl["found_share_pct"] = (100.0 * tbl["found_repos"] / tbl["all_repos"].replace(0, np.nan)).round(1)
+        tbl.to_csv(os.path.join(out_dir, "table9_language_ecosystem.csv"), index=False)
+
+        fig, ax = plt.subplots(figsize=(10, 6))
+        x = np.arange(len(top_langs))
+        w = 0.4
+        ax.bar(x - w / 2, tbl["all_repos"], w, label="All repos",
+               color=PALETTE_NOT_FOUND, edgecolor="gray")
+        ax.bar(x + w / 2, tbl["found_repos"], w, label="SKILL.md repos",
+               color=PALETTE_FOUND, edgecolor="white", alpha=0.85)
+        ax.set_xticks(x)
+        ax.set_xticklabels(top_langs, rotation=40, ha="right")
+        ax.set_ylabel("Repository count")
+        ax.set_title("Language Ecosystem: Repository Count Distribution\n(All Repos vs. SKILL.md Repos)")
+        ax.legend()
 
     out_path = os.path.join(out_dir, f"fig10_language_ecosystem.{fig_format}")
     savefig(fig, out_path, dpi)
@@ -1019,9 +1067,9 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         description="RQ1 analysis: SKILL.md prevalence and adoption across open-source repos."
     )
     p.add_argument("--scan-csv", required=True,
-                   help="Main scan results CSV (from A_extract_skill_repos.py)")
+                   help="Main scan results CSV (from B_extract_skill_repos.py)")
     p.add_argument("--instances-csv", default="",
-                   help="Optional full_skills_instances CSV (from B_generate_dataset.py)")
+                   help="Optional full_skills_instances CSV (from C_generate_dataset.py)")
     p.add_argument("--out-dir", default="outputs/rq1",
                    help="Output directory for figures and tables (default: outputs/rq1)")
     p.add_argument("--format", dest="fig_format", default="png",

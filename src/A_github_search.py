@@ -4,7 +4,7 @@ A_github_search.py
 
 Alternative to SEART CSV ingestion: scrape GitHub repositories directly using
 the GitHub REST API (GET /search/repositories) and emit a SEART-compatible CSV
-that feeds into the existing pipeline (A_extract_skill_repos.py + B_generate_dataset.py).
+that feeds into the existing pipeline (B_extract_skill_repos.py + C_generate_dataset.py).
 
 Criteria applied by default:
   - 10 or more stars
@@ -22,8 +22,8 @@ API behaviour:
     has >= 1,000 repos, the 1,000-result cap is accepted with a warning (this
     is extremely unlikely in practice).
 
-Output CSV schema matches SEART exports so that A_extract_skill_repos.py and
-B_generate_dataset.py can consume it unchanged.
+Output CSV schema matches SEART exports so that B_extract_skill_repos.py and
+C_generate_dataset.py can consume it unchanged.
 """
 
 from __future__ import annotations
@@ -51,7 +51,7 @@ log = logging.getLogger(__name__)
 
 DEFAULT_LANGUAGES = [
     "TypeScript", "Python", "C#", "Go", "C++",
-    "JavaScript", "Java", "C", "PHP",
+    "JavaScript", "Java", "C", "PHP", "Rust",
 ]
 
 DEFAULT_LICENSES = [
@@ -88,7 +88,7 @@ STAR_BRACKETS: List[Tuple[int, int]] = [
 ]
 
 # ---------------------------------------------------------------------------
-# SEART CSV columns (mirrors A_extract_skill_repos.py)
+# SEART CSV columns (mirrors B_extract_skill_repos.py)
 # ---------------------------------------------------------------------------
 
 SEART_COLUMNS: List[str] = [
@@ -230,22 +230,23 @@ def _repo_to_seart_row(repo: dict) -> Dict[str, str]:
 # Core fetch logic — star brackets + biweekly subdivision
 # ---------------------------------------------------------------------------
 
-def _biweekly_windows(pushed_since: str) -> List[Tuple[str, str]]:
+def _biweekly_windows(pushed_since: str, end_date: dt.date | None = None) -> List[Tuple[str, str]]:
     """
-    Generate (start, end) ISO date string pairs from pushed_since to today
+    Generate (start, end) ISO date string pairs from pushed_since to end_date
     in 7-day (1-week) windows.
 
     The first window starts on pushed_since; each subsequent window starts
-    the day after the previous one ends.  The last window is clamped to today.
+    the day after the previous one ends.  The last window is clamped to
+    end_date (defaults to today when not provided).
     """
     start = dt.date.fromisoformat(pushed_since)
-    today = dt.date.today()
+    ceiling = end_date if end_date is not None else dt.date.today()
     windows: List[Tuple[str, str]] = []
     cur = start
-    while cur <= today:
-        end = min(cur + dt.timedelta(days=6), today)
+    while cur <= ceiling:
+        end = min(cur + dt.timedelta(days=6), ceiling)
         windows.append((cur.isoformat(), end.isoformat()))
-        if end >= today:
+        if end >= ceiling:
             break
         cur = end + dt.timedelta(days=1)
     return windows
@@ -298,6 +299,7 @@ def _fetch_combo(
     already_seen: Set[str],
     min_stars: int,
     biweekly_windows: List[Tuple[str, str]],
+    pushed_end: str = "",
 ) -> Iterator[dict]:
     """
     Yield all repos for a single (language, license) pair.
@@ -319,7 +321,7 @@ def _fetch_combo(
     # ------------------------------------------------------------------
     # Level 1 — try the full combo with no star subdivision
     # ------------------------------------------------------------------
-    base_q = _build_query(language, license_key, pushed_since, min_stars, _STAR_HIGH_SENTINEL)
+    base_q = _build_query(language, license_key, pushed_since, min_stars, _STAR_HIGH_SENTINEL, pushed_end=pushed_end)
     total, items, status, inc = _fetch_page(gh, throttle, base_q, page=1)
 
     if status != 200:
@@ -349,7 +351,7 @@ def _fetch_combo(
         high_str = "inf" if star_high >= _STAR_HIGH_SENTINEL else str(star_high)
         bracket_label = f"{base_label} stars={effective_low}..{high_str}"
 
-        bracket_q = _build_query(language, license_key, pushed_since, effective_low, star_high)
+        bracket_q = _build_query(language, license_key, pushed_since, effective_low, star_high, pushed_end=pushed_end)
         total_b, items_b, status_b, inc_b = _fetch_page(gh, throttle, bracket_q, page=1)
 
         if status_b != 200:
@@ -530,7 +532,7 @@ def _parse_args(argv: List[str]) -> argparse.Namespace:
     p = argparse.ArgumentParser(
         description=(
             "Scrape GitHub repositories via GET /search/repositories and emit a "
-            "SEART-compatible CSV for use with A_extract_skill_repos.py. "
+            "SEART-compatible CSV for use with B_extract_skill_repos.py. "
             "Queries are split by (language, license) pair to stay under the "
             "1,000-result cap; star-bracket subdivision is applied automatically "
             "when a pair still hits the cap."
@@ -551,6 +553,11 @@ def _parse_args(argv: List[str]) -> argparse.Namespace:
         "--pushed-since",
         default=DEFAULT_PUSHED_SINCE,
         help=f"Only include repos pushed since this date YYYY-MM-DD (default: {DEFAULT_PUSHED_SINCE})",
+    )
+    p.add_argument(
+        "--end-date",
+        default=None,
+        help="Only include repos pushed up to this date YYYY-MM-DD (inclusive, default: today).",
     )
     p.add_argument(
         "--languages",
@@ -641,16 +648,28 @@ def main(argv: List[str]) -> int:
         for path in combo_csv.values():
             _write_header(path)
 
+    # Parse and validate --end-date.
+    end_date: dt.date | None = None
+    pushed_end_str = ""
+    if args.end_date:
+        try:
+            end_date = dt.date.fromisoformat(args.end_date)
+        except ValueError:
+            log.error("--end-date %r is not a valid YYYY-MM-DD date.", args.end_date)
+            return 1
+        pushed_end_str = end_date.isoformat()
+
     log.info(
         "Searching GitHub repositories | languages=%s | licenses=%s | "
-        "min_stars=%d | pushed_since=%s",
+        "min_stars=%d | pushed_since=%s | end_date=%s",
         args.languages, args.licenses, args.min_stars, args.pushed_since,
+        pushed_end_str or "today",
     )
     log.info("Output CSV (combined): %s", args.out_csv)
     log.info("Per-combo CSVs written to: %s/", os.path.dirname(args.out_csv) or ".")
 
     # Compute 1-week windows once and log them so the user can see the plan.
-    windows = _biweekly_windows(args.pushed_since)
+    windows = _biweekly_windows(args.pushed_since, end_date=end_date)
     log.info(
         "1-week windows (%d): %s",
         len(windows),
@@ -673,6 +692,7 @@ def main(argv: List[str]) -> int:
                 for repo in _fetch_combo(
                     gh, repo_throttle, lang, lic, args.pushed_since,
                     already_fetched, args.min_stars, windows,
+                    pushed_end=pushed_end_str,
                 ):
                     row = _repo_to_seart_row(repo)
                     _append_row(args.out_csv, row)
