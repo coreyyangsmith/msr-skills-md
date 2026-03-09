@@ -95,12 +95,31 @@ def sort_folders(raw_data_dir: str, dry_run: bool) -> None:
         if not os.path.isdir(full):
             continue
         # A flat repo dir contains a metadata.json directly inside it.
-        # A language-partition dir would contain sub-dirs instead.
+        # A language-partition dir would contain sub-dirs, each with their own metadata.json.
         metadata_path = os.path.join(full, "metadata.json")
         if os.path.isfile(metadata_path):
             flat_dirs.append((entry, full, metadata_path))
         else:
-            log.debug("Skipping '%s' — no metadata.json found (already partitioned or unrelated).", entry)
+            # Distinguish a true language-partition dir (whose children have metadata.json)
+            # from a repo dir that is simply missing its metadata.json.
+            child_entries = os.listdir(full)
+            child_has_metadata = any(
+                os.path.isfile(os.path.join(full, child, "metadata.json"))
+                for child in child_entries
+                if os.path.isdir(os.path.join(full, child))
+            )
+            if child_has_metadata:
+                log.debug(
+                    "Skipping '%s' — looks like a language-partition directory (children have metadata.json).",
+                    entry,
+                )
+            else:
+                log.warning(
+                    "Skipping '%s' — no metadata.json found and does not look like a language-partition "
+                    "directory. This repo may be missing its metadata.json and will not be moved. "
+                    "Move it manually to the correct language subfolder.",
+                    entry,
+                )
 
     if not flat_dirs:
         log.info("No flat repo directories found in %s — nothing to do.", raw_data_dir)

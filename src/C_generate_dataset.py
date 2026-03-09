@@ -19,11 +19,13 @@ import datetime as dt
 import json
 import logging
 import os
+import re
 import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Any, Dict, List, Optional, Set, Tuple
 
 from github_client import GitHubClient, TokenPool, load_tokens_from_env
+from filters import REPO_NAME_FILTER_WORDS, load_blacklist, repo_name_contains_filter_word
 
 log = logging.getLogger(__name__)
 
@@ -215,6 +217,21 @@ def compute_skill_metrics(parent_folder: str, files: List[Dict[str, Any]], match
     return m
 
 
+_WINDOWS_INVALID_CHARS = r'\/:*?"<>|'
+_WINDOWS_INVALID_RE = re.compile(r'[\\/:*?"<>|]')
+
+
+def sanitize_path_component(name: str) -> str:
+    """Replace characters that are invalid in Windows file/directory names."""
+    return _WINDOWS_INVALID_RE.sub("_", name)
+
+
+def sanitize_relative_path(rel_path: str) -> str:
+    """Sanitize each component of a forward-slash-separated relative path."""
+    parts = rel_path.replace("\\", "/").split("/")
+    return os.path.join(*[sanitize_path_component(p) for p in parts if p])
+
+
 def download_blob(gh: GitHubClient, repo: str, sha: str) -> Tuple[Optional[bytes], str]:
     """
     Download a git blob by its SHA.
@@ -254,8 +271,12 @@ def download_skill_files(gh: GitHubClient, repo: str, skill: SkillInstance, repo
             rel_path = path
             
         # Determine local path: repo_dir/skill_folder_name/rel_path
-        folder_name = os.path.basename(skill.parent_folder) if skill.parent_folder else "root"
-        local_path = os.path.join(repo_dir, folder_name, rel_path)
+        # Sanitize both components so Windows-invalid characters (e.g. ':') don't
+        # produce invalid directory names.
+        folder_name = sanitize_path_component(
+            os.path.basename(skill.parent_folder) if skill.parent_folder else "root"
+        )
+        local_path = os.path.join(repo_dir, folder_name, sanitize_relative_path(rel_path))
         
         # Ensure dir exists
         os.makedirs(os.path.dirname(local_path), exist_ok=True)
@@ -384,7 +405,7 @@ def process_repo(
         os.makedirs(acf_dir, exist_ok=True)
         for acf_path, acf_item, _ in acf_found:
             sha = acf_item.get("sha", "")
-            filename = os.path.basename(acf_path)
+            filename = sanitize_path_component(os.path.basename(acf_path))
             local_path = os.path.join(acf_dir, filename)
             if os.path.exists(local_path) and os.path.getsize(local_path) > 0:
                 continue
@@ -471,19 +492,22 @@ def append_dataset_row(out_csv: str, r: SkillInstanceRow) -> None:
         writer.writerow(d)
 
 
-def load_blacklist(path: str) -> Set[str]:
-    """Load a blacklist file and return a set of 'owner/repo' strings to skip."""
-    if not path or not os.path.exists(path):
-        return set()
-    blacklisted: Set[str] = set()
-    with open(path, "r", encoding="utf-8") as f:
-        for line in f:
-            entry = line.strip()
-            if entry and not entry.startswith("#"):
-                blacklisted.add(entry)
-    if blacklisted:
-        log.info("Blacklist loaded: %d entries from %s", len(blacklisted), path)
-    return blacklisted
+def record_name_filtered(log_path: str, repo: str, matched_word: str) -> None:
+    """Append a repo that was filtered by name to the name-filter log file."""
+    os.makedirs(os.path.dirname(log_path) or ".", exist_ok=True)
+    with open(log_path, "a", encoding="utf-8") as f:
+        f.write(f"{repo}\t{matched_word}\n")
+
+
+def write_name_filter_counts(counts_path: str, counts: Dict[str, int], total: int) -> None:
+    """Write per-keyword filter counts to a JSON file."""
+    os.makedirs(os.path.dirname(counts_path) or ".", exist_ok=True)
+    payload = {
+        "total_filtered": total,
+        "counts_by_keyword": {w: c for w, c in counts.items() if c > 0},
+    }
+    with open(counts_path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, indent=2)
 
 
 def load_already_processed(out_csv: str) -> Set[str]:
@@ -509,6 +533,8 @@ def parse_args(argv: List[str]) -> argparse.Namespace:
     p.add_argument("--raw-data-dir", required=True, help="Directory to save downloaded files (e.g. outputs/raw_data)")
     p.add_argument("--match-name", default="SKILL.md", help="Filename to match")
     p.add_argument("--blacklist", default="blacklist.txt", help="Path to blacklist file (owner/repo per line). Default: blacklist.txt")
+    p.add_argument("--name-filter-words", default="", help="Comma-separated words to match against repo names (in addition to the built-in list). Repos matching any word are excluded.")
+    p.add_argument("--name-filter-log", default="", help="File to record repos excluded by name filter (tab-separated: repo<TAB>matched_word). Defaults to <out-csv dir>/name_filtered_repos.tsv")
     p.add_argument("--resume", action="store_true", help="Skip repos already in out-csv or metadata.json")
     p.add_argument("--concurrency", type=int, default=1, help="Worker threads")
     p.add_argument("--github-token", default="")
@@ -554,11 +580,23 @@ def main(argv: List[str]) -> int:
     processed_repos = load_already_processed(args.out_csv) if args.resume else set()
     blacklist = load_blacklist(args.blacklist)
 
+    # Build effective name-filter word list (built-in + any extras from CLI).
+    name_filter_words: List[str] = list(REPO_NAME_FILTER_WORDS)
+    if args.name_filter_words.strip():
+        extras = [w.strip() for w in args.name_filter_words.split(",") if w.strip()]
+        name_filter_words.extend(extras)
+
+    name_filter_log: str = args.name_filter_log.strip() or os.path.join(
+        os.path.dirname(args.out_csv) or ".", "name_filtered_repos.tsv"
+    )
+
     # Deduplicate by repo — a found CSV can have multiple rows for the same repo
     # (one per SKILL.md match). process_repo handles all instances in a single pass.
     seen: Set[str] = set()
     to_process = []
     skipped_blacklist = 0
+    skipped_name_filter = 0
+    name_filter_counts: Dict[str, int] = {w: 0 for w in name_filter_words}
     for r in repos:
         repo_name = r["repo"]
         if repo_name in seen:
@@ -567,12 +605,34 @@ def main(argv: List[str]) -> int:
         if repo_name in blacklist:
             skipped_blacklist += 1
             continue
+        matched_word = repo_name_contains_filter_word(repo_name, name_filter_words)
+        if matched_word:
+            skipped_name_filter += 1
+            name_filter_counts[matched_word] = name_filter_counts.get(matched_word, 0) + 1
+            record_name_filtered(name_filter_log, repo_name, matched_word)
+            log.debug("Name-filter: skipping %s (matched '%s')", repo_name, matched_word)
+            continue
         if args.resume and repo_name in processed_repos:
             continue
         to_process.append(r)
 
     if skipped_blacklist:
         log.info("Blacklist: skipping %d blacklisted repositories.", skipped_blacklist)
+    if skipped_name_filter:
+        log.info(
+            "Name-filter: skipping %d repositories (logged to %s).",
+            skipped_name_filter,
+            name_filter_log,
+        )
+        breakdown = ", ".join(
+            f"'{w}': {name_filter_counts[w]}"
+            for w in name_filter_words
+            if name_filter_counts.get(w, 0) > 0
+        )
+        log.info("Name-filter breakdown: %s", breakdown)
+        counts_path = os.path.splitext(name_filter_log)[0] + "_counts.json"
+        write_name_filter_counts(counts_path, name_filter_counts, skipped_name_filter)
+        log.info("Name-filter counts saved to %s", counts_path)
 
     if not to_process:
         log.info("All repos already processed.")

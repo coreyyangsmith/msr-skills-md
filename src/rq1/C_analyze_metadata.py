@@ -17,7 +17,7 @@ Usage:
         --instances-csv outputs/ss/full_skills_instances.csv \
         --out-dir outputs/rq1
 
-uv run python src/rq1/C_analyze_metadata.py --scan-csv outputs/skill_md_scan_results.csv --instances-csv outputs/ss/full_skills_instances.csv --out-dir outputs/rq1        
+uv run python src/rq1/C_analyze_metadata.py --scan-csv outputs/skill_md_scan_results.csv --instances-csv outputs/ss/full_skills_instances.csv --out-dir outputs/rq1     
 """
 
 from __future__ import annotations
@@ -30,7 +30,7 @@ import os
 import re
 import sys
 import warnings
-from typing import Optional
+from typing import List, Optional, Set
 
 import matplotlib
 matplotlib.use("Agg")  # non-interactive backend for server/CI use
@@ -41,6 +41,14 @@ import pandas as pd
 import seaborn as sns
 
 warnings.filterwarnings("ignore", category=FutureWarning)
+
+# Add src/ to path so we can import sibling modules when invoked from any cwd.
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+from filters import (  # noqa: E402
+    REPO_NAME_FILTER_WORDS,
+    load_blacklist,
+    repo_name_contains_filter_word,
+)
 
 log = logging.getLogger(__name__)
 
@@ -80,9 +88,46 @@ def savefig(fig: plt.Figure, path: str, dpi: int = 300) -> None:
 # Data loading
 # ---------------------------------------------------------------------------
 
-def load_scan_csv(path: str) -> pd.DataFrame:
+def _apply_repo_filters(
+    df: pd.DataFrame,
+    blacklist: Set[str],
+    filter_words: List[str],
+    label: str,
+) -> pd.DataFrame:
+    """Drop rows whose 'repo' column matches the blacklist or name-filter words."""
+    if "repo" not in df.columns:
+        return df
+    before = len(df)
+    mask_blacklist = df["repo"].isin(blacklist)
+    mask_name = df["repo"].apply(
+        lambda r: repo_name_contains_filter_word(str(r), filter_words) is not None
+    )
+    excluded = mask_blacklist | mask_name
+    n_bl = int(mask_blacklist.sum())
+    n_nf = int((~mask_blacklist & mask_name).sum())
+    if n_bl or n_nf:
+        log.info(
+            "%s: excluding %d blacklisted + %d name-filtered repos (%d → %d rows)",
+            label, n_bl, n_nf, before, before - int(excluded.sum()),
+        )
+    return df[~excluded].reset_index(drop=True)
+
+
+def load_scan_csv(
+    path: str,
+    blacklist: Optional[Set[str]] = None,
+    filter_words: Optional[List[str]] = None,
+) -> pd.DataFrame:
     df = pd.read_csv(path, low_memory=False)
     log.info("Loaded scan CSV: %s rows, %s cols from %s", len(df), len(df.columns), path)
+
+    # Apply blacklist and name filter
+    df = _apply_repo_filters(
+        df,
+        blacklist or set(),
+        filter_words if filter_words is not None else REPO_NAME_FILTER_WORDS,
+        "scan CSV",
+    )
 
     # Normalise the 'found' column to bool
     if "found" in df.columns:
@@ -104,12 +149,25 @@ def load_scan_csv(path: str) -> pd.DataFrame:
     return df
 
 
-def load_instances_csv(path: str) -> Optional[pd.DataFrame]:
+def load_instances_csv(
+    path: str,
+    blacklist: Optional[Set[str]] = None,
+    filter_words: Optional[List[str]] = None,
+) -> Optional[pd.DataFrame]:
     if not path or not os.path.exists(path):
         log.warning("Instances CSV not found or not provided: %s", path)
         return None
     df = pd.read_csv(path, low_memory=False)
     log.info("Loaded instances CSV: %s rows from %s", len(df), path)
+
+    # Apply blacklist and name filter
+    df = _apply_repo_filters(
+        df,
+        blacklist or set(),
+        filter_words if filter_words is not None else REPO_NAME_FILTER_WORDS,
+        "instances CSV",
+    )
+
     for col in ["skill_count", "total_files_in_skills", "references_file_count",
                 "assets_file_count", "scripts_file_count", "other_file_count"]:
         if col in df.columns:
@@ -1077,6 +1135,13 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
                    help="Figure output format (default: png)")
     p.add_argument("--dpi", type=int, default=300,
                    help="Figure resolution in DPI (default: 300)")
+    p.add_argument("--blacklist", default="blacklist.txt",
+                   help="Path to blacklist file (owner/repo per line). Default: blacklist.txt")
+    p.add_argument("--name-filter-words", default="",
+                   help="Comma-separated words to match against repo names in addition to the "
+                        "built-in list. Repos matching any word are excluded.")
+    p.add_argument("--no-name-filter", action="store_true",
+                   help="Disable the built-in name filter (blacklist still applies).")
     p.add_argument("--log-level", default="INFO",
                    choices=["DEBUG", "INFO", "WARNING", "ERROR"])
     return p.parse_args(argv)
@@ -1098,9 +1163,29 @@ def main(argv: list[str]) -> int:
 
     os.makedirs(args.out_dir, exist_ok=True)
 
+    # Build filter configuration
+    blacklist = load_blacklist(args.blacklist)
+    if args.no_name_filter:
+        filter_words: List[str] = []
+    else:
+        filter_words = list(REPO_NAME_FILTER_WORDS)
+        if args.name_filter_words.strip():
+            extras = [w.strip() for w in args.name_filter_words.split(",") if w.strip()]
+            filter_words.extend(extras)
+    log.info(
+        "Filters: blacklist=%d entries, name_filter=%d words%s",
+        len(blacklist),
+        len(filter_words),
+        " (disabled)" if args.no_name_filter else "",
+    )
+
     # Load data
-    scan_df = load_scan_csv(args.scan_csv)
-    inst_df = load_instances_csv(args.instances_csv) if args.instances_csv else None
+    scan_df = load_scan_csv(args.scan_csv, blacklist=blacklist, filter_words=filter_words)
+    inst_df = (
+        load_instances_csv(args.instances_csv, blacklist=blacklist, filter_words=filter_words)
+        if args.instances_csv
+        else None
+    )
 
     fmt = args.fig_format
     dpi = args.dpi
