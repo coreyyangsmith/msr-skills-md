@@ -1,0 +1,231 @@
+{
+  "language": "C",
+  "total_repos": 20,
+  "repos_with_skill_md": 17,
+  "repos_without_skill_md": 3,
+  "total_skill_md_files": 73,
+  "mean_skill_md_per_repo": 3.65,
+  "generated_at_utc": "2026-03-10T00:02:36.655217+00:00",
+  "repos": [
+    {
+      "repo_folder": "alex-ilgayev__MCPSpy",
+      "repo": "alex-ilgayev/MCPSpy",
+      "skill_count": 4,
+      "stars": 498,
+      "fork": false,
+      "archived": false,
+      "has_CLAUDE": 1,
+      "has_AGENTS": 0,
+      "has_COPILOT": 0
+    },
+    {
+      "repo_folder": "bouffalolab__bouffalo_sdk",
+      "repo": "bouffalolab/bouffalo_sdk",
+      "skill_count": 1,
+      "stars": 457,
+      "fork": false,
+      "archived": false,
+      "has_CLAUDE": 1,
+      "has_AGENTS": 0,
+      "has_COPILOT": 0
+    },
+    {
+      "repo_folder": "cfoust__cy",
+      "repo": "cfoust/cy",
+      "skill_count": 1,
+      "stars": 200,
+      "fork": false,
+      "archived": false,
+      "has_CLAUDE": 1,
+      "has_AGENTS": 0,
+      "has_COPILOT": 0
+    },
+    {
+      "repo_folder": "crosspoint-reader__crosspoint-reader",
+      "repo": "crosspoint-reader/crosspoint-reader",
+      "skill_count": 1,
+      "stars": 2345,
+      "fork": false,
+      "archived": false,
+      "has_CLAUDE": 1,
+      "has_AGENTS": 0,
+      "has_COPILOT": 0
+    },
+    {
+      "repo_folder": "d3nd3__sof_buddy",
+      "repo": "d3nd3/sof_buddy",
+      "skill_count": 2,
+      "stars": 14,
+      "fork": false,
+      "archived": false,
+      "has_CLAUDE": 0,
+      "has_AGENTS": 0,
+      "has_COPILOT": 0
+    },
+    {
+      "repo_folder": "edwnh__dqmc",
+      "repo": "edwnh/dqmc",
+      "skill_count": 6,
+      "stars": 16,
+      "fork": false,
+      "archived": false,
+      "has_CLAUDE": 0,
+      "has_AGENTS": 1,
+      "has_COPILOT": 0
+    },
+    {
+      "repo_folder": "elehobica__pico_spdif_recorder",
+      "repo": "elehobica/pico_spdif_recorder",
+      "skill_count": 0,
+      "stars": 21,
+      "fork": false,
+      "archived": false,
+      "has_CLAUDE": 0,
+      "has_AGENTS": 0,
+      "has_COPILOT": 0
+    },
+    {
+      "repo_folder": "go-go-golems__go-go-labs",
+      "repo": "go-go-golems/go-go-labs",
+      "skill_count": 0,
+      "stars": 17,
+      "fork": false,
+      "archived": false,
+      "has_CLAUDE": 1,
+      "has_AGENTS": 0,
+      "has_COPILOT": 0
+    },
+    {
+      "repo_folder": "kxtools__kx-packet-inspector",
+      "repo": "kxtools/kx-packet-inspector",
+      "skill_count": 0,
+      "stars": 11,
+      "fork": false,
+      "archived": false,
+      "has_CLAUDE": 0,
+      "has_AGENTS": 0,
+      "has_COPILOT": 0
+    },
+    {
+      "repo_folder": "M5Fly-kanazawa__stampfly_ecosystem",
+      "repo": "M5Fly-kanazawa/stampfly_ecosystem",
+      "skill_count": 3,
+      "stars": 18,
+      "fork": false,
+      "archived": false,
+      "has_CLAUDE": 1,
+      "has_AGENTS": 0,
+      "has_COPILOT": 0
+    },
+    {
+      "repo_folder": "microsoft__ebpf-for-windows",
+      "repo": "microsoft/ebpf-for-windows",
+      "skill_count": 4,
+      "stars": 3435,
+      "fork": false,
+      "archived": false,
+      "has_CLAUDE": 0,
+      "has_AGENTS": 0,
+      "has_COPILOT": 1
+    },
+    {
+      "repo_folder": "NativePHP__mobile-air",
+      "repo": "NativePHP/mobile-air",
+      "skill_count": 1,
+      "stars": 138,
+      "fork": false,
+      "archived": false,
+      "has_CLAUDE": 0,
+      "has_AGENTS": 0,
+      "has_COPILOT": 0
+    },
+    {
+      "repo_folder": "OpenSwiftUIProject__DarwinPrivateFrameworks",
+      "repo": "OpenSwiftUIProject/DarwinPrivateFrameworks",
+      "skill_count": 4,
+      "stars": 24,
+      "fork": false,
+      "archived": false,
+      "has_CLAUDE": 0,
+      "has_AGENTS": 0,
+      "has_COPILOT": 0
+    },
+    {
+      "repo_folder": "pikasTech__PikaPython",
+      "repo": "pikasTech/PikaPython",
+      "skill_count": 1,
+      "stars": 1707,
+      "fork": false,
+      "archived": false,
+      "has_CLAUDE": 0,
+      "has_AGENTS": 0,
+      "has_COPILOT": 1
+    },
+    {
+      "repo_folder": "RtlZeroMemory__Zireael",
+      "repo": "RtlZeroMemory/Zireael",
+      "skill_count": 31,
+      "stars": 30,
+      "fork": false,
+      "archived": false,
+      "has_CLAUDE": 1,
+      "has_AGENTS": 1,
+      "has_COPILOT": 0
+    },
+    {
+      "repo_folder": "tdimino__bg3se-macos",
+      "repo": "tdimino/bg3se-macos",
+      "skill_count": 3,
+      "stars": 24,
+      "fork": false,
+      "archived": false,
+      "has_CLAUDE": 1,
+      "has_AGENTS": 1,
+      "has_COPILOT": 0
+    },
+    {
+      "repo_folder": "tpn__perfecthash",
+      "repo": "tpn/perfecthash",
+      "skill_count": 5,
+      "stars": 87,
+      "fork": false,
+      "archived": false,
+      "has_CLAUDE": 0,
+      "has_AGENTS": 1,
+      "has_COPILOT": 0
+    },
+    {
+      "repo_folder": "wysaid__android-gpuimage-plus",
+      "repo": "wysaid/android-gpuimage-plus",
+      "skill_count": 2,
+      "stars": 1906,
+      "fork": false,
+      "archived": false,
+      "has_CLAUDE": 0,
+      "has_AGENTS": 0,
+      "has_COPILOT": 1
+    },
+    {
+      "repo_folder": "yoanbernabeu__grepai",
+      "repo": "yoanbernabeu/grepai",
+      "skill_count": 2,
+      "stars": 1323,
+      "fork": false,
+      "archived": false,
+      "has_CLAUDE": 1,
+      "has_AGENTS": 0,
+      "has_COPILOT": 0
+    },
+    {
+      "repo_folder": "zfogg__ascii-chat",
+      "repo": "zfogg/ascii-chat",
+      "skill_count": 2,
+      "stars": 181,
+      "fork": false,
+      "archived": false,
+      "has_CLAUDE": 1,
+      "has_AGENTS": 1,
+      "has_COPILOT": 0
+    }
+  ]
+}
