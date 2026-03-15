@@ -1,0 +1,12 @@
+language,all_repos,found_repos,found_share_pct
+Python,43072,773,1.8
+TypeScript,27796,1051,3.8
+JavaScript,16105,157,1.0
+Go,15188,268,1.8
+Rust,12115,279,2.3
+C++,8730,35,0.4
+Java,8566,67,0.8
+C#,8388,100,1.2
+PHP,6907,56,0.8
+C,4767,20,0.4
+(unknown),14,0,0.0

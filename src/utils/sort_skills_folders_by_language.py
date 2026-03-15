@@ -3,13 +3,13 @@
 sort_skills_folders_by_language.py
 
 Reorganises a flat raw_data directory produced by an older run of
-C_generate_dataset.py (where repos were stored as raw_data/{owner__repo}/)
+generate_dataset.py (where repos were stored as raw_data/{owner__repo}/)
 into the language-partitioned layout used by the current version:
 
     raw_data/{language}/{owner__repo}/
 
 The language is read from the repo's metadata.json:
-  - metadata["language"]  (written by the current C_generate_dataset.py)
+  - metadata["language"]  (written by the current generate_dataset.py)
   - metadata["seart"]["mainLanguage"]  (fallback for older metadata.json files)
 
 If neither field is present or non-empty, the repo is moved into an
@@ -53,7 +53,7 @@ def _read_language_from_metadata(metadata_path: str) -> Optional[str]:
         log.warning("Could not parse %s: %s", metadata_path, exc)
         return None
 
-    # Preferred: top-level "language" key (written by current C_generate_dataset.py)
+    # Preferred: top-level "language" key (written by current generate_dataset.py)
     lang = (meta.get("language") or "").strip()
     if lang:
         return lang

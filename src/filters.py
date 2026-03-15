@@ -2,7 +2,7 @@
 filters.py
 
 Shared filtering configuration and helpers used across the pipeline
-(C_generate_dataset.py, C_analyze_metadata.py, etc.).
+(generate_dataset.py, analyze_metadata.py, etc.).
 
 Filtering happens at two levels:
   1. Blacklist  — exact "owner/repo" strings read from a text file.

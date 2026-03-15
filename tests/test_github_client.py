@@ -76,30 +76,32 @@ class TestLoadTokensFromEnv(unittest.TestCase):
             result = load_tokens_from_env()
         self.assertEqual(result, ["tok1", "tok2"])
 
-    def test_gh_token_fallback(self):
+    def test_gh_token_is_ignored_without_gh_tokens(self):
         env = {"GH_TOKEN": "only_one"}
-        with mock.patch.dict("os.environ", env):
-            # Temporarily remove GH_TOKENS if present
-            with mock.patch.dict("os.environ", {"GH_TOKENS": ""}, clear=False):
-                result = load_tokens_from_env()
-        self.assertEqual(result, ["only_one"])
+        with mock.patch.dict("os.environ", env, clear=True):
+            with mock.patch("github_client.token_pool.find_dotenv", return_value=""):
+                with mock.patch.dict("os.environ", {"GH_TOKENS": ""}, clear=False):
+                    result = load_tokens_from_env()
+        self.assertEqual(result, [])
 
-    def test_github_token_last_fallback(self):
+    def test_github_token_is_ignored_without_gh_tokens(self):
         with mock.patch.dict("os.environ", {
             "GH_TOKENS": "",
             "GH_TOKEN": "",
             "GITHUB_TOKEN": "fallback_tok",
-        }, clear=False):
-            result = load_tokens_from_env()
-        self.assertEqual(result, ["fallback_tok"])
+        }, clear=True):
+            with mock.patch("github_client.token_pool.find_dotenv", return_value=""):
+                result = load_tokens_from_env()
+        self.assertEqual(result, [])
 
     def test_no_env_returns_empty(self):
         with mock.patch.dict("os.environ", {
             "GH_TOKENS": "",
             "GH_TOKEN": "",
             "GITHUB_TOKEN": "",
-        }, clear=False):
-            result = load_tokens_from_env()
+        }, clear=True):
+            with mock.patch("github_client.token_pool.find_dotenv", return_value=""):
+                result = load_tokens_from_env()
         self.assertEqual(result, [])
 
     def test_comma_separated_parsed(self):
@@ -513,6 +515,23 @@ class TestGitHubClientRequestJson(unittest.TestCase):
             gh.request_json("GET", "/rate_limit")
 
         self.assertFalse(any("Authorization" in h for h in captured))
+
+    def test_request_json_with_headers_returns_headers(self):
+        gh = _gh("tok1")
+        resp = _make_response(200, {"ok": True}, headers={"Link": "<https://api.github.com/x?page=2>; rel=\"last\""})
+        with mock.patch.object(gh.session, "request", return_value=resp):
+            status, data, headers, err = gh.request_json_with_headers("GET", "/repos/a/b")
+        self.assertEqual(status, 200)
+        self.assertEqual(data, {"ok": True})
+        self.assertEqual(headers["Link"], "<https://api.github.com/x?page=2>; rel=\"last\"")
+        self.assertEqual(err, "")
+
+    def test_request_json_preserves_original_signature(self):
+        gh = _gh("tok1")
+        resp = _make_response(200, {"ok": True}, headers={"X-Test": "1"})
+        with mock.patch.object(gh.session, "request", return_value=resp):
+            result = gh.request_json("GET", "/repos/a/b")
+        self.assertEqual(result, (200, {"ok": True}, ""))
 
 
 # ---------------------------------------------------------------------------

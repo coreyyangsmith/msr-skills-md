@@ -7,7 +7,7 @@ RQ3: Language-level summary of SKILL.md prevalence.
 Walks a root folder whose immediate children are language subfolders (e.g.
 outputs/raw_data/Python, outputs/raw_data/Go, …).  Each language subfolder
 contains one subfolder per repository, and each repo subfolder may contain a
-metadata.json produced by C_generate_dataset.py.
+metadata.json produced by generate_dataset.py.
 
 For every language folder the script emits one JSON summary file:
     <root>/<language>_summary.json

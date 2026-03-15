@@ -66,8 +66,28 @@ class GitHubClient:
         timeout_s: int = 30,
         is_search: bool = False,
     ) -> Tuple[int, dict, str]:
+        """Execute a GitHub API request and return ``(status, json_body, error_msg)``."""
+        status, data, _, err = self.request_json_with_headers(
+            method,
+            path,
+            params=params,
+            max_retries=max_retries,
+            timeout_s=timeout_s,
+            is_search=is_search,
+        )
+        return (status, data, err)
+
+    def request_json_with_headers(
+        self,
+        method: str,
+        path: str,
+        params: Optional[dict] = None,
+        max_retries: int = 5,
+        timeout_s: int = 30,
+        is_search: bool = False,
+    ) -> Tuple[int, dict, dict, str]:
         """
-        Execute a GitHub API request and return ``(status, json_body, error_msg)``.
+        Execute a GitHub API request and return ``(status, json_body, headers, error_msg)``.
 
         Token selection and rate-limit updates are handled transparently via
         the TokenPool. On rate-limit responses (403/429) the pool is asked for
@@ -103,7 +123,7 @@ class GitHubClient:
             except RateLimitExhaustedError as exc:
                 # Only reachable when pool was constructed with a finite max_wait_s
                 # (e.g. in tests). In production the default is inf.
-                return (0, {}, f"rate_limit_exhausted: {exc}")
+                return (0, {}, {}, f"rate_limit_exhausted: {exc}")
 
             # Build per-request headers so token rotation works across retries.
             extra_headers: dict = {}
@@ -125,7 +145,7 @@ class GitHubClient:
             except requests.RequestException as exc:
                 self.pool.update(bucket, {})
                 if transient_attempt >= max_retries:
-                    return (0, {}, f"network_error: {exc}")
+                    return (0, {}, {}, f"network_error: {exc}")
                 log.debug("Network error on transient attempt %d: %s", transient_attempt, exc)
                 transient_attempt += 1
                 time.sleep(backoff)
@@ -133,22 +153,23 @@ class GitHubClient:
                 continue
 
             status = resp.status_code
+            response_headers = dict(resp.headers)
 
             # Always update the pool with the latest rate-limit headers.
-            self.pool.update(bucket, dict(resp.headers), is_search=is_search)
+            self.pool.update(bucket, response_headers, is_search=is_search)
 
             # Success
             if 200 <= status < 300:
                 if resp.content:
                     try:
-                        return (status, resp.json(), "")
+                        return (status, resp.json(), response_headers, "")
                     except Exception:
-                        return (status, {}, "json_parse_error")
-                return (status, {}, "")
+                        return (status, {}, response_headers, "json_parse_error")
+                return (status, {}, response_headers, "")
 
             # Auth / not-found: do not retry
             if status in (401, 404):
-                return (status, {}, self._safe_error_message(resp))
+                return (status, {}, response_headers, self._safe_error_message(resp))
 
             # Rate limiting or abuse throttling.
             # pool.update() already marked this bucket exhausted and recorded
@@ -170,7 +191,7 @@ class GitHubClient:
             if 500 <= status <= 599:
                 msg = self._safe_error_message(resp)
                 if transient_attempt >= max_retries:
-                    return (status, {}, msg)
+                    return (status, {}, response_headers, msg)
                 log.debug(
                     "Server error %d on transient attempt %d, backoff %.1fs",
                     status, transient_attempt, backoff,
@@ -181,7 +202,7 @@ class GitHubClient:
                 continue
 
             # Other non-retryable errors
-            return (status, {}, self._safe_error_message(resp))
+            return (status, {}, response_headers, self._safe_error_message(resp))
 
     @staticmethod
     def _safe_error_message(resp: requests.Response) -> str:

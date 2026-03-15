@@ -1,0 +1,5 @@
+tier_type,tier,total,found,prevalence_pct
+stars,<100,101424,1618,1.6
+stars,100-499,30417,530,1.74
+stars,500-4999,16499,440,2.67
+stars,>=5000,3308,218,6.59
