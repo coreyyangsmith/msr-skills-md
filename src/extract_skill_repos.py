@@ -7,18 +7,22 @@ anywhere in the repository tree.
 
 Scan strategy:
   One call per repo – GitHub Community Profile API: maintainer-readiness metadata
-  (README / CONTRIBUTING / SECURITY / CODE_OF_CONDUCT presence).
+  (README / CONTRIBUTING / SECURITY / CODE_OF_CONDUCT presence). This call is
+  treated as optional enrichment; failure does not block the SKILL.md scan.
   One call per repo – GitHub Code Search API: full-repo filename search.
   ACF files (CLAUDE.md, AGENTS.md, copilot-instructions.md) are checked via the
-  Contents API only for repositories where SKILL.md is confirmed found.
+  Contents API only for repositories where SKILL.md is confirmed found. ACF check
+  failures are recorded separately and do not affect the primary found/not-found
+  classification.
   Repo metadata (branch, stars, fork, archived) is read from SEART CSV data —
   no separate metadata API call is made.
 
-Output: one comprehensive CSV (for resume) plus three category-split CSVs written
+Output: one comprehensive CSV (for resume) plus four category-split CSVs written
 automatically next to it:
   *_found.csv      – repositories where SKILL.md was found
   *_not_found.csv  – repositories that were scanned cleanly with no match
   *_errors.csv     – repositories that hit any API error (rate-limit, network, auth, …)
+  *_filtered.csv   – repositories skipped by policy (stars, fork, archived filters)
 
 Notes:
 - Read-only.
@@ -91,8 +95,9 @@ class ScanResult:
     match_name: str
     match_path: str
     default_branch: str
-    ref_scanned: str
-    commit_sha: str       # pinned commit SHA at the scanned branch tip
+    seart_default_branch: str   # branch hint from SEART CSV (not a precise searched ref)
+    commit_sha: str             # pinned commit SHA at the scanned branch tip
+    acf_ref: str                # actual ref used for ACF Contents API calls (SHA or branch)
     match_url: str
     match_sha: str
     match_size_bytes: str
@@ -100,6 +105,8 @@ class ScanResult:
     http_status: str
     error_type: str
     error_message: str
+    acf_error_type: str         # error from ACF checks (separate from primary scan error)
+    acf_error_message: str
     scanned_at_utc: str
     stars: str
     fork: str
@@ -400,8 +407,9 @@ def scan_one_repo(
         match_name=match_name,
         match_path="",
         default_branch=default_branch,
-        ref_scanned=default_branch or "HEAD",
+        seart_default_branch=default_branch or "HEAD",
         commit_sha="",
+        acf_ref="",
         match_url="",
         match_sha="",
         match_size_bytes="",
@@ -409,6 +417,8 @@ def scan_one_repo(
         http_status="",
         error_type="none",
         error_message="",
+        acf_error_type="",
+        acf_error_message="",
         scanned_at_utc=scanned_at,
         stars=stars_raw,
         fork=fork_raw,
@@ -436,14 +446,16 @@ def scan_one_repo(
         res.error_message = "archived"
         return res
 
+    # Community profile is optional enrichment — failure does not block the scan.
     community_flags, community_status, community_err = try_community_profile(gh, repo_src.repo)
-    res.http_status = str(community_status) if community_status else ""
-    if community_status != 200:
-        res.error_type = classify_error(community_status, community_err)
-        res.error_message = community_err
-        return res
-    for attr, value in community_flags.items():
-        setattr(res, attr, value)
+    if community_status == 200:
+        for attr, value in community_flags.items():
+            setattr(res, attr, value)
+    else:
+        log.debug(
+            "Community profile unavailable for %s (HTTP %s), continuing with code search: %s",
+            repo_src.repo, community_status, community_err,
+        )
 
     # Single code-search call to detect SKILL.md anywhere in the repo tree.
     found, item, st, e = try_code_search(gh, repo_src.repo, match_name)
@@ -469,26 +481,43 @@ def scan_one_repo(
     res.error_type = "none"
     res.error_message = ""
 
-    # Resolve the exact commit SHA at the scanned branch tip so stage 3 can
+    # Resolve the exact commit SHA at the scanned branch tip so later stages can
     # query the same tree instead of a potentially-moved branch head.
     ref = default_branch or "HEAD"
     res.commit_sha = resolve_commit_sha(gh, repo_src.repo, ref)
 
+    # Use the pinned SHA for all Contents API calls when available; fall back to
+    # the branch name so results are consistent with the code-search snapshot.
+    acf_ref = res.commit_sha or ref
+    res.acf_ref = acf_ref
+
+    # Fetch the SKILL.md file via Contents API to record its size in bytes.
+    _size_ok, _size_data, _size_st, _size_e = try_contents_path(
+        gh, repo_src.repo, res.match_path, acf_ref
+    )
+    if _size_ok and _size_data:
+        res.match_size_bytes = str(_size_data.get("size", ""))
+
     # ACF checks — Contents API only, run only for repos that have SKILL.md.
-    # Using the SEART-provided branch, or "HEAD" if not available.
+    # Failures are recorded in acf_error_type/acf_error_message and do not
+    # affect the primary found/not-found classification.
     _acf_checks = [
         ("/CLAUDE.md",                       "has_CLAUDE"),
         ("/AGENTS.md",                       "has_AGENTS"),
         ("/.github/copilot-instructions.md", "has_COPILOT"),
     ]
     for _path, _attr in _acf_checks:
-        _ok, _, _st, _e = try_contents_path(gh, repo_src.repo, _path, ref)
+        _ok, _, _st, _e = try_contents_path(gh, repo_src.repo, _path, acf_ref)
         if _st not in (200, 404):
-            res.http_status = str(_st) if _st else res.http_status
-            res.error_type = classify_error(_st, _e)
-            res.error_message = _e
-            return res
-        setattr(res, _attr, "1" if _ok else "0")
+            res.acf_error_type = classify_error(_st, _e)
+            res.acf_error_message = _e
+            log.debug(
+                "ACF check failed for %s path=%s status=%s: %s",
+                repo_src.repo, _path, _st, _e,
+            )
+            setattr(res, _attr, "")  # unknown — not "0" (confirmed absent)
+        else:
+            setattr(res, _attr, "1" if _ok else "0")
 
     return res
 
@@ -504,8 +533,9 @@ _SCAN_COLUMNS = [
     "match_name",
     "match_path",
     "default_branch",
-    "ref_scanned",
+    "seart_default_branch",
     "commit_sha",
+    "acf_ref",
     "match_url",
     "match_sha",
     "match_size_bytes",
@@ -513,6 +543,8 @@ _SCAN_COLUMNS = [
     "http_status",
     "error_type",
     "error_message",
+    "acf_error_type",
+    "acf_error_message",
     "scanned_at_utc",
     "stars",
     "fork",
@@ -610,35 +642,41 @@ _ERROR_TYPES = frozenset({"rate_limited", "network", "auth", "invalid_repo", "no
 
 def result_category(r: ScanResult) -> str:
     """
-    Classify a scan result into one of three output categories.
+    Classify a scan result into one of four output categories.
 
     Returns:
-        "found"     – SKILL.md was located anywhere in the repository.
-        "errors"    – Any API error occurred (rate_limited, network, auth, …).
-        "not_found" – Repository was scanned cleanly; file was not present
-                      (includes filtered-out repos).
+        "found"    – SKILL.md was located anywhere in the repository.
+        "errors"   – Any primary API error occurred (rate_limited, network, auth, …).
+                     Note: ACF-only errors do not affect this classification; a repo
+                     with found=True and acf_error_type set still returns "found".
+        "filtered" – Repository was skipped by policy (stars, fork, archived filters).
+        "not_found"– Repository was scanned cleanly; file was not present.
     """
     if r.error_type in _ERROR_TYPES:
         return "errors"
     if r.found:
         return "found"
+    if r.error_type == "filtered":
+        return "filtered"
     return "not_found"
 
 
-def split_csv_paths(out_csv: str) -> Tuple[str, str, str]:
+def split_csv_paths(out_csv: str) -> Tuple[str, str, str, str]:
     """
-    Derive the three category CSV paths from the main output CSV path.
+    Derive the four category CSV paths from the main output CSV path.
 
     Example: outputs/skill_md_scan_results.csv →
         outputs/skill_md_scan_results_found.csv
         outputs/skill_md_scan_results_not_found.csv
         outputs/skill_md_scan_results_errors.csv
+        outputs/skill_md_scan_results_filtered.csv
     """
     base, ext = os.path.splitext(out_csv)
     return (
         f"{base}_found{ext}",
         f"{base}_not_found{ext}",
         f"{base}_errors{ext}",
+        f"{base}_filtered{ext}",
     )
 
 
@@ -704,11 +742,12 @@ def parse_args(argv: List[str]) -> argparse.Namespace:
     p = argparse.ArgumentParser(
         description=(
             "Scan repos from SEART CSVs for SKILL.md using the GitHub Community Profile and "
-            "Code Search APIs. One community-profile call and one code-search call are made "
-            "per repo; ACF files are checked only for repos where SKILL.md is found. "
-            "Repo metadata is read from SEART CSV data — no separate "
-            "metadata API call is needed. "
-            "Three category CSVs (_found, _not_found, _errors) are written automatically "
+            "Code Search APIs. The community-profile call is optional enrichment; failure does "
+            "not block the SKILL.md scan. One code-search call is made per repo; ACF files are "
+            "checked only for repos where SKILL.md is found (ACF failures are recorded separately "
+            "and do not affect the found/not-found classification). "
+            "Repo metadata is read from SEART CSV data — no separate metadata API call is needed. "
+            "Four category CSVs (_found, _not_found, _errors, _filtered) are written automatically "
             "alongside --out-csv."
         )
     )
@@ -846,9 +885,9 @@ def main(argv: List[str]) -> int:
             skipped_name_filter,
         )
 
-    # Prepare all output CSV paths: one comprehensive file + three category splits.
-    found_csv, not_found_csv, errors_csv = split_csv_paths(args.out_csv)
-    for path in (args.out_csv, found_csv, not_found_csv, errors_csv):
+    # Prepare all output CSV paths: one comprehensive file + four category splits.
+    found_csv, not_found_csv, errors_csv, filtered_csv = split_csv_paths(args.out_csv)
+    for path in (args.out_csv, found_csv, not_found_csv, errors_csv, filtered_csv):
         write_header_if_needed(path)
 
     allow_forks = not args.disallow_forks
@@ -876,13 +915,14 @@ def main(argv: List[str]) -> int:
         total, args.concurrency, args.match_name,
     )
     log.info(
-        "Output CSVs: all=%s | found=%s | not_found=%s | errors=%s",
-        args.out_csv, found_csv, not_found_csv, errors_csv,
+        "Output CSVs: all=%s | found=%s | not_found=%s | errors=%s | filtered=%s",
+        args.out_csv, found_csv, not_found_csv, errors_csv, filtered_csv,
     )
 
     # Per-category running counts for the tqdm postfix.
     found_count = 0
     not_found_count = 0
+    filtered_count = 0
     rate_limited_count = 0
     error_count = 0          # non-rate-limit errors
     error_type_counts: Dict[str, int] = {}
@@ -923,8 +963,9 @@ def main(argv: List[str]) -> int:
                             match_name=args.match_name,
                             match_path="",
                             default_branch="",
-                            ref_scanned="",
+                            seart_default_branch="",
                             commit_sha="",
+                            acf_ref="",
                             match_url="",
                             match_sha="",
                             match_size_bytes="",
@@ -932,6 +973,8 @@ def main(argv: List[str]) -> int:
                             http_status="0",
                             error_type="other",
                             error_message=f"exception: {e}",
+                            acf_error_type="",
+                            acf_error_message="",
                             scanned_at_utc=utc_now_iso(),
                             stars="",
                             fork="",
@@ -952,6 +995,8 @@ def main(argv: List[str]) -> int:
                         found_count += 1
                     elif category == "not_found":
                         not_found_count += 1
+                    elif category == "filtered":
+                        filtered_count += 1
                     elif r.error_type == "rate_limited":
                         rate_limited_count += 1
                     else:
@@ -968,6 +1013,8 @@ def main(argv: List[str]) -> int:
                         append_result(found_csv, r)
                     elif category == "not_found":
                         append_result(not_found_csv, r)
+                    elif category == "filtered":
+                        append_result(filtered_csv, r)
                     else:
                         append_result(errors_csv, r)
 
@@ -975,6 +1022,7 @@ def main(argv: List[str]) -> int:
                     pbar.set_postfix_str(
                         f"found={found_count}"
                         f"  not_found={not_found_count}"
+                        f"  filtered={filtered_count}"
                         f"  rate_limited={rate_limited_count}"
                         f"  errors={error_count}",
                         refresh=False,
@@ -985,21 +1033,24 @@ def main(argv: List[str]) -> int:
     if args.shortlist_csv:
         write_shortlist(args.out_csv, args.shortlist_csv)
 
-    scanned = found_count + not_found_count + rate_limited_count + error_count
+    scanned = found_count + not_found_count + filtered_count + rate_limited_count + error_count
     pct_found = 100.0 * found_count / scanned if scanned else 0.0
     pct_not_found = 100.0 * not_found_count / scanned if scanned else 0.0
+    pct_filtered = 100.0 * filtered_count / scanned if scanned else 0.0
     pct_errors = 100.0 * (rate_limited_count + error_count) / scanned if scanned else 0.0
 
     log.info(
         "Scan complete | elapsed=%.1fs | scanned=%d"
         " | found=%d (%.1f%%)"
         " | not_found=%d (%.1f%%)"
+        " | filtered=%d (%.1f%%)"
         " | rate_limited=%d"
         " | errors=%d"
         " | total_errors=%.1f%%",
         elapsed, scanned,
         found_count, pct_found,
         not_found_count, pct_not_found,
+        filtered_count, pct_filtered,
         rate_limited_count,
         error_count,
         pct_errors,
@@ -1009,6 +1060,7 @@ def main(argv: List[str]) -> int:
     log.info("Output | found=%s", found_csv)
     log.info("Output | not_found=%s", not_found_csv)
     log.info("Output | errors=%s", errors_csv)
+    log.info("Output | filtered=%s", filtered_csv)
     if args.shortlist_csv:
         log.info("Output | shortlist=%s", args.shortlist_csv)
 

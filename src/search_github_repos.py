@@ -14,13 +14,31 @@ Criteria applied by default:
 
 API behaviour:
   - GET /search/repositories returns at most 1,000 results per query.
-  - Rate limit: 30 requests/minute per authenticated token for /search/repositories.
-  - Queries are split by (language, license) pair — 36 combinations by default.
-  - When a combination still yields >= 1,000 results, the star range is
-    recursively bisected until each sub-range returns < 1,000 results.
-    This continues down to single-star-count ranges; if a single value still
-    has >= 1,000 repos, the 1,000-result cap is accepted with a warning (this
-    is extremely unlikely in practice).
+  - Rate limit: 30 req/min per authenticated token; 10 req/min unauthenticated.
+  - Queries are split by (language, license) pair — 40 combinations by default.
+  - Three-level fallback strategy to stay under the 1,000-result cap:
+
+    Level 1 — Full date range, no star subdivision.
+      If total_count < 1,000: paginate directly and move on.
+
+    Level 2 — Static star brackets (see STAR_BRACKETS), full date range.
+      If a bracket total_count < 1,000: paginate directly and move on.
+
+    Level 3 — Recursive time-window subdivision per bracket.
+      When a bracket still has >= 1,000 results within the full date range, the
+      query window is repeatedly halved until every sub-window fits under the
+      cap.  The subdivision sequence is:
+        weekly window  → individual days (up to 7 sub-windows)
+        single day     → 12-hour halves  (00:00–11:59 / 12:00–23:59)
+        12-hour half   → 6-hour quarters
+        6-hour quarter → star-range bisection within that window (binary search)
+      If a single star value within a 6-hour window still has >= 1,000 results,
+      that window is accepted with a warning (the 1,000-result cap applies).
+      This is the minimum subdivision granularity and is extremely unlikely to
+      occur in practice.
+
+  - The end date is frozen at startup (defaults to today) so that every query
+    uses a closed pushed:start..end window, making reruns reproducible.
 
 Output CSV schema matches SEART exports so that extract_skill_repos.py and
 generate_dataset.py can consume it unchanged.
@@ -107,9 +125,14 @@ SEART_COLUMNS: List[str] = [
 # API helpers
 # ---------------------------------------------------------------------------
 
-def _repo_search_throttle() -> SearchThrottle:
-    """Return a SearchThrottle tuned for /search/repositories (30 req/min)."""
-    return SearchThrottle(max_per_minute=30, window_s=60.0)
+def _repo_search_throttle(authenticated: bool) -> SearchThrottle:
+    """Return a SearchThrottle tuned for /search/repositories.
+
+    GitHub allows 30 req/min per authenticated token and only 10 req/min when
+    unauthenticated.  Passing the wrong limit for the unauthenticated case
+    causes the crawler to race into 403 responses immediately.
+    """
+    return SearchThrottle(max_per_minute=30 if authenticated else 10, window_s=60.0)
 
 
 def _build_query(
@@ -233,7 +256,7 @@ def _repo_to_seart_row(repo: dict) -> Dict[str, str]:
 
 
 # ---------------------------------------------------------------------------
-# Core fetch logic — star brackets + biweekly subdivision
+# Core fetch logic — star brackets + recursive time-window subdivision
 # ---------------------------------------------------------------------------
 
 def _biweekly_windows(pushed_since: str, end_date: dt.date | None = None) -> List[Tuple[str, str]]:
@@ -296,6 +319,153 @@ def _paginate_query(
             break
 
 
+# Sub-day window granularities expressed as (hour_start, hour_end_inclusive) pairs.
+# Each entry covers exactly half a day so that two halves together tile one day
+# without gaps or overlaps.  GitHub's pushed qualifier accepts ISO 8601 timestamps.
+_HALF_DAY_WINDOWS: List[Tuple[int, int]] = [(0, 11), (12, 23)]
+_QUARTER_DAY_WINDOWS: List[Tuple[int, int]] = [(0, 5), (6, 11), (12, 17), (18, 23)]
+
+
+def _dt_to_pushed_str(d: dt.datetime) -> str:
+    """Format a datetime as the ISO 8601 string that GitHub's pushed qualifier accepts."""
+    return d.strftime("%Y-%m-%dT%H:%M:%S")
+
+
+def _fetch_time_window(
+    gh: GitHubClient,
+    throttle: SearchThrottle,
+    language: str,
+    license_key: str,
+    win_start: dt.datetime,
+    win_end: dt.datetime,
+    star_low: int,
+    star_high: int,
+    already_seen: Set[str],
+    label: str,
+    depth: int = 0,
+) -> Iterator[dict]:
+    """
+    Yield all repos within a single time window, recursively subdividing when
+    total_count >= 1,000 so that no results are silently truncated.
+
+    Subdivision sequence (deepest level first):
+      depth 0 — weekly window  (7 days)    → split into individual days
+      depth 1 — daily window   (1 day)     → split into 12-hour halves
+      depth 2 — 12-hour window             → split into 6-hour quarters
+      depth 3 — 6-hour window              → bisect star range [star_low, star_high]
+      depth 4 — star range is a single value → accept 1,000-result cap (warning)
+
+    The first API call serves double duty: it reveals total_count *and* provides
+    page-1 results, so no probe request is wasted.
+    """
+    start_str = _dt_to_pushed_str(win_start)
+    end_str = _dt_to_pushed_str(win_end)
+    win_q = _build_query(language, license_key, start_str, star_low, star_high, pushed_end=end_str)
+    total, items, status, inc = _fetch_page(gh, throttle, win_q, page=1)
+
+    if status != 200:
+        log.warning("%s: HTTP %d, skipping.", label, status)
+        return
+    if not items:
+        log.debug("%s: 0 results.", label)
+        return
+    if inc:
+        log.warning("%s page 1: incomplete_results=true", label)
+
+    if total < 1000:
+        log.debug("%s: total_count=%d, paginating.", label, total)
+        yield from _paginate_query(gh, throttle, win_q, already_seen, items, label)
+        return
+
+    # ------------------------------------------------------------------ #
+    # Still >= 1,000: subdivide further.                                  #
+    # ------------------------------------------------------------------ #
+
+    span_days = (win_end.date() - win_start.date()).days + 1
+
+    if depth == 0 and span_days > 1:
+        # Split weekly window into individual days.
+        log.info("%s: total_count=%d >= 1000, splitting into %d daily windows.", label, total, span_days)
+        cur = win_start.date()
+        ceil_date = win_end.date()
+        while cur <= ceil_date:
+            day_start = dt.datetime(cur.year, cur.month, cur.day, 0, 0, 0)
+            day_end   = dt.datetime(cur.year, cur.month, cur.day, 23, 59, 59)
+            day_label = f"{label} pushed={cur.isoformat()}"
+            yield from _fetch_time_window(
+                gh, throttle, language, license_key,
+                day_start, day_end, star_low, star_high,
+                already_seen, day_label, depth=1,
+            )
+            cur += dt.timedelta(days=1)
+        return
+
+    if depth <= 1 and span_days == 1:
+        # Split the single day into 12-hour halves.
+        log.info("%s: total_count=%d >= 1000, splitting into 12-hour windows.", label, total)
+        base_date = win_start.date()
+        for h_start, h_end in _HALF_DAY_WINDOWS:
+            sub_start = dt.datetime(base_date.year, base_date.month, base_date.day, h_start, 0, 0)
+            sub_end   = dt.datetime(base_date.year, base_date.month, base_date.day, h_end, 59, 59)
+            if sub_end < win_start or sub_start > win_end:
+                continue
+            sub_start = max(sub_start, win_start)
+            sub_end   = min(sub_end, win_end)
+            sub_label = f"{label} {h_start:02d}h-{h_end:02d}h"
+            yield from _fetch_time_window(
+                gh, throttle, language, license_key,
+                sub_start, sub_end, star_low, star_high,
+                already_seen, sub_label, depth=2,
+            )
+        return
+
+    if depth == 2:
+        # Split into 6-hour quarters.
+        log.info("%s: total_count=%d >= 1000, splitting into 6-hour windows.", label, total)
+        base_date = win_start.date()
+        for h_start, h_end in _QUARTER_DAY_WINDOWS:
+            sub_start = dt.datetime(base_date.year, base_date.month, base_date.day, h_start, 0, 0)
+            sub_end   = dt.datetime(base_date.year, base_date.month, base_date.day, h_end, 59, 59)
+            if sub_end < win_start or sub_start > win_end:
+                continue
+            sub_start = max(sub_start, win_start)
+            sub_end   = min(sub_end, win_end)
+            sub_label = f"{label} {h_start:02d}h-{h_end:02d}h"
+            yield from _fetch_time_window(
+                gh, throttle, language, license_key,
+                sub_start, sub_end, star_low, star_high,
+                already_seen, sub_label, depth=3,
+            )
+        return
+
+    if depth == 3 and star_low < star_high:
+        # Bisect the star range within this 6-hour window.
+        star_mid = (star_low + star_high) // 2
+        log.info(
+            "%s: total_count=%d >= 1000, bisecting star range [%d,%d] → [%d,%d] + [%d,%d].",
+            label, total, star_low, star_high, star_low, star_mid, star_mid + 1, star_high,
+        )
+        for lo, hi in [(star_low, star_mid), (star_mid + 1, star_high)]:
+            sub_label = f"{label} stars={lo}..{hi}"
+            yield from _fetch_time_window(
+                gh, throttle, language, license_key,
+                win_start, win_end, lo, hi,
+                already_seen, sub_label, depth=4,
+            )
+        return
+
+    # Minimum granularity reached (single star value, 6-hour window, or fully
+    # bisected star range).  Accept up to 1,000 results and warn.
+    log.warning(
+        "%s: total_count=%d >= 1000 at minimum granularity "
+        "(stars=%d..%s, window=%s..%s); accepting up to 1,000 results.",
+        label, total, star_low,
+        "inf" if star_high >= _STAR_HIGH_SENTINEL else str(star_high),
+        start_str, end_str,
+    )
+    yield from _paginate_query(gh, throttle, win_q, already_seen, items, label)
+
+
 def _fetch_combo(
     gh: GitHubClient,
     throttle: SearchThrottle,
@@ -311,12 +481,16 @@ def _fetch_combo(
     Yield all repos for a single (language, license) pair.
 
     Three-level fallback strategy:
-      1. Full date range, no explicit star cap (just min_stars).
+      1. Full date range, no explicit star subdivision (just min_stars).
          → if total_count < 1,000: paginate directly.
       2. Per static star bracket, full date range.
          → if total_count < 1,000: paginate directly.
-      3. Per static star bracket, per 1-week window.
-         → paginate; emit a warning if still capped (best effort).
+      3. Per static star bracket, per 1-week window — recursively subdivided.
+         Each weekly window that still exceeds 1,000 results is split into
+         daily windows, then 12-hour halves, then 6-hour quarters, then by
+         star-range bisection.  Only the absolute minimum granularity (single
+         star value within a 6-hour window) is allowed to accept the 1,000-
+         result cap, and even then a warning is emitted.
 
     The first API call at each level serves double duty: it reveals
     total_count *and* provides the page-1 results, so no extra probe
@@ -380,33 +554,18 @@ def _fetch_combo(
         )
 
         # --------------------------------------------------------------
-        # Level 3 — per bracket, per 1-week window
+        # Level 3 — per bracket, per 1-week window, recursively subdivided
         # --------------------------------------------------------------
-        for win_start, win_end in biweekly_windows:
-            win_label = f"{bracket_label} pushed={win_start}..{win_end}"
-            win_q = _build_query(
-                language, license_key, win_start, effective_low, star_high,
-                pushed_end=win_end,
+        for win_start_str, win_end_str in biweekly_windows:
+            win_start = dt.datetime.fromisoformat(win_start_str)
+            win_end   = dt.datetime(
+                *dt.date.fromisoformat(win_end_str).timetuple()[:3], 23, 59, 59
             )
-            total_w, items_w, status_w, inc_w = _fetch_page(gh, throttle, win_q, page=1)
-
-            if status_w != 200:
-                log.warning("%s: HTTP %d, skipping window.", win_label, status_w)
-                continue
-            if not items_w:
-                log.debug("%s: 0 results.", win_label)
-                continue
-            if total_w >= 1000:
-                log.warning(
-                    "%s: total_count=%d >= 1000 even after 1-week subdivision; "
-                    "accepting up to 1,000 results for this window.",
-                    win_label, total_w,
-                )
-            if inc_w:
-                log.warning("%s page 1: incomplete_results=true", win_label)
-
-            yield from _paginate_query(
-                gh, throttle, win_q, already_seen, items_w, win_label,
+            win_label = f"{bracket_label} pushed={win_start_str}..{win_end_str}"
+            yield from _fetch_time_window(
+                gh, throttle, language, license_key,
+                win_start, win_end, effective_low, star_high,
+                already_seen, win_label, depth=0,
             )
 
 
@@ -809,8 +968,9 @@ def main(argv: List[str]) -> int:
         )
 
     pool = TokenPool(tokens)
-    # Use a separate SearchThrottle tuned for /search/repositories (30 req/min).
-    repo_throttle = _repo_search_throttle()
+    # Use a SearchThrottle tuned for /search/repositories: 30 req/min when
+    # authenticated, 10 req/min when running without a token.
+    repo_throttle = _repo_search_throttle(authenticated=bool(tokens))
     gh = GitHubClient(pool=pool)
 
     start_ts = time.time()
@@ -842,22 +1002,25 @@ def main(argv: List[str]) -> int:
             for path in combo_csv.values():
                 _write_header(path)
 
-        # Parse and validate --end-date.
-        end_date: dt.date | None = None
-        pushed_end_str = ""
+        # Parse and validate --end-date; always freeze the crawl horizon at
+        # startup so that every query uses a closed pushed:start..end window.
+        # An open-ended window (pushed:>=DATE) can produce different results
+        # across reruns as GitHub data changes during a long crawl.
         if args.end_date:
             try:
-                end_date = dt.date.fromisoformat(args.end_date)
+                end_date: dt.date = dt.date.fromisoformat(args.end_date)
             except ValueError:
                 log.error("--end-date %r is not a valid YYYY-MM-DD date.", args.end_date)
                 return 1
-            pushed_end_str = end_date.isoformat()
+        else:
+            end_date = dt.date.today()
+        pushed_end_str = end_date.isoformat()
 
         log.info(
             "Searching GitHub repositories | languages=%s | licenses=%s | "
             "min_stars=%d | pushed_since=%s | end_date=%s",
             args.languages, args.licenses, args.min_stars, args.pushed_since,
-            pushed_end_str or "today",
+            pushed_end_str,
         )
         log.info("Output CSV (combined): %s", args.out_csv)
         log.info("Per-combo CSVs written to: %s/", os.path.dirname(args.out_csv) or ".")

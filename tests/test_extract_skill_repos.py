@@ -14,6 +14,8 @@ Covers:
 - try_code_search       (mocked HTTP)
 - GitHubClient          (mocked HTTP, retry/backoff behaviour)
 - scan_one_repo         (mocked dependencies)
+- result_category       (pure function, four categories)
+- split_csv_paths       (pure function, four-tuple)
 
 All tests are deterministic: no real network calls, time is frozen where
 timestamps are asserted, and temp directories are cleaned up after each test.
@@ -53,6 +55,7 @@ from extract_skill_repos import (
     resolve_commit_sha,
     scan_one_repo,
     setup_logging,
+    split_csv_paths,
     try_code_search,
     try_community_profile,
     try_contents_path,
@@ -75,15 +78,18 @@ def _make_scan_result(repo: str = "owner/repo", found: bool = False) -> ScanResu
         match_name="SKILL.md",
         match_path="/SKILL.md" if found else "",
         default_branch="main",
-        ref_scanned="main",
+        seart_default_branch="main",
         commit_sha="abc123abc123abc123abc123abc123abc123abc1" if found else "",
+        acf_ref="abc123abc123abc123abc123abc123abc123abc1" if found else "",
         match_url="https://github.com/owner/repo/blob/main/SKILL.md" if found else "",
         match_sha="abc123" if found else "",
         match_size_bytes="512" if found else "",
-        scan_method="contents_api",
+        scan_method="code_search",
         http_status="200" if found else "404",
         error_type="none",
         error_message="",
+        acf_error_type="",
+        acf_error_message="",
         scanned_at_utc="2024-01-01T00:00:00Z",
         stars="42",
         fork="false",
@@ -1019,10 +1025,17 @@ class TestScanOneRepo(unittest.TestCase):
             "has_SECURITY": "1",
             "has_CODE_OF_CONDUCT": "1",
         }
+        # try_contents_path is called: first for size fetch, then 3x for ACF checks.
+        contents_side_effects = [
+            (True, {"size": 1024}, 200, ""),   # size fetch for SKILL.md
+            (False, {}, 404, ""),               # has_CLAUDE
+            (False, {}, 404, ""),               # has_AGENTS
+            (False, {}, 404, ""),               # has_COPILOT
+        ]
         with mock.patch("extract_skill_repos.try_community_profile", return_value=(community_flags, 200, "")), \
              mock.patch("extract_skill_repos.try_code_search", return_value=(True, self._search_item(), 200, "")), \
              mock.patch("extract_skill_repos.resolve_commit_sha", return_value="abc" * 13 + "a"), \
-             mock.patch("extract_skill_repos.try_contents_path", return_value=(False, {}, 404, "")):
+             mock.patch("extract_skill_repos.try_contents_path", side_effect=contents_side_effects):
             result = scan_one_repo(
                 self._gh(), self._src(), "SKILL.md", min_stars=0, allow_forks=True, allow_archived=True,
             )
@@ -1031,6 +1044,7 @@ class TestScanOneRepo(unittest.TestCase):
         self.assertEqual(result.match_sha, "def456")
         self.assertEqual(result.match_path, "/SKILL.md")
         self.assertEqual(result.error_type, "none")
+        self.assertEqual(result.acf_error_type, "")
         self.assertEqual(result.has_README, "1")
         self.assertEqual(result.has_CONTRIBUTING, "1")
         self.assertEqual(result.has_SECURITY, "1")
@@ -1090,16 +1104,21 @@ class TestScanOneRepo(unittest.TestCase):
         self.assertFalse(result.found)
         self.assertEqual(result.error_type, "auth")
 
-    def test_community_profile_error_stops_scan(self):
+    def test_community_profile_error_no_longer_stops_scan(self):
+        """Community profile failure must not block the scan; code search still runs."""
         with mock.patch(
             "extract_skill_repos.try_community_profile",
             return_value=({}, 429, "Too Many Requests"),
+        ), mock.patch(
+            "extract_skill_repos.try_code_search",
+            return_value=(False, None, 200, ""),
         ):
             result = scan_one_repo(
                 self._gh(), self._src(), "SKILL.md", min_stars=0, allow_forks=True, allow_archived=True,
             )
+        # Community profile failure does not propagate to error_type
         self.assertFalse(result.found)
-        self.assertEqual(result.error_type, "rate_limited")
+        self.assertEqual(result.error_type, "none")
 
     def test_rate_limit_error_from_code_search_is_preserved(self):
         with mock.patch(
@@ -1138,17 +1157,23 @@ class TestScanOneRepo(unittest.TestCase):
                 self._gh(), src, "SKILL.md", min_stars=0, allow_forks=True, allow_archived=True,
             )
         self.assertEqual(result.default_branch, "develop")
-        self.assertEqual(result.ref_scanned, "develop")
+        self.assertEqual(result.seart_default_branch, "develop")
         self.assertEqual(result.stars, "99")
         self.assertEqual(result.fork, "true")
         self.assertEqual(result.archived, "false")
 
     def test_commit_sha_populated_after_successful_find(self):
         pinned_sha = "a" * 40
+        contents_side_effects = [
+            (True, {"size": 512}, 200, ""),  # size fetch
+            (False, {}, 404, ""),            # has_CLAUDE
+            (False, {}, 404, ""),            # has_AGENTS
+            (False, {}, 404, ""),            # has_COPILOT
+        ]
         with mock.patch("extract_skill_repos.try_community_profile", return_value=({}, 200, "")), \
              mock.patch("extract_skill_repos.try_code_search", return_value=(True, self._search_item(), 200, "")), \
              mock.patch("extract_skill_repos.resolve_commit_sha", return_value=pinned_sha), \
-             mock.patch("extract_skill_repos.try_contents_path", return_value=(False, {}, 404, "")):
+             mock.patch("extract_skill_repos.try_contents_path", side_effect=contents_side_effects):
             result = scan_one_repo(
                 self._gh(), self._src(), "SKILL.md", min_stars=0, allow_forks=True, allow_archived=True,
             )
@@ -1169,16 +1194,19 @@ class TestScanOneRepo(unittest.TestCase):
             "has_SECURITY": "0",
             "has_CODE_OF_CONDUCT": "1",
         }
+        # try_contents_path calls: size fetch, then CLAUDE/AGENTS/COPILOT checks.
+        contents_side_effects = [
+            (True, {"size": 768}, 200, ""),  # size fetch
+            (True, {}, 200, ""),             # has_CLAUDE
+            (False, {}, 404, ""),            # has_AGENTS
+            (True, {}, 200, ""),             # has_COPILOT
+        ]
         with mock.patch("extract_skill_repos.try_community_profile", return_value=(community_flags, 200, "")), \
              mock.patch("extract_skill_repos.try_code_search", return_value=(True, self._search_item(), 200, "")), \
              mock.patch("extract_skill_repos.resolve_commit_sha", return_value="a" * 40), \
              mock.patch(
                  "extract_skill_repos.try_contents_path",
-                 side_effect=[
-                     (True, {}, 200, ""),
-                     (False, {}, 404, ""),
-                     (True, {}, 200, ""),
-                 ],
+                 side_effect=contents_side_effects,
              ):
             result = scan_one_repo(
                 self._gh(), self._src(), "SKILL.md", min_stars=0, allow_forks=True, allow_archived=True,
@@ -1191,16 +1219,179 @@ class TestScanOneRepo(unittest.TestCase):
         self.assertEqual(result.has_AGENTS, "0")
         self.assertEqual(result.has_COPILOT, "1")
 
-    def test_acf_api_error_is_preserved(self):
+    def test_acf_api_error_recorded_in_acf_fields_not_primary(self):
+        """ACF check failure must not change primary error_type; repo stays in 'found'."""
+        # try_contents_path is called: once for match_size_bytes, then for each ACF file.
+        # The first call (size fetch) returns a valid file; subsequent calls return 429.
+        size_response = (True, {"size": 256}, 200, "")
+        acf_error_response = (False, {}, 429, "Too Many Requests")
         with mock.patch("extract_skill_repos.try_community_profile", return_value=({}, 200, "")), \
              mock.patch("extract_skill_repos.try_code_search", return_value=(True, self._search_item(), 200, "")), \
              mock.patch("extract_skill_repos.resolve_commit_sha", return_value="a" * 40), \
-             mock.patch("extract_skill_repos.try_contents_path", return_value=(False, {}, 429, "Too Many Requests")):
+             mock.patch(
+                 "extract_skill_repos.try_contents_path",
+                 side_effect=[size_response, acf_error_response, acf_error_response, acf_error_response],
+             ):
             result = scan_one_repo(
                 self._gh(), self._src(), "SKILL.md", min_stars=0, allow_forks=True, allow_archived=True,
             )
         self.assertTrue(result.found)
-        self.assertEqual(result.error_type, "rate_limited")
+        self.assertEqual(result.error_type, "none")
+        self.assertEqual(result.acf_error_type, "rate_limited")
+        self.assertIn("Too Many Requests", result.acf_error_message)
+        # ACF flags should be "" (unknown) not "0" (confirmed absent)
+        self.assertEqual(result.has_CLAUDE, "")
+        self.assertEqual(result.has_AGENTS, "")
+        self.assertEqual(result.has_COPILOT, "")
+
+
+    def test_community_profile_failure_does_not_block_code_search(self):
+        """Community profile failure must not prevent code search from running."""
+        with mock.patch(
+            "extract_skill_repos.try_community_profile",
+            return_value=({}, 429, "Too Many Requests"),
+        ), mock.patch(
+            "extract_skill_repos.try_code_search",
+            return_value=(False, None, 200, ""),
+        ):
+            result = scan_one_repo(
+                self._gh(), self._src(), "SKILL.md", min_stars=0, allow_forks=True, allow_archived=True,
+            )
+        # Should be not_found, not an error
+        self.assertFalse(result.found)
+        self.assertEqual(result.error_type, "none")
+
+    def test_community_profile_failure_leaves_flags_at_default(self):
+        """When community profile fails, has_README etc. remain at their default '0'."""
+        with mock.patch(
+            "extract_skill_repos.try_community_profile",
+            return_value=({}, 503, "Service Unavailable"),
+        ), mock.patch(
+            "extract_skill_repos.try_code_search",
+            return_value=(False, None, 200, ""),
+        ):
+            result = scan_one_repo(
+                self._gh(), self._src(), "SKILL.md", min_stars=0, allow_forks=True, allow_archived=True,
+            )
+        self.assertEqual(result.has_README, "0")
+        self.assertEqual(result.has_CONTRIBUTING, "0")
+        self.assertEqual(result.has_SECURITY, "0")
+        self.assertEqual(result.has_CODE_OF_CONDUCT, "0")
+
+    def test_match_size_bytes_populated_from_contents_api(self):
+        """match_size_bytes must be set to the size reported by the Contents API."""
+        contents_side_effects = [
+            (True, {"size": 4096}, 200, ""),  # size fetch for SKILL.md
+            (False, {}, 404, ""),             # has_CLAUDE
+            (False, {}, 404, ""),             # has_AGENTS
+            (False, {}, 404, ""),             # has_COPILOT
+        ]
+        with mock.patch("extract_skill_repos.try_community_profile", return_value=({}, 200, "")), \
+             mock.patch("extract_skill_repos.try_code_search", return_value=(True, self._search_item(), 200, "")), \
+             mock.patch("extract_skill_repos.resolve_commit_sha", return_value="a" * 40), \
+             mock.patch("extract_skill_repos.try_contents_path", side_effect=contents_side_effects):
+            result = scan_one_repo(
+                self._gh(), self._src(), "SKILL.md", min_stars=0, allow_forks=True, allow_archived=True,
+            )
+        self.assertEqual(result.match_size_bytes, "4096")
+
+    def test_match_size_bytes_empty_when_contents_api_fails(self):
+        """If the Contents API size fetch fails, match_size_bytes stays empty."""
+        contents_side_effects = [
+            (False, {}, 404, ""),  # size fetch fails (404)
+            (False, {}, 404, ""),  # has_CLAUDE
+            (False, {}, 404, ""),  # has_AGENTS
+            (False, {}, 404, ""),  # has_COPILOT
+        ]
+        with mock.patch("extract_skill_repos.try_community_profile", return_value=({}, 200, "")), \
+             mock.patch("extract_skill_repos.try_code_search", return_value=(True, self._search_item(), 200, "")), \
+             mock.patch("extract_skill_repos.resolve_commit_sha", return_value="a" * 40), \
+             mock.patch("extract_skill_repos.try_contents_path", side_effect=contents_side_effects):
+            result = scan_one_repo(
+                self._gh(), self._src(), "SKILL.md", min_stars=0, allow_forks=True, allow_archived=True,
+            )
+        self.assertEqual(result.match_size_bytes, "")
+
+    def test_acf_checks_use_pinned_commit_sha(self):
+        """ACF Contents API calls must use the resolved commit SHA, not the branch name."""
+        pinned_sha = "c" * 40
+        captured_refs: list[str] = []
+
+        def fake_try_contents_path(gh, repo, path, ref):
+            captured_refs.append(ref)
+            return (False, {}, 404, "")
+
+        with mock.patch("extract_skill_repos.try_community_profile", return_value=({}, 200, "")), \
+             mock.patch("extract_skill_repos.try_code_search", return_value=(True, self._search_item(), 200, "")), \
+             mock.patch("extract_skill_repos.resolve_commit_sha", return_value=pinned_sha), \
+             mock.patch("extract_skill_repos.try_contents_path", side_effect=fake_try_contents_path):
+            result = scan_one_repo(
+                self._gh(), self._src(), "SKILL.md", min_stars=0, allow_forks=True, allow_archived=True,
+            )
+        # All Contents API calls (size + 3 ACF checks) should use the pinned SHA.
+        self.assertTrue(all(ref == pinned_sha for ref in captured_refs), captured_refs)
+        self.assertEqual(result.acf_ref, pinned_sha)
+
+    def test_acf_ref_falls_back_to_branch_when_sha_unavailable(self):
+        """When commit SHA resolution fails, acf_ref falls back to the branch name."""
+        contents_side_effects = [(False, {}, 404, "")] * 4
+        with mock.patch("extract_skill_repos.try_community_profile", return_value=({}, 200, "")), \
+             mock.patch("extract_skill_repos.try_code_search", return_value=(True, self._search_item(), 200, "")), \
+             mock.patch("extract_skill_repos.resolve_commit_sha", return_value=""), \
+             mock.patch("extract_skill_repos.try_contents_path", side_effect=contents_side_effects):
+            result = scan_one_repo(
+                self._gh(), self._src(), "SKILL.md", min_stars=0, allow_forks=True, allow_archived=True,
+            )
+        self.assertEqual(result.commit_sha, "")
+        self.assertEqual(result.acf_ref, "main")  # falls back to default_branch
+
+    def test_acf_error_does_not_prevent_remaining_acf_checks(self):
+        """When one ACF check errors, the loop must continue (not return early)."""
+        contents_side_effects = [
+            (True, {"size": 200}, 200, ""),   # size fetch
+            (False, {}, 429, "rate limited"), # has_CLAUDE — error
+            (True, {}, 200, ""),              # has_AGENTS — succeeds
+            (False, {}, 404, ""),             # has_COPILOT — not found
+        ]
+        with mock.patch("extract_skill_repos.try_community_profile", return_value=({}, 200, "")), \
+             mock.patch("extract_skill_repos.try_code_search", return_value=(True, self._search_item(), 200, "")), \
+             mock.patch("extract_skill_repos.resolve_commit_sha", return_value="a" * 40), \
+             mock.patch("extract_skill_repos.try_contents_path", side_effect=contents_side_effects):
+            result = scan_one_repo(
+                self._gh(), self._src(), "SKILL.md", min_stars=0, allow_forks=True, allow_archived=True,
+            )
+        self.assertTrue(result.found)
+        self.assertEqual(result.error_type, "none")
+        self.assertEqual(result.has_CLAUDE, "")   # unknown due to error
+        self.assertEqual(result.has_AGENTS, "1")  # subsequent check succeeded
+        self.assertEqual(result.has_COPILOT, "0") # not found
+
+
+# ---------------------------------------------------------------------------
+# split_csv_paths
+# ---------------------------------------------------------------------------
+
+class TestSplitCsvPaths(unittest.TestCase):
+
+    def test_returns_four_paths(self):
+        result = split_csv_paths("outputs/results.csv")
+        self.assertEqual(len(result), 4)
+
+    def test_found_path(self):
+        found, *_ = split_csv_paths("outputs/results.csv")
+        self.assertEqual(found, "outputs/results_found.csv")
+
+    def test_not_found_path(self):
+        _, not_found, *_ = split_csv_paths("outputs/results.csv")
+        self.assertEqual(not_found, "outputs/results_not_found.csv")
+
+    def test_errors_path(self):
+        _, _, errors, _ = split_csv_paths("outputs/results.csv")
+        self.assertEqual(errors, "outputs/results_errors.csv")
+
+    def test_filtered_path(self):
+        *_, filtered = split_csv_paths("outputs/results.csv")
+        self.assertEqual(filtered, "outputs/results_filtered.csv")
 
 
 class TestResultCategory(unittest.TestCase):
@@ -1209,10 +1400,45 @@ class TestResultCategory(unittest.TestCase):
         result = _make_scan_result(found=True)
         self.assertEqual(result_category(result), "found")
 
-    def test_error_takes_precedence_over_found(self):
+    def test_primary_error_takes_precedence_over_found(self):
         result = _make_scan_result(found=True)
         result.error_type = "network"
         result.error_message = "timeout"
+        self.assertEqual(result_category(result), "errors")
+
+    def test_acf_error_alone_does_not_move_found_to_errors(self):
+        """A found repo with an ACF-only error must still be categorised as 'found'."""
+        result = _make_scan_result(found=True)
+        result.error_type = "none"
+        result.acf_error_type = "rate_limited"
+        self.assertEqual(result_category(result), "found")
+
+    def test_not_found_clean_scan_is_not_found(self):
+        result = _make_scan_result(found=False)
+        result.error_type = "none"
+        self.assertEqual(result_category(result), "not_found")
+
+    def test_filtered_repo_is_filtered(self):
+        result = _make_scan_result(found=False)
+        result.error_type = "filtered"
+        result.error_message = "stars<5"
+        self.assertEqual(result_category(result), "filtered")
+
+    def test_filtered_fork_is_filtered(self):
+        result = _make_scan_result(found=False)
+        result.error_type = "filtered"
+        result.error_message = "fork"
+        self.assertEqual(result_category(result), "filtered")
+
+    def test_filtered_archived_is_filtered(self):
+        result = _make_scan_result(found=False)
+        result.error_type = "filtered"
+        result.error_message = "archived"
+        self.assertEqual(result_category(result), "filtered")
+
+    def test_rate_limited_is_errors(self):
+        result = _make_scan_result(found=False)
+        result.error_type = "rate_limited"
         self.assertEqual(result_category(result), "errors")
 
 

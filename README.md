@@ -175,11 +175,23 @@ Scrapes GitHub repositories via `GET /search/repositories` and writes a SEART-co
 | `--github-tokens TOKENS` | *(env)* | Comma-separated GitHub PATs for multi-token rotation |
 | `--log-level LEVEL` | `INFO` | Logging verbosity (`DEBUG`, `INFO`, `WARNING`, `ERROR`) |
 
-**Rate limit note:** `/search/repositories` allows **30 requests/minute** per authenticated token (separate from the 10 req/min `/search/code` limit). With `per_page=100` and up to 10 pages per query, 36 combinations require ~360 requests — about 12 minutes with one token.
+**Rate limit note:** `/search/repositories` allows **30 requests/minute** per authenticated token and **10 requests/minute** unauthenticated (separate from the 10 req/min `/search/code` limit). With `per_page=100` and up to 10 pages per query, 40 combinations require ~400 requests at minimum — about 14 minutes with one token.
 
 **Per-combo CSVs:** In addition to the combined `--out-csv`, one CSV per (language, license) pair is written alongside it using the naming convention `{base}_{language}_{license}.csv` (e.g. `github_search_results_typescript_mit.csv`). These files contain the same SEART-compatible schema and can be used as independent inputs to `extract_skill_repos.py`.
 
-**1,000-result cap:** Each query returns at most 1,000 results. When a (language, license) pair exceeds this, the script automatically bisects the star range in half and recurses into each half. Bisection continues until every sub-range returns < 1,000 results, down to single star-count values if necessary. The first-page API call doubles as a total-count probe, so no extra requests are wasted.
+**1,000-result cap:** Each query returns at most 1,000 results. The script uses a three-level strategy to stay under the cap without missing repos:
+
+1. **Full date range, no star subdivision** — paginate directly if total < 1,000.
+2. **Static star brackets** (16 predefined ranges) over the full date range — paginate directly if total < 1,000.
+3. **Recursive time-window subdivision** per bracket — when a bracket still exceeds 1,000 results the query window is split repeatedly:
+   - Weekly window → individual days
+   - Single day → 12-hour halves
+   - 12-hour half → 6-hour quarters
+   - 6-hour quarter → binary bisection of the star range
+
+   Only when a single star value within a 6-hour window still returns ≥ 1,000 results is the cap accepted (with a warning). This situation is extremely unlikely in practice.
+
+The end date is frozen at startup (defaulting to today when `--end-date` is omitted) so that every query uses a closed `pushed:start..end` window and reruns are reproducible. The first-page API call at each level doubles as a total-count probe, so no extra requests are wasted.
 
 ---
 
