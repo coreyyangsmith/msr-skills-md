@@ -19,6 +19,7 @@ import datetime as dt
 import json
 import logging
 import os
+import pathlib
 import re
 import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -282,14 +283,17 @@ def download_skill_files(gh: GitHubClient, repo: str, skill: SkillInstance, repo
             rel_path = path[len(prefix):]
         else:
             rel_path = path
-            
-        # Determine local path: repo_dir/skill_folder_name/rel_path
-        # Sanitize both components so Windows-invalid characters (e.g. ':') don't
-        # produce invalid directory names.
-        folder_name = sanitize_path_component(
-            os.path.basename(skill.parent_folder) if skill.parent_folder else "root"
-        )
-        local_path = os.path.join(repo_dir, folder_name, sanitize_relative_path(rel_path))
+
+        # Determine local path: repo_dir/<full_skill_folder_path>/rel_path
+        # Use the full parent_folder path (not just its basename) so that skills
+        # nested at different depths with the same leaf name (e.g. Packs/A/src and
+        # Packs/B/src) are stored in separate directories and don't overwrite each
+        # other.  Each path component is sanitized individually for Windows.
+        if skill.parent_folder:
+            folder_path = sanitize_relative_path(skill.parent_folder)
+        else:
+            folder_path = "root"
+        local_path = os.path.join(repo_dir, folder_path, sanitize_relative_path(rel_path))
         
         # Ensure dir exists
         os.makedirs(os.path.dirname(local_path), exist_ok=True)
@@ -343,9 +347,23 @@ def process_repo(
         try:
             with open(metadata_path, "r", encoding="utf-8") as f:
                 metadata = json.load(f)
+            skill_count = int(metadata.get("skill_count", 0) or 0)
             # Old zero-skill metadata should be retried rather than becoming sticky.
-            if int(metadata.get("skill_count", 0) or 0) > 0:
-                return [], []
+            if skill_count > 0:
+                # Also verify that the number of SKILL.md files on disk matches
+                # the recorded skill_count.  A mismatch means a prior run used the
+                # basename-only folder scheme and some files collided; re-process so
+                # the full-path layout is written correctly.
+                disk_count = sum(
+                    1 for p in pathlib.Path(repo_dir).rglob("SKILL.md")
+                    if p.is_file() and p.name == "SKILL.md"
+                )
+                if disk_count >= skill_count:
+                    return [], []
+                log.info(
+                    "[%s] Disk has %d SKILL.md file(s) but metadata records %d; re-downloading.",
+                    repo, disk_count, skill_count,
+                )
         except Exception:
             pass  # corrupted metadata, re-process
 
@@ -537,13 +555,17 @@ def write_dataset_header(out_csv: str) -> None:
         writer.writeheader()
 
 
-def append_dataset_row(out_csv: str, r: SkillInstanceRow) -> None:
+def append_dataset_rows(out_csv: str, rows: List[SkillInstanceRow]) -> None:
+    """Append all skill rows for one repo in a single open so the CSV never holds a partial repo."""
+    if not rows:
+        return
     with open(out_csv, "a", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=OUTPUT_COLUMNS)
-        d = dataclasses.asdict(r)
-        seart = d.pop("seart_data", {})
-        d.update(seart)
-        writer.writerow(d)
+        for r in rows:
+            d = dataclasses.asdict(r)
+            seart = d.pop("seart_data", {})
+            d.update(seart)
+            writer.writerow(d)
 
 
 def record_name_filtered(log_path: str, repo: str, matched_word: str) -> None:
@@ -614,7 +636,12 @@ def parse_args(argv: List[str]) -> argparse.Namespace:
     p.add_argument("--name-filter-log", default="", help="File to record repos excluded by name filter (tab-separated: repo<TAB>matched_word). Defaults to <out-csv dir>/name_filtered_repos.tsv")
     p.add_argument("--failures-log", default="", help="File to record processing failures (tree-fetch errors, zero-skills, exceptions). Defaults to <out-csv dir>/processing_failures.tsv")
     p.add_argument("--resume", action="store_true", help="Skip repos already in out-csv or metadata.json")
-    p.add_argument("--concurrency", type=int, default=1, help="Worker threads")
+    p.add_argument(
+        "--concurrency",
+        type=int,
+        default=1,
+        help="Parallel worker threads for GitHub fetches (default: 1). CSV writes run on the main thread.",
+    )
     p.add_argument("--github-token", default="")
     p.add_argument("--github-tokens", default="")
     p.add_argument("--log-level", default="INFO", choices=["DEBUG", "INFO", "WARNING", "ERROR"])
@@ -701,7 +728,37 @@ def main(argv: List[str]) -> int:
             log.debug("Name-filter: skipping %s (matched '%s')", repo_name, matched_word)
             continue
         if args.resume and repo_name in processed_repos:
-            continue
+            # Even if the repo is already in the output CSV, re-queue it when the
+            # number of SKILL.md files on disk is lower than what metadata.json
+            # recorded.  This catches repos that were processed with the old
+            # basename-only download layout and had path collisions.
+            language = (r.get("mainLanguage") or "").strip() or "unknown"
+            language_safe = language.replace("/", "_").replace("\\", "_")
+            repo_safe = repo_name.replace("/", "__")
+            repo_dir = os.path.join(args.raw_data_dir, language_safe, repo_safe)
+            metadata_path = os.path.join(repo_dir, "metadata.json")
+            needs_redownload = False
+            if os.path.exists(metadata_path):
+                try:
+                    with open(metadata_path, "r", encoding="utf-8") as _f:
+                        _meta = json.load(_f)
+                    _skill_count = int(_meta.get("skill_count", 0) or 0)
+                    if _skill_count > 0:
+                        _disk_count = sum(
+                            1 for p in pathlib.Path(repo_dir).rglob("SKILL.md")
+                            if p.is_file() and p.name == "SKILL.md"
+                        )
+                        if _disk_count < _skill_count:
+                            log.info(
+                                "[%s] Disk has %d SKILL.md file(s) but metadata records %d;"
+                                " re-queuing for download.",
+                                repo_name, _disk_count, _skill_count,
+                            )
+                            needs_redownload = True
+                except Exception:
+                    pass
+            if not needs_redownload:
+                continue
         to_process.append(r)
 
     if skipped_blacklist:
@@ -748,9 +805,8 @@ def main(argv: List[str]) -> int:
 
         def _handle_result(repo: str, skill_rows: list, errs: list) -> None:
             nonlocal processed_count, zero_skills_count, error_count
-            for skill_row in skill_rows:
-                append_dataset_row(args.out_csv, skill_row)
-                processed_count += 1
+            append_dataset_rows(args.out_csv, skill_rows)
+            processed_count += len(skill_rows)
             if errs:
                 if errs == ["zero_skills_found"]:
                     zero_skills_count += 1

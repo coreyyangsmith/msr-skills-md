@@ -6,3 +6,4 @@
 # octocat/Hello-World
 # some-org/some-repo
 openclaw/skills
+LUNARTECH-X/superpowers

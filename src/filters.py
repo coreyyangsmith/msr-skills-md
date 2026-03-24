@@ -4,6 +4,9 @@ filters.py
 Shared filtering configuration and helpers used across the pipeline
 (generate_dataset.py, analyze_metadata.py, etc.).
 
+RQ1 loads `full_skills_instances.csv` without re-applying these repo filters so
+figures match every exported instance row; scan CSVs still use the filters below.
+
 Filtering happens at two levels:
   1. Blacklist  — exact "owner/repo" strings read from a text file.
   2. Name filter — repos whose *name* portion (after the slash) contains any

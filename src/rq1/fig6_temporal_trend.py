@@ -19,7 +19,7 @@ log = logging.getLogger(__name__)
 
 def generate(scan_df: pd.DataFrame, out_dir: str, fig_format: str, dpi: int) -> Path | None:
     date_col = None
-    for candidate in ["pushedAt", "createdAt", "lastCommit"]:
+    for candidate in ["createdAt", "pushedAt", "lastCommit"]:
         if candidate in scan_df.columns and scan_df[candidate].notna().any():
             date_col = candidate
             break
@@ -45,22 +45,28 @@ def generate(scan_df: pd.DataFrame, out_dir: str, fig_format: str, dpi: int) -> 
     trend["prevalence_pct"] = 100.0 * trend["found"] / trend["total"].replace(0, np.nan)
     trend = trend.sort_index()
 
-    fig, axes = plt.subplots(2, 1, figsize=(14, 8), sharex=True)
+    fig, axes = plt.subplots(3, 1, figsize=(14, 11), sharex=True)
     months = [str(month) for month in trend.index]
     x = np.arange(len(months))
 
     ax0 = axes[0]
     ax0.bar(x, trend["found"], color=PALETTE_FOUND, alpha=0.85, label="With SKILL.md")
-    ax0.set_ylabel("Repositories with SKILL.md")
+    ax0.set_ylabel("Repos with SKILL.md")
     ax0.set_title(f"SKILL.md Adoption Over Time (by month, {date_col})")
     ax0.legend()
 
     ax1 = axes[1]
-    ax1.plot(x, trend["total"], color="#9E9E9E", linewidth=1.5, linestyle="--", label="Total repos scanned")
+    ax1.bar(x, trend["total"], color="#9E9E9E", alpha=0.7, label="All repos in cohort")
     ax1.set_ylabel("Total repos in cohort")
-    ax1.set_xticks(x)
-    ax1.set_xticklabels(months, rotation=45, ha="right", fontsize=8)
     ax1.legend()
+
+    ax2 = axes[2]
+    ax2.plot(x, trend["prevalence_pct"], color=PALETTE_FOUND, linewidth=2, marker="o", markersize=3, label="Prevalence rate (%)")
+    ax2.set_ylabel("Prevalence rate (%)")
+    ax2.set_title("SKILL.md Prevalence Rate Over Time")
+    ax2.set_xticks(x)
+    ax2.set_xticklabels(months, rotation=45, ha="right", fontsize=8)
+    ax2.legend()
 
     output_path = Path(out_dir) / f"fig6_temporal_trend.{fig_format}"
     savefig(fig, str(output_path), dpi)

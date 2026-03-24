@@ -14,6 +14,8 @@ from pathlib import Path
 from typing import Optional
 
 import pandas as pd
+from tqdm import tqdm
+from tqdm.contrib.logging import logging_redirect_tqdm
 
 from github_client import GitHubClient, TokenPool, load_tokens_from_env
 
@@ -35,7 +37,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser.add_argument("--scan-csv", required=True, help="Input scan CSV")
     parser.add_argument("--out-csv", default="", help="Output CSV path (defaults to <scan>_with_contributors.csv)")
     parser.add_argument("--resume", action="store_true", help="Reuse any contributor counts already present in out-csv")
-    parser.add_argument("--concurrency", type=int, default=4, help="Worker threads")
+    parser.add_argument("--concurrency", type=int, default=1, help="Worker threads")
     parser.add_argument("--max-repos", type=int, default=0, help="Limit rows processed (0 means no limit)")
     parser.add_argument("--github-token", default="", help="Single GitHub token (overrides env).")
     parser.add_argument("--github-tokens", default="", help="Comma-separated GitHub tokens (overrides env).")
@@ -156,25 +158,41 @@ def main(argv: list[str]) -> int:
     updated = 0
     errors = 0
 
+    log.info(
+        "Enriching %d repositories with contributor counts (concurrency=%d)",
+        total,
+        args.concurrency,
+    )
+
     with ThreadPoolExecutor(max_workers=max(1, args.concurrency)) as executor:
         futures = {
             executor.submit(fetch_contributor_count, gh, str(df.at[index, "repo"])): index
             for index in pending_indices
         }
-        for count, future in enumerate(as_completed(futures), start=1):
-            index = futures[future]
-            repo = str(df.at[index, "repo"])
-            contributor_count, error = future.result()
-            if contributor_count is None:
-                errors += 1
-                log.warning("Contributor fetch failed for %s: %s", repo, error)
-            else:
-                df.at[index, "contributors"] = contributor_count
-                updated += 1
+        with logging_redirect_tqdm():
+            with tqdm(
+                total=total,
+                desc="Contributors",
+                unit="repo",
+                file=sys.stderr,
+                smoothing=0.05,
+            ) as pbar:
+                for count, future in enumerate(as_completed(futures), start=1):
+                    index = futures[future]
+                    repo = str(df.at[index, "repo"])
+                    contributor_count, error = future.result()
+                    if contributor_count is None:
+                        errors += 1
+                        log.warning("Contributor fetch failed for %s: %s", repo, error)
+                    else:
+                        df.at[index, "contributors"] = contributor_count
+                        updated += 1
 
-            if count % 100 == 0 or count == total:
-                write_csv_atomically(df, out_csv)
-                log.info("Contributor enrichment progress: %d/%d rows processed", count, total)
+                    if count % 100 == 0 or count == total:
+                        write_csv_atomically(df, out_csv)
+
+                    pbar.set_postfix(ok=updated, err=errors, refresh=False)
+                    pbar.update(1)
 
     log.info("Contributor enrichment complete: %d updated, %d failed", updated, errors)
     return 0

@@ -82,8 +82,6 @@ uv run python src/search_github_repos.py \
   --resume
 ```
 
-uv run python src/search_github_repos.py --out-csv data/seart_csvs/github_search_results.csv --end-date 2026-02-28
-
 Default criteria applied:
 - 10 or more stars
 - MIT, Apache 2.0, BSD-3-Clause, or BSD-2-Clause license
@@ -108,8 +106,6 @@ uv run python src/extract_skill_repos.py \
 uv run python src/extract_skill_repos.py --seart-dir data/seart_csvs --out-csv outputs/skill_md_scan_results.csv --resume
 ```
 
-uv run python src/extract_skill_repos.py --seart-dir data/seart_csvs --out-csv outputs/skill_md_scan_results.csv --resume
-
 Average runtime is 3.65 repositories/minute/token
 
 The shared repo-name filter is enabled by default here so stage 2 and stage 3 use the same inclusion rules. Pass `--no-name-filter` to disable the built-in list, or `--name-filter-words foo,bar` to add extra words.
@@ -126,8 +122,6 @@ uv run python src/generate_dataset.py \
   --raw-data-dir outputs/raw_data \
   --resume
 ```
-
-uv run python src/generate_dataset.py --found-csv outputs/skill_md_scan_results_found.csv --out-csv outputs/full_skills_instances.csv --raw-data-dir outputs/raw_data --resume
 
 Average runtime is 14 repos/minute (not sure if rate limits get hit or network througput is the limiting factor)
 
@@ -151,9 +145,83 @@ uv run python src/rq1/analyze_metadata.py \
   --out-dir outputs/rq1
 ```
 
-If contributor enrichment is skipped, the RQ1 wrapper still runs and writes a note file explaining that the contributor-count figure could not be generated.
+If contributor enrichment is skipped, the RQ1 wrapper still runs and writes a note file explaining that the contributor-count figure could not be generated. The wrapper always requires `--instances-csv` (e.g. `outputs/full_skills_instances.csv`) so instance-level figures use every row in that file; blacklist/name filters apply to the scan CSV only, not to the instances export.
 
 > **Note on filename convention**: Matching is exact on the basename. `SKILL.md` matches, while `skill.md`, `SKILL.MD`, and filenames that merely contain `skill.md` do not. Pass `--match-name SKILLS.md` to search for the plural form instead.
+
+---
+
+## RQ2 — Content analysis
+
+> **[Placeholder]** RQ2 analysis scripts and instructions will be added here once the labeling phase is complete.
+
+---
+
+## RQ3 — Manual labeling sample preparation
+
+RQ3 requires a stratified random sample of `SKILL.md` files to be manually labeled by two annotators. The three scripts below handle (1) generating per-language metadata summaries from the raw data, (2) drawing a reproducible random sample per language, and (3) splitting that sample into labeling buckets with a shared overlap set for inter-rater agreement.
+
+### Step 1 — Generate per-language metadata summaries
+
+Walks `outputs/raw_data/` (whose immediate children are language folders) and writes one `<language>_summary.json` per language to `outputs/rq3/`.
+
+```sh
+uv run python src/rq3/retrieve_language_metadata.py \
+  --root outputs/raw_data \
+  --out-dir outputs/rq3
+
+uv run python src/rq3/retrieve_language_metadata.py --root outputs/raw_data --out-dir outputs/rq3
+```
+
+### Step 2 — Draw a random language sample
+
+Randomly samples `SKILL.md` files from a language subfolder of `raw_data` and copies them — preserving the original relative path structure — into `outputs/rq3/language_sample/<Language>/`. Run once per language you want to include.
+
+```sh
+# Python
+uv run python src/rq3/generate_language_sample.py --root outputs/raw_data/Python --n 370 --seed 42 --out-dir outputs/rq3/language_sample/Python
+
+# TypeScript
+uv run python src/rq3/generate_language_sample.py --root outputs/raw_data/TypeScript --n 372 --seed 42 --out-dir outputs/rq3/language_sample/Typescript
+```
+
+`--seed` ensures the sample is reproducible across machines. Omit it to draw a fresh random sample. If `--n` exceeds the corpus size, all available files are used and a warning is logged.
+
+### Step 3 — Split sample into labeling buckets
+
+Distributes the sampled files into three subfolders under `outputs/rq3/labeling_samples/<Language>/`:
+
+| Subfolder | Contents |
+|---|---|
+| `both/` | Shared overlap set — seen by **both** labelers (used to compute inter-rater agreement) |
+| `A/` | Items assigned exclusively to labeler A |
+| `B/` | Items assigned exclusively to labeler B |
+
+Each file appears in exactly one bucket. The split is done without replacement across all three buckets.
+
+```sh
+# Python
+uv run python src/rq3/generate_labeling_samples.py --root outputs/rq3/language_sample/Python --both 56 --A 157 --B 157 --out-dir outputs/rq3/labeling_samples/Python --seed 42
+
+# TypeScript
+uv run python src/rq3/generate_labeling_samples.py --root outputs/rq3/language_sample/Typescript --both 56 --A 158 --B 158 --out-dir outputs/rq3/labeling_samples/Typescript --seed 42
+```
+
+The `--both + --A + --B` total must not exceed the number of files in `--root`. Adjust the counts to match your desired sample size and overlap ratio.
+
+### RQ3 module structure
+
+```
+src/rq3/
+  retrieve_language_metadata.py   # Step 1: per-language JSON summaries from raw_data
+  generate_language_sample.py     # Step 2: random per-language sample from raw_data
+  generate_labeling_samples.py    # Step 3: split sample into both/A/B labeling buckets
+
+outputs/rq3/
+  <Language>_summary.json         # per-language metadata summary (Step 1)
+  language_sample/                # sampled SKILL.md files, mirroring raw_data paths (Step 2)
+  labeling_samples/               # split into both/, A/, B/ per language (Step 3)
+```
 
 ---
 

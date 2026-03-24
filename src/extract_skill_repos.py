@@ -17,12 +17,16 @@ Scan strategy:
   Repo metadata (branch, stars, fork, archived) is read from SEART CSV data —
   no separate metadata API call is made.
 
+No repo filtering is applied here — every repo in the SEART CSVs is scanned
+(subject only to the optional blacklist). Filtering for downstream analysis is
+handled in generate_dataset.py.
+
 Output: one comprehensive CSV (for resume) plus four category-split CSVs written
 automatically next to it:
   *_found.csv      – repositories where SKILL.md was found
   *_not_found.csv  – repositories that were scanned cleanly with no match
   *_errors.csv     – repositories that hit any API error (rate-limit, network, auth, …)
-  *_filtered.csv   – repositories skipped by policy (stars, fork, archived filters)
+  *_filtered.csv   – repositories skipped by the optional blacklist
 
 Notes:
 - Read-only.
@@ -48,7 +52,6 @@ from tqdm import tqdm
 from tqdm.contrib.logging import logging_redirect_tqdm
 
 from github_client import GitHubClient, TokenPool, load_tokens_from_env
-from filters import REPO_NAME_FILTER_WORDS, repo_name_contains_filter_word
 
 log = logging.getLogger(__name__)
 
@@ -277,11 +280,6 @@ def classify_error(status: int, message: str) -> str:
     return "other"
 
 
-def _bool_seart(val: str) -> bool:
-    """Interpret a SEART boolean string ('true'/'false'/'1'/'0') as a Python bool."""
-    return str(val).strip().lower() in ("true", "1", "yes")
-
-
 def resolve_commit_sha(
     gh: GitHubClient,
     repo: str,
@@ -387,9 +385,6 @@ def scan_one_repo(
     gh: GitHubClient,
     repo_src: RepoSource,
     match_name: str,
-    min_stars: int,
-    allow_forks: bool,
-    allow_archived: bool,
 ) -> ScanResult:
     scanned_at = utc_now_iso()
 
@@ -425,26 +420,6 @@ def scan_one_repo(
         archived=archived_raw,
         seart_data=dict(sd),
     )
-
-    # Apply filters when SEART data is present.
-    if stars_raw:
-        try:
-            if int(stars_raw) < min_stars:
-                res.error_type = "filtered"
-                res.error_message = f"stars<{min_stars}"
-                return res
-        except ValueError:
-            pass
-
-    if fork_raw and not allow_forks and _bool_seart(fork_raw):
-        res.error_type = "filtered"
-        res.error_message = "fork"
-        return res
-
-    if archived_raw and not allow_archived and _bool_seart(archived_raw):
-        res.error_type = "filtered"
-        res.error_message = "archived"
-        return res
 
     # Community profile is optional enrichment — failure does not block the scan.
     community_flags, community_status, community_err = try_community_profile(gh, repo_src.repo)
@@ -741,11 +716,13 @@ def check_rate_limit(gh: GitHubClient) -> dict:
 def parse_args(argv: List[str]) -> argparse.Namespace:
     p = argparse.ArgumentParser(
         description=(
-            "Scan repos from SEART CSVs for SKILL.md using the GitHub Community Profile and "
-            "Code Search APIs. The community-profile call is optional enrichment; failure does "
-            "not block the SKILL.md scan. One code-search call is made per repo; ACF files are "
-            "checked only for repos where SKILL.md is found (ACF failures are recorded separately "
-            "and do not affect the found/not-found classification). "
+            "Scan all repos from SEART CSVs for SKILL.md using the GitHub Community Profile and "
+            "Code Search APIs. No repo filtering is applied; every repo is scanned to get a total "
+            "population count. Filtering for downstream analysis is handled in generate_dataset.py. "
+            "The community-profile call is optional enrichment; failure does not block the SKILL.md "
+            "scan. One code-search call is made per repo; ACF files are checked only for repos where "
+            "SKILL.md is found (ACF failures are recorded separately and do not affect the "
+            "found/not-found classification). "
             "Repo metadata is read from SEART CSV data — no separate metadata API call is needed. "
             "Four category CSVs (_found, _not_found, _errors, _filtered) are written automatically "
             "alongside --out-csv."
@@ -756,23 +733,6 @@ def parse_args(argv: List[str]) -> argparse.Namespace:
     p.add_argument("--shortlist-csv", default="", help="Optional shortlist CSV path (found=true only; superseded by *_found.csv)")
 
     p.add_argument("--match-name", default="SKILL.md", help="Filename to search for (default: SKILL.md)")
-    p.add_argument("--min-stars", type=int, default=0, help="Filter: require at least N stars (from SEART data)")
-    p.add_argument("--disallow-forks", action="store_true", help="Filter: skip forks (from SEART data)")
-    p.add_argument("--disallow-archived", action="store_true", help="Filter: skip archived repos (from SEART data)")
-    p.add_argument(
-        "--name-filter-words",
-        default="",
-        help=(
-            "Comma-separated words to match against repo names (added to the built-in list). "
-            "Repos whose name (after the slash) contains any word are excluded before scanning. "
-            "Uses the same built-in list as generate_dataset.py."
-        ),
-    )
-    p.add_argument(
-        "--no-name-filter",
-        action="store_true",
-        help="Disable the built-in name filter (REPO_NAME_FILTER_WORDS from filters.py).",
-    )
 
     p.add_argument("--max-repos", type=int, default=0, help="Limit repos scanned (0 means no limit)")
     p.add_argument("--blacklist", default="blacklist.txt", help="Path to blacklist file (owner/repo per line). Default: blacklist.txt")
@@ -854,44 +814,23 @@ def main(argv: List[str]) -> int:
 
     blacklist = load_blacklist(args.blacklist)
 
-    # Build effective name-filter word list (same logic as generate_dataset.py).
-    name_filter_words: List[str] = [] if args.no_name_filter else list(REPO_NAME_FILTER_WORDS)
-    if args.name_filter_words.strip():
-        extras = [w.strip() for w in args.name_filter_words.split(",") if w.strip()]
-        name_filter_words.extend(extras)
-
     repos_to_scan = []
     skipped_blacklist = 0
-    skipped_name_filter = 0
     for r in repos:
         if r.repo in already:
             continue
         if r.repo in blacklist:
             skipped_blacklist += 1
             continue
-        if name_filter_words:
-            matched = repo_name_contains_filter_word(r.repo, name_filter_words)
-            if matched:
-                skipped_name_filter += 1
-                log.debug("Name-filter: skipping %s (matched '%s')", r.repo, matched)
-                continue
         repos_to_scan.append(r)
 
     if blacklist:
         log.info("Blacklist: skipping %d blacklisted repositories.", skipped_blacklist)
-    if skipped_name_filter:
-        log.info(
-            "Name-filter: skipping %d repositories matching built-in or extra filter words.",
-            skipped_name_filter,
-        )
 
     # Prepare all output CSV paths: one comprehensive file + four category splits.
     found_csv, not_found_csv, errors_csv, filtered_csv = split_csv_paths(args.out_csv)
     for path in (args.out_csv, found_csv, not_found_csv, errors_csv, filtered_csv):
         write_header_if_needed(path)
-
-    allow_forks = not args.disallow_forks
-    allow_archived = not args.disallow_archived
 
     total = len(repos_to_scan)
     if total == 0:
@@ -935,9 +874,6 @@ def main(argv: List[str]) -> int:
                 gh,
                 repo_src,
                 args.match_name,
-                int(args.min_stars),
-                allow_forks,
-                allow_archived,
             ): repo_src.repo
             for repo_src in repos_to_scan
         }

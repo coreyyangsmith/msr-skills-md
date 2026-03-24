@@ -1,8 +1,0 @@
-artifact,count,pct_of_skill_md_repos
-CLAUDE.md,1181,42.1
-AGENTS.md,971,34.6
-copilot-instructions.md,257,9.2
-CLAUDE.md + AGENTS.md,531,18.9
-CLAUDE.md + copilot-instructions.md,95,3.4
-AGENTS.md + copilot-instructions.md,103,3.7
-All three,59,2.1

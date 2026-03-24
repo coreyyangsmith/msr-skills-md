@@ -200,23 +200,15 @@ def load_scan_csv(
     return df
 
 
-def load_instances_csv(
-    path: str,
-    blacklist: Optional[set[str]] = None,
-    filter_words: Optional[Sequence[str]] = None,
-) -> Optional[pd.DataFrame]:
+def load_instances_csv(path: str) -> Optional[pd.DataFrame]:
     if not path or not os.path.exists(path):
         log.warning("Instances CSV not found or not provided: %s", path)
         return None
 
     df = pd.read_csv(path, low_memory=False)
     log.info("Loaded instances CSV: %s rows, %s cols from %s", len(df), len(df.columns), path)
-
-    df = _apply_repo_filters(
-        df,
-        blacklist or set(),
-        filter_words if filter_words is not None else REPO_NAME_FILTER_WORDS,
-        "instances CSV",
+    log.info(
+        "Using all instance rows as in the file (scan CSV may still apply blacklist/name filters)."
     )
 
     _coerce_numeric_columns(
@@ -256,11 +248,16 @@ def safe_stars(df: pd.DataFrame) -> pd.Series:
 def wilson_ci(k: float, n: float, z: float = 1.96) -> tuple[float, float]:
     if not n:
         return (0.0, 0.0)
+    n = float(n)
+    k = float(min(max(k, 0.0), n))
     p = k / n
     denom = 1 + z**2 / n
     center = (p + z**2 / (2 * n)) / denom
-    half = z * math.sqrt(p * (1 - p) / n + z**2 / (4 * n**2)) / denom
-    return (max(0.0, 100 * (center - half)), min(100.0, 100 * (center + half)))
+    inner = p * (1 - p) / n + z**2 / (4 * n**2)
+    half = z * math.sqrt(max(0.0, inner)) / denom
+    lo = 100 * (center - half)
+    hi = 100 * (center + half)
+    return (max(0.0, min(100.0, lo)), max(0.0, min(100.0, hi)))
 
 
 def latest_non_null(series: pd.Series) -> object:

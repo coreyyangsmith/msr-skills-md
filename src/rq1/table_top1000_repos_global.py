@@ -14,19 +14,53 @@ from rq1.common import add_instances_input_args, add_output_args, aggregate_inst
 
 log = logging.getLogger(__name__)
 
+# Metric columns to rank repos by, with human-readable labels used in the output filename.
+RANK_METRICS: list[tuple[str, str]] = [
+    ("skill_count", "skill_files"),
+    ("total_files_in_skills", "total_files"),
+    ("references_file_count", "reference_files"),
+    ("assets_file_count", "asset_files"),
+    ("scripts_file_count", "script_files"),
+    ("other_file_count", "other_files"),
+]
 
-def generate(repo_df: pd.DataFrame, out_dir: str) -> Path:
-    sorted_df = repo_df.sort_values("skill_count", ascending=False).head(1000).copy()
+# Columns to carry through in every ranked table.
+META_COLUMNS = ["repo", "mainLanguage", "stars", "forks", "commits", "contributors"]
+
+
+def _ranked_table(repo_df: pd.DataFrame, sort_col: str, n: int = 1000) -> pd.DataFrame:
+    if sort_col not in repo_df.columns or not repo_df[sort_col].notna().any():
+        return pd.DataFrame()
+    cols = [sort_col] + [c for c in META_COLUMNS if c in repo_df.columns and c != sort_col]
+    sorted_df = (
+        repo_df[cols]
+        .dropna(subset=[sort_col])
+        .sort_values(sort_col, ascending=False)
+        .head(n)
+        .copy()
+        .reset_index(drop=True)
+    )
     sorted_df.insert(0, "rank", range(1, len(sorted_df) + 1))
-    columns = ["rank", "repo", "skill_count", "mainLanguage", "stars", "forks", "commits", "contributors"]
-    columns = [column for column in columns if column in sorted_df.columns]
-    output_path = Path(out_dir) / "table_top1000_repos_global.csv"
-    write_dataframe(sorted_df[columns], str(output_path))
-    return output_path
+    return sorted_df
+
+
+def generate(repo_df: pd.DataFrame, out_dir: str) -> list[Path]:
+    written: list[Path] = []
+    for sort_col, label in RANK_METRICS:
+        table = _ranked_table(repo_df, sort_col)
+        if table.empty:
+            log.info("Skipping top-repos table for %s (column absent or all-null).", sort_col)
+            continue
+        output_path = Path(out_dir) / f"table_top_repos_by_{label}.csv"
+        write_dataframe(table, str(output_path))
+        written.append(output_path)
+    return written
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Generate the global top-1000 skill repo table for RQ1")
+    parser = argparse.ArgumentParser(
+        description="Generate per-metric top-repo ranked tables for RQ1"
+    )
     add_instances_input_args(parser)
     add_output_args(parser)
     args = parser.parse_args(argv)

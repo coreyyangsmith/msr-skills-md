@@ -6,6 +6,7 @@ import sys
 from pathlib import Path
 
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 
 if __package__ in {None, ""}:
@@ -40,13 +41,20 @@ def generate(scan_df: pd.DataFrame, out_dir: str, fig_format: str, dpi: int) -> 
         .rename(columns={lang_col: "language"})
     )
     grouped["language"] = grouped["language"].fillna("(unknown)")
+    grouped["found_count"] = grouped[["found_count", "total"]].min(axis=1)
     grouped["prevalence_pct"] = 100.0 * grouped["found_count"] / grouped["total"]
     grouped[["ci_lo", "ci_hi"]] = grouped.apply(
         lambda row: pd.Series(wilson_ci(row["found_count"], row["total"])),
         axis=1,
     )
-    grouped["ci_err_lo"] = grouped["prevalence_pct"] - grouped["ci_lo"]
-    grouped["ci_err_hi"] = grouped["ci_hi"] - grouped["prevalence_pct"]
+    # Matplotlib rejects negative xerr; float noise or rare pathological rows can produce tiny negatives.
+    prev = grouped["prevalence_pct"].to_numpy()
+    grouped["ci_lo"] = np.minimum(grouped["ci_lo"].to_numpy(), prev)
+    grouped["ci_hi"] = np.maximum(grouped["ci_hi"].to_numpy(), prev)
+    lo = grouped["ci_lo"].to_numpy()
+    hi = grouped["ci_hi"].to_numpy()
+    grouped["ci_err_lo"] = np.maximum(0.0, prev - lo)
+    grouped["ci_err_hi"] = np.maximum(0.0, hi - prev)
 
     table = grouped.sort_values("found_count", ascending=False)
     write_dataframe(table, str(Path(out_dir) / "table2_language_breakdown.csv"))

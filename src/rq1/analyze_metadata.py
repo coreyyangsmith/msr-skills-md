@@ -4,9 +4,12 @@
 from __future__ import annotations
 
 import argparse
+import logging
 import os
 import sys
 from pathlib import Path
+
+log = logging.getLogger(__name__)
 
 if __package__ in {None, ""}:
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -28,6 +31,7 @@ from rq1 import (
     fig8b_stars_vs_skill_count,
     fig9_license_distribution,
     table1_dataset_summary,
+    table_top1000_repos_global,
 )
 from rq1.common import (
     add_instances_input_args,
@@ -48,7 +52,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         description="RQ1 analysis: SKILL.md prevalence and adoption across open-source repos."
     )
     add_scan_input_args(parser)
-    add_instances_input_args(parser, required=False)
+    add_instances_input_args(parser, required=True)
     add_output_args(parser)
     return parser.parse_args(argv)
 
@@ -62,12 +66,13 @@ def main(argv: list[str]) -> int:
     blacklist, filter_words = resolve_filters(args)
     scan_df = load_scan_csv(args.scan_csv, blacklist=blacklist, filter_words=filter_words)
 
-    repo_instances_df = None
-    if args.instances_csv:
-        raw_instances_df = load_instances_csv(args.instances_csv, blacklist=blacklist, filter_words=filter_words)
-        if raw_instances_df is not None:
-            repo_instances_df = aggregate_instances_to_repo(raw_instances_df)
-            repo_instances_df = merge_repo_metadata(repo_instances_df, scan_df)
+    raw_instances_df = load_instances_csv(args.instances_csv)
+    if raw_instances_df is None:
+        log.error("Instances CSV missing or unreadable: %s", args.instances_csv)
+        return 2
+
+    repo_instances_df = aggregate_instances_to_repo(raw_instances_df)
+    repo_instances_df = merge_repo_metadata(repo_instances_df, scan_df)
 
     table1_dataset_summary.generate(scan_df, args.out_dir)
     fig1_prevalence_by_language.generate(scan_df, args.out_dir, args.fig_format, args.dpi)
@@ -78,9 +83,9 @@ def main(argv: list[str]) -> int:
     fig6_temporal_trend.generate(scan_df, args.out_dir, args.fig_format, args.dpi)
     fig7_topic_analysis.generate(scan_df, args.out_dir, args.fig_format, args.dpi)
 
-    if repo_instances_df is not None:
-        fig8_skill_richness.generate(repo_instances_df, args.out_dir, args.fig_format, args.dpi)
-        fig8b_stars_vs_skill_count.generate(repo_instances_df, args.out_dir, args.fig_format, args.dpi)
+    fig8_skill_richness.generate(repo_instances_df, args.out_dir, args.fig_format, args.dpi)
+    fig8b_stars_vs_skill_count.generate(repo_instances_df, args.out_dir, args.fig_format, args.dpi)
+    table_top1000_repos_global.generate(repo_instances_df, args.out_dir)
 
     fig10_language_ecosystem.generate(scan_df, args.out_dir, args.fig_format, args.dpi)
     fig9_license_distribution.generate(scan_df, args.out_dir, args.fig_format, args.dpi)

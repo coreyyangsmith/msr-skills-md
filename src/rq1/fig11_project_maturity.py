@@ -62,7 +62,10 @@ def generate(scan_df: pd.DataFrame, out_dir: str, fig_format: str, dpi: int) -> 
             patch.set_facecolor(color)
             patch.set_alpha(0.75)
         ax.set_xticks([1, 2])
-        ax.set_xticklabels(["SKILL.md", "No SKILL.md"], fontsize=9)
+        ax.set_xticklabels(
+            [f"SKILL.md\n(n={len(found_values):,})", f"No SKILL.md\n(n={len(not_found_values):,})"],
+            fontsize=9,
+        )
         ax.set_title(label, fontsize=10)
         ax.set_yscale("symlog")
 

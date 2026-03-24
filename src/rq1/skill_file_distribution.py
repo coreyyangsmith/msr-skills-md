@@ -54,7 +54,7 @@ def main(argv: list[str]) -> int:
     setup_style()
 
     blacklist, filter_words = resolve_filters(args)
-    inst_df = load_instances_csv(args.instances_csv, blacklist=blacklist, filter_words=filter_words)
+    inst_df = load_instances_csv(args.instances_csv)
     if inst_df is None:
         return 0
 
