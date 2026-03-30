@@ -58,8 +58,11 @@ Examples
 Examples:
 * tables of commands to execute, documentation about APIs etc
 
-
+---------------------------
 ## SDLC Stages
+### Software Documentation (documentation)
+* related to generating or maintaining software documentation (markdowns, readme, code comments, docstrings, etc)
+
 ### Software Requirements and Planning (requirements)
 * release planning, requirement gathering
 
