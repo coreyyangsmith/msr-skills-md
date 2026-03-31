@@ -1,0 +1,782 @@
+{
+  "file1": "/Users/marcelvogt/Documents/Documents-MacBookPro/Studies/TU-Berlin/Semester-Abroad/Calgary/Courses/AIinSE/FinalProject/msr-skills-md/outputs/rq3/results/2026-03-31_MV_Labels_Both_Python.json",
+  "file2": "/Users/marcelvogt/Documents/Documents-MacBookPro/Studies/TU-Berlin/Semester-Abroad/Calgary/Courses/AIinSE/FinalProject/msr-skills-md/outputs/rq3/results/2026-03-28_CY_Labels_Both_Python.json",
+  "tag_differences": {
+    "added_tags": [],
+    "removed_tags": [
+      "SE workflow management",
+      "documentation"
+    ]
+  },
+  "document_differences": {
+    "added_docs": [],
+    "removed_docs": []
+  },
+  "label_match_summary": {
+    "common_docs": 56,
+    "same_labels": 2,
+    "different_labels": 54
+  },
+  "changed_labels": [
+    {
+      "document": "Abilityai__cornelius/.claude/skills/dialectic",
+      "common": [
+        "instructive",
+        "positive-examples",
+        "reference",
+        "software design"
+      ],
+      "removed": [
+        "agent-skill",
+        "descriptive",
+        "requirements"
+      ],
+      "added": []
+    },
+    {
+      "document": "ArcaneOrion__Alice-Single/skills/skill-creator",
+      "common": [
+        "agent-skill",
+        "descriptive",
+        "instructive"
+      ],
+      "removed": [],
+      "added": [
+        "reference"
+      ]
+    },
+    {
+      "document": "Axect__magi-researchers/skills/research-write",
+      "common": [
+        "agent-skill"
+      ],
+      "removed": [
+        "descriptive",
+        "instructive"
+      ],
+      "added": []
+    },
+    {
+      "document": "CraftOS-dev__CraftBot/skills/attio-api",
+      "common": [
+        "code-integration",
+        "commands"
+      ],
+      "removed": [
+        "code-generation"
+      ],
+      "added": [
+        "descriptive"
+      ]
+    },
+    {
+      "document": "CraftOS-dev__CraftBot/skills/debug-pro",
+      "common": [
+        "commands",
+        "debugging",
+        "instructive"
+      ],
+      "removed": [
+        "descriptive"
+      ],
+      "added": []
+    },
+    {
+      "document": "CraftOS-dev__CraftBot/skills/himalaya",
+      "common": [
+        "agent-skill"
+      ],
+      "removed": [
+        "commands",
+        "reference"
+      ],
+      "added": []
+    },
+    {
+      "document": "DNYoussef__context-cascade/skills/foundry/skill-forge/pilots/pilot-1-code-formatter",
+      "common": [
+        "code-quality",
+        "instructive"
+      ],
+      "removed": [
+        "descriptive",
+        "negative-examples"
+      ],
+      "added": []
+    },
+    {
+      "document": "EthanAlgoX__MarketBot/marketbot/skills/risk-checklist",
+      "common": [],
+      "removed": [
+        "agent-skill",
+        "descriptive",
+        "instructive"
+      ],
+      "added": [
+        "outside-scope"
+      ]
+    },
+    {
+      "document": "EthanAlgoX__MarketBot/marketbot/skills/twitter-browser-research",
+      "common": [],
+      "removed": [
+        "agent-skill",
+        "descriptive",
+        "instructive",
+        "negative-examples"
+      ],
+      "added": [
+        "outside-scope"
+      ]
+    },
+    {
+      "document": "Fu-Jie__openwebui-extensions/.github/skills/release-finalizer",
+      "common": [
+        "descriptive",
+        "instructive",
+        "negative-examples"
+      ],
+      "removed": [
+        "SE workflow management",
+        "documentation"
+      ],
+      "added": [
+        "commands",
+        "devops"
+      ]
+    },
+    {
+      "document": "Ibrahim-3d__conductor-orchestrator-superpowers/skills/eval-business-logic",
+      "common": [
+        "descriptive",
+        "instructive"
+      ],
+      "removed": [
+        "software-testing"
+      ],
+      "added": [
+        "code-quality",
+        "reference"
+      ]
+    },
+    {
+      "document": "OriNachum__autonomous-intelligence/qq/.claude/skills-test/memory",
+      "common": [
+        "agent-skill"
+      ],
+      "removed": [
+        "commands",
+        "descriptive",
+        "devops",
+        "reference"
+      ],
+      "added": []
+    },
+    {
+      "document": "PrimeIntellect-ai__prime-rl/skills/toml-config",
+      "common": [
+        "commands",
+        "descriptive"
+      ],
+      "removed": [
+        "agent-skill",
+        "devops"
+      ],
+      "added": [
+        "code-generation"
+      ]
+    },
+    {
+      "document": "SamMorrowDrums__remarkable-mcp/root",
+      "common": [],
+      "removed": [
+        "agent-skill",
+        "code-integration",
+        "commands",
+        "descriptive",
+        "reference"
+      ],
+      "added": [
+        "outside-scope"
+      ]
+    },
+    {
+      "document": "SimHacker__moollm/skills/empathic-expressions",
+      "common": [
+        "code-generation",
+        "descriptive"
+      ],
+      "removed": [
+        "positive-examples",
+        "reference"
+      ],
+      "added": []
+    },
+    {
+      "document": "SimHacker__moollm/skills/self-repair",
+      "common": [
+        "agent-skill"
+      ],
+      "removed": [
+        "descriptive",
+        "devops",
+        "reference"
+      ],
+      "added": []
+    },
+    {
+      "document": "WayfinderFoundation__wayfinder-paths-sdk/.claude/skills/using-ccxt-adapter",
+      "common": [],
+      "removed": [
+        "code-integration",
+        "descriptive",
+        "reference"
+      ],
+      "added": [
+        "outside-scope"
+      ]
+    },
+    {
+      "document": "Xray-App__xray-code-snippets/.agents/skills/xray-data-extraction",
+      "common": [
+        "reference",
+        "software-testing"
+      ],
+      "removed": [
+        "descriptive"
+      ],
+      "added": []
+    },
+    {
+      "document": "amun-ai__hypha/skills/hypha-admin",
+      "common": [
+        "commands"
+      ],
+      "removed": [
+        "devops"
+      ],
+      "added": [
+        "agent-skill",
+        "reference"
+      ]
+    },
+    {
+      "document": "ancoleman__ai-design-components/skills/prompt-engineering",
+      "common": [
+        "descriptive"
+      ],
+      "removed": [
+        "agent-skill",
+        "reference"
+      ],
+      "added": [
+        "instructive",
+        "negative-examples",
+        "positive-examples",
+        "software design"
+      ]
+    },
+    {
+      "document": "andfanilo__streamlit-echarts/.claude/skills/developing-with-streamlit/skills/connecting-streamlit-to-snowflake",
+      "common": [
+        "code-integration"
+      ],
+      "removed": [
+        "commands",
+        "instructive",
+        "reference"
+      ],
+      "added": [
+        "descriptive"
+      ]
+    },
+    {
+      "document": "celltype__celltype-agent/.claude/skills/openspec-continue-change",
+      "common": [
+        "instructive"
+      ],
+      "removed": [
+        "software design"
+      ],
+      "added": []
+    },
+    {
+      "document": "cwinvestments__memstack/skills/grimoire",
+      "common": [],
+      "removed": [
+        "code-quality",
+        "descriptive",
+        "documentation",
+        "instructive",
+        "positive-examples"
+      ],
+      "added": [
+        "agent-skill"
+      ]
+    },
+    {
+      "document": "daloopa__investing/.claude/skills/research-note",
+      "common": [
+        "agent-skill"
+      ],
+      "removed": [
+        "descriptive",
+        "instructive",
+        "reference"
+      ],
+      "added": []
+    },
+    {
+      "document": "deepklarity__harness-kit/.claude/skills/dk-rca",
+      "common": [
+        "debugging",
+        "instructive"
+      ],
+      "removed": [
+        "descriptive",
+        "negative-examples"
+      ],
+      "added": [
+        "commands"
+      ]
+    },
+    {
+      "document": "eddiebelaval__squire/skills/spreadsheet-builder",
+      "common": [
+        "instructive"
+      ],
+      "removed": [
+        "agent-skill",
+        "commands"
+      ],
+      "added": [
+        "code-integration"
+      ]
+    },
+    {
+      "document": "eosphoros-ai__DB-GPT/skills/walmart-sales-analyzer",
+      "common": [],
+      "removed": [
+        "agent-skill",
+        "commands",
+        "descriptive",
+        "instructive"
+      ],
+      "added": [
+        "outside-scope"
+      ]
+    },
+    {
+      "document": "erigontech__erigon-snapshot/.claude/skills/summarize-changes",
+      "common": [
+        "instructive"
+      ],
+      "removed": [
+        "commands",
+        "documentation",
+        "reference"
+      ],
+      "added": [
+        "code-quality"
+      ]
+    },
+    {
+      "document": "existential-birds__beagle/plugins/beagle-elixir/skills/phoenix-code-review",
+      "common": [
+        "code-quality",
+        "descriptive",
+        "reference"
+      ],
+      "removed": [
+        "outside-scope"
+      ],
+      "added": []
+    },
+    {
+      "document": "gtmagents__gtm-agents/plugins/customer-success/skills/sentiment-feedback-loop",
+      "common": [],
+      "removed": [
+        "agent-skill",
+        "descriptive"
+      ],
+      "added": [
+        "outside-scope"
+      ]
+    },
+    {
+      "document": "hainamchung__agent-assistant/code-assistants/codex-assistant/skills/agent-assistant-code",
+      "common": [
+        "reference"
+      ],
+      "removed": [
+        "code-generation",
+        "commands",
+        "descriptive"
+      ],
+      "added": [
+        "agent-skill"
+      ]
+    },
+    {
+      "document": "hainamchung__agent-assistant/skills/brainstorming",
+      "common": [
+        "descriptive",
+        "requirements"
+      ],
+      "removed": [
+        "software design"
+      ],
+      "added": [
+        "instructive"
+      ]
+    },
+    {
+      "document": "hainamchung__agent-assistant/skills/graphql-architect",
+      "common": [
+        "descriptive",
+        "reference",
+        "software design"
+      ],
+      "removed": [
+        "code-generation",
+        "instructive",
+        "negative-examples"
+      ],
+      "added": []
+    },
+    {
+      "document": "hzqst__CS2_VibeSignatures/.claude/skills/find-CBaseEntity_SetMoveType",
+      "common": [
+        "instructive",
+        "program-analysis"
+      ],
+      "removed": [
+        "agent-skill",
+        "commands",
+        "descriptive"
+      ],
+      "added": []
+    },
+    {
+      "document": "hzqst__CS2_VibeSignatures/.claude/skills/find-CCSPlayer_ItemServices_GiveNamedItem",
+      "common": [
+        "instructive",
+        "program-analysis"
+      ],
+      "removed": [
+        "agent-skill",
+        "commands",
+        "descriptive"
+      ],
+      "added": []
+    },
+    {
+      "document": "hzqst__CS2_VibeSignatures/.claude/skills/find-CLoopModeGame_RegisterEventMapInternal_client",
+      "common": [
+        "instructive",
+        "program-analysis"
+      ],
+      "removed": [
+        "commands",
+        "descriptive"
+      ],
+      "added": []
+    },
+    {
+      "document": "jd-opensource__JoySafeter/skills/brainstorming",
+      "common": [
+        "descriptive"
+      ],
+      "removed": [
+        "code-generation",
+        "software design"
+      ],
+      "added": [
+        "instructive",
+        "requirements"
+      ]
+    },
+    {
+      "document": "jewbetcha__openflight/.agents/skills/senior-fullstack",
+      "common": [
+        "code-generation",
+        "descriptive",
+        "reference"
+      ],
+      "removed": [
+        "code-quality",
+        "commands",
+        "software design"
+      ],
+      "added": [
+        "instructive"
+      ]
+    },
+    {
+      "document": "jkitchin__jaxsr/src/jaxsr/skill",
+      "common": [
+        "commands",
+        "descriptive",
+        "instructive"
+      ],
+      "removed": [
+        "negative-examples",
+        "reference",
+        "software design"
+      ],
+      "added": [
+        "code-integration",
+        "positive-examples"
+      ]
+    },
+    {
+      "document": "kivo360__OmoiOS/.claude/skills/webapp-testing",
+      "common": [],
+      "removed": [
+        "code-generation",
+        "code-integration",
+        "commands",
+        "descriptive",
+        "negative-examples",
+        "reference"
+      ],
+      "added": [
+        "instructive",
+        "positive-examples",
+        "software-testing"
+      ]
+    },
+    {
+      "document": "krzysztofsurdy__code-virtuoso/skills/knowledge/design-patterns",
+      "common": [
+        "descriptive",
+        "reference",
+        "software design"
+      ],
+      "removed": [
+        "code-quality"
+      ],
+      "added": []
+    },
+    {
+      "document": "malue-ai__dazee-small/instances/xiaodazi/skills/onenote",
+      "common": [
+        "non-english"
+      ],
+      "removed": [
+        "outside-scope"
+      ],
+      "added": []
+    },
+    {
+      "document": "manusco__resonance/.agent/skills/resonance-growth",
+      "common": [
+        "agent-skill"
+      ],
+      "removed": [
+        "descriptive",
+        "reference"
+      ],
+      "added": []
+    },
+    {
+      "document": "nWave-ai__nWave/nWave/skills/nw-cicd-and-deployment",
+      "common": [
+        "descriptive"
+      ],
+      "removed": [
+        "SE workflow management",
+        "devops",
+        "reference"
+      ],
+      "added": [
+        "software design"
+      ]
+    },
+    {
+      "document": "pear-studio__nonebot-dicepp/docs/agent/skills/run-tests",
+      "common": [
+        "software-testing"
+      ],
+      "removed": [
+        "commands",
+        "descriptive"
+      ],
+      "added": [
+        "instructive"
+      ]
+    },
+    {
+      "document": "pytorch__tutorials/.claude/skills/pr-review",
+      "common": [
+        "descriptive"
+      ],
+      "removed": [
+        "SE workflow management",
+        "commands",
+        "negative-examples",
+        "reference",
+        "software-testing"
+      ],
+      "added": [
+        "code-quality",
+        "instructive"
+      ]
+    },
+    {
+      "document": "sequenzia__agent-alchemy/ported/20260304-102613/core-tools/skills/lifecycle-hooks",
+      "common": [
+        "agent-skill"
+      ],
+      "removed": [
+        "descriptive",
+        "devops"
+      ],
+      "added": []
+    },
+    {
+      "document": "sequenzia__agent-alchemy/ported/20260304-102613/dev-tools/skills/changelog-format",
+      "common": [
+        "descriptive",
+        "negative-examples",
+        "positive-examples"
+      ],
+      "removed": [
+        "documentation",
+        "reference"
+      ],
+      "added": [
+        "requirements"
+      ]
+    },
+    {
+      "document": "tpvasconcelos__ridgeplot/skills/dropping-and-adding-support-for-python-versions",
+      "common": [
+        "commands",
+        "devops"
+      ],
+      "removed": [
+        "descriptive"
+      ],
+      "added": [
+        "instructive"
+      ]
+    },
+    {
+      "document": "vasilyu1983__AI-Agents-public/frameworks/shared-skills/skills/software-payments",
+      "common": [
+        "code-integration",
+        "descriptive",
+        "instructive",
+        "reference"
+      ],
+      "removed": [
+        "code-generation",
+        "positive-examples",
+        "software design"
+      ],
+      "added": []
+    },
+    {
+      "document": "williamzujkowski__standards/skills/frontend/mobile-react-native",
+      "common": [],
+      "removed": [
+        "outside-scope"
+      ],
+      "added": [
+        "code-generation",
+        "descriptive",
+        "reference"
+      ]
+    },
+    {
+      "document": "wshobson__agents/plugins/llm-application-dev/skills/prompt-engineering-patterns",
+      "common": [
+        "descriptive"
+      ],
+      "removed": [
+        "agent-skill",
+        "commands",
+        "negative-examples",
+        "reference"
+      ],
+      "added": [
+        "positive-examples",
+        "software design"
+      ]
+    },
+    {
+      "document": "wshobson__agents/plugins/reverse-engineering/skills/protocol-reverse-engineering",
+      "common": [
+        "commands"
+      ],
+      "removed": [
+        "agent-skill",
+        "debugging",
+        "instructive",
+        "reference"
+      ],
+      "added": [
+        "descriptive",
+        "positive-examples",
+        "software-testing"
+      ]
+    },
+    {
+      "document": "xuiltul__animaworks/templates/en/common_skills/machine-tool",
+      "common": [
+        "agent-skill"
+      ],
+      "removed": [
+        "descriptive",
+        "instructive",
+        "positive-examples"
+      ],
+      "added": []
+    }
+  ],
+  "tag_occurrence_counts": {
+    "file1": {
+      "SE workflow management": 3,
+      "agent-skill": 22,
+      "code-generation": 8,
+      "code-integration": 6,
+      "code-quality": 6,
+      "commands": 23,
+      "debugging": 3,
+      "descriptive": 45,
+      "devops": 7,
+      "documentation": 4,
+      "instructive": 26,
+      "negative-examples": 10,
+      "non-english": 2,
+      "outside-scope": 3,
+      "positive-examples": 6,
+      "program-analysis": 3,
+      "reference": 26,
+      "requirements": 2,
+      "software design": 9,
+      "software-testing": 4
+    },
+    "file2": {
+      "agent-skill": 12,
+      "code-generation": 4,
+      "code-integration": 5,
+      "code-quality": 6,
+      "commands": 9,
+      "debugging": 2,
+      "descriptive": 23,
+      "devops": 2,
+      "instructive": 24,
+      "negative-examples": 3,
+      "non-english": 2,
+      "outside-scope": 6,
+      "positive-examples": 7,
+      "program-analysis": 3,
+      "reference": 12,
+      "requirements": 3,
+      "software design": 6,
+      "software-testing": 4
+    }
+  }
+}
