@@ -1,0 +1,41 @@
+{
+  "input_path": "/Users/marcelvogt/Documents/Documents-MacBookPro/Studies/TU-Berlin/Semester-Abroad/Calgary/Courses/AIinSE/FinalProject/msr-skills-md/outputs/rq2/skill_documents.jsonl",
+  "documents_total_in_input": 22206,
+  "documents_used_for_tfidf": 21544,
+  "vocabulary_size": 10000,
+  "matrix_shape": [
+    21544,
+    10000
+  ],
+  "params": {
+    "ngram_range": [
+      2,
+      2
+    ],
+    "custom_stopwords": [
+      "analysis",
+      "code",
+      "create",
+      "creates",
+      "creating",
+      "data",
+      "design",
+      "new",
+      "project",
+      "skill",
+      "use",
+      "used",
+      "user",
+      "using"
+    ],
+    "max_features": 10000,
+    "min_df": 2,
+    "max_df": 0.9,
+    "top_k_global": 200,
+    "top_k_per_doc": 30
+  },
+  "outputs": {
+    "global_terms_csv": "/Users/marcelvogt/Documents/Documents-MacBookPro/Studies/TU-Berlin/Semester-Abroad/Calgary/Courses/AIinSE/FinalProject/msr-skills-md/outputs/rq2/tfidf_sklearn_top_terms_global.csv",
+    "per_document_terms_csv": "/Users/marcelvogt/Documents/Documents-MacBookPro/Studies/TU-Berlin/Semester-Abroad/Calgary/Courses/AIinSE/FinalProject/msr-skills-md/outputs/rq2/tfidf_sklearn_top_terms_per_document.csv"
+  }
+}
