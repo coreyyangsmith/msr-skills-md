@@ -7,12 +7,13 @@ Form and structure of instructions within a skill file.
 ### Descriptive (descriptive)
 * High level explanations about what the skill does
 * Provides context, intent, capabilities without describing exact steps
-* Often includes summaries of tools, descriptions of scenarios
+* Often includes summaries of tools, descriptions of scenarios, overview
+
+Use if and only if the agent skill clearly describes activation scenarios (i.e. "When to use this skill")
 
 Examples
 * "Use this skill when..."
 * "This skill helps with..."
-
 
 ### Sequential Instructions (instructive)
 * Step by step procedures or workflows
@@ -54,14 +55,26 @@ Examples
 
 ### References (references)
 * Additional documentation or reference information provided
+* In Document: clearly structured reference material, describing metrics, APIs, etc in a summarized and clearly formatted table or other structure.
+* OR clearly points towards external references, either: (1) website, API, external documentation or (2) other .md files
 
 Examples:
 * tables of commands to execute, documentation about APIs etc
 
 ---------------------------
 ## SDLC Stages
+<<<<<<< HEAD
 ### Software Documentation (documentation)
 * related to generating or maintaining software documentation (markdowns, readme, code comments, docstrings, etc)
+=======
+### Software Documentation
+#### Agent-Facing
+* CLAUDE.md, AGENTS.md, 
+
+#### Regular Software Documentation
+* code comments, markdown files, etc
+
+>>>>>>> 2ed4aebf258d69e757bb800eb2d21de6d91327e5
 
 ### Software Requirements and Planning (requirements)
 * release planning, requirement gathering
@@ -79,17 +92,29 @@ Examples:
 ### Code Generation (code-generation)
 * Producing or modiyfing source code
 * May include some "subcategories", including Core Implementation (writing functions, classes, modules)
-* Third Party Integrations/APIs (interfacing with external services, SDK usage, authentication, API calls), or Configuration/Infrastructure (IaC, YAML, Docker, CI/CD)
+
+#### Third Party Integration (code-integration)
+* Third Party Integrations/APIs (interfacing with external services, SDK usage, authentication, API calls)
+
+#### Program Analysis
 * Program Analysis (i.e. reverse engineering, project understanding)
 
 
 ### Software Testing (software-testing)
-Test Generation (unit tests, integration tests, etc)
-Code Quality (Linting, formatting, static analysis, best practices, PRs) (code-quality)
-Debugging (debugging)
+#### Test Generation (test-generation)
+(unit tests, integration tests, etc)
+#### Code Quality (code-quality)
+(Linting, formatting, static analysis, best practices, PRs) (code-quality)
+Refactoring
+#### Debugging (debugging)
 
 ### Software Deployment (devops)
+#### SE Workflow Management
+* GitHub, creating commit messages, managing git operatioons, etc
+
+#### Deployment
 * Release, deployment, maintenance, operations
+* , or Configuration/Infrastructure (IaC, YAML, Docker, CI/CD)
 
 ### Other
 #### Agent Oriented Skills (agent-skill)
@@ -99,12 +124,12 @@ Debugging (debugging)
 Examples:
 * Multi-agent coordination
 * MCP or tool selection logic
-* Prompt enineering for agents
+* Prompt engineering for agents
 
 #### Outside Scope (outside-scope)
 * Wrong programming language
 * Marketplace/aggregated skill collection
 * Non-development use-case
 
-### Wrong Language (non-english)
+### Wrong Language (wrong-language) 
 * Foreign language or incorrect programming language
