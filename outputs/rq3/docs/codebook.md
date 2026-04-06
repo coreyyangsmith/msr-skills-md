@@ -23,6 +23,7 @@ Examples
 Examples
 * "First..., then..., finally..."
 * Numbered or ordered list
+* Checklists
 
 ### Commands / Execution (commands)
 * Direct list of commands (CLI, scripts, fiel edits, API calls)
@@ -57,16 +58,14 @@ Examples
 * Additional documentation or reference information provided
 * In Document: clearly structured reference material, describing metrics, APIs, etc in a summarized and clearly formatted table or other structure.
 * OR clearly points towards external references, either: (1) website, API, external documentation or (2) other .md files
+* References to other agent skills, markdown files for specific use-cases
+* Provided templates, output formats etc
 
 Examples:
 * tables of commands to execute, documentation about APIs etc
 
 ---------------------------
 ## SDLC Stages
-<<<<<<< HEAD
-### Software Documentation (documentation)
-* related to generating or maintaining software documentation (markdowns, readme, code comments, docstrings, etc)
-=======
 ### Software Documentation
 #### Agent-Facing
 * CLAUDE.md, AGENTS.md, 
@@ -74,7 +73,6 @@ Examples:
 #### Regular Software Documentation
 * code comments, markdown files, etc
 
->>>>>>> 2ed4aebf258d69e757bb800eb2d21de6d91327e5
 
 ### Software Requirements and Planning (requirements)
 * release planning, requirement gathering
