@@ -92,6 +92,9 @@ class SkillInstanceRow:
     has_CLAUDE: int = 0
     has_AGENTS: int = 0
     has_COPILOT: int = 0
+    has_CURSORRULES_MD: int = 0
+    has_INSTRUCTIONS_MD: int = 0
+    has_GEMINI: int = 0
     # Original SEART columns carried through from the input CSV.
     seart_data: Dict[str, str] = dataclasses.field(default_factory=dict)
 
@@ -379,6 +382,9 @@ def process_repo(
         "claude.md": "has_CLAUDE",
         "agents.md": "has_AGENTS",
         "copilot-instructions.md": "has_COPILOT",
+        ".cursorrules.md": "has_CURSORRULES_MD",
+        ".instructions.md": "has_INSTRUCTIONS_MD",
+        "gemini.md": "has_GEMINI",
     }
     acf_found: List[Tuple[str, Dict[str, Any], str]] = []  # (path, tree_item, attr)
     _acf_matched_attrs: Set[str] = set()
@@ -437,6 +443,9 @@ def process_repo(
             has_CLAUDE=acf_flags["has_CLAUDE"],
             has_AGENTS=acf_flags["has_AGENTS"],
             has_COPILOT=acf_flags["has_COPILOT"],
+            has_CURSORRULES_MD=acf_flags["has_CURSORRULES_MD"],
+            has_INSTRUCTIONS_MD=acf_flags["has_INSTRUCTIONS_MD"],
+            has_GEMINI=acf_flags["has_GEMINI"],
             seart_data=seart_data,
         ))
 
@@ -503,6 +512,9 @@ def process_repo(
         "has_CLAUDE": acf_flags["has_CLAUDE"],
         "has_AGENTS": acf_flags["has_AGENTS"],
         "has_COPILOT": acf_flags["has_COPILOT"],
+        "has_CURSORRULES_MD": acf_flags["has_CURSORRULES_MD"],
+        "has_INSTRUCTIONS_MD": acf_flags["has_INSTRUCTIONS_MD"],
+        "has_GEMINI": acf_flags["has_GEMINI"],
         "acf_files": [p for p, _, _ in acf_found],
         "seart": seart_data,
         "generated_at_utc": scanned_at,

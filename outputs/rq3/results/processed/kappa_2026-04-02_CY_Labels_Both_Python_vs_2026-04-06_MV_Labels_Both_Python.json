@@ -1,0 +1,115 @@
+{
+  "file1": "C:\\Users\\yangs\\Desktop\\repos\\msr-skills-md\\outputs\\rq3\\results\\processed\\2026-04-02_CY_Labels_Both_Python.json",
+  "file2": "C:\\Users\\yangs\\Desktop\\repos\\msr-skills-md\\outputs\\rq3\\results\\processed\\2026-04-06_MV_Labels_Both_Python.json",
+  "common_docs": 56,
+  "docs_only_in_file1": [],
+  "docs_only_in_file2": [],
+  "min_support": 0,
+  "normalisation_applied": true,
+  "per_label_kappa": {
+    "Code Generation": {
+      "kappa": 0.5683,
+      "interpretation": "moderate",
+      "observed_agreement": 0.875,
+      "support_r1": 6,
+      "support_r2": 13,
+      "n_docs": 56
+    },
+    "DevOps": {
+      "kappa": 0.7804,
+      "interpretation": "substantial",
+      "observed_agreement": 0.9643,
+      "support_r1": 5,
+      "support_r2": 5,
+      "n_docs": 56
+    },
+    "Documentation": {
+      "kappa": 0.65,
+      "interpretation": "substantial",
+      "observed_agreement": 0.9643,
+      "support_r1": 2,
+      "support_r2": 4,
+      "n_docs": 56
+    },
+    "Requirements": {
+      "kappa": 0.4862,
+      "interpretation": "moderate",
+      "observed_agreement": 0.9643,
+      "support_r1": 3,
+      "support_r2": 1,
+      "n_docs": 56
+    },
+    "Software Design": {
+      "kappa": 0.7083,
+      "interpretation": "substantial",
+      "observed_agreement": 0.9286,
+      "support_r1": 8,
+      "support_r2": 8,
+      "n_docs": 56
+    },
+    "Software Testing": {
+      "kappa": 0.59,
+      "interpretation": "moderate",
+      "observed_agreement": 0.875,
+      "support_r1": 11,
+      "support_r2": 10,
+      "n_docs": 56
+    },
+    "commands": {
+      "kappa": 0.4737,
+      "interpretation": "moderate",
+      "observed_agreement": 0.8214,
+      "support_r1": 10,
+      "support_r2": 14,
+      "n_docs": 56
+    },
+    "descriptive": {
+      "kappa": 0.4517,
+      "interpretation": "moderate",
+      "observed_agreement": 0.7321,
+      "support_r1": 19,
+      "support_r2": 26,
+      "n_docs": 56
+    },
+    "filter": {
+      "kappa": 0.7132,
+      "interpretation": "substantial",
+      "observed_agreement": 0.8571,
+      "support_r1": 27,
+      "support_r2": 25,
+      "n_docs": 56
+    },
+    "instructive": {
+      "kappa": 0.5575,
+      "interpretation": "moderate",
+      "observed_agreement": 0.8036,
+      "support_r1": 20,
+      "support_r2": 17,
+      "n_docs": 56
+    },
+    "negative-examples": {
+      "kappa": 0.4118,
+      "interpretation": "moderate",
+      "observed_agreement": 0.9107,
+      "support_r1": 2,
+      "support_r2": 7,
+      "n_docs": 56
+    },
+    "positive-examples": {
+      "kappa": 0.6316,
+      "interpretation": "substantial",
+      "observed_agreement": 0.9286,
+      "support_r1": 8,
+      "support_r2": 4,
+      "n_docs": 56
+    },
+    "reference": {
+      "kappa": 0.7674,
+      "interpretation": "substantial",
+      "observed_agreement": 0.9107,
+      "support_r1": 15,
+      "support_r2": 14,
+      "n_docs": 56
+    }
+  }
+}

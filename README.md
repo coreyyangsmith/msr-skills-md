@@ -136,6 +136,21 @@ uv run python src/enrich_scan_contributors.py \
   --resume
 ```
 
+**Optional Step 3.6 — Fetch GitHub repo metadata and READMEs:**
+
+```sh
+uv run python src/fetch_repo_metadata_readmes.py \
+  --input-csv outputs/full_skills_instances.csv \
+  --out-csv outputs/repo_metadata_readmes/repo_metadata.csv \
+  --readme-dir outputs/repo_metadata_readmes/readmes \
+  --resume
+```
+
+By default this only processes repositories whose `mainLanguage` is `Python`.
+It writes one row per unique Python repository in the input CSV and saves each
+repository README to `--readme-dir` using `owner__repo` filenames. Pass
+`--all-languages` only when intentionally collecting every language.
+
 **Step 4 — Run RQ1 prevalence and adoption analysis:**
 
 ```sh
@@ -355,6 +370,9 @@ Repositories are deduplicated across all input CSVs. If a repo appears in more t
 | `has_CLAUDE` | `1` if `CLAUDE.md` found (checked only for `found=true` repos) |
 | `has_AGENTS` | `1` if `AGENTS.md` found (checked only for `found=true` repos) |
 | `has_COPILOT` | `1` if `.github/copilot-instructions.md` found (checked only for `found=true` repos) |
+| `has_CURSORRULES_MD` | `1` if `.cursorrules.md` found (checked only for `found=true` repos) |
+| `has_INSTRUCTIONS_MD` | `1` if `.instructions.md` found (checked only for `found=true` repos) |
+| `has_GEMINI` | `1` if `GEMINI.md` found (checked only for `found=true` repos) |
 
 Followed by all original SEART columns (`id`, `mainLanguage`, `stargazers`, `topics`, `languages`, etc.).
 
@@ -382,7 +400,7 @@ Each repository costs **two API calls** in the common case (no SKILL.md found):
 
 1. **Community Profile** — `GET /repos/{owner}/{repo}/community/profile`. Extracts repo-level maintainer-readiness flags (`README`, `CONTRIBUTING`, `SECURITY`, `CODE_OF_CONDUCT`) for every scanned repo.
 2. **Code Search** — `GET /search/code?q=repo:{owner}/{repo}+filename:{match-name}`. Finds the file anywhere in the repository tree.
-3. **ACF checks** (found repos only) — Three `GET /repos/.../contents/{path}` calls to check for `CLAUDE.md`, `AGENTS.md`, and `.github/copilot-instructions.md`. Only runs for repos where SKILL.md was confirmed found.
+3. **ACF checks** (found repos only) — Six `GET /repos/.../contents/{path}` calls to check for `CLAUDE.md`, `AGENTS.md`, `.github/copilot-instructions.md`, `.cursorrules.md`, `.instructions.md`, and `GEMINI.md`. Only runs for repos where SKILL.md was confirmed found.
 
 Repo metadata (`default_branch`, `stars`, `fork`, `archived`) is read directly from SEART CSV data — no separate metadata API call is made.
 
@@ -412,6 +430,7 @@ src/
   extract_skill_repos.py     # Step 2: scan repos for SKILL.md via code search
   generate_dataset.py        # Step 3: download skill folders, compute file metrics
   enrich_scan_contributors.py  # Optional Step 3.5: populate contributor counts in the scan CSV
+  fetch_repo_metadata_readmes.py # Optional Step 3.6: fetch repo metadata and READMEs
   rq1/
     analyze_metadata.py      # Wrapper for scan-based RQ1 figures/tables
     skill_file_distribution.py  # Wrapper for skill-file distribution outputs
@@ -433,4 +452,3 @@ outputs/
   raw_data/                        # downloaded skill folder contents (Step 3)
   rq1/                             # figures and tables (Step 4 output)
 ```
-

@@ -21,16 +21,24 @@ from __future__ import annotations
 import logging
 from typing import List, Optional, Set
 
+from screening import DEFAULT_V1_RULES_PATH, load_filter_rules
+
 log = logging.getLogger(__name__)
 
 # Words matched (case-insensitive) against the repo *name* portion (after the slash).
-# Repos whose names contain any of these words are excluded from processing.
-REPO_NAME_FILTER_WORDS: List[str] = [
-    "skills", "skill", "registry", "awesome",
-    "template", "boilerplate", "starter", "scaffold",
-    "example", "dotfiles", "config", "setup", "bootstrap",
-    "claw", "claude", "plugin", "tool",
-]
+# This list is loaded from config/filter_rules_v1.yaml so the historical hard
+# filter and the reproducible screening audit share one source of truth.
+try:
+    REPO_NAME_FILTER_WORDS: List[str] = list(
+        load_filter_rules(DEFAULT_V1_RULES_PATH).hard_exclude_name_terms
+    )
+except Exception:  # pragma: no cover - defensive fallback for unusual import paths
+    REPO_NAME_FILTER_WORDS = [
+        "skills", "skill", "registry", "awesome",
+        "template", "boilerplate", "starter", "scaffold",
+        "example", "dotfiles", "config", "setup", "bootstrap",
+        "claw", "claude", "plugin", "tool",
+    ]
 
 
 def load_blacklist(path: str) -> Set[str]:

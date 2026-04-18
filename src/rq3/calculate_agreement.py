@@ -55,76 +55,16 @@ Show only labels that appear in at least one annotation (skip zero-support):
 from __future__ import annotations
 
 import argparse
-import json
 import logging
 import sys
 from pathlib import Path
 
 log = logging.getLogger(__name__)
 
-# ---------------------------------------------------------------------------
-# Label normalisation
-# ---------------------------------------------------------------------------
-
-_NORMALISE_MAP: dict[str, str] = {
-    # case variants
-    "instructive": "instructive",
-    "Instructive": "instructive",
-    # spelling / naming variants observed across files
-    "software design": "software-design",
-    "software-design": "software-design",
-    "code-integration": "code-generation",
-    "implementation": "code-generation",
-    "program-analysis": "code-generation",
-    "wrong-language": "non-english",
-    "SE workflow management": "requirements",
-}
-
-
-def normalise_label(name: str) -> str:
-    """Return a canonical label name, lower-cased and stripped."""
-    stripped = name.strip()
-    return _NORMALISE_MAP.get(stripped, stripped.lower())
-
-
-# ---------------------------------------------------------------------------
-# JSON loading helpers
-# ---------------------------------------------------------------------------
-
-
-def load_json(path: Path) -> dict:
-    with path.open(encoding="utf-8") as fh:
-        return json.load(fh)
-
-
-def write_json(path: Path, data: object) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8") as fh:
-        json.dump(data, fh, indent=2, ensure_ascii=False)
-
-
-# ---------------------------------------------------------------------------
-# Data extraction
-# ---------------------------------------------------------------------------
-
-
-def build_doc_label_matrix(data: dict) -> dict[str, set[str]]:
-    """
-    Return a mapping  doc_key -> set of normalised label names
-    for every document in *data*.
-    """
-    tag_map: dict[str, str] = {
-        tag["id"]: normalise_label(tag["name"]) for tag in data["tags"]
-    }
-    matrix: dict[str, set[str]] = {}
-    for doc_key, doc_data in data["labels"].items():
-        labels = {
-            tag_map[tid]
-            for tid in doc_data.get("tagIds", [])
-            if tid in tag_map
-        }
-        matrix[doc_key] = labels
-    return matrix
+try:
+    from rq3.label_processing import build_doc_label_matrix, load_json, resolve_path, write_json
+except ImportError:
+    from label_processing import build_doc_label_matrix, load_json, resolve_path, write_json
 
 
 # ---------------------------------------------------------------------------
@@ -343,11 +283,6 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def resolve_path(p: str) -> Path:
-    path = Path(p)
-    return path if path.is_absolute() else (Path.cwd() / path).resolve()
-
-
 def main(argv: list[str] | None = None) -> None:
     parser = build_parser()
     args = parser.parse_args(argv)
@@ -372,15 +307,8 @@ def main(argv: list[str] | None = None) -> None:
     data2 = load_json(file2)
 
     if args.no_normalise:
-        # Bypass normalisation: use raw lowercase names only
-        def _build_raw(data: dict) -> dict[str, set[str]]:
-            tag_map = {tag["id"]: tag["name"].strip() for tag in data["tags"]}
-            return {
-                doc: {tag_map[tid] for tid in doc_data.get("tagIds", []) if tid in tag_map}
-                for doc, doc_data in data["labels"].items()
-            }
-        matrix1 = _build_raw(data1)
-        matrix2 = _build_raw(data2)
+        matrix1 = build_doc_label_matrix(data1, normalise=False)
+        matrix2 = build_doc_label_matrix(data2, normalise=False)
     else:
         matrix1 = build_doc_label_matrix(data1)
         matrix2 = build_doc_label_matrix(data2)

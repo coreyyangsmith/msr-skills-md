@@ -1,0 +1,13 @@
+file,dataset,label,count,pct_docs
+2026-04-02_CY_Labels_Both_Python.json,2026-04-02_CY_Labels_Both_Python,commands,10,34.48
+2026-04-02_CY_Labels_Both_Python.json,2026-04-02_CY_Labels_Both_Python,instructive,20,68.97
+2026-04-02_CY_Labels_Both_Python.json,2026-04-02_CY_Labels_Both_Python,descriptive,19,65.52
+2026-04-02_CY_Labels_Both_Python.json,2026-04-02_CY_Labels_Both_Python,reference,15,51.72
+2026-04-02_CY_Labels_Both_Python.json,2026-04-02_CY_Labels_Both_Python,positive-examples,8,27.59
+2026-04-02_CY_Labels_Both_Python.json,2026-04-02_CY_Labels_Both_Python,negative-examples,2,6.9
+2026-04-06_MV_Labels_Both_Python.json,2026-04-06_MV_Labels_Both_Python,commands,14,45.16
+2026-04-06_MV_Labels_Both_Python.json,2026-04-06_MV_Labels_Both_Python,instructive,17,54.84
+2026-04-06_MV_Labels_Both_Python.json,2026-04-06_MV_Labels_Both_Python,descriptive,26,83.87
+2026-04-06_MV_Labels_Both_Python.json,2026-04-06_MV_Labels_Both_Python,reference,14,45.16
+2026-04-06_MV_Labels_Both_Python.json,2026-04-06_MV_Labels_Both_Python,positive-examples,4,12.9
+2026-04-06_MV_Labels_Both_Python.json,2026-04-06_MV_Labels_Both_Python,negative-examples,7,22.58

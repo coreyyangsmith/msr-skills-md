@@ -1,0 +1,37 @@
+instruction_type,sdlc_stage,count
+commands,Documentation,1
+commands,Requirements,0
+commands,Software Design,2
+commands,Code Generation,11
+commands,Software Testing,14
+commands,DevOps,15
+instructive,Documentation,23
+instructive,Requirements,10
+instructive,Software Design,19
+instructive,Code Generation,30
+instructive,Software Testing,39
+instructive,DevOps,25
+descriptive,Documentation,11
+descriptive,Requirements,4
+descriptive,Software Design,16
+descriptive,Code Generation,11
+descriptive,Software Testing,14
+descriptive,DevOps,15
+reference,Documentation,8
+reference,Requirements,4
+reference,Software Design,13
+reference,Code Generation,25
+reference,Software Testing,22
+reference,DevOps,16
+positive-examples,Documentation,8
+positive-examples,Requirements,2
+positive-examples,Software Design,7
+positive-examples,Code Generation,20
+positive-examples,Software Testing,6
+positive-examples,DevOps,11
+negative-examples,Documentation,1
+negative-examples,Requirements,1
+negative-examples,Software Design,0
+negative-examples,Code Generation,4
+negative-examples,Software Testing,5
+negative-examples,DevOps,2

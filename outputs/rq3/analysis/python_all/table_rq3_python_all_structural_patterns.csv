@@ -1,0 +1,25 @@
+file,dataset,label,count,pct_docs,retained_documents
+2026-04-06_CY_Labels_A_Python.json,Python A,commands,14,19.18,73
+2026-04-06_CY_Labels_A_Python.json,Python A,instructive,44,60.27,73
+2026-04-06_CY_Labels_A_Python.json,Python A,descriptive,31,42.47,73
+2026-04-06_CY_Labels_A_Python.json,Python A,reference,30,41.1,73
+2026-04-06_CY_Labels_A_Python.json,Python A,positive-examples,26,35.62,73
+2026-04-06_CY_Labels_A_Python.json,Python A,negative-examples,2,2.74,73
+2026-04-06_MV_Labels_B_Python.json,Python B,commands,16,16.67,96
+2026-04-06_MV_Labels_B_Python.json,Python B,instructive,65,67.71,96
+2026-04-06_MV_Labels_B_Python.json,Python B,descriptive,14,14.58,96
+2026-04-06_MV_Labels_B_Python.json,Python B,reference,34,35.42,96
+2026-04-06_MV_Labels_B_Python.json,Python B,positive-examples,17,17.71,96
+2026-04-06_MV_Labels_B_Python.json,Python B,negative-examples,7,7.29,96
+2026-04-02_CY_Labels_Both_Python.json,Python Both,commands,10,34.48,29
+2026-04-02_CY_Labels_Both_Python.json,Python Both,instructive,20,68.97,29
+2026-04-02_CY_Labels_Both_Python.json,Python Both,descriptive,19,65.52,29
+2026-04-02_CY_Labels_Both_Python.json,Python Both,reference,15,51.72,29
+2026-04-02_CY_Labels_Both_Python.json,Python Both,positive-examples,8,27.59,29
+2026-04-02_CY_Labels_Both_Python.json,Python Both,negative-examples,2,6.9,29
+Python_All.json,Python All,commands,40,20.2,198
+Python_All.json,Python All,instructive,129,65.15,198
+Python_All.json,Python All,descriptive,64,32.32,198
+Python_All.json,Python All,reference,79,39.9,198
+Python_All.json,Python All,positive-examples,51,25.76,198
+Python_All.json,Python All,negative-examples,11,5.56,198

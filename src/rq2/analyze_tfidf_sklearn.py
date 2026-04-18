@@ -51,6 +51,16 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help="CSV output for top global TF-IDF terms",
     )
     parser.add_argument(
+        "--out-global-unigrams",
+        default="../../outputs/rq2/tfidf_sklearn_top_terms_global_unigrams.csv",
+        help="CSV output for top global unigram TF-IDF terms",
+    )
+    parser.add_argument(
+        "--out-global-bigrams",
+        default="../../outputs/rq2/tfidf_sklearn_top_terms_global_bigrams.csv",
+        help="CSV output for top global bigram TF-IDF terms",
+    )
+    parser.add_argument(
         "--out-per-doc",
         default="../../outputs/rq2/tfidf_sklearn_top_terms_per_document.csv",
         help="CSV output for top TF-IDF terms per document",
@@ -166,6 +176,26 @@ def write_global_terms(path: Path, feature_names: list[str], global_scores: list
         writer.writerows(pairs)
 
 
+def write_global_terms_by_ngram_size(
+    path: Path,
+    feature_names: list[str],
+    global_scores: list[float],
+    top_k: int,
+    ngram_size: int,
+) -> None:
+    pairs = [
+        (term, score)
+        for term, score in zip(feature_names, global_scores)
+        if len(term.split()) == ngram_size
+    ]
+    ranked = sorted(pairs, key=lambda x: x[1], reverse=True)[:top_k]
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="") as handle:
+        writer = csv.writer(handle)
+        writer.writerow(["term", "tfidf_sum"])
+        writer.writerows(ranked)
+
+
 def write_per_doc_terms(
     path: Path,
     rows: list[dict[str, str]],
@@ -237,7 +267,7 @@ def main(argv: list[str] | None = None) -> int:
     vectorizer = TfidfVectorizer(
         lowercase=True,
         stop_words=combined_stopwords,
-        ngram_range=(2, 2),
+        ngram_range=(1, 2),
         max_features=args.max_features,
         min_df=args.min_df,
         max_df=args.max_df,
@@ -248,10 +278,26 @@ def main(argv: list[str] | None = None) -> int:
     global_scores = matrix.sum(axis=0).A1.tolist()
 
     out_global = Path(args.out_global)
+    out_global_unigrams = Path(args.out_global_unigrams)
+    out_global_bigrams = Path(args.out_global_bigrams)
     out_per_doc = Path(args.out_per_doc)
     out_summary = Path(args.out_summary)
 
     write_global_terms(out_global, feature_names, global_scores, args.top_k_global)
+    write_global_terms_by_ngram_size(
+        out_global_unigrams,
+        feature_names,
+        global_scores,
+        args.top_k_global,
+        ngram_size=1,
+    )
+    write_global_terms_by_ngram_size(
+        out_global_bigrams,
+        feature_names,
+        global_scores,
+        args.top_k_global,
+        ngram_size=2,
+    )
     write_per_doc_terms(out_per_doc, rows, matrix, feature_names, args.top_k_per_doc)
 
     summary = {
@@ -261,7 +307,7 @@ def main(argv: list[str] | None = None) -> int:
         "vocabulary_size": len(feature_names),
         "matrix_shape": [int(matrix.shape[0]), int(matrix.shape[1])],
         "params": {
-            "ngram_range": [2, 2],
+            "ngram_range": [1, 2],
             "custom_stopwords": sorted(CUSTOM_STOPWORDS),
             "max_features": args.max_features,
             "min_df": args.min_df,
@@ -271,6 +317,8 @@ def main(argv: list[str] | None = None) -> int:
         },
         "outputs": {
             "global_terms_csv": str(out_global.resolve()),
+            "global_unigram_terms_csv": str(out_global_unigrams.resolve()),
+            "global_bigram_terms_csv": str(out_global_bigrams.resolve()),
             "per_document_terms_csv": str(out_per_doc.resolve()),
         },
     }
@@ -279,6 +327,8 @@ def main(argv: list[str] | None = None) -> int:
     print(f"Processed {len(corpus)} documents for TF-IDF")
     print(f"Vocabulary size: {len(feature_names)}")
     print(f"- global terms: {out_global.resolve()}")
+    print(f"- global unigrams: {out_global_unigrams.resolve()}")
+    print(f"- global bigrams: {out_global_bigrams.resolve()}")
     print(f"- per-doc terms: {out_per_doc.resolve()}")
     print(f"- summary: {out_summary.resolve()}")
     return 0

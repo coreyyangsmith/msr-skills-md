@@ -31,6 +31,9 @@ ACF_COLUMNS = {
     "has_CLAUDE": "CLAUDE.md",
     "has_AGENTS": "AGENTS.md",
     "has_COPILOT": "copilot-instructions.md",
+    "has_CURSORRULES_MD": ".cursorrules.md",
+    "has_INSTRUCTIONS_MD": ".instructions.md",
+    "has_GEMINI": "GEMINI.md",
 }
 
 
@@ -72,9 +75,18 @@ def build_table(scan_df: pd.DataFrame) -> pd.DataFrame | None:
                         "pct_of_skill_md_repos": round(100.0 * count / len(found_df), 1),
                     }
                 )
-    if len(present) == 3:
-        count = int((found_df[present[0]] & found_df[present[1]] & found_df[present[2]]).sum())
-        rows.append({"artifact": "All three", "count": count, "pct_of_skill_md_repos": round(100.0 * count / len(found_df), 1)})
+    if len(present) >= 3:
+        combo = found_df[present[0]].astype(bool)
+        for column in present[1:]:
+            combo = combo & found_df[column].astype(bool)
+        count = int(combo.sum())
+        rows.append(
+            {
+                "artifact": f"All {len(present)} tracked artifacts",
+                "count": count,
+                "pct_of_skill_md_repos": round(100.0 * count / len(found_df), 1),
+            }
+        )
 
     return pd.DataFrame(rows)
 
@@ -86,7 +98,11 @@ def generate(scan_df: pd.DataFrame, out_dir: str, fig_format: str, dpi: int) -> 
 
     write_dataframe(table, str(Path(out_dir) / "table4_acf_cooccurrence.csv"))
 
-    single_rows = [row for row in table.to_dict("records") if "+" not in row["artifact"] and row["artifact"] != "All three"]
+    single_rows = [
+        row
+        for row in table.to_dict("records")
+        if "+" not in row["artifact"] and not row["artifact"].startswith("All ")
+    ]
     labels = [row["artifact"] for row in single_rows]
     counts = [row["count"] for row in single_rows]
     total_found = int(scan_df["found"].sum())
