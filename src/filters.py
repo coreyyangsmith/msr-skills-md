@@ -14,36 +14,67 @@ Filtering happens at two levels:
                    they are likely skill registries, templates, or tooling repos
                    rather than genuine end-user projects that happen to adopt
                    SKILL.md for their own workflows.
+
+The name-filter word list is loaded from relevance_terms.txt (see
+DEFAULT_RELEVANCE_TERMS_PATH), mirroring blacklist.txt.
 """
 
 from __future__ import annotations
 
 import logging
+import os
 from typing import List, Optional, Set
-
-from screening import DEFAULT_V1_RULES_PATH, load_filter_rules
 
 log = logging.getLogger(__name__)
 
+DEFAULT_RELEVANCE_TERMS_PATH = "relevance_terms.txt"
+
+_FALLBACK_RELEVANCE_TERMS: List[str] = [
+    "skills",
+    "skill",
+    "registry",
+    "awesome",
+    "template",
+    "boilerplate",
+    "starter",
+    "scaffold",
+    "example",
+    "dotfiles",
+    "config",
+    "setup",
+    "bootstrap",
+    "claw",
+    "claude",
+    "plugin",
+    "tool",
+]
+
+
+def load_relevance_terms(path: str) -> List[str]:
+    """Load relevance filter terms from a text file (one term per line)."""
+    if not path or not os.path.exists(path):
+        return []
+    terms: List[str] = []
+    with open(path, "r", encoding="utf-8") as f:
+        for line in f:
+            entry = line.strip()
+            if entry and not entry.startswith("#"):
+                terms.append(entry)
+    if terms:
+        log.info("Relevance terms loaded: %d entries from %s", len(terms), path)
+    return terms
+
+
 # Words matched (case-insensitive) against the repo *name* portion (after the slash).
-# This list is loaded from config/filter_rules_v1.yaml so the historical hard
-# filter and the reproducible screening audit share one source of truth.
-try:
-    REPO_NAME_FILTER_WORDS: List[str] = list(
-        load_filter_rules(DEFAULT_V1_RULES_PATH).hard_exclude_name_terms
-    )
-except Exception:  # pragma: no cover - defensive fallback for unusual import paths
-    REPO_NAME_FILTER_WORDS = [
-        "skills", "skill", "registry", "awesome",
-        "template", "boilerplate", "starter", "scaffold",
-        "example", "dotfiles", "config", "setup", "bootstrap",
-        "claw", "claude", "plugin", "tool",
-    ]
+# Primary source: relevance_terms.txt at repo root (same pattern as blacklist.txt).
+REPO_NAME_FILTER_WORDS: List[str] = load_relevance_terms(DEFAULT_RELEVANCE_TERMS_PATH) or list(
+    _FALLBACK_RELEVANCE_TERMS
+)
 
 
 def load_blacklist(path: str) -> Set[str]:
     """Load a blacklist file and return a set of 'owner/repo' strings to skip."""
-    if not path or not __import__("os").path.exists(path):
+    if not path or not os.path.exists(path):
         return set()
     blacklisted: Set[str] = set()
     with open(path, "r", encoding="utf-8") as f:

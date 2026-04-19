@@ -1,0 +1,22 @@
+# Repo name filter terms (case-insensitive substring match against the name portion after "owner/").
+# One term per line. Blank lines and lines starting with "#" are ignored.
+#
+# Example:
+# awesome-list
+skills
+skill
+registry
+awesome
+template
+boilerplate
+starter
+scaffold
+example
+dotfiles
+config
+setup
+bootstrap
+claw
+claude
+plugin
+tool

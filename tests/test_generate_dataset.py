@@ -177,6 +177,10 @@ class TestParseArgs(unittest.TestCase):
         args = self._parse()
         self.assertFalse(args.no_name_filter)
 
+    def test_default_relevance_terms_path(self):
+        args = self._parse()
+        self.assertEqual(args.relevance_terms, "relevance_terms.txt")
+
     def test_no_name_filter_flag(self):
         args = self._parse("--no-name-filter")
         self.assertTrue(args.no_name_filter)

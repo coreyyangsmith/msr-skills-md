@@ -16,7 +16,7 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 
-from filters import REPO_NAME_FILTER_WORDS, load_blacklist, repo_name_contains_filter_word
+from filters import REPO_NAME_FILTER_WORDS, load_blacklist, load_relevance_terms, repo_name_contains_filter_word
 from screening import filter_dataframe_by_screening, load_screening_decisions
 
 warnings.filterwarnings("ignore", category=FutureWarning)
@@ -101,11 +101,15 @@ def configure_logging(level: str) -> None:
     )
 
 
-def build_filter_words(extra_words: str = "", no_name_filter: bool = False) -> list[str]:
+def build_filter_words(
+    relevance_terms_path: str,
+    extra_words: str = "",
+    no_name_filter: bool = False,
+) -> list[str]:
     if no_name_filter:
         return []
 
-    filter_words = list(REPO_NAME_FILTER_WORDS)
+    filter_words = load_relevance_terms(relevance_terms_path) or list(REPO_NAME_FILTER_WORDS)
     if extra_words.strip():
         filter_words.extend([w.strip() for w in extra_words.split(",") if w.strip()])
     return filter_words
@@ -439,6 +443,11 @@ def add_scan_input_args(parser: argparse.ArgumentParser) -> None:
         help="Path to blacklist file (owner/repo per line). Default: blacklist.txt",
     )
     parser.add_argument(
+        "--relevance-terms",
+        default="relevance_terms.txt",
+        help="Path to relevance terms file (one term per line). Default: relevance_terms.txt",
+    )
+    parser.add_argument(
         "--name-filter-words",
         default="",
         help="Comma-separated extra repo-name filter words.",
@@ -499,7 +508,7 @@ def add_output_args(parser: argparse.ArgumentParser) -> None:
 
 def resolve_filters(args: argparse.Namespace) -> tuple[set[str], list[str]]:
     blacklist = load_blacklist(args.blacklist)
-    filter_words = build_filter_words(args.name_filter_words, args.no_name_filter)
+    filter_words = build_filter_words(args.relevance_terms, args.name_filter_words, args.no_name_filter)
     log.info(
         "Filters: blacklist=%d entries, name_filter=%d words%s",
         len(blacklist),

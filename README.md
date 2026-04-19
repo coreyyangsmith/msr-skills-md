@@ -151,6 +151,16 @@ It writes one row per unique Python repository in the input CSV and saves each
 repository README to `--readme-dir` using `owner__repo` filenames. Pass
 `--all-languages` only when intentionally collecting every language.
 
+**Step 3.7 — (Optional) Enrich the scan CSV with extended ACF columns**
+
+If `outputs/skill_md_scan_results_with_contributors.csv` only has `has_CLAUDE`, `has_AGENTS`, and `has_COPILOT`, you can add `has_CURSORRULES_MD`, `has_INSTRUCTIONS_MD`, and `has_GEMINI` using the GitHub Contents API only (no code search), pinned to each repo’s `commit_sha` / `acf_ref` from `data/skill_only_scan/known_skill_repos.csv`:
+
+```sh
+uv run python src/enrich_extended_acf_columns.py
+```
+
+This writes `outputs/skill_md_scan_results_skill_only_new_acfs.csv` and merges into `outputs/skill_md_scan_results_with_contributors_extended.csv`. Use the extended file as `--scan-csv` for RQ1 when you want all six ACF columns in figures.
+
 **Step 4 — Run RQ1 prevalence and adoption analysis:**
 
 ```sh
@@ -159,6 +169,8 @@ uv run python src/rq1/analyze_metadata.py \
   --instances-csv outputs/full_skills_instances.csv \
   --out-dir outputs/rq1
 ```
+
+With extended ACF columns, pass `outputs/skill_md_scan_results_with_contributors_extended.csv` as `--scan-csv` instead.
 
 If contributor enrichment is skipped, the RQ1 wrapper still runs and writes a note file explaining that the contributor-count figure could not be generated. The wrapper always requires `--instances-csv` (e.g. `outputs/full_skills_instances.csv`) so instance-level figures use every row in that file; blacklist/name filters apply to the scan CSV only, not to the instances export.
 

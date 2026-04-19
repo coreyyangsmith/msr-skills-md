@@ -10,11 +10,14 @@
 - `CLAUDE.md` appears in `1586` repos (41.56% of SKILL.md repos).
 - `AGENTS.md` appears in `1324` repos (34.70% of SKILL.md repos).
 - `copilot-instructions.md` appears in `375` repos (9.83% of SKILL.md repos).
+- `GEMINI.md` appears in `111` repos (2.91% of SKILL.md repos).
+- `.cursorrules.md` appears in `0` repos (0.00% of SKILL.md repos).
+- `.instructions.md` appears in `0` repos (0.00% of SKILL.md repos).
 
 ## How Often Multiple ACFs Appear
-- At least one tracked ACF appears in `2349` repos (61.56% of SKILL.md repos).
-- Multiple tracked ACFs (2+) appear in `842` repos (22.06% of SKILL.md repos).
-- All tracked ACFs appear together in `94` repos (2.46% of SKILL.md repos).
+- At least one tracked ACF appears in `2376` repos (62.26% of SKILL.md repos).
+- Multiple tracked ACFs (2+) appear in `860` repos (22.54% of SKILL.md repos).
+- All tracked ACFs appear together in `0` repos (0.00% of SKILL.md repos).
 
 ## Pairwise Co-occurrence
 Strongest pairwise overlaps by Jaccard:
@@ -23,17 +26,17 @@ Strongest pairwise overlaps by Jaccard:
 - `CLAUDE.md` + `copilot-instructions.md`: intersection `145`, jaccard `0.0798`
 
 Strongest pairwise associations by lift:
-- `CLAUDE.md` -> `AGENTS.md`: lift `1.3175`, P(B|A) `0.4571`
-- `AGENTS.md` -> `copilot-instructions.md`: lift `1.2297`, P(B|A) `0.1208`
-- `CLAUDE.md` -> `copilot-instructions.md`: lift `0.9303`, P(B|A) `0.0914`
+- `copilot-instructions.md` -> `GEMINI.md`: lift `2.0169`, P(B|A) `0.0587`
+- `AGENTS.md` -> `GEMINI.md`: lift `1.7657`, P(B|A) `0.0514`
+- `CLAUDE.md` -> `GEMINI.md`: lift `1.6691`, P(B|A) `0.0485`
 
 ## Combination Usage
 Most common tracked-artifact combinations:
-- `None of the tracked artifacts`: `1467` repos (38.44%)
-- `CLAUDE.md`: `810` repos (21.23%)
-- `CLAUDE.md + AGENTS.md`: `631` repos (16.54%)
-- `AGENTS.md`: `533` repos (13.97%)
-- `copilot-instructions.md`: `164` repos (4.30%)
+- `None of the tracked artifacts`: `1440` repos (37.74%)
+- `CLAUDE.md`: `798` repos (20.91%)
+- `CLAUDE.md + AGENTS.md`: `586` repos (15.36%)
+- `AGENTS.md`: `528` repos (13.84%)
+- `copilot-instructions.md`: `163` repos (4.27%)
 
 ## Language-Level Pattern Differences
 Highest shares of SKILL.md repos with any tracked ACF:
@@ -42,6 +45,6 @@ Highest shares of SKILL.md repos with any tracked ACF:
 - `Rust`: `69.08%` (248/359)
 
 Highest shares of SKILL.md repos with multiple tracked ACFs:
-- `Rust`: `26.74%` (96/359)
-- `Go`: `24.32%` (89/366)
-- `TypeScript`: `23.87%` (339/1420)
+- `Rust`: `27.30%` (98/359)
+- `Go`: `24.59%` (90/366)
+- `TypeScript`: `24.01%` (341/1420)

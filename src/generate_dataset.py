@@ -27,7 +27,7 @@ from typing import Any, Dict, List, Optional, Set, Tuple
 from urllib.parse import quote
 
 from github_client import GitHubClient, TokenPool, load_tokens_from_env
-from filters import REPO_NAME_FILTER_WORDS, load_blacklist, repo_name_contains_filter_word
+from filters import REPO_NAME_FILTER_WORDS, load_blacklist, load_relevance_terms, repo_name_contains_filter_word
 
 log = logging.getLogger(__name__)
 
@@ -643,8 +643,21 @@ def parse_args(argv: List[str]) -> argparse.Namespace:
     p.add_argument("--raw-data-dir", required=True, help="Directory to save downloaded files (e.g. outputs/raw_data)")
     p.add_argument("--match-name", default="SKILL.md", help="Filename to match")
     p.add_argument("--blacklist", default="blacklist.txt", help="Path to blacklist file (owner/repo per line). Default: blacklist.txt")
-    p.add_argument("--name-filter-words", default="", help="Comma-separated words to match against repo names (in addition to the built-in list). Repos matching any word are excluded.")
-    p.add_argument("--no-name-filter", action="store_true", help="Disable the built-in name filter (REPO_NAME_FILTER_WORDS from filters.py).")
+    p.add_argument(
+        "--relevance-terms",
+        default="relevance_terms.txt",
+        help="Path to relevance terms file (one term per line). Default: relevance_terms.txt",
+    )
+    p.add_argument(
+        "--name-filter-words",
+        default="",
+        help="Comma-separated words to match against repo names (in addition to relevance_terms.txt). Repos matching any word are excluded.",
+    )
+    p.add_argument(
+        "--no-name-filter",
+        action="store_true",
+        help="Disable the repo-name filter from relevance_terms.txt (blacklist still applies).",
+    )
     p.add_argument("--name-filter-log", default="", help="File to record repos excluded by name filter (tab-separated: repo<TAB>matched_word). Defaults to <out-csv dir>/name_filtered_repos.tsv")
     p.add_argument("--failures-log", default="", help="File to record processing failures (tree-fetch errors, zero-skills, exceptions). Defaults to <out-csv dir>/processing_failures.tsv")
     p.add_argument("--resume", action="store_true", help="Skip repos already in out-csv or metadata.json")
@@ -704,11 +717,13 @@ def main(argv: List[str]) -> int:
     processed_repos = load_already_processed(args.out_csv) if args.resume else set()
     blacklist = load_blacklist(args.blacklist)
 
-    # Build effective name-filter word list (same controls as extract_skill_repos.py).
-    name_filter_words: List[str] = [] if args.no_name_filter else list(REPO_NAME_FILTER_WORDS)
-    if args.name_filter_words.strip():
-        extras = [w.strip() for w in args.name_filter_words.split(",") if w.strip()]
-        name_filter_words.extend(extras)
+    # Build effective name-filter word list (same controls as RQ1 scan scripts).
+    name_filter_words: List[str] = []
+    if not args.no_name_filter:
+        name_filter_words = load_relevance_terms(args.relevance_terms) or list(REPO_NAME_FILTER_WORDS)
+        if args.name_filter_words.strip():
+            extras = [w.strip() for w in args.name_filter_words.split(",") if w.strip()]
+            name_filter_words.extend(extras)
 
     name_filter_log: str = args.name_filter_log.strip() or os.path.join(
         os.path.dirname(args.out_csv) or ".", "name_filtered_repos.tsv"

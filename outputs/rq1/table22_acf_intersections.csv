@@ -1,0 +1,17 @@
+combination,count,pct_of_skill_md_repos,artifact_count
+SKILL.md only,1440,37.735849056603776,0
+CLAUDE.md,798,20.91194968553459,1
+CLAUDE.md + AGENTS.md,586,15.356394129979035,2
+AGENTS.md,528,13.836477987421384,1
+copilot-instructions.md,163,4.271488469601677,1
+CLAUDE.md + AGENTS.md + copilot-instructions.md,77,2.0178197064989516,3
+AGENTS.md + copilot-instructions.md,65,1.7033542976939204,2
+CLAUDE.md + copilot-instructions.md,48,1.2578616352201257,2
+CLAUDE.md + AGENTS.md + GEMINI.md,45,1.179245283018868,3
+GEMINI.md,27,0.7075471698113207,1
+CLAUDE.md + AGENTS.md + copilot-instructions.md + GEMINI.md,17,0.44549266247379454,4
+CLAUDE.md + GEMINI.md,12,0.31446540880503143,2
+AGENTS.md + GEMINI.md,5,0.1310272536687631,2
+CLAUDE.md + copilot-instructions.md + GEMINI.md,3,0.07861635220125786,3
+copilot-instructions.md + GEMINI.md,1,0.02620545073375262,2
+AGENTS.md + copilot-instructions.md + GEMINI.md,1,0.02620545073375262,3

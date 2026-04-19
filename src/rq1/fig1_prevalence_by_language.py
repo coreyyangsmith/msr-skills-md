@@ -6,6 +6,7 @@ import sys
 from pathlib import Path
 
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 
 if __package__ in {None, ""}:
@@ -49,46 +50,95 @@ def generate(scan_df: pd.DataFrame, out_dir: str, fig_format: str, dpi: int) -> 
         log.warning("No languages with found repos; skipping language figure.")
         return None
 
-    fig, axes = plt.subplots(1, 2, figsize=(14, max(5, len(plot_df) * 0.45 + 1.5)))
+    fig, ax_count = plt.subplots(figsize=(10.5, max(5.3, len(plot_df) * 0.54 + 1.3)))
+    ax_rate = ax_count.twiny()
 
-    ax0 = axes[0]
-    bars0 = ax0.barh(
-        plot_df["language"],
+    y_positions = np.arange(len(plot_df)) * 1.05
+    bar_height = 0.34
+    bar_offset = 0.19
+    count_axis_max = 1500
+    count_xlim_max = 1580
+    prevalence_axis_max = 5.0
+    prevalence_xlim_max = 5.25
+
+    count_bars = ax_count.barh(
+        y_positions + bar_offset,
         plot_df["found_count"],
         color=PALETTE_FOUND,
+        alpha=0.72,
         edgecolor="white",
         linewidth=0.5,
+        height=bar_height,
+        label="Repos with SKILL.md",
+        zorder=2,
     )
-    ax0.set_xlabel("Repos with SKILL.md (count)")
-    ax0.set_title("Repositories with SKILL.md\nby Primary Language")
-    for bar, found_count in zip(bars0, plot_df["found_count"]):
-        ax0.text(
-            bar.get_width() + 0.1,
-            bar.get_y() + bar.get_height() / 2,
-            f"{int(found_count)}",
+    rate_bars = ax_rate.barh(
+        y_positions - bar_offset,
+        plot_df["prevalence_pct"],
+        color="#D81B60",
+        alpha=0.82,
+        edgecolor="white",
+        linewidth=0.5,
+        height=bar_height,
+        label="Prevalence rate",
+        zorder=3,
+    )
+
+    ax_count.set_yticks(list(y_positions))
+    ax_count.set_yticklabels(plot_df["language"])
+    ax_count.set_xlabel(
+        "Repos with SKILL.md (count)", fontsize=14, fontweight="bold", labelpad=12
+    )
+    ax_rate.set_xlabel("Prevalence rate (%)", fontsize=14, fontweight="bold", labelpad=12)
+    ax_count.set_xlim(0, count_xlim_max)
+    ax_rate.set_xlim(0, prevalence_xlim_max)
+    ax_count.set_xticks(np.arange(0, count_axis_max + 1, 300))
+    ax_rate.set_xticks(np.arange(0, prevalence_axis_max + 0.1, 1.0))
+    ax_count.tick_params(axis="x", labelsize=12)
+    ax_count.tick_params(axis="y", labelsize=12)
+    ax_rate.tick_params(axis="x", labelsize=12)
+    ax_count.grid(axis="x", color="#d0d0d0", linewidth=0.8, alpha=0.55)
+    ax_count.grid(axis="y", visible=False)
+    ax_rate.grid(False)
+
+    for bar, row in zip(count_bars, plot_df.itertuples(index=False)):
+        y_center = bar.get_y() + bar.get_height() / 2
+        label_x = min(float(row.found_count) + 20, count_xlim_max - 20)
+        label_ha = "right" if label_x >= count_xlim_max - 20 else "left"
+        ax_count.text(
+            label_x,
+            y_center,
+            f"{int(row.found_count):,}",
             va="center",
-            fontsize=8,
+            ha=label_ha,
+            fontsize=11,
+            fontweight="bold",
+            color="#1f1f1f",
         )
 
-    ax1 = axes[1]
-    bars1 = ax1.barh(
-        plot_df["language"],
-        plot_df["prevalence_pct"],
-        color=PALETTE_FOUND,
-        edgecolor="white",
-        linewidth=0.5,
-    )
-    ax1.set_xlabel("Prevalence rate (%)")
-    ax1.set_title("SKILL.md Prevalence Rate\nby Primary Language")
-    ax1.set_xlim(left=0)
-    for bar, prevalence in zip(bars1, plot_df["prevalence_pct"]):
-        ax1.text(
-            bar.get_width() + 0.3,
-            bar.get_y() + bar.get_height() / 2,
-            f"{prevalence:.1f}%",
+    for bar, row in zip(rate_bars, plot_df.itertuples(index=False)):
+        y_center = bar.get_y() + bar.get_height() / 2
+        label_x = min(float(row.prevalence_pct) + 0.08, prevalence_xlim_max - 0.06)
+        label_ha = "right" if label_x >= prevalence_xlim_max - 0.06 else "left"
+        ax_rate.text(
+            label_x,
+            y_center,
+            f"{row.prevalence_pct:.1f}%",
             va="center",
-            fontsize=8,
+            ha=label_ha,
+            fontsize=11,
+            fontweight="bold",
+            color="#D81B60",
         )
+
+    handles_count, labels_count = ax_count.get_legend_handles_labels()
+    handles_rate, labels_rate = ax_rate.get_legend_handles_labels()
+    ax_count.legend(
+        handles_count + handles_rate,
+        labels_count + labels_rate,
+        loc="lower right",
+        frameon=True,
+    )
 
     output_path = Path(out_dir) / f"fig1_prevalence_by_language.{fig_format}"
     savefig(fig, str(output_path), dpi)

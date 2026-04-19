@@ -21,6 +21,8 @@ from rq1 import (
     fig12_presence_by_contributor_count,
     fig13_presence_by_project_size,
     fig14_presence_by_project_age,
+    fig21_scale_visibility_collaboration_age,
+    fig22_acf_intersections_language_heatmap,
     fig1_prevalence_by_language,
     fig2_prevalence_by_size_stars,
     fig3_acf_cooccurrence,
@@ -102,6 +104,8 @@ def main(argv: list[str]) -> int:
     fig12_presence_by_contributor_count.generate(scan_df, args.out_dir, args.fig_format, args.dpi)
     fig13_presence_by_project_size.generate(scan_df, args.out_dir, args.fig_format, args.dpi)
     fig14_presence_by_project_age.generate(scan_df, args.out_dir, args.fig_format, args.dpi)
+    fig21_scale_visibility_collaboration_age.generate(scan_df, args.out_dir, args.fig_format, args.dpi)
+    fig22_acf_intersections_language_heatmap.generate(scan_df, args.out_dir, args.fig_format, args.dpi)
 
     print(f"\nAll outputs written to: {os.path.abspath(args.out_dir)}")
     return 0
