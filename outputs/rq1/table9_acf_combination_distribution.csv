@@ -1,0 +1,9 @@
+combination,count,pct_of_skill_md_repos
+None of the tracked artifacts,1467,38.44
+CLAUDE.md,810,21.23
+CLAUDE.md + AGENTS.md,631,16.54
+AGENTS.md,533,13.97
+copilot-instructions.md,164,4.3
+CLAUDE.md + AGENTS.md + copilot-instructions.md,94,2.46
+AGENTS.md + copilot-instructions.md,66,1.73
+CLAUDE.md + copilot-instructions.md,51,1.34

@@ -10,9 +10,10 @@ Scan strategy:
   (README / CONTRIBUTING / SECURITY / CODE_OF_CONDUCT presence). This call is
   treated as optional enrichment; failure does not block the SKILL.md scan.
   One call per repo – GitHub Code Search API: full-repo filename search.
-  ACF files (CLAUDE.md, AGENTS.md, copilot-instructions.md) are checked via the
-  Contents API only for repositories where SKILL.md is confirmed found. ACF check
-  failures are recorded separately and do not affect the primary found/not-found
+  ACF files (CLAUDE.md, AGENTS.md, copilot-instructions.md, .cursorrules.md,
+  .instructions.md, GEMINI.md) are checked via the Contents API only for
+  repositories where SKILL.md is confirmed found. ACF check failures are
+  recorded separately and do not affect the primary found/not-found
   classification.
   Repo metadata (branch, stars, fork, archived) is read from SEART CSV data —
   no separate metadata API call is made.
@@ -64,6 +65,15 @@ COMMUNITY_PROFILE_FILE_FLAGS: Dict[str, str] = {
     "security": "has_SECURITY",
     "code_of_conduct": "has_CODE_OF_CONDUCT",
 }
+
+ACF_CONTENTS_CHECKS: List[Tuple[str, str]] = [
+    ("/CLAUDE.md", "has_CLAUDE"),
+    ("/AGENTS.md", "has_AGENTS"),
+    ("/.github/copilot-instructions.md", "has_COPILOT"),
+    ("/.cursorrules.md", "has_CURSORRULES_MD"),
+    ("/.instructions.md", "has_INSTRUCTIONS_MD"),
+    ("/GEMINI.md", "has_GEMINI"),
+]
 
 # All columns present in a SEART CSV export (order matches the export header).
 SEART_COLUMNS: List[str] = [
@@ -121,6 +131,9 @@ class ScanResult:
     has_CLAUDE: str = "0"
     has_AGENTS: str = "0"
     has_COPILOT: str = "0"
+    has_CURSORRULES_MD: str = "0"
+    has_INSTRUCTIONS_MD: str = "0"
+    has_GEMINI: str = "0"
     seart_data: Dict[str, str] = dataclasses.field(default_factory=dict)
 
 
@@ -476,12 +489,7 @@ def scan_one_repo(
     # ACF checks — Contents API only, run only for repos that have SKILL.md.
     # Failures are recorded in acf_error_type/acf_error_message and do not
     # affect the primary found/not-found classification.
-    _acf_checks = [
-        ("/CLAUDE.md",                       "has_CLAUDE"),
-        ("/AGENTS.md",                       "has_AGENTS"),
-        ("/.github/copilot-instructions.md", "has_COPILOT"),
-    ]
-    for _path, _attr in _acf_checks:
+    for _path, _attr in ACF_CONTENTS_CHECKS:
         _ok, _, _st, _e = try_contents_path(gh, repo_src.repo, _path, acf_ref)
         if _st not in (200, 404):
             res.acf_error_type = classify_error(_st, _e)
@@ -531,6 +539,9 @@ _SCAN_COLUMNS = [
     "has_CLAUDE",
     "has_AGENTS",
     "has_COPILOT",
+    "has_CURSORRULES_MD",
+    "has_INSTRUCTIONS_MD",
+    "has_GEMINI",
 ]
 
 # Full output schema: scan columns first, then every original SEART column.
@@ -839,8 +850,8 @@ def main(argv: List[str]) -> int:
             write_shortlist(args.out_csv, args.shortlist_csv)
         return 0
 
-    # Estimate search API requests: 1 per repo (plus up to 3 ACF calls for found repos,
-    # which use the core API and are negligible at ~2% hit rate).
+    # Estimate search API requests: 1 per repo (plus up to len(ACF_CONTENTS_CHECKS)
+    # core-API ACF calls for found repos, which are negligible at current hit rates).
     search_remaining = resources.get("search", {}).get("remaining", 0) if resources else 0
     if search_remaining and total > search_remaining:
         log.warning(

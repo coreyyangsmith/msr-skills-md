@@ -1,0 +1,11 @@
+language,skill_md_repo_count,repos_with_any_tracked_acf,pct_with_any_tracked_acf,repos_with_multiple_tracked_acfs,pct_with_multiple_tracked_acfs,repos_with_all_tracked_acfs,pct_with_all_tracked_acfs
+TypeScript,1420,919,64.72,339,23.87,36,2.54
+Python,1029,576,55.98,213,20.7,23,2.24
+Go,366,239,65.3,89,24.32,15,4.1
+Rust,359,248,69.08,96,26.74,6,1.67
+JavaScript,233,121,51.93,31,13.3,4,1.72
+C#,132,100,75.76,27,20.45,3,2.27
+Java,114,54,47.37,21,18.42,3,2.63
+PHP,80,36,45.0,15,18.75,3,3.75
+C++,60,40,66.67,9,15.0,1,1.67
+C,23,16,69.57,2,8.7,0,0.0

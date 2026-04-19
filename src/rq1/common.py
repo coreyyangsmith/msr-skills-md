@@ -17,6 +17,7 @@ import pandas as pd
 import seaborn as sns
 
 from filters import REPO_NAME_FILTER_WORDS, load_blacklist, repo_name_contains_filter_word
+from screening import filter_dataframe_by_screening, load_screening_decisions
 
 warnings.filterwarnings("ignore", category=FutureWarning)
 
@@ -458,6 +459,26 @@ def add_instances_input_args(parser: argparse.ArgumentParser, required: bool = T
     )
 
 
+def add_screening_input_args(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument(
+        "--screening-decisions",
+        default="",
+        help=(
+            "Optional CSV with repo-level screening decisions. Rows with decision=keep are retained. "
+            "Use --screening-mode final to fail when unresolved review rows remain."
+        ),
+    )
+    parser.add_argument(
+        "--screening-mode",
+        default="provisional",
+        choices=["provisional", "final"],
+        help=(
+            "Screening decision strictness. provisional excludes review rows from analyses; "
+            "final fails if any review rows remain unresolved."
+        ),
+    )
+
+
 def add_output_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--out-dir", default="outputs/rq1", help="Output directory for figures and tables")
     parser.add_argument(
@@ -486,3 +507,36 @@ def resolve_filters(args: argparse.Namespace) -> tuple[set[str], list[str]]:
         " (disabled)" if args.no_name_filter else "",
     )
     return blacklist, filter_words
+
+
+def resolve_screening_decisions(args: argparse.Namespace) -> Optional[pd.DataFrame]:
+    decisions_path = getattr(args, "screening_decisions", "")
+    if not decisions_path:
+        return None
+    final = getattr(args, "screening_mode", "provisional") == "final"
+    decisions = load_screening_decisions(decisions_path, final=final)
+    log.info(
+        "Screening decisions loaded: %d rows from %s (%s mode)",
+        len(decisions),
+        decisions_path,
+        "final" if final else "provisional",
+    )
+    return decisions
+
+
+def apply_screening_decisions(
+    df: pd.DataFrame,
+    decisions: Optional[pd.DataFrame],
+    label: str,
+) -> pd.DataFrame:
+    if decisions is None or df is None or df.empty or "repo" not in df.columns:
+        return df
+    before = len(df)
+    filtered = filter_dataframe_by_screening(df, decisions, repo_column="repo", keep_missing=True)
+    log.info(
+        "%s: applied screening decisions (%d -> %d rows)",
+        label,
+        before,
+        len(filtered),
+    )
+    return filtered

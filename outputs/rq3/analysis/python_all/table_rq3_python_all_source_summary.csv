@@ -1,0 +1,5 @@
+file,dataset,retained_documents,filtered_documents,total_documents,retained_pct,filtered_pct,avg_labels_per_retained_document,avg_labels_per_filtered_document,filter_source_document_counts
+2026-04-06_CY_Labels_A_Python.json,Python A,73,83,156,46.79,53.21,3.11,1.0,"{'agent-skill': 67, 'outside-scope': 5, 'wrong-language': 11}"
+2026-04-06_MV_Labels_B_Python.json,Python B,96,60,156,61.54,38.46,2.698,1.0,"{'agent-skill': 40, 'outside-scope': 13, 'wrong-language': 7}"
+2026-04-02_CY_Labels_Both_Python.json,Python Both,29,27,56,51.79,48.21,3.759,1.0,"{'agent-skill': 22, 'outside-scope': 4, 'wrong-language': 1}"
+Python_All.json,Python All,198,170,368,53.8,46.2,3.005,1.0,"{'agent-skill': 129, 'outside-scope': 22, 'wrong-language': 19}"

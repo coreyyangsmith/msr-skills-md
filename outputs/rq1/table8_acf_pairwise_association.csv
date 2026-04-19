@@ -1,0 +1,7 @@
+artifact_a,artifact_b,count_a,count_b,intersection_count,union_count,jaccard,conditional_b_given_a,conditional_a_given_b,lift,phi,expected_intersection_if_independent
+CLAUDE.md,CLAUDE.md,1586,1586,1586,1586,1.0,1.0,1.0,2.4061,1.0,659.17
+CLAUDE.md,AGENTS.md,1586,1324,725,2185,0.3318,0.4571,0.5476,1.3175,0.1952,550.28
+CLAUDE.md,copilot-instructions.md,1586,375,145,1816,0.0798,0.0914,0.3867,0.9303,-0.0194,155.86
+AGENTS.md,AGENTS.md,1324,1324,1324,1324,1.0,1.0,1.0,2.8822,1.0,459.38
+AGENTS.md,copilot-instructions.md,1324,375,160,1539,0.104,0.1208,0.4267,1.2297,0.0553,130.11
+copilot-instructions.md,copilot-instructions.md,375,375,375,375,1.0,1.0,1.0,10.176,1.0,36.85

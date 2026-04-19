@@ -6,7 +6,6 @@ import sys
 from pathlib import Path
 
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
 
 if __package__ in {None, ""}:
@@ -21,7 +20,6 @@ from rq1.common import (
     resolve_filters,
     savefig,
     setup_style,
-    wilson_ci,
     write_dataframe,
 )
 
@@ -43,19 +41,6 @@ def generate(scan_df: pd.DataFrame, out_dir: str, fig_format: str, dpi: int) -> 
     grouped["language"] = grouped["language"].fillna("(unknown)")
     grouped["found_count"] = grouped[["found_count", "total"]].min(axis=1)
     grouped["prevalence_pct"] = 100.0 * grouped["found_count"] / grouped["total"]
-    grouped[["ci_lo", "ci_hi"]] = grouped.apply(
-        lambda row: pd.Series(wilson_ci(row["found_count"], row["total"])),
-        axis=1,
-    )
-    # Matplotlib rejects negative xerr; float noise or rare pathological rows can produce tiny negatives.
-    prev = grouped["prevalence_pct"].to_numpy()
-    grouped["ci_lo"] = np.minimum(grouped["ci_lo"].to_numpy(), prev)
-    grouped["ci_hi"] = np.maximum(grouped["ci_hi"].to_numpy(), prev)
-    lo = grouped["ci_lo"].to_numpy()
-    hi = grouped["ci_hi"].to_numpy()
-    grouped["ci_err_lo"] = np.maximum(0.0, prev - lo)
-    grouped["ci_err_hi"] = np.maximum(0.0, hi - prev)
-
     table = grouped.sort_values("found_count", ascending=False)
     write_dataframe(table, str(Path(out_dir) / "table2_language_breakdown.csv"))
 
@@ -76,24 +61,34 @@ def generate(scan_df: pd.DataFrame, out_dir: str, fig_format: str, dpi: int) -> 
     )
     ax0.set_xlabel("Repos with SKILL.md (count)")
     ax0.set_title("Repositories with SKILL.md\nby Primary Language")
-    for bar, total in zip(bars0, plot_df["total"]):
-        ax0.text(bar.get_width() + 0.1, bar.get_y() + bar.get_height() / 2, f"/{int(total)}", va="center", fontsize=8)
+    for bar, found_count in zip(bars0, plot_df["found_count"]):
+        ax0.text(
+            bar.get_width() + 0.1,
+            bar.get_y() + bar.get_height() / 2,
+            f"{int(found_count)}",
+            va="center",
+            fontsize=8,
+        )
 
     ax1 = axes[1]
-    xerr = [plot_df["ci_err_lo"].values, plot_df["ci_err_hi"].values]
-    ax1.barh(
+    bars1 = ax1.barh(
         plot_df["language"],
         plot_df["prevalence_pct"],
-        xerr=xerr,
         color=PALETTE_FOUND,
         edgecolor="white",
         linewidth=0.5,
-        capsize=3,
-        error_kw={"elinewidth": 1, "alpha": 0.7},
     )
     ax1.set_xlabel("Prevalence rate (%)")
-    ax1.set_title("SKILL.md Prevalence Rate\nby Primary Language (95% CI)")
+    ax1.set_title("SKILL.md Prevalence Rate\nby Primary Language")
     ax1.set_xlim(left=0)
+    for bar, prevalence in zip(bars1, plot_df["prevalence_pct"]):
+        ax1.text(
+            bar.get_width() + 0.3,
+            bar.get_y() + bar.get_height() / 2,
+            f"{prevalence:.1f}%",
+            va="center",
+            fontsize=8,
+        )
 
     output_path = Path(out_dir) / f"fig1_prevalence_by_language.{fig_format}"
     savefig(fig, str(output_path), dpi)
