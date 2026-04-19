@@ -28,14 +28,19 @@ RANK_METRICS: list[tuple[str, str]] = [
 META_COLUMNS = ["repo", "mainLanguage", "stars", "forks", "commits", "contributors"]
 
 
-def _ranked_table(repo_df: pd.DataFrame, sort_col: str, n: int = 1000) -> pd.DataFrame:
+def _ranked_table(
+    repo_df: pd.DataFrame,
+    sort_col: str,
+    n: int = 1000,
+    ascending: bool = False,
+) -> pd.DataFrame:
     if sort_col not in repo_df.columns or not repo_df[sort_col].notna().any():
         return pd.DataFrame()
     cols = [sort_col] + [c for c in META_COLUMNS if c in repo_df.columns and c != sort_col]
     sorted_df = (
         repo_df[cols]
         .dropna(subset=[sort_col])
-        .sort_values(sort_col, ascending=False)
+        .sort_values([sort_col, "repo"], ascending=[ascending, True])
         .head(n)
         .copy()
         .reset_index(drop=True)
@@ -54,6 +59,15 @@ def generate(repo_df: pd.DataFrame, out_dir: str) -> list[Path]:
         output_path = Path(out_dir) / f"table_top_repos_by_{label}.csv"
         write_dataframe(table, str(output_path))
         written.append(output_path)
+
+        # Also write the inverse ranking for skill-count to surface repositories
+        # with the fewest SKILL.md files.
+        if sort_col == "skill_count":
+            fewest_table = _ranked_table(repo_df, sort_col, ascending=True)
+            if not fewest_table.empty:
+                fewest_output_path = Path(out_dir) / "table_bottom_repos_by_skill_files.csv"
+                write_dataframe(fewest_table, str(fewest_output_path))
+                written.append(fewest_output_path)
     return written
 
 

@@ -29,7 +29,7 @@ REPO_NAME_FILTER_WORDS: List[str] = [
     "skills", "skill", "registry", "awesome",
     "template", "boilerplate", "starter", "scaffold",
     "example", "dotfiles", "config", "setup", "bootstrap",
-    "claw", "claude", "plugin", "tool",
+    "claw", "claude", "plugin", "tool", "agent",
 ]
 
 
