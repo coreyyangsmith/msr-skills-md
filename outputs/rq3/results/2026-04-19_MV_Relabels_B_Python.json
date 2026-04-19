@@ -1,0 +1,179 @@
+{
+  "version": 1,
+  "dataset": {
+    "rootName": "B",
+    "savedAt": "2026-04-19T09:49:39.954Z",
+    "totalFiles": 8
+  },
+  "tags": [
+    {
+      "id": "8d50b099-61ff-471b-b458-bde7693687a8",
+      "name": "instructive",
+      "createdAt": "2026-03-28T00:47:39.941Z"
+    },
+    {
+      "id": "d58e707c-a117-44a6-a484-b7c3c2d2189f",
+      "name": "positive-examples",
+      "createdAt": "2026-03-28T00:47:45.451Z"
+    },
+    {
+      "id": "2e4b0750-45c5-47c3-90f1-24b813cacf62",
+      "name": "reference",
+      "createdAt": "2026-03-28T00:47:52.881Z"
+    },
+    {
+      "id": "2cbfb932-0827-479c-9cdd-ec0eb664c693",
+      "name": "software design",
+      "createdAt": "2026-03-28T00:47:59.181Z"
+    },
+    {
+      "id": "9958b5be-682c-426c-ae18-66c2be6fd78b",
+      "name": "commands",
+      "createdAt": "2026-03-28T00:48:28.091Z"
+    },
+    {
+      "id": "b925b6c8-4882-4528-995e-ab62d6ba82e7",
+      "name": "agent-skill",
+      "createdAt": "2026-03-28T00:52:42.005Z"
+    },
+    {
+      "id": "9a163cc7-fb19-42a5-b022-28a4fe6a0bdd",
+      "name": "descriptive",
+      "createdAt": "2026-03-28T00:53:29.603Z"
+    },
+    {
+      "id": "f169f79d-04d5-496d-92f2-508c0e30b149",
+      "name": "negative-examples",
+      "createdAt": "2026-03-28T00:54:40.051Z"
+    },
+    {
+      "id": "ded245ef-a840-4447-8f5e-82c16f0cf849",
+      "name": "code-integration",
+      "createdAt": "2026-03-28T00:56:29.646Z"
+    },
+    {
+      "id": "6cd6160b-fb84-4afc-a83a-de14a4107ad9",
+      "name": "requirements",
+      "createdAt": "2026-03-28T01:01:34.168Z"
+    },
+    {
+      "id": "2ef56849-5732-4fe6-9d33-788874624b42",
+      "name": "non-english",
+      "createdAt": "2026-03-28T01:07:31.940Z"
+    },
+    {
+      "id": "2ba18347-bc21-45c9-8bff-5daa3c99ae38",
+      "name": "debugging",
+      "createdAt": "2026-03-28T01:16:30.071Z"
+    },
+    {
+      "id": "10a79548-81ff-4fbd-bc77-db55450c6d52",
+      "name": "code-quality",
+      "createdAt": "2026-03-28T01:21:26.702Z"
+    },
+    {
+      "id": "31d075a2-9509-4985-b18f-ede2f1de787f",
+      "name": "outside-scope",
+      "createdAt": "2026-03-28T01:29:34.476Z"
+    },
+    {
+      "id": "0eda2cad-fa38-40a9-9ffd-3c03d63d9c09",
+      "name": "devops",
+      "createdAt": "2026-03-28T11:57:21.252Z"
+    },
+    {
+      "id": "6f61ec9d-3d6f-4ef5-9ffb-deb0ebabb27b",
+      "name": "program-analysis",
+      "createdAt": "2026-03-28T12:04:59.615Z"
+    },
+    {
+      "id": "de0ed714-cd85-4bc7-ac3b-0fa16c555277",
+      "name": "code-generation",
+      "createdAt": "2026-03-28T12:12:21.266Z"
+    },
+    {
+      "id": "19e8d2c8-db94-45ca-8724-594429c0d877",
+      "name": "software-testing",
+      "createdAt": "2026-03-28T12:14:49.342Z"
+    },
+    {
+      "id": "217f16d0-97ef-41bd-b826-ea44830a48a5",
+      "name": "documentation",
+      "createdAt": "2026-03-31T19:34:43.962Z"
+    },
+    {
+      "id": "96fe448c-e98c-43dc-b6d9-7b00e2427955",
+      "name": "SE workflow management",
+      "createdAt": "2026-03-31T20:04:31.158Z"
+    },
+    {
+      "id": "d6123c7d-68d2-4a26-b1ea-e4faeb8711e6",
+      "name": "test-generation",
+      "createdAt": "2026-04-06T18:49:50.912Z"
+    },
+    {
+      "id": "4fbb48a2-4b05-43b9-96c5-d46875bd1877",
+      "name": "agent-facing",
+      "createdAt": "2026-04-06T18:49:56.712Z"
+    }
+  ],
+  "labels": {
+    "existential-birds__beagle/pydantic-ai-common-pitfalls": {
+      "tagIds": [
+        "2ba18347-bc21-45c9-8bff-5daa3c99ae38",
+        "f169f79d-04d5-496d-92f2-508c0e30b149",
+        "d58e707c-a117-44a6-a484-b7c3c2d2189f"
+      ],
+      "updatedAt": "2026-04-19T09:45:36.233Z"
+    },
+    "huangrt01__CS-Notes/trae-agent": {
+      "tagIds": [
+        "2ef56849-5732-4fe6-9d33-788874624b42"
+      ],
+      "updatedAt": "2026-04-19T09:45:40.906Z"
+    },
+    "malue-ai__dazee-small/bird": {
+      "tagIds": [
+        "b925b6c8-4882-4528-995e-ab62d6ba82e7"
+      ],
+      "updatedAt": "2026-04-19T09:46:02.394Z"
+    },
+    "malue-ai__dazee-small/excalidraw": {
+      "tagIds": [
+        "2ef56849-5732-4fe6-9d33-788874624b42"
+      ],
+      "updatedAt": "2026-04-19T09:46:09.227Z"
+    },
+    "malue-ai__dazee-small/mlx-whisper": {
+      "tagIds": [
+        "2ef56849-5732-4fe6-9d33-788874624b42"
+      ],
+      "updatedAt": "2026-04-19T09:46:12.919Z"
+    },
+    "malue-ai__dazee-small/winget": {
+      "tagIds": [
+        "2ef56849-5732-4fe6-9d33-788874624b42"
+      ],
+      "updatedAt": "2026-04-19T09:46:22.989Z"
+    },
+    "williamzujkowski__standards/advanced-optimization": {
+      "tagIds": [
+        "2e4b0750-45c5-47c3-90f1-24b813cacf62",
+        "8d50b099-61ff-471b-b458-bde7693687a8",
+        "9958b5be-682c-426c-ae18-66c2be6fd78b",
+        "2cbfb932-0827-479c-9cdd-ec0eb664c693",
+        "de0ed714-cd85-4bc7-ac3b-0fa16c555277"
+      ],
+      "updatedAt": "2026-04-19T09:48:06.106Z"
+    },
+    "williamzujkowski__standards/healthtech": {
+      "tagIds": [
+        "8d50b099-61ff-471b-b458-bde7693687a8",
+        "2e4b0750-45c5-47c3-90f1-24b813cacf62",
+        "6cd6160b-fb84-4afc-a83a-de14a4107ad9",
+        "2cbfb932-0827-479c-9cdd-ec0eb664c693"
+      ],
+      "updatedAt": "2026-04-19T09:49:39.954Z"
+    }
+  }
+}
