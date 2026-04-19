@@ -26,6 +26,15 @@ SDLC_LABEL_ORDER = [
     "Requirements",
 ]
 
+SDLC_DISPLAY_NAMES = {
+    "Software Testing": "Testing",
+    "Code Generation": "Implementation",
+    "DevOps": "Deployment",
+    "Documentation": "Documentation",
+    "Software Design": "Design",
+    "Requirements": "Requirements",
+}
+
 STRUCTURAL_LABEL_ORDER = [
     "instructive",
     "reference",
@@ -39,9 +48,9 @@ STRUCTURAL_DISPLAY_NAMES = {
     "instructive": "Instructive",
     "reference": "Reference",
     "descriptive": "Descriptive",
-    "positive-examples": "Positive-examples",
+    "positive-examples": "Positive Examples",
     "commands": "Commands",
-    "negative-examples": "Negative-examples",
+    "negative-examples": "Negative Examples",
 }
 
 
@@ -104,18 +113,19 @@ def plot_fig1(sdlc_df: pd.DataFrame, structural_df: pd.DataFrame, output_path: P
     retained_counts = set(sdlc_df["retained_documents"].astype(int)) | set(structural_df["retained_documents"].astype(int))
     denominator = retained_counts.pop() if len(retained_counts) == 1 else None
 
-    fig, axes = plt.subplots(1, 2, figsize=(12.8, 5.8), sharex=True, constrained_layout=False)
-    fig.subplots_adjust(left=0.10, right=0.98, top=0.88, bottom=0.20, wspace=0.30)
+    fig, axes = plt.subplots(1, 2, figsize=(12.8, 2.8), sharex=True, constrained_layout=False)
+    fig.subplots_adjust(left=0.10, right=0.98, top=0.88, bottom=0.14, wspace=0.30)
     add_panel(
         axes[0],
         sdlc_df,
-        title="Panel A: SDLC label prevalence",
+        title="(a) SDLC label prevalence",
         color="#3F6FA8",
+        display_names=SDLC_DISPLAY_NAMES,
     )
     add_panel(
         axes[1],
         structural_df,
-        title="Panel B: Instruction-pattern prevalence",
+        title="(b) Instruction-pattern prevalence",
         color="#D47A2A",
         display_names=STRUCTURAL_DISPLAY_NAMES,
     )
@@ -124,11 +134,6 @@ def plot_fig1(sdlc_df: pd.DataFrame, structural_df: pd.DataFrame, output_path: P
         ax.set_xlim(0, x_max)
         ax.xaxis.set_major_formatter(lambda x, _pos: f"{x:.0f}%")
 
-    note = "Multi-label coding; percentages exceed 100% across categories."
-    if denominator is not None:
-        note = f"{note} Denominator: {denominator} labeled SKILL.md files."
-    fig.supxlabel("Percent of labeled SKILL.md files", y=0.085, fontsize=11)
-    fig.text(0.10, 0.035, note, ha="left", va="bottom", fontsize=9.5, color="#555555")
     savefig(fig, str(output_path), dpi=dpi)
 
 

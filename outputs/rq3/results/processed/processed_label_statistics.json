@@ -2279,341 +2279,2619 @@
       }
     },
     {
-      "file": "Python_All.json",
-      "dataset_root": "Python_All",
-      "total_documents": 368,
-      "filtered_documents": 170,
-      "filtered_pct": 46.2,
-      "retained_documents": 198,
-      "retained_pct": 53.8,
-      "average_labels_per_document": 2.079,
-      "average_labels_per_retained_document": 3.005,
+      "file": "2026-04-19-MV_Relabels_Both_Python.json",
+      "dataset_root": "both",
+      "total_documents": 6,
+      "filtered_documents": 1,
+      "filtered_pct": 16.67,
+      "retained_documents": 5,
+      "retained_pct": 83.33,
+      "average_labels_per_document": 3.0,
+      "average_labels_per_retained_document": 3.4,
       "average_labels_per_filtered_document": 1.0,
       "filter_source_document_counts": {
-        "agent-skill": 129,
-        "outside-scope": 22,
-        "wrong-language": 19
+        "agent-skill": 0,
+        "outside-scope": 0,
+        "wrong-language": 1
       },
-      "documents_with_any_instruction_type": 193,
-      "documents_with_any_sdlc_label": 197,
-      "documents_with_instruction_and_sdlc": 192,
+      "documents_with_any_instruction_type": 5,
+      "documents_with_any_sdlc_label": 5,
+      "documents_with_instruction_and_sdlc": 5,
       "label_distribution_all": {
-        "filter": {
-          "count": 170,
-          "pct_docs": 46.2
-        },
         "instructive": {
-          "count": 129,
-          "pct_docs": 35.05
-        },
-        "reference": {
-          "count": 79,
-          "pct_docs": 21.47
-        },
-        "descriptive": {
-          "count": 64,
-          "pct_docs": 17.39
-        },
-        "Software Testing": {
-          "count": 56,
-          "pct_docs": 15.22
+          "count": 4,
+          "pct_docs": 66.67
         },
         "Code Generation": {
-          "count": 52,
-          "pct_docs": 14.13
+          "count": 3,
+          "pct_docs": 50.0
         },
-        "positive-examples": {
-          "count": 51,
-          "pct_docs": 13.86
-        },
-        "DevOps": {
-          "count": 42,
-          "pct_docs": 11.41
-        },
-        "commands": {
-          "count": 40,
-          "pct_docs": 10.87
-        },
-        "Documentation": {
-          "count": 30,
-          "pct_docs": 8.15
+        "reference": {
+          "count": 3,
+          "pct_docs": 50.0
         },
         "Software Design": {
-          "count": 29,
-          "pct_docs": 7.88
+          "count": 2,
+          "pct_docs": 33.33
         },
-        "Requirements": {
-          "count": 12,
-          "pct_docs": 3.26
+        "commands": {
+          "count": 2,
+          "pct_docs": 33.33
+        },
+        "descriptive": {
+          "count": 1,
+          "pct_docs": 16.67
+        },
+        "filter": {
+          "count": 1,
+          "pct_docs": 16.67
         },
         "negative-examples": {
-          "count": 11,
-          "pct_docs": 2.99
+          "count": 1,
+          "pct_docs": 16.67
+        },
+        "positive-examples": {
+          "count": 1,
+          "pct_docs": 16.67
         }
       },
       "label_distribution_retained": {
         "instructive": {
-          "count": 129,
-          "pct_docs": 65.15
-        },
-        "reference": {
-          "count": 79,
-          "pct_docs": 39.9
-        },
-        "descriptive": {
-          "count": 64,
-          "pct_docs": 32.32
-        },
-        "Software Testing": {
-          "count": 56,
-          "pct_docs": 28.28
+          "count": 4,
+          "pct_docs": 80.0
         },
         "Code Generation": {
-          "count": 52,
-          "pct_docs": 26.26
+          "count": 3,
+          "pct_docs": 60.0
         },
-        "positive-examples": {
-          "count": 51,
-          "pct_docs": 25.76
-        },
-        "DevOps": {
-          "count": 42,
-          "pct_docs": 21.21
-        },
-        "commands": {
-          "count": 40,
-          "pct_docs": 20.2
-        },
-        "Documentation": {
-          "count": 30,
-          "pct_docs": 15.15
+        "reference": {
+          "count": 3,
+          "pct_docs": 60.0
         },
         "Software Design": {
-          "count": 29,
-          "pct_docs": 14.65
+          "count": 2,
+          "pct_docs": 40.0
         },
-        "Requirements": {
-          "count": 12,
-          "pct_docs": 6.06
+        "commands": {
+          "count": 2,
+          "pct_docs": 40.0
+        },
+        "descriptive": {
+          "count": 1,
+          "pct_docs": 20.0
         },
         "negative-examples": {
-          "count": 11,
-          "pct_docs": 5.56
+          "count": 1,
+          "pct_docs": 20.0
+        },
+        "positive-examples": {
+          "count": 1,
+          "pct_docs": 20.0
         }
       },
       "label_distribution_filtered": {
         "filter": {
-          "count": 170,
+          "count": 1,
           "pct_docs": 100.0
         }
       },
       "score_distribution_all": {
         "1": {
-          "count": 175,
-          "pct_docs": 47.55
+          "count": 1,
+          "pct_docs": 16.67
         },
         "2": {
-          "count": 62,
-          "pct_docs": 16.85
+          "count": 1,
+          "pct_docs": 16.67
         },
         "3": {
-          "count": 78,
-          "pct_docs": 21.2
-        },
-        "4": {
-          "count": 37,
-          "pct_docs": 10.05
-        },
-        "5": {
-          "count": 12,
-          "pct_docs": 3.26
+          "count": 3,
+          "pct_docs": 50.0
         },
         "6": {
-          "count": 4,
-          "pct_docs": 1.09
+          "count": 1,
+          "pct_docs": 16.67
         }
       },
       "score_distribution_retained": {
-        "1": {
-          "count": 5,
-          "pct_docs": 2.53
-        },
         "2": {
-          "count": 62,
-          "pct_docs": 31.31
+          "count": 1,
+          "pct_docs": 20.0
         },
         "3": {
-          "count": 78,
-          "pct_docs": 39.39
-        },
-        "4": {
-          "count": 37,
-          "pct_docs": 18.69
-        },
-        "5": {
-          "count": 12,
-          "pct_docs": 6.06
+          "count": 3,
+          "pct_docs": 60.0
         },
         "6": {
-          "count": 4,
-          "pct_docs": 2.02
+          "count": 1,
+          "pct_docs": 20.0
         }
       },
       "score_distribution_filtered": {
         "1": {
-          "count": 170,
+          "count": 1,
           "pct_docs": 100.0
         }
       },
       "instruction_type_distribution_all": {
         "commands": {
-          "count": 40,
-          "pct_docs": 10.87
+          "count": 2,
+          "pct_docs": 33.33
         },
         "instructive": {
-          "count": 129,
-          "pct_docs": 35.05
+          "count": 4,
+          "pct_docs": 66.67
         },
         "descriptive": {
-          "count": 64,
-          "pct_docs": 17.39
+          "count": 1,
+          "pct_docs": 16.67
         },
         "reference": {
-          "count": 79,
-          "pct_docs": 21.47
+          "count": 3,
+          "pct_docs": 50.0
         },
         "positive-examples": {
-          "count": 51,
-          "pct_docs": 13.86
+          "count": 1,
+          "pct_docs": 16.67
         },
         "negative-examples": {
-          "count": 11,
-          "pct_docs": 2.99
+          "count": 1,
+          "pct_docs": 16.67
         }
       },
       "instruction_type_distribution_retained": {
         "commands": {
-          "count": 40,
-          "pct_docs": 20.2
+          "count": 2,
+          "pct_docs": 40.0
         },
         "instructive": {
-          "count": 129,
-          "pct_docs": 65.15
+          "count": 4,
+          "pct_docs": 80.0
         },
         "descriptive": {
-          "count": 64,
-          "pct_docs": 32.32
+          "count": 1,
+          "pct_docs": 20.0
         },
         "reference": {
-          "count": 79,
-          "pct_docs": 39.9
+          "count": 3,
+          "pct_docs": 60.0
         },
         "positive-examples": {
-          "count": 51,
-          "pct_docs": 25.76
+          "count": 1,
+          "pct_docs": 20.0
         },
         "negative-examples": {
-          "count": 11,
-          "pct_docs": 5.56
+          "count": 1,
+          "pct_docs": 20.0
+        }
+      },
+      "sdlc_stage_distribution_all": {
+        "Software Design": {
+          "count": 2,
+          "pct_docs": 33.33
+        },
+        "Code Generation": {
+          "count": 3,
+          "pct_docs": 50.0
+        }
+      },
+      "sdlc_stage_distribution_retained": {
+        "Software Design": {
+          "count": 2,
+          "pct_docs": 40.0
+        },
+        "Code Generation": {
+          "count": 3,
+          "pct_docs": 60.0
+        }
+      },
+      "instruction_x_sdlc_stage_retained": {
+        "commands": {
+          "Code Generation": 2
+        },
+        "instructive": {
+          "Software Design": 2,
+          "Code Generation": 2
+        },
+        "descriptive": {
+          "Code Generation": 1
+        },
+        "reference": {
+          "Software Design": 1,
+          "Code Generation": 2
+        },
+        "positive-examples": {
+          "Code Generation": 1
+        },
+        "negative-examples": {
+          "Software Design": 1
+        }
+      }
+    },
+    {
+      "file": "2026-04-19_CY_Final_Labels_A_Python.json",
+      "dataset_root": "A",
+      "total_documents": 151,
+      "filtered_documents": 77,
+      "filtered_pct": 50.99,
+      "retained_documents": 74,
+      "retained_pct": 49.01,
+      "average_labels_per_document": 2.106,
+      "average_labels_per_retained_document": 3.257,
+      "average_labels_per_filtered_document": 1.0,
+      "filter_source_document_counts": {
+        "agent-skill": 60,
+        "outside-scope": 5,
+        "wrong-language": 12
+      },
+      "documents_with_any_instruction_type": 71,
+      "documents_with_any_sdlc_label": 73,
+      "documents_with_instruction_and_sdlc": 70,
+      "label_distribution_all": {
+        "filter": {
+          "count": 77,
+          "pct_docs": 50.99
+        },
+        "instructive": {
+          "count": 46,
+          "pct_docs": 30.46
+        },
+        "reference": {
+          "count": 35,
+          "pct_docs": 23.18
+        },
+        "descriptive": {
+          "count": 32,
+          "pct_docs": 21.19
+        },
+        "positive-examples": {
+          "count": 29,
+          "pct_docs": 19.21
+        },
+        "DevOps": {
+          "count": 19,
+          "pct_docs": 12.58
+        },
+        "Software Design": {
+          "count": 16,
+          "pct_docs": 10.6
+        },
+        "Software Testing": {
+          "count": 16,
+          "pct_docs": 10.6
+        },
+        "Code Generation": {
+          "count": 15,
+          "pct_docs": 9.93
+        },
+        "commands": {
+          "count": 14,
+          "pct_docs": 9.27
+        },
+        "Documentation": {
+          "count": 12,
+          "pct_docs": 7.95
+        },
+        "negative-examples": {
+          "count": 4,
+          "pct_docs": 2.65
+        },
+        "Requirements": {
+          "count": 3,
+          "pct_docs": 1.99
+        }
+      },
+      "label_distribution_retained": {
+        "instructive": {
+          "count": 46,
+          "pct_docs": 62.16
+        },
+        "reference": {
+          "count": 35,
+          "pct_docs": 47.3
+        },
+        "descriptive": {
+          "count": 32,
+          "pct_docs": 43.24
+        },
+        "positive-examples": {
+          "count": 29,
+          "pct_docs": 39.19
+        },
+        "DevOps": {
+          "count": 19,
+          "pct_docs": 25.68
+        },
+        "Software Design": {
+          "count": 16,
+          "pct_docs": 21.62
+        },
+        "Software Testing": {
+          "count": 16,
+          "pct_docs": 21.62
+        },
+        "Code Generation": {
+          "count": 15,
+          "pct_docs": 20.27
+        },
+        "commands": {
+          "count": 14,
+          "pct_docs": 18.92
+        },
+        "Documentation": {
+          "count": 12,
+          "pct_docs": 16.22
+        },
+        "negative-examples": {
+          "count": 4,
+          "pct_docs": 5.41
+        },
+        "Requirements": {
+          "count": 3,
+          "pct_docs": 4.05
+        }
+      },
+      "label_distribution_filtered": {
+        "filter": {
+          "count": 77,
+          "pct_docs": 100.0
+        }
+      },
+      "score_distribution_all": {
+        "1": {
+          "count": 80,
+          "pct_docs": 52.98
+        },
+        "2": {
+          "count": 13,
+          "pct_docs": 8.61
+        },
+        "3": {
+          "count": 29,
+          "pct_docs": 19.21
+        },
+        "4": {
+          "count": 21,
+          "pct_docs": 13.91
+        },
+        "5": {
+          "count": 7,
+          "pct_docs": 4.64
+        },
+        "6": {
+          "count": 1,
+          "pct_docs": 0.66
+        }
+      },
+      "score_distribution_retained": {
+        "1": {
+          "count": 3,
+          "pct_docs": 4.05
+        },
+        "2": {
+          "count": 13,
+          "pct_docs": 17.57
+        },
+        "3": {
+          "count": 29,
+          "pct_docs": 39.19
+        },
+        "4": {
+          "count": 21,
+          "pct_docs": 28.38
+        },
+        "5": {
+          "count": 7,
+          "pct_docs": 9.46
+        },
+        "6": {
+          "count": 1,
+          "pct_docs": 1.35
+        }
+      },
+      "score_distribution_filtered": {
+        "1": {
+          "count": 77,
+          "pct_docs": 100.0
+        }
+      },
+      "instruction_type_distribution_all": {
+        "commands": {
+          "count": 14,
+          "pct_docs": 9.27
+        },
+        "instructive": {
+          "count": 46,
+          "pct_docs": 30.46
+        },
+        "descriptive": {
+          "count": 32,
+          "pct_docs": 21.19
+        },
+        "reference": {
+          "count": 35,
+          "pct_docs": 23.18
+        },
+        "positive-examples": {
+          "count": 29,
+          "pct_docs": 19.21
+        },
+        "negative-examples": {
+          "count": 4,
+          "pct_docs": 2.65
+        }
+      },
+      "instruction_type_distribution_retained": {
+        "commands": {
+          "count": 14,
+          "pct_docs": 18.92
+        },
+        "instructive": {
+          "count": 46,
+          "pct_docs": 62.16
+        },
+        "descriptive": {
+          "count": 32,
+          "pct_docs": 43.24
+        },
+        "reference": {
+          "count": 35,
+          "pct_docs": 47.3
+        },
+        "positive-examples": {
+          "count": 29,
+          "pct_docs": 39.19
+        },
+        "negative-examples": {
+          "count": 4,
+          "pct_docs": 5.41
         }
       },
       "sdlc_stage_distribution_all": {
         "Documentation": {
-          "count": 30,
-          "pct_docs": 8.15
+          "count": 12,
+          "pct_docs": 7.95
         },
         "Requirements": {
-          "count": 12,
-          "pct_docs": 3.26
+          "count": 3,
+          "pct_docs": 1.99
         },
         "Software Design": {
-          "count": 29,
-          "pct_docs": 7.88
+          "count": 16,
+          "pct_docs": 10.6
         },
         "Code Generation": {
-          "count": 52,
-          "pct_docs": 14.13
+          "count": 15,
+          "pct_docs": 9.93
         },
         "Software Testing": {
-          "count": 56,
-          "pct_docs": 15.22
+          "count": 16,
+          "pct_docs": 10.6
         },
         "DevOps": {
-          "count": 42,
-          "pct_docs": 11.41
+          "count": 19,
+          "pct_docs": 12.58
         }
       },
       "sdlc_stage_distribution_retained": {
         "Documentation": {
-          "count": 30,
-          "pct_docs": 15.15
+          "count": 12,
+          "pct_docs": 16.22
         },
         "Requirements": {
-          "count": 12,
-          "pct_docs": 6.06
+          "count": 3,
+          "pct_docs": 4.05
         },
         "Software Design": {
-          "count": 29,
-          "pct_docs": 14.65
+          "count": 16,
+          "pct_docs": 21.62
         },
         "Code Generation": {
-          "count": 52,
-          "pct_docs": 26.26
+          "count": 15,
+          "pct_docs": 20.27
         },
         "Software Testing": {
-          "count": 56,
-          "pct_docs": 28.28
+          "count": 16,
+          "pct_docs": 21.62
         },
         "DevOps": {
-          "count": 42,
-          "pct_docs": 21.21
+          "count": 19,
+          "pct_docs": 25.68
+        }
+      },
+      "instruction_x_sdlc_stage_retained": {
+        "commands": {
+          "Software Design": 1,
+          "Code Generation": 2,
+          "Software Testing": 6,
+          "DevOps": 6
+        },
+        "instructive": {
+          "Documentation": 9,
+          "Requirements": 3,
+          "Software Design": 12,
+          "Code Generation": 6,
+          "Software Testing": 9,
+          "DevOps": 12
+        },
+        "descriptive": {
+          "Documentation": 7,
+          "Requirements": 1,
+          "Software Design": 8,
+          "Code Generation": 3,
+          "Software Testing": 6,
+          "DevOps": 8
+        },
+        "reference": {
+          "Documentation": 4,
+          "Requirements": 1,
+          "Software Design": 7,
+          "Code Generation": 7,
+          "Software Testing": 7,
+          "DevOps": 10
+        },
+        "positive-examples": {
+          "Documentation": 4,
+          "Software Design": 6,
+          "Code Generation": 12,
+          "Software Testing": 5,
+          "DevOps": 4
+        },
+        "negative-examples": {
+          "Code Generation": 3,
+          "Software Testing": 3
+        }
+      }
+    },
+    {
+      "file": "2026-04-19_CY_Final_Labels_Both_Python.json",
+      "dataset_root": "both",
+      "total_documents": 52,
+      "filtered_documents": 24,
+      "filtered_pct": 46.15,
+      "retained_documents": 28,
+      "retained_pct": 53.85,
+      "average_labels_per_document": 2.462,
+      "average_labels_per_retained_document": 3.714,
+      "average_labels_per_filtered_document": 1.0,
+      "filter_source_document_counts": {
+        "agent-skill": 19,
+        "outside-scope": 3,
+        "wrong-language": 2
+      },
+      "documents_with_any_instruction_type": 28,
+      "documents_with_any_sdlc_label": 28,
+      "documents_with_instruction_and_sdlc": 28,
+      "label_distribution_all": {
+        "filter": {
+          "count": 24,
+          "pct_docs": 46.15
+        },
+        "instructive": {
+          "count": 20,
+          "pct_docs": 38.46
+        },
+        "descriptive": {
+          "count": 16,
+          "pct_docs": 30.77
+        },
+        "reference": {
+          "count": 15,
+          "pct_docs": 28.85
+        },
+        "Software Testing": {
+          "count": 11,
+          "pct_docs": 21.15
+        },
+        "commands": {
+          "count": 11,
+          "pct_docs": 21.15
+        },
+        "Code Generation": {
+          "count": 7,
+          "pct_docs": 13.46
+        },
+        "Software Design": {
+          "count": 7,
+          "pct_docs": 13.46
+        },
+        "positive-examples": {
+          "count": 7,
+          "pct_docs": 13.46
+        },
+        "DevOps": {
+          "count": 5,
+          "pct_docs": 9.62
+        },
+        "Requirements": {
+          "count": 2,
+          "pct_docs": 3.85
+        },
+        "negative-examples": {
+          "count": 2,
+          "pct_docs": 3.85
+        },
+        "Documentation": {
+          "count": 1,
+          "pct_docs": 1.92
+        }
+      },
+      "label_distribution_retained": {
+        "instructive": {
+          "count": 20,
+          "pct_docs": 71.43
+        },
+        "descriptive": {
+          "count": 16,
+          "pct_docs": 57.14
+        },
+        "reference": {
+          "count": 15,
+          "pct_docs": 53.57
+        },
+        "Software Testing": {
+          "count": 11,
+          "pct_docs": 39.29
+        },
+        "commands": {
+          "count": 11,
+          "pct_docs": 39.29
+        },
+        "Code Generation": {
+          "count": 7,
+          "pct_docs": 25.0
+        },
+        "Software Design": {
+          "count": 7,
+          "pct_docs": 25.0
+        },
+        "positive-examples": {
+          "count": 7,
+          "pct_docs": 25.0
+        },
+        "DevOps": {
+          "count": 5,
+          "pct_docs": 17.86
+        },
+        "Requirements": {
+          "count": 2,
+          "pct_docs": 7.14
+        },
+        "negative-examples": {
+          "count": 2,
+          "pct_docs": 7.14
+        },
+        "Documentation": {
+          "count": 1,
+          "pct_docs": 3.57
+        }
+      },
+      "label_distribution_filtered": {
+        "filter": {
+          "count": 24,
+          "pct_docs": 100.0
+        }
+      },
+      "score_distribution_all": {
+        "1": {
+          "count": 24,
+          "pct_docs": 46.15
+        },
+        "2": {
+          "count": 2,
+          "pct_docs": 3.85
+        },
+        "3": {
+          "count": 14,
+          "pct_docs": 26.92
+        },
+        "4": {
+          "count": 6,
+          "pct_docs": 11.54
+        },
+        "5": {
+          "count": 2,
+          "pct_docs": 3.85
+        },
+        "6": {
+          "count": 4,
+          "pct_docs": 7.69
+        }
+      },
+      "score_distribution_retained": {
+        "2": {
+          "count": 2,
+          "pct_docs": 7.14
+        },
+        "3": {
+          "count": 14,
+          "pct_docs": 50.0
+        },
+        "4": {
+          "count": 6,
+          "pct_docs": 21.43
+        },
+        "5": {
+          "count": 2,
+          "pct_docs": 7.14
+        },
+        "6": {
+          "count": 4,
+          "pct_docs": 14.29
+        }
+      },
+      "score_distribution_filtered": {
+        "1": {
+          "count": 24,
+          "pct_docs": 100.0
+        }
+      },
+      "instruction_type_distribution_all": {
+        "commands": {
+          "count": 11,
+          "pct_docs": 21.15
+        },
+        "instructive": {
+          "count": 20,
+          "pct_docs": 38.46
+        },
+        "descriptive": {
+          "count": 16,
+          "pct_docs": 30.77
+        },
+        "reference": {
+          "count": 15,
+          "pct_docs": 28.85
+        },
+        "positive-examples": {
+          "count": 7,
+          "pct_docs": 13.46
+        },
+        "negative-examples": {
+          "count": 2,
+          "pct_docs": 3.85
+        }
+      },
+      "instruction_type_distribution_retained": {
+        "commands": {
+          "count": 11,
+          "pct_docs": 39.29
+        },
+        "instructive": {
+          "count": 20,
+          "pct_docs": 71.43
+        },
+        "descriptive": {
+          "count": 16,
+          "pct_docs": 57.14
+        },
+        "reference": {
+          "count": 15,
+          "pct_docs": 53.57
+        },
+        "positive-examples": {
+          "count": 7,
+          "pct_docs": 25.0
+        },
+        "negative-examples": {
+          "count": 2,
+          "pct_docs": 7.14
+        }
+      },
+      "sdlc_stage_distribution_all": {
+        "Documentation": {
+          "count": 1,
+          "pct_docs": 1.92
+        },
+        "Requirements": {
+          "count": 2,
+          "pct_docs": 3.85
+        },
+        "Software Design": {
+          "count": 7,
+          "pct_docs": 13.46
+        },
+        "Code Generation": {
+          "count": 7,
+          "pct_docs": 13.46
+        },
+        "Software Testing": {
+          "count": 11,
+          "pct_docs": 21.15
+        },
+        "DevOps": {
+          "count": 5,
+          "pct_docs": 9.62
+        }
+      },
+      "sdlc_stage_distribution_retained": {
+        "Documentation": {
+          "count": 1,
+          "pct_docs": 3.57
+        },
+        "Requirements": {
+          "count": 2,
+          "pct_docs": 7.14
+        },
+        "Software Design": {
+          "count": 7,
+          "pct_docs": 25.0
+        },
+        "Code Generation": {
+          "count": 7,
+          "pct_docs": 25.0
+        },
+        "Software Testing": {
+          "count": 11,
+          "pct_docs": 39.29
+        },
+        "DevOps": {
+          "count": 5,
+          "pct_docs": 17.86
+        }
+      },
+      "instruction_x_sdlc_stage_retained": {
+        "commands": {
+          "Code Generation": 3,
+          "Software Testing": 5,
+          "DevOps": 4
+        },
+        "instructive": {
+          "Documentation": 1,
+          "Requirements": 2,
+          "Software Design": 5,
+          "Code Generation": 4,
+          "Software Testing": 9,
+          "DevOps": 3
+        },
+        "descriptive": {
+          "Requirements": 2,
+          "Software Design": 5,
+          "Code Generation": 5,
+          "Software Testing": 5,
+          "DevOps": 4
+        },
+        "reference": {
+          "Requirements": 1,
+          "Software Design": 5,
+          "Code Generation": 6,
+          "Software Testing": 5,
+          "DevOps": 2
+        },
+        "positive-examples": {
+          "Documentation": 1,
+          "Requirements": 1,
+          "Software Design": 1,
+          "Code Generation": 4,
+          "Software Testing": 1
+        },
+        "negative-examples": {
+          "Software Design": 1,
+          "DevOps": 1
+        }
+      }
+    },
+    {
+      "file": "2026-04-19_CY_Relabels_A_Python.json",
+      "dataset_root": "A",
+      "total_documents": 12,
+      "filtered_documents": 3,
+      "filtered_pct": 25.0,
+      "retained_documents": 9,
+      "retained_pct": 75.0,
+      "average_labels_per_document": 2.917,
+      "average_labels_per_retained_document": 3.556,
+      "average_labels_per_filtered_document": 1.0,
+      "filter_source_document_counts": {
+        "agent-skill": 0,
+        "outside-scope": 0,
+        "wrong-language": 3
+      },
+      "documents_with_any_instruction_type": 9,
+      "documents_with_any_sdlc_label": 9,
+      "documents_with_instruction_and_sdlc": 9,
+      "label_distribution_all": {
+        "reference": {
+          "count": 7,
+          "pct_docs": 58.33
+        },
+        "instructive": {
+          "count": 5,
+          "pct_docs": 41.67
+        },
+        "positive-examples": {
+          "count": 4,
+          "pct_docs": 33.33
+        },
+        "DevOps": {
+          "count": 3,
+          "pct_docs": 25.0
+        },
+        "Software Testing": {
+          "count": 3,
+          "pct_docs": 25.0
+        },
+        "descriptive": {
+          "count": 3,
+          "pct_docs": 25.0
+        },
+        "filter": {
+          "count": 3,
+          "pct_docs": 25.0
+        },
+        "Software Design": {
+          "count": 2,
+          "pct_docs": 16.67
+        },
+        "commands": {
+          "count": 2,
+          "pct_docs": 16.67
+        },
+        "negative-examples": {
+          "count": 2,
+          "pct_docs": 16.67
+        },
+        "Code Generation": {
+          "count": 1,
+          "pct_docs": 8.33
+        }
+      },
+      "label_distribution_retained": {
+        "reference": {
+          "count": 7,
+          "pct_docs": 77.78
+        },
+        "instructive": {
+          "count": 5,
+          "pct_docs": 55.56
+        },
+        "positive-examples": {
+          "count": 4,
+          "pct_docs": 44.44
+        },
+        "DevOps": {
+          "count": 3,
+          "pct_docs": 33.33
+        },
+        "Software Testing": {
+          "count": 3,
+          "pct_docs": 33.33
+        },
+        "descriptive": {
+          "count": 3,
+          "pct_docs": 33.33
+        },
+        "Software Design": {
+          "count": 2,
+          "pct_docs": 22.22
+        },
+        "commands": {
+          "count": 2,
+          "pct_docs": 22.22
+        },
+        "negative-examples": {
+          "count": 2,
+          "pct_docs": 22.22
+        },
+        "Code Generation": {
+          "count": 1,
+          "pct_docs": 11.11
+        }
+      },
+      "label_distribution_filtered": {
+        "filter": {
+          "count": 3,
+          "pct_docs": 100.0
+        }
+      },
+      "score_distribution_all": {
+        "1": {
+          "count": 3,
+          "pct_docs": 25.0
+        },
+        "2": {
+          "count": 2,
+          "pct_docs": 16.67
+        },
+        "3": {
+          "count": 2,
+          "pct_docs": 16.67
+        },
+        "4": {
+          "count": 3,
+          "pct_docs": 25.0
+        },
+        "5": {
+          "count": 2,
+          "pct_docs": 16.67
+        }
+      },
+      "score_distribution_retained": {
+        "2": {
+          "count": 2,
+          "pct_docs": 22.22
+        },
+        "3": {
+          "count": 2,
+          "pct_docs": 22.22
+        },
+        "4": {
+          "count": 3,
+          "pct_docs": 33.33
+        },
+        "5": {
+          "count": 2,
+          "pct_docs": 22.22
+        }
+      },
+      "score_distribution_filtered": {
+        "1": {
+          "count": 3,
+          "pct_docs": 100.0
+        }
+      },
+      "instruction_type_distribution_all": {
+        "commands": {
+          "count": 2,
+          "pct_docs": 16.67
+        },
+        "instructive": {
+          "count": 5,
+          "pct_docs": 41.67
+        },
+        "descriptive": {
+          "count": 3,
+          "pct_docs": 25.0
+        },
+        "reference": {
+          "count": 7,
+          "pct_docs": 58.33
+        },
+        "positive-examples": {
+          "count": 4,
+          "pct_docs": 33.33
+        },
+        "negative-examples": {
+          "count": 2,
+          "pct_docs": 16.67
+        }
+      },
+      "instruction_type_distribution_retained": {
+        "commands": {
+          "count": 2,
+          "pct_docs": 22.22
+        },
+        "instructive": {
+          "count": 5,
+          "pct_docs": 55.56
+        },
+        "descriptive": {
+          "count": 3,
+          "pct_docs": 33.33
+        },
+        "reference": {
+          "count": 7,
+          "pct_docs": 77.78
+        },
+        "positive-examples": {
+          "count": 4,
+          "pct_docs": 44.44
+        },
+        "negative-examples": {
+          "count": 2,
+          "pct_docs": 22.22
+        }
+      },
+      "sdlc_stage_distribution_all": {
+        "Software Design": {
+          "count": 2,
+          "pct_docs": 16.67
+        },
+        "Code Generation": {
+          "count": 1,
+          "pct_docs": 8.33
+        },
+        "Software Testing": {
+          "count": 3,
+          "pct_docs": 25.0
+        },
+        "DevOps": {
+          "count": 3,
+          "pct_docs": 25.0
+        }
+      },
+      "sdlc_stage_distribution_retained": {
+        "Software Design": {
+          "count": 2,
+          "pct_docs": 22.22
+        },
+        "Code Generation": {
+          "count": 1,
+          "pct_docs": 11.11
+        },
+        "Software Testing": {
+          "count": 3,
+          "pct_docs": 33.33
+        },
+        "DevOps": {
+          "count": 3,
+          "pct_docs": 33.33
+        }
+      },
+      "instruction_x_sdlc_stage_retained": {
+        "commands": {
+          "Software Testing": 1,
+          "DevOps": 1
+        },
+        "instructive": {
+          "Software Design": 2,
+          "Code Generation": 1,
+          "Software Testing": 1,
+          "DevOps": 1
+        },
+        "descriptive": {
+          "Software Testing": 1,
+          "DevOps": 2
+        },
+        "reference": {
+          "Software Design": 2,
+          "Software Testing": 2,
+          "DevOps": 3
+        },
+        "positive-examples": {
+          "Code Generation": 1,
+          "Software Testing": 2,
+          "DevOps": 1
+        },
+        "negative-examples": {
+          "Code Generation": 1,
+          "Software Testing": 1
+        }
+      }
+    },
+    {
+      "file": "2026-04-19_CY_Relabels_Both_Python.json",
+      "dataset_root": "both",
+      "total_documents": 6,
+      "filtered_documents": 2,
+      "filtered_pct": 33.33,
+      "retained_documents": 4,
+      "retained_pct": 66.67,
+      "average_labels_per_document": 2.833,
+      "average_labels_per_retained_document": 3.75,
+      "average_labels_per_filtered_document": 1.0,
+      "filter_source_document_counts": {
+        "agent-skill": 1,
+        "outside-scope": 0,
+        "wrong-language": 1
+      },
+      "documents_with_any_instruction_type": 4,
+      "documents_with_any_sdlc_label": 4,
+      "documents_with_instruction_and_sdlc": 4,
+      "label_distribution_all": {
+        "instructive": {
+          "count": 4,
+          "pct_docs": 66.67
+        },
+        "reference": {
+          "count": 3,
+          "pct_docs": 50.0
+        },
+        "Code Generation": {
+          "count": 2,
+          "pct_docs": 33.33
+        },
+        "Software Design": {
+          "count": 2,
+          "pct_docs": 33.33
+        },
+        "filter": {
+          "count": 2,
+          "pct_docs": 33.33
+        },
+        "commands": {
+          "count": 1,
+          "pct_docs": 16.67
+        },
+        "descriptive": {
+          "count": 1,
+          "pct_docs": 16.67
+        },
+        "negative-examples": {
+          "count": 1,
+          "pct_docs": 16.67
+        },
+        "positive-examples": {
+          "count": 1,
+          "pct_docs": 16.67
+        }
+      },
+      "label_distribution_retained": {
+        "instructive": {
+          "count": 4,
+          "pct_docs": 100.0
+        },
+        "reference": {
+          "count": 3,
+          "pct_docs": 75.0
+        },
+        "Code Generation": {
+          "count": 2,
+          "pct_docs": 50.0
+        },
+        "Software Design": {
+          "count": 2,
+          "pct_docs": 50.0
+        },
+        "commands": {
+          "count": 1,
+          "pct_docs": 25.0
+        },
+        "descriptive": {
+          "count": 1,
+          "pct_docs": 25.0
+        },
+        "negative-examples": {
+          "count": 1,
+          "pct_docs": 25.0
+        },
+        "positive-examples": {
+          "count": 1,
+          "pct_docs": 25.0
+        }
+      },
+      "label_distribution_filtered": {
+        "filter": {
+          "count": 2,
+          "pct_docs": 100.0
+        }
+      },
+      "score_distribution_all": {
+        "1": {
+          "count": 2,
+          "pct_docs": 33.33
+        },
+        "3": {
+          "count": 3,
+          "pct_docs": 50.0
+        },
+        "6": {
+          "count": 1,
+          "pct_docs": 16.67
+        }
+      },
+      "score_distribution_retained": {
+        "3": {
+          "count": 3,
+          "pct_docs": 75.0
+        },
+        "6": {
+          "count": 1,
+          "pct_docs": 25.0
+        }
+      },
+      "score_distribution_filtered": {
+        "1": {
+          "count": 2,
+          "pct_docs": 100.0
+        }
+      },
+      "instruction_type_distribution_all": {
+        "commands": {
+          "count": 1,
+          "pct_docs": 16.67
+        },
+        "instructive": {
+          "count": 4,
+          "pct_docs": 66.67
+        },
+        "descriptive": {
+          "count": 1,
+          "pct_docs": 16.67
+        },
+        "reference": {
+          "count": 3,
+          "pct_docs": 50.0
+        },
+        "positive-examples": {
+          "count": 1,
+          "pct_docs": 16.67
+        },
+        "negative-examples": {
+          "count": 1,
+          "pct_docs": 16.67
+        }
+      },
+      "instruction_type_distribution_retained": {
+        "commands": {
+          "count": 1,
+          "pct_docs": 25.0
+        },
+        "instructive": {
+          "count": 4,
+          "pct_docs": 100.0
+        },
+        "descriptive": {
+          "count": 1,
+          "pct_docs": 25.0
+        },
+        "reference": {
+          "count": 3,
+          "pct_docs": 75.0
+        },
+        "positive-examples": {
+          "count": 1,
+          "pct_docs": 25.0
+        },
+        "negative-examples": {
+          "count": 1,
+          "pct_docs": 25.0
+        }
+      },
+      "sdlc_stage_distribution_all": {
+        "Software Design": {
+          "count": 2,
+          "pct_docs": 33.33
+        },
+        "Code Generation": {
+          "count": 2,
+          "pct_docs": 33.33
+        }
+      },
+      "sdlc_stage_distribution_retained": {
+        "Software Design": {
+          "count": 2,
+          "pct_docs": 50.0
+        },
+        "Code Generation": {
+          "count": 2,
+          "pct_docs": 50.0
+        }
+      },
+      "instruction_x_sdlc_stage_retained": {
+        "commands": {
+          "Code Generation": 1
+        },
+        "instructive": {
+          "Software Design": 2,
+          "Code Generation": 2
+        },
+        "descriptive": {
+          "Code Generation": 1
+        },
+        "reference": {
+          "Software Design": 1,
+          "Code Generation": 2
+        },
+        "positive-examples": {
+          "Code Generation": 1
+        },
+        "negative-examples": {
+          "Software Design": 1
+        }
+      }
+    },
+    {
+      "file": "2026-04-19_MV_Final_Labels_B_Python.json",
+      "dataset_root": "B",
+      "total_documents": 156,
+      "filtered_documents": 60,
+      "filtered_pct": 38.46,
+      "retained_documents": 96,
+      "retained_pct": 61.54,
+      "average_labels_per_document": 2.077,
+      "average_labels_per_retained_document": 2.75,
+      "average_labels_per_filtered_document": 1.0,
+      "filter_source_document_counts": {
+        "agent-skill": 37,
+        "outside-scope": 12,
+        "wrong-language": 11
+      },
+      "documents_with_any_instruction_type": 96,
+      "documents_with_any_sdlc_label": 96,
+      "documents_with_instruction_and_sdlc": 96,
+      "label_distribution_all": {
+        "instructive": {
+          "count": 64,
+          "pct_docs": 41.03
+        },
+        "filter": {
+          "count": 60,
+          "pct_docs": 38.46
+        },
+        "reference": {
+          "count": 35,
+          "pct_docs": 22.44
+        },
+        "Code Generation": {
+          "count": 32,
+          "pct_docs": 20.51
+        },
+        "Software Testing": {
+          "count": 27,
+          "pct_docs": 17.31
+        },
+        "positive-examples": {
+          "count": 18,
+          "pct_docs": 11.54
+        },
+        "DevOps": {
+          "count": 17,
+          "pct_docs": 10.9
+        },
+        "commands": {
+          "count": 17,
+          "pct_docs": 10.9
+        },
+        "Documentation": {
+          "count": 16,
+          "pct_docs": 10.26
+        },
+        "descriptive": {
+          "count": 14,
+          "pct_docs": 8.97
+        },
+        "Software Design": {
+          "count": 9,
+          "pct_docs": 5.77
+        },
+        "negative-examples": {
+          "count": 8,
+          "pct_docs": 5.13
+        },
+        "Requirements": {
+          "count": 7,
+          "pct_docs": 4.49
+        }
+      },
+      "label_distribution_retained": {
+        "instructive": {
+          "count": 64,
+          "pct_docs": 66.67
+        },
+        "reference": {
+          "count": 35,
+          "pct_docs": 36.46
+        },
+        "Code Generation": {
+          "count": 32,
+          "pct_docs": 33.33
+        },
+        "Software Testing": {
+          "count": 27,
+          "pct_docs": 28.12
+        },
+        "positive-examples": {
+          "count": 18,
+          "pct_docs": 18.75
+        },
+        "DevOps": {
+          "count": 17,
+          "pct_docs": 17.71
+        },
+        "commands": {
+          "count": 17,
+          "pct_docs": 17.71
+        },
+        "Documentation": {
+          "count": 16,
+          "pct_docs": 16.67
+        },
+        "descriptive": {
+          "count": 14,
+          "pct_docs": 14.58
+        },
+        "Software Design": {
+          "count": 9,
+          "pct_docs": 9.38
+        },
+        "negative-examples": {
+          "count": 8,
+          "pct_docs": 8.33
+        },
+        "Requirements": {
+          "count": 7,
+          "pct_docs": 7.29
+        }
+      },
+      "label_distribution_filtered": {
+        "filter": {
+          "count": 60,
+          "pct_docs": 100.0
+        }
+      },
+      "score_distribution_all": {
+        "1": {
+          "count": 60,
+          "pct_docs": 38.46
+        },
+        "2": {
+          "count": 43,
+          "pct_docs": 27.56
+        },
+        "3": {
+          "count": 38,
+          "pct_docs": 24.36
+        },
+        "4": {
+          "count": 11,
+          "pct_docs": 7.05
+        },
+        "5": {
+          "count": 4,
+          "pct_docs": 2.56
+        }
+      },
+      "score_distribution_retained": {
+        "2": {
+          "count": 43,
+          "pct_docs": 44.79
+        },
+        "3": {
+          "count": 38,
+          "pct_docs": 39.58
+        },
+        "4": {
+          "count": 11,
+          "pct_docs": 11.46
+        },
+        "5": {
+          "count": 4,
+          "pct_docs": 4.17
+        }
+      },
+      "score_distribution_filtered": {
+        "1": {
+          "count": 60,
+          "pct_docs": 100.0
+        }
+      },
+      "instruction_type_distribution_all": {
+        "commands": {
+          "count": 17,
+          "pct_docs": 10.9
+        },
+        "instructive": {
+          "count": 64,
+          "pct_docs": 41.03
+        },
+        "descriptive": {
+          "count": 14,
+          "pct_docs": 8.97
+        },
+        "reference": {
+          "count": 35,
+          "pct_docs": 22.44
+        },
+        "positive-examples": {
+          "count": 18,
+          "pct_docs": 11.54
+        },
+        "negative-examples": {
+          "count": 8,
+          "pct_docs": 5.13
+        }
+      },
+      "instruction_type_distribution_retained": {
+        "commands": {
+          "count": 17,
+          "pct_docs": 17.71
+        },
+        "instructive": {
+          "count": 64,
+          "pct_docs": 66.67
+        },
+        "descriptive": {
+          "count": 14,
+          "pct_docs": 14.58
+        },
+        "reference": {
+          "count": 35,
+          "pct_docs": 36.46
+        },
+        "positive-examples": {
+          "count": 18,
+          "pct_docs": 18.75
+        },
+        "negative-examples": {
+          "count": 8,
+          "pct_docs": 8.33
+        }
+      },
+      "sdlc_stage_distribution_all": {
+        "Documentation": {
+          "count": 16,
+          "pct_docs": 10.26
+        },
+        "Requirements": {
+          "count": 7,
+          "pct_docs": 4.49
+        },
+        "Software Design": {
+          "count": 9,
+          "pct_docs": 5.77
+        },
+        "Code Generation": {
+          "count": 32,
+          "pct_docs": 20.51
+        },
+        "Software Testing": {
+          "count": 27,
+          "pct_docs": 17.31
+        },
+        "DevOps": {
+          "count": 17,
+          "pct_docs": 10.9
+        }
+      },
+      "sdlc_stage_distribution_retained": {
+        "Documentation": {
+          "count": 16,
+          "pct_docs": 16.67
+        },
+        "Requirements": {
+          "count": 7,
+          "pct_docs": 7.29
+        },
+        "Software Design": {
+          "count": 9,
+          "pct_docs": 9.38
+        },
+        "Code Generation": {
+          "count": 32,
+          "pct_docs": 33.33
+        },
+        "Software Testing": {
+          "count": 27,
+          "pct_docs": 28.12
+        },
+        "DevOps": {
+          "count": 17,
+          "pct_docs": 17.71
         }
       },
       "instruction_x_sdlc_stage_retained": {
         "commands": {
           "Documentation": 1,
           "Software Design": 2,
-          "Code Generation": 11,
-          "Software Testing": 14,
-          "DevOps": 15
+          "Code Generation": 8,
+          "Software Testing": 4,
+          "DevOps": 4
+        },
+        "instructive": {
+          "Documentation": 13,
+          "Requirements": 5,
+          "Software Design": 5,
+          "Code Generation": 22,
+          "Software Testing": 18,
+          "DevOps": 10
+        },
+        "descriptive": {
+          "Documentation": 3,
+          "Software Design": 1,
+          "Code Generation": 3,
+          "Software Testing": 4,
+          "DevOps": 3
+        },
+        "reference": {
+          "Documentation": 3,
+          "Requirements": 3,
+          "Software Design": 5,
+          "Code Generation": 13,
+          "Software Testing": 12,
+          "DevOps": 5
+        },
+        "positive-examples": {
+          "Documentation": 2,
+          "Requirements": 1,
+          "Code Generation": 5,
+          "Software Testing": 3,
+          "DevOps": 7
+        },
+        "negative-examples": {
+          "Requirements": 1,
+          "Code Generation": 2,
+          "Software Testing": 4,
+          "DevOps": 1
+        }
+      }
+    },
+    {
+      "file": "2026-04-19_MV_Final_Labels_Both_Python.json",
+      "dataset_root": "both",
+      "total_documents": 52,
+      "filtered_documents": 23,
+      "filtered_pct": 44.23,
+      "retained_documents": 29,
+      "retained_pct": 55.77,
+      "average_labels_per_document": 2.558,
+      "average_labels_per_retained_document": 3.793,
+      "average_labels_per_filtered_document": 1.0,
+      "filter_source_document_counts": {
+        "agent-skill": 18,
+        "outside-scope": 3,
+        "wrong-language": 3
+      },
+      "documents_with_any_instruction_type": 29,
+      "documents_with_any_sdlc_label": 29,
+      "documents_with_instruction_and_sdlc": 29,
+      "label_distribution_all": {
+        "filter": {
+          "count": 23,
+          "pct_docs": 44.23
+        },
+        "descriptive": {
+          "count": 21,
+          "pct_docs": 40.38
+        },
+        "instructive": {
+          "count": 15,
+          "pct_docs": 28.85
+        },
+        "commands": {
+          "count": 14,
+          "pct_docs": 26.92
+        },
+        "reference": {
+          "count": 14,
+          "pct_docs": 26.92
+        },
+        "Code Generation": {
+          "count": 11,
+          "pct_docs": 21.15
+        },
+        "Software Testing": {
+          "count": 11,
+          "pct_docs": 21.15
+        },
+        "negative-examples": {
+          "count": 7,
+          "pct_docs": 13.46
+        },
+        "Software Design": {
+          "count": 6,
+          "pct_docs": 11.54
+        },
+        "DevOps": {
+          "count": 5,
+          "pct_docs": 9.62
+        },
+        "Documentation": {
+          "count": 3,
+          "pct_docs": 5.77
+        },
+        "positive-examples": {
+          "count": 3,
+          "pct_docs": 5.77
+        }
+      },
+      "label_distribution_retained": {
+        "descriptive": {
+          "count": 21,
+          "pct_docs": 72.41
+        },
+        "instructive": {
+          "count": 15,
+          "pct_docs": 51.72
+        },
+        "commands": {
+          "count": 14,
+          "pct_docs": 48.28
+        },
+        "reference": {
+          "count": 14,
+          "pct_docs": 48.28
+        },
+        "Code Generation": {
+          "count": 11,
+          "pct_docs": 37.93
+        },
+        "Software Testing": {
+          "count": 11,
+          "pct_docs": 37.93
+        },
+        "negative-examples": {
+          "count": 7,
+          "pct_docs": 24.14
+        },
+        "Software Design": {
+          "count": 6,
+          "pct_docs": 20.69
+        },
+        "DevOps": {
+          "count": 5,
+          "pct_docs": 17.24
+        },
+        "Documentation": {
+          "count": 3,
+          "pct_docs": 10.34
+        },
+        "positive-examples": {
+          "count": 3,
+          "pct_docs": 10.34
+        }
+      },
+      "label_distribution_filtered": {
+        "filter": {
+          "count": 23,
+          "pct_docs": 100.0
+        }
+      },
+      "score_distribution_all": {
+        "1": {
+          "count": 23,
+          "pct_docs": 44.23
+        },
+        "2": {
+          "count": 3,
+          "pct_docs": 5.77
+        },
+        "3": {
+          "count": 11,
+          "pct_docs": 21.15
+        },
+        "4": {
+          "count": 8,
+          "pct_docs": 15.38
+        },
+        "5": {
+          "count": 3,
+          "pct_docs": 5.77
+        },
+        "6": {
+          "count": 4,
+          "pct_docs": 7.69
+        }
+      },
+      "score_distribution_retained": {
+        "2": {
+          "count": 3,
+          "pct_docs": 10.34
+        },
+        "3": {
+          "count": 11,
+          "pct_docs": 37.93
+        },
+        "4": {
+          "count": 8,
+          "pct_docs": 27.59
+        },
+        "5": {
+          "count": 3,
+          "pct_docs": 10.34
+        },
+        "6": {
+          "count": 4,
+          "pct_docs": 13.79
+        }
+      },
+      "score_distribution_filtered": {
+        "1": {
+          "count": 23,
+          "pct_docs": 100.0
+        }
+      },
+      "instruction_type_distribution_all": {
+        "commands": {
+          "count": 14,
+          "pct_docs": 26.92
+        },
+        "instructive": {
+          "count": 15,
+          "pct_docs": 28.85
+        },
+        "descriptive": {
+          "count": 21,
+          "pct_docs": 40.38
+        },
+        "reference": {
+          "count": 14,
+          "pct_docs": 26.92
+        },
+        "positive-examples": {
+          "count": 3,
+          "pct_docs": 5.77
+        },
+        "negative-examples": {
+          "count": 7,
+          "pct_docs": 13.46
+        }
+      },
+      "instruction_type_distribution_retained": {
+        "commands": {
+          "count": 14,
+          "pct_docs": 48.28
+        },
+        "instructive": {
+          "count": 15,
+          "pct_docs": 51.72
+        },
+        "descriptive": {
+          "count": 21,
+          "pct_docs": 72.41
+        },
+        "reference": {
+          "count": 14,
+          "pct_docs": 48.28
+        },
+        "positive-examples": {
+          "count": 3,
+          "pct_docs": 10.34
+        },
+        "negative-examples": {
+          "count": 7,
+          "pct_docs": 24.14
+        }
+      },
+      "sdlc_stage_distribution_all": {
+        "Documentation": {
+          "count": 3,
+          "pct_docs": 5.77
+        },
+        "Software Design": {
+          "count": 6,
+          "pct_docs": 11.54
+        },
+        "Code Generation": {
+          "count": 11,
+          "pct_docs": 21.15
+        },
+        "Software Testing": {
+          "count": 11,
+          "pct_docs": 21.15
+        },
+        "DevOps": {
+          "count": 5,
+          "pct_docs": 9.62
+        }
+      },
+      "sdlc_stage_distribution_retained": {
+        "Documentation": {
+          "count": 3,
+          "pct_docs": 10.34
+        },
+        "Software Design": {
+          "count": 6,
+          "pct_docs": 20.69
+        },
+        "Code Generation": {
+          "count": 11,
+          "pct_docs": 37.93
+        },
+        "Software Testing": {
+          "count": 11,
+          "pct_docs": 37.93
+        },
+        "DevOps": {
+          "count": 5,
+          "pct_docs": 17.24
+        }
+      },
+      "instruction_x_sdlc_stage_retained": {
+        "commands": {
+          "Documentation": 1,
+          "Software Design": 2,
+          "Code Generation": 7,
+          "Software Testing": 4,
+          "DevOps": 3
+        },
+        "instructive": {
+          "Documentation": 3,
+          "Software Design": 3,
+          "Code Generation": 4,
+          "Software Testing": 6,
+          "DevOps": 1
+        },
+        "descriptive": {
+          "Documentation": 2,
+          "Software Design": 4,
+          "Code Generation": 7,
+          "Software Testing": 11,
+          "DevOps": 4
+        },
+        "reference": {
+          "Documentation": 1,
+          "Software Design": 4,
+          "Code Generation": 7,
+          "Software Testing": 4,
+          "DevOps": 2
+        },
+        "positive-examples": {
+          "Documentation": 1,
+          "Code Generation": 2,
+          "Software Testing": 1
+        },
+        "negative-examples": {
+          "Documentation": 1,
+          "Software Design": 2,
+          "Code Generation": 1,
+          "Software Testing": 3,
+          "DevOps": 2
+        }
+      }
+    },
+    {
+      "file": "2026-04-19_MV_Relabels_B_Python.json",
+      "dataset_root": "B",
+      "total_documents": 8,
+      "filtered_documents": 5,
+      "filtered_pct": 62.5,
+      "retained_documents": 3,
+      "retained_pct": 37.5,
+      "average_labels_per_document": 2.125,
+      "average_labels_per_retained_document": 4.0,
+      "average_labels_per_filtered_document": 1.0,
+      "filter_source_document_counts": {
+        "agent-skill": 1,
+        "outside-scope": 0,
+        "wrong-language": 4
+      },
+      "documents_with_any_instruction_type": 3,
+      "documents_with_any_sdlc_label": 3,
+      "documents_with_instruction_and_sdlc": 3,
+      "label_distribution_all": {
+        "filter": {
+          "count": 5,
+          "pct_docs": 62.5
+        },
+        "Software Design": {
+          "count": 2,
+          "pct_docs": 25.0
+        },
+        "instructive": {
+          "count": 2,
+          "pct_docs": 25.0
+        },
+        "reference": {
+          "count": 2,
+          "pct_docs": 25.0
+        },
+        "Code Generation": {
+          "count": 1,
+          "pct_docs": 12.5
+        },
+        "Requirements": {
+          "count": 1,
+          "pct_docs": 12.5
+        },
+        "Software Testing": {
+          "count": 1,
+          "pct_docs": 12.5
+        },
+        "commands": {
+          "count": 1,
+          "pct_docs": 12.5
+        },
+        "negative-examples": {
+          "count": 1,
+          "pct_docs": 12.5
+        },
+        "positive-examples": {
+          "count": 1,
+          "pct_docs": 12.5
+        }
+      },
+      "label_distribution_retained": {
+        "Software Design": {
+          "count": 2,
+          "pct_docs": 66.67
+        },
+        "instructive": {
+          "count": 2,
+          "pct_docs": 66.67
+        },
+        "reference": {
+          "count": 2,
+          "pct_docs": 66.67
+        },
+        "Code Generation": {
+          "count": 1,
+          "pct_docs": 33.33
+        },
+        "Requirements": {
+          "count": 1,
+          "pct_docs": 33.33
+        },
+        "Software Testing": {
+          "count": 1,
+          "pct_docs": 33.33
+        },
+        "commands": {
+          "count": 1,
+          "pct_docs": 33.33
+        },
+        "negative-examples": {
+          "count": 1,
+          "pct_docs": 33.33
+        },
+        "positive-examples": {
+          "count": 1,
+          "pct_docs": 33.33
+        }
+      },
+      "label_distribution_filtered": {
+        "filter": {
+          "count": 5,
+          "pct_docs": 100.0
+        }
+      },
+      "score_distribution_all": {
+        "1": {
+          "count": 5,
+          "pct_docs": 62.5
+        },
+        "3": {
+          "count": 1,
+          "pct_docs": 12.5
+        },
+        "4": {
+          "count": 1,
+          "pct_docs": 12.5
+        },
+        "5": {
+          "count": 1,
+          "pct_docs": 12.5
+        }
+      },
+      "score_distribution_retained": {
+        "3": {
+          "count": 1,
+          "pct_docs": 33.33
+        },
+        "4": {
+          "count": 1,
+          "pct_docs": 33.33
+        },
+        "5": {
+          "count": 1,
+          "pct_docs": 33.33
+        }
+      },
+      "score_distribution_filtered": {
+        "1": {
+          "count": 5,
+          "pct_docs": 100.0
+        }
+      },
+      "instruction_type_distribution_all": {
+        "commands": {
+          "count": 1,
+          "pct_docs": 12.5
+        },
+        "instructive": {
+          "count": 2,
+          "pct_docs": 25.0
+        },
+        "reference": {
+          "count": 2,
+          "pct_docs": 25.0
+        },
+        "positive-examples": {
+          "count": 1,
+          "pct_docs": 12.5
+        },
+        "negative-examples": {
+          "count": 1,
+          "pct_docs": 12.5
+        }
+      },
+      "instruction_type_distribution_retained": {
+        "commands": {
+          "count": 1,
+          "pct_docs": 33.33
+        },
+        "instructive": {
+          "count": 2,
+          "pct_docs": 66.67
+        },
+        "reference": {
+          "count": 2,
+          "pct_docs": 66.67
+        },
+        "positive-examples": {
+          "count": 1,
+          "pct_docs": 33.33
+        },
+        "negative-examples": {
+          "count": 1,
+          "pct_docs": 33.33
+        }
+      },
+      "sdlc_stage_distribution_all": {
+        "Requirements": {
+          "count": 1,
+          "pct_docs": 12.5
+        },
+        "Software Design": {
+          "count": 2,
+          "pct_docs": 25.0
+        },
+        "Code Generation": {
+          "count": 1,
+          "pct_docs": 12.5
+        },
+        "Software Testing": {
+          "count": 1,
+          "pct_docs": 12.5
+        }
+      },
+      "sdlc_stage_distribution_retained": {
+        "Requirements": {
+          "count": 1,
+          "pct_docs": 33.33
+        },
+        "Software Design": {
+          "count": 2,
+          "pct_docs": 66.67
+        },
+        "Code Generation": {
+          "count": 1,
+          "pct_docs": 33.33
+        },
+        "Software Testing": {
+          "count": 1,
+          "pct_docs": 33.33
+        }
+      },
+      "instruction_x_sdlc_stage_retained": {
+        "commands": {
+          "Software Design": 1,
+          "Code Generation": 1
+        },
+        "instructive": {
+          "Requirements": 1,
+          "Software Design": 2,
+          "Code Generation": 1
+        },
+        "reference": {
+          "Requirements": 1,
+          "Software Design": 2,
+          "Code Generation": 1
+        },
+        "positive-examples": {
+          "Software Testing": 1
+        },
+        "negative-examples": {
+          "Software Testing": 1
+        }
+      }
+    },
+    {
+      "file": "Python_All.json",
+      "dataset_root": "Python_All",
+      "total_documents": 359,
+      "filtered_documents": 161,
+      "filtered_pct": 44.85,
+      "retained_documents": 198,
+      "retained_pct": 55.15,
+      "average_labels_per_document": 2.145,
+      "average_labels_per_retained_document": 3.076,
+      "average_labels_per_filtered_document": 1.0,
+      "filter_source_document_counts": {
+        "agent-skill": 116,
+        "outside-scope": 20,
+        "wrong-language": 25
+      },
+      "documents_with_any_instruction_type": 195,
+      "documents_with_any_sdlc_label": 197,
+      "documents_with_instruction_and_sdlc": 194,
+      "label_distribution_all": {
+        "filter": {
+          "count": 161,
+          "pct_docs": 44.85
+        },
+        "instructive": {
+          "count": 130,
+          "pct_docs": 36.21
+        },
+        "reference": {
+          "count": 85,
+          "pct_docs": 23.68
+        },
+        "descriptive": {
+          "count": 62,
+          "pct_docs": 17.27
+        },
+        "Code Generation": {
+          "count": 54,
+          "pct_docs": 15.04
+        },
+        "Software Testing": {
+          "count": 54,
+          "pct_docs": 15.04
+        },
+        "positive-examples": {
+          "count": 54,
+          "pct_docs": 15.04
+        },
+        "commands": {
+          "count": 42,
+          "pct_docs": 11.7
+        },
+        "DevOps": {
+          "count": 41,
+          "pct_docs": 11.42
+        },
+        "Software Design": {
+          "count": 32,
+          "pct_docs": 8.91
+        },
+        "Documentation": {
+          "count": 29,
+          "pct_docs": 8.08
+        },
+        "negative-examples": {
+          "count": 14,
+          "pct_docs": 3.9
+        },
+        "Requirements": {
+          "count": 12,
+          "pct_docs": 3.34
+        }
+      },
+      "label_distribution_retained": {
+        "instructive": {
+          "count": 130,
+          "pct_docs": 65.66
+        },
+        "reference": {
+          "count": 85,
+          "pct_docs": 42.93
+        },
+        "descriptive": {
+          "count": 62,
+          "pct_docs": 31.31
+        },
+        "Code Generation": {
+          "count": 54,
+          "pct_docs": 27.27
+        },
+        "Software Testing": {
+          "count": 54,
+          "pct_docs": 27.27
+        },
+        "positive-examples": {
+          "count": 54,
+          "pct_docs": 27.27
+        },
+        "commands": {
+          "count": 42,
+          "pct_docs": 21.21
+        },
+        "DevOps": {
+          "count": 41,
+          "pct_docs": 20.71
+        },
+        "Software Design": {
+          "count": 32,
+          "pct_docs": 16.16
+        },
+        "Documentation": {
+          "count": 29,
+          "pct_docs": 14.65
+        },
+        "negative-examples": {
+          "count": 14,
+          "pct_docs": 7.07
+        },
+        "Requirements": {
+          "count": 12,
+          "pct_docs": 6.06
+        }
+      },
+      "label_distribution_filtered": {
+        "filter": {
+          "count": 161,
+          "pct_docs": 100.0
+        }
+      },
+      "score_distribution_all": {
+        "1": {
+          "count": 164,
+          "pct_docs": 45.68
+        },
+        "2": {
+          "count": 58,
+          "pct_docs": 16.16
+        },
+        "3": {
+          "count": 81,
+          "pct_docs": 22.56
+        },
+        "4": {
+          "count": 38,
+          "pct_docs": 10.58
+        },
+        "5": {
+          "count": 13,
+          "pct_docs": 3.62
+        },
+        "6": {
+          "count": 5,
+          "pct_docs": 1.39
+        }
+      },
+      "score_distribution_retained": {
+        "1": {
+          "count": 3,
+          "pct_docs": 1.52
+        },
+        "2": {
+          "count": 58,
+          "pct_docs": 29.29
+        },
+        "3": {
+          "count": 81,
+          "pct_docs": 40.91
+        },
+        "4": {
+          "count": 38,
+          "pct_docs": 19.19
+        },
+        "5": {
+          "count": 13,
+          "pct_docs": 6.57
+        },
+        "6": {
+          "count": 5,
+          "pct_docs": 2.53
+        }
+      },
+      "score_distribution_filtered": {
+        "1": {
+          "count": 161,
+          "pct_docs": 100.0
+        }
+      },
+      "instruction_type_distribution_all": {
+        "commands": {
+          "count": 42,
+          "pct_docs": 11.7
+        },
+        "instructive": {
+          "count": 130,
+          "pct_docs": 36.21
+        },
+        "descriptive": {
+          "count": 62,
+          "pct_docs": 17.27
+        },
+        "reference": {
+          "count": 85,
+          "pct_docs": 23.68
+        },
+        "positive-examples": {
+          "count": 54,
+          "pct_docs": 15.04
+        },
+        "negative-examples": {
+          "count": 14,
+          "pct_docs": 3.9
+        }
+      },
+      "instruction_type_distribution_retained": {
+        "commands": {
+          "count": 42,
+          "pct_docs": 21.21
+        },
+        "instructive": {
+          "count": 130,
+          "pct_docs": 65.66
+        },
+        "descriptive": {
+          "count": 62,
+          "pct_docs": 31.31
+        },
+        "reference": {
+          "count": 85,
+          "pct_docs": 42.93
+        },
+        "positive-examples": {
+          "count": 54,
+          "pct_docs": 27.27
+        },
+        "negative-examples": {
+          "count": 14,
+          "pct_docs": 7.07
+        }
+      },
+      "sdlc_stage_distribution_all": {
+        "Documentation": {
+          "count": 29,
+          "pct_docs": 8.08
+        },
+        "Requirements": {
+          "count": 12,
+          "pct_docs": 3.34
+        },
+        "Software Design": {
+          "count": 32,
+          "pct_docs": 8.91
+        },
+        "Code Generation": {
+          "count": 54,
+          "pct_docs": 15.04
+        },
+        "Software Testing": {
+          "count": 54,
+          "pct_docs": 15.04
+        },
+        "DevOps": {
+          "count": 41,
+          "pct_docs": 11.42
+        }
+      },
+      "sdlc_stage_distribution_retained": {
+        "Documentation": {
+          "count": 29,
+          "pct_docs": 14.65
+        },
+        "Requirements": {
+          "count": 12,
+          "pct_docs": 6.06
+        },
+        "Software Design": {
+          "count": 32,
+          "pct_docs": 16.16
+        },
+        "Code Generation": {
+          "count": 54,
+          "pct_docs": 27.27
+        },
+        "Software Testing": {
+          "count": 54,
+          "pct_docs": 27.27
+        },
+        "DevOps": {
+          "count": 41,
+          "pct_docs": 20.71
+        }
+      },
+      "instruction_x_sdlc_stage_retained": {
+        "commands": {
+          "Documentation": 1,
+          "Software Design": 3,
+          "Code Generation": 13,
+          "Software Testing": 15,
+          "DevOps": 14
         },
         "instructive": {
           "Documentation": 23,
           "Requirements": 10,
-          "Software Design": 19,
-          "Code Generation": 30,
-          "Software Testing": 39,
+          "Software Design": 22,
+          "Code Generation": 32,
+          "Software Testing": 36,
           "DevOps": 25
         },
         "descriptive": {
-          "Documentation": 11,
-          "Requirements": 4,
-          "Software Design": 16,
+          "Documentation": 10,
+          "Requirements": 3,
+          "Software Design": 14,
           "Code Generation": 11,
-          "Software Testing": 14,
+          "Software Testing": 15,
           "DevOps": 15
         },
         "reference": {
-          "Documentation": 8,
-          "Requirements": 4,
-          "Software Design": 13,
-          "Code Generation": 25,
-          "Software Testing": 22,
-          "DevOps": 16
+          "Documentation": 7,
+          "Requirements": 5,
+          "Software Design": 17,
+          "Code Generation": 26,
+          "Software Testing": 24,
+          "DevOps": 17
         },
         "positive-examples": {
-          "Documentation": 8,
+          "Documentation": 7,
           "Requirements": 2,
           "Software Design": 7,
-          "Code Generation": 20,
-          "Software Testing": 6,
+          "Code Generation": 21,
+          "Software Testing": 9,
           "DevOps": 11
         },
         "negative-examples": {
-          "Documentation": 1,
           "Requirements": 1,
-          "Code Generation": 4,
-          "Software Testing": 5,
+          "Software Design": 1,
+          "Code Generation": 5,
+          "Software Testing": 7,
           "DevOps": 2
         }
       }

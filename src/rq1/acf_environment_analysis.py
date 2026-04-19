@@ -45,16 +45,17 @@ def build_availability_table(scan_df: pd.DataFrame) -> pd.DataFrame:
 
 
 def prepare_found_acf_df(scan_df: pd.DataFrame) -> tuple[pd.DataFrame, list[str]]:
-    present = _present_acf_columns(scan_df)
+    candidate_columns = _present_acf_columns(scan_df)
     if "found" not in scan_df.columns:
-        return pd.DataFrame(), present
+        return pd.DataFrame(), candidate_columns
 
     found_df = scan_df[scan_df["found"]].copy()
     if found_df.empty:
-        return found_df, present
+        return found_df, candidate_columns
 
-    for column in present:
+    for column in candidate_columns:
         found_df[column] = pd.to_numeric(found_df[column], errors="coerce").fillna(0).astype(int)
+    present = [column for column in candidate_columns if int(found_df[column].sum()) > 0]
 
     found_df["language"] = found_df.get("mainLanguage", pd.Series(dtype=str)).fillna("(unknown)")
     found_df["language"] = found_df["language"].replace("", "(unknown)")

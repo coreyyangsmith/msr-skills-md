@@ -218,8 +218,8 @@ def _plot_language_heatmap(ax: plt.Axes, language_df: pd.DataFrame) -> None:
 
 
 def generate(scan_df: pd.DataFrame, out_dir: str, fig_format: str, dpi: int) -> Path | None:
-    present = _present_acf_columns(scan_df)
-    if "found" not in scan_df.columns or not present:
+    candidate_columns = _present_acf_columns(scan_df)
+    if "found" not in scan_df.columns or not candidate_columns:
         write_missing_data_note(
             out_dir,
             "fig22_acf_intersections_language_heatmap",
@@ -228,13 +228,23 @@ def generate(scan_df: pd.DataFrame, out_dir: str, fig_format: str, dpi: int) -> 
         )
         return None
 
-    found_df = _prepare_found_df(scan_df, present)
+    found_df = _prepare_found_df(scan_df, candidate_columns)
     if found_df.empty:
         write_missing_data_note(
             out_dir,
             "fig22_acf_intersections_language_heatmap",
             "No repositories containing SKILL.md were available for Figure 22.",
             missing_columns=["found"],
+        )
+        return None
+
+    present = [column for column in candidate_columns if int(found_df[column].sum()) > 0]
+    if not present:
+        write_missing_data_note(
+            out_dir,
+            "fig22_acf_intersections_language_heatmap",
+            "No tracked ACF columns had positive counts for Figure 22.",
+            missing_columns=list(ACF_COLUMNS.keys()),
         )
         return None
 

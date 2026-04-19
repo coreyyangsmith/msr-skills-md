@@ -38,8 +38,8 @@ ACF_COLUMNS = {
 
 
 def build_table(scan_df: pd.DataFrame) -> pd.DataFrame | None:
-    present = [column for column in ACF_COLUMNS if column in scan_df.columns]
-    if not present:
+    candidate_columns = [column for column in ACF_COLUMNS if column in scan_df.columns]
+    if not candidate_columns:
         log.warning("ACF columns not present in scan CSV; skipping Section 4.")
         return None
 
@@ -48,13 +48,16 @@ def build_table(scan_df: pd.DataFrame) -> pd.DataFrame | None:
         log.warning("No found repos; skipping ACF analysis.")
         return None
 
-    for column in present:
+    for column in candidate_columns:
         found_df[column] = pd.to_numeric(found_df[column], errors="coerce").fillna(0).astype(int)
+    present = [column for column in candidate_columns if int(found_df[column].sum()) > 0]
+    if not present:
+        log.warning("No observed ACF columns with positive counts; skipping ACF analysis.")
+        return None
 
     rows: list[dict[str, object]] = []
-    for column, label in ACF_COLUMNS.items():
-        if column not in found_df.columns:
-            continue
+    for column in present:
+        label = ACF_COLUMNS[column]
         count = int(found_df[column].sum())
         rows.append(
             {

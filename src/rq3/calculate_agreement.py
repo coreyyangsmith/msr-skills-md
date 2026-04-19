@@ -275,6 +275,15 @@ def build_parser() -> argparse.ArgumentParser:
         help="Disable label name normalisation (use raw tag names).",
     )
     parser.add_argument(
+        "--apply-filter",
+        action="store_true",
+        default=False,
+        help=(
+            "Collapse agent-skill, wrong-language, and outside-scope into a single "
+            "'filter' label before computing kappa (mirrors the processed-export pipeline)."
+        ),
+    )
+    parser.add_argument(
         "--log-level",
         default="INFO",
         choices=["DEBUG", "INFO", "WARNING", "ERROR"],
@@ -306,12 +315,13 @@ def main(argv: list[str] | None = None) -> None:
     log.info("Loading %s", file2.name)
     data2 = load_json(file2)
 
+    apply_filter = args.apply_filter and not args.no_normalise
     if args.no_normalise:
         matrix1 = build_doc_label_matrix(data1, normalise=False)
         matrix2 = build_doc_label_matrix(data2, normalise=False)
     else:
-        matrix1 = build_doc_label_matrix(data1)
-        matrix2 = build_doc_label_matrix(data2)
+        matrix1 = build_doc_label_matrix(data1, apply_special_filter=apply_filter)
+        matrix2 = build_doc_label_matrix(data2, apply_special_filter=apply_filter)
 
     common_docs = set(matrix1) & set(matrix2)
     only_in_1 = set(matrix1) - set(matrix2)
@@ -341,6 +351,7 @@ def main(argv: list[str] | None = None) -> None:
         "docs_only_in_file2": sorted(only_in_2),
         "min_support": args.min_support,
         "normalisation_applied": not args.no_normalise,
+        "filter_applied": apply_filter,
         "per_label_kappa": results,
     }
 

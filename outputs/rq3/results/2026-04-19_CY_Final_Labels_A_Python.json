@@ -1,0 +1,1288 @@
+{
+  "version": 1,
+  "dataset": {
+    "rootName": "A",
+    "savedAt": "2026-04-19T14:38:28.905Z",
+    "totalFiles": 151
+  },
+  "tags": [
+    {
+      "id": "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+      "name": "agent-skill",
+      "createdAt": "2026-04-04T01:24:53.241Z"
+    },
+    {
+      "id": "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+      "name": "descriptive",
+      "createdAt": "2026-04-04T01:25:01.001Z"
+    },
+    {
+      "id": "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+      "name": "instructive",
+      "createdAt": "2026-04-04T01:25:15.356Z"
+    },
+    {
+      "id": "ef3b7885-c721-42db-ada8-9d954b884b76",
+      "name": "positive-examples",
+      "createdAt": "2026-04-04T01:25:39.917Z"
+    },
+    {
+      "id": "29cf85c4-ce2e-4d3b-bb36-d6845eb090cb",
+      "name": "se-workflow-management",
+      "createdAt": "2026-04-04T01:27:38.599Z"
+    },
+    {
+      "id": "74d44521-b2f3-4faf-973b-e5674de27516",
+      "name": "negative-examples",
+      "createdAt": "2026-04-04T01:30:02.328Z"
+    },
+    {
+      "id": "e88e54e7-ab77-474b-8b64-c1ed7190e1bd",
+      "name": "reference",
+      "createdAt": "2026-04-04T01:31:07.498Z"
+    },
+    {
+      "id": "524aff15-a670-42a7-b1cf-b07451aee98e",
+      "name": "devops",
+      "createdAt": "2026-04-04T01:32:27.696Z"
+    },
+    {
+      "id": "54e134bb-d21c-42ac-a8fd-cfaa361dc7eb",
+      "name": "commands",
+      "createdAt": "2026-04-04T01:34:48.999Z"
+    },
+    {
+      "id": "5c9fd02d-2d6d-4260-8b70-5e551a715b71",
+      "name": "code-generation",
+      "createdAt": "2026-04-04T01:37:19.547Z"
+    },
+    {
+      "id": "5bed770d-91da-42f9-9e5a-1896524fc2e8",
+      "name": "test-generation",
+      "createdAt": "2026-04-04T03:55:22.018Z"
+    },
+    {
+      "id": "39ae6acc-d066-48ae-9729-6a5555c83f3b",
+      "name": "outside-scope",
+      "createdAt": "2026-04-04T04:00:08.932Z"
+    },
+    {
+      "id": "7db2bb70-af5e-49dd-a235-7c50c189218b",
+      "name": "non-english",
+      "createdAt": "2026-04-04T04:18:46.738Z"
+    },
+    {
+      "id": "bba6c08f-7b09-40a9-981a-272f80bdc914",
+      "name": "code-quality",
+      "createdAt": "2026-04-04T04:19:47.835Z"
+    },
+    {
+      "id": "1bdaaf91-3ab4-472b-9e16-88a2adbd54b5",
+      "name": "code-integration",
+      "createdAt": "2026-04-04T04:22:08.150Z"
+    },
+    {
+      "id": "d3ea1580-edea-4fad-a389-4ca0cfc9190a",
+      "name": "debugging",
+      "createdAt": "2026-04-04T04:23:39.918Z"
+    },
+    {
+      "id": "39280822-8972-4d62-9dcb-8f653a2c3394",
+      "name": "documentation",
+      "createdAt": "2026-04-04T04:28:41.118Z"
+    },
+    {
+      "id": "e0c7026e-1fe8-447a-a147-e4ddeac09934",
+      "name": "requirements",
+      "createdAt": "2026-04-04T11:07:26.581Z"
+    },
+    {
+      "id": "26ba15b8-c70c-45f3-846d-f7edf15b9181",
+      "name": "software-design",
+      "createdAt": "2026-04-04T11:17:56.701Z"
+    },
+    {
+      "id": "8bcb9335-072f-449a-a5b5-2ba48234f883",
+      "name": "agent-facing",
+      "createdAt": "2026-04-04T11:38:58.170Z"
+    },
+    {
+      "id": "0abe66a6-6620-4f98-bdc1-52330dfad751",
+      "name": "references",
+      "createdAt": "2026-04-19T13:37:46.456Z"
+    },
+    {
+      "id": "e1cae536-a921-4136-8ae8-6b9f15515507",
+      "name": "wrong-language",
+      "createdAt": "2026-04-19T13:46:39.041Z"
+    },
+    {
+      "id": "1a0aa371-0d59-47c0-87d3-0fbfa0a92d9b",
+      "name": "software-testing",
+      "createdAt": "2026-04-19T13:46:59.437Z"
+    },
+    {
+      "id": "098afd5f-f68a-486d-a5ab-93f8ae7e65dc",
+      "name": "implementation",
+      "createdAt": "2026-04-19T13:54:55.968Z"
+    }
+  ],
+  "labels": {
+    "0verL1nk__PaperSage/agent/skills/summary": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2"
+      ],
+      "updatedAt": "2026-04-04T01:26:16.632Z"
+    },
+    "Abilityai__cornelius/.claude/skills/auto-discovery": {
+      "tagIds": [
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-04T01:26:35.165Z"
+    },
+    "adamfilli__happy-simulator/.claude/skills/release": {
+      "tagIds": [
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "29cf85c4-ce2e-4d3b-bb36-d6845eb090cb"
+      ],
+      "updatedAt": "2026-04-04T01:27:46.481Z"
+    },
+    "adelpro__quran-search-engine/.agent/skills/behavioral-modes": {
+      "tagIds": [
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "74d44521-b2f3-4faf-973b-e5674de27516",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-04T01:31:10.394Z"
+    },
+    "ancoleman__ai-design-components/skills/secret-management": {
+      "tagIds": [
+        "524aff15-a670-42a7-b1cf-b07451aee98e",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "54e134bb-d21c-42ac-a8fd-cfaa361dc7eb",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-04T01:35:23.780Z"
+    },
+    "artemiv4nov__fabricator/skills/implementation": {
+      "tagIds": [
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "5c9fd02d-2d6d-4260-8b70-5e551a715b71"
+      ],
+      "updatedAt": "2026-04-04T01:37:31.695Z"
+    },
+    "atopile__atopile/.claude/skills/dev": {
+      "tagIds": [
+        "5bed770d-91da-42f9-9e5a-1896524fc2e8",
+        "54e134bb-d21c-42ac-a8fd-cfaa361dc7eb"
+      ],
+      "updatedAt": "2026-04-04T03:55:52.005Z"
+    },
+    "Axect__magi-researchers/skills/research-report": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2"
+      ],
+      "updatedAt": "2026-04-04T03:56:56.163Z"
+    },
+    "BauplanLabs__bauplan-mcp-server/skills/data-pipeline": {
+      "tagIds": [
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "5c9fd02d-2d6d-4260-8b70-5e551a715b71",
+        "54e134bb-d21c-42ac-a8fd-cfaa361dc7eb",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2"
+      ],
+      "updatedAt": "2026-04-04T03:59:06.478Z"
+    },
+    "Bl4nk44__Audiovault/.agent/skills/frontend-specialist": {
+      "tagIds": [
+        "39ae6acc-d066-48ae-9729-6a5555c83f3b"
+      ],
+      "updatedAt": "2026-04-04T04:00:10.995Z"
+    },
+    "bradsjm__hassio-addons/addon-opencode/skills/home-assistant-awtrix": {
+      "tagIds": [
+        "39ae6acc-d066-48ae-9729-6a5555c83f3b"
+      ],
+      "updatedAt": "2026-04-04T04:00:35.027Z"
+    },
+    "bvweerd__dynamic_energy_contract_calculator/.claude/skills/review-pr": {
+      "tagIds": [
+        "54e134bb-d21c-42ac-a8fd-cfaa361dc7eb",
+        "29cf85c4-ce2e-4d3b-bb36-d6845eb090cb"
+      ],
+      "updatedAt": "2026-04-04T04:00:44.894Z"
+    },
+    "byt3bl33d3r__figaro/patchright-cli/src/patchright_cli/skills/patchright-cli": {
+      "tagIds": [
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "54e134bb-d21c-42ac-a8fd-cfaa361dc7eb",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd",
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-04T04:18:24.185Z"
+    },
+    "castorini__ragnarok/.claude/skills/ragnarok-quickstart": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "54e134bb-d21c-42ac-a8fd-cfaa361dc7eb",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-04T04:19:19.485Z"
+    },
+    "causify-ai__helpers/.claude/skills/coding.fix_from_imports": {
+      "tagIds": [
+        "bba6c08f-7b09-40a9-981a-272f80bdc914"
+      ],
+      "updatedAt": "2026-04-04T04:19:53.801Z"
+    },
+    "causify-ai__helpers/.claude/skills/docker.shrink_requirements": {
+      "tagIds": [
+        "524aff15-a670-42a7-b1cf-b07451aee98e"
+      ],
+      "updatedAt": "2026-04-04T04:20:27.418Z"
+    },
+    "causify-ai__helpers/.claude/skills/notebooks.create_animation": {
+      "tagIds": [
+        "1bdaaf91-3ab4-472b-9e16-88a2adbd54b5",
+        "ef3b7885-c721-42db-ada8-9d954b884b76"
+      ],
+      "updatedAt": "2026-04-04T04:22:14.549Z"
+    },
+    "ccxt__ccxt/.claude/skills/ccxt-python": {
+      "tagIds": [
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd",
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "1bdaaf91-3ab4-472b-9e16-88a2adbd54b5",
+        "74d44521-b2f3-4faf-973b-e5674de27516",
+        "d3ea1580-edea-4fad-a389-4ca0cfc9190a"
+      ],
+      "updatedAt": "2026-04-04T04:23:43.382Z"
+    },
+    "cnoe-io__ai-platform-engineering/charts/ai-platform-engineering/data/skills/oncall-handoff": {
+      "tagIds": [
+        "29cf85c4-ce2e-4d3b-bb36-d6845eb090cb",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "39280822-8972-4d62-9dcb-8f653a2c3394",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d"
+      ],
+      "updatedAt": "2026-04-04T04:29:16.331Z"
+    },
+    "cnoe-io__ai-platform-engineering/ui/src/skills/documentation-search": {
+      "tagIds": [
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-04T04:29:34.930Z"
+    },
+    "countbot-ai__CountBot/workspace/skills/weather": {
+      "tagIds": [
+        "7db2bb70-af5e-49dd-a235-7c50c189218b"
+      ],
+      "updatedAt": "2026-04-04T04:29:40.447Z"
+    },
+    "CraftOS-dev__CraftBot/skills/answeroverflow": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-04T04:37:04.981Z"
+    },
+    "CraftOS-dev__CraftBot/skills/google-drive": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-04T04:37:51.747Z"
+    },
+    "CraftOS-dev__CraftBot/skills/google-sheet": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd",
+        "54e134bb-d21c-42ac-a8fd-cfaa361dc7eb"
+      ],
+      "updatedAt": "2026-04-04T04:38:23.464Z"
+    },
+    "CraftOS-dev__CraftBot/skills/outlook-api": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "54e134bb-d21c-42ac-a8fd-cfaa361dc7eb"
+      ],
+      "updatedAt": "2026-04-04T04:38:43.465Z"
+    },
+    "CraftOS-dev__CraftBot/skills/universal-video-downloader": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2"
+      ],
+      "updatedAt": "2026-04-04T04:39:01.348Z"
+    },
+    "cwinvestments__memstack/skills/humanize": {
+      "tagIds": [
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2"
+      ],
+      "updatedAt": "2026-04-04T11:06:26.943Z"
+    },
+    "cwinvestments__memstack/skills/product/feedback-analyzer": {
+      "tagIds": [
+        "39280822-8972-4d62-9dcb-8f653a2c3394",
+        "e0c7026e-1fe8-447a-a147-e4ddeac09934",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2"
+      ],
+      "updatedAt": "2026-04-04T11:07:33.963Z"
+    },
+    "davidlee__spec-driver/.spec-driver/skills/execute-phase": {
+      "tagIds": [
+        "5c9fd02d-2d6d-4260-8b70-5e551a715b71",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2"
+      ],
+      "updatedAt": "2026-04-04T11:17:07.496Z"
+    },
+    "dcramer__ash/.agents/skills/architecture-review": {
+      "tagIds": [
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "26ba15b8-c70c-45f3-846d-f7edf15b9181",
+        "bba6c08f-7b09-40a9-981a-272f80bdc914"
+      ],
+      "updatedAt": "2026-04-04T11:18:01.197Z"
+    },
+    "dcramer__ash/src/ash/skills/bundled/skill-writer": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "ef3b7885-c721-42db-ada8-9d954b884b76"
+      ],
+      "updatedAt": "2026-04-04T11:18:22.546Z"
+    },
+    "deepklarity__harness-kit/.claude/skills/dk-local-mock-first-approach": {
+      "tagIds": [
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "5c9fd02d-2d6d-4260-8b70-5e551a715b71",
+        "ef3b7885-c721-42db-ada8-9d954b884b76"
+      ],
+      "updatedAt": "2026-04-04T11:20:35.403Z"
+    },
+    "definableai__definable.ai/definable/definable/skill/library/slack-gif-creator": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "ef3b7885-c721-42db-ada8-9d954b884b76"
+      ],
+      "updatedAt": "2026-04-04T11:38:37.551Z"
+    },
+    "dmitriiweb__extract-emails/.codex/skills/agents-md-assistant": {
+      "tagIds": [
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "8bcb9335-072f-449a-a5b5-2ba48234f883"
+      ],
+      "updatedAt": "2026-04-04T11:39:07.700Z"
+    },
+    "DNYoussef__context-cascade/skills/delivery/when-debugging-ml-training-use-ml-training-debugger": {
+      "tagIds": [
+        "d3ea1580-edea-4fad-a389-4ca0cfc9190a",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d"
+      ],
+      "updatedAt": "2026-04-04T11:48:04.283Z"
+    },
+    "DNYoussef__context-cascade/skills/foundry/skill-builder": {
+      "tagIds": [
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "74d44521-b2f3-4faf-973b-e5674de27516",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-04T11:48:39.397Z"
+    },
+    "DNYoussef__context-cascade/skills/platforms/multi-model-discovery": {
+      "tagIds": [
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "26ba15b8-c70c-45f3-846d-f7edf15b9181"
+      ],
+      "updatedAt": "2026-04-04T11:49:15.048Z"
+    },
+    "DNYoussef__context-cascade/skills/platforms/sql-database-specialist": {
+      "tagIds": [
+        "26ba15b8-c70c-45f3-846d-f7edf15b9181",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "ef3b7885-c721-42db-ada8-9d954b884b76"
+      ],
+      "updatedAt": "2026-04-04T11:52:25.081Z"
+    },
+    "DNYoussef__context-cascade/skills/quality/when-reviewing-code-comprehensively-use-code-review-assistant": {
+      "tagIds": [
+        "bba6c08f-7b09-40a9-981a-272f80bdc914",
+        "54e134bb-d21c-42ac-a8fd-cfaa361dc7eb",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2"
+      ],
+      "updatedAt": "2026-04-04T11:52:58.912Z"
+    },
+    "DNYoussef__context-cascade/skills/specialists/expertise-manager": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "8bcb9335-072f-449a-a5b5-2ba48234f883",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2"
+      ],
+      "updatedAt": "2026-04-04T12:00:01.015Z"
+    },
+    "eddiebelaval__squire/skills/budget-planner": {
+      "tagIds": [
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-04T12:00:26.545Z"
+    },
+    "eddiebelaval__squire/skills/habit-tracker": {
+      "tagIds": [
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "74d44521-b2f3-4faf-973b-e5674de27516",
+        "ef3b7885-c721-42db-ada8-9d954b884b76"
+      ],
+      "updatedAt": "2026-04-04T12:02:44.878Z"
+    },
+    "eddiebelaval__squire/skills/insurance-analyst": {
+      "tagIds": [
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-04T12:03:12.930Z"
+    },
+    "eddiebelaval__squire/skills/investment-analyzer": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2"
+      ],
+      "updatedAt": "2026-04-04T12:03:35.279Z"
+    },
+    "eddiebelaval__squire/skills/sprint-planner": {
+      "tagIds": [
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "29cf85c4-ce2e-4d3b-bb36-d6845eb090cb",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-04T12:06:07.345Z"
+    },
+    "elophanto__EloPhanto/tests/fixtures/malicious_skill": {
+      "tagIds": [
+        "54e134bb-d21c-42ac-a8fd-cfaa361dc7eb",
+        "524aff15-a670-42a7-b1cf-b07451aee98e",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2"
+      ],
+      "updatedAt": "2026-04-04T12:06:28.511Z"
+    },
+    "emanueleielo__ciana-parrot/skills/things": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "54e134bb-d21c-42ac-a8fd-cfaa361dc7eb"
+      ],
+      "updatedAt": "2026-04-04T12:07:54.359Z"
+    },
+    "eventum-generator__eventum/.claude/skills/promote": {
+      "tagIds": [
+        "39280822-8972-4d62-9dcb-8f653a2c3394",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2"
+      ],
+      "updatedAt": "2026-04-04T12:08:17.640Z"
+    },
+    "existential-birds__beagle/plugins/beagle-ai/skills/deepagents-architecture": {
+      "tagIds": [
+        "26ba15b8-c70c-45f3-846d-f7edf15b9181",
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-04T12:09:15.558Z"
+    },
+    "existential-birds__beagle/plugins/beagle-core/skills/sqlite-vec": {
+      "tagIds": [
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "1bdaaf91-3ab4-472b-9e16-88a2adbd54b5",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-04T12:26:41.510Z"
+    },
+    "existential-birds__beagle/plugins/beagle-ios/skills/combine-code-review": {
+      "tagIds": [
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "bba6c08f-7b09-40a9-981a-272f80bdc914",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-04T12:27:16.410Z"
+    },
+    "feiskyer__koder/tests/fixtures/skills/medium-skill": {
+      "tagIds": [
+        "5c9fd02d-2d6d-4260-8b70-5e551a715b71"
+      ],
+      "updatedAt": "2026-04-05T18:23:08.631Z"
+    },
+    "giuseppe-trisciuoglio__developer-kit/plugins/developer-kit-aws/skills/aws-cloudformation/aws-cloudformation-iam": {
+      "tagIds": [
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "524aff15-a670-42a7-b1cf-b07451aee98e",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-05T18:24:37.054Z"
+    },
+    "giuseppe-trisciuoglio__developer-kit/plugins/developer-kit-java/skills/spring-boot-openapi-documentation": {
+      "tagIds": [
+        "39ae6acc-d066-48ae-9729-6a5555c83f3b"
+      ],
+      "updatedAt": "2026-04-05T18:26:14.706Z"
+    },
+    "godmakereth__vibe-coding-tw/skills/polymarket": {
+      "tagIds": [
+        "1bdaaf91-3ab4-472b-9e16-88a2adbd54b5",
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-05T18:28:46.148Z"
+    },
+    "gtmagents__gtm-agents/plugins/competitive-intelligence/skills/win-loss-dataset": {
+      "tagIds": [
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d"
+      ],
+      "updatedAt": "2026-04-05T18:29:51.407Z"
+    },
+    "gtmagents__gtm-agents/plugins/customer-feedback-orchestration/skills/stakeholder-ops": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-05T18:29:46.731Z"
+    },
+    "gtmagents__gtm-agents/plugins/renewal-orchestration/skills/renewal-playbooks": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-05T18:30:09.737Z"
+    },
+    "gtmagents__gtm-agents/plugins/revenue-analytics/skills/cohort-analysis": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-05T18:30:18.598Z"
+    },
+    "gtmagents__gtm-agents/plugins/seo-workflow-orchestration/skills/diagnostics": {
+      "tagIds": [
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-05T18:30:40.967Z"
+    },
+    "hainamchung__agent-assistant/skills/azure-ai-search-python": {
+      "tagIds": [
+        "1bdaaf91-3ab4-472b-9e16-88a2adbd54b5",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd",
+        "ef3b7885-c721-42db-ada8-9d954b884b76"
+      ],
+      "updatedAt": "2026-04-05T18:31:03.084Z"
+    },
+    "hainamchung__agent-assistant/skills/copy-editing": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "74d44521-b2f3-4faf-973b-e5674de27516",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-05T18:31:38.750Z"
+    },
+    "hainamchung__agent-assistant/skills/expo-app-design": {
+      "tagIds": [
+        "39ae6acc-d066-48ae-9729-6a5555c83f3b"
+      ],
+      "updatedAt": "2026-04-05T18:32:02.292Z"
+    },
+    "hainamchung__agent-assistant/skills/planning": {
+      "tagIds": [
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "26ba15b8-c70c-45f3-846d-f7edf15b9181",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-05T18:32:59.097Z"
+    },
+    "hainamchung__agent-assistant/skills/product-manager-toolkit": {
+      "tagIds": [
+        "29cf85c4-ce2e-4d3b-bb36-d6845eb090cb",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-05T18:34:09.276Z"
+    },
+    "hainamchung__agent-assistant/skills/rag-implementation": {
+      "tagIds": [
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd",
+        "26ba15b8-c70c-45f3-846d-f7edf15b9181"
+      ],
+      "updatedAt": "2026-04-05T18:34:57.178Z"
+    },
+    "hannesill__m4/src/m4/skills/clinical/lods-score": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-05T18:35:17.899Z"
+    },
+    "hannesill__m4/src/m4/skills/clinical/sapsii-score": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-05T18:35:34.431Z"
+    },
+    "Hidden-History__ai-memory/.claude/skills/parzival-save-insight": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "54e134bb-d21c-42ac-a8fd-cfaa361dc7eb"
+      ],
+      "updatedAt": "2026-04-05T18:36:31.844Z"
+    },
+    "hscspring__create-vibe-app/src/create_vibe_app/templates/vibe-default/skill/design-create": {
+      "tagIds": [
+        "26ba15b8-c70c-45f3-846d-f7edf15b9181",
+        "e0c7026e-1fe8-447a-a147-e4ddeac09934",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2"
+      ],
+      "updatedAt": "2026-04-05T18:37:05.101Z"
+    },
+    "huangrt01__CS-Notes/.trae/openclaw-skills/todo-adder": {
+      "tagIds": [
+        "7db2bb70-af5e-49dd-a235-7c50c189218b"
+      ],
+      "updatedAt": "2026-04-05T18:37:09.931Z"
+    },
+    "jd-opensource__JoySafeter/skills/pentest-ctf-forensics": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-05T18:40:08.784Z"
+    },
+    "jd-opensource__JoySafeter/skills/pentest-vuln-verify": {
+      "tagIds": [
+        "7db2bb70-af5e-49dd-a235-7c50c189218b"
+      ],
+      "updatedAt": "2026-04-05T18:40:15.280Z"
+    },
+    "jenkinsm13__metashape-mcp/skills/metashape-reconstruction": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2"
+      ],
+      "updatedAt": "2026-04-05T18:40:30.209Z"
+    },
+    "jewbetcha__openflight/.agents/skills/changelog-generator": {
+      "tagIds": [
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "39280822-8972-4d62-9dcb-8f653a2c3394",
+        "29cf85c4-ce2e-4d3b-bb36-d6845eb090cb"
+      ],
+      "updatedAt": "2026-04-05T18:41:18.967Z"
+    },
+    "jlevy__flowmark/src/flowmark/skills": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd",
+        "ef3b7885-c721-42db-ada8-9d954b884b76"
+      ],
+      "updatedAt": "2026-04-05T18:43:14.341Z"
+    },
+    "johnhuang316__code-index-mcp/.codex/skills/verify-multilang-support": {
+      "tagIds": [
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd",
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-05T18:43:36.501Z"
+    },
+    "jpoley__flowspec/.claude/skills/workflow-executor": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-05T18:44:31.432Z"
+    },
+    "kaivyy__kabot/kabot/skills/mcporter": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-05T18:47:18.856Z"
+    },
+    "KashyapTan__Xpdite/source/skills_seed/gmail": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-05T18:47:24.402Z"
+    },
+    "kilolonion__excelmanus/excelmanus/skillpacks/system/sheet_ops": {
+      "tagIds": [
+        "7db2bb70-af5e-49dd-a235-7c50c189218b"
+      ],
+      "updatedAt": "2026-04-05T18:47:29.036Z"
+    },
+    "leandrosilvaferreira__gitai/.agent/skills/game-development/game-art": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "74d44521-b2f3-4faf-973b-e5674de27516"
+      ],
+      "updatedAt": "2026-04-05T18:48:21.144Z"
+    },
+    "LerianStudio__ring/.archive/finance-team/skills/budget-creation": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-05T18:48:54.391Z"
+    },
+    "LerianStudio__ring/.archive/pmm-team/skills/gtm-planning": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-05T18:49:02.079Z"
+    },
+    "LerianStudio__ring/default/skills/using-ring": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-05T18:49:35.575Z"
+    },
+    "LerianStudio__ring/default/skills/writing-skills": {
+      "tagIds": [
+        "8bcb9335-072f-449a-a5b5-2ba48234f883",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2"
+      ],
+      "updatedAt": "2026-04-05T18:51:04.375Z"
+    },
+    "Lingyuzhou111__dow-ipad-859/workspace/skills/security-guardian": {
+      "tagIds": [
+        "7db2bb70-af5e-49dd-a235-7c50c189218b"
+      ],
+      "updatedAt": "2026-04-05T18:51:10.607Z"
+    },
+    "malue-ai__dazee-small/skills/library/homebrew": {
+      "tagIds": [
+        "7db2bb70-af5e-49dd-a235-7c50c189218b"
+      ],
+      "updatedAt": "2026-04-05T18:51:16.031Z"
+    },
+    "malue-ai__dazee-small/skills/library/session-logs": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-05T18:52:17.560Z"
+    },
+    "manusco__resonance/.agent/skills/resonance-game-dev": {
+      "tagIds": [
+        "26ba15b8-c70c-45f3-846d-f7edf15b9181",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2"
+      ],
+      "updatedAt": "2026-04-05T18:52:47.490Z"
+    },
+    "matteocervelli__llms/.claude/skills/documentation-updater": {
+      "tagIds": [
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "39280822-8972-4d62-9dcb-8f653a2c3394"
+      ],
+      "updatedAt": "2026-04-05T18:53:07.158Z"
+    },
+    "MemTensor__MemOS/apps/openwork-memos-integration/apps/desktop/skills/dev-browser": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-05T18:53:45.672Z"
+    },
+    "microsoft__semantic-link-labs/.claude/skills/run-tests": {
+      "tagIds": [
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "54e134bb-d21c-42ac-a8fd-cfaa361dc7eb",
+        "5bed770d-91da-42f9-9e5a-1896524fc2e8",
+        "d3ea1580-edea-4fad-a389-4ca0cfc9190a"
+      ],
+      "updatedAt": "2026-04-05T18:54:30.460Z"
+    },
+    "mikeOnBreeze__cc-crossbeam/server/skills/adu-plan-review": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-05T18:55:00.225Z"
+    },
+    "monaccode__astromesh/.agents/skills/prompt-engineer": {
+      "tagIds": [
+        "8bcb9335-072f-449a-a5b5-2ba48234f883",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd",
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d"
+      ],
+      "updatedAt": "2026-04-05T18:56:24.971Z"
+    },
+    "monaccode__astromesh/.claude/skills/prompt-engineer": {
+      "tagIds": [
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd",
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d"
+      ],
+      "updatedAt": "2026-04-05T18:56:59.696Z"
+    },
+    "moshesham__Data-Science-Analytical-Handbook/.github/skills/database-designer": {
+      "tagIds": [
+        "26ba15b8-c70c-45f3-846d-f7edf15b9181",
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d"
+      ],
+      "updatedAt": "2026-04-05T18:57:45.979Z"
+    },
+    "Mulily0513__Omni/sandbox/skills/doc-coauthoring": {
+      "tagIds": [
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "39280822-8972-4d62-9dcb-8f653a2c3394"
+      ],
+      "updatedAt": "2026-04-05T18:58:10.030Z"
+    },
+    "NomaDamas__AutoRAG-Research/.agents/skills/create-ingestor-plugin": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-05T18:59:58.844Z"
+    },
+    "norahe0304-art__30x-seo/skills/30x-seo-backlinks": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-05T19:00:41.784Z"
+    },
+    "NVIDIA__nv-cloud-function-helpers/skills/nvcf-ngc-cli-skill": {
+      "tagIds": [
+        "524aff15-a670-42a7-b1cf-b07451aee98e",
+        "54e134bb-d21c-42ac-a8fd-cfaa361dc7eb",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-05T19:01:11.257Z"
+    },
+    "NVIDIA-NeMo__DataDesigner/.claude/skills/review-code": {
+      "tagIds": [
+        "29cf85c4-ce2e-4d3b-bb36-d6845eb090cb",
+        "bba6c08f-7b09-40a9-981a-272f80bdc914",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2"
+      ],
+      "updatedAt": "2026-04-05T19:01:44.040Z"
+    },
+    "nWave-ai__nWave/nWave/skills/nw-br-review-criteria": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-05T19:02:07.733Z"
+    },
+    "nWave-ai__nWave/nWave/skills/nw-pbt-typescript": {
+      "tagIds": [
+        "39ae6acc-d066-48ae-9729-6a5555c83f3b"
+      ],
+      "updatedAt": "2026-04-05T19:03:30.364Z"
+    },
+    "openakita__openakita/skills/pptx": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-05T19:04:32.186Z"
+    },
+    "openakita__openakita/skills/superpowers-debugging": {
+      "tagIds": [
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "d3ea1580-edea-4fad-a389-4ca0cfc9190a",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-05T19:04:54.273Z"
+    },
+    "openakita__openakita/skills/system/browser-list-tabs": {
+      "tagIds": [
+        "7db2bb70-af5e-49dd-a235-7c50c189218b"
+      ],
+      "updatedAt": "2026-04-05T19:05:02.059Z"
+    },
+    "opendatahub-io__ai-helpers/helpers/skills/jira-activity": {
+      "tagIds": [
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "29cf85c4-ce2e-4d3b-bb36-d6845eb090cb"
+      ],
+      "updatedAt": "2026-04-05T19:05:33.649Z"
+    },
+    "openshift-eng__ai-helpers/plugins/ci/skills/payload-autodl-json": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-05T19:06:31.311Z"
+    },
+    "owid__etl/.claude/skills/chart-editing": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-05T19:08:23.214Z"
+    },
+    "phi-friday__joblib-stubs/.claude/skills/joblib-stub-updater": {
+      "tagIds": [
+        "524aff15-a670-42a7-b1cf-b07451aee98e",
+        "54e134bb-d21c-42ac-a8fd-cfaa361dc7eb",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-05T19:10:58.569Z"
+    },
+    "yazelin__ching-tech-os/backend/src/ching_tech_os/skills/media-downloader": {
+      "tagIds": [
+        "7db2bb70-af5e-49dd-a235-7c50c189218b"
+      ],
+      "updatedAt": "2026-04-05T19:12:37.468Z"
+    },
+    "xuiltul__animaworks/templates/en/common_skills/skill-creator": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-05T19:13:19.226Z"
+    },
+    "wshobson__agents/plugins/python-development/skills/python-project-structure": {
+      "tagIds": [
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "26ba15b8-c70c-45f3-846d-f7edf15b9181"
+      ],
+      "updatedAt": "2026-04-05T19:13:37.779Z"
+    },
+    "wshobson__agents/plugins/kubernetes-operations/skills/gitops-workflow": {
+      "tagIds": [
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "29cf85c4-ce2e-4d3b-bb36-d6845eb090cb"
+      ],
+      "updatedAt": "2026-04-05T19:14:09.181Z"
+    },
+    "WayfinderFoundation__wayfinder-paths-sdk/.claude/skills/using-hyperlend-adapter": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-05T19:15:04.457Z"
+    },
+    "vishalsachdev__canvas-mcp/skills/canvas-course-builder": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-05T19:15:37.721Z"
+    },
+    "thapaliyabikendra__ai-artifacts/.claude/skills/mermaid-diagram-patterns": {
+      "tagIds": [
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd",
+        "39280822-8972-4d62-9dcb-8f653a2c3394"
+      ],
+      "updatedAt": "2026-04-05T19:16:28.227Z"
+    },
+    "taylorai__lm-deluge/src/lm_deluge/skill": {
+      "tagIds": [
+        "1bdaaf91-3ab4-472b-9e16-88a2adbd54b5",
+        "ef3b7885-c721-42db-ada8-9d954b884b76"
+      ],
+      "updatedAt": "2026-04-05T19:16:54.870Z"
+    },
+    "SpartanLabsXyz__simmer-sdk/skills/polymarket-wallet-xray": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-05T19:17:36.752Z"
+    },
+    "soimy__atlasify/.agent/skills/mcp-builder": {
+      "tagIds": [
+        "26ba15b8-c70c-45f3-846d-f7edf15b9181",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-05T19:18:08.691Z"
+    },
+    "soimy__atlasify/.agent/skills/lint-and-validate": {
+      "tagIds": [
+        "54e134bb-d21c-42ac-a8fd-cfaa361dc7eb",
+        "bba6c08f-7b09-40a9-981a-272f80bdc914",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2"
+      ],
+      "updatedAt": "2026-04-05T19:18:44.158Z"
+    },
+    "proffesor-for-testing__sentinel-api-testing/.claude/skills/agentdb-memory-patterns": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-06T00:00:01.415Z"
+    },
+    "proffesor-for-testing__sentinel-api-testing/.claude/skills/shift-left-testing": {
+      "tagIds": [
+        "5bed770d-91da-42f9-9e5a-1896524fc2e8",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-06T00:00:43.193Z"
+    },
+    "prowler-cloud__prowler/skills/prowler-test-ui": {
+      "tagIds": [
+        "1bdaaf91-3ab4-472b-9e16-88a2adbd54b5",
+        "5bed770d-91da-42f9-9e5a-1896524fc2e8",
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "74d44521-b2f3-4faf-973b-e5674de27516",
+        "54e134bb-d21c-42ac-a8fd-cfaa361dc7eb",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-06T00:02:10.558Z"
+    },
+    "Q00__ouroboros/skills/evaluate": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-06T00:02:38.573Z"
+    },
+    "RainerSeventeen__paper-tracker/.codex/skills/plan-implement-dual-review": {
+      "tagIds": [
+        "7db2bb70-af5e-49dd-a235-7c50c189218b"
+      ],
+      "updatedAt": "2026-04-06T00:02:43.374Z"
+    },
+    "SimHacker__moollm/skills/action-queue": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-06T00:04:38.487Z"
+    },
+    "sfc-gh-dflippo__snowflake-dbt-demo/.claude/skills/dbt-migration-snowflake": {
+      "tagIds": [
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd",
+        "5c9fd02d-2d6d-4260-8b70-5e551a715b71"
+      ],
+      "updatedAt": "2026-04-06T11:40:56.680Z"
+    },
+    "sfc-gh-dflippo__snowflake-dbt-demo/.claude/skills/dbt-modeling": {
+      "tagIds": [
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "26ba15b8-c70c-45f3-846d-f7edf15b9181"
+      ],
+      "updatedAt": "2026-04-06T11:41:18.696Z"
+    },
+    "SamJHudson01__Carmack-Council/skills/spec-writer": {
+      "tagIds": [
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "e0c7026e-1fe8-447a-a147-e4ddeac09934",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-06T11:42:09.927Z"
+    },
+    "synapticore-io__marimo-flow/.claude/Skills/pina": {
+      "tagIds": [
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "5c9fd02d-2d6d-4260-8b70-5e551a715b71",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd"
+      ],
+      "updatedAt": "2026-04-06T11:43:54.108Z"
+    },
+    "TheCraigHewitt__seomachine/.claude/skills/product-marketing-context": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-06T11:57:31.110Z"
+    },
+    "vasilyu1983__AI-Agents-public/frameworks/shared-skills/skills/data-analytics-engineering": {
+      "tagIds": [
+        "26ba15b8-c70c-45f3-846d-f7edf15b9181",
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2"
+      ],
+      "updatedAt": "2026-04-06T11:58:00.459Z"
+    },
+    "VioletCranberry__coco-search/skills/cocosearch-onboarding": {
+      "tagIds": [
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "39280822-8972-4d62-9dcb-8f653a2c3394"
+      ],
+      "updatedAt": "2026-04-06T11:58:28.760Z"
+    },
+    "WayfinderFoundation__wayfinder-paths-sdk/.claude/skills/using-morpho-adapter": {
+      "tagIds": [
+        "4955b270-eed1-4cff-8ac1-68bb8c726f84"
+      ],
+      "updatedAt": "2026-04-06T11:59:32.911Z"
+    },
+    "winstonkoh87__Athena-Public/examples/skills/coding/git-worktree-swarm": {
+      "tagIds": [
+        "e88e54e7-ab77-474b-8b64-c1ed7190e1bd",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "29cf85c4-ce2e-4d3b-bb36-d6845eb090cb"
+      ],
+      "updatedAt": "2026-04-06T11:59:55.409Z"
+    },
+    "wshobson__agents/plugins/data-engineering/skills/dbt-transformation-patterns": {
+      "tagIds": [
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "26ba15b8-c70c-45f3-846d-f7edf15b9181",
+        "ef3b7885-c721-42db-ada8-9d954b884b76",
+        "54e134bb-d21c-42ac-a8fd-cfaa361dc7eb"
+      ],
+      "updatedAt": "2026-04-06T12:00:17.542Z"
+    },
+    "wshobson__agents/plugins/incident-response/skills/on-call-handoff-patterns": {
+      "tagIds": [
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "39280822-8972-4d62-9dcb-8f653a2c3394"
+      ],
+      "updatedAt": "2026-04-06T12:00:34.043Z"
+    },
+    "giuseppe-trisciuoglio__developer-kit/aws-cloudformation-rds": {
+      "tagIds": [
+        "0abe66a6-6620-4f98-bdc1-52330dfad751",
+        "524aff15-a670-42a7-b1cf-b07451aee98e",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "ef3b7885-c721-42db-ada8-9d954b884b76"
+      ],
+      "updatedAt": "2026-04-19T13:37:47.945Z"
+    },
+    "malue-ai__dazee-small/feishu": {
+      "tagIds": [
+        "e1cae536-a921-4136-8ae8-6b9f15515507"
+      ],
+      "updatedAt": "2026-04-19T13:46:40.720Z"
+    },
+    "malue-ai__dazee-small/pomodoro": {
+      "tagIds": [
+        "e1cae536-a921-4136-8ae8-6b9f15515507"
+      ],
+      "updatedAt": "2026-04-19T13:46:43.433Z"
+    },
+    "nex-agi__NexRL/testing": {
+      "tagIds": [
+        "1a0aa371-0d59-47c0-87d3-0fbfa0a92d9b",
+        "54e134bb-d21c-42ac-a8fd-cfaa361dc7eb"
+      ],
+      "updatedAt": "2026-04-19T13:47:08.693Z"
+    },
+    "sfc-gh-dflippo__snowflake-dbt-demo/snowflake-cli": {
+      "tagIds": [
+        "0abe66a6-6620-4f98-bdc1-52330dfad751",
+        "524aff15-a670-42a7-b1cf-b07451aee98e",
+        "54e134bb-d21c-42ac-a8fd-cfaa361dc7eb",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d"
+      ],
+      "updatedAt": "2026-04-19T13:49:31.128Z"
+    },
+    "soimy__atlasify/game-development/pc-games": {
+      "tagIds": [
+        "0abe66a6-6620-4f98-bdc1-52330dfad751",
+        "26ba15b8-c70c-45f3-846d-f7edf15b9181",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2"
+      ],
+      "updatedAt": "2026-04-19T13:49:50.983Z"
+    },
+    "thapaliyabikendra__ai-artifacts/abp-service-patterns": {
+      "tagIds": [
+        "e1cae536-a921-4136-8ae8-6b9f15515507"
+      ],
+      "updatedAt": "2026-04-19T13:52:28.905Z"
+    },
+    "williamzujkowski__standards/mobile-android": {
+      "tagIds": [
+        "0abe66a6-6620-4f98-bdc1-52330dfad751",
+        "26ba15b8-c70c-45f3-846d-f7edf15b9181",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2"
+      ],
+      "updatedAt": "2026-04-19T13:53:00.457Z"
+    },
+    "williamzujkowski__standards/serverless": {
+      "tagIds": [
+        "0abe66a6-6620-4f98-bdc1-52330dfad751",
+        "524aff15-a670-42a7-b1cf-b07451aee98e"
+      ],
+      "updatedAt": "2026-04-19T13:53:16.234Z"
+    },
+    "williamzujkowski__standards/unit-testing": {
+      "tagIds": [
+        "0abe66a6-6620-4f98-bdc1-52330dfad751",
+        "1a0aa371-0d59-47c0-87d3-0fbfa0a92d9b",
+        "74d44521-b2f3-4faf-973b-e5674de27516",
+        "ef3b7885-c721-42db-ada8-9d954b884b76"
+      ],
+      "updatedAt": "2026-04-19T13:53:59.380Z"
+    },
+    "xenitV1__Antigravity-Workflows/plan-writing": {
+      "tagIds": [
+        "098afd5f-f68a-486d-a5ab-93f8ae7e65dc",
+        "74d44521-b2f3-4faf-973b-e5674de27516",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "ef3b7885-c721-42db-ada8-9d954b884b76"
+      ],
+      "updatedAt": "2026-04-19T13:54:57.788Z"
+    },
+    "giuseppe-trisciuoglio__developer-kit/unit-test-mapper-converter": {
+      "tagIds": [
+        "0abe66a6-6620-4f98-bdc1-52330dfad751",
+        "1a0aa371-0d59-47c0-87d3-0fbfa0a92d9b",
+        "b28c4a1b-ac36-43a5-baeb-e653a140755d",
+        "cc8448de-8a5d-47f8-a4c3-6784d93f65c2",
+        "ef3b7885-c721-42db-ada8-9d954b884b76"
+      ],
+      "updatedAt": "2026-04-19T13:55:25.323Z"
+    }
+  }
+}

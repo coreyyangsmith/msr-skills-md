@@ -20,8 +20,8 @@ log = logging.getLogger(__name__)
 
 
 def generate(scan_df: pd.DataFrame, out_dir: str, fig_format: str, dpi: int) -> Path | None:
-    present = [column for column in ACF_COLUMNS if column in scan_df.columns]
-    if len(present) < 2:
+    candidate_columns = [column for column in ACF_COLUMNS if column in scan_df.columns]
+    if len(candidate_columns) < 2:
         log.warning("Fewer than 2 ACF columns present; skipping Fig 4 pairwise heatmap.")
         return None
 
@@ -30,8 +30,12 @@ def generate(scan_df: pd.DataFrame, out_dir: str, fig_format: str, dpi: int) -> 
         log.warning("No found repos; skipping Fig 4 pairwise heatmap.")
         return None
 
-    for column in present:
+    for column in candidate_columns:
         found_df[column] = pd.to_numeric(found_df[column], errors="coerce").fillna(0).astype(int)
+    present = [column for column in candidate_columns if int(found_df[column].sum()) > 0]
+    if len(present) < 2:
+        log.warning("Fewer than 2 observed ACF columns with positive counts; skipping Fig 4 pairwise heatmap.")
+        return None
 
     labels = [ACF_COLUMNS[column] for column in present]
     matrix = np.zeros((len(present), len(present)), dtype=float)

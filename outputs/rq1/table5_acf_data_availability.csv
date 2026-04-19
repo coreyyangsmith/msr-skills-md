@@ -1,7 +1,7 @@
 artifact,scan_column,column_present_in_scan_csv,repos_in_dataset,skill_md_repos_in_dataset,usable_with_current_data_for_skill_repo_analysis,usable_with_current_data_for_preference_question,new_data_required,reason
-CLAUDE.md,has_CLAUDE,True,3605,3150,True,False,True,"ACF checks were only executed for SKILL.md repos, so non-SKILL rows cannot support prevalence-by-environment estimation."
-AGENTS.md,has_AGENTS,True,3605,3150,True,False,True,"ACF checks were only executed for SKILL.md repos, so non-SKILL rows cannot support prevalence-by-environment estimation."
-copilot-instructions.md,has_COPILOT,True,3605,3150,True,False,True,"ACF checks were only executed for SKILL.md repos, so non-SKILL rows cannot support prevalence-by-environment estimation."
-.cursorrules.md,has_CURSORRULES_MD,True,3605,3150,True,False,True,"ACF checks were only executed for SKILL.md repos, so non-SKILL rows cannot support prevalence-by-environment estimation."
-.instructions.md,has_INSTRUCTIONS_MD,True,3605,3150,True,False,True,"ACF checks were only executed for SKILL.md repos, so non-SKILL rows cannot support prevalence-by-environment estimation."
-GEMINI.md,has_GEMINI,True,3605,3150,True,False,True,"ACF checks were only executed for SKILL.md repos, so non-SKILL rows cannot support prevalence-by-environment estimation."
+CLAUDE.md,has_CLAUDE,True,157285,3478,True,False,True,"ACF checks were only executed for SKILL.md repos, so non-SKILL rows cannot support prevalence-by-environment estimation."
+AGENTS.md,has_AGENTS,True,157285,3478,True,False,True,"ACF checks were only executed for SKILL.md repos, so non-SKILL rows cannot support prevalence-by-environment estimation."
+copilot-instructions.md,has_COPILOT,True,157285,3478,True,False,True,"ACF checks were only executed for SKILL.md repos, so non-SKILL rows cannot support prevalence-by-environment estimation."
+.cursorrules.md,has_CURSORRULES_MD,True,157285,3478,True,False,True,"ACF checks were only executed for SKILL.md repos, so non-SKILL rows cannot support prevalence-by-environment estimation."
+.instructions.md,has_INSTRUCTIONS_MD,True,157285,3478,True,False,True,"ACF checks were only executed for SKILL.md repos, so non-SKILL rows cannot support prevalence-by-environment estimation."
+GEMINI.md,has_GEMINI,True,157285,3478,True,False,True,"ACF checks were only executed for SKILL.md repos, so non-SKILL rows cannot support prevalence-by-environment estimation."

@@ -13,6 +13,8 @@ NORMALISE_MAP: dict[str, str] = {
     "se-workflow-management": "se-workflow-management",
     "non-english": "wrong-language",
     "wrong-language": "wrong-language",
+    # "references" (plural) used in some CY exports is the same concept as "reference"
+    "references": "reference",
 }
 
 FILTER_SOURCE_LABELS = frozenset({

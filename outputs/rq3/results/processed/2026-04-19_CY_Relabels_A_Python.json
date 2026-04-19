@@ -1,0 +1,220 @@
+{
+  "version": 1,
+  "dataset": {
+    "rootName": "A",
+    "savedAt": "2026-04-19T13:55:36.639Z",
+    "totalFiles": 12,
+    "sourceFile": "2026-04-19_CY_Relabels_A_Python.json"
+  },
+  "processing": {
+    "type": "rq3-label-processing",
+    "normalisation_rules": {
+      "Instructive": "instructive",
+      "software design": "software-design",
+      "SE workflow management": "se-workflow-management",
+      "non-english": "wrong-language"
+    },
+    "filter_label": "filter",
+    "filter_source_labels": [
+      "agent-skill",
+      "wrong-language",
+      "outside-scope"
+    ],
+    "filter_source_document_counts": {
+      "agent-skill": 0,
+      "outside-scope": 0,
+      "wrong-language": 3
+    },
+    "sdlc_collapse_rules": {
+      "Documentation": [
+        "documentation",
+        "agent-facing"
+      ],
+      "Requirements": [
+        "requirements"
+      ],
+      "Software Design": [
+        "software-design"
+      ],
+      "Code Generation": [
+        "code-generation",
+        "implementation",
+        "code-integration",
+        "program-analysis"
+      ],
+      "Software Testing": [
+        "software-testing",
+        "test-generation",
+        "code-quality",
+        "debugging"
+      ],
+      "DevOps": [
+        "devops",
+        "se-workflow-management"
+      ]
+    },
+    "counts": {
+      "documents": 12,
+      "original_label_assignments": 35,
+      "processed_label_assignments": 35,
+      "documents_changed": 12,
+      "documents_collapsed_to_filter": 3,
+      "documents_with_multiple_filter_sources": 0
+    },
+    "filter_source_conflicts": []
+  },
+  "tags": [
+    {
+      "id": "060a676d-dd8a-50e1-8aaa-1fa133fcd25e",
+      "name": "Code Generation",
+      "createdAt": "2026-04-19T13:55:36.639Z"
+    },
+    {
+      "id": "f11becb1-c110-5fd8-9215-1918e86c5b5f",
+      "name": "DevOps",
+      "createdAt": "2026-04-19T13:55:36.639Z"
+    },
+    {
+      "id": "4f173e50-0b45-5277-aaea-43d01e9fa592",
+      "name": "Software Design",
+      "createdAt": "2026-04-19T13:55:36.639Z"
+    },
+    {
+      "id": "ad89706e-aacb-5cb2-ba45-63db96e25d87",
+      "name": "Software Testing",
+      "createdAt": "2026-04-19T13:55:36.639Z"
+    },
+    {
+      "id": "394af782-213d-54ae-9e62-b5ca7b49104d",
+      "name": "commands",
+      "createdAt": "2026-04-19T13:55:36.639Z"
+    },
+    {
+      "id": "a9f869cb-fe0c-5149-bb5d-13b0ec6e5b34",
+      "name": "descriptive",
+      "createdAt": "2026-04-19T13:55:36.639Z"
+    },
+    {
+      "id": "9f32bbfd-e11c-51c1-a64f-62831f8c3c8a",
+      "name": "filter",
+      "createdAt": "2026-04-19T13:55:36.639Z"
+    },
+    {
+      "id": "2bd6adac-c8da-5da1-98d1-b87eec69eb6c",
+      "name": "instructive",
+      "createdAt": "2026-04-19T13:55:36.639Z"
+    },
+    {
+      "id": "6651e946-1b8e-5926-a0b5-5e58084f3af4",
+      "name": "negative-examples",
+      "createdAt": "2026-04-19T13:55:36.639Z"
+    },
+    {
+      "id": "f5982392-8387-529f-b938-ba6ee49d38ab",
+      "name": "positive-examples",
+      "createdAt": "2026-04-19T13:55:36.639Z"
+    },
+    {
+      "id": "00be3acd-cdb8-583f-8fc9-c31b33861ae7",
+      "name": "reference",
+      "createdAt": "2026-04-19T13:55:36.639Z"
+    }
+  ],
+  "labels": {
+    "giuseppe-trisciuoglio__developer-kit/aws-cloudformation-rds": {
+      "tagIds": [
+        "f11becb1-c110-5fd8-9215-1918e86c5b5f",
+        "a9f869cb-fe0c-5149-bb5d-13b0ec6e5b34",
+        "2bd6adac-c8da-5da1-98d1-b87eec69eb6c",
+        "f5982392-8387-529f-b938-ba6ee49d38ab",
+        "00be3acd-cdb8-583f-8fc9-c31b33861ae7"
+      ],
+      "updatedAt": "2026-04-19T13:37:47.945Z"
+    },
+    "giuseppe-trisciuoglio__developer-kit/unit-test-mapper-converter": {
+      "tagIds": [
+        "ad89706e-aacb-5cb2-ba45-63db96e25d87",
+        "a9f869cb-fe0c-5149-bb5d-13b0ec6e5b34",
+        "2bd6adac-c8da-5da1-98d1-b87eec69eb6c",
+        "f5982392-8387-529f-b938-ba6ee49d38ab",
+        "00be3acd-cdb8-583f-8fc9-c31b33861ae7"
+      ],
+      "updatedAt": "2026-04-19T13:55:25.323Z"
+    },
+    "malue-ai__dazee-small/feishu": {
+      "tagIds": [
+        "9f32bbfd-e11c-51c1-a64f-62831f8c3c8a"
+      ],
+      "updatedAt": "2026-04-19T13:46:40.720Z"
+    },
+    "malue-ai__dazee-small/pomodoro": {
+      "tagIds": [
+        "9f32bbfd-e11c-51c1-a64f-62831f8c3c8a"
+      ],
+      "updatedAt": "2026-04-19T13:46:43.433Z"
+    },
+    "nex-agi__NexRL/testing": {
+      "tagIds": [
+        "ad89706e-aacb-5cb2-ba45-63db96e25d87",
+        "394af782-213d-54ae-9e62-b5ca7b49104d"
+      ],
+      "updatedAt": "2026-04-19T13:47:08.693Z"
+    },
+    "sfc-gh-dflippo__snowflake-dbt-demo/snowflake-cli": {
+      "tagIds": [
+        "f11becb1-c110-5fd8-9215-1918e86c5b5f",
+        "394af782-213d-54ae-9e62-b5ca7b49104d",
+        "a9f869cb-fe0c-5149-bb5d-13b0ec6e5b34",
+        "00be3acd-cdb8-583f-8fc9-c31b33861ae7"
+      ],
+      "updatedAt": "2026-04-19T13:49:31.128Z"
+    },
+    "soimy__atlasify/game-development/pc-games": {
+      "tagIds": [
+        "4f173e50-0b45-5277-aaea-43d01e9fa592",
+        "2bd6adac-c8da-5da1-98d1-b87eec69eb6c",
+        "00be3acd-cdb8-583f-8fc9-c31b33861ae7"
+      ],
+      "updatedAt": "2026-04-19T13:49:50.983Z"
+    },
+    "thapaliyabikendra__ai-artifacts/abp-service-patterns": {
+      "tagIds": [
+        "9f32bbfd-e11c-51c1-a64f-62831f8c3c8a"
+      ],
+      "updatedAt": "2026-04-19T13:52:28.905Z"
+    },
+    "williamzujkowski__standards/mobile-android": {
+      "tagIds": [
+        "4f173e50-0b45-5277-aaea-43d01e9fa592",
+        "2bd6adac-c8da-5da1-98d1-b87eec69eb6c",
+        "00be3acd-cdb8-583f-8fc9-c31b33861ae7"
+      ],
+      "updatedAt": "2026-04-19T13:53:00.457Z"
+    },
+    "williamzujkowski__standards/serverless": {
+      "tagIds": [
+        "f11becb1-c110-5fd8-9215-1918e86c5b5f",
+        "00be3acd-cdb8-583f-8fc9-c31b33861ae7"
+      ],
+      "updatedAt": "2026-04-19T13:53:16.234Z"
+    },
+    "williamzujkowski__standards/unit-testing": {
+      "tagIds": [
+        "ad89706e-aacb-5cb2-ba45-63db96e25d87",
+        "6651e946-1b8e-5926-a0b5-5e58084f3af4",
+        "f5982392-8387-529f-b938-ba6ee49d38ab",
+        "00be3acd-cdb8-583f-8fc9-c31b33861ae7"
+      ],
+      "updatedAt": "2026-04-19T13:53:59.380Z"
+    },
+    "xenitV1__Antigravity-Workflows/plan-writing": {
+      "tagIds": [
+        "060a676d-dd8a-50e1-8aaa-1fa133fcd25e",
+        "2bd6adac-c8da-5da1-98d1-b87eec69eb6c",
+        "6651e946-1b8e-5926-a0b5-5e58084f3af4",
+        "f5982392-8387-529f-b938-ba6ee49d38ab"
+      ],
+      "updatedAt": "2026-04-19T13:54:57.788Z"
+    }
+  }
+}

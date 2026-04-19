@@ -10,6 +10,23 @@ See [`.cursor/skills/msr/SKILL.md`](.cursor/skills/msr/SKILL.md) for the full de
 
 ---
 
+## Dataset
+
+The full replication package — including all extracted `SKILL.md` files and the skill folder contents for each matched repository — is archived on Zenodo:
+
+> **[Zenodo record — DOI: 10.5281/zenodo.XXXXXXX]** *(placeholder — link will be updated on publication)*
+
+The Zenodo archive contains:
+
+- `outputs/raw_data/` — downloaded skill folder trees, one subdirectory per primary language, mirroring the layout written by Stage 3 (`generate_dataset.py`).
+- `data/skill_files/full_skills.csv` — per-skill instance metrics CSV (Stage 3 output).
+- `data/skill_only_scan/skill_repositories.csv` — the filtered shortlist of repositories confirmed to contain `SKILL.md`.
+- `data/seart_csvs/` — the SEART-exported repository list used as the Stage 1 input.
+
+If you only want to reproduce the RQ figures without re-running the data collection pipeline, download the Zenodo archive, place the `outputs/` and `data/` folders at the repository root, and jump directly to the [RQ reproduction steps](#rq1--prevalence-and-adoption-analysis).
+
+---
+
 ## Prerequisites
 
 - [uv](https://docs.astral.sh/uv/) (Python project manager)
@@ -64,17 +81,37 @@ This creates a virtual environment and installs all dependencies from `uv.lock`.
 
 ---
 
-## Quick start
+## Data Processing Pipeline
 
-### Option 1: Starting from SEART CSV exports
+The pipeline consists of four main stages. Each stage builds on the previous one and produces artifacts in `data/` or `outputs/`.
 
-Place your SEART CSV exports in `data/seart_csvs/`, then jump straight to the repository scan step below.
+```
+GitHub API / SEART CSVs
+        │
+        ▼
+  Stage 1 — Source repository list
+  data/seart_csvs/github_search_results.csv
+        │
+        ▼
+  Stage 2 — Scan for SKILL.md
+  outputs/skill_md_scan_results.csv
+  outputs/skill_md_scan_results_found.csv
+        │
+        ▼
+  Stage 2.5 — Filter active repositories
+  data/skill_only_scan/skill_repositories.csv
+        │
+        ▼
+  Stage 3 — Extract skill artifacts
+  data/skill_files/full_skills.csv
+  outputs/raw_data/<Language>/<owner>__<repo>/
+```
 
-### Option 2: Starting from the GitHub API (no SEART required)
+---
 
-Use `search_github_repos.py` to build the initial repository list directly from the GitHub Search API. This produces a SEART-compatible CSV that feeds into the same pipeline:
+### Stage 1 — Retrieve source repositories
 
-**Step 1 — Scrape repositories from GitHub:**
+Use `search_github_repos.py` to build the initial repository list directly from the GitHub Search API. This produces a SEART-compatible CSV that feeds into the same pipeline as SEART exports:
 
 ```sh
 uv run python src/search_github_repos.py \
@@ -82,38 +119,57 @@ uv run python src/search_github_repos.py \
   --resume
 ```
 
-Default criteria applied:
-- 10 or more stars
-- MIT, Apache 2.0, BSD-3-Clause, or BSD-2-Clause license
-- TypeScript, Python, C#, Go, C++, JavaScript, Java, C, Rust or PHP
-- Pushed since 2025-10-16
-- (Optional) end date
-
-The output CSV is written to `data/seart_csvs/github_search_results.csv` and can be used immediately as the `--seart-dir` input for Step 2.
+Default criteria applied: ≥ 10 stars · MIT/Apache 2.0/BSD-3-Clause/BSD-2-Clause license · TypeScript, Python, C#, Go, C++, JavaScript, Java, C, Rust or PHP · pushed since 2025-10-16.
 
 Average runtime: ~360 API calls across 36 language/license combinations, at 30 req/min per token — approximately 12 minutes with one token.
 
+**Artifact produced:** `data/seart_csvs/github_search_results.csv` — one row per GitHub repository, with per-(language, license) split CSVs written alongside it.
+
 ---
 
+### Stage 2 — Scan for SKILL.md
 
-**Step 2 — Scan for SKILL.md:**
+Scan every repository in the list for a `SKILL.md` file via the GitHub Code Search API, record community-profile flags, and pin the commit SHA for each match:
+
 ```sh
 uv run python src/extract_skill_repos.py \
   --seart-dir data/seart_csvs \
   --out-csv outputs/skill_md_scan_results.csv \
   --resume
-
-uv run python src/extract_skill_repos.py --seart-dir data/seart_csvs --out-csv outputs/skill_md_scan_results.csv --resume
 ```
 
-Average runtime is 3.65 repositories/minute/token
+Average runtime: 3.65 repositories/minute/token.
 
-The shared repo-name filter is enabled by default here so stage 2 and stage 3 use the same inclusion rules. Pass `--no-name-filter` to disable the built-in list, or `--name-filter-words foo,bar` to add extra words.
+The shared repo-name filter is enabled by default so stages 2 and 3 use the same inclusion rules. Pass `--no-name-filter` to disable it, or `--name-filter-words foo,bar` to append extra words.
 
-Then ensure non-archived and non-forked repositories are properly filtered
-uv run python utils/filter_active_repos.py outputs/skill_md_scan_results_found.csv -o outputs/skill_md_scan_results_found_filtered.csv
+**Artifacts produced:**
 
-**Step 3 — Download skill folders and compute metrics for found repos:**
+| File | Description |
+|---|---|
+| `outputs/skill_md_scan_results.csv` | All scanned repositories (one row per repo) |
+| `outputs/skill_md_scan_results_found.csv` | Repos where `SKILL.md` was found |
+| `outputs/skill_md_scan_results_not_found.csv` | Repos where `SKILL.md` was not found |
+| `outputs/skill_md_scan_results_errors.csv` | Repos that produced scan errors |
+
+---
+
+### Stage 2.5 — Filter active repositories
+
+Remove archived and forked repositories from the found set before downloading skill artifacts:
+
+```sh
+uv run python utils/filter_active_repos.py \
+  outputs/skill_md_scan_results_found.csv \
+  -o outputs/skill_md_scan_results_found_filtered.csv
+```
+
+**Artifact produced:** `outputs/skill_md_scan_results_found_filtered.csv` → used as `data/skill_only_scan/skill_repositories.csv` — the final shortlist of active, non-forked repositories confirmed to contain `SKILL.md`.
+
+---
+
+### Stage 3 — Extract full skill artifacts
+
+Download the skill folder for each confirmed repository and compute per-skill file metrics:
 
 ```sh
 uv run python src/generate_dataset.py \
@@ -123,11 +179,26 @@ uv run python src/generate_dataset.py \
   --resume
 ```
 
-Average runtime is 14 repos/minute (not sure if rate limits get hit or network througput is the limiting factor)
+Average runtime: ~14 repos/minute.
 
-Stage 3 writes `outputs/processing_failures.tsv` by default so repos missing from `full_skills_instances.csv` can be distinguished as `tree_fetch_failed`, `tree_truncated`, `zero_skills_found`, or `exception`.
+Stage 3 writes `outputs/processing_failures.tsv` so repos missing from `full_skills_instances.csv` can be distinguished as `tree_fetch_failed`, `tree_truncated`, `zero_skills_found`, or `exception`.
 
-**Optional Step 3.5 — Enrich the scan CSV with contributor counts (needed for the contributor-count figure):**
+**Artifacts produced:**
+
+| File/Directory | Description |
+|---|---|
+| `data/skill_files/full_skills.csv` | Per-skill instance metrics (one row per `SKILL.md` found) |
+| `outputs/raw_data/<Language>/<owner>__<repo>/` | Downloaded skill folder trees, one subdirectory per matched repository |
+| `outputs/processing_failures.tsv` | Repos that produced no dataset rows and the reason |
+| `outputs/name_filtered_repos.tsv` | Repos skipped by the shared name filter |
+
+> **Full dataset on Zenodo:** The `outputs/raw_data/` tree and `data/skill_files/full_skills.csv` are large. The complete archive is available at the [Zenodo record](#dataset) above.
+
+---
+
+### Optional enrichment steps
+
+**Step 3.5 — Enrich with contributor counts** (required for contributor-count figures in RQ1):
 
 ```sh
 uv run python src/enrich_scan_contributors.py \
@@ -136,7 +207,11 @@ uv run python src/enrich_scan_contributors.py \
   --resume
 ```
 
-**Optional Step 3.6 — Fetch GitHub repo metadata and READMEs:**
+**Artifact produced:** `outputs/skill_md_scan_results_with_contributors.csv`
+
+---
+
+**Step 3.6 — Fetch GitHub repo metadata and READMEs** (Python repositories only by default):
 
 ```sh
 uv run python src/fetch_repo_metadata_readmes.py \
@@ -146,22 +221,25 @@ uv run python src/fetch_repo_metadata_readmes.py \
   --resume
 ```
 
-By default this only processes repositories whose `mainLanguage` is `Python`.
-It writes one row per unique Python repository in the input CSV and saves each
-repository README to `--readme-dir` using `owner__repo` filenames. Pass
-`--all-languages` only when intentionally collecting every language.
+Pass `--all-languages` to collect metadata for every language. **Artifact produced:** `outputs/repo_metadata_readmes/repo_metadata.csv` and per-repo README files under `outputs/repo_metadata_readmes/readmes/`.
 
-**Step 3.7 — (Optional) Enrich the scan CSV with extended ACF columns**
+---
 
-If `outputs/skill_md_scan_results_with_contributors.csv` only has `has_CLAUDE`, `has_AGENTS`, and `has_COPILOT`, you can add `has_CURSORRULES_MD`, `has_INSTRUCTIONS_MD`, and `has_GEMINI` using the GitHub Contents API only (no code search), pinned to each repo’s `commit_sha` / `acf_ref` from `data/skill_only_scan/known_skill_repos.csv`:
+**Step 3.7 — Enrich with extended ACF columns**
+
+If `outputs/skill_md_scan_results_with_contributors.csv` only contains `has_CLAUDE`, `has_AGENTS`, and `has_COPILOT`, add `has_CURSORRULES_MD`, `has_INSTRUCTIONS_MD`, and `has_GEMINI` using the GitHub Contents API, pinned to each repo's commit SHA:
 
 ```sh
 uv run python src/enrich_extended_acf_columns.py
 ```
 
-This writes `outputs/skill_md_scan_results_skill_only_new_acfs.csv` and merges into `outputs/skill_md_scan_results_with_contributors_extended.csv`. Use the SKILL-only file as `--acf-scan-csv` for ACF-specific RQ1 figures, or the merged extended file as `--scan-csv` when you want one full-corpus input with all six ACF columns.
+**Artifacts produced:** `outputs/skill_md_scan_results_skill_only_new_acfs.csv` and the merged `outputs/skill_md_scan_results_with_contributors_extended.csv`.
 
-**Step 4 — Run RQ1 prevalence and adoption analysis:**
+---
+
+## RQ1 — Prevalence and adoption analysis
+
+**Step 4 — Run all RQ1 figures and tables:**
 
 ```sh
 uv run python src/rq1/analyze_metadata.py \
@@ -171,49 +249,123 @@ uv run python src/rq1/analyze_metadata.py \
   --out-dir outputs/rq1
 ```
 
-For ACF figures, `--acf-scan-csv outputs/skill_md_scan_results_skill_only_new_acfs.csv` is sufficient because those figures analyze repositories that already contain `SKILL.md`. For non-ACF prevalence figures, keep `--scan-csv` pointed at the full scan population, or pass `outputs/skill_md_scan_results_with_contributors_extended.csv` as `--scan-csv` if you want a single full-corpus file with the extended ACF columns included.
+- `--scan-csv` drives all prevalence and ecosystem figures (full scan population).
+- `--acf-scan-csv` drives all ACF co-occurrence figures (SKILL-only population).
+- `--instances-csv` drives skill-file distribution and richness figures.
+- If contributor enrichment was skipped, the wrapper still runs and writes a note file explaining that the contributor-count figure could not be generated.
 
-If contributor enrichment is skipped, the RQ1 wrapper still runs and writes a note file explaining that the contributor-count figure could not be generated. The wrapper always requires `--instances-csv` (e.g. `outputs/full_skills_instances.csv`) so instance-level figures use every row in that file; blacklist/name filters apply to the scan CSV only, not to the instances export.
+**Artifacts produced in `outputs/rq1/`:**
 
-> **Note on filename convention**: Matching is exact on the basename. `SKILL.md` matches, while `skill.md`, `SKILL.MD`, and filenames that merely contain `skill.md` do not. Pass `--match-name SKILLS.md` to search for the plural form instead.
+| Artifact | Description |
+|---|---|
+| `fig1_prevalence_by_language.png` | SKILL.md prevalence rate by primary language |
+| `fig2_prevalence_by_size_stars.png` | Prevalence by repository size and star count |
+| `fig3_acf_cooccurrence.png` | ACF co-occurrence bar chart |
+| `fig4_acf_pairwise_heatmap.png` | ACF pairwise Jaccard heatmap |
+| `fig5_placement_patterns.png` | SKILL.md placement patterns within repos |
+| `fig6_temporal_trend.png` / `fig6a_adoption_over_time.png` / `fig6b_prevalence_rate_over_time.png` | Adoption trend over time |
+| `fig7_topic_analysis.png` | GitHub topic analysis |
+| `fig8_skill_richness.png` | Skill richness (count of SKILL.md files per repo) |
+| `fig9_license_distribution.png` | License distribution |
+| `fig10_language_ecosystem.png` | Language ecosystem breakdown |
+| `fig11_project_maturity.png` / `fig11_skill_files_per_repo.png` | Project maturity and skill-file distribution |
+| `fig12_presence_by_contributor_count.png` | Presence rate by contributor count |
+| `fig13_presence_by_project_size.png` | Presence rate by project size |
+| `fig14_presence_by_project_age.png` | Presence rate by project age |
+| `fig15_acf_prevalence_by_language.png` | ACF prevalence broken down by language |
+| `fig16_acf_pairwise_jaccard_heatmap.png` | ACF pairwise Jaccard (extended ACF set) |
+| `fig17_acf_conditional_probability_heatmap.png` | ACF conditional probability heatmap |
+| `fig18_acf_combination_distribution.png` | ACF combination distribution |
+| `fig19_acf_count_distribution.png` | Distribution of ACF count per repo |
+| `fig20_acf_any_multi_by_language.png` | Any/multiple ACF presence by language |
+| `fig21_scale_visibility_collaboration_age.png` | Scale, visibility, collaboration, and age analysis |
+| `fig22_acf_intersections_language_heatmap.png` | ACF intersection language heatmap |
+| `table*.csv` | Corresponding summary tables for each figure |
 
 ---
 
 ## RQ2 — Content analysis
 
-> **[Placeholder]** RQ2 analysis scripts and instructions will be added here once the labeling phase is complete.
+**Step 1 — Collect SKILL.md documents:**
+
+```sh
+uv run python src/rq2/collect_skill_documents.py \
+  --raw-data-dir outputs/raw_data \
+  --out-jsonl outputs/rq2/skill_documents.jsonl \
+  --out-stats-json outputs/rq2/skill_documents_stats.json
+```
+
+**Artifact produced:** `outputs/rq2/skill_documents.jsonl` (normalized SKILL.md content per document) and `outputs/rq2/skill_documents_stats.json` (corpus-level statistics).
 
 ---
 
-## RQ3 — Manual labeling sample preparation
+**Step 2 — Run TF-IDF analysis:**
 
-RQ3 requires a stratified random sample of `SKILL.md` files to be manually labeled by two annotators. The three scripts below handle (1) generating per-language metadata summaries from the raw data, (2) drawing a reproducible random sample per language, and (3) splitting that sample into labeling buckets with a shared overlap set for inter-rater agreement.
+```sh
+uv run python src/rq2/analyze_tfidf_sklearn.py \
+  --input outputs/rq2/skill_documents.jsonl \
+  --out-global outputs/rq2/tfidf_sklearn_top_terms_global.csv \
+  --out-global-unigrams outputs/rq2/tfidf_sklearn_top_terms_global_unigrams.csv \
+  --out-global-bigrams outputs/rq2/tfidf_sklearn_top_terms_global_bigrams.csv \
+  --out-per-doc outputs/rq2/tfidf_sklearn_top_terms_per_document.csv \
+  --out-summary outputs/rq2/tfidf_sklearn_summary.json
+```
+
+**Artifacts produced in `outputs/rq2/`:**
+
+| File | Description |
+|---|---|
+| `tfidf_sklearn_top_terms_global.csv` | Top global TF-IDF terms (unigrams + bigrams) |
+| `tfidf_sklearn_top_terms_global_unigrams.csv` | Top global unigrams |
+| `tfidf_sklearn_top_terms_global_bigrams.csv` | Top global bigrams |
+| `tfidf_sklearn_top_terms_per_document.csv` | Top terms per SKILL.md document |
+| `tfidf_sklearn_summary.json` | Corpus-level TF-IDF summary statistics |
+| `skill_documents_stats.json` | Raw corpus statistics |
+| `text_length_boxplots.png` | Text length distribution plots |
+
+---
+
+## RQ3 — Manual labeling and category analysis
+
+RQ3 involves stratified random sampling, manual labeling by two annotators, inter-rater agreement computation, and analysis of structural and SDLC-task patterns in SKILL.md files.
 
 ### Step 1 — Generate per-language metadata summaries
 
-Walks `outputs/raw_data/` (whose immediate children are language folders) and writes one `<language>_summary.json` per language to `outputs/rq3/`.
+Walks `outputs/raw_data/` and writes one `<Language>_summary.json` per language to `outputs/rq3/`:
 
 ```sh
 uv run python src/rq3/retrieve_language_metadata.py \
   --root outputs/raw_data \
   --out-dir outputs/rq3
-
-uv run python src/rq3/retrieve_language_metadata.py --root outputs/raw_data --out-dir outputs/rq3
 ```
 
-### Step 2 — Draw a random language sample
+**Artifacts produced:** `outputs/rq3/<Language>_summary.json` for each language (C, C#, C++, Go, Java, JavaScript, PHP, Python, Rust, TypeScript).
 
-Randomly samples `SKILL.md` files from a language subfolder of `raw_data` and copies them — preserving the original relative path structure — into `outputs/rq3/language_sample/<Language>/`. Run once per language you want to include.
+---
+
+### Step 2 — Draw a stratified random sample
+
+Randomly samples `SKILL.md` files from a language subfolder of `raw_data` and copies them — preserving the original relative path structure — into `outputs/rq3/language_sample/<Language>/`. Run once per language:
 
 ```sh
 # Python
-uv run python src/rq3/generate_language_sample.py --root outputs/raw_data/Python --n 370 --seed 42 --out-dir outputs/rq3/language_sample/Python
+uv run python src/rq3/generate_language_sample.py \
+  --root outputs/raw_data/Python \
+  --n 370 --seed 42 \
+  --out-dir outputs/rq3/language_sample/Python
 
 # TypeScript
-uv run python src/rq3/generate_language_sample.py --root outputs/raw_data/TypeScript --n 372 --seed 42 --out-dir outputs/rq3/language_sample/Typescript
+uv run python src/rq3/generate_language_sample.py \
+  --root outputs/raw_data/TypeScript \
+  --n 372 --seed 42 \
+  --out-dir outputs/rq3/language_sample/Typescript
 ```
 
-`--seed` ensures the sample is reproducible across machines. Omit it to draw a fresh random sample. If `--n` exceeds the corpus size, all available files are used and a warning is logged.
+`--seed` ensures the sample is reproducible across machines.
+
+**Artifact produced:** `outputs/rq3/language_sample/<Language>/` — sampled SKILL.md files mirroring raw_data paths.
+
+---
 
 ### Step 3 — Split sample into labeling buckets
 
@@ -225,30 +377,140 @@ Distributes the sampled files into three subfolders under `outputs/rq3/labeling_
 | `A/` | Items assigned exclusively to labeler A |
 | `B/` | Items assigned exclusively to labeler B |
 
-Each file appears in exactly one bucket. The split is done without replacement across all three buckets.
-
 ```sh
 # Python
-uv run python src/rq3/generate_labeling_samples.py --root outputs/rq3/language_sample/Python --both 56 --A 157 --B 157 --out-dir outputs/rq3/labeling_samples/Python --seed 42
+uv run python src/rq3/generate_labeling_samples.py \
+  --root outputs/rq3/language_sample/Python \
+  --both 56 --A 157 --B 157 \
+  --out-dir outputs/rq3/labeling_samples/Python \
+  --seed 42
 
 # TypeScript
-uv run python src/rq3/generate_labeling_samples.py --root outputs/rq3/language_sample/Typescript --both 56 --A 158 --B 158 --out-dir outputs/rq3/labeling_samples/Typescript --seed 42
+uv run python src/rq3/generate_labeling_samples.py \
+  --root outputs/rq3/language_sample/Typescript \
+  --both 56 --A 158 --B 158 \
+  --out-dir outputs/rq3/labeling_samples/Typescript \
+  --seed 42
 ```
 
-The `--both + --A + --B` total must not exceed the number of files in `--root`. Adjust the counts to match your desired sample size and overlap ratio.
+**Artifact produced:** `outputs/rq3/labeling_samples/<Language>/{both,A,B}/`
+
+---
+
+### Step 4 — Compute inter-rater agreement
+
+Calculate per-label Cohen's kappa between two annotators on the shared `both` set:
+
+```sh
+uv run python src/rq3/calculate_agreement.py \
+  outputs/rq3/results/2026-04-19_CY_Final_Labels_Both_Python.json \
+  outputs/rq3/results/2026-04-19_MV_Final_Labels_Both_Python.json
+```
+
+**Artifact produced:** `outputs/rq3/results/kappa_<file_A>_vs_<file_B>.json`
+
+---
+
+### Step 5 — Process and merge label exports
+
+Convert raw label exports from the annotation tool into a normalized format and compute aggregate statistics:
+
+```sh
+uv run python src/rq3/analyze_processed_labels.py \
+  --input-dir outputs/rq3/results/processed
+```
+
+**Artifacts produced:** `outputs/rq3/results/processed_label_statistics.json` and `outputs/rq3/results/processed_label_statistics.md`
+
+---
+
+### Step 6 — Generate RQ3 analysis plots (both/A/B labeling set)
+
+```sh
+uv run python src/rq3/generate_processed_analysis_plots.py \
+  --processed-dir outputs/rq3/results/processed \
+  --out-dir outputs/rq3/analysis
+```
+
+**Artifacts produced in `outputs/rq3/analysis/`:**
+
+| File | Description |
+|---|---|
+| `fig_rq3_agreement_latest_python_both.png` | Inter-rater agreement overview |
+| `fig_rq3_agreement_python_both_pairs.png` | Per-pair agreement comparison |
+| `fig_rq3_filter_sources_latest_python_both.png` | Sources of filtered (excluded) documents |
+| `fig_rq3_instruction_distribution_latest_python_both.png` | Instruction-type distribution |
+| `fig_rq3_instruction_stage_heatmap_latest_python_both.png` | Instruction type × SDLC stage co-occurrence |
+| `fig_rq3_retained_vs_filtered.png` | Retained vs. filtered document counts |
+| `fig_rq3_sdlc_stage_distribution_latest_python_both.png` | SDLC stage distribution |
+| `table_rq3_*.csv` | Corresponding summary tables |
+
+---
+
+### Step 7 — Generate full Python dataset analysis
+
+Combines all label buckets (both, A, B) and the full Python `Python_All.json` dataset for structural and SDLC-task analysis:
+
+```sh
+uv run python src/rq3/generate_python_all_analysis.py \
+  --processed-dir outputs/rq3/results/processed \
+  --out-dir outputs/rq3/analysis/python_all
+```
+
+**Artifacts produced in `outputs/rq3/analysis/python_all/`:**
+
+| File | Description |
+|---|---|
+| `fig_rq3_python_all_sdlc_tasks.png` | SDLC task distribution across all Python SKILL.md files |
+| `fig_rq3_python_all_sdlc_tasks_comparison.png` | SDLC task comparison (both vs. full set) |
+| `fig_rq3_python_all_structural_patterns.png` | Structural pattern distribution |
+| `fig_rq3_python_all_structural_patterns_comparison.png` | Structural pattern comparison (both vs. full set) |
+| `fig_rq3_python_all_filter_sources.png` | Filter source breakdown |
+| `fig_rq3_python_all_retained_vs_filtered.png` | Retained vs. filtered counts |
+| `fig_rq3_python_all_instruction_stage_heatmap.png` | Instruction type × SDLC stage heatmap |
+| `table_rq3_python_all_sdlc_tasks.csv` | SDLC task frequency table |
+| `table_rq3_python_all_structural_patterns.csv` | Structural pattern frequency table |
+| `table_rq3_python_all_instruction_stage_matrix.csv` | Instruction × SDLC co-occurrence matrix |
+| `table_rq3_python_all_source_summary.csv` | Source file summary |
+| `table_python_all_repo_skill_counts.csv` | Per-repo skill count breakdown |
+| `rq3_python_all_analysis.md` | Narrative analysis brief |
+
+---
+
+### Step 8 — Generate RQ3 Figure 1 (two-panel prevalence chart)
+
+```sh
+uv run python src/rq3/fig1_prevalence_panels.py \
+  --sdlc-table outputs/rq3/analysis/python_all/table_rq3_python_all_sdlc_tasks.csv \
+  --structural-table outputs/rq3/analysis/python_all/table_rq3_python_all_structural_patterns.csv \
+  --out outputs/rq3/analysis/fig1.png
+```
+
+**Artifact produced:** `outputs/rq3/analysis/fig1.png`
+
+---
 
 ### RQ3 module structure
 
 ```
 src/rq3/
-  retrieve_language_metadata.py   # Step 1: per-language JSON summaries from raw_data
-  generate_language_sample.py     # Step 2: random per-language sample from raw_data
-  generate_labeling_samples.py    # Step 3: split sample into both/A/B labeling buckets
+  retrieve_language_metadata.py            # Step 1: per-language JSON summaries from raw_data
+  generate_language_sample.py              # Step 2: random per-language sample from raw_data
+  generate_labeling_samples.py             # Step 3: split sample into both/A/B labeling buckets
+  calculate_agreement.py                   # Step 4: Cohen's kappa between two annotators
+  analyze_processed_labels.py              # Step 5: aggregate statistics for processed exports
+  generate_processed_analysis_plots.py     # Step 6: plots for the both/A/B labeling sets
+  generate_python_all_analysis.py          # Step 7: full Python dataset structural/SDLC analysis
+  fig1_prevalence_panels.py                # Step 8: two-panel RQ3 figure 1
 
 outputs/rq3/
-  <Language>_summary.json         # per-language metadata summary (Step 1)
-  language_sample/                # sampled SKILL.md files, mirroring raw_data paths (Step 2)
-  labeling_samples/               # split into both/, A/, B/ per language (Step 3)
+  <Language>_summary.json                  # per-language metadata summary (Step 1)
+  language_sample/                         # sampled SKILL.md files, mirroring raw_data paths (Step 2)
+  labeling_samples/                        # split into both/, A/, B/ per language (Step 3)
+  results/                                 # raw and processed label exports; kappa JSONs
+  results/processed/                       # normalized label exports (input to Steps 5-7)
+  analysis/                                # figures and tables (Steps 6-8)
+  analysis/python_all/                     # full Python dataset analysis (Step 7)
 ```
 
 ---
@@ -439,29 +701,51 @@ Rate limiting is handled automatically by the `github_client` module:
 
 ```
 src/
-  search_github_repos.py     # Step 1 (optional): scrape repo list from GitHub API
-  extract_skill_repos.py     # Step 2: scan repos for SKILL.md via code search
-  generate_dataset.py        # Step 3: download skill folders, compute file metrics
-  enrich_scan_contributors.py  # Optional Step 3.5: populate contributor counts in the scan CSV
-  fetch_repo_metadata_readmes.py # Optional Step 3.6: fetch repo metadata and READMEs
+  search_github_repos.py          # Stage 1: scrape repo list from GitHub API
+  extract_skill_repos.py          # Stage 2: scan repos for SKILL.md via code search
+  generate_dataset.py             # Stage 3: download skill folders, compute file metrics
+  enrich_scan_contributors.py     # Optional Step 3.5: populate contributor counts in the scan CSV
+  fetch_repo_metadata_readmes.py  # Optional Step 3.6: fetch repo metadata and READMEs
+  enrich_extended_acf_columns.py  # Optional Step 3.7: add extended ACF columns
   rq1/
-    analyze_metadata.py      # Wrapper for scan-based RQ1 figures/tables
-    skill_file_distribution.py  # Wrapper for skill-file distribution outputs
-    common.py                # Shared RQ1 data loading, plotting, and helper utilities
-    fig*.py / table*.py      # One script per RQ1 artifact (figure/table pair where applicable)
+    analyze_metadata.py           # Wrapper: run all RQ1 figures and tables
+    skill_file_distribution.py    # Wrapper: skill-file distribution outputs
+    common.py                     # Shared RQ1 data loading, plotting, and helper utilities
+    fig*.py / table*.py           # One script per RQ1 artifact (figure/table pair where applicable)
+  rq2/
+    collect_skill_documents.py    # RQ2 Step 1: collect and normalize SKILL.md documents
+    analyze_tfidf_sklearn.py      # RQ2 Step 2: TF-IDF analysis on frontmatter
+  rq3/
+    retrieve_language_metadata.py            # RQ3 Step 1: per-language summaries
+    generate_language_sample.py              # RQ3 Step 2: stratified random sample
+    generate_labeling_samples.py             # RQ3 Step 3: both/A/B bucket split
+    calculate_agreement.py                   # RQ3 Step 4: Cohen's kappa
+    analyze_processed_labels.py              # RQ3 Step 5: aggregate label statistics
+    generate_processed_analysis_plots.py     # RQ3 Step 6: analysis plots (both/A/B set)
+    generate_python_all_analysis.py          # RQ3 Step 7: full Python dataset analysis
+    fig1_prevalence_panels.py                # RQ3 Step 8: two-panel figure 1
   github_client/
-    __init__.py              # public re-exports
-    token_pool.py            # TokenBucket, TokenPool, load_tokens_from_env
-    client.py                # GitHubClient (HTTP + pool integration)
+    __init__.py                   # public re-exports
+    token_pool.py                 # TokenBucket, TokenPool, load_tokens_from_env
+    client.py                     # GitHubClient (HTTP + pool integration)
+
+data/
+  seart_csvs/                     # Stage 1 output: per-language/license CSVs + combined CSV
+  skill_only_scan/
+    skill_repositories.csv        # Stage 2.5 output: active non-forked repos with SKILL.md
+  skill_files/
+    full_skills.csv               # Stage 3 output: per-skill instance metrics
 
 outputs/
-  skill_md_scan_results.csv        # all scanned repos (Step 2 output)
-  skill_md_scan_results_found.csv  # repos where SKILL.md was found
+  skill_md_scan_results.csv       # Stage 2: all scanned repos
+  skill_md_scan_results_found.csv # Stage 2: repos where SKILL.md was found
   skill_md_scan_results_not_found.csv
   skill_md_scan_results_errors.csv
-  processing_failures.tsv          # stage-3 repos with no dataset rows and why
-  name_filtered_repos.tsv          # stage-3 repos skipped by the shared name filter
-  full_skills_instances.csv        # per-repo skill metrics (Step 3 output)
-  raw_data/                        # downloaded skill folder contents (Step 3)
-  rq1/                             # figures and tables (Step 4 output)
+  processing_failures.tsv         # Stage 3: repos with no dataset rows and why
+  name_filtered_repos.tsv         # Stage 3: repos skipped by the shared name filter
+  full_skills_instances.csv       # Stage 3: per-repo skill metrics
+  raw_data/                       # Stage 3: downloaded skill folder contents
+  rq1/                            # RQ1 figures and tables
+  rq2/                            # RQ2 content analysis outputs
+  rq3/                            # RQ3 labeling, agreement, and analysis outputs
 ```

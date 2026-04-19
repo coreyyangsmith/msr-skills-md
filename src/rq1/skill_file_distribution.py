@@ -14,7 +14,6 @@ from rq1 import fig11_skill_files_per_repo, table_top1000_repos_global, table_to
 from rq1.common import (
     add_instances_input_args,
     add_output_args,
-    add_scan_input_args,
     aggregate_instances_to_repo,
     configure_logging,
     load_instances_csv,
@@ -34,6 +33,11 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         "--blacklist",
         default="blacklist.txt",
         help="Path to blacklist file (owner/repo per line). Default: blacklist.txt",
+    )
+    parser.add_argument(
+        "--relevance-terms",
+        default="relevance_terms.txt",
+        help="Path to relevance terms file (one term per line). Default: relevance_terms.txt",
     )
     parser.add_argument(
         "--name-filter-words",

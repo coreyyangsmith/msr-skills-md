@@ -1,0 +1,177 @@
+{
+  "version": 1,
+  "dataset": {
+    "rootName": "B",
+    "savedAt": "2026-04-19T09:49:39.954Z",
+    "totalFiles": 8,
+    "sourceFile": "2026-04-19_MV_Relabels_B_Python.json"
+  },
+  "processing": {
+    "type": "rq3-label-processing",
+    "normalisation_rules": {
+      "Instructive": "instructive",
+      "software design": "software-design",
+      "SE workflow management": "se-workflow-management",
+      "non-english": "wrong-language"
+    },
+    "filter_label": "filter",
+    "filter_source_labels": [
+      "agent-skill",
+      "wrong-language",
+      "outside-scope"
+    ],
+    "filter_source_document_counts": {
+      "agent-skill": 1,
+      "outside-scope": 0,
+      "wrong-language": 4
+    },
+    "sdlc_collapse_rules": {
+      "Documentation": [
+        "documentation",
+        "agent-facing"
+      ],
+      "Requirements": [
+        "requirements"
+      ],
+      "Software Design": [
+        "software-design"
+      ],
+      "Code Generation": [
+        "code-generation",
+        "implementation",
+        "code-integration",
+        "program-analysis"
+      ],
+      "Software Testing": [
+        "software-testing",
+        "test-generation",
+        "code-quality",
+        "debugging"
+      ],
+      "DevOps": [
+        "devops",
+        "se-workflow-management"
+      ]
+    },
+    "counts": {
+      "documents": 8,
+      "original_label_assignments": 17,
+      "processed_label_assignments": 17,
+      "documents_changed": 8,
+      "documents_collapsed_to_filter": 5,
+      "documents_with_multiple_filter_sources": 0
+    },
+    "filter_source_conflicts": []
+  },
+  "tags": [
+    {
+      "id": "060a676d-dd8a-50e1-8aaa-1fa133fcd25e",
+      "name": "Code Generation",
+      "createdAt": "2026-04-19T09:49:39.954Z"
+    },
+    {
+      "id": "88dc060b-7289-5088-8148-16ebca527310",
+      "name": "Requirements",
+      "createdAt": "2026-04-19T09:49:39.954Z"
+    },
+    {
+      "id": "4f173e50-0b45-5277-aaea-43d01e9fa592",
+      "name": "Software Design",
+      "createdAt": "2026-04-19T09:49:39.954Z"
+    },
+    {
+      "id": "ad89706e-aacb-5cb2-ba45-63db96e25d87",
+      "name": "Software Testing",
+      "createdAt": "2026-04-19T09:49:39.954Z"
+    },
+    {
+      "id": "394af782-213d-54ae-9e62-b5ca7b49104d",
+      "name": "commands",
+      "createdAt": "2026-04-19T09:49:39.954Z"
+    },
+    {
+      "id": "9f32bbfd-e11c-51c1-a64f-62831f8c3c8a",
+      "name": "filter",
+      "createdAt": "2026-04-19T09:49:39.954Z"
+    },
+    {
+      "id": "2bd6adac-c8da-5da1-98d1-b87eec69eb6c",
+      "name": "instructive",
+      "createdAt": "2026-04-19T09:49:39.954Z"
+    },
+    {
+      "id": "6651e946-1b8e-5926-a0b5-5e58084f3af4",
+      "name": "negative-examples",
+      "createdAt": "2026-04-19T09:49:39.954Z"
+    },
+    {
+      "id": "f5982392-8387-529f-b938-ba6ee49d38ab",
+      "name": "positive-examples",
+      "createdAt": "2026-04-19T09:49:39.954Z"
+    },
+    {
+      "id": "00be3acd-cdb8-583f-8fc9-c31b33861ae7",
+      "name": "reference",
+      "createdAt": "2026-04-19T09:49:39.954Z"
+    }
+  ],
+  "labels": {
+    "existential-birds__beagle/pydantic-ai-common-pitfalls": {
+      "tagIds": [
+        "ad89706e-aacb-5cb2-ba45-63db96e25d87",
+        "6651e946-1b8e-5926-a0b5-5e58084f3af4",
+        "f5982392-8387-529f-b938-ba6ee49d38ab"
+      ],
+      "updatedAt": "2026-04-19T09:45:36.233Z"
+    },
+    "huangrt01__CS-Notes/trae-agent": {
+      "tagIds": [
+        "9f32bbfd-e11c-51c1-a64f-62831f8c3c8a"
+      ],
+      "updatedAt": "2026-04-19T09:45:40.906Z"
+    },
+    "malue-ai__dazee-small/bird": {
+      "tagIds": [
+        "9f32bbfd-e11c-51c1-a64f-62831f8c3c8a"
+      ],
+      "updatedAt": "2026-04-19T09:46:02.394Z"
+    },
+    "malue-ai__dazee-small/excalidraw": {
+      "tagIds": [
+        "9f32bbfd-e11c-51c1-a64f-62831f8c3c8a"
+      ],
+      "updatedAt": "2026-04-19T09:46:09.227Z"
+    },
+    "malue-ai__dazee-small/mlx-whisper": {
+      "tagIds": [
+        "9f32bbfd-e11c-51c1-a64f-62831f8c3c8a"
+      ],
+      "updatedAt": "2026-04-19T09:46:12.919Z"
+    },
+    "malue-ai__dazee-small/winget": {
+      "tagIds": [
+        "9f32bbfd-e11c-51c1-a64f-62831f8c3c8a"
+      ],
+      "updatedAt": "2026-04-19T09:46:22.989Z"
+    },
+    "williamzujkowski__standards/advanced-optimization": {
+      "tagIds": [
+        "060a676d-dd8a-50e1-8aaa-1fa133fcd25e",
+        "4f173e50-0b45-5277-aaea-43d01e9fa592",
+        "394af782-213d-54ae-9e62-b5ca7b49104d",
+        "2bd6adac-c8da-5da1-98d1-b87eec69eb6c",
+        "00be3acd-cdb8-583f-8fc9-c31b33861ae7"
+      ],
+      "updatedAt": "2026-04-19T09:48:06.106Z"
+    },
+    "williamzujkowski__standards/healthtech": {
+      "tagIds": [
+        "88dc060b-7289-5088-8148-16ebca527310",
+        "4f173e50-0b45-5277-aaea-43d01e9fa592",
+        "2bd6adac-c8da-5da1-98d1-b87eec69eb6c",
+        "00be3acd-cdb8-583f-8fc9-c31b33861ae7"
+      ],
+      "updatedAt": "2026-04-19T09:49:39.954Z"
+    }
+  }
+}

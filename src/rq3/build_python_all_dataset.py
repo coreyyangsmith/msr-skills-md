@@ -11,9 +11,9 @@ except ImportError:
     from label_processing import load_json, resolve_path, stable_tag_id, write_json
 
 
-DEFAULT_A_FILE = "2026-04-06_CY_Labels_A_Python.json"
-DEFAULT_B_FILE = "2026-04-06_MV_Labels_B_Python.json"
-DEFAULT_BOTH_FILE = "2026-04-02_CY_Labels_Both_Python.json"
+DEFAULT_A_FILE = "2026-04-19_CY_Final_Labels_A_Python.json"
+DEFAULT_B_FILE = "2026-04-19_MV_Final_Labels_B_Python.json"
+DEFAULT_BOTH_FILE = "2026-04-19_CY_Final_Labels_Both_Python.json"
 
 
 def merge_processed_exports(
