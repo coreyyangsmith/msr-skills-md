@@ -17,6 +17,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_MOVED_TSV = REPO_ROOT / "outputs/raw_data_filtered_out/moved_repos.tsv"
 DEFAULT_LABELING_DIR = REPO_ROOT / "outputs/rq3/labeling_samples/Python"
 DEFAULT_REPORT = REPO_ROOT / "outputs/raw_data_filtered_out/moved_repos_in_labeling_samples_python.tsv"
+DEFAULT_OVERLAP_CSV = REPO_ROOT / "outputs/raw_data_filtered_out/removed_repos_in_python_labeling_samples.csv"
 
 
 def parse_args() -> argparse.Namespace:
@@ -37,6 +38,14 @@ def parse_args() -> argparse.Namespace:
         "--report-tsv",
         default=str(DEFAULT_REPORT),
         help="Output TSV report path",
+    )
+    parser.add_argument(
+        "--overlap-csv",
+        default=str(DEFAULT_OVERLAP_CSV),
+        help=(
+            "CSV path for overlaps only (removed repos present in Python labeling "
+            "samples), with subfolder column A/B/both."
+        ),
     )
     return parser.parse_args()
 
@@ -113,12 +122,48 @@ def write_report(report_tsv: Path, rows: list[dict[str, str]]) -> None:
         writer.writerows(rows)
 
 
+def pick_subfolder(in_a: bool, in_b: bool, in_both: bool) -> str:
+    if in_both:
+        return "both"
+    if in_a:
+        return "A"
+    if in_b:
+        return "B"
+    return ""
+
+
+def write_overlap_csv(overlap_csv: Path, rows: list[dict[str, str]]) -> int:
+    overlap_rows: list[dict[str, str]] = []
+    for row in rows:
+        if row["present_anywhere"] != "1":
+            continue
+        in_a = row["in_A"] == "1"
+        in_b = row["in_B"] == "1"
+        in_both = row["in_both"] == "1"
+        overlap_rows.append(
+            {
+                "repo": row["repo"],
+                "subfolder": pick_subfolder(in_a, in_b, in_both),
+                "reason": row["reason"],
+                "action": row["action"],
+            }
+        )
+
+    overlap_csv.parent.mkdir(parents=True, exist_ok=True)
+    with overlap_csv.open("w", encoding="utf-8", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=["repo", "subfolder", "reason", "action"])
+        writer.writeheader()
+        writer.writerows(overlap_rows)
+    return len(overlap_rows)
+
+
 def main() -> int:
     args = parse_args()
 
     moved_tsv = Path(args.moved_tsv).resolve()
     labeling_dir = _resolve_labeling_dir(Path(args.labeling_dir).resolve())
     report_tsv = Path(args.report_tsv).resolve()
+    overlap_csv = Path(args.overlap_csv).resolve()
 
     moved = read_moved_repos(moved_tsv)
     labeling = collect_labeling_repo_dirs(labeling_dir)
@@ -149,6 +194,7 @@ def main() -> int:
         )
 
     write_report(report_tsv, rows)
+    overlap_count = write_overlap_csv(overlap_csv, rows)
 
     total = len(rows)
     print("Moved repos vs labeling_samples/Python")
@@ -156,6 +202,7 @@ def main() -> int:
     print(f"  present in labeling samples: {present_count}")
     print(f"  absent from labeling samples: {total - present_count}")
     print(f"  report: {report_tsv}")
+    print(f"  overlap csv: {overlap_csv} ({overlap_count} rows)")
 
     return 0
 
