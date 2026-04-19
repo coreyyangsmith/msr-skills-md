@@ -58,6 +58,15 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
         description="RQ1 analysis: SKILL.md prevalence and adoption across open-source repos."
     )
     add_scan_input_args(parser)
+    parser.add_argument(
+        "--acf-scan-csv",
+        default="",
+        help=(
+            "Optional scan CSV for ACF-specific figures/tables. Use this when the ACF "
+            "enrichment is available as a SKILL.md-only file, while --scan-csv remains "
+            "the full corpus for prevalence analyses."
+        ),
+    )
     add_instances_input_args(parser, required=True)
     add_screening_input_args(parser)
     add_output_args(parser)
@@ -75,6 +84,11 @@ def main(argv: list[str]) -> int:
     screening_decisions = resolve_screening_decisions(args)
     scan_df = apply_screening_decisions(scan_df, screening_decisions, "scan CSV")
 
+    acf_scan_df = scan_df
+    if args.acf_scan_csv:
+        acf_scan_df = load_scan_csv(args.acf_scan_csv, blacklist=blacklist, filter_words=filter_words)
+        acf_scan_df = apply_screening_decisions(acf_scan_df, screening_decisions, "ACF scan CSV")
+
     raw_instances_df = load_instances_csv(args.instances_csv)
     if raw_instances_df is None:
         log.error("Instances CSV missing or unreadable: %s", args.instances_csv)
@@ -87,9 +101,9 @@ def main(argv: list[str]) -> int:
     table1_dataset_summary.generate(scan_df, args.out_dir)
     fig1_prevalence_by_language.generate(scan_df, args.out_dir, args.fig_format, args.dpi)
     fig2_prevalence_by_size_stars.generate(scan_df, args.out_dir, args.fig_format, args.dpi)
-    fig3_acf_cooccurrence.generate(scan_df, args.out_dir, args.fig_format, args.dpi)
-    fig4_acf_pairwise_heatmap.generate(scan_df, args.out_dir, args.fig_format, args.dpi)
-    acf_environment_analysis.generate(scan_df, args.out_dir, args.fig_format, args.dpi)
+    fig3_acf_cooccurrence.generate(acf_scan_df, args.out_dir, args.fig_format, args.dpi)
+    fig4_acf_pairwise_heatmap.generate(acf_scan_df, args.out_dir, args.fig_format, args.dpi)
+    acf_environment_analysis.generate(acf_scan_df, args.out_dir, args.fig_format, args.dpi)
     fig5_placement_patterns.generate(scan_df, args.out_dir, args.fig_format, args.dpi)
     fig6_temporal_trend.generate(scan_df, args.out_dir, args.fig_format, args.dpi)
     fig7_topic_analysis.generate(scan_df, args.out_dir, args.fig_format, args.dpi)
@@ -105,7 +119,7 @@ def main(argv: list[str]) -> int:
     fig13_presence_by_project_size.generate(scan_df, args.out_dir, args.fig_format, args.dpi)
     fig14_presence_by_project_age.generate(scan_df, args.out_dir, args.fig_format, args.dpi)
     fig21_scale_visibility_collaboration_age.generate(scan_df, args.out_dir, args.fig_format, args.dpi)
-    fig22_acf_intersections_language_heatmap.generate(scan_df, args.out_dir, args.fig_format, args.dpi)
+    fig22_acf_intersections_language_heatmap.generate(acf_scan_df, args.out_dir, args.fig_format, args.dpi)
 
     print(f"\nAll outputs written to: {os.path.abspath(args.out_dir)}")
     return 0

@@ -300,10 +300,11 @@ def plot_count_distribution(count_df: pd.DataFrame, out_dir: str, fig_format: st
         return None
 
     fig, ax = plt.subplots(figsize=(8, 5))
+    colors = sns.color_palette("mako", n_colors=len(count_df)).as_hex()
     bars = ax.bar(
         count_df["label"],
         count_df["count"],
-        color=["#CFD8DC", "#90CAF9", "#4FC3F7", "#26A69A"][: len(count_df)],
+        color=colors,
         edgecolor="white",
     )
     ax.set_title("How Many Tracked ACFs Appear per SKILL.md Repository?")
@@ -391,11 +392,19 @@ def write_analysis_note(
         "## Data Availability",
         "- Current scan data can support co-occurrence analysis among tracked ACFs inside confirmed `SKILL.md` repositories.",
         "- Current scan data cannot support a clean estimate of whether developers in a given environment prefer `SKILL.md`, because tracked ACF checks were only executed for `found=true` repositories.",
-        "- `.cursorrules.md` is not available as a structured column in the current scan CSV, so answering questions about that artifact requires a new scan/enrichment pass.",
         "- The local `outputs/raw_data` mirror also lines up with the SKILL.md-positive subset rather than the full scanned population, so it cannot backfill the missing negative cases for a preference comparison.",
         "",
         "## Overall Findings on Tracked ACFs within SKILL.md Repositories",
     ]
+    missing_artifacts = availability_df.loc[
+        ~availability_df["column_present_in_scan_csv"].astype(bool),
+        "artifact",
+    ].tolist()
+    if missing_artifacts:
+        lines.insert(
+            6,
+            "- Missing structured ACF columns: " + ", ".join(f"`{artifact}`" for artifact in missing_artifacts) + ".",
+        )
     for _, row in overall_df.iterrows():
         lines.append(
             f"- `{row['artifact']}` appears in `{int(row['count'])}` repos "

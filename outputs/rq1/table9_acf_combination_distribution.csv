@@ -1,17 +1,17 @@
 combination,count,pct_of_skill_md_repos
-None of the tracked artifacts,1440,37.74
-CLAUDE.md,798,20.91
-CLAUDE.md + AGENTS.md,586,15.36
-AGENTS.md,528,13.84
-copilot-instructions.md,163,4.27
-CLAUDE.md + AGENTS.md + copilot-instructions.md,77,2.02
-AGENTS.md + copilot-instructions.md,65,1.7
-CLAUDE.md + copilot-instructions.md,48,1.26
-CLAUDE.md + AGENTS.md + GEMINI.md,45,1.18
-GEMINI.md,27,0.71
-CLAUDE.md + AGENTS.md + copilot-instructions.md + GEMINI.md,17,0.45
-CLAUDE.md + GEMINI.md,12,0.31
-AGENTS.md + GEMINI.md,5,0.13
-CLAUDE.md + copilot-instructions.md + GEMINI.md,3,0.08
+None of the tracked artifacts,1134,36.0
+CLAUDE.md,653,20.73
+CLAUDE.md + AGENTS.md,531,16.86
+AGENTS.md,439,13.94
+copilot-instructions.md,121,3.84
+CLAUDE.md + AGENTS.md + copilot-instructions.md,77,2.44
+AGENTS.md + copilot-instructions.md,60,1.9
+CLAUDE.md + copilot-instructions.md,43,1.37
+CLAUDE.md + AGENTS.md + GEMINI.md,35,1.11
+GEMINI.md,21,0.67
+CLAUDE.md + AGENTS.md + copilot-instructions.md + GEMINI.md,16,0.51
+CLAUDE.md + GEMINI.md,10,0.32
+AGENTS.md + GEMINI.md,5,0.16
+CLAUDE.md + copilot-instructions.md + GEMINI.md,2,0.06
+copilot-instructions.md + GEMINI.md,2,0.06
 AGENTS.md + copilot-instructions.md + GEMINI.md,1,0.03
-copilot-instructions.md + GEMINI.md,1,0.03

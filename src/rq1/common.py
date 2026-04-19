@@ -25,7 +25,7 @@ log = logging.getLogger(__name__)
 
 PALETTE_FOUND = "#2196F3"
 PALETTE_NOT_FOUND = "#E0E0E0"
-PALETTE_ACF = ["#FF5722", "#4CAF50", "#9C27B0"]
+PALETTE_ACF = ["#FF5722", "#4CAF50", "#9C27B0", "#00ACC1", "#F9A825", "#6D4C41"]
 
 
 def setup_style() -> None:

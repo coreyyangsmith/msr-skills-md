@@ -159,18 +159,19 @@ If `outputs/skill_md_scan_results_with_contributors.csv` only has `has_CLAUDE`, 
 uv run python src/enrich_extended_acf_columns.py
 ```
 
-This writes `outputs/skill_md_scan_results_skill_only_new_acfs.csv` and merges into `outputs/skill_md_scan_results_with_contributors_extended.csv`. Use the extended file as `--scan-csv` for RQ1 when you want all six ACF columns in figures.
+This writes `outputs/skill_md_scan_results_skill_only_new_acfs.csv` and merges into `outputs/skill_md_scan_results_with_contributors_extended.csv`. Use the SKILL-only file as `--acf-scan-csv` for ACF-specific RQ1 figures, or the merged extended file as `--scan-csv` when you want one full-corpus input with all six ACF columns.
 
 **Step 4 — Run RQ1 prevalence and adoption analysis:**
 
 ```sh
 uv run python src/rq1/analyze_metadata.py \
   --scan-csv outputs/skill_md_scan_results_with_contributors.csv \
+  --acf-scan-csv outputs/skill_md_scan_results_skill_only_new_acfs.csv \
   --instances-csv outputs/full_skills_instances.csv \
   --out-dir outputs/rq1
 ```
 
-With extended ACF columns, pass `outputs/skill_md_scan_results_with_contributors_extended.csv` as `--scan-csv` instead.
+For ACF figures, `--acf-scan-csv outputs/skill_md_scan_results_skill_only_new_acfs.csv` is sufficient because those figures analyze repositories that already contain `SKILL.md`. For non-ACF prevalence figures, keep `--scan-csv` pointed at the full scan population, or pass `outputs/skill_md_scan_results_with_contributors_extended.csv` as `--scan-csv` if you want a single full-corpus file with the extended ACF columns included.
 
 If contributor enrichment is skipped, the RQ1 wrapper still runs and writes a note file explaining that the contributor-count figure could not be generated. The wrapper always requires `--instances-csv` (e.g. `outputs/full_skills_instances.csv`) so instance-level figures use every row in that file; blacklist/name filters apply to the scan CSV only, not to the instances export.
 

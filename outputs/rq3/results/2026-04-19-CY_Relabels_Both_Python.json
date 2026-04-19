@@ -1,0 +1,162 @@
+{
+  "version": 1,
+  "dataset": {
+    "rootName": "A",
+    "savedAt": "2026-04-19T13:55:36.639Z",
+    "totalFiles": 12
+  },
+  "tags": [
+    {
+      "id": "1cf3b78b-4d71-4e18-a882-e71c4dcec85e",
+      "name": "devops",
+      "createdAt": "2026-04-19T13:36:42.703Z"
+    },
+    {
+      "id": "095d3ec8-090e-4857-b898-181223e3d4b1",
+      "name": "descriptive",
+      "createdAt": "2026-04-19T13:36:52.966Z"
+    },
+    {
+      "id": "fb50ed9a-87e1-4941-8fac-898a3dc9d243",
+      "name": "Instructive",
+      "createdAt": "2026-04-19T13:36:58.942Z"
+    },
+    {
+      "id": "8f46c076-c2b0-474c-bb06-a30dd72e1fba",
+      "name": "positive-examples",
+      "createdAt": "2026-04-19T13:37:06.520Z"
+    },
+    {
+      "id": "0abe66a6-6620-4f98-bdc1-52330dfad751",
+      "name": "references",
+      "createdAt": "2026-04-19T13:37:46.456Z"
+    },
+    {
+      "id": "e1cae536-a921-4136-8ae8-6b9f15515507",
+      "name": "wrong-language",
+      "createdAt": "2026-04-19T13:46:39.041Z"
+    },
+    {
+      "id": "1a0aa371-0d59-47c0-87d3-0fbfa0a92d9b",
+      "name": "software-testing",
+      "createdAt": "2026-04-19T13:46:59.437Z"
+    },
+    {
+      "id": "3a83d0d5-dcf6-4a31-9972-3d7dde4e9051",
+      "name": "commands",
+      "createdAt": "2026-04-19T13:47:05.799Z"
+    },
+    {
+      "id": "5fc3e39a-8a3d-465d-b71d-af54a17757fe",
+      "name": "software-design",
+      "createdAt": "2026-04-19T13:49:44.954Z"
+    },
+    {
+      "id": "bc9c8509-9c45-4883-9517-2a37f765ff3c",
+      "name": "negative-examples",
+      "createdAt": "2026-04-19T13:53:57.527Z"
+    },
+    {
+      "id": "098afd5f-f68a-486d-a5ab-93f8ae7e65dc",
+      "name": "implementation",
+      "createdAt": "2026-04-19T13:54:55.968Z"
+    }
+  ],
+  "labels": {
+    "giuseppe-trisciuoglio__developer-kit/aws-cloudformation-rds": {
+      "tagIds": [
+        "fb50ed9a-87e1-4941-8fac-898a3dc9d243",
+        "095d3ec8-090e-4857-b898-181223e3d4b1",
+        "1cf3b78b-4d71-4e18-a882-e71c4dcec85e",
+        "8f46c076-c2b0-474c-bb06-a30dd72e1fba",
+        "0abe66a6-6620-4f98-bdc1-52330dfad751"
+      ],
+      "updatedAt": "2026-04-19T13:37:47.945Z"
+    },
+    "malue-ai__dazee-small/feishu": {
+      "tagIds": [
+        "e1cae536-a921-4136-8ae8-6b9f15515507"
+      ],
+      "updatedAt": "2026-04-19T13:46:40.720Z"
+    },
+    "malue-ai__dazee-small/pomodoro": {
+      "tagIds": [
+        "e1cae536-a921-4136-8ae8-6b9f15515507"
+      ],
+      "updatedAt": "2026-04-19T13:46:43.433Z"
+    },
+    "nex-agi__NexRL/testing": {
+      "tagIds": [
+        "1a0aa371-0d59-47c0-87d3-0fbfa0a92d9b",
+        "3a83d0d5-dcf6-4a31-9972-3d7dde4e9051"
+      ],
+      "updatedAt": "2026-04-19T13:47:08.693Z"
+    },
+    "sfc-gh-dflippo__snowflake-dbt-demo/snowflake-cli": {
+      "tagIds": [
+        "3a83d0d5-dcf6-4a31-9972-3d7dde4e9051",
+        "0abe66a6-6620-4f98-bdc1-52330dfad751",
+        "095d3ec8-090e-4857-b898-181223e3d4b1",
+        "1cf3b78b-4d71-4e18-a882-e71c4dcec85e"
+      ],
+      "updatedAt": "2026-04-19T13:49:31.128Z"
+    },
+    "soimy__atlasify/game-development/pc-games": {
+      "tagIds": [
+        "5fc3e39a-8a3d-465d-b71d-af54a17757fe",
+        "fb50ed9a-87e1-4941-8fac-898a3dc9d243",
+        "0abe66a6-6620-4f98-bdc1-52330dfad751"
+      ],
+      "updatedAt": "2026-04-19T13:49:50.983Z"
+    },
+    "thapaliyabikendra__ai-artifacts/abp-service-patterns": {
+      "tagIds": [
+        "e1cae536-a921-4136-8ae8-6b9f15515507"
+      ],
+      "updatedAt": "2026-04-19T13:52:28.905Z"
+    },
+    "williamzujkowski__standards/mobile-android": {
+      "tagIds": [
+        "0abe66a6-6620-4f98-bdc1-52330dfad751",
+        "fb50ed9a-87e1-4941-8fac-898a3dc9d243",
+        "5fc3e39a-8a3d-465d-b71d-af54a17757fe"
+      ],
+      "updatedAt": "2026-04-19T13:53:00.457Z"
+    },
+    "williamzujkowski__standards/serverless": {
+      "tagIds": [
+        "0abe66a6-6620-4f98-bdc1-52330dfad751",
+        "1cf3b78b-4d71-4e18-a882-e71c4dcec85e"
+      ],
+      "updatedAt": "2026-04-19T13:53:16.234Z"
+    },
+    "williamzujkowski__standards/unit-testing": {
+      "tagIds": [
+        "8f46c076-c2b0-474c-bb06-a30dd72e1fba",
+        "1a0aa371-0d59-47c0-87d3-0fbfa0a92d9b",
+        "0abe66a6-6620-4f98-bdc1-52330dfad751",
+        "bc9c8509-9c45-4883-9517-2a37f765ff3c"
+      ],
+      "updatedAt": "2026-04-19T13:53:59.380Z"
+    },
+    "xenitV1__Antigravity-Workflows/plan-writing": {
+      "tagIds": [
+        "8f46c076-c2b0-474c-bb06-a30dd72e1fba",
+        "bc9c8509-9c45-4883-9517-2a37f765ff3c",
+        "fb50ed9a-87e1-4941-8fac-898a3dc9d243",
+        "098afd5f-f68a-486d-a5ab-93f8ae7e65dc"
+      ],
+      "updatedAt": "2026-04-19T13:54:57.788Z"
+    },
+    "giuseppe-trisciuoglio__developer-kit/unit-test-mapper-converter": {
+      "tagIds": [
+        "095d3ec8-090e-4857-b898-181223e3d4b1",
+        "fb50ed9a-87e1-4941-8fac-898a3dc9d243",
+        "1a0aa371-0d59-47c0-87d3-0fbfa0a92d9b",
+        "0abe66a6-6620-4f98-bdc1-52330dfad751",
+        "8f46c076-c2b0-474c-bb06-a30dd72e1fba"
+      ],
+      "updatedAt": "2026-04-19T13:55:25.323Z"
+    }
+  }
+}

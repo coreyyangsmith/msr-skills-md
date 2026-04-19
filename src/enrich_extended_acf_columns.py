@@ -7,6 +7,9 @@ existing scan CSV.
 Writes:
   - --out-skill-only: full scan-schema CSV (e.g. skill_md_scan_results_skill_only_new_acfs.csv)
   - --out-merged: main corpus CSV with three new columns inserted after has_COPILOT
+
+Pass --dedupe-only to skip the GitHub API and just deduplicate an existing
+--out-skill-only file in-place (one row per repo, keeping the latest scanned_at_utc).
 """
 
 from __future__ import annotations
@@ -28,6 +31,37 @@ from extract_skill_repos import OUTPUT_COLUMNS, try_contents_path
 from github_client import GitHubClient, TokenPool, load_tokens_from_env
 
 log = logging.getLogger(__name__)
+
+
+def dedupe_csv(
+    path: str,
+    key: str = "repo",
+    tiebreak: str = "scanned_at_utc",
+) -> int:
+    """Deduplicate a CSV in-place by `key`, keeping the row with the latest `tiebreak`.
+
+    Returns the number of duplicate rows removed.
+    """
+    with open(path, newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        fieldnames = list(reader.fieldnames or [])
+        rows = list(reader)
+
+    best: dict[str, dict] = {}
+    for row in rows:
+        k = (row.get(key) or "").strip()
+        if not k:
+            continue
+        prev = best.get(k)
+        if prev is None or (row.get(tiebreak, "") > prev.get(tiebreak, "")):
+            best[k] = row
+
+    with open(path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(best.values())
+
+    return len(rows) - len(best)
 
 NEW_ACF_CHECKS: Tuple[Tuple[str, str], ...] = (
     ("/.cursorrules.md", "has_CURSORRULES_MD"),
@@ -101,12 +135,34 @@ def parse_args(argv: list[str] | None) -> argparse.Namespace:
     p.add_argument("--github-tokens", default="", help="Comma-separated tokens (overrides GH_TOKENS when set).")
     p.add_argument("--concurrency", type=int, default=16, help="Parallel workers for Contents API.")
     p.add_argument("--log-level", default="INFO", choices=["DEBUG", "INFO", "WARNING", "ERROR"])
+    p.add_argument(
+        "--dedupe-only",
+        action="store_true",
+        help=(
+            "Skip the GitHub API. Read --out-skill-only, deduplicate rows by repo "
+            "(keeping the latest scanned_at_utc), and write the result back in-place."
+        ),
+    )
     return p.parse_args(argv)
 
 
 def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     _configure_logging(args.log_level)
+
+    if args.dedupe_only:
+        target = args.out_skill_only
+        if not Path(target).is_file():
+            log.error("File not found: %s", target)
+            return 2
+        before = sum(1 for _ in open(target, encoding="utf-8")) - 1  # exclude header
+        removed = dedupe_csv(target)
+        after = before - removed
+        log.info(
+            "Deduped %s: %d rows -> %d rows (%d duplicates removed).",
+            target, before, after, removed,
+        )
+        return 0
 
     tokens = resolve_tokens(args.github_tokens, args.github_token)
     if not tokens:
@@ -179,6 +235,10 @@ def main(argv: list[str] | None = None) -> int:
             writer.writerow(out_row)
 
     log.info("Wrote skill-only extended scan: %s", args.out_skill_only)
+
+    removed = dedupe_csv(args.out_skill_only)
+    if removed:
+        log.info("Deduped skill-only CSV: removed %d duplicate rows.", removed)
 
     # --- Merge into full contributors CSV ---
     merge_path = Path(args.merge_into)

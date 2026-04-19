@@ -20,3 +20,4 @@ claw
 claude
 plugin
 tool
+agent

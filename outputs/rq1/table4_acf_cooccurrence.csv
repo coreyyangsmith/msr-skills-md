@@ -1,22 +1,22 @@
 artifact,count,pct_of_skill_md_repos
-CLAUDE.md,1586,41.6
-AGENTS.md,1324,34.7
-copilot-instructions.md,375,9.8
+CLAUDE.md,1367,43.4
+AGENTS.md,1164,37.0
+copilot-instructions.md,322,10.2
 .cursorrules.md,0,0.0
 .instructions.md,0,0.0
-GEMINI.md,111,2.9
-CLAUDE.md + AGENTS.md,725,19.0
-CLAUDE.md + copilot-instructions.md,145,3.8
+GEMINI.md,92,2.9
+CLAUDE.md + AGENTS.md,659,20.9
+CLAUDE.md + copilot-instructions.md,138,4.4
 CLAUDE.md + .cursorrules.md,0,0.0
 CLAUDE.md + .instructions.md,0,0.0
-CLAUDE.md + GEMINI.md,77,2.0
-AGENTS.md + copilot-instructions.md,160,4.2
+CLAUDE.md + GEMINI.md,63,2.0
+AGENTS.md + copilot-instructions.md,154,4.9
 AGENTS.md + .cursorrules.md,0,0.0
 AGENTS.md + .instructions.md,0,0.0
-AGENTS.md + GEMINI.md,68,1.8
+AGENTS.md + GEMINI.md,57,1.8
 copilot-instructions.md + .cursorrules.md,0,0.0
 copilot-instructions.md + .instructions.md,0,0.0
-copilot-instructions.md + GEMINI.md,22,0.6
+copilot-instructions.md + GEMINI.md,21,0.7
 .cursorrules.md + .instructions.md,0,0.0
 .cursorrules.md + GEMINI.md,0,0.0
 .instructions.md + GEMINI.md,0,0.0
