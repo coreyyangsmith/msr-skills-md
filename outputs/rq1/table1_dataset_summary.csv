@@ -1,7 +1,7 @@
 Metric,Value
-Total repos scanned,157285
-SKILL.md found,3478
+Total repos scanned,157308
+SKILL.md found,3501
 SKILL.md not found,153807
 API errors,0
 Filtered out,0
-Prevalence rate (%),2.21
+Prevalence rate (%),2.23

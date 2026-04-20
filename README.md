@@ -14,16 +14,16 @@ See [`.cursor/skills/msr/SKILL.md`](.cursor/skills/msr/SKILL.md) for the full de
 
 The full replication package — including all extracted `SKILL.md` files and the skill folder contents for each matched repository — is archived on Zenodo:
 
-> **[Zenodo record — DOI: 10.5281/zenodo.XXXXXXX]** *(placeholder — link will be updated on publication)*
+* [https://zenodo.org/records/19654264](https://zenodo.org/records/19654264)
 
 The Zenodo archive contains:
 
-- `outputs/raw_data/` — downloaded skill folder trees, one subdirectory per primary language, mirroring the layout written by Stage 3 (`generate_dataset.py`).
+- `raw_data/` — downloaded skill folder trees, one subdirectory per primary language, mirroring the layout written by Stage 3 (`generate_dataset.py`).
+
+Within this repository, we also include:
 - `data/skill_files/full_skills.csv` — per-skill instance metrics CSV (Stage 3 output).
 - `data/skill_only_scan/skill_repositories.csv` — the filtered shortlist of repositories confirmed to contain `SKILL.md`.
 - `data/seart_csvs/` — the SEART-exported repository list used as the Stage 1 input.
-
-If you only want to reproduce the RQ figures without re-running the data collection pipeline, download the Zenodo archive, place the `outputs/` and `data/` folders at the repository root, and jump directly to the [RQ reproduction steps](#rq1--prevalence-and-adoption-analysis).
 
 ---
 
@@ -239,18 +239,29 @@ uv run python src/enrich_extended_acf_columns.py
 
 ## RQ1 — Prevalence and adoption analysis
 
-**Step 4 — Run all RQ1 figures and tables:**
+**Step 4 — Build the RQ1 prevalence baseline (full population × SKILL.md found flag):**
+
+```sh
+uv run python utils/build_rq1_scan_baseline_skill.py \
+  --population-csv data/data_after_relevance_filter/data_after_filter.csv \
+  --skill-csv data/skill_only_scan/skill_repositories.csv \
+  --out-csv outputs/rq1/rq1_scan_relevance_baseline_x_skill_only.csv
+```
+
+This merges the full relevance-filtered population (denominator, ~157 k repos) with the SKILL.md-found shortlist (numerator, ~3 500 repos) into a single CSV where `found=True/False` drives all prevalence rate calculations.
+
+**Step 5 — Run all RQ1 figures and tables:**
 
 ```sh
 uv run python src/rq1/analyze_metadata.py \
-  --scan-csv outputs/skill_md_scan_results_with_contributors.csv \
-  --acf-scan-csv outputs/skill_md_scan_results_skill_only_new_acfs.csv \
-  --instances-csv outputs/full_skills_instances.csv \
+  --scan-csv outputs/rq1/rq1_scan_relevance_baseline_x_skill_only.csv \
+  --acf-scan-csv data/skill_only_scan/skill_repositories.csv \
+  --instances-csv data/skill_files/full_skills.csv \
   --out-dir outputs/rq1
 ```
 
-- `--scan-csv` drives all prevalence and ecosystem figures (full scan population).
-- `--acf-scan-csv` drives all ACF co-occurrence figures (SKILL-only population).
+- `--scan-csv` is the full-population baseline and drives all prevalence and ecosystem figures.
+- `--acf-scan-csv` is the SKILL-only shortlist and drives all ACF co-occurrence figures.
 - `--instances-csv` drives skill-file distribution and richness figures.
 - If contributor enrichment was skipped, the wrapper still runs and writes a note file explaining that the contributor-count figure could not be generated.
 
