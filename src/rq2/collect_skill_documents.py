@@ -46,6 +46,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help="Output JSON path for collection statistics",
     )
     parser.add_argument(
+        "--languages",
+        nargs="+",
+        default=[],
+        help="Optional raw_data language folder names to include, e.g. Python TypeScript.",
+    )
+    parser.add_argument(
         "--log-level",
         default="INFO",
         choices=["DEBUG", "INFO", "WARNING", "ERROR"],
@@ -278,7 +284,7 @@ def _build_document(path: Path, raw_data_dir: Path) -> dict[str, Any] | None:
     }
 
 
-def collect_skill_documents(raw_data_dir: Path) -> list[dict[str, Any]]:
+def collect_skill_documents(raw_data_dir: Path, languages: set[str] | None = None) -> list[dict[str, Any]]:
     skill_files = sorted(path for path in raw_data_dir.rglob("SKILL.md") if path.is_file())
     log.info("Found %d SKILL.md files in %s", len(skill_files), raw_data_dir)
 
@@ -287,6 +293,9 @@ def collect_skill_documents(raw_data_dir: Path) -> list[dict[str, Any]]:
     for path in skill_files:
         doc = _build_document(path, raw_data_dir)
         if doc is None:
+            skipped += 1
+            continue
+        if languages and doc["language"].lower() not in languages:
             skipped += 1
             continue
         documents.append(doc)
@@ -509,8 +518,10 @@ def main(argv: list[str] | None = None) -> int:
     if not raw_data_dir.exists() or not raw_data_dir.is_dir():
         raise FileNotFoundError(f"Raw data directory not found: {raw_data_dir}")
 
-    documents = collect_skill_documents(raw_data_dir)
+    languages = {language.strip().lower() for language in args.languages if language.strip()} or None
+    documents = collect_skill_documents(raw_data_dir, languages)
     stats = compute_stats(documents)
+    stats["language_filter"] = sorted(args.languages)
 
     out_jsonl = Path(args.out_jsonl)
     out_stats_json = Path(args.out_stats_json)

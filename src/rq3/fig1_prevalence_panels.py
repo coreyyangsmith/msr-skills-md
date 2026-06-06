@@ -59,21 +59,21 @@ def resolve_path(path_str: str) -> Path:
     return path if path.is_absolute() else (Path.cwd() / path).resolve()
 
 
-def load_python_all_table(path: Path, labels: list[str]) -> pd.DataFrame:
+def load_language_all_table(path: Path, labels: list[str], dataset_name: str) -> pd.DataFrame:
     df = pd.read_csv(path)
     required_columns = {"dataset", "label", "count", "pct_docs", "retained_documents"}
     missing = required_columns - set(df.columns)
     if missing:
         raise SystemExit(f"{path} is missing required columns: {', '.join(sorted(missing))}")
 
-    plot_df = df[df["dataset"] == "Python All"].copy()
+    plot_df = df[df["dataset"] == dataset_name].copy()
     if plot_df.empty:
-        raise SystemExit(f"{path} does not contain rows for dataset='Python All'.")
+        raise SystemExit(f"{path} does not contain rows for dataset={dataset_name!r}.")
 
     plot_df["label"] = pd.Categorical(plot_df["label"], categories=labels, ordered=True)
     plot_df = plot_df.sort_values("label").reset_index(drop=True)
     if plot_df["label"].isna().any():
-        bad_labels = sorted(set(df[df["dataset"] == "Python All"]["label"]) - set(labels))
+        bad_labels = sorted(set(df[df["dataset"] == dataset_name]["label"]) - set(labels))
         raise SystemExit(f"{path} contains unexpected labels: {', '.join(bad_labels)}")
 
     return plot_df.sort_values(["pct_docs", "count"], ascending=[False, False]).reset_index(drop=True)
@@ -142,12 +142,17 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument(
         "--sdlc-table",
         default="outputs/rq3/analysis/python_all/table_rq3_python_all_sdlc_tasks.csv",
-        help="CSV table with Python All SDLC task prevalence.",
+        help="CSV table with language-all SDLC task prevalence.",
     )
     parser.add_argument(
         "--structural-table",
         default="outputs/rq3/analysis/python_all/table_rq3_python_all_structural_patterns.csv",
-        help="CSV table with Python All instruction-pattern prevalence.",
+        help="CSV table with language-all instruction-pattern prevalence.",
+    )
+    parser.add_argument(
+        "--dataset-name",
+        default="Python All",
+        help="Dataset label to select from the input tables, e.g. 'Python All' or 'TypeScript All'.",
     )
     parser.add_argument(
         "--out",
@@ -169,8 +174,8 @@ def main(argv: list[str] | None = None) -> int:
     configure_logging(args.log_level)
     setup_style()
 
-    sdlc_df = load_python_all_table(resolve_path(args.sdlc_table), SDLC_LABEL_ORDER)
-    structural_df = load_python_all_table(resolve_path(args.structural_table), STRUCTURAL_LABEL_ORDER)
+    sdlc_df = load_language_all_table(resolve_path(args.sdlc_table), SDLC_LABEL_ORDER, args.dataset_name)
+    structural_df = load_language_all_table(resolve_path(args.structural_table), STRUCTURAL_LABEL_ORDER, args.dataset_name)
     output_path = resolve_path(args.out)
 
     plot_fig1(sdlc_df, structural_df, output_path, args.dpi)

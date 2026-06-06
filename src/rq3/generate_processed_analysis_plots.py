@@ -16,6 +16,7 @@ import pandas as pd
 import seaborn as sns
 
 from rq1.common import configure_logging, savefig, setup_style, write_dataframe
+from rq3.build_python_all_dataset import language_defaults, language_slug
 from rq3.label_processing import INSTRUCTION_TYPE_LABELS, SDLC_STAGE_LABELS
 
 log = logging.getLogger(__name__)
@@ -104,11 +105,40 @@ def load_kappa_tables(processed_dir: Path) -> tuple[pd.DataFrame, pd.DataFrame]:
     return pd.DataFrame(pair_rows), pd.DataFrame(label_rows)
 
 
-def select_python_both_pairs(pair_df: pd.DataFrame) -> pd.DataFrame:
-    mask = pair_df["file1"].str.contains("Both_Python", na=False) & pair_df["file2"].str.contains(
-        "Both_Python", na=False
-    )
+def language_file_tokens(language: str) -> tuple[str, ...]:
+    defaults = language_defaults(language)
+    if defaults.language == "Python":
+        return ("_Python", "Python_All")
+    if defaults.language == "TypeScript":
+        return ("_TypeScript", "_TS", "TypeScript_All")
+    return (f"_{defaults.language}", defaults.root_name)
+
+
+def both_pair_tokens(language: str) -> tuple[str, ...]:
+    defaults = language_defaults(language)
+    if defaults.language == "Python":
+        return ("Both_Python",)
+    if defaults.language == "TypeScript":
+        return ("Both_TypeScript", "Both_TS")
+    return (f"Both_{defaults.language}",)
+
+
+def _contains_any(series: pd.Series, tokens: tuple[str, ...]) -> pd.Series:
+    mask = pd.Series(False, index=series.index)
+    for token in tokens:
+        mask = mask | series.str.contains(token, na=False, regex=False)
+    return mask
+
+
+def select_language_both_pairs(pair_df: pd.DataFrame, language: str) -> pd.DataFrame:
+    tokens = both_pair_tokens(language)
+    mask = _contains_any(pair_df["file1"], tokens) & _contains_any(pair_df["file2"], tokens)
     return pair_df.loc[mask].sort_values("pair_file").reset_index(drop=True)
+
+
+def filter_language_datasets(dataset_df: pd.DataFrame, language: str) -> pd.DataFrame:
+    tokens = language_file_tokens(language)
+    return dataset_df.loc[_contains_any(dataset_df["file"], tokens)].reset_index(drop=True)
 
 
 def build_distribution_table(
@@ -160,7 +190,14 @@ def build_heatmap_matrix(stats: dict) -> pd.DataFrame:
     return frame.astype(int)
 
 
-def plot_latest_kappa(latest_labels: pd.DataFrame, out_dir: Path, fig_format: str, dpi: int) -> Path:
+def plot_latest_kappa(
+    latest_labels: pd.DataFrame,
+    out_dir: Path,
+    fig_format: str,
+    dpi: int,
+    language: str,
+    pair_slug: str,
+) -> Path:
     plot_df = latest_labels.sort_values("kappa", ascending=True).copy()
     fig, ax = plt.subplots(figsize=(9, max(5.5, len(plot_df) * 0.45)))
     colors = sns.color_palette("RdYlGn", n_colors=len(plot_df))
@@ -168,7 +205,7 @@ def plot_latest_kappa(latest_labels: pd.DataFrame, out_dir: Path, fig_format: st
     ax.axvline(0.60, color="#666666", linestyle="--", linewidth=1, alpha=0.8)
     ax.set_xlim(-0.05, 1.05)
     ax.set_xlabel("Cohen's kappa")
-    ax.set_title("RQ3 Processed Agreement\nLatest Python Both Pair")
+    ax.set_title(f"RQ3 Processed Agreement\nLatest {language} Both Pair")
     for _, row in plot_df.iterrows():
         ax.text(
             row["kappa"] + 0.015,
@@ -177,7 +214,7 @@ def plot_latest_kappa(latest_labels: pd.DataFrame, out_dir: Path, fig_format: st
             va="center",
             fontsize=9,
         )
-    output_path = out_dir / f"fig_rq3_agreement_latest_python_both.{fig_format}"
+    output_path = out_dir / f"fig_rq3_agreement_latest_{pair_slug}.{fig_format}"
     savefig(fig, str(output_path), dpi)
     return output_path
 
@@ -187,6 +224,8 @@ def plot_pair_comparison(
     out_dir: Path,
     fig_format: str,
     dpi: int,
+    language: str,
+    pair_slug: str,
 ) -> Path:
     pivot = compare_df.pivot(index="label", columns="pair_label", values="kappa").fillna(0.0)
     order = pivot.mean(axis=1).sort_values().index
@@ -196,9 +235,9 @@ def plot_pair_comparison(
     ax.set_xlim(-0.05, 1.05)
     ax.set_xlabel("Cohen's kappa")
     ax.set_ylabel("")
-    ax.set_title("RQ3 Processed Agreement\nPython Both Pair Comparison")
+    ax.set_title(f"RQ3 Processed Agreement\n{language} Both Pair Comparison")
     ax.legend(title="Pair", fontsize=9, title_fontsize=10, loc="lower right")
-    output_path = out_dir / f"fig_rq3_agreement_python_both_pairs.{fig_format}"
+    output_path = out_dir / f"fig_rq3_agreement_{pair_slug}_pairs.{fig_format}"
     savefig(fig, str(output_path), dpi)
     return output_path
 
@@ -208,6 +247,7 @@ def plot_filtered_vs_retained(
     out_dir: Path,
     fig_format: str,
     dpi: int,
+    language_slug_value: str,
 ) -> Path:
     plot_df = dataset_df.sort_values("filtered_pct", ascending=True).copy()
     fig, ax = plt.subplots(figsize=(10, max(5.5, len(plot_df) * 0.55)))
@@ -232,7 +272,7 @@ def plot_filtered_vs_retained(
             va="center",
             fontsize=9,
         )
-    output_path = out_dir / f"fig_rq3_retained_vs_filtered.{fig_format}"
+    output_path = out_dir / f"fig_rq3_retained_vs_filtered_{language_slug_value}.{fig_format}"
     savefig(fig, str(output_path), dpi)
     return output_path
 
@@ -242,6 +282,8 @@ def plot_filter_source_breakdown(
     out_dir: Path,
     fig_format: str,
     dpi: int,
+    language: str,
+    pair_slug: str,
 ) -> Path:
     pivot = filter_df.pivot(index="dataset", columns="filter_source", values="count").fillna(0)
     order = [name for name in pivot.index]
@@ -256,10 +298,10 @@ def plot_filter_source_breakdown(
     )
     ax.set_ylabel("Filtered document count")
     ax.set_xlabel("")
-    ax.set_title("Latest Python Both Pair\nFilter Source Breakdown")
+    ax.set_title(f"Latest {language} Both Pair\nFilter Source Breakdown")
     ax.legend(title="Original filter source", fontsize=9, title_fontsize=10)
     ax.tick_params(axis="x", rotation=12)
-    output_path = out_dir / f"fig_rq3_filter_sources_latest_python_both.{fig_format}"
+    output_path = out_dir / f"fig_rq3_filter_sources_latest_{pair_slug}.{fig_format}"
     savefig(fig, str(output_path), dpi)
     return output_path
 
@@ -291,6 +333,8 @@ def plot_heatmaps(
     out_dir: Path,
     fig_format: str,
     dpi: int,
+    language: str,
+    pair_slug: str,
 ) -> Path:
     left = build_heatmap_matrix(left_stats)
     right = build_heatmap_matrix(right_stats)
@@ -306,9 +350,9 @@ def plot_heatmaps(
         ax.set_xlabel("SDLC stage")
         ax.set_ylabel("Instruction type")
         ax.tick_params(axis="x", rotation=20)
-    fig.suptitle("Latest Python Both Pair\nInstruction Type x SDLC Stage (Retained Docs)")
+    fig.suptitle(f"Latest {language} Both Pair\nInstruction Type x SDLC Stage (Retained Docs)")
 
-    output_path = out_dir / f"fig_rq3_instruction_stage_heatmap_latest_python_both.{fig_format}"
+    output_path = out_dir / f"fig_rq3_instruction_stage_heatmap_latest_{pair_slug}.{fig_format}"
     savefig(fig, str(output_path), dpi)
     return output_path
 
@@ -321,6 +365,8 @@ def write_analysis_report(
     dataset_df: pd.DataFrame,
     latest_left_stats: dict,
     latest_right_stats: dict,
+    language: str,
+    pair_slug: str,
 ) -> Path:
     older_pair = pair_df.iloc[0] if len(pair_df) > 1 else None
     low_labels = latest_labels.sort_values("kappa").head(5)
@@ -328,16 +374,16 @@ def write_analysis_report(
     filtered_sorted = dataset_df.sort_values("filtered_pct", ascending=False)
 
     lines = [
-        "# RQ3 Processed Label Analysis",
+        f"# RQ3 Processed {language} Label Analysis",
         "",
         "## Agreement",
-        f"- Latest Python Both pair: `{latest_pair['pair_label']}`",
+        f"- Latest {language} Both pair: `{latest_pair['pair_label']}`",
         f"- Average kappa across collapsed labels: `{latest_pair['avg_kappa']:.4f}`",
     ]
     if older_pair is not None:
         delta = latest_pair["avg_kappa"] - older_pair["avg_kappa"]
         lines.append(
-            f"- Change vs earliest Python Both pair: `{delta:+.4f}` "
+            f"- Change vs earliest {language} Both pair: `{delta:+.4f}` "
             f"({older_pair['avg_kappa']:.4f} -> {latest_pair['avg_kappa']:.4f})"
         )
     lines.extend(
@@ -363,7 +409,7 @@ def write_analysis_report(
                 for _, row in filtered_sorted.iterrows()
             ],
             "",
-            "Latest Python Both pair filter-source counts:",
+            f"Latest {language} Both pair filter-source counts:",
             f"- `{compact_dataset_name(latest_left_stats['file'])}`: `{latest_left_stats['filter_source_document_counts']}`",
             f"- `{compact_dataset_name(latest_right_stats['file'])}`: `{latest_right_stats['filter_source_document_counts']}`",
             "",
@@ -379,7 +425,7 @@ def write_analysis_report(
         ]
     )
 
-    output_path = out_dir / "rq3_processed_analysis.md"
+    output_path = out_dir / f"rq3_processed_analysis_{pair_slug}.md"
     output_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
     return output_path
 
@@ -387,6 +433,11 @@ def write_analysis_report(
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Generate plots and a short analysis brief for processed RQ3 outputs."
+    )
+    parser.add_argument(
+        "--language",
+        default="Python",
+        help="Language-specific Both pair to analyze. TypeScript accepts both _TypeScript and _TS filename suffixes.",
     )
     parser.add_argument(
         "--processed-dir",
@@ -423,6 +474,8 @@ def main(argv: list[str] | None = None) -> int:
     args = parse_args(argv)
     processed_dir = resolve_path(args.processed_dir)
     out_dir = resolve_path(args.out_dir)
+    defaults = language_defaults(args.language)
+    pair_slug = f"{language_slug(defaults.language)}_both"
 
     configure_logging(args.log_level)
     setup_style()
@@ -432,14 +485,15 @@ def main(argv: list[str] | None = None) -> int:
     if dataset_df.empty or pair_df.empty or label_df.empty:
         raise SystemExit("Processed statistics or kappa files are missing or empty.")
 
-    python_pair_df = select_python_both_pairs(pair_df)
-    if python_pair_df.empty:
-        raise SystemExit("No processed Python Both kappa files were found.")
+    language_pair_df = select_language_both_pairs(pair_df, defaults.language)
+    if language_pair_df.empty:
+        raise SystemExit(f"No processed {defaults.language} Both kappa files were found.")
 
-    latest_pair = python_pair_df.iloc[-1]
+    latest_pair = language_pair_df.iloc[-1]
     latest_pair_file = latest_pair["pair_file"]
     latest_labels = label_df[label_df["pair_file"] == latest_pair_file].copy()
-    compare_labels = label_df[label_df["pair_file"].isin(python_pair_df["pair_file"])].copy()
+    compare_labels = label_df[label_df["pair_file"].isin(language_pair_df["pair_file"])].copy()
+    language_dataset_df = filter_language_datasets(dataset_df, defaults.language)
 
     latest_file_names = [latest_pair["file1"], latest_pair["file2"]]
     latest_left_stats = dataset_map[latest_file_names[0]]
@@ -461,56 +515,58 @@ def main(argv: list[str] | None = None) -> int:
 
     write_dataframe(
         latest_labels.sort_values("kappa"),
-        str(out_dir / "table_rq3_latest_python_both_kappa.csv"),
+        str(out_dir / f"table_rq3_latest_{pair_slug}_kappa.csv"),
     )
     write_dataframe(
         compare_labels.sort_values(["label", "pair_file"]),
-        str(out_dir / "table_rq3_python_both_pair_comparison.csv"),
+        str(out_dir / f"table_rq3_{pair_slug}_pair_comparison.csv"),
     )
     write_dataframe(
-        dataset_df.sort_values("filtered_pct", ascending=False),
-        str(out_dir / "table_rq3_dataset_filter_summary.csv"),
+        language_dataset_df.sort_values("filtered_pct", ascending=False),
+        str(out_dir / f"table_rq3_{language_slug(defaults.language)}_dataset_filter_summary.csv"),
     )
     write_dataframe(
         instruction_df,
-        str(out_dir / "table_rq3_latest_python_both_instruction_distribution.csv"),
+        str(out_dir / f"table_rq3_latest_{pair_slug}_instruction_distribution.csv"),
     )
     write_dataframe(
         sdlc_df,
-        str(out_dir / "table_rq3_latest_python_both_sdlc_distribution.csv"),
+        str(out_dir / f"table_rq3_latest_{pair_slug}_sdlc_distribution.csv"),
     )
 
-    plot_latest_kappa(latest_labels, out_dir, args.fig_format, args.dpi)
-    plot_pair_comparison(compare_labels, out_dir, args.fig_format, args.dpi)
-    plot_filtered_vs_retained(dataset_df, out_dir, args.fig_format, args.dpi)
-    plot_filter_source_breakdown(filter_df, out_dir, args.fig_format, args.dpi)
+    plot_latest_kappa(latest_labels, out_dir, args.fig_format, args.dpi, defaults.language, pair_slug)
+    plot_pair_comparison(compare_labels, out_dir, args.fig_format, args.dpi, defaults.language, pair_slug)
+    plot_filtered_vs_retained(language_dataset_df, out_dir, args.fig_format, args.dpi, language_slug(defaults.language))
+    plot_filter_source_breakdown(filter_df, out_dir, args.fig_format, args.dpi, defaults.language, pair_slug)
     plot_distribution_comparison(
         instruction_df,
-        "Latest Python Both Pair\nInstruction-Type Distribution (Retained Docs)",
+        f"Latest {defaults.language} Both Pair\nInstruction-Type Distribution (Retained Docs)",
         "% of retained docs",
-        "fig_rq3_instruction_distribution_latest_python_both",
+        f"fig_rq3_instruction_distribution_latest_{pair_slug}",
         out_dir,
         args.fig_format,
         args.dpi,
     )
     plot_distribution_comparison(
         sdlc_df,
-        "Latest Python Both Pair\nSDLC Stage Distribution (Retained Docs)",
+        f"Latest {defaults.language} Both Pair\nSDLC Stage Distribution (Retained Docs)",
         "% of retained docs",
-        "fig_rq3_sdlc_stage_distribution_latest_python_both",
+        f"fig_rq3_sdlc_stage_distribution_latest_{pair_slug}",
         out_dir,
         args.fig_format,
         args.dpi,
     )
-    plot_heatmaps(latest_left_stats, latest_right_stats, out_dir, args.fig_format, args.dpi)
+    plot_heatmaps(latest_left_stats, latest_right_stats, out_dir, args.fig_format, args.dpi, defaults.language, pair_slug)
     report_path = write_analysis_report(
         out_dir,
-        python_pair_df,
+        language_pair_df,
         latest_pair,
         latest_labels,
-        dataset_df,
+        language_dataset_df,
         latest_left_stats,
         latest_right_stats,
+        defaults.language,
+        pair_slug,
     )
     log.info("Wrote analysis report: %s", report_path)
     return 0

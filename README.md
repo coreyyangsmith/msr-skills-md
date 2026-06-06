@@ -502,6 +502,22 @@ uv run python src/rq2/collect_skill_documents.py \
 
 `src/rq2/collect_skill_documents.py` records language, repo folder, relative path, raw text, Markdown structure metrics, code-block counts, file/URL references, and reference-type summaries. Use `--raw-data-dir`, `--out-jsonl`, `--out-stats-json`, and `--log-level` to control inputs and outputs.
 
+To generate language-scoped corpora for Python and TypeScript, pass `--languages` and write to separate output folders:
+
+```sh
+uv run python src/rq2/collect_skill_documents.py \
+  --raw-data-dir outputs/raw_data \
+  --languages Python \
+  --out-jsonl outputs/rq2/python/skill_documents.jsonl \
+  --out-stats-json outputs/rq2/python/skill_documents_stats.json
+
+uv run python src/rq2/collect_skill_documents.py \
+  --raw-data-dir outputs/raw_data \
+  --languages TypeScript \
+  --out-jsonl outputs/rq2/typescript/skill_documents.jsonl \
+  --out-stats-json outputs/rq2/typescript/skill_documents_stats.json
+```
+
 ---
 
 **Step 2 — Run TF-IDF analysis:**
@@ -518,6 +534,28 @@ uv run python src/rq2/analyze_tfidf_sklearn.py \
 
 `src/rq2/analyze_tfidf_sklearn.py` extracts frontmatter `name` and `description`, lowercases text, removes English plus project-specific stopwords, builds unigram/bigram TF-IDF features, and writes global and per-document ranked terms. Useful tuning flags are `--max-features`, `--min-df`, `--max-df`, `--top-k-global`, and `--top-k-per-doc`.
 
+The TF-IDF script can also filter an existing global JSONL corpus in place:
+
+```sh
+uv run python src/rq2/analyze_tfidf_sklearn.py \
+  --input outputs/rq2/skill_documents.jsonl \
+  --languages Python \
+  --out-global outputs/rq2/python/tfidf_sklearn_top_terms_global.csv \
+  --out-global-unigrams outputs/rq2/python/tfidf_sklearn_top_terms_global_unigrams.csv \
+  --out-global-bigrams outputs/rq2/python/tfidf_sklearn_top_terms_global_bigrams.csv \
+  --out-per-doc outputs/rq2/python/tfidf_sklearn_top_terms_per_document.csv \
+  --out-summary outputs/rq2/python/tfidf_sklearn_summary.json
+
+uv run python src/rq2/analyze_tfidf_sklearn.py \
+  --input outputs/rq2/skill_documents.jsonl \
+  --languages TypeScript \
+  --out-global outputs/rq2/typescript/tfidf_sklearn_top_terms_global.csv \
+  --out-global-unigrams outputs/rq2/typescript/tfidf_sklearn_top_terms_global_unigrams.csv \
+  --out-global-bigrams outputs/rq2/typescript/tfidf_sklearn_top_terms_global_bigrams.csv \
+  --out-per-doc outputs/rq2/typescript/tfidf_sklearn_top_terms_per_document.csv \
+  --out-summary outputs/rq2/typescript/tfidf_sklearn_summary.json
+```
+
 **Step 3 — Plot TF-IDF top terms:**
 
 ```sh
@@ -526,6 +564,8 @@ uv run python src/rq2/create_diagrams.py \
   --bigrams-csv outputs/rq2/tfidf_sklearn_top_terms_global_bigrams.csv \
   --out-combined-image outputs/rq2/top10_tfidf_unigrams_bigrams_combined.png
 ```
+
+For language-scoped diagrams, point the CSV and image flags at the corresponding `outputs/rq2/python/` or `outputs/rq2/typescript/` paths.
 
 Use `--top-k N` to change the number of terms plotted, `--skip-separate` to write only the combined chart, and `--out-unigrams-image` / `--out-bigrams-image` to override the separate bar-chart paths.
 
@@ -549,7 +589,7 @@ Use `--top-k N` to change the number of terms plotted, `--skip-separate` to writ
 
 RQ3 involves reproducible random sampling, manual labeling by two annotators, inter-rater agreement computation, and analysis of structural and SDLC-task patterns in SKILL.md files.
 
-At a high level, RQ3 uses `src/rq3/retrieve_language_metadata.py`, `generate_language_sample.py`, and `generate_labeling_samples.py` to construct the labeling sample; `calculate_agreement.py`, `process_label_exports.py`, and `analyze_processed_labels.py` to normalize and summarize manual labels; and `generate_processed_analysis_plots.py`, `build_python_all_dataset.py`, `generate_python_all_analysis.py`, and `fig1_prevalence_panels.py` to produce figures and tables.
+At a high level, RQ3 uses `src/rq3/retrieve_language_metadata.py`, `generate_language_sample.py`, and `generate_labeling_samples.py` to construct the labeling sample; `calculate_agreement.py`, `process_label_exports.py`, and `analyze_processed_labels.py` to normalize and summarize manual labels; and `generate_processed_analysis_plots.py`, `build_python_all_dataset.py`, `generate_python_all_analysis.py`, and `fig1_prevalence_panels.py` to produce figures and tables. The combined-dataset steps now support both Python and TypeScript via language-aware CLI flags.
 
 ### Step 1 — Generate per-language metadata summaries
 
@@ -665,6 +705,12 @@ uv run python src/rq3/analyze_processed_labels.py \
 ```sh
 uv run python src/rq3/generate_processed_analysis_plots.py \
   --processed-dir outputs/rq3/results/processed \
+  --language Python \
+  --out-dir outputs/rq3/analysis
+
+uv run python src/rq3/generate_processed_analysis_plots.py \
+  --processed-dir outputs/rq3/results/processed \
+  --language TypeScript \
   --out-dir outputs/rq3/analysis
 ```
 
@@ -672,25 +718,26 @@ uv run python src/rq3/generate_processed_analysis_plots.py \
 
 | File | Description |
 |---|---|
-| `fig_rq3_agreement_latest_python_both.png` | Inter-rater agreement overview |
-| `fig_rq3_agreement_python_both_pairs.png` | Per-pair agreement comparison |
-| `fig_rq3_filter_sources_latest_python_both.png` | Sources of filtered (excluded) documents |
-| `fig_rq3_instruction_distribution_latest_python_both.png` | Instruction-type distribution |
-| `fig_rq3_instruction_stage_heatmap_latest_python_both.png` | Instruction type × SDLC stage co-occurrence |
-| `fig_rq3_retained_vs_filtered.png` | Retained vs. filtered document counts |
-| `fig_rq3_sdlc_stage_distribution_latest_python_both.png` | SDLC stage distribution |
+| `fig_rq3_agreement_latest_<language>_both.png` | Inter-rater agreement overview |
+| `fig_rq3_agreement_<language>_both_pairs.png` | Per-pair agreement comparison |
+| `fig_rq3_filter_sources_latest_<language>_both.png` | Sources of filtered (excluded) documents |
+| `fig_rq3_instruction_distribution_latest_<language>_both.png` | Instruction-type distribution |
+| `fig_rq3_instruction_stage_heatmap_latest_<language>_both.png` | Instruction type × SDLC stage co-occurrence |
+| `fig_rq3_retained_vs_filtered_<language>.png` | Retained vs. filtered document counts |
+| `fig_rq3_sdlc_stage_distribution_latest_<language>_both.png` | SDLC stage distribution |
 | `table_rq3_*.csv` | Corresponding summary tables |
-| `rq3_processed_analysis.md` | Narrative analysis brief |
+| `rq3_processed_analysis_<language>_both.md` | Narrative analysis brief |
 
 ---
 
-### Step 7 — Generate full Python dataset analysis
+### Step 7 — Generate full Python and TypeScript dataset analyses
 
 Build the combined processed Python dataset, then generate structural and SDLC-task analysis:
 
 ```sh
 uv run python src/rq3/build_python_all_dataset.py \
   --processed-dir outputs/rq3/results/processed \
+  --language Python \
   --a-file 2026-04-19_CY_Final_Labels_A_Python.json \
   --b-file 2026-04-19_MV_Final_Labels_B_Python.json \
   --both-file 2026-04-19_CY_Final_Labels_Both_Python.json
@@ -701,10 +748,24 @@ Then run:
 ```sh
 uv run python src/rq3/generate_python_all_analysis.py \
   --processed-dir outputs/rq3/results/processed \
+  --language Python \
   --out-dir outputs/rq3/analysis/python_all
 ```
 
-For the per-repo skill-count breakdown listed below, run the separate helper:
+Build the combined processed TypeScript dataset from the available TypeScript label export, then generate the same table and figure family:
+
+```sh
+uv run python src/rq3/build_python_all_dataset.py \
+  --processed-dir outputs/rq3/results/processed \
+  --language TypeScript
+
+uv run python src/rq3/generate_python_all_analysis.py \
+  --processed-dir outputs/rq3/results/processed \
+  --language TypeScript \
+  --out-dir outputs/rq3/analysis/typescript_all
+```
+
+For the per-repo skill-count breakdowns listed below, run the separate helper for each language:
 
 ```sh
 uv run python src/rq3/extract_python_all_repo_skill_counts.py \
@@ -712,25 +773,32 @@ uv run python src/rq3/extract_python_all_repo_skill_counts.py \
   --raw-results-dir outputs/rq3/results \
   --instances-csv outputs/full_skills_instances.csv \
   --out-csv outputs/rq3/analysis/python_all/table_python_all_repo_skill_counts.csv
+
+uv run python src/rq3/extract_python_all_repo_skill_counts.py \
+  --language-all outputs/rq3/results/processed/TypeScript_All.json \
+  --column-prefix typescript_all \
+  --raw-results-dir outputs/rq3/results \
+  --instances-csv outputs/full_skills_instances.csv \
+  --out-csv outputs/rq3/analysis/typescript_all/table_typescript_all_repo_skill_counts.csv
 ```
 
-**Artifacts produced in `outputs/rq3/analysis/python_all/`:**
+**Artifacts produced in `outputs/rq3/analysis/python_all/` and `outputs/rq3/analysis/typescript_all/`:**
 
 | File | Description |
 |---|---|
-| `fig_rq3_python_all_sdlc_tasks.png` | SDLC task distribution across all Python SKILL.md files |
-| `fig_rq3_python_all_sdlc_tasks_comparison.png` | SDLC task comparison (both vs. full set) |
-| `fig_rq3_python_all_structural_patterns.png` | Structural pattern distribution |
-| `fig_rq3_python_all_structural_patterns_comparison.png` | Structural pattern comparison (both vs. full set) |
-| `fig_rq3_python_all_filter_sources.png` | Filter source breakdown |
-| `fig_rq3_python_all_retained_vs_filtered.png` | Retained vs. filtered counts |
-| `fig_rq3_python_all_instruction_stage_heatmap.png` | Instruction type × SDLC stage heatmap |
-| `table_rq3_python_all_sdlc_tasks.csv` | SDLC task frequency table |
-| `table_rq3_python_all_structural_patterns.csv` | Structural pattern frequency table |
-| `table_rq3_python_all_instruction_stage_matrix.csv` | Instruction × SDLC co-occurrence matrix |
-| `table_rq3_python_all_source_summary.csv` | Source file summary |
-| `table_python_all_repo_skill_counts.csv` | Per-repo skill count breakdown from `extract_python_all_repo_skill_counts.py` |
-| `rq3_python_all_analysis.md` | Narrative analysis brief |
+| `fig_rq3_<language>_all_sdlc_tasks.png` | SDLC task distribution across all retained SKILL.md files for that language |
+| `fig_rq3_<language>_all_sdlc_tasks_comparison.png` | SDLC task comparison across the language source exports and combined set |
+| `fig_rq3_<language>_all_structural_patterns.png` | Structural pattern distribution |
+| `fig_rq3_<language>_all_structural_patterns_comparison.png` | Structural pattern comparison across the language source exports and combined set |
+| `fig_rq3_<language>_all_filter_sources.png` | Filter source breakdown |
+| `fig_rq3_<language>_all_retained_vs_filtered.png` | Retained vs. filtered counts |
+| `fig_rq3_<language>_all_instruction_stage_heatmap.png` | Instruction type × SDLC stage heatmap |
+| `table_rq3_<language>_all_sdlc_tasks.csv` | SDLC task frequency table |
+| `table_rq3_<language>_all_structural_patterns.csv` | Structural pattern frequency table |
+| `table_rq3_<language>_all_instruction_stage_matrix.csv` | Instruction × SDLC co-occurrence matrix |
+| `table_rq3_<language>_all_source_summary.csv` | Source file summary |
+| `table_<language>_all_repo_skill_counts.csv` | Per-repo skill count breakdown from `extract_python_all_repo_skill_counts.py` |
+| `rq3_<language>_all_analysis.md` | Narrative analysis brief |
 
 ---
 
@@ -740,12 +808,19 @@ uv run python src/rq3/extract_python_all_repo_skill_counts.py \
 uv run python src/rq3/fig1_prevalence_panels.py \
   --sdlc-table outputs/rq3/analysis/python_all/table_rq3_python_all_sdlc_tasks.csv \
   --structural-table outputs/rq3/analysis/python_all/table_rq3_python_all_structural_patterns.csv \
+  --dataset-name "Python All" \
   --out outputs/rq3/analysis/fig1.png
+
+uv run python src/rq3/fig1_prevalence_panels.py \
+  --sdlc-table outputs/rq3/analysis/typescript_all/table_rq3_typescript_all_sdlc_tasks.csv \
+  --structural-table outputs/rq3/analysis/typescript_all/table_rq3_typescript_all_structural_patterns.csv \
+  --dataset-name "TypeScript All" \
+  --out outputs/rq3/analysis/fig1_typescript.png
 ```
 
-**Artifact produced:** `outputs/rq3/analysis/fig1.png`
+**Artifacts produced:** `outputs/rq3/analysis/fig1.png` and `outputs/rq3/analysis/fig1_typescript.png`
 
-This final figure is a compact two-panel chart for paper/report use: panel (a) plots Python All SDLC task prevalence, and panel (b) plots structural instruction-pattern prevalence.
+This final figure is a compact two-panel chart for paper/report use: panel (a) plots language-all SDLC task prevalence, and panel (b) plots structural instruction-pattern prevalence.
 
 ---
 
@@ -760,9 +835,9 @@ src/rq3/
   process_label_exports.py                 # Step 5: normalize/collapse raw label exports
   analyze_processed_labels.py              # Step 5: aggregate statistics for processed exports
   generate_processed_analysis_plots.py     # Step 6: plots for the both/A/B labeling sets
-  build_python_all_dataset.py              # Step 7: merge processed A/B/Both exports into Python_All
-  generate_python_all_analysis.py          # Step 7: full Python dataset structural/SDLC analysis
-  fig1_prevalence_panels.py                # Step 8: two-panel RQ3 figure 1
+  build_python_all_dataset.py              # Step 7: merge processed exports into <Language>_All datasets
+  generate_python_all_analysis.py          # Step 7: full Python/TypeScript structural/SDLC analysis
+  fig1_prevalence_panels.py                # Step 8: two-panel RQ3 figure 1 for a selected language
 
 outputs/rq3/
   <Language>_summary.json                  # per-language metadata summary (Step 1)
@@ -772,6 +847,7 @@ outputs/rq3/
   results/processed/                       # normalized label exports (input to Steps 5-7)
   analysis/                                # figures and tables (Steps 6-8)
   analysis/python_all/                     # full Python dataset analysis (Step 7)
+  analysis/typescript_all/                 # full TypeScript dataset analysis (Step 7)
 ```
 
 ---
@@ -1077,9 +1153,9 @@ src/
     process_label_exports.py                 # RQ3 Step 5: normalize/collapse raw label exports
     analyze_processed_labels.py              # RQ3 Step 5: aggregate label statistics
     generate_processed_analysis_plots.py     # RQ3 Step 6: analysis plots (both/A/B set)
-    build_python_all_dataset.py              # RQ3 Step 7: merge processed A/B/Both exports
-    generate_python_all_analysis.py          # RQ3 Step 7: full Python dataset analysis
-    fig1_prevalence_panels.py                # RQ3 Step 8: two-panel figure 1
+    build_python_all_dataset.py              # RQ3 Step 7: merge processed exports into <Language>_All datasets
+    generate_python_all_analysis.py          # RQ3 Step 7: full Python/TypeScript structural/SDLC analysis
+    fig1_prevalence_panels.py                # RQ3 Step 8: two-panel figure 1 for a selected language
   github_client/
     __init__.py                   # public re-exports
     token_pool.py                 # TokenBucket, TokenPool, load_tokens_from_env

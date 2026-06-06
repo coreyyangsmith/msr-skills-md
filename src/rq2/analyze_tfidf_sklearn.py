@@ -76,6 +76,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--top-k-global", type=int, default=200, help="Top global terms to write")
     parser.add_argument("--top-k-per-doc", type=int, default=30, help="Top terms per document to write")
     parser.add_argument(
+        "--languages",
+        nargs="+",
+        default=[],
+        help="Optional document languages to include, e.g. Python TypeScript.",
+    )
+    parser.add_argument(
         "--log-level",
         default="INFO",
         choices=["DEBUG", "INFO", "WARNING", "ERROR"],
@@ -137,6 +143,16 @@ def parse_documents(input_path: Path) -> list[dict[str, Any]]:
                 docs.append(item)
 
     return docs
+
+
+def filter_documents_by_language(documents: list[dict[str, Any]], languages: set[str] | None) -> list[dict[str, Any]]:
+    if not languages:
+        return documents
+    return [
+        doc
+        for doc in documents
+        if str(doc.get("language", "")).strip().lower() in languages
+    ]
 
 
 def build_corpus(documents: list[dict[str, Any]]) -> tuple[list[dict[str, str]], list[str]]:
@@ -256,7 +272,9 @@ def main(argv: list[str] | None = None) -> int:
     if not input_path.exists() or not input_path.is_file():
         raise FileNotFoundError(f"Input file not found: {input_path}")
 
-    documents = parse_documents(input_path)
+    all_documents = parse_documents(input_path)
+    languages = {language.strip().lower() for language in args.languages if language.strip()} or None
+    documents = filter_documents_by_language(all_documents, languages)
     rows, corpus = build_corpus(documents)
 
     if not corpus:
@@ -302,7 +320,9 @@ def main(argv: list[str] | None = None) -> int:
 
     summary = {
         "input_path": str(input_path.resolve()),
-        "documents_total_in_input": len(documents),
+        "documents_total_in_input": len(all_documents),
+        "documents_after_language_filter": len(documents),
+        "language_filter": sorted(args.languages),
         "documents_used_for_tfidf": len(corpus),
         "vocabulary_size": len(feature_names),
         "matrix_shape": [int(matrix.shape[0]), int(matrix.shape[1])],

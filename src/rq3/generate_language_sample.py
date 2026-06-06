@@ -32,7 +32,7 @@ Usage:
         --allowed-main-language Python \\
         --clean-out-dir \\
         --out-dir outputs/rq3/language_sample/Python
-    uv run python src/rq3/generate_language_sample.py --root outputs/raw_data/TypeScript --n 365 --seed 42 --out-dir outputs/rq3/language_sample/Typescript
+    uv run python src/rq3/generate_language_sample.py --root outputs/raw_data/TypeScript --n 365 --seed 42 --out-dir outputs/rq3/language_sample/TypeScript
 """
 
 from __future__ import annotations

@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import dataclasses
 from collections import defaultdict
 from pathlib import Path
 
@@ -14,6 +15,54 @@ except ImportError:
 DEFAULT_A_FILE = "2026-04-19_CY_Final_Labels_A_Python.json"
 DEFAULT_B_FILE = "2026-04-19_MV_Final_Labels_B_Python.json"
 DEFAULT_BOTH_FILE = "2026-04-19_CY_Final_Labels_Both_Python.json"
+DEFAULT_TS_BOTH_FILE = "2026-03-29_CY_Labels_Both_TS.json"
+
+
+@dataclasses.dataclass(frozen=True)
+class LanguageDefaults:
+    language: str
+    root_name: str
+    output_name: str
+    source_files: list[str]
+    selected_both_file: str | None
+
+
+def language_slug(language: str) -> str:
+    return language.strip().lower().replace(" ", "_")
+
+
+def language_root_name(language: str) -> str:
+    if language.strip().lower() == "typescript":
+        return "TypeScript_All"
+    return f"{language.strip()}_All"
+
+
+def language_defaults(language: str) -> LanguageDefaults:
+    normalized = language.strip().lower()
+    if normalized == "python":
+        return LanguageDefaults(
+            language="Python",
+            root_name="Python_All",
+            output_name="Python_All.json",
+            source_files=[DEFAULT_A_FILE, DEFAULT_B_FILE, DEFAULT_BOTH_FILE],
+            selected_both_file=DEFAULT_BOTH_FILE,
+        )
+    if normalized in {"typescript", "ts"}:
+        return LanguageDefaults(
+            language="TypeScript",
+            root_name="TypeScript_All",
+            output_name="TypeScript_All.json",
+            source_files=[DEFAULT_TS_BOTH_FILE],
+            selected_both_file=DEFAULT_TS_BOTH_FILE,
+        )
+    root_name = language_root_name(language)
+    return LanguageDefaults(
+        language=language.strip(),
+        root_name=root_name,
+        output_name=f"{root_name}.json",
+        source_files=[],
+        selected_both_file=None,
+    )
 
 
 def merge_processed_exports(
@@ -96,7 +145,7 @@ def merge_processed_exports(
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Build a combined processed Python_All label export from A, B, and one Both file."
+        description="Build a combined processed per-language label export from processed RQ3 files."
     )
     parser.add_argument(
         "--processed-dir",
@@ -104,24 +153,40 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help="Directory containing processed RQ3 exports.",
     )
     parser.add_argument(
+        "--language",
+        default="Python",
+        help="Language label for the combined export. Defaults to Python; TypeScript has built-in defaults.",
+    )
+    parser.add_argument(
+        "--source-files",
+        nargs="+",
+        default=None,
+        help="Processed source files to merge. Overrides --a-file/--b-file/--both-file defaults.",
+    )
+    parser.add_argument(
         "--a-file",
         default=DEFAULT_A_FILE,
-        help="Processed Python A file to include.",
+        help="Processed Python A file to include when --language Python and --source-files is omitted.",
     )
     parser.add_argument(
         "--b-file",
         default=DEFAULT_B_FILE,
-        help="Processed Python B file to include.",
+        help="Processed Python B file to include when --language Python and --source-files is omitted.",
     )
     parser.add_argument(
         "--both-file",
         default=DEFAULT_BOTH_FILE,
-        help="Processed Python Both file to include once in the combined dataset.",
+        help="Processed Both file to include once in the combined dataset.",
+    )
+    parser.add_argument(
+        "--root-name",
+        default="",
+        help="Optional dataset rootName override. Defaults to <Language>_All.",
     )
     parser.add_argument(
         "--output",
         default=None,
-        help="Optional output path. Defaults to <processed-dir>/Python_All.json.",
+        help="Optional output path. Defaults to <processed-dir>/<Language>_All.json.",
     )
     return parser.parse_args(argv)
 
@@ -129,13 +194,27 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
 def main(argv: list[str] | None = None) -> None:
     args = parse_args(argv)
     processed_dir = resolve_path(args.processed_dir)
+    defaults = language_defaults(args.language)
+    root_name = args.root_name.strip() or defaults.root_name
     output_path = (
         resolve_path(args.output)
         if args.output
-        else processed_dir / "Python_All.json"
+        else processed_dir / defaults.output_name
     )
 
-    source_names = [args.a_file, args.b_file, args.both_file]
+    if args.source_files:
+        source_names = args.source_files
+        selected_both_file = args.both_file if args.both_file in source_names else None
+    elif defaults.language == "Python":
+        source_names = [args.a_file, args.b_file, args.both_file]
+        selected_both_file = args.both_file
+    else:
+        source_names = defaults.source_files
+        selected_both_file = defaults.selected_both_file
+
+    if not source_names:
+        raise SystemExit("No source files specified. Pass --source-files for this language.")
+
     exports: list[tuple[str, dict]] = []
     for name in source_names:
         path = processed_dir / name
@@ -145,13 +224,14 @@ def main(argv: list[str] | None = None) -> None:
 
     combined = merge_processed_exports(
         exports,
-        root_name="Python_All",
-        selected_both_file=args.both_file,
+        root_name=root_name,
+        selected_both_file=selected_both_file,
     )
     write_json(output_path, combined)
 
     print(f"Wrote {output_path}")
-    print(f"Selected Both file: {args.both_file}")
+    print(f"Language: {defaults.language}")
+    print(f"Selected Both file: {selected_both_file or ''}")
     print(f"Combined documents: {len(combined['labels'])}")
 
 
