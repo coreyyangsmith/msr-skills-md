@@ -8,10 +8,12 @@ Recursively walks a root folder and collects every file named exactly
 ``SKILL.md`` at any depth beneath it.  Only the exact filename is matched
 (case-sensitive).
 
-A random sample of *n* files is drawn from the full corpus and copied into
-an output directory that mirrors the original relative path structure:
+Skills are grouped by repository folder (``owner__repo``). A random sample
+of *n* repositories is drawn, then one SKILL.md is chosen uniformly at
+random from each selected repository. Sampled files are copied into an
+output directory that mirrors the original relative path structure:
 
-    <out_dir>/<language>/<repo>/<...>/SKILL.md
+    <out_dir>/<owner__repo>/<...>/SKILL.md
 
 Usage:
     uv run python src/rq3/generate_language_sample.py \\
@@ -28,7 +30,7 @@ Usage:
     uv run python src/rq3/generate_language_sample.py \\
         --root outputs/raw_data/Python \\
         --n 370 --seed 42 \\
-        --allowed-repos-csv data/data_after_relevance_filter/data_after_filter.csv \\
+        --allowed-repos-csv data/v1_2026-04-19/data_after_relevance_filter/data_after_filter.csv \\
         --allowed-main-language Python \\
         --clean-out-dir \\
         --out-dir outputs/rq3/language_sample/Python
@@ -43,6 +45,7 @@ import logging
 import random
 import shutil
 import sys
+from collections import defaultdict
 from pathlib import Path
 
 log = logging.getLogger(__name__)
@@ -141,6 +144,40 @@ def filter_skill_files_by_allowed_repos(
     return kept
 
 
+def group_skills_by_repo(root: Path, files: list[Path]) -> dict[str, list[Path]]:
+    """
+    Group SKILL.md paths by top-level repository folder under *root*.
+
+    Expected layout: ``<root>/<owner__repo>/.../SKILL.md``. Skills that are
+    not under a relative path with at least one segment are skipped.
+    """
+    grouped: dict[str, list[Path]] = defaultdict(list)
+    skipped = 0
+    for path in files:
+        try:
+            rel = path.relative_to(root)
+        except ValueError:
+            skipped += 1
+            continue
+        if not rel.parts:
+            skipped += 1
+            continue
+        grouped[rel.parts[0]].append(path)
+
+    counts = [len(v) for v in grouped.values()]
+    if counts:
+        log.info(
+            "Grouped into %d repo folder(s); skills/repo min=%d median=%.1f max=%d",
+            len(grouped),
+            min(counts),
+            sorted(counts)[len(counts) // 2],
+            max(counts),
+        )
+    if skipped:
+        log.warning("Skipped %d skill path(s) outside root layout", skipped)
+    return dict(grouped)
+
+
 def sample_and_copy(
     all_files: list[Path],
     root: Path,
@@ -149,20 +186,38 @@ def sample_and_copy(
     seed: int | None,
 ) -> list[Path]:
     """
-    Randomly sample *n* files from *all_files*, copy each to *out_dir*
-    preserving the path relative to *root*, and return the list of sampled
-    source paths.
+    Sample *n* repositories, pick one random SKILL.md from each, copy each
+    to *out_dir* preserving the path relative to *root*, and return the list
+    of sampled source paths.
     """
-    if n > len(all_files):
+    by_repo = group_skills_by_repo(root, all_files)
+    if not by_repo:
+        log.error("No repository folders found among %d skill file(s)", len(all_files))
+        return []
+
+    repo_keys = sorted(by_repo.keys())
+    if n > len(repo_keys):
         log.warning(
-            "Requested sample size %d exceeds corpus size %d; using all files.",
+            "Requested sample size %d exceeds eligible repo count %d; using all repos.",
             n,
-            len(all_files),
+            len(repo_keys),
         )
-        n = len(all_files)
+        n = len(repo_keys)
 
     rng = random.Random(seed)
-    sampled: list[Path] = rng.sample(all_files, n)
+    selected_repos = rng.sample(repo_keys, n)
+
+    sampled: list[Path] = []
+    for repo_key in selected_repos:
+        skills = by_repo[repo_key]
+        sampled.append(rng.choice(skills))
+
+    log.info(
+        "Sampled %d / %d repo(s); wrote %d SKILL.md file(s)",
+        len(selected_repos),
+        len(repo_keys),
+        len(sampled),
+    )
 
     out_dir.mkdir(parents=True, exist_ok=True)
 
@@ -184,8 +239,8 @@ def sample_and_copy(
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description=(
-            "Randomly sample SKILL.md files from a raw_data root folder "
-            "and copy them to an output directory."
+            "Sample repositories from a raw_data root folder, pick one random "
+            "SKILL.md per repository, and copy them to an output directory."
         ),
     )
     parser.add_argument(
@@ -199,7 +254,7 @@ def build_parser() -> argparse.ArgumentParser:
         required=True,
         type=int,
         metavar="N",
-        help="Number of SKILL.md files to sample.",
+        help="Number of repositories to sample (one random SKILL.md each).",
     )
     parser.add_argument(
         "--out-dir",
@@ -299,12 +354,7 @@ def main(argv: list[str] | None = None) -> None:
         seed=args.seed,
     )
 
-    log.info(
-        "Done. Sampled %d / %d SKILL.md file(s) → %s",
-        len(sampled),
-        len(all_files),
-        out_dir,
-    )
+    log.info("Done. Sampled %d SKILL.md file(s) → %s", len(sampled), out_dir)
 
 
 if __name__ == "__main__":

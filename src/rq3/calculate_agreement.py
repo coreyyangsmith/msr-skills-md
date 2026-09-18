@@ -28,27 +28,27 @@ Usage examples
 Compare CY vs MV on the Python "both" set:
 
     uv run python src/rq3/calculate_agreement.py \\
-        outputs/rq3/results/2026-03-28_CY_Labels_Both_Python.json \\
-        outputs/rq3/results/2026-03-31_MV_Labels_Both_Python.json
+        outputs/v1_2026-04-19/rq3/results/2026-03-28_CY_Labels_Both_Python.json \\
+        outputs/v1_2026-04-19/rq3/results/2026-03-31_MV_Labels_Both_Python.json
 
 Compare CY Python vs CY TypeScript (same labeler, different language sets):
 
     uv run python src/rq3/calculate_agreement.py \\
-        outputs/rq3/results/2026-03-28_CY_Labels_Both_Python.json \\
-        outputs/rq3/results/2026-03-29_CY_Labels_Both_TS.json
+        outputs/v1_2026-04-19/rq3/results/2026-03-28_CY_Labels_Both_Python.json \\
+        outputs/v1_2026-04-19/rq3/results/2026-03-29_CY_Labels_Both_TS.json
 
 Save results to a custom output file:
 
     uv run python src/rq3/calculate_agreement.py \\
-        outputs/rq3/results/2026-03-28_CY_Labels_Both_Python.json \\
-        outputs/rq3/results/2026-03-31_MV_Labels_Both_Python.json \\
-        --output outputs/rq3/results/kappa_CY_vs_MV_Python.json
+        outputs/v1_2026-04-19/rq3/results/2026-03-28_CY_Labels_Both_Python.json \\
+        outputs/v1_2026-04-19/rq3/results/2026-03-31_MV_Labels_Both_Python.json \\
+        --output outputs/v1_2026-04-19/rq3/results/kappa_CY_vs_MV_Python.json
 
 Show only labels that appear in at least one annotation (skip zero-support):
 
     uv run python src/rq3/calculate_agreement.py \\
-        outputs/rq3/results/2026-03-28_CY_Labels_Both_Python.json \\
-        outputs/rq3/results/2026-03-31_MV_Labels_Both_Python.json \\
+        outputs/v1_2026-04-19/rq3/results/2026-03-28_CY_Labels_Both_Python.json \\
+        outputs/v1_2026-04-19/rq3/results/2026-03-31_MV_Labels_Both_Python.json \\
         --min-support 1
 """
 
@@ -255,7 +255,7 @@ def build_parser() -> argparse.ArgumentParser:
         default=None,
         help=(
             "Optional path to write JSON results. "
-            "Defaults to outputs/rq3/results/kappa_<stem1>_vs_<stem2>.json."
+            "Defaults to outputs/v1_2026-04-19/rq3/results/kappa_<stem1>_vs_<stem2>.json."
         ),
     )
     parser.add_argument(

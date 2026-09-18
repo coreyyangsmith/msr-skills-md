@@ -1,5 +1,5 @@
 # Project Sepcific Filtering
-outputs/*raw_data*/
+outputs/**/raw_data/
 *.zip
 
 _*/

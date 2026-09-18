@@ -707,8 +707,8 @@ def _combo_csv_path(out_csv: str, language: str, license_key: str) -> str:
     """
     Derive a per-(language, license) CSV path from the main output path.
 
-    Example: data/seart_csvs/github_search_results.csv + TypeScript + mit
-             → data/seart_csvs/github_search_results_typescript_mit.csv
+    Example: data/v1_2026-04-19/seart_csvs/github_search_results.csv + TypeScript + mit
+             → data/v1_2026-04-19/seart_csvs/github_search_results_typescript_mit.csv
     """
     base, ext = os.path.splitext(out_csv)
     lang_slug = _sanitize_name(language)
@@ -860,8 +860,8 @@ def _parse_args(argv: List[str]) -> argparse.Namespace:
     )
     p.add_argument(
         "--out-csv",
-        default="data/seart_csvs/github_search_results.csv",
-        help="Output CSV path (default: data/seart_csvs/github_search_results.csv)",
+        default="data/v1_2026-04-19/seart_csvs/github_search_results.csv",
+        help="Output CSV path (default: data/v1_2026-04-19/seart_csvs/github_search_results.csv)",
     )
     p.add_argument(
         "--min-stars",

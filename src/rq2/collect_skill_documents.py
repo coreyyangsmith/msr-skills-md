@@ -32,17 +32,17 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Collect SKILL.md documents from raw_data into a normalized dataset.")
     parser.add_argument(
         "--raw-data-dir",
-        default="../../outputs/raw_data",
-        help="Root raw_data directory (default: outputs/raw_data)",
+        default="../../outputs/v1_2026-04-19/raw_data",
+        help="Root raw_data directory (default: outputs/v1_2026-04-19/raw_data)",
     )
     parser.add_argument(
         "--out-jsonl",
-        default="../../outputs/rq2/skill_documents.jsonl",
+        default="../../outputs/v1_2026-04-19/rq2/skill_documents.jsonl",
         help="Output JSONL path for collected SKILL.md documents",
     )
     parser.add_argument(
         "--out-stats-json",
-        default="../../outputs/rq2/skill_documents_stats.json",
+        default="../../outputs/v1_2026-04-19/rq2/skill_documents_stats.json",
         help="Output JSON path for collection statistics",
     )
     parser.add_argument(

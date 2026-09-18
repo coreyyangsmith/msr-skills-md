@@ -17,8 +17,8 @@ If neither field is present or non-empty, the repo is moved into an
 
 Usage
 -----
-    python sort_skills_folders_by_language.py --raw-data-dir outputs/raw_data
-    python sort_skills_folders_by_language.py --raw-data-dir outputs/raw_data --dry-run
+    python sort_skills_folders_by_language.py --raw-data-dir outputs/v1_2026-04-19/raw_data
+    python sort_skills_folders_by_language.py --raw-data-dir outputs/v1_2026-04-19/raw_data --dry-run
 
 Options
 -------
@@ -172,7 +172,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     p.add_argument(
         "--raw-data-dir",
         required=True,
-        help="Path to the flat raw_data directory (e.g. outputs/raw_data).",
+        help="Path to the flat raw_data directory (e.g. outputs/v1_2026-04-19/raw_data).",
     )
     p.add_argument(
         "--dry-run",

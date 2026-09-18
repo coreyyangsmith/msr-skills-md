@@ -216,7 +216,7 @@ At the end, report:
 
 ### Example A: Scan exact root path only (fast)
 - Inputs:
-  - `seart_dir = data/seart_csvs/`
+  - `seart_dir = data/v1_2026-04-19/seart_csvs/`
   - `search_paths = ["/SKILL.md"]`
 - Output:
   - `outputs/skill_md_scan_results.csv`

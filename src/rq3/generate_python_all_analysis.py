@@ -320,7 +320,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     )
     parser.add_argument(
         "--processed-dir",
-        default="outputs/rq3/results/processed",
+        default="outputs/v1_2026-04-19/rq3/results/processed",
         help="Directory containing processed RQ3 exports and processed statistics.",
     )
     parser.add_argument(
@@ -385,7 +385,7 @@ def main(argv: list[str] | None = None) -> int:
     processed_dir = resolve_path(args.processed_dir)
     defaults = language_defaults(args.language)
     slug = language_slug(defaults.language) + "_all"
-    out_dir = resolve_path(args.out_dir or f"outputs/rq3/analysis/{slug}")
+    out_dir = resolve_path(args.out_dir or f"outputs/v1_2026-04-19/rq3/analysis/{slug}")
     all_file = args.all_file or defaults.output_name
     both_file = args.both_file or defaults.selected_both_file or ""
     if args.source_files:

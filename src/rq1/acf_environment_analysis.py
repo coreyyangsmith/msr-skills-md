@@ -393,7 +393,7 @@ def write_analysis_note(
         "## Data Availability",
         "- Current scan data can support co-occurrence analysis among tracked ACFs inside confirmed `SKILL.md` repositories.",
         "- Current scan data cannot support a clean estimate of whether developers in a given environment prefer `SKILL.md`, because tracked ACF checks were only executed for `found=true` repositories.",
-        "- The local `outputs/raw_data` mirror also lines up with the SKILL.md-positive subset rather than the full scanned population, so it cannot backfill the missing negative cases for a preference comparison.",
+        "- The local `outputs/v1_2026-04-19/raw_data` mirror also lines up with the SKILL.md-positive subset rather than the full scanned population, so it cannot backfill the missing negative cases for a preference comparison.",
         "",
         "## Overall Findings on Tracked ACFs within SKILL.md Repositories",
     ]

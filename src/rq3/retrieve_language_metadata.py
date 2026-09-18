@@ -5,7 +5,7 @@ retrieve_language_metadata.py
 RQ3: Language-level summary of SKILL.md prevalence.
 
 Walks a root folder whose immediate children are language subfolders (e.g.
-outputs/raw_data/Python, outputs/raw_data/Go, …).  Each language subfolder
+outputs/v1_2026-04-19/raw_data/Python, outputs/v1_2026-04-19/raw_data/Go, …).  Each language subfolder
 contains one subfolder per repository, and each repo subfolder may contain a
 metadata.json produced by generate_dataset.py.
 
@@ -14,12 +14,12 @@ For every language folder the script emits one JSON summary file:
 
 Usage:
     uv run python src/rq3/retrieve_language_metadata.py \
-        --root outputs/raw_data
+        --root outputs/v1_2026-04-19/raw_data
 
     uv run python src/rq3/retrieve_language_metadata.py \
-        --root outputs/raw_data --out-dir outputs/rq3
+        --root outputs/v1_2026-04-19/raw_data --out-dir outputs/v1_2026-04-19/rq3
 
-    uv run python src/rq3/retrieve_language_metadata.py --root outputs/raw_data --out-dir outputs/rq3        
+    uv run python src/rq3/retrieve_language_metadata.py --root outputs/v1_2026-04-19/raw_data --out-dir outputs/v1_2026-04-19/rq3        
 """
 
 from __future__ import annotations

@@ -113,7 +113,7 @@ def parse_args(argv: list[str] | None) -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Enrich scan CSV with extended ACF columns via Contents API.")
     p.add_argument(
         "--input-known",
-        default="data/skill_only_scan/known_skill_repos.csv",
+        default="data/v1_2026-04-19/skill_only_scan/known_skill_repos.csv",
         help="Input CSV with found repos and commit_sha (skill-only corpus).",
     )
     p.add_argument(

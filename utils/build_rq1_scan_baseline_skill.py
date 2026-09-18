@@ -20,17 +20,17 @@ def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description=__doc__.strip().split("\n")[0])
     p.add_argument(
         "--population-csv",
-        default=str(REPO_ROOT / "data/data_after_relevance_filter/data_after_filter.csv"),
+        default=str(REPO_ROOT / "data/v1_2026-04-19/data_after_relevance_filter/data_after_filter.csv"),
         help="SEART-style CSV (uses `name` as owner/repo)",
     )
     p.add_argument(
         "--skill-csv",
-        default=str(REPO_ROOT / "data/skill_only_scan/skill_md_scan_results_skill_only_new_acfs_filtered.csv"),
+        default=str(REPO_ROOT / "data/v1_2026-04-19/skill_only_scan/skill_md_scan_results_skill_only_new_acfs_filtered.csv"),
         help="Skill-only scan CSV (`repo` column)",
     )
     p.add_argument(
         "--out-csv",
-        default=str(REPO_ROOT / "outputs/rq1/rq1_scan_relevance_baseline_x_skill_only.csv"),
+        default=str(REPO_ROOT / "outputs/v1_2026-04-19/rq1/rq1_scan_relevance_baseline_x_skill_only.csv"),
         help="Merged output for rq1 --scan-csv",
     )
     args = p.parse_args(argv)

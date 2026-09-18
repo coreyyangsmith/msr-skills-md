@@ -15,10 +15,10 @@ except ImportError:
     from label_processing import FILTER_SOURCE_LABELS, SDLC_COLLAPSE_MAP, normalise_label
 
 
-DEFAULT_PYTHON_ALL = "outputs/rq3/results/processed/Python_All.json"
-DEFAULT_RAW_RESULTS_DIR = "outputs/rq3/results"
+DEFAULT_PYTHON_ALL = "outputs/v1_2026-04-19/rq3/results/processed/Python_All.json"
+DEFAULT_RAW_RESULTS_DIR = "outputs/v1_2026-04-19/rq3/results"
 DEFAULT_INSTANCES_CSV = "outputs/full_skills_instances.csv"
-DEFAULT_OUT_CSV = "outputs/rq3/analysis/python_all/table_python_all_repo_skill_counts.csv"
+DEFAULT_OUT_CSV = "outputs/v1_2026-04-19/rq3/analysis/python_all/table_python_all_repo_skill_counts.csv"
 
 
 def repo_from_artifact_id(artifact_id: str) -> str:

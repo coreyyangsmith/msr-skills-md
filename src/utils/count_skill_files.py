@@ -18,8 +18,8 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     )
     parser.add_argument(
         "--raw-data-dir",
-        default="../../outputs/raw_data",
-        help="Root raw_data directory to scan recursively (default: outputs/raw_data).",
+        default="../../outputs/v1_2026-04-19/raw_data",
+        help="Root raw_data directory to scan recursively (default: outputs/v1_2026-04-19/raw_data).",
     )
     parser.add_argument(
         "--log-level",

@@ -489,7 +489,7 @@ def add_screening_input_args(parser: argparse.ArgumentParser) -> None:
 
 
 def add_output_args(parser: argparse.ArgumentParser) -> None:
-    parser.add_argument("--out-dir", default="outputs/rq1", help="Output directory for figures and tables")
+    parser.add_argument("--out-dir", default="outputs/v1_2026-04-19/rq1", help="Output directory for figures and tables")
     parser.add_argument(
         "--format",
         dest="fig_format",

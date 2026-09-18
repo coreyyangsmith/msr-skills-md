@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Filter outputs/raw_data folders using shared repo filters.
+"""Filter outputs/v1_2026-04-19/raw_data folders using shared repo filters.
 
 The script applies the same blacklist + repo-name filter words used by the
 pipeline and moves excluded repo folders to a separate output location.
@@ -34,13 +34,13 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--raw-data-dir",
-        default=str(REPO_ROOT / "outputs/raw_data"),
-        help="Path to raw_data root (default: outputs/raw_data)",
+        default=str(REPO_ROOT / "outputs/v1_2026-04-19/raw_data"),
+        help="Path to raw_data root (default: outputs/v1_2026-04-19/raw_data)",
     )
     parser.add_argument(
         "--filtered-out-dir",
-        default=str(REPO_ROOT / "outputs/raw_data_filtered_out"),
-        help="Where excluded repo folders are moved (default: outputs/raw_data_filtered_out)",
+        default=str(REPO_ROOT / "outputs/v1_2026-04-19/raw_data_filtered_out"),
+        help="Where excluded repo folders are moved (default: outputs/v1_2026-04-19/raw_data_filtered_out)",
     )
     parser.add_argument(
         "--blacklist",

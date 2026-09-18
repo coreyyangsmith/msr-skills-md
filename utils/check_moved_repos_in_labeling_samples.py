@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Check whether moved repos appear in RQ3 labeling_samples/Python.
 
-Reads moved repos from outputs/raw_data_filtered_out/moved_repos.tsv and checks
-if those repos are present in outputs/rq3/labeling_samples/Python (A, B, both).
+Reads moved repos from outputs/v1_2026-04-19/raw_data_filtered_out/moved_repos.tsv and checks
+if those repos are present in outputs/v1_2026-04-19/rq3/labeling_samples/Python (A, B, both).
 """
 
 from __future__ import annotations
@@ -14,10 +14,10 @@ from typing import Dict, Set
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_MOVED_TSV = REPO_ROOT / "outputs/raw_data_filtered_out/moved_repos.tsv"
-DEFAULT_LABELING_DIR = REPO_ROOT / "outputs/rq3/labeling_samples/Python"
-DEFAULT_REPORT = REPO_ROOT / "outputs/raw_data_filtered_out/moved_repos_in_labeling_samples_python.tsv"
-DEFAULT_OVERLAP_CSV = REPO_ROOT / "outputs/raw_data_filtered_out/removed_repos_in_python_labeling_samples.csv"
+DEFAULT_MOVED_TSV = REPO_ROOT / "outputs/v1_2026-04-19/raw_data_filtered_out/moved_repos.tsv"
+DEFAULT_LABELING_DIR = REPO_ROOT / "outputs/v1_2026-04-19/rq3/labeling_samples/Python"
+DEFAULT_REPORT = REPO_ROOT / "outputs/v1_2026-04-19/raw_data_filtered_out/moved_repos_in_labeling_samples_python.tsv"
+DEFAULT_OVERLAP_CSV = REPO_ROOT / "outputs/v1_2026-04-19/raw_data_filtered_out/removed_repos_in_python_labeling_samples.csv"
 
 
 def parse_args() -> argparse.Namespace:
@@ -32,7 +32,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--labeling-dir",
         default=str(DEFAULT_LABELING_DIR),
-        help="Path to outputs/rq3/labeling_samples/Python",
+        help="Path to outputs/v1_2026-04-19/rq3/labeling_samples/Python",
     )
     parser.add_argument(
         "--report-tsv",

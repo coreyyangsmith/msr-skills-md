@@ -141,12 +141,12 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Generate RQ3 fig1 two-panel prevalence chart.")
     parser.add_argument(
         "--sdlc-table",
-        default="outputs/rq3/analysis/python_all/table_rq3_python_all_sdlc_tasks.csv",
+        default="outputs/v1_2026-04-19/rq3/analysis/python_all/table_rq3_python_all_sdlc_tasks.csv",
         help="CSV table with language-all SDLC task prevalence.",
     )
     parser.add_argument(
         "--structural-table",
-        default="outputs/rq3/analysis/python_all/table_rq3_python_all_structural_patterns.csv",
+        default="outputs/v1_2026-04-19/rq3/analysis/python_all/table_rq3_python_all_structural_patterns.csv",
         help="CSV table with language-all instruction-pattern prevalence.",
     )
     parser.add_argument(
@@ -156,7 +156,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     )
     parser.add_argument(
         "--out",
-        default="outputs/rq3/analysis/fig1.png",
+        default="outputs/v1_2026-04-19/rq3/analysis/fig1.png",
         help="Output figure path.",
     )
     parser.add_argument("--dpi", type=int, default=300, help="Figure DPI.")

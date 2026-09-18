@@ -8,8 +8,8 @@ This script mirrors the random split used by generate_labeling_samples.py:
 - copy files while preserving paths relative to the root
 
 Additional exclusions are applied before sampling:
-- repos already present under outputs/rq3/labeling_samples/Python
-- repos listed in outputs/raw_data_filtered_out/moved_repos.tsv
+- repos already present under outputs/v1_2026-04-19/rq3/labeling_samples/Python
+- repos listed in outputs/v1_2026-04-19/raw_data_filtered_out/moved_repos.tsv
 """
 
 from __future__ import annotations
@@ -37,22 +37,22 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     )
     parser.add_argument(
         "--root",
-        default="../../outputs/rq3/language_sample/Python",
+        default="../../outputs/v1_2026-04-19/rq3/language_sample/Python",
         help="Root folder containing candidate SKILL.md files.",
     )
     parser.add_argument(
         "--exclude-root",
-        default="../../outputs/rq3/labeling_samples/Python",
+        default="../../outputs/v1_2026-04-19/rq3/labeling_samples/Python",
         help="Existing labeling-samples root used to exclude already-used repos.",
     )
     parser.add_argument(
         "--moved-repos-tsv",
-        default="../../outputs/raw_data_filtered_out/moved_repos.tsv",
+        default="../../outputs/v1_2026-04-19/raw_data_filtered_out/moved_repos.tsv",
         help="TSV report of moved repos to exclude from sampling.",
     )
     parser.add_argument(
         "--out-dir",
-        default="../../outputs/rq3/relabeling_samples/Python",
+        default="../../outputs/v1_2026-04-19/rq3/relabeling_samples/Python",
         help="Output directory where sampled SKILL.md files are copied.",
     )
     parser.add_argument(

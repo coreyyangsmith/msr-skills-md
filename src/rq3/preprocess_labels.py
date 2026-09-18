@@ -124,7 +124,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     )
     parser.add_argument(
         "--results-dir",
-        default="outputs/rq3/results",
+        default="outputs/v1_2026-04-19/rq3/results",
         help="Directory containing RQ3 result JSON files.",
     )
     parser.add_argument(

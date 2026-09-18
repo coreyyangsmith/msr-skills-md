@@ -20,15 +20,15 @@ same SKILL.md will not appear in more than one bucket).
 
 Usage:
     uv run python src/rq3/generate_labeling_samples.py \\
-        --root outputs/rq3/language_sample \\
+        --root outputs/v1_2026-04-19/rq3/language_sample \\
         --both 55 \\
         --A 154 \\
         --B 155 \\
-        --out-dir outputs/rq3/labeling_samples \\
+        --out-dir outputs/v1_2026-04-19/rq3/labeling_samples \\
         --seed 42
 
-    uv run python src/rq3/generate_labeling_samples.py --root outputs/rq3/language_sample/Python --both 55 --A 154 --B 154 --out-dir outputs/rq3/labeling_samples/Python --seed 42
-    uv run python src/rq3/generate_labeling_samples.py --root outputs/rq3/language_sample/TypeScript --both 55 --A 155 --B 155 --out-dir outputs/rq3/labeling_samples/TypeScript --seed 42
+    uv run python src/rq3/generate_labeling_samples.py --root outputs/v1_2026-04-19/rq3/language_sample/Python --both 55 --A 154 --B 154 --out-dir outputs/v1_2026-04-19/rq3/labeling_samples/Python --seed 42
+    uv run python src/rq3/generate_labeling_samples.py --root outputs/v1_2026-04-19/rq3/language_sample/TypeScript --both 55 --A 155 --B 155 --out-dir outputs/v1_2026-04-19/rq3/labeling_samples/TypeScript --seed 42
 
 """
 

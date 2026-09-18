@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Merge original label JSON exports with relabel exports into Final_Labels files.
 
-See plan: outputs/rq3/results consolidation (CY/MV × A/B/both).
+See plan: outputs/v1_2026-04-19/rq3/results consolidation (CY/MV × A/B/both).
 """
 
 from __future__ import annotations

@@ -32,7 +32,7 @@ class TestParseArgs(unittest.TestCase):
         args = parse_args(
             [
                 "--seart-dir",
-                "data/seart_csvs",
+                "data/v1_2026-04-19/seart_csvs",
                 "--out-csv",
                 "outputs/scan.csv",
                 "--shortlist-csv",
@@ -58,7 +58,7 @@ class TestParseArgs(unittest.TestCase):
             ]
         )
 
-        self.assertEqual(args.seart_dir, "data/seart_csvs")
+        self.assertEqual(args.seart_dir, "data/v1_2026-04-19/seart_csvs")
         self.assertEqual(args.out_csv, "outputs/scan.csv")
         self.assertEqual(args.shortlist_csv, "outputs/short.csv")
         self.assertEqual(args.max_repos, 10)

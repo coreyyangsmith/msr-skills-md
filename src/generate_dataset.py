@@ -640,7 +640,7 @@ def parse_args(argv: List[str]) -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Re-process found repositories to extract skill datasets.")
     p.add_argument("--found-csv", required=True, help="Input CSV from A script (e.g. outputs/skill_md_scan_results_found.csv)")
     p.add_argument("--out-csv", required=True, help="Output dataset CSV (e.g. outputs/full_skills_instances.csv)")
-    p.add_argument("--raw-data-dir", required=True, help="Directory to save downloaded files (e.g. outputs/raw_data)")
+    p.add_argument("--raw-data-dir", required=True, help="Directory to save downloaded files (e.g. outputs/v1_2026-04-19/raw_data)")
     p.add_argument("--match-name", default="SKILL.md", help="Filename to match")
     p.add_argument("--blacklist", default="blacklist.txt", help="Path to blacklist file (owner/repo per line). Default: blacklist.txt")
     p.add_argument(

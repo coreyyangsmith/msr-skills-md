@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Process the four Final Label exports into outputs/rq3/results/processed/."""
+"""Process the four Final Label exports into outputs/v1_2026-04-19/rq3/results/processed/."""
 import sys
 from pathlib import Path
 

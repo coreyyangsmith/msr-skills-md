@@ -149,7 +149,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     )
     parser.add_argument(
         "--processed-dir",
-        default="outputs/rq3/results/processed",
+        default="outputs/v1_2026-04-19/rq3/results/processed",
         help="Directory containing processed RQ3 exports.",
     )
     parser.add_argument(

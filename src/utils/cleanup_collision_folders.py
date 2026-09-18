@@ -18,8 +18,8 @@ This script:
 3. Deletes any immediate subdirectory of repo_dir that is NOT in that valid set.
 
 Usage:
-    uv run python src/utils/cleanup_collision_folders.py --raw-data-dir outputs/raw_data
-    uv run python src/utils/cleanup_collision_folders.py --raw-data-dir outputs/raw_data --dry-run
+    uv run python src/utils/cleanup_collision_folders.py --raw-data-dir outputs/v1_2026-04-19/raw_data
+    uv run python src/utils/cleanup_collision_folders.py --raw-data-dir outputs/v1_2026-04-19/raw_data --dry-run
 """
 
 from __future__ import annotations
