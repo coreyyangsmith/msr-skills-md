@@ -1,10 +1,12 @@
 {
-  "input_path": "/Users/marcelvogt/Documents/Documents-MacBookPro/Studies/TU-Berlin/Semester-Abroad/Calgary/Courses/AIinSE/FinalProject/msr-skills-md/outputs/rq2/skill_documents.jsonl",
-  "documents_total_in_input": 34145,
-  "documents_used_for_tfidf": 32984,
+  "input_path": "C:\\Users\\houai\\OneDrive\\Documents\\mitacs doc\\msr-skills-md\\outputs\\rq2\\skill_documents.jsonl",
+  "documents_total_in_input": 144080,
+  "documents_after_language_filter": 144080,
+  "language_filter": [],
+  "documents_used_for_tfidf": 136861,
   "vocabulary_size": 10000,
   "matrix_shape": [
-    32984,
+    136861,
     10000
   ],
   "params": {
@@ -35,9 +37,9 @@
     "top_k_per_doc": 30
   },
   "outputs": {
-    "global_terms_csv": "/Users/marcelvogt/Documents/Documents-MacBookPro/Studies/TU-Berlin/Semester-Abroad/Calgary/Courses/AIinSE/FinalProject/msr-skills-md/outputs/rq2/tfidf_sklearn_top_terms_global.csv",
-    "global_unigram_terms_csv": "/Users/marcelvogt/Documents/Documents-MacBookPro/Studies/TU-Berlin/Semester-Abroad/Calgary/Courses/AIinSE/FinalProject/msr-skills-md/outputs/rq2/tfidf_sklearn_top_terms_global_unigrams.csv",
-    "global_bigram_terms_csv": "/Users/marcelvogt/Documents/Documents-MacBookPro/Studies/TU-Berlin/Semester-Abroad/Calgary/Courses/AIinSE/FinalProject/msr-skills-md/outputs/rq2/tfidf_sklearn_top_terms_global_bigrams.csv",
-    "per_document_terms_csv": "/Users/marcelvogt/Documents/Documents-MacBookPro/Studies/TU-Berlin/Semester-Abroad/Calgary/Courses/AIinSE/FinalProject/msr-skills-md/outputs/rq2/tfidf_sklearn_top_terms_per_document.csv"
+    "global_terms_csv": "C:\\Users\\houai\\OneDrive\\Documents\\mitacs doc\\msr-skills-md\\outputs\\rq2\\tfidf_sklearn_top_terms_global.csv",
+    "global_unigram_terms_csv": "C:\\Users\\houai\\OneDrive\\Documents\\mitacs doc\\msr-skills-md\\outputs\\rq2\\tfidf_sklearn_top_terms_global_unigrams.csv",
+    "global_bigram_terms_csv": "C:\\Users\\houai\\OneDrive\\Documents\\mitacs doc\\msr-skills-md\\outputs\\rq2\\tfidf_sklearn_top_terms_global_bigrams.csv",
+    "per_document_terms_csv": "C:\\Users\\houai\\OneDrive\\Documents\\mitacs doc\\msr-skills-md\\outputs\\rq2\\tfidf_sklearn_top_terms_per_document.csv"
   }
 }
