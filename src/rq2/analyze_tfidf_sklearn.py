@@ -35,7 +35,6 @@ CUSTOM_STOPWORDS = {
     "design",
 }
 
-
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="TF-IDF analysis on SKILL.md frontmatter (name + description) from collected documents."
@@ -123,43 +122,59 @@ def extract_name_description(markdown_text: str) -> tuple[str, str]:
     return values["name"], values["description"]
 
 
-def parse_documents(input_path: Path) -> list[dict[str, Any]]:
-    raw = input_path.read_text(encoding="utf-8")
+def iter_documents(input_path: Path) -> Any:
+    """Stream documents one at a time instead of materializing the whole file.
 
-    stripped = raw.lstrip()
-    if stripped.startswith("["):
-        payload = json.loads(raw)
-        if not isinstance(payload, list):
-            raise ValueError("JSON input must be a list of objects")
-        docs = [item for item in payload if isinstance(item, dict)]
-    else:
-        docs = []
-        for line in raw.splitlines():
-            line = line.strip()
-            if not line:
-                continue
-            item = json.loads(line)
-            if isinstance(item, dict):
-                docs.append(item)
+    Large corpora (100k+ SKILL.md files, each carrying its full raw text)
+    can exceed available memory if loaded as one string / one list of dicts.
+    JSONL is read line-by-line; a bracketed JSON-array input still requires
+    a full parse (rare for this pipeline's inputs) but is supported for
+    backward compatibility.
+    """
+    with input_path.open("r", encoding="utf-8") as handle:
+        first_non_space = ""
+        for probe_char in iter(lambda: handle.read(1), ""):
+            if not probe_char.isspace():
+                first_non_space = probe_char
+                break
+        handle.seek(0)
 
-    return docs
+        if first_non_space == "[":
+            payload = json.load(handle)
+            if not isinstance(payload, list):
+                raise ValueError("JSON input must be a list of objects")
+            for item in payload:
+                if isinstance(item, dict):
+                    yield item
+        else:
+            for line in handle:
+                line = line.strip()
+                if not line:
+                    continue
+                item = json.loads(line)
+                if isinstance(item, dict):
+                    yield item
 
 
-def filter_documents_by_language(documents: list[dict[str, Any]], languages: set[str] | None) -> list[dict[str, Any]]:
-    if not languages:
-        return documents
-    return [
-        doc
-        for doc in documents
-        if str(doc.get("language", "")).strip().lower() in languages
-    ]
-
-
-def build_corpus(documents: list[dict[str, Any]]) -> tuple[list[dict[str, str]], list[str]]:
+def build_corpus_streaming(
+    input_path: Path, languages: set[str] | None
+) -> tuple[list[dict[str, str]], list[str], int, int]:
+    """Single streaming pass: filter by language, extract name+description,
+    and drop each document's full raw text immediately so memory use stays
+    bounded by corpus size (small strings) rather than total input size."""
     rows: list[dict[str, str]] = []
     corpus: list[str] = []
+    total_in_input = 0
+    total_after_language_filter = 0
 
-    for idx, doc in enumerate(documents):
+    for doc in iter_documents(input_path):
+        total_in_input += 1
+
+        language = str(doc.get("language", ""))
+        if languages and language.strip().lower() not in languages:
+            continue
+        total_after_language_filter += 1
+
         text = str(doc.get("text", "") or "")
         name, description = extract_name_description(text)
         joined = f"{name} {description}".strip()
@@ -169,8 +184,8 @@ def build_corpus(documents: list[dict[str, Any]]) -> tuple[list[dict[str, str]],
 
         rows.append(
             {
-                "doc_id": str(idx),
-                "language": str(doc.get("language", "")),
+                "doc_id": str(total_in_input - 1),
+                "language": language,
                 "repo": str(doc.get("repo", "")),
                 "relative_path": str(doc.get("relative_path", "")),
                 "name": name,
@@ -180,7 +195,7 @@ def build_corpus(documents: list[dict[str, Any]]) -> tuple[list[dict[str, str]],
         )
         corpus.append(joined)
 
-    return rows, corpus
+    return rows, corpus, total_in_input, total_after_language_filter
 
 
 def write_global_terms(path: Path, feature_names: list[str], global_scores: list[float], top_k: int) -> None:
@@ -272,10 +287,10 @@ def main(argv: list[str] | None = None) -> int:
     if not input_path.exists() or not input_path.is_file():
         raise FileNotFoundError(f"Input file not found: {input_path}")
 
-    all_documents = parse_documents(input_path)
     languages = {language.strip().lower() for language in args.languages if language.strip()} or None
-    documents = filter_documents_by_language(all_documents, languages)
-    rows, corpus = build_corpus(documents)
+    rows, corpus, documents_total_in_input, documents_after_language_filter = build_corpus_streaming(
+        input_path, languages
+    )
 
     if not corpus:
         raise ValueError("No documents with non-empty 'name + description' were found in input")
@@ -320,8 +335,8 @@ def main(argv: list[str] | None = None) -> int:
 
     summary = {
         "input_path": str(input_path.resolve()),
-        "documents_total_in_input": len(all_documents),
-        "documents_after_language_filter": len(documents),
+        "documents_total_in_input": documents_total_in_input,
+        "documents_after_language_filter": documents_after_language_filter,
         "language_filter": sorted(args.languages),
         "documents_used_for_tfidf": len(corpus),
         "vocabulary_size": len(feature_names),
