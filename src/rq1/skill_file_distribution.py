@@ -13,9 +13,11 @@ if __package__ in {None, ""}:
 from rq1 import fig11_skill_files_per_repo, table_top1000_repos_global, table_top100_repos_per_language
 from rq1.common import (
     add_instances_input_args,
+    add_language_args,
     add_output_args,
     aggregate_instances_to_repo,
     configure_logging,
+    filter_dataframe_by_languages,
     load_instances_csv,
     load_scan_csv,
     merge_repo_metadata,
@@ -28,6 +30,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Distribution of skill files per repository")
     add_instances_input_args(parser)
     parser.add_argument("--scan-csv", default="", help="Optional scan CSV to merge repo metadata such as contributors")
+    add_language_args(parser)
     add_output_args(parser)
     parser.add_argument(
         "--blacklist",
@@ -61,10 +64,12 @@ def main(argv: list[str]) -> int:
     inst_df = load_instances_csv(args.instances_csv)
     if inst_df is None:
         return 0
+    inst_df = filter_dataframe_by_languages(inst_df, args.languages)
 
     repo_df = aggregate_instances_to_repo(inst_df)
     if args.scan_csv:
         scan_df = load_scan_csv(args.scan_csv, blacklist=blacklist, filter_words=filter_words)
+        scan_df = filter_dataframe_by_languages(scan_df, args.languages)
         repo_df = merge_repo_metadata(repo_df, scan_df)
 
     skill_counts = repo_df["skill_count"]

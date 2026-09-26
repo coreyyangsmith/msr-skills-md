@@ -19,27 +19,27 @@ def parse_args() -> argparse.Namespace:
 	)
 	parser.add_argument(
 		"--unigrams-csv",
-		default=str(REPO_ROOT / "outputs/v1_2026-04-19/rq2/tfidf_sklearn_top_terms_global_unigrams.csv"),
+		default=str(REPO_ROOT / "outputs/rq2/tfidf_sklearn_top_terms_global_unigrams.csv"),
 		help="CSV with unigram TF-IDF terms (columns: term, tfidf_sum)",
 	)
 	parser.add_argument(
 		"--bigrams-csv",
-		default=str(REPO_ROOT / "outputs/v1_2026-04-19/rq2/tfidf_sklearn_top_terms_global_bigrams.csv"),
+		default=str(REPO_ROOT / "outputs/rq2/tfidf_sklearn_top_terms_global_bigrams.csv"),
 		help="CSV with bigram TF-IDF terms (columns: term, tfidf_sum)",
 	)
 	parser.add_argument(
 		"--out-unigrams-image",
-		default=str(REPO_ROOT / "outputs/v1_2026-04-19/rq2/top10_unigrams_tfidf_barh.png"),
+		default=str(REPO_ROOT / "outputs/rq2/top10_unigrams_tfidf_barh.png"),
 		help="Output image path for unigram chart",
 	)
 	parser.add_argument(
 		"--out-bigrams-image",
-		default=str(REPO_ROOT / "outputs/v1_2026-04-19/rq2/top10_bigrams_tfidf_barh.png"),
+		default=str(REPO_ROOT / "outputs/rq2/top10_bigrams_tfidf_barh.png"),
 		help="Output image path for bigram chart",
 	)
 	parser.add_argument(
 		"--out-combined-image",
-		default=str(REPO_ROOT / "outputs/v1_2026-04-19/rq2/top10_tfidf_unigrams_bigrams_combined.png"),
+		default=str(REPO_ROOT / "outputs/rq2/top10_tfidf_unigrams_bigrams_combined.png"),
 		help="Output image path for combined unigram+bigram chart",
 	)
 	parser.add_argument(

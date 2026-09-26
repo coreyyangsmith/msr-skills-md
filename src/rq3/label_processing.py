@@ -13,41 +13,54 @@ NORMALISE_MAP: dict[str, str] = {
     "se-workflow-management": "se-workflow-management",
     "non-english": "wrong-language",
     "wrong-language": "wrong-language",
-    # "references" (plural) used in some CY exports is the same concept as "reference"
+    # "references" (plural) used in some labeler A exports is the same concept as "reference"
     "references": "reference",
+    "positive-examples": "positive-example",
+    "positive-example": "positive-example",
+    "negative-examples": "negative-example",
+    "negative-example": "negative-example",
 }
 
 FILTER_SOURCE_LABELS = frozenset({
     "agent-skill",
     "wrong-language",
     "outside-scope",
+    "filter-out",
 })
 FILTER_LABEL = "filter"
 
 INSTRUCTION_TYPE_LABELS = (
-    "commands",
-    "instructive",
-    "descriptive",
+    "purpose",
+    "activation",
+    "exclusion",
+    "workflow",
+    "decision-rule",
+    "action-directive",
+    "positive-example",
+    "negative-example",
     "reference",
-    "positive-examples",
-    "negative-examples",
 )
 
 SDLC_COLLAPSE_MAP: dict[str, str] = {
-    "documentation": "Documentation",
-    "agent-facing": "Documentation",
+    "requirement": "Requirements",
     "requirements": "Requirements",
+    "design": "Software Design",
     "software-design": "Software Design",
-    "code-generation": "Code Generation",
-    "implementation": "Code Generation",
-    "code-integration": "Code Generation",
-    "program-analysis": "Code Generation",
-    "software-testing": "Software Testing",
-    "test-generation": "Software Testing",
-    "code-quality": "Software Testing",
-    "debugging": "Software Testing",
+    "code-implementation": "Code Implementation",
+    "code-generation": "Code Implementation",
+    "implementation": "Code Implementation",
+    "code-integration": "Code Implementation",
+    "program-analysis": "Program Analysis",
+    "testing": "Testing",
+    "software-testing": "Testing",
+    "test-generation": "Testing",
+    "code-quality": "Testing",
+    "debugging": "Debugging",
+    "maintenance": "Maintenance",
     "devops": "DevOps",
     "se-workflow-management": "DevOps",
+    "documentation": "Documentation",
+    "agent-facing": "Documentation",
 }
 SDLC_STAGE_LABELS = tuple(dict.fromkeys(SDLC_COLLAPSE_MAP.values()))
 
@@ -229,22 +242,12 @@ def build_processed_export(data: dict, *, source_name: str | None = None) -> dic
             "filter_source_labels": list(FILTER_SOURCE_LABELS),
             "filter_source_document_counts": filter_source_document_counts,
             "sdlc_collapse_rules": {
-                "Documentation": ["documentation", "agent-facing"],
-                "Requirements": ["requirements"],
-                "Software Design": ["software-design"],
-                "Code Generation": [
-                    "code-generation",
-                    "implementation",
-                    "code-integration",
-                    "program-analysis",
-                ],
-                "Software Testing": [
-                    "software-testing",
-                    "test-generation",
-                    "code-quality",
-                    "debugging",
-                ],
-                "DevOps": ["devops", "se-workflow-management"],
+                stage: [
+                    source
+                    for source, mapped in SDLC_COLLAPSE_MAP.items()
+                    if mapped == stage
+                ]
+                for stage in SDLC_STAGE_LABELS
             },
             "counts": processing_counts,
             "filter_source_conflicts": filter_source_conflicts,

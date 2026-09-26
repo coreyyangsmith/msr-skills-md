@@ -11,7 +11,17 @@ import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "src"))
 
-from rq1.common import aggregate_instances_to_repo, compute_project_age_years, merge_repo_metadata, write_missing_data_note
+from rq1.common import (
+    aggregate_instances_to_repo,
+    compute_project_age_years,
+    filter_dataframe_by_languages,
+    merge_repo_metadata,
+    write_missing_data_note,
+)
+from rq1.fig1_prevalence_by_language import (
+    compute_prevalence_axis_limits,
+    compute_prevalence_rate_ticks,
+)
 
 
 class TestRq1Common(unittest.TestCase):
@@ -55,6 +65,49 @@ class TestRq1Common(unittest.TestCase):
         )
         ages = compute_project_age_years(df)
         self.assertAlmostEqual(float(ages.iloc[0]), 2.0, places=2)
+
+    def test_compute_project_age_years_fills_missing_scan_with_snapshot(self):
+        df = pd.DataFrame(
+            [
+                {"createdAt": "2024-01-01T00:00:00Z", "scanned_at_utc": "2026-07-01T00:00:00Z"},
+                {"createdAt": "2024-01-01T00:00:00Z", "scanned_at_utc": None},
+            ]
+        )
+        ages = compute_project_age_years(df)
+        self.assertAlmostEqual(float(ages.iloc[0]), float(ages.iloc[1]), places=4)
+
+    def test_filter_dataframe_by_languages_is_case_insensitive(self):
+        df = pd.DataFrame(
+            [
+                {"repo": "a/py", "mainLanguage": "Python"},
+                {"repo": "a/ts", "mainLanguage": "typescript"},
+                {"repo": "a/go", "mainLanguage": "Go"},
+                {"repo": "a/missing", "mainLanguage": ""},
+            ]
+        )
+        filtered = filter_dataframe_by_languages(df, ["python", "TypeScript"])
+        self.assertEqual(filtered["repo"].tolist(), ["a/py", "a/ts"])
+
+    def test_prevalence_axis_limits_scale_with_data(self):
+        count_axis_max, count_xlim_max, rate_axis_max, rate_xlim_max = compute_prevalence_axis_limits(
+            pd.Series([4227, 4396]),
+            pd.Series([6.2, 10.4]),
+        )
+        self.assertGreaterEqual(count_axis_max, 4396)
+        self.assertGreater(count_xlim_max, count_axis_max)
+        self.assertGreaterEqual(rate_axis_max, 10.4)
+        self.assertGreater(rate_xlim_max, rate_axis_max)
+
+    def test_prevalence_axis_max_is_multiple_of_two_percent(self):
+        _, _, rate_axis_max, _ = compute_prevalence_axis_limits(
+            pd.Series([100]),
+            pd.Series([8.1]),
+        )
+        self.assertEqual(rate_axis_max, 10.0)
+
+    def test_prevalence_rate_ticks_are_every_two_percent(self):
+        ticks = compute_prevalence_rate_ticks(12.0)
+        self.assertEqual(list(ticks), [0.0, 2.0, 4.0, 6.0, 8.0, 10.0, 12.0])
 
     def test_write_missing_data_note(self):
         tmpdir = Path.cwd() / "outputs" / f"_test_rq1_common_{uuid.uuid4().hex}"

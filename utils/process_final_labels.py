@@ -11,10 +11,10 @@ RESULTS = REPO / "outputs" / "rq3" / "results"
 PROCESSED = RESULTS / "processed"
 
 FINALS = [
-    "2026-04-19_CY_Final_Labels_A_Python.json",
-    "2026-04-19_CY_Final_Labels_Both_Python.json",
-    "2026-04-19_MV_Final_Labels_B_Python.json",
-    "2026-04-19_MV_Final_Labels_Both_Python.json",
+    "2026-04-19_A_Final_Labels_A_Python.json",
+    "2026-04-19_A_Final_Labels_Both_Python.json",
+    "2026-04-19_B_Final_Labels_B_Python.json",
+    "2026-04-19_B_Final_Labels_Both_Python.json",
 ]
 
 

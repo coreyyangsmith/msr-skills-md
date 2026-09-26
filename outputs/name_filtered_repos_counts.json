@@ -1,0 +1,23 @@
+{
+  "total_filtered": 4324,
+  "counts_by_keyword": {
+    "skills": 1008,
+    "skill": 812,
+    "registry": 11,
+    "awesome": 36,
+    "template": 69,
+    "boilerplate": 12,
+    "starter": 61,
+    "scaffold": 7,
+    "example": 25,
+    "dotfiles": 24,
+    "config": 34,
+    "setup": 13,
+    "bootstrap": 4,
+    "claw": 441,
+    "claude": 488,
+    "plugin": 172,
+    "tool": 216,
+    "agent": 891
+  }
+}

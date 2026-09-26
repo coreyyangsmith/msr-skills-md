@@ -640,7 +640,7 @@ def parse_args(argv: List[str]) -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Re-process found repositories to extract skill datasets.")
     p.add_argument("--found-csv", required=True, help="Input CSV from A script (e.g. outputs/skill_md_scan_results_found.csv)")
     p.add_argument("--out-csv", required=True, help="Output dataset CSV (e.g. outputs/full_skills_instances.csv)")
-    p.add_argument("--raw-data-dir", required=True, help="Directory to save downloaded files (e.g. outputs/v1_2026-04-19/raw_data)")
+    p.add_argument("--raw-data-dir", required=True, help="Directory to save downloaded files (e.g. outputs/raw_data)")
     p.add_argument("--match-name", default="SKILL.md", help="Filename to match")
     p.add_argument("--blacklist", default="blacklist.txt", help="Path to blacklist file (owner/repo per line). Default: blacklist.txt")
     p.add_argument(
@@ -670,6 +670,13 @@ def parse_args(argv: List[str]) -> argparse.Namespace:
     p.add_argument("--github-token", default="")
     p.add_argument("--github-tokens", default="")
     p.add_argument("--log-level", default="INFO", choices=["DEBUG", "INFO", "WARNING", "ERROR"])
+    p.add_argument(
+        "--languages",
+        nargs="+",
+        default=["Python", "TypeScript"],
+        metavar="LANG",
+        help="Primary languages to include (default: Python TypeScript). Pass the full language list to reproduce the archived corpus.",
+    )
     return p.parse_args(argv)
 
 
@@ -704,6 +711,24 @@ def main(argv: List[str]) -> int:
     if not repos:
         log.error("No repos found in %s", args.found_csv)
         return 1
+
+    allowed_languages = {language.strip().lower() for language in args.languages if language.strip()}
+    if allowed_languages:
+        before = len(repos)
+        repos = [
+            row
+            for row in repos
+            if (row.get("mainLanguage") or "").strip().lower() in allowed_languages
+        ]
+        log.info(
+            "Language filter %s: %d -> %d found-csv rows",
+            args.languages,
+            before,
+            len(repos),
+        )
+        if not repos:
+            log.error("No repos remaining after language filter %s", args.languages)
+            return 1
 
     if args.resume:
         try:

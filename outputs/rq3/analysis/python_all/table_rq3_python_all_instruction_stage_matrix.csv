@@ -1,37 +1,82 @@
 instruction_type,sdlc_stage,count
-commands,Documentation,1
-commands,Requirements,0
-commands,Software Design,3
-commands,Code Generation,13
-commands,Software Testing,15
-commands,DevOps,14
-instructive,Documentation,23
-instructive,Requirements,10
-instructive,Software Design,22
-instructive,Code Generation,32
-instructive,Software Testing,36
-instructive,DevOps,25
-descriptive,Documentation,10
-descriptive,Requirements,3
-descriptive,Software Design,14
-descriptive,Code Generation,11
-descriptive,Software Testing,15
-descriptive,DevOps,15
-reference,Documentation,7
-reference,Requirements,5
-reference,Software Design,17
-reference,Code Generation,26
-reference,Software Testing,24
-reference,DevOps,17
-positive-examples,Documentation,7
-positive-examples,Requirements,2
-positive-examples,Software Design,7
-positive-examples,Code Generation,21
-positive-examples,Software Testing,9
-positive-examples,DevOps,11
-negative-examples,Documentation,0
-negative-examples,Requirements,1
-negative-examples,Software Design,1
-negative-examples,Code Generation,5
-negative-examples,Software Testing,7
-negative-examples,DevOps,2
+purpose,Requirements,17
+purpose,Software Design,19
+purpose,Code Implementation,62
+purpose,Program Analysis,47
+purpose,Testing,66
+purpose,Debugging,21
+purpose,Maintenance,59
+purpose,DevOps,46
+purpose,Documentation,38
+activation,Requirements,17
+activation,Software Design,19
+activation,Code Implementation,60
+activation,Program Analysis,42
+activation,Testing,59
+activation,Debugging,21
+activation,Maintenance,53
+activation,DevOps,39
+activation,Documentation,35
+exclusion,Requirements,10
+exclusion,Software Design,10
+exclusion,Code Implementation,23
+exclusion,Program Analysis,21
+exclusion,Testing,26
+exclusion,Debugging,11
+exclusion,Maintenance,25
+exclusion,DevOps,20
+exclusion,Documentation,18
+workflow,Requirements,17
+workflow,Software Design,18
+workflow,Code Implementation,54
+workflow,Program Analysis,46
+workflow,Testing,62
+workflow,Debugging,19
+workflow,Maintenance,53
+workflow,DevOps,41
+workflow,Documentation,38
+decision-rule,Requirements,17
+decision-rule,Software Design,19
+decision-rule,Code Implementation,60
+decision-rule,Program Analysis,46
+decision-rule,Testing,65
+decision-rule,Debugging,21
+decision-rule,Maintenance,60
+decision-rule,DevOps,45
+decision-rule,Documentation,36
+action-directive,Requirements,17
+action-directive,Software Design,19
+action-directive,Code Implementation,59
+action-directive,Program Analysis,46
+action-directive,Testing,65
+action-directive,Debugging,21
+action-directive,Maintenance,59
+action-directive,DevOps,46
+action-directive,Documentation,37
+positive-example,Requirements,11
+positive-example,Software Design,13
+positive-example,Code Implementation,44
+positive-example,Program Analysis,25
+positive-example,Testing,38
+positive-example,Debugging,9
+positive-example,Maintenance,32
+positive-example,DevOps,19
+positive-example,Documentation,25
+negative-example,Requirements,3
+negative-example,Software Design,8
+negative-example,Code Implementation,13
+negative-example,Program Analysis,8
+negative-example,Testing,11
+negative-example,Debugging,1
+negative-example,Maintenance,15
+negative-example,DevOps,7
+negative-example,Documentation,6
+reference,Requirements,13
+reference,Software Design,16
+reference,Code Implementation,56
+reference,Program Analysis,37
+reference,Testing,53
+reference,Debugging,18
+reference,Maintenance,46
+reference,DevOps,35
+reference,Documentation,32

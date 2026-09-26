@@ -34,6 +34,7 @@ FILTER_COLUMNS = {
     "agent-skill",
     "outside-scope",
     "wrong-language",
+    "filter-out",
 }
 
 

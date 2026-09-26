@@ -13,7 +13,7 @@ The collection process has four core stages:
 ```text
 Stage 1: Repository population
   src/search_github_repos.py
-  data/v1_2026-04-19/seart_csvs/github_search_results.csv
+  data/seart_csvs/github_search_results.csv
 
 Stage 2: SKILL.md scan
   src/extract_skill_repos_tree.py
@@ -22,12 +22,12 @@ Stage 2: SKILL.md scan
 
 Stage 2.5: Active-repository filtering
   utils/filter_active_repos.py
-  data/v1_2026-04-19/skill_only_scan/skill_repositories.csv
+  data/skill_only_scan/skill_repositories.csv
 
 Stage 3: Skill artifact extraction
   src/generate_dataset.py
   outputs/full_skills_instances.csv
-  outputs/v1_2026-04-19/raw_data/<Language>/<owner>__<repo>/
+  outputs/raw_data/<Language>/<owner>__<repo>/
 ```
 
 Optional enrichment scripts add contributor counts, repository metadata, READMEs, and legacy ACF backfills:
@@ -54,10 +54,33 @@ Filtering behavior lives in:
 
 Study snapshots are stored under `vN_YYYY-MM-DD` folders:
 
-- **Data:** `data/v1_2026-04-19/` — SEART population, skill shortlist, committed skill metrics
-- **Outputs:** `outputs/v1_2026-04-19/` — raw skill trees and analysis artifacts
+- **Data:** `data/v1_2026-04-19/` — earlier snapshot
+- **Outputs:** `outputs/v1_2026-04-19/` — v1 raw skill trees and analysis artifacts
+- **v2 full archive:** `data/v2_2026-09-17/` and `outputs/v2_2026-09-17/` — unfiltered 11-language corpus
+- **Main working copy:** Python and TypeScript only, under top-level `data/` and `outputs/`
 
-Each folder has a `MANIFEST.md`. Docs and script defaults target **v1_2026-04-19**. Intermediate collection files (scan CSVs, cache, enrichment) still write to top-level `outputs/` unless you pass versioned paths explicitly.
+Each folder has a `MANIFEST.md`. Docs and script defaults target the Python/TypeScript main dataset. Intermediate collection files (scan CSVs, cache, enrichment) still write to top-level `outputs/` unless you pass versioned paths explicitly.
+
+To rebuild the main Python/TypeScript dataset from the archived full v2 corpus without re-scraping:
+
+```sh
+uv run python utils/constrain_dataset_languages.py \
+  --src-csv data/v2_2026-09-17/seart_csvs/github_search_results.csv \
+  --dest-csv data/seart_csvs/github_search_results.csv \
+  --src-csv data/v2_2026-09-17/skill_only_scan/skill_repositories.csv \
+  --dest-csv data/skill_only_scan/skill_repositories.csv \
+  --src-csv data/v2_2026-09-17/skill_files/full_skills.csv \
+  --dest-csv data/skill_files/full_skills.csv \
+  --src-csv outputs/v2_2026-09-17/skill_md_scan_results.csv \
+  --dest-csv outputs/skill_md_scan_results.csv \
+  --src-csv outputs/v2_2026-09-17/full_skills_instances.csv \
+  --dest-csv outputs/full_skills_instances.csv \
+  --raw-data-src outputs/v2_2026-09-17/raw_data \
+  --raw-data-dest outputs/raw_data \
+  --languages Python TypeScript
+```
+
+The filter keeps duplicate `(repo, skill_path)` rows. Pass `--dry-run` first to print keep/total counts without writing.
 
 ---
 
@@ -103,11 +126,11 @@ Script:
 
 Primary output:
 
-- `data/v1_2026-04-19/seart_csvs/github_search_results.csv`
+- `data/seart_csvs/github_search_results.csv`
 
 Additional outputs:
 
-- `data/v1_2026-04-19/seart_csvs/github_search_results_<language>_<license>.csv`
+- `data/seart_csvs/github_search_results_<language>_<license>.csv`
 
 Purpose:
 
@@ -117,7 +140,7 @@ Default repository criteria:
 
 - At least 10 stars
 - License in `mit`, `apache-2.0`, `bsd-3-clause`, `bsd-2-clause`
-- Primary language in `TypeScript`, `Python`, `C#`, `Go`, `C++`, `JavaScript`, `Java`, `C`, `PHP`, `Rust`
+- Primary language in `TypeScript`, `Python` (default). The archived full v2 corpus used `TypeScript`, `Python`, `C#`, `Go`, `C++`, `JavaScript`, `Java`, `C`, `PHP`, `Rust`.
 - Pushed since `2025-10-16`
 - Pushed no later than `--end-date`, which defaults to the date at script startup
 
@@ -125,7 +148,7 @@ Default command:
 
 ```sh
 uv run python src/search_github_repos.py \
-  --out-csv data/v1_2026-04-19/seart_csvs/github_search_results.csv \
+  --out-csv data/seart_csvs/github_search_results.csv \
   --resume
 ```
 
@@ -133,7 +156,7 @@ More explicit reproducibility command:
 
 ```sh
 uv run python src/search_github_repos.py \
-  --out-csv data/v1_2026-04-19/seart_csvs/github_search_results.csv \
+  --out-csv data/seart_csvs/github_search_results.csv \
   --min-stars 10 \
   --pushed-since 2025-10-16 \
   --end-date 2026-06-06 \
@@ -147,18 +170,18 @@ Useful variants:
 ```sh
 # Search only; skip slower per-repo enrichment.
 uv run python src/search_github_repos.py \
-  --out-csv data/v1_2026-04-19/seart_csvs/github_search_results.csv \
+  --out-csv data/seart_csvs/github_search_results.csv \
   --skip-enrich
 
 # Fill missing enrichment columns in an existing Stage 1 CSV.
 uv run python src/search_github_repos.py \
-  --out-csv data/v1_2026-04-19/seart_csvs/github_search_results.csv \
+  --out-csv data/seart_csvs/github_search_results.csv \
   --enrich-only \
   --enrich-concurrency 8
 
 # Collect a smaller test population.
 uv run python src/search_github_repos.py \
-  --out-csv data/v1_2026-04-19/seart_csvs/github_search_results_python_mit.csv \
+  --out-csv data/seart_csvs/github_search_results_python_mit.csv \
   --languages Python \
   --licenses mit \
   --min-stars 25 \
@@ -295,7 +318,7 @@ Downstream scripts primarily use `name`, `mainLanguage`, `defaultBranch`, `starg
 Instead of querying GitHub directly, place SEART CSV files under:
 
 ```text
-data/v1_2026-04-19/seart_csvs/
+data/seart_csvs/
 ```
 
 Stage 2 recursively reads every `.csv` file under that directory. Repository identifiers are auto-detected from:
@@ -333,7 +356,7 @@ Default command:
 
 ```sh
 uv run python src/extract_skill_repos_tree.py \
-  --seart-dir data/v1_2026-04-19/seart_csvs \
+  --seart-dir data/seart_csvs \
   --out-csv outputs/skill_md_scan_results.csv \
   --resume \
   --concurrency 4 \
@@ -346,7 +369,7 @@ Useful variants:
 ```sh
 # Smoke-test the scan on a limited number of repositories.
 uv run python src/extract_skill_repos_tree.py \
-  --seart-dir data/v1_2026-04-19/seart_csvs \
+  --seart-dir data/seart_csvs \
   --out-csv outputs/skill_md_scan_results_smoke.csv \
   --max-repos 250 \
   --resume \
@@ -354,19 +377,19 @@ uv run python src/extract_skill_repos_tree.py \
 
 # Search for a different exact filename.
 uv run python src/extract_skill_repos_tree.py \
-  --seart-dir data/v1_2026-04-19/seart_csvs \
+  --seart-dir data/seart_csvs \
   --out-csv outputs/agents_md_scan_results.csv \
   --match-name AGENTS.md
 
 # Disable cache reads and writes.
 uv run python src/extract_skill_repos_tree.py \
-  --seart-dir data/v1_2026-04-19/seart_csvs \
+  --seart-dir data/seart_csvs \
   --out-csv outputs/skill_md_scan_results_uncached.csv \
   --cache-mode off
 
 # Legacy Code Search path, retained for method comparison.
 uv run python src/extract_skill_repos.py \
-  --seart-dir data/v1_2026-04-19/seart_csvs \
+  --seart-dir data/seart_csvs \
   --out-csv outputs/skill_md_scan_results_code_search.csv \
   --resume
 ```
@@ -537,7 +560,7 @@ The script prints:
 The filtered output is commonly copied or used as:
 
 ```text
-data/v1_2026-04-19/skill_only_scan/skill_repositories.csv
+data/skill_only_scan/skill_repositories.csv
 ```
 
 Request count:
@@ -559,13 +582,13 @@ Script:
 Primary outputs:
 
 - `outputs/full_skills_instances.csv`
-- `outputs/v1_2026-04-19/raw_data/<Language>/<owner>__<repo>/`
+- `outputs/raw_data/<Language>/<owner>__<repo>/`
 - `outputs/processing_failures.tsv`
 - `outputs/name_filtered_repos.tsv`
 
 Committed/archived dataset copy:
 
-- `data/v1_2026-04-19/skill_files/full_skills.csv`
+- `data/skill_files/full_skills.csv`
 - Zenodo `raw_data/` archive
 
 Recommended command:
@@ -574,7 +597,7 @@ Recommended command:
 uv run python src/generate_dataset.py \
   --found-csv outputs/skill_md_scan_results_found_filtered.csv \
   --out-csv outputs/full_skills_instances.csv \
-  --raw-data-dir outputs/v1_2026-04-19/raw_data \
+  --raw-data-dir outputs/raw_data \
   --resume \
   --concurrency 1
 ```
@@ -583,9 +606,9 @@ Equivalent command using the repository shortlist:
 
 ```sh
 uv run python src/generate_dataset.py \
-  --found-csv data/v1_2026-04-19/skill_only_scan/skill_repositories.csv \
+  --found-csv data/skill_only_scan/skill_repositories.csv \
   --out-csv outputs/full_skills_instances.csv \
-  --raw-data-dir outputs/v1_2026-04-19/raw_data \
+  --raw-data-dir outputs/raw_data \
   --resume \
   --concurrency 1
 ```
@@ -595,16 +618,16 @@ Useful variants:
 ```sh
 # Disable repo-name relevance filtering.
 uv run python src/generate_dataset.py \
-  --found-csv data/v1_2026-04-19/skill_only_scan/skill_repositories.csv \
+  --found-csv data/skill_only_scan/skill_repositories.csv \
   --out-csv outputs/full_skills_instances_no_name_filter.csv \
-  --raw-data-dir outputs/v1_2026-04-19/raw_data_no_name_filter \
+  --raw-data-dir outputs/raw_data_no_name_filter \
   --no-name-filter
 
 # Add additional repo-name exclusion terms.
 uv run python src/generate_dataset.py \
-  --found-csv data/v1_2026-04-19/skill_only_scan/skill_repositories.csv \
+  --found-csv data/skill_only_scan/skill_repositories.csv \
   --out-csv outputs/full_skills_instances.csv \
-  --raw-data-dir outputs/v1_2026-04-19/raw_data \
+  --raw-data-dir outputs/raw_data \
   --name-filter-words demo,template,starter
 ```
 
@@ -659,18 +682,18 @@ If a repository already has successful `metadata.json` and `--resume` is enabled
 Downloaded data is written as:
 
 ```text
-outputs/v1_2026-04-19/raw_data/<Language>/<owner>__<repo>/<skill-folder>/SKILL.md
-outputs/v1_2026-04-19/raw_data/<Language>/<owner>__<repo>/<skill-folder>/references/...
-outputs/v1_2026-04-19/raw_data/<Language>/<owner>__<repo>/<skill-folder>/assets/...
-outputs/v1_2026-04-19/raw_data/<Language>/<owner>__<repo>/<skill-folder>/scripts/...
-outputs/v1_2026-04-19/raw_data/<Language>/<owner>__<repo>/ACF/<acf-file>
-outputs/v1_2026-04-19/raw_data/<Language>/<owner>__<repo>/metadata.json
+outputs/raw_data/<Language>/<owner>__<repo>/<skill-folder>/SKILL.md
+outputs/raw_data/<Language>/<owner>__<repo>/<skill-folder>/references/...
+outputs/raw_data/<Language>/<owner>__<repo>/<skill-folder>/assets/...
+outputs/raw_data/<Language>/<owner>__<repo>/<skill-folder>/scripts/...
+outputs/raw_data/<Language>/<owner>__<repo>/ACF/<acf-file>
+outputs/raw_data/<Language>/<owner>__<repo>/metadata.json
 ```
 
 For root-level `SKILL.md` files, the local folder is:
 
 ```text
-outputs/v1_2026-04-19/raw_data/<Language>/<owner>__<repo>/root/
+outputs/raw_data/<Language>/<owner>__<repo>/root/
 ```
 
 Path components are sanitized for Windows filesystem compatibility.
@@ -805,7 +828,7 @@ Command:
 
 ```sh
 uv run python src/enrich_extended_acf_columns.py \
-  --input-known data/v1_2026-04-19/skill_only_scan/skill_repositories.csv \
+  --input-known data/skill_only_scan/skill_repositories.csv \
   --merge-into outputs/skill_md_scan_results_with_contributors.csv \
   --out-skill-only outputs/skill_md_scan_results_skill_only_new_acfs.csv \
   --out-merged outputs/skill_md_scan_results_with_contributors_extended.csv
@@ -843,12 +866,12 @@ The following commands recreate the main collection path with local outputs:
 ```sh
 # 1. Build the GitHub repository population.
 uv run python src/search_github_repos.py \
-  --out-csv data/v1_2026-04-19/seart_csvs/github_search_results.csv \
+  --out-csv data/seart_csvs/github_search_results.csv \
   --resume
 
 # 2. Scan the population for SKILL.md.
 uv run python src/extract_skill_repos_tree.py \
-  --seart-dir data/v1_2026-04-19/seart_csvs \
+  --seart-dir data/seart_csvs \
   --out-csv outputs/skill_md_scan_results.csv \
   --resume \
   --concurrency 4 \
@@ -858,13 +881,13 @@ uv run python src/extract_skill_repos_tree.py \
 # 3. Keep active, non-fork repositories from the found set.
 uv run python utils/filter_active_repos.py \
   outputs/skill_md_scan_results_found.csv \
-  -o data/v1_2026-04-19/skill_only_scan/skill_repositories.csv
+  -o data/skill_only_scan/skill_repositories.csv
 
 # 4. Download SKILL.md parent folders and write the per-instance dataset.
 uv run python src/generate_dataset.py \
-  --found-csv data/v1_2026-04-19/skill_only_scan/skill_repositories.csv \
+  --found-csv data/skill_only_scan/skill_repositories.csv \
   --out-csv outputs/full_skills_instances.csv \
-  --raw-data-dir outputs/v1_2026-04-19/raw_data \
+  --raw-data-dir outputs/raw_data \
   --resume \
   --concurrency 1
 ```
@@ -873,7 +896,7 @@ Legacy Stage 2 alternative:
 
 ```sh
 uv run python src/extract_skill_repos.py \
-  --seart-dir data/v1_2026-04-19/seart_csvs \
+  --seart-dir data/seart_csvs \
   --out-csv outputs/skill_md_scan_results_code_search.csv \
   --resume \
   --concurrency 4
@@ -960,11 +983,13 @@ The collection process records or preserves the following reproducibility anchor
 
 For archival replication, the repository includes:
 
-- `data/v1_2026-04-19/seart_csvs/`
-- `data/v1_2026-04-19/skill_only_scan/skill_repositories.csv`
-- `data/v1_2026-04-19/skill_files/full_skills.csv`
+- `data/seart_csvs/` — current Python/TypeScript main population
+- `data/skill_only_scan/skill_repositories.csv`
+- `data/skill_files/full_skills.csv`
+- `data/v2_2026-09-17/` — archived unfiltered 11-language v2 corpus
+- `outputs/v2_2026-09-17/` — archived full v2 scan CSVs, RQ1/RQ2 results, and raw_data
 
-The full raw skill-folder tree is available in the Zenodo archive linked from `README.md`.
+The current `outputs/raw_data/` tree is the Python/TypeScript slice. The full 11-language raw tree is in `outputs/v2_2026-09-17/raw_data/` (gitignored) and `outputs/v2_2026-09-17/raw_data.tar.gz`.
 
 ---
 
@@ -977,6 +1002,7 @@ Core collection scripts:
 - `src/extract_skill_repos.py`
 - `utils/filter_active_repos.py`
 - `src/generate_dataset.py`
+- `utils/constrain_dataset_languages.py`
 
 Optional enrichment scripts:
 
@@ -993,13 +1019,13 @@ Shared support modules:
 
 Primary data outputs:
 
-- `data/v1_2026-04-19/seart_csvs/github_search_results.csv`
+- `data/seart_csvs/github_search_results.csv`
 - `outputs/skill_md_scan_results.csv`
 - `outputs/skill_md_scan_results_found.csv`
-- `data/v1_2026-04-19/skill_only_scan/skill_repositories.csv`
+- `data/skill_only_scan/skill_repositories.csv`
 - `outputs/full_skills_instances.csv`
-- `data/v1_2026-04-19/skill_files/full_skills.csv`
-- `outputs/v1_2026-04-19/raw_data/`
+- `data/skill_files/full_skills.csv`
+- `outputs/raw_data/`
 
 Audit and failure logs:
 

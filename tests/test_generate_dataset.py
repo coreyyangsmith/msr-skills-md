@@ -185,6 +185,10 @@ class TestParseArgs(unittest.TestCase):
         args = self._parse("--no-name-filter")
         self.assertTrue(args.no_name_filter)
 
+    def test_default_languages_are_python_and_typescript(self):
+        args = self._parse()
+        self.assertEqual(args.languages, ["Python", "TypeScript"])
+
 
 class TestProcessRepo(unittest.TestCase):
     def setUp(self):
@@ -311,6 +315,8 @@ class TestProcessRepo(unittest.TestCase):
         os.makedirs(repo_dir, exist_ok=True)
         with open(os.path.join(repo_dir, "metadata.json"), "w") as f:
             json.dump({"repo": "owner/repo", "skill_count": 1}, f)
+        with open(os.path.join(repo_dir, "SKILL.md"), "w") as f:
+            f.write("# skill")
 
         skill_rows, errors = process_repo(self.gh, self._row(), self.raw_data_dir, "SKILL.md")
 

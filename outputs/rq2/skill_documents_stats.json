@@ -1,24 +1,12 @@
 {
-  "total_documents": 144080,
-  "unique_languages": 10,
-  "unique_repos": 12850,
+  "total_documents": 98771,
+  "unique_languages": 2,
+  "unique_repos": 8611,
   "documents_by_language": {
-    "C#": 290,
-    "C++": 1204,
-    "Go": 8613,
-    "Java": 1880,
-    "JavaScript": 22386,
-    "PHP": 768,
-    "Python": 53567,
-    "Rust": 10107,
-    "TypeScript": 45152,
-    "unknown": 113
+    "Python": 53609,
+    "TypeScript": 45162
   },
   "top_20_repos_by_skill_file_count": [
-    [
-      "javimosch__supercli",
-      6930
-    ],
     [
       "THUIR__MemoryBench",
       5206
@@ -36,14 +24,6 @@
       2320
     ],
     [
-      "a5c-ai__babysitter",
-      2112
-    ],
-    [
-      "tamarillo-ai__theta",
-      1475
-    ],
-    [
       "galyarderlabs__galyarder-framework",
       1376
     ],
@@ -52,16 +32,8 @@
       993
     ],
     [
-      "affaan-m__ECC",
-      889
-    ],
-    [
       "openteams-lab__openteams",
       871
-    ],
-    [
-      "xalgord__xalgorix",
-      859
     ],
     [
       "aAAaqwq__AGI-Super-Team",
@@ -70,10 +42,6 @@
     [
       "AgentFlocks__flocks",
       772
-    ],
-    [
-      "mturac__everything-openai-codex",
-      770
     ],
     [
       "XuShuwenn__RedAct",
@@ -94,873 +62,766 @@
     [
       "tonone-ai__tonone",
       616
+    ],
+    [
+      "arcasilesgroup__ai-engineering",
+      591
+    ],
+    [
+      "ufy2024__AuC",
+      427
+    ],
+    [
+      "wolfenazz__YzPzCode",
+      423
+    ],
+    [
+      "45ck__content-machine",
+      409
+    ],
+    [
+      "fanfan-de__anybox",
+      393
+    ],
+    [
+      "ruvnet__ruflo",
+      346
     ]
   ],
   "text_length": {
-    "total_chars": 1023881352,
-    "avg_chars": 7106.339200444198,
-    "total_words": 136620179,
-    "avg_words": 948.2244516935036,
-    "median_words": 613.0,
-    "avg_lines": 180.7422334813992,
-    "median_lines": 116.0
+    "total_chars": 751158777,
+    "avg_chars": 7605.05388221239,
+    "total_words": 100268490,
+    "avg_words": 1015.1612315355721,
+    "median_words": 666,
+    "avg_lines": 190.55978981684908,
+    "median_lines": 125
   },
   "markdown_structure": {
-    "heading_h1_total": 545259,
-    "heading_h2_total": 995736,
-    "heading_h3_total": 805691,
-    "heading_h4_total": 66857,
-    "heading_h5_total": 2072,
+    "heading_h1_total": 395330,
+    "heading_h2_total": 718220,
+    "heading_h3_total": 588987,
+    "heading_h4_total": 48311,
+    "heading_h5_total": 1650,
     "heading_h6_total": 53,
-    "heading_total": 2415668,
-    "list_total": 1428909,
-    "avg_h1_per_doc": 3.7844183786785117,
-    "avg_h2_per_doc": 6.9109938922820655,
-    "avg_h3_per_doc": 5.59196973903387,
-    "avg_h4_per_doc": 0.46402692948362023,
-    "avg_h5_per_doc": 0.014380899500277624,
-    "avg_h6_per_doc": 0.00036785119378123264,
-    "median_h1_per_doc": 1.0,
-    "median_h2_per_doc": 6.0,
-    "median_h3_per_doc": 2.0,
-    "median_h4_per_doc": 0.0,
-    "median_h5_per_doc": 0.0,
-    "median_h6_per_doc": 0.0,
-    "avg_heading_depth": 2.1658232836631526,
+    "heading_total": 1752551,
+    "list_total": 1045465,
+    "avg_h1_per_doc": 4.002490609591884,
+    "avg_h2_per_doc": 7.2715675653785015,
+    "avg_h3_per_doc": 5.963157202012736,
+    "avg_h4_per_doc": 0.48912130078666816,
+    "avg_h5_per_doc": 0.01670530823824807,
+    "avg_h6_per_doc": 0.0005365947494709985,
+    "median_h1_per_doc": 1,
+    "median_h2_per_doc": 6,
+    "median_h3_per_doc": 3,
+    "median_h4_per_doc": 0,
+    "median_h5_per_doc": 0,
+    "median_h6_per_doc": 0,
+    "avg_heading_depth": 2.1685776904637866,
     "median_heading_depth": 2.0,
     "most_common_level": 2,
     "max_depth_overall": 6,
-    "section_total": 2139859,
-    "avg_section_length": 55.294256771123706,
-    "median_section_length": 44.8,
+    "section_total": 1550852,
+    "avg_section_length": 56.145626404066924,
+    "median_section_length": 46.714285714285715,
     "max_section_length": 23904,
-    "median_max_section_length": 116.0,
-    "docs_with_headings": 139228,
-    "docs_without_headings": 4852,
-    "avg_lists_per_doc": 9.917469461410327,
-    "median_lists_per_doc": 6.0,
-    "docs_with_code": 131421,
-    "docs_without_code": 12659,
-    "code_usage_rate": 0.9121390893947807,
-    "avg_code_per_doc": 37.85461549139367,
-    "median_code_per_doc": 18.0,
-    "median_inline_code_per_doc": 13.0,
-    "median_fenced_code_blocks_per_doc": 2.0
+    "median_max_section_length": 120,
+    "docs_with_headings": 96091,
+    "docs_without_headings": 2680,
+    "avg_lists_per_doc": 10.58473641048486,
+    "median_lists_per_doc": 7,
+    "docs_with_code": 90294,
+    "docs_without_code": 8477,
+    "code_usage_rate": 0.9141752133723461,
+    "avg_code_per_doc": 39.87252331149831,
+    "median_code_per_doc": 19,
+    "median_inline_code_per_doc": 14,
+    "median_fenced_code_blocks_per_doc": 2
   },
   "fenced_code_languages": {
-    "total_fenced_code_blocks": 739190,
-    "fenced_code_blocks_with_language": 578812,
-    "fenced_code_blocks_without_language": 160378,
-    "docs_with_fenced_code_blocks": 99522,
-    "docs_without_fenced_code_blocks": 44558,
-    "unique_fenced_code_languages": 509,
+    "total_fenced_code_blocks": 526001,
+    "fenced_code_blocks_with_language": 408688,
+    "fenced_code_blocks_without_language": 117313,
+    "docs_with_fenced_code_blocks": 68223,
+    "docs_without_fenced_code_blocks": 30548,
+    "unique_fenced_code_languages": 378,
     "top_20_fenced_code_languages": [
       [
         "bash",
-        254849
+        177939
       ],
       [
         "python",
-        68920
+        57216
       ],
       [
         "typescript",
-        54364
-      ],
-      [
-        "markdown",
-        28883
+        43689
       ],
       [
         "json",
-        28811
+        21190
+      ],
+      [
+        "markdown",
+        20885
       ],
       [
         "javascript",
-        22512
+        15526
       ],
       [
         "yaml",
-        18955
-      ],
-      [
-        "text",
-        11938
+        12498
       ],
       [
         "tsx",
-        9774
+        8326
       ],
       [
-        "go",
-        8350
-      ],
-      [
-        "java",
-        6933
+        "text",
+        7949
       ],
       [
         "sql",
-        6742
+        4734
       ],
       [
-        "rust",
-        4675
+        "java",
+        3723
       ],
       [
-        "html",
-        3637
-      ],
-      [
-        "php",
-        3371
+        "go",
+        3403
       ],
       [
         "ruby",
-        3305
+        2961
       ],
       [
-        "powershell",
-        3148
+        "html",
+        2645
       ],
       [
         "css",
-        3099
+        2416
       ],
       [
-        "kotlin",
-        2521
+        "powershell",
+        2103
+      ],
+      [
+        "xml",
+        1473
       ],
       [
         "toml",
-        2375
+        944
+      ],
+      [
+        "http",
+        891
+      ],
+      [
+        "cypher",
+        868
       ]
     ],
     "all_fenced_code_language_counts": {
-      "!": 55,
-      "\"": 35,
+      "!": 50,
+      "\"": 31,
       "\"\"\"": 1,
       "\"):": 1,
       "\")[1": 4,
-      "\",": 21,
+      "\",": 10,
       "\"}": 2,
-      "\"},": 1,
       "$\",": 1,
       "$',": 1,
-      "$/'": 2,
       "$/gm,": 3,
-      "$/m,": 1,
-      "'": 13,
-      "');": 2,
-      "',": 11,
-      "***plain": 7,
+      "'": 12,
+      "',": 3,
       "**only**": 1,
-      ",": 2,
+      ",": 1,
       "-->": 1,
       ".": 3,
-      "/);": 1,
-      "/dev/null/config.yaml.example#l1-4": 1,
-      "/dev/null/config.yaml.example#l1-5": 1,
-      "/dev/null/logging_config.yaml.example#l1-15": 1,
-      "/g,": 7,
-      "/g;": 3,
-      ":space:]]*$//'": 1,
+      "/g,": 1,
       "</tab>": 8,
       "<language>": 1,
       "=typst": 1,
       "?:latex|tex)?\\s*(\\\\documentclass[\\s\\s]+?\\\\end\\{document\\})',": 1,
       "?:latex|tex)?\\s*\\n',": 1,
       "\\n": 2,
-      "\\n\"": 2,
+      "\\n\"": 1,
       "\\n\"\"\",": 1,
       "\\n\\n\"": 1,
-      "\\n\\n##": 2,
+      "\\n\\n##": 1,
       "\\n\\n###": 4,
-      "\\n\\n';": 1,
-      "\\n\\n**last": 11,
-      "\\n\\n<description>\\n\\nrecommended": 1,
+      "\\n\\n**last": 5,
       "\\n\\n<outro>\"": 1,
-      "\\n\\nexplanation": 1,
       "\\n\\nexplanation:": 1,
       "\\n\\nthis": 1,
       "\\n\\nwhat": 1,
       "\\n\\n将结果通过": 1,
-      "abap": 90,
+      "abap": 88,
       "abc": 11,
       "acorn": 1,
       "actionscript": 1,
-      "adoc": 2,
       "ag": 2,
       "agd": 1,
       "ahk": 1,
-      "ailang": 8,
       "al": 1,
-      "allium": 2,
       "alloy": 2,
-      "and": 25,
-      "apache": 6,
+      "and": 19,
+      "apache": 3,
       "apex": 1,
-      "apl": 29,
-      "applescript": 63,
-      "arcade": 10,
-      "asciidoc": 7,
-      "asm": 31,
+      "apl": 21,
+      "applescript": 61,
+      "asm": 15,
       "asm,": 1,
       "astro": 128,
       "ato": 74,
       "base": 3,
-      "bash": 254849,
+      "bash": 177939,
       "bash#": 1,
       "basic": 1,
-      "batch": 95,
+      "batch": 78,
       "bats": 2,
       "beislid:babysit": 1,
-      "bibtex": 63,
-      "bicep": 83,
-      "blade": 107,
-      "block": 7,
+      "bibtex": 57,
+      "bicep": 78,
+      "blade": 17,
+      "block": 4,
       "block.": 3,
       "block:": 3,
-      "blocks": 2,
+      "blocks": 1,
       "blocks.": 1,
-      "blocks:": 1,
       "blocks;": 1,
       "blueprint": 1,
       "bsl": 49,
-      "c": 380,
-      "c++": 10,
+      "c": 259,
       "caddy": 1,
-      "caddyfile": 89,
-      "cadence": 1,
-      "cairo": 196,
+      "caddyfile": 1,
+      "cairo": 118,
       "cal": 24,
       "cddl": 1,
-      "cds": 17,
-      "cedar": 7,
+      "cds": 12,
+      "cedar": 3,
       "cel": 10,
-      "ch": 2,
       "chart": 1,
       "checklist": 3,
-      "chemical": 100,
-      "chmod": 12,
-      "circom": 7,
       "cisco": 16,
       "claude": 4,
-      "clojure": 51,
-      "cmake": 119,
+      "clojure": 30,
+      "cmake": 29,
       "cobol": 2,
-      "code": 5,
-      "colang": 6,
+      "code": 4,
+      "colang": 5,
       "command": 1,
       "commandline": 2,
       "compact": 56,
-      "conf": 44,
-      "cpp": 1721,
-      "cql": 1,
-      "crn": 5,
+      "conf": 33,
+      "cpp": 408,
       "cron": 8,
-      "csharp": 2371,
-      "cslop": 15,
-      "css": 3099,
-      "csv": 260,
-      "cuda": 133,
-      "cue": 2,
-      "curl": 1,
-      "cvl": 7,
-      "cypher": 980,
-      "d2": 7,
-      "dada": 11,
-      "dafny": 1,
-      "dang": 3,
-      "dart": 499,
+      "csharp": 708,
+      "css": 2416,
+      "csv": 240,
+      "cuda": 63,
+      "cypher": 868,
+      "d2": 5,
+      "dart": 188,
       "datagrok-exec": 74,
       "datalog": 8,
       "dataprime": 13,
-      "dataview": 16,
+      "dataview": 12,
       "dax": 53,
-      "dbc": 1,
       "dcl": 1,
       "delphi": 8,
       "diagrams,": 1,
-      "diff": 322,
+      "diff": 232,
       "diff\"": 1,
-      "diff*": 3,
-      "dissent": 1,
-      "django": 42,
+      "django": 7,
       "dlang": 15,
-      "dns": 4,
-      "dockerfile": 633,
-      "dockerignore": 5,
-      "dot": 951,
-      "dotenv": 6,
-      "dsl": 41,
-      "dts": 9,
+      "dockerfile": 339,
+      "dockerignore": 4,
+      "dot": 710,
+      "dotenv": 3,
+      "dts": 8,
       "edge": 2,
-      "editorconfig": 1,
       "ee/hogai/chat_agent/mode_manager.py": 1,
-      "elixir": 167,
+      "elixir": 44,
       "elo": 2,
       "elvish": 2,
-      "env": 152,
+      "env": 112,
       "env-spec": 6,
       "epl": 5,
-      "eql": 11,
-      "erb": 15,
+      "eql": 6,
+      "erb": 6,
       "erlang": 31,
-      "esql": 48,
+      "esql": 28,
       "excel": 49,
-      "executed": 1,
       "fasta": 1,
-      "fbs": 1,
       "feature-map": 2,
-      "fenced": 5,
+      "fenced": 4,
       "fences": 5,
       "fences).": 3,
       "fences,": 1,
       "fences.”": 1,
       "fences:": 1,
-      "file": 2,
+      "file": 1,
       "file=<file_path>,": 1,
-      "fish": 7,
+      "fish": 4,
       "for": 6,
       "fortran": 2,
-      "fountain": 42,
-      "freemarker": 4,
-      "fsharp": 81,
-      "ftl": 3,
-      "gala": 37,
+      "fountain": 27,
+      "freemarker": 2,
+      "fsharp": 35,
+      "ftl": 1,
       "gdb": 45,
-      "gdscript": 409,
-      "ggsql": 23,
-      "gherkin": 148,
+      "gdscript": 107,
+      "gherkin": 90,
       "git": 2,
-      "gitattributes": 5,
-      "gitignore": 99,
-      "glsl": 95,
-      "gn": 2,
-      "go": 8350,
-      "go-template": 1,
-      "gossamer": 6,
-      "gotemplate": 1,
-      "gq": 2,
-      "gradle": 28,
-      "graphql": 442,
+      "gitattributes": 2,
+      "gitignore": 64,
+      "glsl": 49,
+      "go": 3403,
+      "gradle": 20,
+      "graphql": 364,
       "graplix": 1,
-      "groovy": 93,
-      "groq": 4,
+      "groovy": 39,
+      "groq": 3,
       "gts": 8,
       "handlebars": 3,
-      "haproxy": 3,
+      "haproxy": 1,
       "haskell": 41,
       "hbs": 5,
-      "hcl": 531,
-      "hjson": 1,
-      "hlsl": 7,
-      "hocon": 2,
+      "hcl": 372,
+      "hlsl": 4,
       "hs": 2,
-      "html": 3637,
+      "html": 2645,
       "html+jinja": 2,
-      "html-artifact": 1,
-      "http": 1007,
-      "hurl": 1,
-      "hypen": 29,
+      "http": 891,
       "iecst": 2,
       "if": 2,
       "ignore": 2,
-      "imba": 16,
-      "incan": 1,
       "infographic": 13,
-      "ini": 344,
+      "ini": 171,
       "isml": 3,
-      "ispc": 10,
-      "iss": 4,
-      "jam": 1,
-      "java": 6933,
-      "javascript": 22512,
+      "iss": 2,
+      "java": 3723,
+      "javascript": 15526,
       "jcl": 7,
-      "jdl": 4,
-      "jinja": 18,
-      "jinja2": 12,
-      "jq": 17,
-      "jql": 88,
-      "jsa": 2,
-      "json": 28811,
-      "json5": 69,
-      "jsonc": 727,
-      "jsonl": 139,
-      "jsonnet": 3,
+      "jinja": 8,
+      "jinja2": 9,
+      "jql": 71,
+      "json": 21190,
+      "json5": 65,
+      "jsonc": 564,
+      "jsonl": 101,
       "json）、问候语或其他多余内容。": 1,
       "json）。只回复json数据字符串。": 1,
       "jsp": 2,
-      "jsx": 938,
-      "julia": 4,
-      "just": 5,
-      "kconfig": 15,
-      "kdl": 1,
+      "jsx": 701,
+      "julia": 2,
+      "just": 1,
+      "kconfig": 13,
       "kida": 6,
-      "kotlin": 2521,
-      "kql": 451,
-      "kusto": 18,
+      "kotlin": 690,
+      "kql": 415,
+      "kusto": 14,
       "lang": 4,
       "langium": 9,
       "language": 6,
-      "latex": 763,
-      "ld": 11,
-      "lean": 72,
-      "ledger": 1,
-      "less": 7,
-      "lets-tracker": 12,
+      "latex": 651,
+      "lean": 30,
+      "less": 5,
       "ligo": 18,
       "likec4": 5,
-      "liquid": 4,
-      "lisp": 4,
-      "llvm": 2,
+      "liquid": 3,
+      "lisp": 3,
+      "llvm": 1,
       "logo": 1,
-      "logql": 9,
+      "logql": 6,
       "logsql": 3,
       "lookml": 27,
-      "lua": 94,
+      "lua": 8,
       "luau": 18,
       "lucene": 3,
       "m": 4,
       "m3u": 2,
-      "make": 4,
-      "makefile": 71,
+      "make": 1,
+      "makefile": 32,
       "malloy": 112,
-      "markdown": 28883,
+      "markdown": 20885,
       "markdown-template": 1,
-      "markdownコードブロックで囲まれているか": 2,
       "markers": 7,
       "markers),": 1,
       "matches": 1,
-      "matlab": 108,
-      "mbt": 51,
-      "mcfunction": 7,
-      "md": 790,
+      "matlab": 93,
+      "mbt": 33,
+      "md": 629,
       "mdc": 1,
       "mdoc": 1,
-      "mdx": 327,
-      "mermaid": 1008,
+      "mdx": 252,
+      "mermaid": 748,
       "metal": 4,
       "metricsql": 7,
-      "mjml": 4,
-      "modality": 5,
       "mojo": 15,
-      "moonbit": 13,
+      "moonbit": 10,
       "move": 13,
-      "mp": 77,
-      "mql": 6,
       "mql5": 1,
-      "mustache": 1,
       "nasm": 2,
-      "neon": 3,
+      "neon": 1,
       "nextflow": 1,
       "nflow": 9,
-      "nft": 1,
       "nftables": 1,
-      "nginx": 110,
-      "nix": 31,
+      "nginx": 88,
       "node": 90,
-      "noir": 7,
       "nrql": 11,
-      "nsi": 1,
-      "nsis": 1,
       "nu": 15,
-      "objc": 4,
+      "objc": 1,
       "objective-c": 1,
-      "ocaml": 1,
-      "opencl": 1,
       "optimized-prompt": 7,
-      "org": 5,
+      "org": 4,
       "paper_lens_question": 1,
       "pascal": 2,
-      "patch": 9,
+      "patch": 5,
       "path/to/file.py": 1,
       "pcl": 4,
       "pdsl": 1,
-      "perl": 510,
-      "pest": 1,
-      "phel": 2,
-      "php": 3371,
-      "pikchr": 3,
+      "perl": 133,
+      "php": 391,
       "pinescript": 15,
-      "pkl": 11,
-      "plain": 56,
-      "plaintext": 67,
-      "plantuml": 68,
+      "pkl": 2,
+      "plain": 1,
+      "plaintext": 10,
+      "plantuml": 15,
       "pli": 2,
       "pml": 6,
-      "powershell": 3148,
-      "prf:theorem": 1,
-      "prisma": 179,
-      "proguard": 4,
+      "powershell": 2103,
+      "prisma": 143,
+      "proguard": 3,
       "prolog": 6,
-      "prompt": 12,
-      "promql": 89,
-      "proof": 1,
-      "properties": 123,
+      "prompt": 9,
+      "promql": 35,
+      "properties": 54,
       "prose": 9,
-      "proto": 13,
-      "protobuf": 58,
-      "pseudo": 3,
-      "pseudocode": 13,
-      "python": 68920,
+      "protobuf": 10,
+      "pseudo": 1,
+      "pseudocode": 12,
+      "python": 57216,
       "python,": 1,
       "python_script=\"": 1,
-      "ql": 10,
+      "ql": 9,
       "qlik": 19,
-      "qml": 5,
       "quint": 36,
-      "r": 743,
-      "rad": 3,
-      "razor": 48,
-      "react": 180,
-      "reads": 1,
-      "redis": 1,
-      "regex": 11,
-      "rego": 43,
-      "resynth": 43,
-      "rfl": 11,
-      "rhai": 9,
-      "robot": 4,
+      "r": 727,
+      "razor": 2,
+      "react": 120,
+      "regex": 7,
+      "rego": 22,
       "robotframework": 19,
       "rpg": 2,
-      "rs": 9,
-      "rst": 38,
-      "ruby": 3305,
-      "rust": 4675,
+      "rst": 31,
+      "ruby": 2961,
+      "rust": 590,
       "rust,": 1,
-      "rust,should_panic": 1,
       "sas": 1,
       "scad": 56,
-      "scala": 134,
-      "scheme": 13,
-      "scss": 185,
-      "shards": 7,
+      "scala": 53,
+      "scheme": 7,
+      "scss": 173,
       "shtml": 2,
-      "skill": 160,
+      "skill": 138,
       "slang": 18,
-      "slint": 7,
-      "slt": 2,
-      "smd": 7,
-      "smt2": 1,
-      "solarwire": 41,
-      "solidity": 310,
+      "solidity": 103,
       "sparql": 26,
-      "spec": 1,
-      "spectre": 19,
-      "spice": 15,
-      "spl": 458,
+      "spice": 13,
+      "spl": 266,
       "splunk": 1,
       "spss": 3,
-      "sql": 6742,
-      "squid": 1,
-      "sruja": 3,
-      "starlark": 138,
+      "sql": 4734,
       "stata": 31,
       "stml": 1,
-      "stof": 85,
       "storm": 43,
-      "structurizr": 1,
       "stw-widget-project": 1,
       "styl": 2,
-      "stylus": 2,
-      "styx": 23,
-      "sudolang": 72,
-      "suggestion": 10,
+      "suggestion": 9,
       "superlore-canvas": 4,
       "suricata": 4,
-      "svelte": 495,
-      "svg": 145,
-      "swift": 1694,
-      "systemverilog": 33,
+      "svelte": 392,
+      "svg": 112,
+      "swift": 478,
+      "systemverilog": 14,
       "tableau": 23,
-      "tape": 5,
-      "tcl": 48,
-      "templ": 8,
+      "tape": 2,
+      "tcl": 27,
       "terminal": 7,
       "terraform": 2,
       "test": 16,
-      "tex": 1,
-      "text": 11938,
+      "text": 7949,
       "text)으로": 8,
-      "thinking": 1,
       "to": 16,
-      "toml": 2375,
+      "toml": 944,
       "tonto": 13,
       "tool_calls": 21,
       "tool_code": 1,
-      "toon": 63,
-      "traceql": 2,
-      "tree": 2,
-      "tres": 9,
-      "tsv": 6,
-      "tsx": 9774,
-      "turtle": 16,
-      "twig": 36,
-      "txt": 196,
-      "typescript": 54364,
+      "toon": 3,
+      "tree": 1,
+      "tsv": 4,
+      "tsx": 8326,
+      "turtle": 9,
+      "txt": 102,
+      "typescript": 43689,
       "typespec": 2,
-      "typst": 55,
+      "typst": 2,
       "usda": 1,
-      "vb": 8,
-      "vba": 2,
+      "vb": 2,
       "vbs": 1,
-      "velocity": 5,
+      "velocity": 3,
       "vera": 242,
       "verbatim": 3,
-      "verilog": 14,
-      "vhdl": 9,
+      "verilog": 6,
       "vim": 7,
-      "vql": 2,
+      "vql": 1,
       "vtt": 1,
-      "vue": 328,
+      "vue": 203,
       "waiver": 3,
-      "webidl": 35,
-      "wgsl": 3,
+      "wgsl": 2,
       "wire": 8,
-      "wit": 2,
-      "wrapper": 1,
-      "wtg2": 10,
-      "xml": 2315,
-      "yacc": 4,
+      "xml": 1473,
       "yak": 1,
-      "yaml": 18955,
+      "yaml": 12498,
       "yaml'": 1,
       "yaml**": 1,
       "yaml-edit\"": 1,
-      "yara": 16,
-      "zeek": 20,
-      "zen": 4,
+      "yara": 14,
+      "zeek": 10,
       "zig": 23,
-      "|": 6,
+      "|": 4,
       "​": 1,
       "—": 1,
-      "│": 1,
       "で囲まれた部分）を全て抽出": 1,
       "代码块，在注入": 1,
-      "包裹整份文档": 1,
-      "包裹）：": 2,
       "围栏代码块里提取": 1,
       "标记奇偶校验（奇数": 1,
       "標記。": 1,
-      "角色dna中文片段": 1,
       "）僅在需要展示檔案片段或": 1
     }
   },
   "references": {
-    "total_references": 832705,
-    "unique_references": 305429,
-    "docs_with_references": 105064,
-    "docs_without_references": 39016,
-    "reference_usage_rate": 0.7292059966685175,
-    "avg_references_per_doc": 5.779462798445308,
-    "median_references_per_doc": 3.0,
-    "num_scripts": 166108,
-    "num_docs": 365107,
-    "num_assets": 152870,
-    "num_urls": 148620,
+    "total_references": 637332,
+    "unique_references": 239171,
+    "docs_with_references": 75626,
+    "docs_without_references": 23145,
+    "reference_usage_rate": 0.7656700853489384,
+    "avg_references_per_doc": 6.4526227333934045,
+    "median_references_per_doc": 3,
+    "num_scripts": 131179,
+    "num_docs": 277679,
+    "num_assets": 113230,
+    "num_urls": 115244,
     "num_other": 0,
     "top_50_file_reference_paths": [
       [
         "package.json",
-        7134
+        5637
       ],
       [
         "SKILL.md",
-        7078
+        5232
       ],
       [
         "CLAUDE.md",
-        4592
+        3187
       ],
       [
         "AGENTS.md",
-        4417
+        3103
       ],
       [
         "README.md",
-        4279
+        2966
       ],
       [
         "pyproject.toml",
-        2393
+        1835
       ],
       [
         "Cargo.toml",
-        2340
-      ],
-      [
-        "tasks.md",
-        1726
-      ],
-      [
-        "CHANGELOG.md",
-        1638
-      ],
-      [
-        "LICENSE.txt",
-        1633
+        1474
       ],
       [
         "config.yaml",
-        1626
+        1430
       ],
       [
-        "spec.md",
-        1599
-      ],
-      [
-        "requirements.txt",
-        1507
-      ],
-      [
-        "design.md",
-        1498
+        "LICENSE.txt",
+        1385
       ],
       [
         "docs/graph.json",
         1372
       ],
       [
-        "tsconfig.json",
-        1125
+        "requirements.txt",
+        1127
+      ],
+      [
+        "CHANGELOG.md",
+        1126
       ],
       [
         "request.json",
-        1124
+        1018
       ],
       [
-        "config.json",
-        1087
-      ],
-      [
-        "index.html",
-        1037
+        "tasks.md",
+        975
       ],
       [
         "gitlab-ci.yml",
-        1009
-      ],
-      [
-        "response.json",
-        976
+        949
       ],
       [
         "error-handling.md",
-        962
+        928
       ],
       [
-        "index.ts",
-        957
+        "spec.md",
+        922
+      ],
+      [
+        "tsconfig.json",
+        893
+      ],
+      [
+        "design.md",
+        880
       ],
       [
         "file.py",
-        890
+        877
       ],
       [
         "registry.json",
-        884
+        870
       ],
       [
         "authentication.md",
-        871
-      ],
-      [
-        "plan.md",
-        869
-      ],
-      [
-        "package-lock.json",
         863
       ],
       [
-        "report.md",
-        831
+        "index.ts",
+        824
       ],
       [
         "logging.md",
-        829
+        824
       ],
       [
         "python.md",
-        828
-      ],
-      [
-        "CONTEXT.md",
-        820
+        819
       ],
       [
         "docker.md",
-        817
+        814
       ],
       [
         "ci-cd.md",
-        816
-      ],
-      [
-        "go.md",
-        816
-      ],
-      [
-        "rust.md",
-        816
-      ],
-      [
-        "references/evidence.md",
-        815
-      ],
-      [
-        "api-security.md",
-        813
-      ],
-      [
-        "java.md",
         813
       ],
       [
         "supply-chain.md",
-        813
+        812
       ],
       [
-        "javascript.md",
-        812
+        "api-security.md",
+        811
       ],
       [
         "kubernetes.md",
-        812
+        811
       ],
       [
         "terraform.md",
-        812
+        811
       ],
       [
-        "DESIGN.md",
+        "references/evidence.md",
         811
+      ],
+      [
+        "go.md",
+        810
       ],
       [
         "injection.md",
-        811
+        810
       ],
       [
-        "cloud.md",
+        "javascript.md",
+        810
+      ],
+      [
+        "rust.md",
         810
       ],
       [
         "deserialization.md",
-        810
+        809
       ],
       [
         "xss.md",
-        810
+        809
+      ],
+      [
+        "java.md",
+        808
       ],
       [
         "business-logic.md",
-        809
+        808
+      ],
+      [
+        "cloud.md",
+        808
       ],
       [
         "ssrf.md",
-        809
+        808
+      ],
+      [
+        "data-protection.md",
+        807
+      ],
+      [
+        "authorization.md",
+        806
+      ],
+      [
+        "cryptography.md",
+        806
+      ],
+      [
+        "csrf.md",
+        806
+      ],
+      [
+        "file-security.md",
+        806
+      ],
+      [
+        "infrastructure/ci-cd.md",
+        806
+      ],
+      [
+        "infrastructure/cloud.md",
+        806
+      ],
+      [
+        "infrastructure/docker.md",
+        806
       ]
     ],
     "top_50_url_references": [
@@ -970,11 +831,11 @@
       ],
       [
         "https://cheatsheetseries.owasp.org/",
-        816
+        813
       ],
       [
         "https://api.internal\"`",
-        808
+        806
       ],
       [
         "https://composio.dev",
@@ -982,35 +843,15 @@
       ],
       [
         "https://example.com",
-        642
+        459
       ],
       [
         "https://example.com\"",
-        355
+        282
       ],
       [
         "http://localhost:3000",
-        248
-      ],
-      [
-        "https://`",
-        218
-      ],
-      [
-        "https://example.com\",",
-        192
-      ],
-      [
-        "https://example.com/form",
-        175
-      ],
-      [
-        "https://garryslist.org/posts/boil-the-ocean",
-        174
-      ],
-      [
-        "https://garryslist.org/posts/boil-the-ocean\"",
-        174
+        187
       ],
       [
         "https://canifi.com/install.sh",
@@ -1021,84 +862,48 @@
         160
       ],
       [
+        "https://`",
+        150
+      ],
+      [
+        "https://example.com\",",
+        144
+      ],
+      [
         "https://raw.githubusercontent.com/vercel-labs/web-interface-guidelines/main/command.md",
-        159
-      ],
-      [
-        "http://`",
-        155
-      ],
-      [
-        "https://github.com/nexu-io/motion-anything",
-        153
-      ],
-      [
-        "https://example.com`",
         142
       ],
       [
-        "http://localhost:3000`",
-        140
-      ],
-      [
-        "https://api.example.com\"",
+        "https://example.com/form",
         137
       ],
       [
-        "https://...\"",
-        134
+        "https://example.com`",
+        129
       ],
       [
-        "https://github.com/ruvnet/claude-flow",
-        126
+        "https://garryslist.org/posts/boil-the-ocean",
+        123
       ],
       [
-        "https://owasp.org/www-project-top-ten/",
-        124
+        "https://garryslist.org/posts/boil-the-ocean\"",
+        123
       ],
       [
-        "https://agentdb.ruv.io",
-        124
-      ],
-      [
-        "https://github.com/ruvnet/agentic-flow/tree/main/packages/agentdb",
-        124
-      ],
-      [
-        "http://localhost:8080",
-        117
+        "http://localhost:3000`",
+        105
       ],
       [
         "https://ui.shadcn.com",
-        117
+        103
       ],
       [
-        "https://schema.org\",",
-        116
+        "http://`",
+        102
       ],
       [
-        "https://skills.sh/",
-        113
-      ],
-      [
-        "https://agentskills.io/specification",
-        110
-      ],
-      [
-        "https://api.example.com",
-        104
-      ],
-      [
-        "https://app.example.com/login",
-        104
-      ],
-      [
-        "http://localhost:3000',",
-        101
-      ],
-      [
-        "https://...\",",
-        101
+        "https://...\"",
+        99
       ],
       [
         "https://github.com/geeks-accelerator/in-bed-ai",
@@ -1133,38 +938,97 @@
         96
       ],
       [
-        "https://cli.github.com/manual/",
-        95
+        "https://schema.org\",",
+        89
       ],
       [
-        "https://...",
-        95
+        "https://inbed.ai/api/relationships",
+        88
+      ],
+      [
+        "https://lokuli.com/mcp/sse",
+        84
+      ],
+      [
+        "https://cnb.cool/tencent/cloud/cloudbase/cloudbase-skills/-/git/raw/main/skills/cloudbase/SKILL.md`",
+        84
+      ],
+      [
+        "https://agentskills.io/specification",
+        83
+      ],
+      [
+        "https://owasp.org/www-project-top-ten/",
+        79
+      ],
+      [
+        "https://...\",",
+        77
+      ],
+      [
+        "https://skills.sh/",
+        77
+      ],
+      [
+        "https://ctrl.maton.ai/connections',",
+        76
+      ],
+      [
+        "https://ctrl.maton.ai/connections/{connection_id}'",
+        76
+      ],
+      [
+        "https://ctrl.maton.ai/connections/{connection_id}',",
+        76
+      ],
+      [
+        "https://maton.ai",
+        76
+      ],
+      [
+        "https://maton.ai/settings",
+        76
       ],
       [
         "https://example.com/",
-        94
+        76
       ],
       [
-        "https://github.com/animate-css/animate.css",
-        94
+        "https://app.example.com/login",
+        75
       ],
       [
-        "https://github.com/animate-css/animate.css\"",
-        94
+        "https://ctrl.maton.ai/connections'",
+        75
       ],
       [
-        "https://example.com/page",
-        93
+        "https://www.apache.org/licenses/LICENSE-2.0",
+        75
       ],
       [
-        "https://app.example.com",
-        92
+        "https://...",
+        74
       ],
       [
         "https://playwright.dev",
-        90
+        74
+      ],
+      [
+        "https://docs.convex.dev/",
+        74
+      ],
+      [
+        "https://docs.convex.dev/llms.txt",
+        74
+      ],
+      [
+        "https://discord.com/invite/dBfFAcefs2",
+        73
       ]
     ]
   },
-  "language_filter": []
+  "language_filter": [
+    "Python",
+    "TypeScript"
+  ]
 }

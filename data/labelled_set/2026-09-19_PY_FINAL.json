@@ -1,0 +1,3817 @@
+{
+  "version": 1,
+  "dataset": {
+    "rootName": "FINAL",
+    "savedAt": "2026-09-19T18:37:50.000Z",
+    "totalFiles": 382
+  },
+  "tags": [
+    {
+      "id": "purpose",
+      "name": "purpose",
+      "createdAt": "2026-08-08T13:05:07.198Z"
+    },
+    {
+      "id": "activation",
+      "name": "activation",
+      "createdAt": "2026-08-08T13:05:07.198Z"
+    },
+    {
+      "id": "exclusion",
+      "name": "exclusion",
+      "createdAt": "2026-08-08T13:05:07.198Z"
+    },
+    {
+      "id": "workflow",
+      "name": "workflow",
+      "createdAt": "2026-08-08T13:05:07.198Z"
+    },
+    {
+      "id": "decision-rule",
+      "name": "decision-rule",
+      "createdAt": "2026-08-08T13:05:07.198Z"
+    },
+    {
+      "id": "action-directive",
+      "name": "action-directive",
+      "createdAt": "2026-08-08T13:05:07.198Z"
+    },
+    {
+      "id": "positive-example",
+      "name": "positive-example",
+      "createdAt": "2026-08-08T13:05:07.198Z"
+    },
+    {
+      "id": "negative-example",
+      "name": "negative-example",
+      "createdAt": "2026-08-08T13:05:07.198Z"
+    },
+    {
+      "id": "reference",
+      "name": "reference",
+      "createdAt": "2026-08-08T13:05:07.198Z"
+    },
+    {
+      "id": "documentation",
+      "name": "documentation",
+      "createdAt": "2026-08-08T13:05:07.198Z"
+    },
+    {
+      "id": "requirement",
+      "name": "requirement",
+      "createdAt": "2026-08-08T13:05:07.198Z"
+    },
+    {
+      "id": "design",
+      "name": "design",
+      "createdAt": "2026-08-08T13:05:07.198Z"
+    },
+    {
+      "id": "code-implementation",
+      "name": "code-implementation",
+      "createdAt": "2026-09-19T18:37:49.000Z"
+    },
+    {
+      "id": "program-analysis",
+      "name": "program-analysis",
+      "createdAt": "2026-08-08T13:05:07.198Z"
+    },
+    {
+      "id": "testing",
+      "name": "testing",
+      "createdAt": "2026-09-19T18:37:49.000Z"
+    },
+    {
+      "id": "maintenance",
+      "name": "maintenance",
+      "createdAt": "2026-09-19T18:37:49.000Z"
+    },
+    {
+      "id": "debugging",
+      "name": "debugging",
+      "createdAt": "2026-08-08T13:05:07.198Z"
+    },
+    {
+      "id": "devops",
+      "name": "devops",
+      "createdAt": "2026-08-08T13:05:07.198Z"
+    },
+    {
+      "id": "agent-skill",
+      "name": "agent-skill",
+      "createdAt": "2026-08-08T13:05:07.198Z"
+    },
+    {
+      "id": "wrong-language",
+      "name": "wrong-language",
+      "createdAt": "2026-08-08T13:05:07.198Z"
+    },
+    {
+      "id": "filter-out",
+      "name": "filter-out",
+      "createdAt": "2026-08-16T00:34:01.890Z"
+    }
+  ],
+  "labels": {
+    "ALBEDO-TABAI__video-copy-analyzer/root": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-08T13:06:50.644Z"
+    },
+    "AnacondaKC__Aniu/backend/skills/builtin_utils": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-08T13:06:59.149Z"
+    },
+    "andyluu98__vn-one-person-company/adapters/claude-cowork/skills/vn-business-os": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-08T13:07:06.630Z"
+    },
+    "azuma520__youtube-to-notebooklm/skills/anything-to-notebooklm": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-08T13:07:37.458Z"
+    },
+    "bingchuH__Bookkeeping/root": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-08T13:07:39.829Z"
+    },
+    "BruceLanLan__augur/docs/knowledge/skills/li_lu": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-08T13:07:41.823Z"
+    },
+    "6551Team__6551-twitter-to-binance-square/root": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-08T13:20:43.685Z"
+    },
+    "afx-team__hebb-mind/.agents/skills/research-survey": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-08T13:20:49.974Z"
+    },
+    "AgriciDaniel__best-practices/root": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "program-analysis",
+        "maintenance"
+      ],
+      "updatedAt": "2026-08-08T13:25:49.562Z"
+    },
+    "AIScientists-Dev__WorldSeed/skills/create-world": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-08T13:26:26.306Z"
+    },
+    "azizmazrou__ews-mcp/examples/skills/exchange-assistant": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-08T13:27:27.907Z"
+    },
+    "buzzer-re__Rikugan/rikugan/skills/builtins/malware-analysis": {
+      "tagIds": [
+        "purpose",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "program-analysis"
+      ],
+      "updatedAt": "2026-08-08T15:23:44.038Z"
+    },
+    "byteseek__Mira/skills/equity-research-core": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-08T15:25:19.738Z"
+    },
+    "CaliCastle__seedhub-cli/root": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-08T15:25:22.310Z"
+    },
+    "cameronehrlich__apple-search-ads-cli/root": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-08T15:48:46.607Z"
+    },
+    "Chainlit__chainlit/.shared/skills/karpathy-guidelines": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "reference",
+        "code-implementation",
+        "maintenance"
+      ],
+      "updatedAt": "2026-09-19T18:37:49.000Z"
+    },
+    "cisco-ai-defense__mcp-scanner/claude-code-plugin/skills/security-scan": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "program-analysis"
+      ],
+      "updatedAt": "2026-09-19T18:37:49.000Z"
+    },
+    "Cortex-AI-Network__crypto-arbitrage-bot-automated-trading/root": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-08T15:59:26.904Z"
+    },
+    "danishi__slack-bot-adk-python-cloudrun/app/skills/greeting-skill": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-08T15:59:35.671Z"
+    },
+    "dseditor__material-collector/root": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-08T16:02:37.270Z"
+    },
+    "EagleF6432614__stock-master/root": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-08T16:02:39.606Z"
+    },
+    "fadewalk__serenity-stock-choke/root": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-08T16:02:53.747Z"
+    },
+    "fancyboi999__goofish-cli/skills/goofish-reply-buyer": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-08T16:02:56.739Z"
+    },
+    "datalab-to__lift/.claude/skills/lift_extraction": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-08T16:33:17.398Z"
+    },
+    "david-a-wheeler__secure-dependencies/root": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "negative-example",
+        "reference",
+        "program-analysis",
+        "maintenance"
+      ],
+      "updatedAt": "2026-09-19T18:37:49.000Z"
+    },
+    "evo-hq__evo/plugins/evo/npm/skills/infra-setup": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "devops"
+      ],
+      "updatedAt": "2026-09-19T18:37:49.000Z"
+    },
+    "fastapi__asyncer/asyncer/.agents/skills/asyncer": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "negative-example",
+        "reference",
+        "code-implementation"
+      ],
+      "updatedAt": "2026-09-19T18:37:49.000Z"
+    },
+    "fathom-lab__styxx/.claude/skills/posture": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-08T16:51:33.007Z"
+    },
+    "HolobiomicsLab__Perspicacite-AI/tests/fixtures/asb/skill_collection_v1/skills/feature-detection-lcms": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-08T16:52:17.554Z"
+    },
+    "GoogleCloudPlatform__cxas-scrapi/.agents/skills/cxas-loss-analysis": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "debugging"
+      ],
+      "updatedAt": "2026-09-19T18:37:49.000Z"
+    },
+    "fblissjr__ComfyUI-AudioLoopHelper/.claude/skills/apply-script-scaffold": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "code-implementation",
+        "testing"
+      ],
+      "updatedAt": "2026-09-19T18:37:49.000Z"
+    },
+    "fideus-labs__KonfAI/.claude/skills/konfai-experiments": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-08T16:55:11.350Z"
+    },
+    "fsistemas__sql2json/skills/sql2json": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "exclusion",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "code-implementation"
+      ],
+      "updatedAt": "2026-09-19T18:37:49.000Z"
+    },
+    "GoogleChromeLabs__wpt-gen/wptgen/skills/wpt-evaluator-conformance": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "program-analysis"
+      ],
+      "updatedAt": "2026-09-19T18:37:49.000Z"
+    },
+    "guqiong96__Lvllmds4/.claude/skills/ci-fails-buildkite": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "debugging",
+        "devops"
+      ],
+      "updatedAt": "2026-09-19T18:37:49.000Z"
+    },
+    "Harvest-Forged-Code__Analyser/.claude/skills/team-roundtable": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference"
+      ],
+      "updatedAt": "2026-09-19T18:37:49.000Z"
+    },
+    "HomericIntelligence__ProjectMnemosyne/plugins/tooling/mnemosyne/skills/validation-workflow": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "action-directive",
+        "negative-example",
+        "reference",
+        "devops"
+      ],
+      "updatedAt": "2026-09-19T18:37:49.000Z"
+    },
+    "jlevy__strif/.claude/skills/tbd": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "negative-example",
+        "reference",
+        "testing",
+        "maintenance",
+        "devops"
+      ],
+      "updatedAt": "2026-09-19T18:37:49.000Z"
+    },
+    "joeseesun__qiaomu-anything-to-notebooklm/root": {
+      "tagIds": [
+        "filter-out"
+      ],
+      "updatedAt": "2026-08-16T00:34:06.732Z"
+    },
+    "JuneYaooo__social-account-doctor/root": {
+      "tagIds": [
+        "filter-out"
+      ],
+      "updatedAt": "2026-08-16T00:34:22.966Z"
+    },
+    "JY0xLU__codexgo/root": {
+      "tagIds": [
+        "filter-out"
+      ],
+      "updatedAt": "2026-08-16T00:34:36.981Z"
+    },
+    "karaage0703__ai-assistant-workspace/skills/xs-dev-workflow": {
+      "tagIds": [
+        "filter-out"
+      ],
+      "updatedAt": "2026-08-16T00:34:38.864Z"
+    },
+    "kiki348__photoshop-beta-control/skills/photoshop-control": {
+      "tagIds": [
+        "filter-out"
+      ],
+      "updatedAt": "2026-08-16T00:34:44.265Z"
+    },
+    "komako-workshop__digital-oracle/root": {
+      "tagIds": [
+        "filter-out"
+      ],
+      "updatedAt": "2026-08-16T00:34:50.864Z"
+    },
+    "mahimairaja__locallens/claude-code-plugin/skills/index": {
+      "tagIds": [
+        "filter-out"
+      ],
+      "updatedAt": "2026-08-16T00:35:03.264Z"
+    },
+    "RA-CONSULTING__aureon-trading/skills/moltbook-registry": {
+      "tagIds": [
+        "filter-out"
+      ],
+      "updatedAt": "2026-08-16T00:36:02.761Z"
+    },
+    "rohitg00__ai-engineering-from-scratch/.claude/skills/check-understanding": {
+      "tagIds": [
+        "filter-out"
+      ],
+      "updatedAt": "2026-08-16T00:36:29.911Z"
+    },
+    "sandraschi__windows-computer-use-mcp/skills/desktop-automation-protocol": {
+      "tagIds": [
+        "filter-out"
+      ],
+      "updatedAt": "2026-08-16T00:36:40.794Z"
+    },
+    "yusufaltunbicak__outlook-cli/root": {
+      "tagIds": [
+        "filter-out"
+      ],
+      "updatedAt": "2026-08-16T00:37:28.010Z"
+    },
+    "JohNan__homeassistant-homevolt-local/.github/skills/homevolt-api": {
+      "tagIds": [
+        "purpose",
+        "reference",
+        "positive-example",
+        "code-implementation",
+        "activation"
+      ],
+      "updatedAt": "2026-09-19T17:13:11.000Z"
+    },
+    "koaning__scikit-mdn/.agents/skills/anywidget-generator": {
+      "tagIds": [
+        "action-directive",
+        "positive-example",
+        "decision-rule",
+        "code-implementation",
+        "activation"
+      ],
+      "updatedAt": "2026-09-19T17:13:11.000Z"
+    },
+    "karimhabush__cyberowl/docs/.vuepress/public/skill": {
+      "tagIds": [
+        "program-analysis",
+        "purpose",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "activation"
+      ],
+      "updatedAt": "2026-09-19T17:13:11.000Z"
+    },
+    "marimo-team__marimo/packages/llm-info/skills": {
+      "tagIds": [
+        "testing",
+        "maintenance",
+        "purpose",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "negative-example",
+        "reference",
+        "activation",
+        "exclusion"
+      ],
+      "updatedAt": "2026-09-19T17:13:11.000Z"
+    },
+    "mims-harvard__Qworld/skills/qworld-criteria-generation": {
+      "tagIds": [
+        "filter-out"
+      ],
+      "updatedAt": "2026-08-17T23:41:18.504Z"
+    },
+    "modal-labs__modal-client/py/modal/skills/modal": {
+      "tagIds": [
+        "purpose",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "devops",
+        "activation"
+      ],
+      "updatedAt": "2026-09-19T17:13:11.000Z"
+    },
+    "multikernel__branching/integration": {
+      "tagIds": [
+        "filter-out"
+      ],
+      "updatedAt": "2026-08-17T23:45:06.831Z"
+    },
+    "Piaoxuemoli__Auto-college/skills/paper-writer/skills/simpo": {
+      "tagIds": [
+        "filter-out"
+      ],
+      "updatedAt": "2026-08-17T23:45:42.809Z"
+    },
+    "OpenHands__OpenHands-CLI/.agents/skills/custom-codereview-guide": {
+      "tagIds": [
+        "decision-rule",
+        "action-directive",
+        "maintenance",
+        "activation",
+        "exclusion",
+        "negative-example"
+      ],
+      "updatedAt": "2026-09-19T17:13:11.000Z"
+    },
+    "platypus45__domestique/.claude/skills/loops": {
+      "tagIds": [
+        "filter-out"
+      ],
+      "updatedAt": "2026-08-17T23:48:32.381Z"
+    },
+    "redis__redis-py/.agents/skills/pr-draft-summary": {
+      "tagIds": [
+        "documentation",
+        "program-analysis",
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "maintenance"
+      ],
+      "updatedAt": "2026-09-19T17:13:11.000Z"
+    },
+    "PrimeIntellect-ai__lab-cookbook/skills/review-v1-environments": {
+      "tagIds": [
+        "purpose",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "program-analysis",
+        "testing",
+        "maintenance",
+        "activation"
+      ],
+      "updatedAt": "2026-09-19T17:13:11.000Z"
+    },
+    "rom1504__term-wrapper/skill": {
+      "tagIds": [
+        "devops",
+        "code-implementation",
+        "purpose",
+        "activation",
+        "decision-rule",
+        "action-directive",
+        "workflow",
+        "positive-example",
+        "reference",
+        "negative-example"
+      ],
+      "updatedAt": "2026-08-17T23:52:54.769Z"
+    },
+    "Sh4r1ock__SoloEngine/data/system/skills/web-artifacts-builder": {
+      "tagIds": [
+        "code-implementation",
+        "purpose",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "activation"
+      ],
+      "updatedAt": "2026-09-19T17:13:11.000Z"
+    },
+    "sandsower__memento-vault/skills/start-fresh": {
+      "tagIds": [
+        "filter-out"
+      ],
+      "updatedAt": "2026-08-17T23:54:26.737Z"
+    },
+    "Snowflake-Labs__snowflake-ai-kit/plugins/cortex-code/skills/cortex-run": {
+      "tagIds": [
+        "filter-out"
+      ],
+      "updatedAt": "2026-08-17T23:54:55.853Z"
+    },
+    "SukramJ__aiohomematic/.claude/skills/add-device": {
+      "tagIds": [
+        "code-implementation",
+        "testing",
+        "purpose",
+        "workflow",
+        "decision-rule",
+        "positive-example",
+        "reference",
+        "activation"
+      ],
+      "updatedAt": "2026-09-19T17:13:11.000Z"
+    },
+    "swm-gpu__swm/.agents/skills/swm-gpu-workflow": {
+      "tagIds": [
+        "filter-out"
+      ],
+      "updatedAt": "2026-08-17T23:56:12.947Z"
+    },
+    "thingctx__thingctx/src/thingctx/skill": {
+      "tagIds": [
+        "filter-out"
+      ],
+      "updatedAt": "2026-08-17T23:56:43.876Z"
+    },
+    "stateful-y__kedro-dagster/.github/skills/diataxis-tutorial-writer": {
+      "tagIds": [
+        "purpose",
+        "workflow",
+        "decision-rule",
+        "positive-example",
+        "negative-example",
+        "documentation",
+        "reference",
+        "program-analysis",
+        "activation"
+      ],
+      "updatedAt": "2026-09-19T17:13:11.000Z"
+    },
+    "torchbox__django-pattern-library/.agents/skills/upgrading-stylelint": {
+      "tagIds": [
+        "devops",
+        "maintenance",
+        "testing",
+        "purpose",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference"
+      ],
+      "updatedAt": "2026-09-19T17:13:11.000Z"
+    },
+    "vllm-project__speculators/.claude/skills/pr-review": {
+      "tagIds": [
+        "purpose",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "negative-example",
+        "reference",
+        "program-analysis",
+        "maintenance",
+        "activation",
+        "exclusion"
+      ],
+      "updatedAt": "2026-09-19T17:13:11.000Z"
+    },
+    "tteon__seocho/.claude/skills/seocho-e2e": {
+      "tagIds": [
+        "filter-out"
+      ],
+      "updatedAt": "2026-08-17T23:59:08.670Z"
+    },
+    "Yelp__paasta/.claude/skills/paasta-api-endpoint": {
+      "tagIds": [
+        "testing",
+        "code-implementation",
+        "documentation",
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "positive-example"
+      ],
+      "updatedAt": "2026-09-19T17:13:11.000Z"
+    },
+    "yizhiyanhua-ai__fireworks-tech-graph/skills/fireworks-tech-graph": {
+      "tagIds": [
+        "purpose",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "negative-example",
+        "reference",
+        "documentation",
+        "design",
+        "activation",
+        "exclusion"
+      ],
+      "updatedAt": "2026-09-19T17:13:11.000Z"
+    },
+    "zaevlad__vulnflow-audit/dashboard/chat/skills/canvas-actions": {
+      "tagIds": [
+        "filter-out"
+      ],
+      "updatedAt": "2026-08-18T00:02:14.872Z"
+    },
+    "zauberzeug__nicegui/.claude/skills/release-notes": {
+      "tagIds": [
+        "documentation",
+        "purpose",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "activation"
+      ],
+      "updatedAt": "2026-09-19T17:13:11.000Z"
+    },
+    "0xSanei__darwinia/.openclaw": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T16:48:40.904Z"
+    },
+    "1437649480__miku-hermes-chat/miku.skill": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-30T16:48:48.605Z"
+    },
+    "6551Team__opentwitter-mcp/openclaw-skill/opentwitter": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T16:49:47.966Z"
+    },
+    "a-yeyang__AI-researcher/.claude": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "negative-example",
+        "reference",
+        "code-implementation"
+      ],
+      "updatedAt": "2026-08-30T16:50:46.004Z"
+    },
+    "Abilityai__cornelius/.claude/skills/dialectic": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T16:51:54.940Z"
+    },
+    "aio-libs__aiohttp/.claude/skills/backport-failed": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "maintenance",
+        "devops"
+      ],
+      "updatedAt": "2026-08-30T16:53:26.213Z"
+    },
+    "aliyun__alibabacloud-hologres-mcp-server/hologres_mcp_cli": {
+      "tagIds": [
+        "purpose",
+        "decision-rule",
+        "action-directive",
+        "devops"
+      ],
+      "updatedAt": "2026-08-30T16:53:51.629Z"
+    },
+    "allenporter__python-google-nest-sdm/.agent/skills/developer": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "testing",
+        "maintenance"
+      ],
+      "updatedAt": "2026-08-30T16:56:26.084Z"
+    },
+    "AMOS144__ZeroToken/skills/zerotoken-openclaw": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-30T16:56:33.734Z"
+    },
+    "alonw0__llm-docs-optimizer/skills/llm-docs-optimizer": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "documentation"
+      ],
+      "updatedAt": "2026-08-30T16:57:18.327Z"
+    },
+    "antbald__ha-ev-smart-charger/.agents/skills/home-assistant-best-practices": {
+      "tagIds": [
+        "purpose",
+        "decision-rule",
+        "activation",
+        "workflow",
+        "action-directive",
+        "positive-example",
+        "negative-example",
+        "reference",
+        "code-implementation",
+        "maintenance"
+      ],
+      "updatedAt": "2026-08-30T16:57:58.918Z"
+    },
+    "aristoteleo__dynamo-release/skills/dynamo-conventional-rna-velocity": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T16:58:33.486Z"
+    },
+    "aristoteleo__PantheonOS/pantheon/factory/templates/skills/live_view": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T16:58:52.628Z"
+    },
+    "arthur-ai__arthur-engine/integrations/claude-code-skills/arthur-onboard/arthur-onboard-eval-provider": {
+      "tagIds": [
+        "purpose",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "devops"
+      ],
+      "updatedAt": "2026-08-30T16:59:16.694Z"
+    },
+    "assafkip__kipi-system/plugins/prd-os/skills/prd-os": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "requirement",
+        "code-implementation",
+        "testing",
+        "maintenance"
+      ],
+      "updatedAt": "2026-08-30T17:00:10.986Z"
+    },
+    "Autoplay-AI__Autoplay-AI-SDK/autoplay_sdk/skills/chatbot-ada": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "reference",
+        "code-implementation"
+      ],
+      "updatedAt": "2026-08-30T17:00:45.157Z"
+    },
+    "bbrowning__paude/.claude/skills/audit-docs": {
+      "tagIds": [
+        "purpose",
+        "workflow",
+        "action-directive",
+        "documentation",
+        "program-analysis"
+      ],
+      "updatedAt": "2026-08-30T17:01:10.565Z"
+    },
+    "bitsky-tech__bridgic/skills/bridgic-amphibious": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "code-implementation"
+      ],
+      "updatedAt": "2026-08-30T17:01:44.443Z"
+    },
+    "brunocapelao__miniAutoGen/Projeto/skills/example": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:01:52.525Z"
+    },
+    "Blazemeter__bzm-mcp/resources/skills/blazemeter-service-virtualization": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "positive-example",
+        "testing"
+      ],
+      "updatedAt": "2026-08-30T17:02:34.581Z"
+    },
+    "caigee-cmd__wechat-insight/root": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-30T17:02:40.628Z"
+    },
+    "bubbuild__bub/src/skills/skill-creator": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:03:18.989Z"
+    },
+    "carteakey__l3ms/codex-skills/model-inventory-manager": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "maintenance",
+        "devops"
+      ],
+      "updatedAt": "2026-08-30T17:03:45.187Z"
+    },
+    "cds-snc__sre-bot/.github/skills/plugin-registration-lifespan": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "negative-example",
+        "design",
+        "code-implementation",
+        "testing"
+      ],
+      "updatedAt": "2026-08-30T17:04:12.459Z"
+    },
+    "chakrit__kien-thai/skills/kode-thai": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:04:47.121Z"
+    },
+    "chdb-io__chdb/agent/skills/chdb-datastore": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "code-implementation",
+        "maintenance"
+      ],
+      "updatedAt": "2026-08-30T17:05:44.183Z"
+    },
+    "chemrich__MCPymol/.claude/skills/mcpymol-guide": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:06:01.746Z"
+    },
+    "CodeSoul-co__THETA/skills/theta-workflow": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:06:13.446Z"
+    },
+    "covagashi__Eplan_2026_IA_MCP_scripts/claude-skills/eplan-development/skills/eplan-development": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "code-implementation",
+        "decision-rule",
+        "debugging"
+      ],
+      "updatedAt": "2026-08-30T17:07:36.946Z"
+    },
+    "ConstantineB6__comfy-pilot/.claude/skills/comfy-nodes": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "code-implementation"
+      ],
+      "updatedAt": "2026-08-30T17:07:15.134Z"
+    },
+    "creatify-ai__video-ad-reverse-engineer/root": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:07:56.549Z"
+    },
+    "cyberchitta__cad-khana/skills/cad-khana": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:08:20.341Z"
+    },
+    "Dataojitori__nocturne_memory/docs/skills/memory-audit-dead-data-purge": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-30T17:08:24.246Z"
+    },
+    "daloopa__investing/.claude/skills/update": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:08:41.903Z"
+    },
+    "delip__clibib/skill/clibib": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:08:59.121Z"
+    },
+    "day50-dev__Petsitter/.agents/skills/petsitter-create-trick": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "code-implementation"
+      ],
+      "updatedAt": "2026-08-30T17:09:42.803Z"
+    },
+    "disler__bash-damage-from-within/pi/level-1-user-prompt/.pi/skills/safe-mode": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:19:00.621Z"
+    },
+    "Developers-and-Dragons__ArcaneAuditor/root": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "maintenance"
+      ],
+      "updatedAt": "2026-08-30T17:19:28.093Z"
+    },
+    "donghzs__vermes/optional-skills/research/gitnexus-explorer": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "program-analysis",
+        "devops"
+      ],
+      "updatedAt": "2026-08-30T17:19:56.294Z"
+    },
+    "edonadei__caliper/examples/starter-pack/05-context-boundary": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:20:19.239Z"
+    },
+    "fatwang2__ibkr-cli/skills/ibkr-cli": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:20:45.985Z"
+    },
+    "exmergo__dex/skills/maintain": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "maintenance"
+      ],
+      "updatedAt": "2026-08-30T17:21:10.177Z"
+    },
+    "fblissjr__shrug-prompter/.claude/skills/heylook-endpoint-sync": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "program-analysis",
+        "maintenance",
+        "documentation"
+      ],
+      "updatedAt": "2026-08-30T17:21:49.183Z"
+    },
+    "firstof9__openevse/.claude/skills/development": {
+      "tagIds": [
+        "purpose",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "code-implementation",
+        "testing",
+        "maintenance"
+      ],
+      "updatedAt": "2026-08-30T17:22:15.682Z"
+    },
+    "FrontisAI__NatureBench/naturegym/.claude/skills/task-verify": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "testing",
+        "program-analysis"
+      ],
+      "updatedAt": "2026-08-30T17:22:50.841Z"
+    },
+    "GabrielBarberini__laconic/laconic": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:23:04.906Z"
+    },
+    "gleanwork__langchain-glean/skills/langchain-glean": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "negative-example",
+        "reference",
+        "code-implementation"
+      ],
+      "updatedAt": "2026-08-30T17:23:41.683Z"
+    },
+    "getsentry__sentry-python/.agents/skills/code-review": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "negative-example",
+        "reference",
+        "maintenance",
+        "testing",
+        "program-analysis"
+      ],
+      "updatedAt": "2026-08-30T17:24:10.977Z"
+    },
+    "gnuhpc__ppt-master-plus/root": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:24:21.687Z"
+    },
+    "gluon__max-mcp-server/skills/maxmsp": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:24:34.596Z"
+    },
+    "GoogleCloudPlatform__ramble/.agents/skills/ramble-workspace-wizard": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:24:51.769Z"
+    },
+    "goldmansachs__gs-quant/gs_quant/skills/gs-quant-overview": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "code-implementation"
+      ],
+      "updatedAt": "2026-08-30T17:27:24.784Z"
+    },
+    "gradion-ai__freeact/freeact/config/templates/skills/saving-codeacts": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "action-directive",
+        "positive-example",
+        "code-implementation",
+        "testing"
+      ],
+      "updatedAt": "2026-08-30T17:27:53.503Z"
+    },
+    "harshilmathur__autodecision/.claude/skills/autodecision": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:28:23.518Z"
+    },
+    "Hiro-Inagawa__write-like-me/root": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:28:38.758Z"
+    },
+    "huggingface__diffusers/.ai/skills/model-integration": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "design",
+        "code-implementation",
+        "testing",
+        "documentation"
+      ],
+      "updatedAt": "2026-08-30T17:29:12.894Z"
+    },
+    "hyperledger-cello__cello/.claude/skills/cello": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "devops"
+      ],
+      "updatedAt": "2026-08-30T17:29:45.580Z"
+    },
+    "inclusionAI__AWorld/aworld-skills/self_evolve": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:30:06.309Z"
+    },
+    "isdaniel__pgtuner_mcp/skills/pg-index-optimization": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "maintenance"
+      ],
+      "updatedAt": "2026-08-30T17:30:35.004Z"
+    },
+    "Jesseovo__PaperCash/.augment/skills/papercash": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-30T17:30:40.171Z"
+    },
+    "jackwener__xhs-cli/root": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:30:53.363Z"
+    },
+    "jakeefr__prism/skills/prism-dashboard": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:31:02.970Z"
+    },
+    "Jinsong-Zhou__xhs-autopilot/.claude/skills/frontend-design": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "design",
+        "code-implementation"
+      ],
+      "updatedAt": "2026-08-30T17:31:39.767Z"
+    },
+    "jkreileder__cf-ips-to-hcloud-fw/.claude/skills/cut-release": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "devops",
+        "testing",
+        "maintenance",
+        "documentation"
+      ],
+      "updatedAt": "2026-08-30T17:32:40.043Z"
+    },
+    "jlevy__flowmark/.agents/skills/tbd": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "negative-example",
+        "reference",
+        "requirement",
+        "code-implementation",
+        "design",
+        "program-analysis",
+        "testing",
+        "maintenance",
+        "documentation",
+        "devops"
+      ],
+      "updatedAt": "2026-08-30T17:34:10.756Z"
+    },
+    "JunjieTang-D1__atlas-morning-briefing/root": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:34:26.109Z"
+    },
+    "Kaminoikari__product-playbook/skills/pmf-gtm": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:34:42.534Z"
+    },
+    "kr-colab__pg_gpu/.claude": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:35:04.026Z"
+    },
+    "kedro-org__kedro/.agents/skills/kedro-docs-draft-writer": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "documentation",
+        "program-analysis"
+      ],
+      "updatedAt": "2026-08-30T17:35:34.897Z"
+    },
+    "KSfak__Zubair-Trabzada-YouTube/skills/geo-crawlers": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:35:51.591Z"
+    },
+    "L-Serim__webauto-audit-skiils/webauto-audit-skiils": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-30T17:35:56.271Z"
+    },
+    "LARIkoz__eidetic/skill/eidetic-base": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:36:12.593Z"
+    },
+    "kungfuai__CVlization/examples/agentic/long_context/rlm_claude_code/.claude/skills/rlm": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:36:24.187Z"
+    },
+    "Lethe044__hermes-legal/skills/legal-advisor": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:37:11.430Z"
+    },
+    "liatrio-labs__spec-driven-workflow/skill": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "requirement",
+        "code-implementation"
+      ],
+      "updatedAt": "2026-08-30T17:37:55.215Z"
+    },
+    "lbliii__bengal/skills/bengal-debug-build": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "debugging"
+      ],
+      "updatedAt": "2026-08-30T17:38:37.460Z"
+    },
+    "Lingyuzhou111__dow-ipad-859/workspace/skills/bizyair-banana": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-30T17:38:41.908Z"
+    },
+    "m98__fluent/.claude/skills/fluent-reading": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:39:13.871Z"
+    },
+    "liauto-siada__siada-cli/siada/resources/skills/long-horizon-task-execute": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "code-implementation",
+        "program-analysis"
+      ],
+      "updatedAt": "2026-08-30T17:39:46.266Z"
+    },
+    "mardenneubert__ddd-meets-genai/skills/event-storming-board-interpreter": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "requirement"
+      ],
+      "updatedAt": "2026-08-30T17:40:26.651Z"
+    },
+    "maxwellsdm1867__wheeler/.claude/skills/wheeler-service-creator": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "requirement",
+        "design",
+        "code-implementation",
+        "program-analysis",
+        "testing"
+      ],
+      "updatedAt": "2026-08-30T17:40:53.115Z"
+    },
+    "miaowmiaow__psd2code/root": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-30T17:40:58.557Z"
+    },
+    "MichaelAyles__bitwise-mcp/plugins/bitwise-embedded-docs/skills/ingest-docs": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:41:05.377Z"
+    },
+    "meteostat__cli/.claude/skills/meteo": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:41:20.659Z"
+    },
+    "microsoft__PowerPlatform-DataverseClient-Python/src/PowerPlatform/Dataverse/claude_skill/dataverse-sdk-use": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "negative-example",
+        "reference",
+        "code-implementation",
+        "design"
+      ],
+      "updatedAt": "2026-08-30T17:41:48.052Z"
+    },
+    "mileson__CodexSwitcher/.codex/skills/codex-switcher-help": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:42:05.686Z"
+    },
+    "mnemox-ai__tradememory-protocol/.skills/tradememory": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-30T17:42:37.625Z"
+    },
+    "MostAshraf__ai-sdlc-harness/skills/workflow-status": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-31T22:25:38.463Z"
+    },
+    "muggl3mind__career-manager/cv-tailor": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-31T22:25:50.422Z"
+    },
+    "multimodal-art-projection__TACO/skills/rewardkit": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "testing"
+      ],
+      "updatedAt": "2026-08-31T22:26:15.629Z"
+    },
+    "nachovoss__hatchback/hatchback/template/.github/skills/clean-architecture": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "negative-example",
+        "reference",
+        "design",
+        "code-implementation",
+        "testing"
+      ],
+      "updatedAt": "2026-08-31T22:26:51.080Z"
+    },
+    "naverhe826-boop__dbsdk/skills/gen-data": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-31T22:27:05.294Z"
+    },
+    "nadeemis__contelligence/.github/skills/docx-processing": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "negative-example",
+        "reference",
+        "documentation"
+      ],
+      "updatedAt": "2026-08-31T22:27:38.315Z"
+    },
+    "Neko1313__graphlens/.claude/skills/python-test-generator": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "testing"
+      ],
+      "updatedAt": "2026-08-31T22:28:08.621Z"
+    },
+    "nhadaututtheky__neural-memory/integrations/neural-memory": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-31T22:28:22.946Z"
+    },
+    "NPC-Worldwide__npcpy/skills/knowledge_store_skill": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-31T22:28:41.592Z"
+    },
+    "NomaDamas__jikji/skills/jikji": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-31T22:28:46.971Z"
+    },
+    "NVIDIA-NeMo__nemo-platform/packages/nemo_platform_plugin/src/nemo_platform_plugin/.agents/skills/plugin-inference-middleware": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "negative-example",
+        "reference",
+        "code-implementation",
+        "testing"
+      ],
+      "updatedAt": "2026-08-31T22:29:31.856Z"
+    },
+    "o1xhack__telegram-watch/.codex/skills/telegram-watch-dev": {
+      "tagIds": [
+        "purpose",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "code-implementation",
+        "testing",
+        "maintenance",
+        "documentation"
+      ],
+      "updatedAt": "2026-08-31T22:30:11.509Z"
+    },
+    "open-edge-platform__physical-ai-studio/skills/library/physicalai-train-training-a-policy": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "code-implementation",
+        "testing",
+        "debugging"
+      ],
+      "updatedAt": "2026-08-31T22:31:35.478Z"
+    },
+    "open-gigaai__giga-world-1/thirdparty/diffusers/.ai/skills/model-integration": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "code-implementation",
+        "testing",
+        "documentation",
+        "maintenance"
+      ],
+      "updatedAt": "2026-08-31T22:32:09.647Z"
+    },
+    "OpenDCAI__OpenResearchFlow/skills/exp/exprun": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-31T22:32:30.263Z"
+    },
+    "opensellersprite__sellersprite-cli/src/sellersprite_cli/skills": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-31T22:32:34.963Z"
+    },
+    "OpenMOSS__MOSS-VL/sglang/.claude/skills/sglang-auto-benchmark": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "exclusion",
+        "decision-rule",
+        "workflow",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "testing",
+        "devops"
+      ],
+      "updatedAt": "2026-08-31T22:33:09.872Z"
+    },
+    "openshift__lightspeed-service/.cursor/skills/deps-update": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "maintenance",
+        "testing",
+        "debugging"
+      ],
+      "updatedAt": "2026-08-31T22:33:58.002Z"
+    },
+    "overflow65537__MAA_SnowBreak/.claude/skills/pipeline-guide": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-31T22:34:06.887Z"
+    },
+    "Opentrons__opentrons/.cursor/skills/opentrons-typescript": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "negative-example",
+        "reference",
+        "code-implementation",
+        "testing",
+        "maintenance"
+      ],
+      "updatedAt": "2026-08-31T22:34:40.966Z"
+    },
+    "owasp-dep-scan__blint/root": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "documentation",
+        "code-implementation",
+        "program-analysis",
+        "testing",
+        "maintenance"
+      ],
+      "updatedAt": "2026-08-31T22:35:24.276Z"
+    },
+    "PharMolix__OpenBioMed/skills/drug-candidate-discovery": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "code-implementation",
+        "testing",
+        "documentation"
+      ],
+      "updatedAt": "2026-08-31T22:36:33.295Z"
+    },
+    "piercelamb__deep-plan/skills/deep-plan": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "requirement",
+        "design",
+        "testing"
+      ],
+      "updatedAt": "2026-08-31T22:37:10.697Z"
+    },
+    "PlamenTSV__plamen/agents/skills/sui/ptb-composability": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "negative-example",
+        "reference",
+        "program-analysis"
+      ],
+      "updatedAt": "2026-08-31T22:37:44.171Z"
+    },
+    "prasanjit101__Leve/.agents/skills/microsandbox": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "devops"
+      ],
+      "updatedAt": "2026-08-31T22:38:15.156Z"
+    },
+    "Priivacy-ai__spec-kitty/src/doctrine/skills/spk-run-program-orchestrate": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "requirement",
+        "devops"
+      ],
+      "updatedAt": "2026-08-31T22:38:47.363Z"
+    },
+    "Prism-Shadow__GDPevo/experiments/codex_gpt5_5_xhigh/reports/skills/task_group_005/demonstration_skill/demonstration_skill_attempt_02/demonstration-skill-attempt-02": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-31T22:39:00.867Z"
+    },
+    "promptdriven__pdd/docs/skills/checkup-simplify": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "maintenance"
+      ],
+      "updatedAt": "2026-08-31T22:39:37.379Z"
+    },
+    "rakei076__alimama-cli/root": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-31T22:39:42.072Z"
+    },
+    "QuZhan51496__paper2anything/paper2poster": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-31T22:39:58.153Z"
+    },
+    "RAYS-CORE__RAYS-CORE/examples/skills/workspace": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "program-analysis"
+      ],
+      "updatedAt": "2026-08-31T22:40:25.706Z"
+    },
+    "red-hat-storage__ocs-ci/.claude/skills/update-logging": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "maintenance"
+      ],
+      "updatedAt": "2026-08-31T22:40:59.321Z"
+    },
+    "redai-infra__Relax/skills/code-review": {
+      "tagIds": [
+        "purpose",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "maintenance",
+        "program-analysis"
+      ],
+      "updatedAt": "2026-08-31T22:41:31.216Z"
+    },
+    "rednote-machine-learning__RedKnot/python/sglang/multimodal_gen/.claude/skills/sglang-diffusion-benchmark-profile": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "program-analysis",
+        "debugging"
+      ],
+      "updatedAt": "2026-08-31T22:42:09.646Z"
+    },
+    "reggiechan74__vp-real-estate/plugins/appraisal-valuation/skills/income-approach-expert": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-31T22:42:27.752Z"
+    },
+    "ROBOTIS-GIT__zenoh_ros2_sdk/.claude/skills/bump-version": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "maintenance"
+      ],
+      "updatedAt": "2026-08-31T22:43:24.435Z"
+    },
+    "RocketPy-Team__RocketPy/.claude/skills/rocketpy-release": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "documentation",
+        "devops"
+      ],
+      "updatedAt": "2026-08-31T22:44:00.406Z"
+    },
+    "rpatrik96__research-agora/plugins/academic": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-31T22:44:18.111Z"
+    },
+    "ruwwww__ComfyUI-SPEED/.agents/skills/comfyui-core-node": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "code-implementation",
+        "program-analysis",
+        "testing",
+        "documentation"
+      ],
+      "updatedAt": "2026-08-31T22:44:51.749Z"
+    },
+    "SandAI-org__MagiAttention/.cursor/skills/debug-test-failures": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "program-analysis",
+        "testing",
+        "debugging"
+      ],
+      "updatedAt": "2026-08-31T22:45:24.111Z"
+    },
+    "scharc__boxctl/library/skills/remote-chrome": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-31T22:45:47.455Z"
+    },
+    "SenolIsci__mykg/src/mykg/data/skills/mykg": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-31T22:46:16.409Z"
+    },
+    "Scottcjn__Rustchain/.claude/skills/rtc-balance": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-31T22:46:33.192Z"
+    },
+    "snakeying__Synapse/.codex/skills/synapse": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "design",
+        "code-implementation",
+        "program-analysis",
+        "testing"
+      ],
+      "updatedAt": "2026-08-31T22:47:05.112Z"
+    },
+    "shihongDev__evalyn/sdk/skills/evalyn-setup": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "code-implementation",
+        "testing"
+      ],
+      "updatedAt": "2026-08-31T22:47:32.374Z"
+    },
+    "speediedan__finetuning-scheduler/.github/skills/fts-development-branch-version-upgrade": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "documentation",
+        "testing",
+        "maintenance",
+        "devops"
+      ],
+      "updatedAt": "2026-08-31T22:48:02.742Z"
+    },
+    "SprocketLab__slop-code-bench/.claude/skills/reclassify-tests": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "testing",
+        "maintenance"
+      ],
+      "updatedAt": "2026-08-31T22:48:30.926Z"
+    },
+    "Srajangpt1__ai-security-crew/skills/security-review": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "requirement",
+        "design"
+      ],
+      "updatedAt": "2026-08-31T22:49:08.845Z"
+    },
+    "stefanoginella__auto-bmad/.claude/skills/auto-bmad-compat-check": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "program-analysis",
+        "maintenance",
+        "documentation"
+      ],
+      "updatedAt": "2026-08-31T22:49:50.593Z"
+    },
+    "TangHui-Best__ai-coding-harness/skills/change-narrative": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "documentation",
+        "program-analysis"
+      ],
+      "updatedAt": "2026-08-31T22:50:22.224Z"
+    },
+    "tyunta__prefab-sentinel/skills/udon-log-triage": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-31T22:50:29.780Z"
+    },
+    "tekumara__fakesnow/.agents/skills/snowflake-check": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "program-analysis",
+        "testing",
+        "debugging"
+      ],
+      "updatedAt": "2026-08-31T22:50:56.064Z"
+    },
+    "VAIBHAVSING__openghost/skills/openghost-skill": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "program-analysis",
+        "testing"
+      ],
+      "updatedAt": "2026-08-31T22:51:24.686Z"
+    },
+    "VectifyAI__OpenKB/skills/openkb-html-critic": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "negative-example",
+        "maintenance",
+        "testing"
+      ],
+      "updatedAt": "2026-08-31T22:51:52.846Z"
+    },
+    "vpuri3__FLARE.py/.codex/skills/gpu-model-smoke": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "testing",
+        "debugging"
+      ],
+      "updatedAt": "2026-08-31T22:52:21.745Z"
+    },
+    "XiaomingX__ddos_attack_script_demo/plugin/skills/ddos-test": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-31T22:52:25.771Z"
+    },
+    "wnstify__tubeflow/.claude/skills/youtube-research": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-31T22:52:39.913Z"
+    },
+    "Yixuan-Miao__ChipSeeker/agent_skills/chipseeker-ultra-search": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-31T22:52:59.513Z"
+    },
+    "YouAM-Network__uam/root": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-31T22:53:14.123Z"
+    },
+    "YukiKazahana__cadence/skills/cadence-execution": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "code-implementation",
+        "testing",
+        "maintenance",
+        "requirement"
+      ],
+      "updatedAt": "2026-08-31T22:54:03.734Z"
+    },
+    "yang478__auditable-knowledge-packs/pack-builder": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-31T22:54:19.874Z"
+    },
+    "zainnab-sparq__cc-self-train/.claude/skills/security-review": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "negative-example",
+        "reference",
+        "program-analysis"
+      ],
+      "updatedAt": "2026-08-31T22:56:18.853Z"
+    },
+    "Zayne-sprague__RACA/.claude/skills/setup-cluster": {
+      "tagIds": [
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "devops"
+      ],
+      "updatedAt": "2026-08-31T22:56:49.890Z"
+    },
+    "zhanglg12__research-assist/root": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-31T22:57:10.400Z"
+    },
+    "ziiyuecheng__vibe-coding-cn/skills/auto-skill": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-31T22:57:31.820Z"
+    },
+    "ZHangZHengEric__Sage/app/skills/excalidraw-diagram-generator": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-31T22:57:40.752Z"
+    },
+    "1Password__SCAM/skills/security-awareness": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-28T19:23:10.897Z"
+    },
+    "a2aproject__a2a-python/.agents/skills/mistake-reflection": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-24T21:37:06.687Z"
+    },
+    "abhisekjha__pith/skills/pith-graph": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-24T23:20:09.860Z"
+    },
+    "aden-hive__hive/core/framework/skills/_preset_skills/chart-creation-foundations": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-24T23:27:33.509Z"
+    },
+    "Adit-Jain-srm__NightmareNet/.cursor/skills/context-builder": {
+      "tagIds": [
+        "documentation",
+        "purpose",
+        "activation",
+        "workflow",
+        "action-directive",
+        "positive-example"
+      ],
+      "updatedAt": "2026-08-24T23:29:17.509Z"
+    },
+    "adiun__pi-autoproto/skills/autoproto": {
+      "tagIds": [
+        "requirement",
+        "design",
+        "code-implementation",
+        "maintenance",
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "negative-example",
+        "reference"
+      ],
+      "updatedAt": "2026-08-24T23:40:02.563Z"
+    },
+    "allenporter__supernote/.agent/skills/developer": {
+      "tagIds": [
+        "testing",
+        "maintenance",
+        "devops",
+        "purpose",
+        "workflow",
+        "decision-rule",
+        "action-directive"
+      ],
+      "updatedAt": "2026-08-24T23:41:50.809Z"
+    },
+    "ariadng__metatrader-mcp-server/claude-skill/trading": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T00:04:19.500Z"
+    },
+    "aristanetworks__aclabs/.agents/skills/upgrade-avd-lab": {
+      "tagIds": [
+        "maintenance",
+        "devops",
+        "documentation",
+        "testing",
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "negative-example",
+        "reference"
+      ],
+      "updatedAt": "2026-08-25T00:09:27.135Z"
+    },
+    "arslan70__haytham/.agents/skills/caveman-review": {
+      "tagIds": [
+        "maintenance",
+        "purpose",
+        "activation",
+        "exclusion",
+        "decision-rule",
+        "action-directive",
+        "negative-example",
+        "positive-example"
+      ],
+      "updatedAt": "2026-08-25T00:12:29.871Z"
+    },
+    "ashawkey__kiuikit/kiui/agent/skills/skill-creator": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T00:14:15.769Z"
+    },
+    "aws-deadline__deadline-cloud-for-unreal-engine/skills/ue-design": {
+      "tagIds": [
+        "design",
+        "requirement",
+        "documentation",
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference"
+      ],
+      "updatedAt": "2026-08-25T04:53:12.481Z"
+    },
+    "baidu-baige__LoongForge/skills/submit-pr": {
+      "tagIds": [
+        "devops",
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "negative-example",
+        "positive-example",
+        "reference"
+      ],
+      "updatedAt": "2026-08-25T04:55:08.931Z"
+    },
+    "BAIGUANGMEI__zhihu-cli/skill": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-25T04:55:52.155Z"
+    },
+    "Bruce-Lee-LY__cuda_auto_tune/cuda-auto-tune": {
+      "tagIds": [
+        "maintenance",
+        "program-analysis",
+        "purpose",
+        "activation",
+        "workflow",
+        "exclusion",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference"
+      ],
+      "updatedAt": "2026-08-25T04:58:26.261Z"
+    },
+    "bx33661__Wireshark-MCP/skills/wireshark-traffic-analysis": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T05:08:34.761Z"
+    },
+    "canonical__copilot-collections/skills/documentation-style": {
+      "tagIds": [
+        "documentation",
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference"
+      ],
+      "updatedAt": "2026-08-25T05:10:29.970Z"
+    },
+    "castorini__rank_llm/.claude/skills/rank-llm-eval": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T05:12:00.640Z"
+    },
+    "charlestang__codex-obsidian/skills/think": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T05:12:38.470Z"
+    },
+    "chenggroup__ai2-kit/skills/build-tesla": {
+      "tagIds": [
+        "code-implementation",
+        "program-analysis",
+        "maintenance",
+        "documentation",
+        "purpose",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "exclusion",
+        "positive-example",
+        "reference"
+      ],
+      "updatedAt": "2026-08-25T05:13:50.370Z"
+    },
+    "ckpxgfnksd-max__uap-release-analyzer/root": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T05:14:12.279Z"
+    },
+    "clarity-digital-development__tworkflow/skills/context-checkpoint": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T05:14:52.672Z"
+    },
+    "codegraphtheory__heavy-coder/skills/heavy-hook-phases": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T05:16:44.737Z"
+    },
+    "confident-ai__deepeval/skills/deepeval-tracing": {
+      "tagIds": [
+        "code-implementation",
+        "purpose",
+        "activation",
+        "workflow",
+        "exclusion",
+        "decision-rule",
+        "action-directive",
+        "reference"
+      ],
+      "updatedAt": "2026-08-25T05:17:52.832Z"
+    },
+    "connor-makowski__type_enforced/.claude/skills/lint": {
+      "tagIds": [
+        "maintenance",
+        "testing",
+        "purpose",
+        "action-directive",
+        "decision-rule"
+      ],
+      "updatedAt": "2026-08-25T05:19:24.913Z"
+    },
+    "Corykidios__local_letta_memfs_magic/skill": {
+      "tagIds": [
+        "debugging",
+        "devops",
+        "code-implementation",
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference"
+      ],
+      "updatedAt": "2026-08-25T05:21:22.257Z"
+    },
+    "cozytab__fable5-mode/root": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T05:25:13.374Z"
+    },
+    "cyberphysicsai__cypher-tempre-genesis/skills/claude/cypher-tempre-self-model": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T05:26:08.432Z"
+    },
+    "danyuchn__fire-planner/root": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T05:26:56.979Z"
+    },
+    "dealfluence__adeu/skills/adeu-redlining": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T05:27:50.765Z"
+    },
+    "devnomad-byte__cosmosmith/plugins/cosmosmith/skills/cosmosmith-market-research": {
+      "tagIds": [
+        "requirement",
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "exclusion"
+      ],
+      "updatedAt": "2026-08-25T05:28:57.524Z"
+    },
+    "DevvGwardo__grok-imagine-video/root": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T05:30:00.816Z"
+    },
+    "dfrostar__neuralmind/skills/neuralmind": {
+      "tagIds": [
+        "program-analysis",
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "exclusion",
+        "reference"
+      ],
+      "updatedAt": "2026-08-25T05:31:08.689Z"
+    },
+    "dhilipkumars__prose-lang/spec/skills-template/prose-lang": {
+      "tagIds": [
+        "code-implementation",
+        "devops",
+        "testing",
+        "documentation",
+        "program-analysis",
+        "requirement",
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "exclusion"
+      ],
+      "updatedAt": "2026-08-25T05:34:49.730Z"
+    },
+    "dkyazzentwatwa__apple-flow/skills/apple-flow-gateways": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T05:36:20.248Z"
+    },
+    "dollspace-gay__vibe-fork/vibe-fork": {
+      "tagIds": [
+        "maintenance",
+        "code-implementation",
+        "design",
+        "program-analysis",
+        "testing",
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "negative-example",
+        "positive-example"
+      ],
+      "updatedAt": "2026-08-25T05:38:43.822Z"
+    },
+    "douglasmonsky__codex-usage-tracker/src/codex_usage_tracker/plugin_data/skills/codex-usage-tracker": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T05:39:57.533Z"
+    },
+    "drt-hub__drt/skills/drt/skills/drt-troubleshoot": {
+      "tagIds": [
+        "debugging",
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "negative-example"
+      ],
+      "updatedAt": "2026-08-25T05:41:31.123Z"
+    },
+    "duolongworld__AI_Renaissance/skills/data/akshare_fundflow_snapshot": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-25T05:41:48.848Z"
+    },
+    "duskpen__novel-craft/root": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-25T05:41:53.353Z"
+    },
+    "EdwardOptimization__Bilevel-Autoresearch/skills/level2-research": {
+      "tagIds": [
+        "program-analysis",
+        "code-implementation",
+        "design",
+        "debugging",
+        "purpose",
+        "workflow",
+        "activation",
+        "decision-rule",
+        "action-directive",
+        "exclusion",
+        "reference",
+        "positive-example"
+      ],
+      "updatedAt": "2026-08-25T14:28:58.892Z"
+    },
+    "Eriemon__verilog-generator/root": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-25T18:42:26.317Z"
+    },
+    "esphome__aioesphomeapi/.claude/skills/pr-workflow": {
+      "tagIds": [
+        "devops",
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "exclusion",
+        "reference"
+      ],
+      "updatedAt": "2026-08-25T18:44:18.780Z"
+    },
+    "eugenelim__llm-wiki-kit/docs/guides/how-to/_examples/conflict-pending/skills/ingest-action-item": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T18:45:25.609Z"
+    },
+    "FabioYanezRomero__Knowledge-Graph-Builder/.agent/skills/add-domain": {
+      "tagIds": [
+        "code-implementation",
+        "testing",
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "positive-example"
+      ],
+      "updatedAt": "2026-08-25T18:46:30.318Z"
+    },
+    "fastapi__typer/typer/.agents/skills/typer": {
+      "tagIds": [
+        "maintenance",
+        "purpose",
+        "activation",
+        "decision-rule",
+        "action-directive",
+        "exclusion",
+        "positive-example",
+        "negative-example"
+      ],
+      "updatedAt": "2026-08-25T18:50:14.205Z"
+    },
+    "ffroliva__gflow-cli/skills/issue-assessment": {
+      "tagIds": [
+        "debugging",
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "positive-example"
+      ],
+      "updatedAt": "2026-08-25T19:06:51.232Z"
+    },
+    "FireRedTeam__FireRed-OpenStoryline/.storyline/skills/subtitle_imitation_skill": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-25T19:07:02.249Z"
+    },
+    "FlowLLM-AI__flowllm/skills/remote_client": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T19:16:55.901Z"
+    },
+    "flyer-Li__paper-analyst/root": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-25T19:17:11.837Z"
+    },
+    "gemini-cli-extensions__sre/skills/generic-mitigations": {
+      "tagIds": [
+        "devops",
+        "purpose",
+        "decision-rule",
+        "action-directive",
+        "workflow",
+        "exclusion",
+        "reference"
+      ],
+      "updatedAt": "2026-08-25T19:18:26.957Z"
+    },
+    "glitch-rabin__swarma/root": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T19:27:40.562Z"
+    },
+    "godatadriven__dbt-bouncer/.agents/skills/build-artifacts": {
+      "tagIds": [
+        "testing",
+        "devops",
+        "purpose",
+        "activation",
+        "workflow",
+        "action-directive",
+        "decision-rule",
+        "exclusion"
+      ],
+      "updatedAt": "2026-08-25T19:37:57.616Z"
+    },
+    "guqiong96__Lsglang/.claude/skills/generate-profile": {
+      "tagIds": [
+        "program-analysis",
+        "purpose",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference"
+      ],
+      "updatedAt": "2026-08-25T19:40:56.840Z"
+    },
+    "Heathcliff-saku__AlloSpatial/lmms-eval/skills/lmms-eval-guide": {
+      "tagIds": [
+        "code-implementation",
+        "program-analysis",
+        "maintenance",
+        "activation",
+        "purpose",
+        "decision-rule",
+        "action-directive",
+        "exclusion",
+        "reference"
+      ],
+      "updatedAt": "2026-08-25T19:43:18.122Z"
+    },
+    "HenryQin818__qoreon/examples/minimal-project/skills/runtime-backend": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-25T19:43:30.590Z"
+    },
+    "HMAKT99__AKF/plugins/akf/skills/akf": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T19:45:28.258Z"
+    },
+    "hoitcao__product-master-pro/root": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-25T19:45:32.208Z"
+    },
+    "home-assistant__core/.claude/skills/bump-dependency": {
+      "tagIds": [
+        "maintenance",
+        "devops",
+        "testing",
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "positive-example"
+      ],
+      "updatedAt": "2026-08-25T19:48:46.359Z"
+    },
+    "Hooolee__novel-splitter/.agents/skills/trellis-brainstorm": {
+      "tagIds": [
+        "requirement",
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "exclusion",
+        "negative-example",
+        "positive-example",
+        "reference",
+        "design"
+      ],
+      "updatedAt": "2026-08-25T19:52:59.533Z"
+    },
+    "huangjia2019__sdd-in-action/week3/code/.opencode/skills/openspec-verify-change": {
+      "tagIds": [
+        "requirement",
+        "maintenance",
+        "testing",
+        "program-analysis",
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "exclusion"
+      ],
+      "updatedAt": "2026-08-25T20:00:01.028Z"
+    },
+    "hwang847__codex-paper-reader/root": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T20:14:37.458Z"
+    },
+    "iamasters-academy__content-engine/root": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T20:15:25.483Z"
+    },
+    "iamshouvikmitra__bharat-courts/src/bharat_courts/skill": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T20:16:17.689Z"
+    },
+    "IBM__data-intelligence-mcp-server/skills/lineage": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T20:16:53.007Z"
+    },
+    "IBM__smith/root": {
+      "tagIds": [
+        "code-implementation",
+        "testing",
+        "maintenance",
+        "debugging",
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "exclusion",
+        "reference"
+      ],
+      "updatedAt": "2026-08-25T20:20:49.913Z"
+    },
+    "Itsokay-co__bio-vibing/skills/pull": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T20:23:42.155Z"
+    },
+    "jdpolasky__ai-chief-of-staff/.claude/skills/sync": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T20:24:10.917Z"
+    },
+    "jiadizhunine__deepPPT/root": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T20:24:39.437Z"
+    },
+    "jkitchin__jaxsr/src/jaxsr/skill": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T20:25:02.758Z"
+    },
+    "jmschrei__tangermeme/tangermeme/_skills/data": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T20:25:40.412Z"
+    },
+    "joeseesun__qiaomu-book-script/root": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-25T20:25:58.526Z"
+    },
+    "JohnnyQ-commits__Aqueduct/.claude/skills/aqueduct-dev": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-25T20:26:23.776Z"
+    },
+    "JoshKarpel__counterweight/.claude/skills/cw-profile": {
+      "tagIds": [
+        "program-analysis",
+        "purpose",
+        "activation",
+        "workflow",
+        "action-directive",
+        "decision-rule",
+        "reference"
+      ],
+      "updatedAt": "2026-08-25T20:27:43.241Z"
+    },
+    "JuliusBrussee__Loop-Factory/.claude/skills/backpropagate-specs": {
+      "tagIds": [
+        "documentation",
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "exclusion"
+      ],
+      "updatedAt": "2026-08-25T20:33:30.592Z"
+    },
+    "JuneYaooo__self-media-compliance-review/root": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T20:33:50.964Z"
+    },
+    "KhazixW2__MaaGumballs/.claude/skills/pipeline-generate": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-25T20:33:59.083Z"
+    },
+    "KLR-Pattern__pydantic-resolve/skill": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-25T20:34:11.973Z"
+    },
+    "Kminer2053__public-doc-to-hwpx/root": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-25T20:34:19.386Z"
+    },
+    "knowsuchagency__mcp2cli/skills/mcp2cli": {
+      "tagIds": [
+        "code-implementation",
+        "program-analysis",
+        "documentation",
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "exclusion",
+        "positive-example",
+        "reference"
+      ],
+      "updatedAt": "2026-08-25T20:36:47.865Z"
+    },
+    "lenar-amirov__product-pipeline-public/.claude/skills/strategic-narrative-generator": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T20:42:12.410Z"
+    },
+    "letta-ai__learning-sdk/examples/claude_email_agent/agent/.claude/skills/listener-creator": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T20:43:39.886Z"
+    },
+    "LinZhuoChen__video-to-notebook/skills/video-to-notebook": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-25T20:43:51.156Z"
+    },
+    "lirundong__homelab-infra/.ai/skills/secret-handling": {
+      "tagIds": [
+        "devops",
+        "purpose",
+        "activation",
+        "exclusion",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "negative-example"
+      ],
+      "updatedAt": "2026-08-25T20:46:06.911Z"
+    },
+    "llm-d__llm-d-benchmark/skills/add-metadata-to-results-in-gcs": {
+      "tagIds": [
+        "devops",
+        "purpose",
+        "activation",
+        "workflow",
+        "action-directive",
+        "decision-rule",
+        "exclusion"
+      ],
+      "updatedAt": "2026-08-25T20:49:34.040Z"
+    },
+    "louisedesadeleer__slack-assets-bot/root": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T21:03:44.913Z"
+    },
+    "LycheeMem__LycheeMem/openclaw-plugin/skills/lycheemem": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T21:04:52.376Z"
+    },
+    "mad-lab-fau__fau_colors/.claude/skills/python-release-workflow": {
+      "tagIds": [
+        "devops",
+        "testing",
+        "documentation",
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "exclusion",
+        "reference"
+      ],
+      "updatedAt": "2026-08-25T21:10:59.048Z"
+    },
+    "masihmoloodian__sema/.claude/skills/sema-code-navigation": {
+      "tagIds": [
+        "program-analysis",
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "exclusion"
+      ],
+      "updatedAt": "2026-08-25T21:15:27.704Z"
+    },
+    "MattArtzAnthro__gephi-ai/claude-plugin/skills/gephi": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T21:19:24.382Z"
+    },
+    "mdrideout__junjo/apps/studio/.agents/skills/ingestion-flow": {
+      "tagIds": [
+        "program-analysis",
+        "code-implementation",
+        "design",
+        "testing",
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference"
+      ],
+      "updatedAt": "2026-08-25T21:25:53.000Z"
+    },
+    "meta-pytorch__tritonbench/.claude/skills/fix-linting-errors": {
+      "tagIds": [
+        "maintenance",
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive"
+      ],
+      "updatedAt": "2026-08-25T21:26:35.667Z"
+    },
+    "microsoft__Webwright/skills/webwright": {
+      "tagIds": [
+        "code-implementation",
+        "debugging",
+        "testing",
+        "purpose",
+        "activation",
+        "workflow",
+        "action-directive",
+        "decision-rule",
+        "exclusion",
+        "reference"
+      ],
+      "updatedAt": "2026-08-25T21:29:32.465Z"
+    },
+    "microsoft__What-I-Did-Copilot/skills/whatidid": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T21:30:48.240Z"
+    },
+    "minihellboy__factorminer/plugins/agent-plugins/factor-researcher/skills/factor-mining": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T21:31:11.758Z"
+    },
+    "mworldorg__markdown-memory/skills/mm-projects": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T21:31:31.378Z"
+    },
+    "N1neKitsune__BountyGrimoire/.claude/skills/find-xss": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T21:32:50.902Z"
+    },
+    "NanGePlus__LangChain_V1_Test/14_AgentAPIServerWithPlaywright/skills/translate": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-25T21:32:58.530Z"
+    },
+    "necatiarslan__table-faker/skills/tablefaker": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-25T21:33:32.708Z"
+    },
+    "nex-agi__NexRL/.claude/skills/fix-issue": {
+      "tagIds": [
+        "debugging",
+        "testing",
+        "devops",
+        "documentation",
+        "maintenance",
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "exclusion",
+        "reference"
+      ],
+      "updatedAt": "2026-08-25T21:35:17.785Z"
+    },
+    "NguyenSiTrung__Conductor-Beads/.claude/skills/conductor": {
+      "tagIds": [
+        "requirement",
+        "design",
+        "code-implementation",
+        "documentation",
+        "purpose",
+        "activation",
+        "workflow",
+        "exclusion",
+        "reference",
+        "decision-rule",
+        "action-directive"
+      ],
+      "updatedAt": "2026-08-27T18:53:46.328Z"
+    },
+    "NVIDIA-NeMo__Anonymizer/skills/anonymizer": {
+      "tagIds": [
+        "code-implementation",
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "reference"
+      ],
+      "updatedAt": "2026-08-28T06:58:01.683Z"
+    },
+    "NVIDIA-NeMo__DataDesigner/skills/data-designer": {
+      "tagIds": [
+        "code-implementation",
+        "purpose",
+        "activation",
+        "decision-rule",
+        "workflow",
+        "exclusion",
+        "action-directive",
+        "reference",
+        "positive-example"
+      ],
+      "updatedAt": "2026-08-28T14:15:20.018Z"
+    },
+    "NVlabs__alpamayo-recipes/recipes/alpamayo1_sft": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-28T14:23:18.793Z"
+    },
+    "openstack__kayobe/.agents/skills/sync-kolla-feature-flags": {
+      "tagIds": [
+        "devops",
+        "maintenance",
+        "purpose",
+        "workflow",
+        "activation",
+        "action-directive",
+        "decision-rule",
+        "exclusion",
+        "positive-example",
+        "reference"
+      ],
+      "updatedAt": "2026-08-28T14:50:30.840Z"
+    },
+    "opsmill__infrahub/.agents/skills/speckit-review-code": {
+      "tagIds": [
+        "maintenance",
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "exclusion",
+        "reference"
+      ],
+      "updatedAt": "2026-08-28T14:57:37.138Z"
+    },
+    "ORNL__Equilipy/agent_skills/equilipy-calculation-assist": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-28T14:58:06.837Z"
+    },
+    "Pageloom__weft-id/.claude/skills/tech-writer": {
+      "tagIds": [
+        "documentation",
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "positive-example",
+        "negative-example"
+      ],
+      "updatedAt": "2026-08-28T15:09:44.211Z"
+    },
+    "pantageepapa__DIALECTIC/root": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-28T15:10:29.595Z"
+    },
+    "paradoxie__cpa-codex-auth-sweep/root": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-28T15:10:32.792Z"
+    },
+    "ParisNeo__lollms_client/skills/artifacts_and_patching": {
+      "tagIds": [
+        "code-implementation",
+        "purpose",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "positive-example",
+        "exclusion",
+        "activation"
+      ],
+      "updatedAt": "2026-08-28T15:34:47.679Z"
+    },
+    "paulnsorensen__easy-cheese/skills/melt": {
+      "tagIds": [
+        "devops",
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference"
+      ],
+      "updatedAt": "2026-08-28T15:36:17.217Z"
+    },
+    "pinecone-io__gemini-cli-extension/skills/quickstart": {
+      "tagIds": [
+        "code-implementation",
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference"
+      ],
+      "updatedAt": "2026-08-28T15:38:35.490Z"
+    },
+    "Pipelex__kajson/.claude/skills/release": {
+      "tagIds": [
+        "devops",
+        "testing",
+        "documentation",
+        "purpose",
+        "workflow",
+        "activation",
+        "decision-rule",
+        "action-directive",
+        "exclusion",
+        "positive-example",
+        "reference"
+      ],
+      "updatedAt": "2026-08-28T15:40:18.194Z"
+    },
+    "procoders__superpowers-v/skills/backend-launcher": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-28T15:40:58.835Z"
+    },
+    "ramimac__unprompted/.claude/skills/security-contact": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-28T16:27:59.266Z"
+    },
+    "rapidly-tech__rapidly/.agents/skills/handbook-backend-development": {
+      "tagIds": [
+        "documentation",
+        "purpose",
+        "activation",
+        "workflow",
+        "action-directive",
+        "positive-example",
+        "reference",
+        "decision-rule"
+      ],
+      "updatedAt": "2026-08-28T16:40:42.582Z"
+    },
+    "redhat-performance__benchmark-runner/.claude/skills/push": {
+      "tagIds": [
+        "devops",
+        "testing",
+        "purpose",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "exclusion"
+      ],
+      "updatedAt": "2026-08-28T16:41:23.183Z"
+    },
+    "Rimagination__easygee/skills/gee-growth-diary": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-28T16:41:45.877Z"
+    },
+    "rvantonder__execute_code_py/skills/code-only-env": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-28T16:42:04.537Z"
+    },
+    "SamurAIGPT__Seedance-2.5-API/skills/seedance-v2": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-28T16:42:17.411Z"
+    },
+    "sccn__eegprep/.agents/skills/pull-request": {
+      "tagIds": [
+        "devops",
+        "testing",
+        "maintenance",
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "positive-example"
+      ],
+      "updatedAt": "2026-08-28T17:56:22.533Z"
+    },
+    "securebio__nao-mgs-workflow/.claude/skills/benchmark-index": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-28T17:57:32.550Z"
+    },
+    "sejaldua__espn-api/root": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-28T17:58:25.992Z"
+    },
+    "SherwinQ__karpathy-wiki/root": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-28T17:59:07.523Z"
+    },
+    "shreyaskarnik__voice-mcp/.claude/skills/voice": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-28T18:02:59.069Z"
+    },
+    "snowflakedb__snowpark-python/.claude/skills/local-testing-bug-fix": {
+      "tagIds": [
+        "debugging",
+        "testing",
+        "documentation",
+        "devops",
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "positive-example"
+      ],
+      "updatedAt": "2026-08-28T18:04:56.371Z"
+    },
+    "SoFarSoGoodya__math-history-paper/.agents/skills/math-history-researcher": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-28T18:20:55.150Z"
+    },
+    "strands-agents__harness-sdk/.agents/skills/pr-create": {
+      "tagIds": [
+        "devops",
+        "testing",
+        "maintenance",
+        "purpose",
+        "activation",
+        "workflow",
+        "action-directive",
+        "decision-rule",
+        "exclusion",
+        "reference"
+      ],
+      "updatedAt": "2026-08-28T18:26:57.000Z"
+    },
+    "svd-ai-lab__sim-cli/src/sim/_skills/sim-cli": {
+      "tagIds": [
+        "testing",
+        "devops",
+        "purpose",
+        "workflow",
+        "decision-rule",
+        "exclusion",
+        "action-directive",
+        "reference"
+      ],
+      "updatedAt": "2026-08-28T18:33:31.693Z"
+    },
+    "synapticore-io__marimo-flow/.claude/Skills/pina-training": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-28T18:41:06.890Z"
+    },
+    "sytelus__nanuGPT/.agents/skills/vsubmit": {
+      "tagIds": [
+        "devops",
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive"
+      ],
+      "updatedAt": "2026-08-28T18:43:43.289Z"
+    },
+    "tam159__next-role/.agents/skills/commit": {
+      "tagIds": [
+        "devops",
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "exclusion",
+        "positive-example"
+      ],
+      "updatedAt": "2026-08-28T18:46:07.539Z"
+    },
+    "techouse__mysql-to-sqlite3/skills/mysql-to-sqlite3": {
+      "tagIds": [
+        "maintenance",
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive"
+      ],
+      "updatedAt": "2026-08-28T18:47:19.201Z"
+    },
+    "TencentCloud__Octop/src/octop/infra/agents/experts/library/news-trend/skills/daily-hot-news": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-28T18:47:32.909Z"
+    },
+    "Teradata__teradata-mcp-server/agentic/skills/teradata-mcp-customisation": {
+      "tagIds": [
+        "code-implementation",
+        "design",
+        "debugging",
+        "testing",
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "exclusion",
+        "reference",
+        "positive-example"
+      ],
+      "updatedAt": "2026-08-28T18:54:58.224Z"
+    },
+    "ThoughtLeaders-io__thoughtleaders-cli/skills/tl-channel-authenticity": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-28T18:55:15.819Z"
+    },
+    "tile-ai__TileOPs/.claude/skills/follow-up": {
+      "tagIds": [
+        "maintenance",
+        "requirement",
+        "purpose",
+        "activation",
+        "exclusion",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference",
+        "positive-example"
+      ],
+      "updatedAt": "2026-08-28T18:57:33.447Z"
+    },
+    "tlennon-ie__bracket/.claude/skills/bracket-quickstart": {
+      "tagIds": [
+        "devops",
+        "debugging",
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "reference"
+      ],
+      "updatedAt": "2026-08-28T19:02:24.909Z"
+    },
+    "torch-spyre__sendnn-inference/.bob/skills/update-vllm": {
+      "tagIds": [
+        "maintenance",
+        "testing",
+        "devops",
+        "purpose",
+        "activation",
+        "decision-rule",
+        "action-directive",
+        "reference"
+      ],
+      "updatedAt": "2026-08-28T19:06:22.884Z"
+    },
+    "velodrome-finance__sugar-sdk/.claude/skills/sugar": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-28T19:19:53.097Z"
+    },
+    "vllm-project__vllm-omni/.claude/skills/quantization": {
+      "tagIds": [
+        "code-implementation",
+        "debugging",
+        "program-analysis",
+        "testing",
+        "purpose",
+        "activation",
+        "workflow",
+        "action-directive",
+        "decision-rule",
+        "reference",
+        "exclusion"
+      ],
+      "updatedAt": "2026-08-28T19:24:05.623Z"
+    },
+    "volcengine__ark-cli/skills/arkcli-gen": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-28T19:24:17.155Z"
+    },
+    "wandelbotsgmbh__wandelbots-nova/.agents/skills/nova-api-v2": {
+      "tagIds": [
+        "program-analysis",
+        "purpose",
+        "activation",
+        "decision-rule",
+        "action-directive",
+        "exclusion",
+        "workflow",
+        "reference",
+        "positive-example"
+      ],
+      "updatedAt": "2026-08-28T19:27:23.010Z"
+    },
+    "WingedGuardian__GENesis-AGI/src/genesis/skills/linkedin-content-calendar": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-28T19:28:06.725Z"
+    },
+    "Xiangyue-Zhang__auto-deep-researcher-24x7/skills/auto-experiment": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-29T06:21:15.196Z"
+    },
+    "Xopoko__build-swift-apps/skills/apple-dev-research": {
+      "tagIds": [
+        "documentation",
+        "purpose",
+        "activation",
+        "workflow",
+        "decision-rule",
+        "action-directive",
+        "exclusion",
+        "reference"
+      ],
+      "updatedAt": "2026-08-29T06:28:47.144Z"
+    },
+    "xurb-nexus__nexus-harness/skills/diagnose": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-29T06:28:53.188Z"
+    },
+    "yutori-ai__yutori-mcp/.agents/skills/yutori-competitor-watch": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-29T07:03:07.611Z"
+    },
+    "yxbian23__research-mate/third-party/claude-scientific-skills/scientific-skills/sympy": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-29T07:23:01.252Z"
+    },
+    "zhangfengcdt__memoir/plugins/claude-code/skills/memoir-onboard": {
+      "tagIds": [
+        "agent-skill"
+      ],
+      "updatedAt": "2026-08-29T07:38:08.813Z"
+    },
+    "Zhzhou-Publishing__OpenLucky/.claude/skills/commit-push": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-29T07:38:11.708Z"
+    },
+    "zxc123aa__cc-proxy-detector/root": {
+      "tagIds": [
+        "wrong-language"
+      ],
+      "updatedAt": "2026-08-29T07:38:14.535Z"
+    }
+  }
+}

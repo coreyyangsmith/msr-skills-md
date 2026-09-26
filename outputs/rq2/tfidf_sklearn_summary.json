@@ -1,12 +1,12 @@
 {
-  "input_path": "C:\\Users\\houai\\OneDrive\\Documents\\mitacs doc\\msr-skills-md\\outputs\\rq2\\skill_documents.jsonl",
-  "documents_total_in_input": 144080,
-  "documents_after_language_filter": 144080,
+  "input_path": "C:\\Users\\yangs\\Desktop\\repos\\msr-skills-md\\outputs\\rq2\\skill_documents.jsonl",
+  "documents_total_in_input": 98771,
+  "documents_after_language_filter": 98771,
   "language_filter": [],
-  "documents_used_for_tfidf": 136861,
+  "documents_used_for_tfidf": 93153,
   "vocabulary_size": 10000,
   "matrix_shape": [
-    136861,
+    93153,
     10000
   ],
   "params": {
@@ -37,9 +37,9 @@
     "top_k_per_doc": 30
   },
   "outputs": {
-    "global_terms_csv": "C:\\Users\\houai\\OneDrive\\Documents\\mitacs doc\\msr-skills-md\\outputs\\rq2\\tfidf_sklearn_top_terms_global.csv",
-    "global_unigram_terms_csv": "C:\\Users\\houai\\OneDrive\\Documents\\mitacs doc\\msr-skills-md\\outputs\\rq2\\tfidf_sklearn_top_terms_global_unigrams.csv",
-    "global_bigram_terms_csv": "C:\\Users\\houai\\OneDrive\\Documents\\mitacs doc\\msr-skills-md\\outputs\\rq2\\tfidf_sklearn_top_terms_global_bigrams.csv",
-    "per_document_terms_csv": "C:\\Users\\houai\\OneDrive\\Documents\\mitacs doc\\msr-skills-md\\outputs\\rq2\\tfidf_sklearn_top_terms_per_document.csv"
+    "global_terms_csv": "C:\\Users\\yangs\\Desktop\\repos\\msr-skills-md\\outputs\\rq2\\tfidf_sklearn_top_terms_global.csv",
+    "global_unigram_terms_csv": "C:\\Users\\yangs\\Desktop\\repos\\msr-skills-md\\outputs\\rq2\\tfidf_sklearn_top_terms_global_unigrams.csv",
+    "global_bigram_terms_csv": "C:\\Users\\yangs\\Desktop\\repos\\msr-skills-md\\outputs\\rq2\\tfidf_sklearn_top_terms_global_bigrams.csv",
+    "per_document_terms_csv": "C:\\Users\\yangs\\Desktop\\repos\\msr-skills-md\\outputs\\rq2\\tfidf_sklearn_top_terms_per_document.csv"
   }
 }

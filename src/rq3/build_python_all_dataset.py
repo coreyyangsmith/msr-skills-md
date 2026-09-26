@@ -12,10 +12,10 @@ except ImportError:
     from label_processing import load_json, resolve_path, stable_tag_id, write_json
 
 
-DEFAULT_A_FILE = "2026-04-19_CY_Final_Labels_A_Python.json"
-DEFAULT_B_FILE = "2026-04-19_MV_Final_Labels_B_Python.json"
-DEFAULT_BOTH_FILE = "2026-04-19_CY_Final_Labels_Both_Python.json"
-DEFAULT_TS_BOTH_FILE = "2026-03-29_CY_Labels_Both_TS.json"
+DEFAULT_A_FILE = "2026-04-19_A_Final_Labels_A_Python.json"
+DEFAULT_B_FILE = "2026-04-19_B_Final_Labels_B_Python.json"
+DEFAULT_BOTH_FILE = "2026-04-19_A_Final_Labels_Both_Python.json"
+DEFAULT_TS_BOTH_FILE = "2026-03-29_A_Labels_Both_TS.json"
 
 
 @dataclasses.dataclass(frozen=True)

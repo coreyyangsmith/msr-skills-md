@@ -1,0 +1,1111 @@
+repo,source_csv,found,match_name,match_path,default_branch,seart_default_branch,commit_sha,acf_ref,match_url,match_sha,match_size_bytes,scan_method,http_status,error_type,error_message,acf_error_type,acf_error_message,scanned_at_utc,stars,fork,archived,has_README,has_CONTRIBUTING,has_SECURITY,has_CODE_OF_CONDUCT,has_CLAUDE,has_AGENTS,has_COPILOT,has_CURSORRULES_MD,has_INSTRUCTIONS_MD,has_GEMINI,id,name,isFork,commits,branches,releases,forks,mainLanguage,defaultBranch,license,homepage,watchers,stargazers,contributors,size,createdAt,pushedAt,updatedAt,totalIssues,openIssues,totalPullRequests,openPullRequests,blankLines,codeLines,commentLines,metrics,lastCommit,lastCommitSHA,hasWiki,isArchived,isDisabled,isLocked,languages,labels,topics
+432539/adobeteam,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-13T12:26:28Z,16,false,false,0,0,0,0,0,0,0,0,0,0,1289382406,432539/adobeteam,false,2,1,0,34,Python,main,MIT,,16,16,2,178,2026-07-04T17:17:19Z,2026-07-04T17:21:47Z,2026-07-10T12:19:41Z,,0,,,,,,,2026-07-04T17:21:47Z,68321721713b2cbaf565ca8bb6092461d8566511,true,false,false,,Python;Vue;TypeScript;PowerShell;CSS;HTML,,
+Biajin-PKU/research-harness,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-13T18:23:13Z,80,false,false,0,0,0,0,0,0,0,0,0,0,1217124503,Biajin-PKU/research-harness,false,128,4,5,8,Python,main,MIT,,80,80,3,9277,2026-04-21T15:11:03Z,2026-06-09T12:39:03Z,2026-07-03T04:31:21Z,,0,,,,,,,2026-06-09T12:39:03Z,2e60424d9af22374e0565faa097ced7fca09afdf,true,false,false,,Python;JavaScript;Shell;CSS;Fluent,,ai-agents;codex;literature-review;mcp;open-source;provenance;research-automation;research-tools;scientific-research;zotero
+CircleDuckScrew/claudefreemodel,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-13T21:29:07Z,50,false,false,0,0,0,0,0,0,0,0,0,0,1296948284,CircleDuckScrew/claudefreemodel,false,14,1,1,10,Python,main,MIT,,50,50,1,476,2026-07-10T22:28:59Z,2026-07-10T23:18:55Z,2026-07-10T23:25:03Z,,0,,,,,,,2026-07-10T23:18:55Z,d3ba62f8fd7151d66d0cf7e723ef79bc7169f25a,true,false,false,,Python;CSS;JavaScript;HTML,,
+CompOmics/DeepLC,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-13T21:35:02Z,80,false,false,0,0,0,0,0,0,0,0,0,0,169905771,CompOmics/DeepLC,false,687,3,93,25,Python,master,Apache-2.0,https://iomics.ugent.be/deeplc,80,80,10,917692,2019-02-09T19:37:38Z,2026-07-10T12:29:30Z,2026-07-10T12:30:01Z,,0,,,,,,,2026-07-10T12:29:30Z,080fb541d24e3a01aadeec8630e1e7a8b97ad16b,false,false,false,,Python;Inno Setup;Dockerfile,,deep-learning;peptide-modification;peptides;proteomics;retention-time
+EdoardoFiore/StreamingCommunity-downloader,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-14T10:50:01Z,10,false,false,0,0,0,0,0,0,0,0,0,0,1194742318,EdoardoFiore/StreamingCommunity-downloader,false,42,1,0,3,Python,main,MIT,,10,10,3,9602,2026-03-28T18:51:00Z,2026-07-05T11:29:19Z,2026-07-08T19:50:40Z,,0,,,,,,,2026-07-05T11:29:19Z,69cc6d506ce9f0b7a6b53d59151ee88bd2ed3b8d,false,false,false,,Python;JavaScript;HTML;Dockerfile,,anime;animeunity;api;jellyfin;jellyfin-server;movies-download;python;python3;streamingcommunity;tabler;tabler-ui;tvseries
+Fable-5/claude-fable-5-free-desktop-app,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-14T11:24:50Z,87,false,false,0,0,0,0,0,0,0,0,0,0,1291347257,Fable-5/claude-fable-5-free-desktop-app,false,5,1,1,1,TypeScript,main,MIT,,87,87,1,13,2026-07-06T18:08:20Z,2026-07-08T20:21:05Z,2026-07-11T01:57:23Z,,2,,,,,,,2026-07-08T20:21:05Z,ef7ce622a8bc53152b275886ea6a04a611045460,true,false,false,,TypeScript,,ai-desktop;ai-powered-applications;anthropic-;claude-4-6-opus;claude-4-opus;claude-5-sonnet;claude-desktop-app;claude-desktop-extentions;claude-fable;claude-fable-5;claude-integration;claude-mythos;claude-opus;claude-opus-4-8;claude-skills-hub;claude-sonnet-5-api;desktop-ai;fable5;free-ai-coding;mythos
+Indspl0it/RTOSploit,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-14T11:37:14Z,11,false,false,0,0,0,0,0,0,0,0,0,0,1187823438,Indspl0it/RTOSploit,false,56,1,0,2,Python,main,Apache-2.0,,11,11,1,3923,2026-03-21T08:06:00Z,2026-03-26T09:01:32Z,2026-05-24T20:07:28Z,,0,,,,,,,2026-03-26T09:01:32Z,127be6b4c8ab6f5f1cfc085ef286e78af07c6604,true,false,false,,Python;Rust;Jinja;Shell;Linker Script;Makefile;Dockerfile,,emulation;exploit-development;fuzzing;rehosting;rtos;vulnerability;vulnerability-research
+LineSupportAbide/tgwsproxy,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-14T11:48:19Z,439,false,false,0,0,0,0,0,0,0,0,0,0,1191110536,LineSupportAbide/tgwsproxy,false,3,1,1,55,Python,main,MIT,,439,439,1,76,2026-03-24T23:38:44Z,2026-07-10T14:27:26Z,2026-07-10T21:00:08Z,,0,,,,,,,2026-07-10T14:27:26Z,6de29255353cf5484fb09007dcd01c1661624670,true,false,false,,Python;Dockerfile,,telegram-fix;telegram-fix-desktop;telegram-zapret;tg-proxy-windows;tg-ws-proxy-desktop;tg-ws-proxy-v2-client;tg-ws-proxy-win;tg-wsproxy
+Malinkalinberg/BTC_Cracker,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-14T11:51:33Z,16,false,false,0,0,0,0,0,0,0,0,0,0,1294775178,Malinkalinberg/BTC_Cracker,false,3,1,1,4,Python,main,MIT,,16,16,1,10329,2026-07-09T06:57:16Z,2026-07-09T07:28:21Z,2026-07-10T21:27:16Z,,0,,,,,,,2026-07-09T07:28:21Z,9c0eb27264eed52504536af376cc4aed732907f6,true,false,false,,Python,,brute-force-tool;mnemonic-code-converter;mnemonic-generator-solana;mnemonic-phrase;mnemonic-recovery;mnemonic-seed;mnemonics-generator;phrase-generator;seed-generator;seed-phase-checker;seed-phrases-finder;seed-phrases-generate;seed-phrases-generator;seed-recovery-2025;seed-recovery-tool;seed-tool-generate;seedphrase;seedphrase-checker;seedphrase-generator
+Mastersam07/faaah-on-fail,MULTIPLE,False,SKILL.md,,dev,dev,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-14T11:52:27Z,32,false,false,0,0,0,0,0,0,0,0,0,0,1165157564,Mastersam07/faaah-on-fail,false,25,1,0,3,TypeScript,dev,MIT,,32,32,2,1218,2026-02-23T22:09:35Z,2026-03-05T20:01:34Z,2026-06-10T08:48:44Z,,0,,,,,,,2026-03-05T20:01:34Z,99326d542ff4608d680e57ac4f856609d3ef09a1,true,false,false,,TypeScript,,
+Mythos-Anthropic/claude-mythos-5-free-desktop,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-14T11:57:59Z,90,false,false,0,0,0,0,0,0,0,0,0,0,1291359052,Mythos-Anthropic/claude-mythos-5-free-desktop,false,3,1,1,0,TypeScript,main,MIT,,90,90,1,9,2026-07-06T18:21:45Z,2026-07-06T18:33:22Z,2026-07-11T01:57:06Z,,0,,,,,,,2026-07-06T18:33:22Z,d87d2798cf123545f1078ec7e24daa22f74d18ce,true,false,false,,TypeScript,,ai-desktop;ai-powered-applications;anthropic-;claude-4-6-opus;claude-4-opus;claude-5-sonnet;claude-code-prompts;claude-desktop-app;claude-desktop-extentions;claude-fable;claude-fable-5;claude-integration;claude-mythos;claude-opus;claude-opus-4-8;claude-skills-hub;fable5;free-ai-coding;free-apis;mythos
+ToDealMarket/mcp-server,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-14T17:37:29Z,11,false,false,0,0,0,0,0,0,0,0,0,0,1185345279,ToDealMarket/mcp-server,false,13,1,0,0,TypeScript,main,MIT,https://todealmarket.com/,11,11,2,21899,2026-03-18T13:43:05Z,2026-04-20T12:22:28Z,2026-07-07T09:12:14Z,,0,,,,,,,2026-04-20T12:22:28Z,7952ac2c14bbfcc75737589d6afbcbaf5c247bf6,false,false,false,,TypeScript,,ai-agents;anthropic;claude;developer-tools;mcp;mcp-servers;model-context-protocol;payments;typescript
+ViciousSquid/Fio,MULTIPLE,False,SKILL.md,,1.3.1.0_M4_Latest,1.3.1.0_M4_Latest,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-14T19:34:56Z,127,false,false,0,0,0,0,0,0,0,0,0,0,1013552692,ViciousSquid/Fio,false,1166,2,3,9,Python,1.3.1.0_M4_Latest,MIT,,127,127,2,60336,2025-07-04T05:08:02Z,2026-07-09T12:57:37Z,2026-07-10T23:50:55Z,,0,,,,,,,2026-07-09T12:57:37Z,bc58d9a0675114ce84e54383aea2f92f890760b1,true,false,false,,Python;Dockerfile,,backrooms;csg;dreamcore;editor;game;game-development;game-editor;game-engine;liminal;liminal-space;opengl;procedural-generation;python-opengl;quake;renderer;split-screen;splitscreen;terrain-generation;weird
+Wookhq/Lution,MULTIPLE,False,SKILL.md,,latest,latest,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-14T19:43:45Z,168,false,false,0,0,0,0,0,0,0,0,0,0,990620960,Wookhq/Lution,false,542,19,13,13,Python,latest,MIT,https://lution.chip.is-a.dev/,168,168,27,16839,2025-05-26T11:41:39Z,2026-04-11T07:54:24Z,2026-07-09T22:54:08Z,,10,,,,,,,2026-04-11T07:54:24Z,ec3dad0644cfab7f1faa3ccd9ba3f95fe7c98484,false,false,false,,Python;Shell,,bootstrapper;lucem;lution;python;roblox;sober
+amaralkaff/mcp-unknowncheat,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-15T01:25:24Z,14,false,false,0,0,0,0,0,0,0,0,0,0,1200942656,amaralkaff/mcp-unknowncheat,false,60,2,20,4,TypeScript,master,MIT,,14,14,3,97,2026-04-04T02:33:32Z,2026-07-03T17:16:47Z,2026-07-07T09:19:47Z,,0,,,,,,,2026-07-03T17:16:47Z,07e24caf6011bd4991ac5699a7407e3e82d55ab2,true,false,false,,TypeScript,,
+arekkubaczkowski/react-native-bottom-sheet-stack,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/arekkubaczkowski/react-native-bottom-sheet-stack/git/trees/39ad6e5a2341baf1ec66127df16868e32ac77a78?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:13:40Z,181,false,false,0,0,0,0,0,0,0,0,0,0,968683839,arekkubaczkowski/react-native-bottom-sheet-stack,false,179,33,24,4,TypeScript,main,MIT,,181,181,3,12547,2025-04-18T14:36:11Z,2026-07-07T15:35:27Z,2026-07-10T16:29:09Z,,2,,,,,,,2026-07-07T15:35:27Z,39ad6e5a2341baf1ec66127df16868e32ac77a78,true,false,false,,TypeScript;JavaScript,,
+arekkubaczkowski/react-native-pip-view,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/arekkubaczkowski/react-native-pip-view/git/trees/main?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:13:40Z,37,false,false,0,0,0,0,0,0,0,0,0,0,968181244,arekkubaczkowski/react-native-pip-view,false,57,4,0,5,TypeScript,main,MIT,,37,37,3,1865,2025-04-17T16:34:04Z,2026-06-10T11:02:59Z,2026-06-24T18:21:10Z,,0,,,,,,,2026-06-10T11:02:59Z,2d9669d142841caa5748dbb2a86bb83181155c8d,true,false,false,,TypeScript;JavaScript,,
+areknawo/Rex,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/areknawo/Rex/git/trees/master?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:16:05Z,290,false,false,0,0,0,0,0,0,0,0,0,0,158266402,areknawo/Rex,false,182,12,3,10,TypeScript,master,MIT,https://areknawo.github.io/Rex,290,290,3,2910,2018-11-19T17:39:53Z,2026-06-15T18:18:33Z,2026-01-29T03:38:46Z,,10,,,,,,,2026-06-15T18:18:33Z,f03fce1d7ad027c8bf8701440960cce804d1d6d1,false,false,false,,TypeScript,,chainable;functional;helper;javascript;js;library;regex;regex-companion;regexp;regular-expression;rex;rexjs;tool;ts;typescript
+arenadata/adcm,MULTIPLE,False,SKILL.md,,develop,develop,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/arenadata/adcm/git/trees/develop?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:18:19Z,33,false,false,0,0,0,0,0,0,0,0,0,0,224190952,arenadata/adcm,false,12240,4,55,20,Python,develop,Apache-2.0,https://docs.arenadata.io/adcm/,33,33,59,34472,2019-11-26T12:47:45Z,2026-07-07T07:41:16Z,2026-07-07T07:41:21Z,,11,,,,,,,2026-07-07T07:41:16Z,62eccc546847680712dede2afc0d2e1132fc5ae1,false,false,false,,Python;TypeScript;SCSS;Jinja;Go;Shell;Dockerfile;C++;Makefile;HTML;JavaScript,,
+arenascats/MarukoToolbox-Rewrite,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/arenascats/MarukoToolbox-Rewrite/git/trees/main?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:20:33Z,130,false,false,0,0,0,0,0,0,0,0,0,0,1248178375,arenascats/MarukoToolbox-Rewrite,false,16,2,5,7,Python,main,Apache-2.0,,130,130,1,43196,2026-05-24T09:41:16Z,2026-06-12T07:22:10Z,2026-07-10T17:34:43Z,,7,,,,,,,2026-06-12T07:22:10Z,f04b34ff582cc86fb77d433ccea1e1be20077471,true,false,false,,Python,,
+arenasys/obsidian-ai-chat,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/arenasys/obsidian-ai-chat/git/trees/master?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:20:33Z,17,false,false,0,0,0,0,0,0,0,0,0,0,791162708,arenasys/obsidian-ai-chat,false,34,1,5,3,TypeScript,master,MIT,,17,17,1,191,2024-04-24T07:56:30Z,2026-01-02T04:53:04Z,2026-05-17T13:12:15Z,,2,,,,,,,2026-01-02T04:53:04Z,67e7b9a27b022e7d94cc2e924b688504affc8884,true,false,false,,TypeScript;CSS;JavaScript,,
+arenadata/ansible-module-yandex-cloud,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/arenadata/ansible-module-yandex-cloud/git/trees/master?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:20:33Z,34,false,false,0,0,0,0,0,0,0,0,0,0,234034075,arenadata/ansible-module-yandex-cloud,false,102,6,0,18,Python,master,Apache-2.0,,34,34,13,132,2020-01-15T08:27:54Z,2026-06-08T07:00:35Z,2026-06-08T07:00:40Z,,7,,,,,,,2026-06-08T07:00:35Z,9bb55dbccdc84ef3a9af7b5bedf2f33f96bca97a,false,false,false,,Python,,
+arendruni/homebridge-pihole,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/arendruni/homebridge-pihole/git/trees/master?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:23:53Z,180,false,false,0,0,0,0,0,0,0,0,0,0,193371651,arendruni/homebridge-pihole,false,184,13,23,10,TypeScript,master,MIT,https://www.npmjs.com/package/homebridge-pihole,180,180,8,1296,2019-06-23T16:34:56Z,2026-04-02T08:15:25Z,2026-04-25T04:10:36Z,,6,,,,,,,2026-04-02T08:15:25Z,42bfbb1ff4e787b02a1de50e6095b0b8a0179137,false,false,false,,TypeScript;JavaScript;Shell,,homebridge;homebridge-plugin;npm-package;pi-hole
+arensb/ansible-truenas,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/arensb/ansible-truenas/git/trees/main?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:24:55Z,106,false,false,0,0,0,0,0,0,0,0,0,0,613923094,arensb/ansible-truenas,false,568,22,17,28,Python,main,Apache-2.0,,106,106,10,438,2023-03-14T14:38:12Z,2026-05-10T22:00:36Z,2026-07-10T03:24:20Z,,12,,,,,,,2026-05-10T22:00:36Z,c17cac80d165c00d874049cd3efa63ef4385dbd7,true,false,false,,Python;Makefile,,
+areoseek/CutTheCord-Standalone,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/areoseek/CutTheCord-Standalone/git/trees/main?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:25:57Z,12,false,false,0,0,0,0,0,0,0,0,0,0,1158168230,areoseek/CutTheCord-Standalone,false,10,1,0,0,TypeScript,main,MIT,,12,12,1,739,2026-02-14T22:47:22Z,2026-02-21T20:00:43Z,2026-07-05T03:49:03Z,,1,,,,,,,2026-02-21T20:00:43Z,2958927e3cbe9e9d91330d9a9a9245a3d514a54e,true,false,false,,TypeScript;Shell;Java;JavaScript;Dockerfile;HTML;CSS,,
+aresyn/1C_cf_cfu_merge,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/aresyn/1C_cf_cfu_merge/git/trees/main?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:28:01Z,13,false,false,0,0,0,0,0,0,0,0,0,0,1234522303,aresyn/1C_cf_cfu_merge,false,10,1,2,3,Python,main,MIT,,13,13,1,12114,2026-05-10T09:46:04Z,2026-06-17T07:28:06Z,2026-06-17T07:28:10Z,,0,,,,,,,2026-06-17T07:28:06Z,1b4b50ba5f1bf17e927665cd094bad9dcb5ec57f,true,false,false,,Python;PowerShell,,
+aresyn/codex-control-plane-mcp,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/aresyn/codex-control-plane-mcp/git/trees/main?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:28:01Z,138,false,false,0,0,0,0,0,0,0,0,0,0,1272121729,aresyn/codex-control-plane-mcp,false,43,1,7,5,Python,main,Apache-2.0,https://pypi.org/project/codex-control-plane-mcp/,138,138,4,4123,2026-06-17T10:02:02Z,2026-06-21T06:47:39Z,2026-07-08T08:58:40Z,,8,,,,,,,2026-06-21T06:47:39Z,c4954b276f5623ed195a08fafc27d65e1b56c5ba,true,false,false,,Python;PowerShell;Batchfile,,agent-tools;agentic-workflows;ai-agents;automation;codex;codex-desktop;developer-tools;hermes;hermes-agent;long-running-tasks;mcp;mcp-server;model-context-protocol;openai-codex;openclaw;orchestration;python
+aresys-srl/sct,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/aresys-srl/sct/git/trees/main?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:29:03Z,28,false,false,0,0,0,0,0,0,0,0,0,0,728164247,aresys-srl/sct,false,313,3,0,5,Python,main,MIT,https://opensource.aresys.it/sct/,28,28,4,9729,2023-12-06T11:13:29Z,2026-07-08T11:24:11Z,2026-07-08T11:22:53Z,,1,,,,,,,2026-07-08T11:24:11Z,d153bf889f4e516b002ae9161d31810d29a99293,false,false,false,,Python;CSS,,earth-observation;remote-sensing;sar
+arethetypeswrong/arethetypeswrong.github.io,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/arethetypeswrong/arethetypeswrong.github.io/git/trees/main?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:30:05Z,1573,false,false,0,0,0,0,0,0,0,0,0,0,593857845,arethetypeswrong/arethetypeswrong.github.io,false,658,6,91,62,TypeScript,main,MIT,https://arethetypeswrong.github.io,1573,1573,33,29892,2023-01-27T01:41:58Z,2026-07-09T22:22:35Z,2026-07-09T22:22:41Z,,29,,,,,,,2026-07-09T22:22:35Z,ee85fcadb8c1130627f36d0f48cc5b8b6b12451c,true,false,false,,TypeScript;JavaScript;HTML;CSS,,
+aretw0/agents-lab,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/aretw0/agents-lab/git/trees/main?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:30:05Z,11,false,false,0,0,0,0,0,0,0,0,0,0,1206079702,aretw0/agents-lab,false,3283,1,0,4,TypeScript,main,MIT,https://aretw0.github.io/agents-lab/,11,11,2,9623,2026-04-09T14:56:54Z,2026-06-24T22:23:53Z,2026-06-24T22:24:01Z,,0,,,,,,,2026-06-24T22:23:53Z,89f33b0d868b859c6f170c38a8b8dc9ff0a9f970,true,false,false,,TypeScript;JavaScript;Python;Shell;Dockerfile,,agent-tools;ai-agents;automation;coding-agent;developer-tools;llm;local-first;pi;typescript
+arfshl/anti-gambling-domains,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/arfshl/anti-gambling-domains/git/trees/main?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:34:38Z,11,false,false,0,0,0,0,0,0,0,0,0,0,974558421,arfshl/anti-gambling-domains,false,560,3,0,2,Python,main,MIT,,11,11,5,606,2025-04-29T00:58:04Z,2026-07-06T13:09:06Z,2026-07-08T06:50:20Z,,0,,,,,,,2026-07-06T13:09:06Z,8b287025158661042dec7e8b80be171576acdc23,true,false,false,,Python,,adguardhome;blocklist;dns;judol;parental-control;pihole;technitium;trustpositif
+argahv/sisyphus-academica,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/argahv/sisyphus-academica/git/trees/main?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:37:18Z,65,false,false,0,0,0,0,0,0,0,0,0,0,1254936535,argahv/sisyphus-academica,false,45,5,1,14,Python,main,MIT,https://argahv.github.io/sisyphus-academica/,65,65,4,568,2026-05-31T07:22:28Z,2026-07-01T19:17:53Z,2026-07-09T13:44:30Z,,23,,,,,,,2026-07-01T19:17:53Z,5fc165211d6a0c8f1a4ff1243311314ad26847b8,true,false,false,,Python;Shell;TeX,,academic-writing;arxiv;citation-verification;latex;literature-review;machine-learning;multi-agent;novelty;open-source;research
+argenos/nldates-obsidian,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/argenos/nldates-obsidian/git/trees/master?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:39:07Z,657,false,false,0,0,0,0,0,0,0,0,0,0,307489797,argenos/nldates-obsidian,false,144,6,22,69,TypeScript,master,MIT,,657,657,12,271,2020-10-26T19:59:40Z,2026-06-30T18:37:30Z,2026-07-06T08:38:52Z,,63,,,,,,,2026-06-30T18:37:30Z,ab5701a8db701dd51aa6e37fd055401d3393a4ef,true,false,false,,TypeScript;JavaScript,,obsidian-md;obsidian-plugin
+argentlabs/starknetkit,MULTIPLE,False,SKILL.md,,develop,develop,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/argentlabs/starknetkit/git/trees/develop?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:40:09Z,31,false,false,0,0,0,0,0,0,0,0,0,0,701264533,argentlabs/starknetkit,false,736,39,154,32,TypeScript,develop,MIT,,31,31,17,2477,2023-10-06T09:23:09Z,2026-04-15T14:56:22Z,2026-06-10T13:04:44Z,,38,,,,,,,2026-04-15T14:56:22Z,563d432f66705280906a6c4afad2b4645aa8cbc1,true,false,false,,TypeScript;Svelte;JavaScript;CSS;Shell,,
+argilla-io/argilla,MULTIPLE,False,SKILL.md,,develop,develop,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/argilla-io/argilla/git/trees/develop?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:42:49Z,5030,false,false,0,0,0,0,0,0,0,0,0,0,362500938,argilla-io/argilla,false,3629,196,130,492,Python,develop,Apache-2.0,https://argilla-io.github.io/argilla/latest/,5030,5030,110,809031,2021-04-28T14:37:42Z,2026-06-29T21:50:48Z,2026-07-10T12:58:56Z,,27,,,,,,,2026-06-29T21:50:48Z,5338519accb13ae422f8bf9c0642651c249c49af,true,false,false,,Python;Jupyter Notebook;Vue;TypeScript;JavaScript;SCSS;CSS;Dockerfile;Shell;HTML;Mako;Procfile,,active-learning;ai;annotation-tool;developer-tools;gpt-4;human-in-the-loop;langchain;llm;machine-learning;mlops;natural-language-processing;nlp;rlhf;text-annotation;text-labeling;weak-supervision;weakly-supervised-learning
+argilla-io/distilabel,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/argilla-io/distilabel/git/trees/main?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:42:49Z,3317,false,false,0,0,0,0,0,0,0,0,0,0,705695450,argilla-io/distilabel,false,846,41,32,247,Python,main,Apache-2.0,https://distilabel.argilla.io,3317,3317,41,596416,2023-10-16T14:12:33Z,2026-06-29T21:50:10Z,2026-07-09T07:55:47Z,,99,,,,,,,2026-06-29T21:50:10Z,313fac85b1a2472dd88db1a31c2b754599f46476,true,false,false,,Python;Jinja;Shell;Makefile,,ai;huggingface;llms;openai;python;rlaif;rlhf;synthetic-data;synthetic-dataset-generation
+argile-ai/claude-ralph-mode,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/argile-ai/claude-ralph-mode/git/trees/main?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:42:49Z,11,false,false,0,0,0,0,0,0,0,0,0,0,1132950991,argile-ai/claude-ralph-mode,false,29,4,0,0,TypeScript,main,MIT,,11,11,2,318,2026-01-12T17:13:41Z,2026-01-14T14:11:34Z,2026-06-16T23:12:32Z,,0,,,,,,,2026-01-14T14:11:34Z,14211e720cb1aeeec2b3d244c5807d11c7afde72,true,false,false,,TypeScript;Shell,,
+argmaxinc/whisperkittools,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/argmaxinc/whisperkittools/git/trees/main?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:43:51Z,245,false,false,0,0,0,0,0,0,0,0,0,0,750071113,argmaxinc/whisperkittools,false,67,13,0,93,Python,main,MIT,,245,245,5,154,2024-01-29T23:33:41Z,2026-03-25T23:07:44Z,2026-07-05T15:08:03Z,,5,,,,,,,2026-03-25T23:07:44Z,84f77a83c8f530022ae55fbb1a64b3351ef63c7a,true,false,false,,Python,,
+argo-marketplace/future_of_california,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/argo-marketplace/future_of_california/git/trees/master?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:45:05Z,13,false,false,0,0,0,0,0,0,0,0,0,0,150168811,argo-marketplace/future_of_california,false,93,8,0,7,TypeScript,master,MIT,,13,13,7,17930,2018-09-24T21:09:00Z,2026-07-06T06:06:28Z,2026-06-16T03:43:18Z,,22,,,,,,,2026-07-06T06:06:28Z,27535c1195ebac36fc5b2fc3ebaacdcc76beee1a,true,false,false,,TypeScript;SCSS;JavaScript;CSS;Dockerfile,,
+argonne-lcf/ChemGraph,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/argonne-lcf/ChemGraph/git/trees/main?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:48:09Z,133,false,false,0,0,0,0,0,0,0,0,0,0,904937759,argonne-lcf/ChemGraph,false,756,35,6,41,Python,main,Apache-2.0,https://argonne-lcf.github.io/ChemGraph/,133,133,19,14457,2024-12-17T20:53:26Z,2026-07-10T14:51:23Z,2026-07-10T16:23:14Z,,19,,,,,,,2026-07-10T14:51:23Z,2f35bde48ce6d45cf2cd046ac754bb85badf2105,false,false,false,,Python;Jupyter Notebook;Shell;Dockerfile,,agents;ai;chemistry;materials-science;quantum;workflow
+argonne-lcf/SimAI-Bench,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/argonne-lcf/SimAI-Bench/git/trees/main?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:49:33Z,16,false,false,0,0,0,0,0,0,0,0,0,0,778442916,argonne-lcf/SimAI-Bench,false,119,5,0,5,Python,main,BSD-2-Clause,,16,16,14,1367,2024-03-27T18:25:38Z,2025-12-11T02:01:13Z,2026-03-17T01:42:53Z,,0,,,,,,,2025-12-11T02:01:13Z,bea3fe3c6ad4644de6a249b8332d684cba675c90,true,false,false,,Python;Shell,,
+argonne-lcf/dlio_benchmark,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/argonne-lcf/dlio_benchmark/git/trees/main?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:50:47Z,107,false,false,0,0,0,0,0,0,0,0,0,0,527730517,argonne-lcf/dlio_benchmark,false,842,42,4,61,Python,main,Apache-2.0,https://dlio-benchmark.readthedocs.io,107,107,26,2824,2022-08-22T20:59:35Z,2026-06-18T00:25:29Z,2026-06-17T22:49:40Z,,53,,,,,,,2026-06-18T00:25:29Z,e1919d7b6ccffbe15143cd616517da9e5d7b26a7,true,false,false,,Python;Dockerfile,,artificial-intelligence;checkpointing;data-management;deep-learning;llm;pytorch;storage;tensorflow
+argoproj-labs/assistant-for-argocd,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/argoproj-labs/assistant-for-argocd/git/trees/main?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:54:55Z,79,false,false,0,0,0,0,0,0,0,0,0,0,1051187689,argoproj-labs/assistant-for-argocd,false,69,2,6,9,TypeScript,main,Apache-2.0,,79,79,3,11829,2025-09-05T15:21:01Z,2026-01-21T04:19:08Z,2026-05-25T08:13:58Z,,3,,,,,,,2026-01-21T04:19:08Z,4cff4810d2f7a1b60f535cafa84cf84df6c1e02c,true,false,false,,TypeScript;Shell;CSS,,
+argoproj-labs/hera,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/argoproj-labs/hera/git/trees/main?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:56:59Z,921,false,false,0,0,0,0,0,0,0,0,0,0,413486077,argoproj-labs/hera,false,867,2,79,126,Python,main,Apache-2.0,https://hera.rtfd.io,921,921,74,5555,2021-10-04T15:44:47Z,2026-07-08T15:45:01Z,2026-07-08T15:45:52Z,,26,,,,,,,2026-07-08T15:45:01Z,1d353de96a52644c4e19dbc461381f484733cf88,false,false,false,,Python;Makefile,,argo;argo-events;argo-workflows;cloud-native;hera;kubernetes;library;machine-learning;pypi;python;sdk;workflow-automation;workflow-management;workflows
+argoproj-labs/gordian,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/argoproj-labs/gordian/git/trees/master?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:56:59Z,81,false,false,0,0,0,0,0,0,0,0,0,0,232201870,argoproj-labs/gordian,false,74,3,32,22,Python,master,Apache-2.0,,81,81,12,145,2020-01-06T23:11:33Z,2026-02-27T20:59:27Z,2026-02-27T20:56:20Z,,3,,,,,,,2026-02-27T20:59:27Z,8c53765890438a4d876b187f36ad1bc57eee0c4a,true,false,false,,Python;Dockerfile;Shell,,
+argoproj-labs/mcp-for-argocd,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/argoproj-labs/mcp-for-argocd/git/trees/main?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T13:56:59Z,529,false,false,0,0,0,0,0,0,0,0,0,0,967155121,argoproj-labs/mcp-for-argocd,false,57,2,15,91,TypeScript,main,Apache-2.0,https://www.npmjs.com/package/argocd-mcp,529,529,20,177,2025-04-16T02:42:48Z,2026-07-09T20:41:47Z,2026-07-09T20:41:58Z,,53,,,,,,,2026-07-09T20:41:47Z,1bb80b2816f0c8810efedc2fdcf318fd18ce214d,true,false,false,,TypeScript;Makefile;Dockerfile;JavaScript,,ai;argocd;argocd-mcp;continuous-delivery;continuous-deployment;devops;gitops;kubernetes;mcp;mcp-server;model-context-protocol;model-context-protocol-servers
+argoproj/argo-ui,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/argoproj/argo-ui/git/trees/master?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T14:01:07Z,246,false,false,0,0,0,0,0,0,0,0,0,0,120675559,argoproj/argo-ui,false,499,5,1,200,TypeScript,master,Apache-2.0,,246,246,63,7219,2018-02-07T21:44:34Z,2026-06-30T09:51:18Z,2026-06-30T09:51:22Z,,23,,,,,,,2026-06-30T09:51:18Z,ad616de862f60d5348fe41ccaa72d7b74f9c3a13,false,false,false,,TypeScript;SCSS;JavaScript;Handlebars,,
+argos-ci/argos,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/argos-ci/argos/git/trees/main?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T14:05:15Z,598,false,false,0,0,0,0,0,0,0,0,0,0,76593355,argos-ci/argos,false,4691,9,0,59,TypeScript,main,MIT,https://argos-ci.com,598,598,18,75486,2016-12-15T20:23:42Z,2026-07-10T21:48:57Z,2026-07-10T21:49:01Z,,5,,,,,,,2026-07-10T21:48:57Z,52451970ec492892511aa3d02a6aa514a972f9ff,false,false,false,,TypeScript;JavaScript;CSS;HTML;Dockerfile;Shell,,testing;testing-tools;visual-testing
+argos-ci/argos-javascript,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/argos-ci/argos-javascript/git/trees/main?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T14:05:15Z,17,false,false,0,0,0,0,0,0,0,0,0,0,212974075,argos-ci/argos-javascript,false,829,4,904,16,TypeScript,main,MIT,https://docs.argos-ci.com,17,17,11,17970,2019-10-05T09:26:42Z,2026-07-10T21:15:33Z,2026-07-10T21:15:50Z,,0,,,,,,,2026-07-10T21:15:33Z,686b6fa8385ed77598ec86f66b073e9897cef176,false,false,false,,TypeScript;Python;HTML;MDX;JavaScript;CSS,,sdk;testing;testing-tools;visual-testing
+argos-ci/argos-ci.com,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/argos-ci/argos-ci.com/git/trees/main?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T14:05:15Z,25,false,false,0,0,0,0,0,0,0,0,0,0,510768885,argos-ci/argos-ci.com,false,642,8,0,9,TypeScript,main,MIT,https://argos-ci.com,25,25,6,98834,2022-07-05T14:22:40Z,2026-07-09T21:29:35Z,2026-07-09T21:29:38Z,,0,,,,,,,2026-07-09T21:29:35Z,958fe9dec749c8052a04db2ca16508df0932a0a2,false,false,false,,TypeScript;MDX;CSS;JavaScript,,homepage;testing;testing-tools;visual-testing;website
+arkobyne/RelayShard,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-15T14:08:07Z,36,false,false,0,0,0,0,0,0,0,0,0,0,1284841379,arkobyne/RelayShard,false,7,2,0,0,TypeScript,main,MIT,,36,36,1,7,2026-06-30T08:42:12Z,2026-06-30T08:43:41Z,2026-07-09T09:13:09Z,,0,,,,,,,2026-06-30T08:43:41Z,7503ab415b166a21cfa3913220b8bfcfc2cce772,true,false,false,,TypeScript,,
+arkobyne/TraceCore,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-15T14:08:07Z,31,false,false,0,0,0,0,0,0,0,0,0,0,1284795917,arkobyne/TraceCore,false,5,2,0,0,Python,main,MIT,,31,31,1,6,2026-06-30T07:50:02Z,2026-06-30T07:50:44Z,2026-07-09T09:13:06Z,,0,,,,,,,2026-06-30T07:50:44Z,56f92d9e93026d5f89acc81a3b93c7b1d4252f46,true,false,false,,Python,,
+aruba/central-python-workflows,MULTIPLE,False,SKILL.md,,v2(pre-release),v2(pre-release),,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-15T14:09:29Z,67,false,false,0,0,0,0,0,0,0,0,0,0,209609624,aruba/central-python-workflows,false,404,7,1,34,Python,v2(pre-release),MIT,,67,67,12,92525,2019-09-19T17:17:25Z,2026-07-09T21:36:19Z,2026-07-09T17:29:53Z,,5,,,,,,,2026-07-09T21:36:19Z,ad95c63136e4cf14573d775c80df5ec945d71172,true,false,false,,Python;TypeScript;HTML;CSS;JavaScript,,api;automation;campus-network;central;python3
+atayilgun/Houdini-claudecode-mcp,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-15T14:13:43Z,13,false,false,0,0,0,0,0,0,0,0,0,0,1132919499,atayilgun/Houdini-claudecode-mcp,false,3,1,0,2,Python,main,MIT,,13,13,1,19,2026-01-12T16:23:46Z,2026-01-12T16:30:27Z,2026-06-30T12:52:55Z,,0,,,,,,,2026-01-12T16:30:27Z,a09ed504141d9f6a521dbaf3bf3287357b291536,true,false,false,,Python;Shell,,
+atharv404/ClawRoute,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-15T14:13:53Z,81,false,false,0,0,0,0,0,0,0,0,0,0,1153775898,atharv404/ClawRoute,false,8,2,1,13,TypeScript,main,MIT,,81,81,1,104,2026-02-09T16:54:16Z,2026-05-06T15:28:02Z,2026-07-09T05:11:46Z,,0,,,,,,,2026-05-06T15:28:02Z,8d36683d5e833ced22513170775402caab48c852,true,false,false,,TypeScript;HTML;JavaScript,,ai;anthropic;cost-optimization;llm;local-ai;model-router;openai;privacy;proxy;typescript
+aws-devtools-labs/aws-blocks,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/aws-devtools-labs/aws-blocks/git/trees/0cc253b02f811b3029e6bc598de7fdaef69151ec?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T14:21:11Z,352,false,false,0,0,0,0,0,0,0,0,0,0,1264419530,aws-devtools-labs/aws-blocks,false,122,104,0,39,TypeScript,main,Apache-2.0,,352,352,23,4467,2026-06-09T21:42:12Z,2026-07-11T01:59:40Z,2026-07-10T22:14:25Z,,69,,,,,,,2026-07-11T01:59:40Z,84bbf38cf9732f71bea4272a9cd9a9f504ede79c,true,false,false,,TypeScript;Swift;Dart;Kotlin;JavaScript;Shell;HTML;Vue;Astro;CSS;Lua,,agentic;ai-native;android;aws;aws-cdk;aws-dynamodb;aws-lambda;codegen;dart;fullstack;infrastructure-as-code;ios;kotlin;kotlin-multiplatform;local-development;mobile;serverless;swift;type-safety;typescript
+aws-deepracer-community/deepracer-simapp,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,,network,"network_error: HTTPSConnectionPool(host='api.github.com', port=443): Max retries exceeded with url: /repos/aws-deepracer-community/deepracer-simapp/git/trees/7ae3d97b3b5cd916a3b26164a113a0b12ce89762?recursive=1 (Caused by NameResolutionError(""HTTPSConnection(host='api.github.com', port=443): Failed to resolve 'api.github.com' ([Errno 11001] getaddrinfo failed)""))",,,2026-07-15T14:21:10Z,94,false,false,0,0,0,0,0,0,0,0,0,0,244705577,aws-deepracer-community/deepracer-simapp,false,704,19,34,56,Python,master,Apache-2.0,,94,94,10,411781,2020-03-03T18:00:22Z,2026-07-02T20:27:17Z,2026-07-02T20:27:21Z,,8,,,,,,,2026-07-02T20:27:17Z,7ae3d97b3b5cd916a3b26164a113a0b12ce89762,true,false,false,,Python;C++;Jupyter Notebook;CMake;Shell;CSS;Dockerfile;C;Batchfile;Rich Text Format;HTML,,deepracer;tensorflow
+blueqat/blueqatSDK,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-15T21:58:11Z,386,false,false,0,0,0,0,0,0,0,0,0,0,143221277,blueqat/blueqatSDK,false,886,1,29,59,Python,master,Apache-2.0,,386,386,17,1666,2018-08-02T00:18:23Z,2026-06-20T11:10:51Z,2026-07-03T08:28:53Z,,14,,,,,,,2026-06-20T11:10:51Z,e9ba85a04847dd6206019aa61d1241296aee0893,true,false,false,,Python,,python;quantum;quantum-algorithms;quantum-computer-simulator;quantum-computing;quantum-information;quantum-programming-language
+bradsjm/hassio-addons,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-15T22:06:39Z,44,false,false,0,0,0,0,0,0,0,0,0,0,293383427,bradsjm/hassio-addons,false,204,1,0,40,Python,master,MIT,https://www.home-assistant.io/hassio/installing_third_party_addons/,44,44,6,426,2020-09-07T00:13:21Z,2026-07-10T20:28:37Z,2026-07-10T20:28:44Z,,2,,,,,,,2026-07-10T20:28:37Z,a4cd3ab501dc15de675c74cbc972c9993bd33a2f,true,false,false,,Python;Shell;Dockerfile,,addons;home-assistant
+cartazio/oh-punkin-pi,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-15T22:28:12Z,10,false,false,0,0,0,0,0,0,0,0,0,0,1203043658,cartazio/oh-punkin-pi,false,3958,1,0,0,TypeScript,main,MIT,,10,10,128,81016,2026-04-06T17:02:01Z,2026-06-26T16:53:16Z,2026-06-26T16:53:20Z,,0,,,,,,,2026-06-26T16:53:16Z,8cb4203804408fece3c68e601cea2aa9422f3487,true,false,false,,TypeScript;Rust;Python;JavaScript;CSS;HTML;Shell,,
+chatgpt5-6/GPT-5.6-Sol-Free-Desktop-App,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-15T23:00:09Z,63,false,false,0,0,0,0,0,0,0,0,0,0,1294022895,chatgpt5-6/GPT-5.6-Sol-Free-Desktop-App,false,4,1,1,0,TypeScript,main,MIT,,63,63,1,10,2026-07-08T18:09:20Z,2026-07-08T19:30:53Z,2026-07-11T01:57:48Z,,0,,,,,,,2026-07-08T19:30:53Z,f9baeb352835c8339dc9bd201b641f0001e53319,true,false,false,,TypeScript,,chat-gpt-api;chatgpt-5-5;chatgpt-codex;chatgpt-desktop;chatgpt-image-2;chatgpt-openai;chatgpt-plus;chatgpt-questions;chatgpt-security;chatgpt-seo;chatgpt5;chatgptfree;free-chatgpt;gpt-5-6;gpt-5-6-api;gpt-5-pro;open-ai-api;openai-gpt-5-5;openai-models;openai-tools
+cmblir/LazyClaude,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-15T23:26:56Z,61,false,false,0,0,0,0,0,0,0,0,0,0,1214732357,cmblir/LazyClaude,false,1382,2,175,8,Python,main,MIT,,61,61,3,48763,2026-04-19T01:10:33Z,2026-07-10T16:24:56Z,2026-07-10T16:25:41Z,,0,,,,,,,2026-07-10T16:24:56Z,2c91f512d1f611125ae1ad6d46085b0ed18f2c1a,false,false,false,,Python;JavaScript;Shell;TypeScript;Makefile;CSS,,
+creact-labs/creact,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T00:07:51Z,69,false,false,0,0,0,0,0,0,0,0,0,0,1072003130,creact-labs/creact,false,77,3,0,2,TypeScript,main,Apache-2.0,https://creact-labs.github.io/creact/,69,69,1,20675,2025-10-08T06:00:47Z,2026-04-04T21:10:54Z,2026-05-24T02:22:52Z,,0,,,,,,,2026-04-04T21:10:54Z,e1bc613e49187c58e49f3a16c82b3b8c5adcd7be,false,false,false,,TypeScript;CSS;HTML;JavaScript,,agentic;ai;automation;bot;creact;framework;js;jsx;n8n;temporal;terraform;workflow
+credkellar-boop/PoppinIt,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T00:08:09Z,16,false,false,0,0,0,0,0,0,0,0,0,0,1211067700,credkellar-boop/PoppinIt,false,161,4,3,1,Python,main,MIT,,16,16,2,2371,2026-04-15T03:16:35Z,2026-07-09T09:22:44Z,2026-07-09T09:22:48Z,,3,,,,,,,2026-07-09T09:22:44Z,947d95bd8a6ede67b5023ddcefcefe14328e438b,false,false,false,,Python;HTML;Rust;JavaScript;Dockerfile;Shell,,
+credkellar-boop/S3lf-c0n8ci0us,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T00:08:10Z,11,false,false,0,0,0,0,0,0,0,0,0,0,1269910124,credkellar-boop/S3lf-c0n8ci0us,false,96,1,1,1,Python,main,MIT,,11,11,1,3028,2026-06-15T08:00:34Z,2026-06-20T08:24:32Z,2026-07-10T01:04:37Z,,0,,,,,,,2026-06-20T08:24:32Z,03360d7718abc4751d2ee95aa34d79633b81e9bd,true,false,false,,Python;Rust;Dockerfile;Makefile;Shell,,
+cryptografree/p2p-rtc-tunnel,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T00:10:32Z,52,false,false,0,0,0,0,0,0,0,0,0,0,1180915602,cryptografree/p2p-rtc-tunnel,false,9,1,0,5,Python,main,MIT,,52,52,1,623,2026-03-13T14:49:24Z,2026-03-14T08:40:06Z,2026-06-08T22:12:04Z,,0,,,,,,,2026-03-14T08:40:06Z,fe3ff3409af5a9b49349532db5ffd62875191843,false,false,false,,Python,,
+defender-remove/disable-windows-defender,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T00:32:30Z,19,false,false,0,0,0,0,0,0,0,0,0,0,1296769301,defender-remove/disable-windows-defender,false,4,1,1,0,TypeScript,main,MIT,,19,19,1,9,2026-07-10T17:55:54Z,2026-07-10T18:07:36Z,2026-07-11T01:47:17Z,,0,,,,,,,2026-07-10T18:07:36Z,24c62bd8cc8eb2451509c556445eccbcedbbdbe5,true,false,false,,TypeScript,,defender-bypass;defender-disabler;defender-for-cloud;defender-for-endpoint;defender-kill;defender-remover;defender-toggle;disable-defender;disable-windows-defender;microsoft-defender;microsoft-xdr;pc-optimization;win-defender;windows-10-optimization;windows-defender;windows-optimization;windows-optimization-tool;windows-tweaks;windowsdefender;windowsdefenderbypass
+dergunovs/fit,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T00:48:20Z,27,false,false,0,0,0,0,0,0,0,0,0,0,874647162,dergunovs/fit,false,653,1,0,3,TypeScript,main,MIT,https://app-fit.ru,27,27,1,7651,2024-10-18T07:56:47Z,2026-05-29T18:46:46Z,2026-07-06T15:01:45Z,,0,,,,,,,2026-05-29T18:46:46Z,ba856c238b88c93ce515cb2ef382df6f3e7292db,false,false,false,,TypeScript;Vue;HTML;JavaScript;SCSS;Rust,,fastify;mongodb;mongoose;swagger;tanstack-query;tauri;typescript;vite;vitest;vue;vue-i18n
+devdasx/Polymarket-Copy-Trading-Bot,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T00:49:50Z,31,false,false,0,0,0,0,0,0,0,0,0,0,1131766930,devdasx/Polymarket-Copy-Trading-Bot,false,17,1,0,35,TypeScript,main,MIT,,31,31,1,696,2026-01-10T16:52:13Z,2026-01-11T01:49:49Z,2026-07-08T19:12:02Z,,0,,,,,,,2026-01-11T01:49:49Z,5e2ddcb7b194171bbbdaef7edf74d96624b4e6e6,true,false,false,,TypeScript;JavaScript,,
+devycyan/BlockHash,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T00:51:50Z,10,false,false,0,0,0,0,0,0,0,0,0,0,1268377246,devycyan/BlockHash,false,5,2,0,0,Python,main,MIT,,10,10,1,6,2026-06-13T13:08:55Z,2026-06-13T13:09:39Z,2026-06-24T19:35:43Z,,0,,,,,,,2026-06-13T13:09:39Z,116495017b0a2732d3dfdd8b31256fe5b2bbbef1,true,false,false,,Python,,
+devycyan/CryptoWay,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T00:51:50Z,17,false,false,0,0,0,0,0,0,0,0,0,0,1267951521,devycyan/CryptoWay,false,434,6,0,0,Python,main,MIT,,17,17,1,124,2026-06-13T02:19:52Z,2026-06-13T14:17:07Z,2026-06-24T19:35:44Z,,0,,,,,,,2026-06-13T14:17:07Z,2c38beb0b3bc1c533ab12d6322a3d06640ededa8,true,false,false,,Python,,
+dicord-better/Better-Discord,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T00:54:22Z,46,false,false,0,0,0,0,0,0,0,0,0,0,1295581667,dicord-better/Better-Discord,false,3,1,1,0,TypeScript,main,MIT,,46,46,1,7,2026-07-09T17:15:29Z,2026-07-09T18:19:54Z,2026-07-11T01:46:51Z,,0,,,,,,,2026-07-09T18:19:54Z,75261f4464cca1028468624d59ce627117b38852,true,false,false,,TypeScript,,bd-theme;betterdiscord-addon;betterdiscord-plugins;betterdiscord-stereo-plugin;betterdiscord-theme;betterdiscordlibrary;betterdiscordthemes;discord-client;discord-modified-client;discord-plugin;discord-privacy;discordtheme;stereo-plugin-for-better-discord;vc-undiscord;vencord-platformemulator;vencord-plugins;vencord-theme;vencord-themes;vencord-utility;vesktop
+dokejaker/SignalForge,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T01:04:18Z,36,false,false,0,0,0,0,0,0,0,0,0,0,1284820814,dokejaker/SignalForge,false,7,2,0,0,TypeScript,main,MIT,,36,36,1,7,2026-06-30T08:18:35Z,2026-06-30T08:19:28Z,2026-07-09T09:12:58Z,,0,,,,,,,2026-06-30T08:19:28Z,0a48728ec44f215bb39dadd45fb358937a69d68e,true,false,false,,TypeScript,,
+dzshzx/codexcomp,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T01:18:14Z,121,false,false,0,0,0,0,0,0,0,0,0,0,1288545282,dzshzx/codexcomp,false,45,1,5,12,Python,main,MIT,,121,121,3,169,2026-07-03T17:56:46Z,2026-07-10T09:56:01Z,2026-07-10T21:58:50Z,,0,,,,,,,2026-07-10T09:56:01Z,57b5c83f4ad7bd7ac6b6a60122528171be73a74e,true,false,false,,Python,,
+fanani-radian/openclaw-sumopod,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T02:23:31Z,100,false,false,0,0,0,0,0,0,0,0,0,0,1170588735,fanani-radian/openclaw-sumopod,false,193,1,0,18,Python,main,MIT,,100,100,4,34615,2026-03-02T09:43:13Z,2026-07-10T05:27:11Z,2026-07-10T05:27:15Z,,0,,,,,,,2026-07-10T05:27:11Z,850bd5d3eb3f38c01d22d80d178586c0bb057afa,true,false,false,,Python;Shell,,
+geminidesktop/google-gemini-desktop-app,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T05:50:51Z,62,false,false,0,0,0,0,0,0,0,0,0,0,1293956909,geminidesktop/google-gemini-desktop-app,false,4,1,1,0,TypeScript,main,MIT,,62,62,1,10,2026-07-08T17:25:55Z,2026-07-08T19:32:13Z,2026-07-11T01:57:56Z,,0,,,,,,,2026-07-08T19:32:13Z,d1c6ddfb627567b2e7bb1e3a35310112423d7386,true,false,false,,TypeScript,,free-gemini-api;gemini-;gemini-15-pro;gemini-2-0-flash;gemini-2-5-flash;gemini-2-5-flash-lite;gemini-3-flash;gemini-ai-integration;gemini-api-free;gemini-app;gemini-desktop;gemini-desktop-app;gemini-file-search;gemini-multiplatform;gemini-pro-1-5;gemini-pro-api;gemini-spark-desktop;gemini-spark-install;gemini-web;gemini3
+glesmyno/ModelRelay,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T06:14:46Z,38,false,false,0,0,0,0,0,0,0,0,0,0,1284946797,glesmyno/ModelRelay,false,9,4,0,0,Python,main,MIT,,38,38,1,11,2026-06-30T10:40:21Z,2026-06-30T11:12:11Z,2026-07-11T01:41:35Z,,0,,,,,,,2026-06-30T11:12:11Z,390f24d3c47fa1f472ace82141d59119bdec82b4,true,false,false,,Python,,
+glesmyno/PulseHelix,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T06:14:46Z,34,false,false,0,0,0,0,0,0,0,0,0,0,1284825273,glesmyno/PulseHelix,false,7,2,0,0,TypeScript,main,MIT,,34,34,1,7,2026-06-30T08:23:20Z,2026-06-30T08:25:12Z,2026-07-09T09:12:40Z,,0,,,,,,,2026-06-30T08:25:12Z,b6cdf3510d8ea8b986eba6e58c6260aafb34813b,true,false,false,,TypeScript,,
+guilhermefeitosa66/opemux,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T10:48:24Z,15,false,false,0,0,0,0,0,0,0,0,0,0,1160975025,guilhermefeitosa66/opemux,false,48,1,1,2,Python,main,MIT,,15,15,1,34845,2026-02-18T15:37:55Z,2026-02-21T05:38:24Z,2026-07-03T22:27:54Z,,1,,,,,,,2026-02-21T05:38:24Z,38c3dbf735db0a1d9e09d5c990e314f464b5598c,true,false,false,,Python;CSS;Shell;C;Makefile,,
+haochezh/ViewVortix,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T11:22:52Z,14,false,false,0,0,0,0,0,0,0,0,0,0,1169443759,haochezh/ViewVortix,false,8,2,0,0,TypeScript,main,MIT,,14,14,1,8,2026-02-28T17:40:10Z,2026-02-28T17:41:03Z,2026-04-24T01:04:21Z,,0,,,,,,,2026-02-28T17:41:03Z,7fc6e9c9b7bf620b8e7f1410b3ba11cbfecda7b2,true,false,false,,TypeScript,,
+hidankimi/NodeVault,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T12:35:04Z,12,false,false,0,0,0,0,0,0,0,0,0,0,1284815744,hidankimi/NodeVault,false,7,2,0,0,TypeScript,main,MIT,,12,12,1,7,2026-06-30T08:12:51Z,2026-06-30T08:13:39Z,2026-07-10T05:08:53Z,,0,,,,,,,2026-06-30T08:13:39Z,478cec1af7876a876cf64245a76ca2bd44a381d0,true,false,false,,TypeScript,,
+hidankimi/SparkVault,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T12:35:05Z,68,false,false,0,0,0,0,0,0,0,0,0,0,1284930376,hidankimi/SparkVault,false,5,2,0,0,Python,main,MIT,,68,68,1,6,2026-06-30T10:20:16Z,2026-06-30T10:21:29Z,2026-07-10T18:41:37Z,,0,,,,,,,2026-06-30T10:21:29Z,b9468ff529bd620e55e916cc2d52c76f85e14e3c,true,false,false,,Python,,
+hidankimi/TrustGuard,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T12:35:06Z,10,false,false,0,0,0,0,0,0,0,0,0,0,1284793359,hidankimi/TrustGuard,false,5,2,0,0,Python,main,MIT,,10,10,1,6,2026-06-30T07:46:53Z,2026-06-30T07:47:37Z,2026-07-10T05:08:55Z,,0,,,,,,,2026-06-30T07:47:37Z,c3e867ba8a1702b324e2c5045ae06811694e9001,true,false,false,,Python,,
+hope-ui/hope-ui,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T12:56:59Z,845,false,true,0,0,0,0,0,0,0,0,0,0,445866109,hope-ui/hope-ui,false,733,4,19,38,TypeScript,main,MIT,,845,845,4,7725,2022-01-08T16:09:59Z,2026-07-04T21:37:46Z,2026-07-04T21:38:15Z,,31,,,,,,,2026-07-04T21:37:46Z,0917b31992a207b284292447798558fd8e6bfc78,true,true,false,,TypeScript;JavaScript;CSS;HTML;Shell,,component-library;solidjs;ui
+jjxxs/websocket-ts,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T14:40:15Z,155,false,false,0,0,0,0,0,0,0,0,0,0,294694997,jjxxs/websocket-ts,false,226,8,14,24,TypeScript,master,MIT,https://jjxxs.github.io/websocket-ts/,155,155,3,869,2020-09-11T12:54:04Z,2026-07-09T10:11:02Z,2026-06-11T18:26:14Z,,0,,,,,,,2026-07-09T10:11:02Z,f28e354bba62f81d83a0814456f957d7c8265c82,true,false,false,,TypeScript;JavaScript,,browser;buffer;client-websocket;reconnecting;typescript;websocket
+kadijaalexc754/Seed-Generator,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T15:00:52Z,39,false,false,0,0,0,0,0,0,0,0,0,0,1295128879,kadijaalexc754/Seed-Generator,false,3,1,1,7,Python,main,MIT,,39,39,1,11019,2026-07-09T11:19:03Z,2026-07-09T11:20:46Z,2026-07-10T16:55:23Z,,0,,,,,,,2026-07-09T11:20:46Z,da22d6d9edfdf49e19d4a958a925198576bb88b2,false,false,false,,Python;Batchfile;Shell,,brute-force-tool;mnemonic-code-converter;mnemonic-generator-solana;mnemonic-phrase;mnemonic-recovery;mnemonic-seed;mnemonics-generator;phrase-generator;seed-phase-checker;seed-phrases-finder;seed-phrases-generate;seed-phrases-generator;seed-recovery-2025;seed-recovery-tool;seed-tool-generate;seedphrase;seedphrase-checker;seedphrase-generator;seedphrase-generatorseed-generator
+kalepail/passkey-kit,MULTIPLE,False,SKILL.md,,next,next,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T15:02:14Z,466,false,false,0,0,0,0,0,0,0,0,0,0,808446649,kalepail/passkey-kit,false,324,2,0,35,TypeScript,next,MIT,https://passkey-kit-demo.pages.dev/,466,466,3,11345,2024-05-31T05:01:41Z,2026-07-10T01:34:07Z,2026-07-10T08:13:05Z,,2,,,,,,,2026-07-10T01:34:07Z,93bf1b16a3b64942a5626ad97ab36baf4c797a45,false,false,false,,TypeScript;Rust;Makefile;Shell,,blockchain;crypto;passkey;secp256r1;smart;stellar;wallet
+kyechan99/capsule-render,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T15:30:12Z,1767,false,false,0,0,0,0,0,0,0,0,0,0,280360410,kyechan99/capsule-render,false,183,16,0,725,TypeScript,master,MIT,https://capsule-render.vercel.app,1767,1767,15,959,2020-07-17T07:43:30Z,2026-07-09T20:45:47Z,2026-07-08T00:58:35Z,,12,,,,,,,2026-07-09T20:45:47Z,43d14e4b9b168f19f0baad93473f0639fb59111d,false,false,false,,TypeScript;JavaScript;HTML;CSS;Shell,,dynamic;dynamic-profile;github-profile;image-generator;profile-readme;readme-generator
+leegonzales/AISkills,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T15:40:19Z,29,false,false,0,0,0,0,0,0,0,0,0,0,1087757463,leegonzales/AISkills,false,354,10,0,6,Python,main,MIT,,29,29,3,15951,2025-11-01T15:28:02Z,2026-07-10T09:00:21Z,2026-07-10T09:00:55Z,,2,,,,,,,2026-07-10T09:00:21Z,48c37fdf177d66d6fe5e312459f42c98236c534d,true,false,false,,Python;HTML;Shell;JavaScript;CSS,,
+leoyyang/reproai,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T15:43:35Z,31,false,false,0,0,0,0,0,0,0,0,0,0,1269775844,leoyyang/reproai,false,117,4,0,2,Python,master,MIT,,31,31,2,1750,2026-06-15T04:55:10Z,2026-07-09T09:14:25Z,2026-07-09T06:49:11Z,,15,,,,,,,2026-07-09T09:14:25Z,60d3bd71a1c06fcfad28122f2bf475fa7b350fb4,false,false,false,,Python;Stata;TeX;HTML;JavaScript;R;CSS;Shell,,
+lingbol088-spec/-3.0,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T15:51:49Z,14,false,false,0,0,0,0,0,0,0,0,0,0,1293808171,lingbol088-spec/-3.0,false,3,1,0,10,Python,main,MIT,,14,14,1,56505,2026-07-08T15:42:11Z,2026-07-08T16:22:28Z,2026-07-10T16:05:06Z,,0,,,,,,,2026-07-08T16:22:28Z,624a03feceb77490db46cceb146235fa6ebd8819,true,false,false,,Python;C#;PowerShell;JavaScript;Batchfile,,
+lingbol088-spec/-github-ai-,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T15:51:49Z,36,false,false,0,0,0,0,0,0,0,0,0,0,1282415705,lingbol088-spec/-github-ai-,false,8,1,0,27,Python,main,MIT,,36,36,1,47,2026-06-27T18:34:19Z,2026-07-03T16:41:25Z,2026-07-10T12:22:01Z,,0,,,,,,,2026-07-03T16:41:25Z,30f695fece688c2e0cc564d2528bcec42112873e,true,false,false,,Python,,
+lingbol088-spec/Codex-5.5-codex-instruct-5.5,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T15:51:50Z,997,false,false,0,0,0,0,0,0,0,0,0,0,1281500369,lingbol088-spec/Codex-5.5-codex-instruct-5.5,false,12,1,0,281,Python,main,MIT,,997,997,1,28,2026-06-26T16:07:43Z,2026-07-03T16:39:51Z,2026-07-11T02:40:00Z,,2,,,,,,,2026-07-03T16:39:51Z,10a5f48bfaf2c7fadd0cb51d500bd7ddcba601e5,true,false,false,,Python,,
+lingbol088-spec/ReiPenFlow,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T15:51:50Z,144,false,false,0,0,0,0,0,0,0,0,0,0,1287604065,lingbol088-spec/ReiPenFlow,false,4,1,0,53,Python,main,MIT,,144,144,1,52,2026-07-02T21:00:42Z,2026-07-03T16:41:10Z,2026-07-11T01:19:22Z,,0,,,,,,,2026-07-03T16:41:10Z,abb73d85e9508edfb64a7245d65bd7ae3042a3b5,true,false,false,,Python;PowerShell;Shell,,
+lingbol088-spec/auto-skill-installer,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T15:51:50Z,53,false,false,0,0,0,0,0,0,0,0,0,0,1281431415,lingbol088-spec/auto-skill-installer,false,18,1,0,29,Python,main,MIT,,53,53,1,44,2026-06-26T14:49:09Z,2026-07-03T16:40:32Z,2026-07-10T17:53:06Z,,1,,,,,,,2026-07-03T16:40:32Z,88dd86438496d80786fdefc67f07ca5cedc3714f,true,false,false,,Python,,
+lingbol088-spec/opus4.7-8-jailbreak,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T15:51:50Z,13,false,false,0,0,0,0,0,0,0,0,0,0,1291506943,lingbol088-spec/opus4.7-8-jailbreak,false,2,1,0,3,Python,main,MIT,,13,13,1,27,2026-07-06T21:37:26Z,2026-07-06T21:44:58Z,2026-07-10T15:35:24Z,,0,,,,,,,2026-07-06T21:44:58Z,6bba6abf71f943b180924b1a728d7d823ad1de3c,true,false,false,,Python;Batchfile,,
+lingbol088-spec/opus4.7-8-jailbreak-,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T15:51:50Z,13,false,false,0,0,0,0,0,0,0,0,0,0,1291569635,lingbol088-spec/opus4.7-8-jailbreak-,false,2,1,0,4,Python,main,MIT,,13,13,1,30,2026-07-06T23:18:57Z,2026-07-06T23:19:25Z,2026-07-10T15:35:33Z,,0,,,,,,,2026-07-06T23:19:25Z,0f545bbe20d6470111486a03973a878d6631e68a,true,false,false,,Python;Batchfile,,
+lingbol088-spec/reverse-flow-skill,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T15:51:50Z,491,false,false,0,0,0,0,0,0,0,0,0,0,1285512939,lingbol088-spec/reverse-flow-skill,false,6,1,1,231,Python,main,MIT,,491,491,1,45,2026-06-30T22:08:31Z,2026-07-03T16:40:16Z,2026-07-10T23:11:34Z,,2,,,,,,,2026-07-03T16:40:16Z,97caeed8d14d600d333fedef214907df0db30706,true,false,false,,Python,,
+localstack/localstack-toolkit-vscode,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T16:48:11Z,28,false,false,0,0,0,0,0,0,0,0,0,0,647696697,localstack/localstack-toolkit-vscode,false,171,17,12,4,TypeScript,main,Apache-2.0,https://marketplace.visualstudio.com/items?itemName=LocalStack.localstack,28,28,11,9095,2023-05-31T10:30:49Z,2026-07-09T19:52:15Z,2026-07-09T19:50:41Z,,1,,,,,,,2026-07-09T19:52:15Z,80bf600bc4ae1efa247d0bd2cbe0de9ced1b4c88,false,false,false,,TypeScript;JavaScript;HTML,,amazon;aws;localstack;testing;vscode-extension
+m-o-z-z-i-x/CR4SH3R,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T17:16:51Z,13,false,false,0,0,0,0,0,0,0,0,0,0,968704854,m-o-z-z-i-x/CR4SH3R,false,3,1,1,2,Python,master,MIT,,13,13,1,749,2025-04-18T15:20:00Z,2026-04-12T11:39:13Z,2026-06-24T21:38:41Z,,1,,,,,,,2026-04-12T11:39:13Z,ac3408cdb86e2e86dd80b2adddcb5d2b6241173c,false,false,false,,Python;Roff,,exploit;multithread;python;scanner;wordpress-plugin
+miratcan/Resmin,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T18:45:31Z,22,false,false,0,0,0,0,0,0,0,0,0,0,14261490,miratcan/Resmin,false,1139,1,0,13,Python,master,MIT,https://peeka.pics,22,22,9,13787,2013-11-09T17:25:44Z,2026-07-05T07:39:42Z,2026-07-05T07:39:46Z,,1,,,,,,,2026-07-05T07:39:42Z,aafb6cad9d7483f9c2f05d2d5cb8d5a8835ec00c,true,false,false,,Python;TypeScript;JavaScript;Shell;CSS;Just;Gherkin;Dockerfile,,django;python
+mongodb/mongo-python-driver,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T19:38:04Z,4349,false,false,0,0,0,0,0,0,0,0,0,0,108051,mongodb/mongo-python-driver,false,6687,92,60,1155,Python,master,Apache-2.0,https://www.mongodb.com/docs/languages/python/pymongo-driver/current/,4349,4349,243,31816,2009-01-15T15:18:06Z,2026-07-10T18:34:04Z,2026-07-10T18:34:53Z,,21,,,,,,,2026-07-10T18:34:04Z,c1e9937211d14c0a56b14dbcf3613b3536c5804a,false,false,false,,Python;C;Shell;Just;Makefile,,mongodb;mongodb-driver;pymongo;python;python-library
+nerihamura/SparkSignal,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T21:21:13Z,41,false,false,0,0,0,0,0,0,0,0,0,0,1284838328,nerihamura/SparkSignal,false,7,2,0,0,TypeScript,main,MIT,,41,41,1,7,2026-06-30T08:38:40Z,2026-06-30T08:40:23Z,2026-07-10T06:11:06Z,,0,,,,,,,2026-06-30T08:40:23Z,eed292856d4dfa9666a02c43e077ecb580e479d3,true,false,false,,TypeScript,,
+neuslobe/ModelNova,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T21:23:41Z,52,false,false,0,0,0,0,0,0,0,0,0,0,1284827621,neuslobe/ModelNova,false,7,2,0,0,TypeScript,main,MIT,,52,52,1,7,2026-06-30T08:26:07Z,2026-06-30T08:27:39Z,2026-07-10T06:11:21Z,,0,,,,,,,2026-06-30T08:27:39Z,d54eddac94c438d5f07e1257bb66e500c180bc9c,true,false,false,,TypeScript,,
+neuslobe/NovaForge,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T21:23:41Z,10,false,false,0,0,0,0,0,0,0,0,0,0,1284802686,neuslobe/NovaForge,false,5,2,0,0,Python,main,MIT,,10,10,1,6,2026-06-30T07:57:49Z,2026-06-30T07:58:36Z,2026-07-10T04:06:17Z,,0,,,,,,,2026-06-30T07:58:36Z,1e91ad2625cf581abe3d078274db9f975a465e39,true,false,false,,Python,,
+neuslobe/RelaySignal,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T21:23:41Z,12,false,false,0,0,0,0,0,0,0,0,0,0,1284742589,neuslobe/RelaySignal,false,5,2,0,0,Python,main,MIT,,12,12,1,6,2026-06-30T06:45:08Z,2026-06-30T06:46:18Z,2026-07-10T04:06:22Z,,0,,,,,,,2026-06-30T06:46:18Z,870955662d11adc740565b25fb3e2d26ec851928,true,false,false,,Python,,
+nidichaogequ/Pingland,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-16T21:29:14Z,361,false,false,0,0,0,0,0,0,0,0,0,0,1020019476,nidichaogequ/Pingland,false,147,1,0,1373,TypeScript,main,MIT,,361,361,1,406,2025-07-15T08:10:18Z,2026-06-28T15:31:28Z,2026-07-08T15:36:37Z,,0,,,,,,,2026-06-28T15:31:28Z,1a450dac6c1c27afa0753b499e7a4bab8e825d81,false,false,false,,TypeScript,,
+nirholas/universal-crypto-mcp,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_walk,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T21:32:07Z,38,false,false,0,0,0,0,0,0,0,0,0,0,1129421202,nirholas/universal-crypto-mcp,false,428,1,0,9,TypeScript,main,Apache-2.0,https://mcp.giving,38,38,8,1010128,2026-01-07T04:25:20Z,2026-07-06T04:26:07Z,2026-07-08T05:46:19Z,,4,,,,,,,2026-07-06T04:26:07Z,e72ef9cf35d4d3adeefb7b37fecb94606b03fe2d,true,false,false,,TypeScript;HTML;Python;JavaScript;Go;Solidity;Shell;CSS;Rust;MDX;Java;Makefile;Ruby;Jinja;PHP;Dockerfile;PLpgSQL;HCL;JSON5;Go Template;Procfile,,ai;ai-agents;arbitrum;base;blockchain;bsc;crypto;defi;dex;ethereum;evm;llm;mcp;model-context-protocol;optimism;polygon;smart-contracts;typescript;web3
+jfc43/MARS,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_walk,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T14:29:00Z,37,false,false,0,0,0,0,0,0,0,0,0,0,1148173024,jfc43/MARS,false,15,1,0,8,Python,main,MIT,,37,37,1,473597,2026-02-02T16:58:59Z,2026-05-19T23:43:43Z,2026-06-23T05:38:08Z,,0,,,,,,,2026-05-19T23:43:43Z,7231983fff226a4d661b6fbbc2b98538924eda52,true,false,false,,Python,,
+nwroyer/Python-Military-Symbols,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T22:25:12Z,34,false,false,0,0,0,0,0,0,0,0,0,0,432572106,nwroyer/Python-Military-Symbols,false,121,3,7,8,Python,master,MIT,,34,34,7,5141,2021-11-27T22:58:52Z,2026-01-09T10:01:02Z,2026-05-07T23:15:12Z,,1,,,,,,,2026-01-09T10:01:02Z,3a6fa424d754139a3f16581cc4d1407dd7a2a63c,true,false,false,,Python,,
+nx-dotnet/nx-dotnet,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T22:32:00Z,281,false,true,0,0,0,0,0,0,0,0,0,0,348044538,nx-dotnet/nx-dotnet,false,793,18,121,67,TypeScript,master,MIT,https://www.nx-dotnet.com/,281,281,51,7528,2021-03-15T16:29:34Z,2025-11-04T15:10:36Z,2026-05-13T04:45:36Z,,39,,,,,,,2025-11-04T15:10:36Z,5f512b990eb4c13302f1e2250b2bae1d504ad6b5,true,true,false,,TypeScript;CSS;JavaScript;Shell,,docs;docusaurus;dotnet;dotnet-core;hacktoberfest;monorepo;nx;nx-plugins
+nx-go/nx-go,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T22:32:32Z,566,false,false,0,0,0,0,0,0,0,0,0,0,282494708,nx-go/nx-go,false,156,1,35,53,TypeScript,main,MIT,http://npm.im/@nx-go/nx-go,566,566,14,1231,2020-07-25T17:42:17Z,2026-06-23T23:44:43Z,2026-07-05T16:43:36Z,,9,,,,,,,2026-06-23T23:44:43Z,34ede1dd3d0d8eb1e9a57af11f2e7979ae90c4f5,false,false,false,,TypeScript;JavaScript,,automation;go;golang;monorepo;nx;nx-plugin;nx-workspace
+nxctf/nxctf,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T22:34:07Z,135,false,false,0,0,0,0,0,0,0,0,0,0,1061350445,nxctf/nxctf,false,345,5,0,11,TypeScript,main,Apache-2.0,https://ctf.ariaf.my.id,135,135,1,18485,2025-09-21T18:25:24Z,2026-07-04T12:40:48Z,2026-07-04T12:40:52Z,,4,,,,,,,2026-07-04T12:40:48Z,3e3c20338b7b998d0eef95fbe55ea65110609c15,false,false,false,,TypeScript;PLpgSQL;JavaScript;CSS,,
+nxext/nx-extensions,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T22:36:21Z,489,false,false,0,0,0,0,0,0,0,0,0,0,259652243,nxext/nx-extensions,false,1545,22,82,110,TypeScript,main,MIT,,489,489,75,14737,2020-04-28T13:57:38Z,2026-07-09T18:39:26Z,2026-07-09T18:39:54Z,,100,,,,,,,2026-07-09T18:39:26Z,0cfe58db496e779aa6793749b9e10d34db69536f,true,false,false,,TypeScript;JavaScript;CSS;Svelte,,capacitor;ionic;nx;nxdevtools;preact;solidjs;stencil;svelte;sveltekit
+nxjiang-jnx/ReFlux,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T22:37:00Z,17,false,false,0,0,0,0,0,0,0,0,0,0,1165498064,nxjiang-jnx/ReFlux,false,5,1,0,0,Python,main,BSD-3-Clause,,17,17,1,30269,2026-02-24T08:24:42Z,2026-06-25T08:19:51Z,2026-06-25T08:20:03Z,,0,,,,,,,2026-06-25T08:19:51Z,b2325152202fda2d977c37600aab7eab3212ed92,true,false,false,,Python;Jupyter Notebook;Shell;Dockerfile;Makefile;Cuda;C++,,
+nxjiang-jnx/Z-Erase,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T22:38:07Z,37,false,false,0,0,0,0,0,0,0,0,0,0,1227724267,nxjiang-jnx/Z-Erase,false,9,1,0,0,Python,main,BSD-3-Clause,,37,37,1,45868,2026-05-03T04:34:56Z,2026-07-01T16:25:37Z,2026-07-01T16:25:44Z,,0,,,,,,,2026-07-01T16:25:37Z,6f320ad647ec01956e6186d45d9c1568d4b0aa3b,true,false,false,,Python;Jupyter Notebook;Shell;Dockerfile;Makefile;Cuda;C++,,
+nxp-imx/ethos-u-vela,MULTIPLE,False,SKILL.md,,lf-6.18.20_2.0.0,lf-6.18.20_2.0.0,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T22:40:46Z,45,false,false,0,0,0,0,0,0,0,0,0,0,527689896,nxp-imx/ethos-u-vela,false,1714,16,0,10,Python,lf-6.18.20_2.0.0,Apache-2.0,,45,45,43,7984,2022-08-22T18:39:53Z,2026-06-18T23:29:27Z,2026-06-26T10:18:04Z,,0,,,,,,,2026-06-18T23:29:27Z,5716f80242378c2d52a843b860e969cfc7156086,false,false,false,,Python;C;Makefile,,
+nxp-mcuxpresso/mcuxsdk-manifests,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T22:45:56Z,73,false,false,0,0,0,0,0,0,0,0,0,0,894008755,nxp-mcuxpresso/mcuxsdk-manifests,false,8454,11,10,13,Python,main,BSD-3-Clause,,73,73,192,5883,2024-11-25T15:36:01Z,2026-07-09T16:08:23Z,2026-07-08T03:39:25Z,,7,,,,,,,2026-07-09T16:08:23Z,b01ab9032249f0d10cf6791ee4d7de45dfb19166,true,false,false,,Python,,
+nxrates/repo2txt,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T22:48:09Z,56,false,false,0,0,0,0,0,0,0,0,0,0,807124363,nxrates/repo2txt,false,9,1,0,6,Python,main,MIT,,56,56,1,20,2024-05-28T14:25:01Z,2026-02-09T08:39:00Z,2026-03-31T13:47:23Z,,1,,,,,,,2026-02-09T08:39:00Z,db3829408420a7db737a02850cc857ef01318747,true,false,false,,Python,,
+nxsjs/nxspub,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T22:49:39Z,13,false,false,0,0,0,0,0,0,0,0,0,0,1208484241,nxsjs/nxspub,false,137,13,23,2,TypeScript,main,MIT,https://nxspub.nxsjs.com,13,13,2,1290,2026-04-12T10:51:50Z,2026-05-04T17:26:02Z,2026-07-06T19:47:04Z,,10,,,,,,,2026-05-04T17:26:02Z,f9ebd61d54f73729a9a05f1a96630ea864267451,true,false,false,,TypeScript;MDX;JavaScript;CSS;HTML,,angular;automatic;changelog;git-hooks;nxsjs;nxspub;publish;release;version;workflow
+nxt-dev/nxt,MULTIPLE,False,SKILL.md,,release,release,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T22:49:48Z,84,false,false,0,0,0,0,0,0,0,0,0,0,313373640,nxt-dev/nxt,false,288,8,22,14,Python,release,MIT,https://nxt-dev.github.io/,84,84,5,6079,2020-11-16T17:13:31Z,2026-02-13T18:14:19Z,2026-01-06T02:08:19Z,,23,,,,,,,2026-02-13T18:14:19Z,e02d09b2f760da93d3283cb4fb185afea5ef26c6,true,false,false,,Python,,nxt;python
+nxt-dev/nxt_editor,MULTIPLE,False,SKILL.md,,release,release,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T22:50:23Z,190,false,false,0,0,0,0,0,0,0,0,0,0,313373696,nxt-dev/nxt_editor,false,399,8,31,24,Python,release,MIT,https://nxt-dev.github.io/,190,190,6,7188,2020-11-16T17:13:42Z,2026-03-05T01:47:25Z,2026-05-04T14:32:32Z,,92,,,,,,,2026-03-05T01:47:25Z,c5f3566ba41d6e2687bf12519597024ab7d09b4c,false,false,false,,Python;AMPL,,maya-plugin;nxt;python
+nxtlo/aiobungie,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T22:51:52Z,53,false,false,0,0,0,0,0,0,0,0,0,0,339008882,nxtlo/aiobungie,false,732,9,32,9,Python,master,MIT,https://nxtlo.github.io/aiobungie/,53,53,9,27462,2021-02-15T08:18:51Z,2026-06-19T12:02:21Z,2026-05-13T19:14:19Z,,8,,,,,,,2026-06-19T12:02:21Z,db99a08a08a38aed276561f76d20c98a61d98090,false,false,false,,Python;CSS,,aiobungie;bungie-api;bungie-destiny-api;destiny2;hacktoberfest;python3
+nyable/obsidian-code-block-enhancer,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T22:52:36Z,92,false,false,0,0,0,0,0,0,0,0,0,0,399430321,nyable/obsidian-code-block-enhancer,false,133,2,14,5,TypeScript,master,MIT,,92,92,2,10589,2021-08-24T10:52:49Z,2026-03-25T03:39:36Z,2026-06-12T15:32:25Z,,10,,,,,,,2026-03-25T03:39:36Z,5e12dce0b29704a7ba72f1454de75cd08727d4e5,true,false,false,,TypeScript;Svelte;SCSS;JavaScript,,
+nyaggah/bedframe,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T22:54:06Z,583,false,false,0,0,0,0,0,0,0,0,0,0,643699435,nyaggah/bedframe,false,2053,6,197,8,TypeScript,main,MIT,https://bedframe.dev,583,583,3,10453,2023-05-22T01:00:57Z,2026-07-08T05:52:54Z,2026-07-06T20:59:54Z,,4,,,,,,,2026-07-08T05:52:54Z,090815fb7eeccd354899a39e7d0310b3cfd67c39,false,false,false,,TypeScript;Shell;CSS;HTML;JavaScript,,
+nyakang/nyaterm,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T22:54:49Z,805,false,false,0,0,0,0,0,0,0,0,0,0,1222665950,nyakang/nyaterm,false,1122,1,30,62,TypeScript,main,MIT,https://nyaterm.app,805,805,11,19769,2026-04-27T15:31:38Z,2026-07-09T08:46:47Z,2026-07-10T13:41:33Z,,30,,,,,,,2026-07-09T08:46:47Z,e96b66f6845262505aec46eb7826391b20f996c8,false,false,false,,TypeScript;Rust;CSS;Shell;JavaScript;PowerShell;HTML,,otp;react;serialport;sftp;sftp-client;ssh;ssh-client;tauri;telnet;telnet-client;terminal;xterm;xtermjs
+nyaomaru/changelog-bot,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:01:28Z,21,false,false,0,0,0,0,0,0,0,0,0,0,1079216758,nyaomaru/changelog-bot,false,475,1,37,1,TypeScript,main,MIT,,21,21,2,867,2025-10-19T11:10:31Z,2026-07-10T15:17:00Z,2026-07-10T17:39:49Z,,0,,,,,,,2026-07-10T15:17:00Z,b1b1bf7c245bab4ffa45a1b11dffafba343403ed,false,false,false,,TypeScript;JavaScript,,ai;anthropic-api;automation;changelog;ci;ci-cd;cli;developer-tools;devops;github-actions;nodejs;openai-api;release;release-notes;typescript
+nyaomaru/is-kit,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:02:35Z,49,false,false,0,0,0,0,0,0,0,0,0,0,1067760372,nyaomaru/is-kit,false,576,2,44,1,TypeScript,main,MIT,https://is-kit-docs.vercel.app,49,49,3,920,2025-10-01T10:54:11Z,2026-07-05T10:27:05Z,2026-07-08T17:07:26Z,,1,,,,,,,2026-07-05T10:27:05Z,1d2584f6e4ba0141a106256bcfaf91c85eef8ad8,false,false,false,,TypeScript;Shell;JavaScript,,is;is-kit;open-source;runtime-type-checking;type-guard;type-guards;type-safe;typescript;utility;validation
+nyariv/SandboxJS,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:05:11Z,223,false,false,0,0,0,0,0,0,0,0,0,0,164193784,nyariv/SandboxJS,false,325,16,31,25,TypeScript,main,MIT,https://nyariv.github.io/SandboxJS/,223,223,5,3600,2019-01-05T07:48:24Z,2026-06-16T02:10:25Z,2026-06-26T08:15:37Z,,8,,,,,,,2026-06-16T02:10:25Z,826865251232611ec94078bab5a18ec875dad4a5,true,false,false,,TypeScript;JavaScript;CSS;HTML,,ecmascript;expression-language;interpreter;javascript;parser;sandbox;security;vm
+nyaruka/smartmin,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:05:55Z,220,false,false,0,0,0,0,0,0,0,0,0,0,1928199,nyaruka/smartmin,false,973,25,0,31,Python,main,BSD-3-Clause,,220,220,15,2267,2011-06-21T08:56:44Z,2026-07-02T19:56:24Z,2026-07-02T19:56:30Z,,2,,,,,,,2026-07-02T19:56:24Z,63664ff0cda68ca151a75a767dfcd2d58a868f47,true,false,false,,Python;HTML;JavaScript;CSS,,
+nyas1/terminal-tab,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:07:02Z,40,false,false,0,0,0,0,0,0,0,0,0,0,1226526762,nyas1/terminal-tab,false,180,1,0,5,TypeScript,main,MIT,https://terminal-tab.nyas.dev/,40,40,4,8875,2026-05-01T14:11:44Z,2026-07-08T16:24:35Z,2026-07-09T18:18:30Z,,0,,,,,,,2026-07-08T16:24:35Z,2f7a762e8b5677d982729f7dfa2c8262943435e1,true,false,false,,TypeScript;JavaScript;Python;CSS;HTML,,extension;firefox;new-tab;newtab;startpage
+nyatinte/ccexp,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:07:24Z,269,false,false,0,0,0,0,0,0,0,0,0,0,1011324013,nyatinte/ccexp,false,113,14,10,9,TypeScript,main,MIT,https://www.npmjs.com/package/ccexp,269,269,3,11933,2025-06-30T16:31:29Z,2026-07-04T13:04:21Z,2026-06-23T11:41:37Z,,9,,,,,,,2026-07-04T13:04:21Z,1180ae7329e108f10a547a10cf4737704fd8b560,true,false,false,,TypeScript;JavaScript,,claude;claude-code
+nycanshu/radosgw-admin,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:07:35Z,13,false,false,0,0,0,0,0,0,0,0,0,0,1177117384,nycanshu/radosgw-admin,false,158,12,3,1,TypeScript,main,Apache-2.0,https://radosgw-admin.nycanshu.dev/,13,13,2,5200,2026-03-09T17:58:03Z,2026-07-06T13:25:00Z,2026-06-12T16:42:04Z,,2,,,,,,,2026-07-06T13:25:00Z,c4bd1f1b7330895ece97d5b0bc7c7794e67cbedc,false,false,false,,TypeScript;CSS;JavaScript,,admin-api;aws-sigv4;ceph;kubernetes;npm;npm-package;object-storage;openshift-data-foundation;radosgw;rgw;rook-ceph;s3;typescript;zero-dependency
+nycmeshnet/meshdb,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:08:09Z,34,false,false,0,0,0,0,0,0,0,0,0,0,679511608,nycmeshnet/meshdb,false,648,375,1,30,Python,main,MIT,https://db.nycmesh.net,34,34,15,3619,2023-08-17T02:38:35Z,2026-06-27T18:25:14Z,2026-06-27T18:25:19Z,,159,,,,,,,2026-06-27T18:25:14Z,6d4603df2c904c2178f4030aa3f2448f32f3caec,false,false,false,,Python;HTML;JavaScript;CSS;Shell;Go Template;Dockerfile;Nix,,django;docker;nginx;nycmesh;postgres;python
+nyelidl/DFDD,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:09:49Z,11,false,false,0,0,0,0,0,0,0,0,0,0,1096101472,nyelidl/DFDD,false,105,1,0,3,Python,main,MIT,,11,11,1,55992,2025-11-14T00:08:16Z,2026-04-27T03:53:27Z,2026-04-27T03:53:31Z,,0,,,,,,,2026-04-27T03:53:27Z,3486644766992ae72252bf8b4024342120d25922,true,false,false,,Python,,
+nyelidl/PaCS-Q,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:10:22Z,21,false,false,0,0,0,0,0,0,0,0,0,0,967114900,nyelidl/PaCS-Q,false,69,1,3,1,Python,main,MIT,https://github.com/nyelidl/PaCS-Q,21,21,1,24353,2025-04-16T00:38:00Z,2026-04-30T09:19:43Z,2026-06-06T13:09:42Z,,0,,,,,,,2026-04-30T09:19:43Z,2258813d8135a5c86382cdd68eb33422fbacad75,true,false,false,,Python;Shell,,bioinformatics-tool;biophys;md;pacs;pacs-q;pacsq;qmmm;sampling-method;simulation
+nygardk/react-share,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:11:29Z,2810,false,false,0,0,0,0,0,0,0,0,0,0,44860145,nygardk/react-share,false,636,7,55,442,TypeScript,master,MIT,,2810,2810,73,11464,2015-10-24T09:36:56Z,2026-03-09T16:36:33Z,2026-07-10T08:22:30Z,,187,,,,,,,2026-03-09T16:36:33Z,063026969960799dd7d8a79933c512de22ef4ccd,true,false,false,,TypeScript;JavaScript,,react;react-component;share-counts;sharing;social-media
+nygctech/PySeq2500,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:11:50Z,21,false,false,0,0,0,0,0,0,0,0,0,0,210878004,nygctech/PySeq2500,false,804,12,0,11,Python,master,MIT,,21,21,7,131294,2019-09-25T15:23:37Z,2026-05-21T19:04:49Z,2026-05-21T19:04:53Z,,6,,,,,,,2026-05-21T19:04:49Z,a2d66d3b02898f7db45c2e0accd142034f47ee95,true,false,false,,Python;Jupyter Notebook;Batchfile;Shell,,
+nyggus/easycheck,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:12:36Z,25,false,false,0,0,0,0,0,0,0,0,0,0,299679906,nyggus/easycheck,false,340,5,9,2,Python,master,MIT,,25,25,7,345,2020-09-29T16:48:29Z,2026-01-29T08:45:54Z,2026-05-01T19:14:05Z,,22,,,,,,,2026-01-29T08:45:54Z,c1bdb030198e9753152ab3d075516eb48ed6a88a,true,false,false,,Python,,assertion;python3;testing;unit-testing
+nyggus/rounder,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:13:43Z,13,false,false,0,0,0,0,0,0,0,0,0,0,481103223,nyggus/rounder,false,128,8,10,0,Python,main,MIT,,13,13,4,100,2022-04-13T06:45:22Z,2026-03-16T12:39:43Z,2026-03-16T12:34:52Z,,2,,,,,,,2026-03-16T12:39:43Z,a3cef175bdb54546905779603974d0ca09603b2a,true,false,false,,Python,,data-science;maths;round;statistics
+nyggus/tracemem,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:14:03Z,19,false,false,0,0,0,0,0,0,0,0,0,0,663394764,nyggus/tracemem,false,34,3,3,0,Python,main,MIT,,19,19,2,63,2023-07-07T07:40:59Z,2026-03-24T08:08:11Z,2026-04-05T11:57:34Z,,1,,,,,,,2026-03-24T08:08:11Z,781bdb663fd41b4905480efc2fde030914dff952,false,false,false,,Python,,memory;memory-management;profiling;python;python3
+nyigoro/lumina-lang,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:14:50Z,114,false,false,0,0,0,0,0,0,0,0,0,0,1021046001,nyigoro/lumina-lang,false,320,2,6,3,TypeScript,main,MIT,https://nyigoro.abrdns.com,114,114,1,18514,2025-07-16T19:44:53Z,2026-06-01T11:23:35Z,2026-07-07T00:36:25Z,,0,,,,,,,2026-06-01T11:23:35Z,d07ddf17a987cc3fb50403f1a6c224641e4421ac,true,false,false,,TypeScript;JavaScript;CSS;WebAssembly;HTML,,compiled-language;compiler;docs;javascript;language;new;new-language;new-programming-language;praser;programming-language;rust-lang;typescript;web
+nylas/nylas-nodejs,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:16:28Z,180,false,false,0,0,0,0,0,0,0,0,0,0,31620232,nylas/nylas-nodejs,false,713,108,86,126,TypeScript,main,MIT,,180,180,87,4635,2015-03-03T20:41:13Z,2026-07-07T19:55:47Z,2026-07-08T01:52:50Z,,2,,,,,,,2026-07-07T19:55:47Z,cd785ad50fe856fb2e39f6454858a0537cb8b694,true,false,false,,TypeScript;JavaScript,,
+nylas/nylas-python,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:17:04Z,107,false,false,0,0,0,0,0,0,0,0,0,0,23127861,nylas/nylas-python,false,730,77,63,84,Python,main,MIT,,107,107,60,1587,2014-08-19T22:30:03Z,2026-07-08T15:18:47Z,2026-07-07T19:56:03Z,,9,,,,,,,2026-07-08T15:18:47Z,025d74917075cf741d3822d5deab656acbbd8a34,true,false,false,,Python,,
+nyomansunima/official-site,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:18:41Z,11,false,false,0,0,0,0,0,0,0,0,0,0,627319520,nyomansunima/official-site,false,1510,7,27,0,TypeScript,main,MIT,https://nyomansunima.com,11,11,4,62208,2023-04-13T08:13:18Z,2026-06-29T14:55:40Z,2026-05-07T04:06:38Z,,6,,,,,,,2026-06-29T14:55:40Z,347403c8775bcbee94a4f3d1484fb61c3d9337a6,false,false,false,,TypeScript;CSS,,bio;blog;nextjs;personal-blog;personal-website;portfolio;project;sanity;tailwindcss
+nyomnisgarz/amd-diffusion-lab,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:19:17Z,12,false,false,0,0,0,0,0,0,0,0,0,0,1274352475,nyomnisgarz/amd-diffusion-lab,false,25,1,0,0,Python,main,MIT,,12,12,2,49,2026-06-19T12:28:12Z,2026-07-06T20:18:25Z,2026-07-06T20:28:45Z,,2,,,,,,,2026-07-06T20:18:25Z,b22729ade84763587ed22f600fac6c41f4110c96,true,false,false,,Python,,lora;open-source;python;rocm;stable-diffusion
+nyosegawa/hiragana-asr,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:20:43Z,13,false,false,0,0,0,0,0,0,0,0,0,0,1171488378,nyosegawa/hiragana-asr,false,2,1,0,6,Python,main,Apache-2.0,,13,13,1,96,2026-03-03T09:35:07Z,2026-03-03T10:54:41Z,2026-06-05T11:19:20Z,,1,,,,,,,2026-03-03T10:54:41Z,f78b27ce0b897d2a5db217275c6730fc53b1fcaa,true,false,false,,Python;Shell,,
+nyosegawa/notion-cli,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:20:53Z,53,false,false,0,0,0,0,0,0,0,0,0,0,1184983485,nyosegawa/notion-cli,false,16,1,0,11,TypeScript,main,MIT,,53,53,2,177,2026-03-18T05:51:10Z,2026-03-20T07:41:01Z,2026-06-24T08:45:19Z,,1,,,,,,,2026-03-20T07:41:01Z,a325ac7a6527860d081581215cf4662d59b41351,false,false,false,,TypeScript;Shell;JavaScript,,
+nyosegawa/openclaw-defender,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:21:30Z,10,false,false,0,0,0,0,0,0,0,0,0,0,1158434117,nyosegawa/openclaw-defender,false,11,1,0,2,TypeScript,main,MIT,,10,10,1,156,2026-02-15T11:15:52Z,2026-03-08T07:29:36Z,2026-06-03T08:08:28Z,,2,,,,,,,2026-03-08T07:29:36Z,93c810b8598fc2023293beeb9c92376aa30bcfae,true,false,false,,TypeScript;Python;Dockerfile,,
+nyosegawa/skills,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:22:36Z,56,false,false,0,0,0,0,0,0,0,0,0,0,1155072082,nyosegawa/skills,false,3,1,0,0,Python,main,MIT,,56,56,1,2870,2026-02-11T04:57:59Z,2026-06-11T07:49:38Z,2026-06-21T11:40:33Z,,0,,,,,,,2026-06-11T07:49:38Z,d03723b708e1de279e7d44fb5f4650ab32e67324,true,false,false,,Python;HTML;Shell;JavaScript,,
+nyosegawa/spark-banana,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:22:56Z,27,false,false,0,0,0,0,0,0,0,0,0,0,1167257643,nyosegawa/spark-banana,false,29,1,0,1,TypeScript,main,MIT,,27,27,1,6101,2026-02-26T05:17:12Z,2026-03-08T07:29:06Z,2026-05-18T06:11:02Z,,0,,,,,,,2026-03-08T07:29:06Z,a95b8732dd797989c06ad11ace9edfe56bb68619,false,false,false,,TypeScript;CSS;JavaScript,,
+nypl-spacetime/map-vectorizer,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:23:06Z,659,false,false,0,0,0,0,0,0,0,0,0,0,11459763,nypl-spacetime/map-vectorizer,false,220,3,0,58,Python,master,MIT,,659,659,8,6530,2013-07-16T20:42:23Z,2026-06-05T15:48:44Z,2026-07-03T22:19:25Z,,9,,,,,,,2026-06-05T15:48:44Z,806931b5b1705955d9f8d3de45c45696e382b9b5,true,false,false,,Python;R,,
+nyrkio/nyrkio,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:24:49Z,67,false,false,0,0,0,0,0,0,0,0,0,0,715835137,nyrkio/nyrkio,false,2592,23,1,8,Python,main,Apache-2.0,https://nyrkio.com,67,67,7,85940,2023-11-07T23:36:30Z,2026-06-29T10:42:31Z,2026-06-29T10:42:34Z,,13,,,,,,,2026-06-29T10:42:31Z,4b8415bb075f25ca3c77d93858ebb303e7710324,false,false,false,,Python;HTML;JavaScript;TypeScript;CSS;Shell;Makefile;Dockerfile,,benchmarking;change-detection;change-point-detection;continuous-benchmarking;continuous-integration;continuous-performance-engineering;performance
+nystudio107/rollup-plugin-critical,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:29:15Z,132,false,false,0,0,0,0,0,0,0,0,0,0,372101788,nystudio107/rollup-plugin-critical,false,218,2,19,13,TypeScript,master,MIT,,132,132,5,835,2021-05-30T01:42:33Z,2026-07-02T21:48:29Z,2026-07-06T09:19:58Z,,1,,,,,,,2026-07-02T21:48:29Z,c68dea51f564908ed782f23ebedb35d8818069c5,true,false,false,,TypeScript;Makefile;JavaScript;HTML;Dockerfile;CSS,,critical;critical-css;rollup;rollup-plugin;vite;vitejs
+nytamin/spacemouse,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:29:45Z,12,false,false,0,0,0,0,0,0,0,0,0,0,716967270,nytamin/spacemouse,false,26,5,0,1,TypeScript,main,MIT,,12,12,1,4382,2023-11-10T08:59:40Z,2026-02-02T07:10:09Z,2026-04-13T06:21:32Z,,1,,,,,,,2026-02-02T07:10:09Z,787929591f8cc282c8823681934e6f7f8a401ae7,true,false,false,,TypeScript;JavaScript;HTML;Dockerfile,,3dconnexion;cadmouse;spacemouse;spacemouse-wireless;spacenavigator;usb-hid
+nytera/meshworks-malla,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:30:22Z,21,false,false,0,0,0,0,0,0,0,0,0,0,1076534373,nytera/meshworks-malla,false,100,1,3,2,Python,main,MIT,,21,21,7,24879,2025-10-15T02:09:28Z,2025-12-02T06:25:34Z,2026-05-26T11:06:07Z,,0,,,,,,,2025-12-02T06:25:34Z,52b936c9eee54f407236eaa45e028666121593e0,false,false,false,,Python;HTML;JavaScript;CSS;Dockerfile;Makefile;Nix;Shell,,
+nyu-devops/lab-bluemix-cf,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:35:55Z,11,false,false,0,0,0,0,0,0,0,0,0,0,82590754,nyu-devops/lab-bluemix-cf,false,156,1,0,609,Python,master,Apache-2.0,,11,11,4,246,2017-02-20T18:47:49Z,2026-07-08T11:57:19Z,2026-04-01T11:44:08Z,,0,,,,,,,2026-07-08T11:57:19Z,ccc0670eeebf4444048c872b9d4a6298c53226b9,true,false,false,,Python;HTML;Makefile;Shell;Dockerfile;Procfile,,bluemix;cloud-foundry;flask;ibm-cloud;python;redis
+nyu-devops/lab-flask-bdd,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:36:14Z,17,false,false,0,0,0,0,0,0,0,0,0,0,86229218,nyu-devops/lab-flask-bdd,false,337,1,0,123,Python,master,Apache-2.0,,17,17,4,639,2017-03-26T12:02:17Z,2026-05-09T19:39:12Z,2026-05-09T19:39:16Z,,0,,,,,,,2026-05-09T19:39:12Z,1fc8e43c6c8086cb6bba56d21c45d4b7113c6e75,true,false,false,,Python;JavaScript;HTML;Shell;Makefile;Gherkin;Dockerfile;Procfile,,
+nyu-devops/lab-flask-rest,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:36:24Z,23,false,false,0,0,0,0,0,0,0,0,0,0,172372417,nyu-devops/lab-flask-rest,false,172,4,0,26,Python,master,Apache-2.0,,23,23,3,825,2019-02-24T18:12:11Z,2026-07-10T15:30:26Z,2026-05-12T01:49:52Z,,2,,,,,,,2026-07-10T15:30:26Z,80c246492ff9636fadca50e4381a87a5bba1e0c9,true,false,false,,Python;Dockerfile;Makefile;Procfile;Shell,,
+nyu-devops/lab-flask-restplus-swagger,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:37:02Z,12,false,false,0,0,0,0,0,0,0,0,0,0,109523318,nyu-devops/lab-flask-restplus-swagger,false,161,4,0,33,Python,master,Apache-2.0,,12,12,4,3134,2017-11-04T19:18:04Z,2026-07-10T21:13:17Z,2026-05-12T01:47:55Z,,2,,,,,,,2026-07-10T21:13:17Z,eb9a37428cacf406ed9dc9fcaa3676193ea762b6,true,false,false,,Python;Dockerfile;Makefile;HTML;Procfile;Shell,,flask-restplus;nyu-devops;python;swagger;vagrant;virtualbox
+nyu-devops/lab-flask-tdd,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:38:09Z,51,false,false,0,0,0,0,0,0,0,0,0,0,85693879,nyu-devops/lab-flask-tdd,false,332,1,0,64,Python,master,Apache-2.0,,51,51,5,792,2017-03-21T11:29:06Z,2026-06-10T02:25:49Z,2026-06-10T02:25:53Z,,0,,,,,,,2026-06-10T02:25:49Z,0427369cbb9a26d1eec5fe3c4071aafb92d29d29,true,false,false,,Python;Dockerfile;Makefile;Procfile;Shell,,flask;nose;python;pyunit;tdd
+nyu-devops/project-template,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:38:27Z,11,false,false,0,0,0,0,0,0,0,0,0,0,245211438,nyu-devops/project-template,false,180,2,0,21,Python,master,Apache-2.0,,11,11,4,848,2020-03-05T16:19:47Z,2026-07-10T08:00:55Z,2026-06-27T21:02:20Z,,1,,,,,,,2026-07-10T08:00:55Z,08330b36e1dcb7831c5445fc8f8dd0190e622909,true,false,false,,Python;Shell;Makefile;Dockerfile;Procfile,,
+nyu-devops/sample-accounts,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:38:37Z,12,false,false,0,0,0,0,0,0,0,0,0,0,247854311,nyu-devops/sample-accounts,false,107,1,0,15,Python,master,Apache-2.0,,12,12,2,244,2020-03-17T01:43:33Z,2026-06-11T22:02:29Z,2026-06-11T22:02:33Z,,0,,,,,,,2026-06-11T22:02:29Z,66946c43c0f40618423b9800cb0cd0a245546fb2,true,false,false,,Python;Makefile;Dockerfile;Procfile;Shell,,flask;flask-backend;flask-sqlalchemy;nosetests;python;rest-api
+nyu-mlab/iot-inspector-client,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:39:16Z,474,false,false,0,0,0,0,0,0,0,0,0,0,158865806,nyu-mlab/iot-inspector-client,false,536,25,24,67,Python,master,Apache-2.0,https://inspector.engineering.nyu.edu/,474,474,13,223415,2018-11-23T18:23:07Z,2026-07-05T19:14:04Z,2026-07-04T07:01:01Z,,18,,,,,,,2026-07-05T19:14:04Z,f5cc885c69f3bd48df19a0011cf7b6902fe42821,true,false,false,,Python;Go;PowerShell;Shell;NSIS;Batchfile,,internet-of-things;iot;network-analysis;smart-home
+nyuoss/gradescope-api,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:40:40Z,38,false,false,0,0,0,0,0,0,0,0,0,0,771568109,nyuoss/gradescope-api,false,212,2,2,27,Python,main,MIT,,38,38,8,583,2024-03-13T14:37:18Z,2026-05-24T03:08:23Z,2026-06-05T07:39:25Z,,10,,,,,,,2026-05-24T03:08:23Z,586ad513b6b4715682f09fc6fe3fff2e73304f74,false,false,false,,Python;Just,,
+nyurik/fatul,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:41:29Z,14,false,false,0,0,0,0,0,0,0,0,0,0,512458543,nyurik/fatul,false,56,1,0,5,Python,main,MIT,,14,14,3,178,2022-07-10T14:38:55Z,2026-03-10T03:37:35Z,2026-06-17T02:46:02Z,,0,,,,,,,2026-03-10T03:37:35Z,6af32539bf2cba4d6f8e65229642c0b4d7fac56d,false,false,false,,Python;Just;Shell,,
+nyx-discord/nyx,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:43:03Z,19,false,false,0,0,0,0,0,0,0,0,0,0,729671813,nyx-discord/nyx,false,201,4,60,1,TypeScript,main,MIT,https://nyx-discord.github.io/nyx/docs,19,19,1,15497,2023-12-10T00:56:38Z,2025-10-20T17:26:00Z,2026-04-17T02:27:31Z,,3,,,,,,,2025-10-20T17:26:00Z,fff89336e84dc4b2d3b55012b51eacf077e26174,false,false,false,,TypeScript;MDX;CSS;JavaScript;Shell,,discord;discord-bot;discord-js;framework;typescript
+nyzx0322/FnOS-GUI-Exploit-Tool,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,503,other,"<!DOCTYPE html>
+<!--
+
+Hello future GitHubber! I bet you're here to remove those nasty inline styles,
+DRY up these templates and make 'em nice and re-usable, right?
+
+Please, don't. https://github.com/styleguide/templates/2.0
+
+-->
+<html>
+  <head>
+    <title>Unicorn! &middot; GitHub</title>
+    <style type=""text/css"" media=""screen"">
+      body {
+        background-color: #f1f1f1;
+     ",,,2026-07-16T23:44:33Z,35,false,false,0,0,0,0,0,0,0,0,0,0,1149324831,nyzx0322/FnOS-GUI-Exploit-Tool,false,5,1,0,8,Python,main,MIT,https://github.com/nyzx0322/FnOS-GUI-Exploit-Tool,35,35,1,994,2026-02-04T01:34:05Z,2026-02-07T03:27:49Z,2026-06-25T14:46:42Z,,2,,,,,,,2026-02-07T03:27:49Z,d792cfe2794f270ff2ad7b8443fbaf185eeab00d,false,false,false,,Python;HTML;CSS;Dockerfile,,exploit;fnos;hacking;tools
+pigeonposse/binarium,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T01:08:20Z,10,false,false,0,0,0,0,0,0,0,0,0,0,864333701,pigeonposse/binarium,false,64,1,27,1,TypeScript,main,MIT,https://binarium.pigeonposse.com,10,10,1,1401,2024-09-28T00:46:59Z,2026-01-18T21:45:10Z,2026-01-18T21:43:19Z,,0,,,,,,,2026-01-18T21:45:10Z,96f3ceec3c724b2a116eabdceab806de1fb70057,true,false,false,,TypeScript;JavaScript,,arm64;binary;builder;bun;cli;deno;executable;js;library;node;nodejs;ts;x86;zero-config
+pnmartinez/simple-computer-use,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T01:19:27Z,30,false,false,0,0,0,0,0,0,0,0,0,0,945147433,pnmartinez/simple-computer-use,false,234,14,7,1,Python,main,MIT,https://github.com/pnmartinez/computer-use-android-app,30,30,5,3573,2025-03-08T19:08:06Z,2026-04-03T03:26:05Z,2026-06-19T07:08:06Z,,11,,,,,,,2026-04-03T03:26:05Z,f69ddc0eb9b642e15e531700b31c1c3fb8a2a502,false,false,false,,Python;JavaScript;CSS;HTML;Shell,,automation;computer-use;ocr;ollama
+popoki-pro/findadoc-localization,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T01:31:46Z,19,false,false,0,0,0,0,0,0,0,0,0,0,1101153718,popoki-pro/findadoc-localization,false,216,1,0,0,Python,main,BSD-3-Clause,,19,19,1,2119,2025-11-21T09:15:43Z,2025-11-21T09:16:28Z,2026-04-28T13:38:57Z,,0,,,,,,,2025-11-21T09:16:28Z,85ac9ddfe0726471a42f127fd89388d4c8fe7b33,true,false,false,,Python;JavaScript;Shell,,
+project-nomos/nomos,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T01:46:08Z,24,false,false,0,0,0,0,0,0,0,0,0,0,1181044382,project-nomos/nomos,false,339,10,34,4,TypeScript,main,MIT,https://projectnomos.dev,24,24,2,7693,2026-03-13T17:29:36Z,2026-07-03T02:00:11Z,2026-07-08T11:01:15Z,,0,,,,,,,2026-07-03T02:00:11Z,29ea1e44458109e0696fef7588227f205c1f3ebf,false,false,false,,TypeScript;Shell;Ruby;JavaScript;Dockerfile;CSS;AppleScript,,agent-memory;agent-skills;agentic-ai;ai-agents;ai-assistant;autonomous-agents;claude;claude-ai;claude-code;claude-skills;digital-clone;llm;mcp;multi-agent;multi-agent-systems;ollama;self-hosted
+realworkagent/openthomas,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T02:33:47Z,361,false,false,0,0,0,0,0,0,0,0,0,0,1081166515,realworkagent/openthomas,false,2,1,19,58,TypeScript,main,MIT,https://openthomas.com,361,361,1,52,2025-10-22T12:03:01Z,2026-06-13T06:17:49Z,2026-07-10T05:33:51Z,,0,,,,,,,2026-06-13T06:17:49Z,1da475813dd026c77a7f2d1f6f08321b62c11cee,true,false,false,,TypeScript;JavaScript,,bayesian;elo-rating;forecasting;kalshi;kelly-criterion;poisson;polymarket;prediction-markets;quantitative-finance;sports-betting;trading;typescript;world-cup
+renatomoselli/rpacore,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T02:48:05Z,20,false,false,0,0,0,0,0,0,0,0,0,0,1199071683,renatomoselli/rpacore,false,98,1,2,0,Python,main,Apache-2.0,https://rpacore.dev,20,20,1,1896,2026-04-02T02:57:04Z,2026-07-10T01:58:14Z,2026-07-10T01:58:18Z,,0,,,,,,,2026-07-10T01:58:14Z,ba6785a43c7f0f07129f59e06da625f2aa2a7553,false,false,false,,Python,,automation;local-first;python;rpa;sqlite;workflow
+roadordinaryuncover/stellaris-trainer-utility,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T03:15:57Z,18,false,false,0,0,0,0,0,0,0,0,0,0,1287621207,roadordinaryuncover/stellaris-trainer-utility,false,21,1,1,2,Python,main,MIT,,18,18,1,23,2026-07-02T21:28:24Z,2026-07-02T21:31:05Z,2026-07-02T21:34:09Z,,0,,,,,,,2026-07-02T21:31:05Z,d642f30bbad8d53c14b402349d742898a0f84ea4,false,false,false,,Python;Rust;C#,,4x-game;game-assistant;game-utility;gaming-tools;memory-editor;modding-tools;paradox-games;pc-gaming;singleplayer-trainer;space-strategy;stellaris;stellaris-mod;stellaris-trainer;stellaris-utility;strategy-game;trainer;trainer-utility
+rzgarespo/ComfyUI-diffusiondb,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T03:43:19Z,25,false,false,0,0,0,0,0,0,0,0,0,0,1128001481,rzgarespo/ComfyUI-diffusiondb,false,3,1,0,2,Python,main,MIT,,25,25,1,5,2026-01-05T01:44:38Z,2026-01-05T02:03:24Z,2026-06-19T08:14:32Z,,0,,,,,,,2026-01-05T02:03:24Z,c2bf22107a0017baa2683a2fe616879d96340519,true,false,false,,Python,,
+rzgarespo/ComfyUI-qwen-image-size-picker,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T03:43:20Z,13,false,false,0,0,0,0,0,0,0,0,0,0,1034586564,rzgarespo/ComfyUI-qwen-image-size-picker,false,20,1,1,1,Python,main,MIT,,13,13,1,424,2025-08-08T16:24:09Z,2026-02-13T16:16:01Z,2026-02-13T16:10:51Z,,0,,,,,,,2026-02-13T16:16:01Z,ce2d4d1911ef3e4687576fe3271500667196666c,true,false,false,,Python,,
+skynet-datagrid-labs/TechPulse,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T04:49:43Z,19,false,false,0,0,0,0,0,0,0,0,0,0,1212538211,skynet-datagrid-labs/TechPulse,false,71,4,0,0,Python,main,MIT,,19,19,4,4958,2026-04-16T13:31:19Z,2026-06-28T10:05:02Z,2026-06-28T10:05:05Z,,6,,,,,,,2026-06-28T10:05:02Z,b63caf8aadc2bc08fffbd7f2196d73ce4638abd8,true,false,false,,Python;Jupyter Notebook;Batchfile,,
+theneocorp/cmppatcher,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T07:51:36Z,14,false,true,0,0,0,0,0,0,0,0,0,0,1215396525,theneocorp/cmppatcher,false,15,2,0,3,Python,master,MIT,,14,14,1,1467,2026-04-19T21:22:41Z,2026-05-05T02:30:40Z,2026-07-05T22:29:59Z,,1,,,,,,,2026-05-05T02:30:40Z,e2ecbab9390685de0d8b4f2af01b31452de05d33,true,true,false,,Python;C++;Shell;Cuda;C;Makefile;Go Template;Batchfile,,
+tinyhumansai/openhuman-skills,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T08:00:44Z,38,false,true,0,0,0,0,0,0,0,0,0,0,1190266337,tinyhumansai/openhuman-skills,false,,,,18,TypeScript,main,MIT,,38,38,,3954,2026-03-24T05:44:52Z,2026-04-10T18:41:18Z,2026-07-03T22:52:42Z,,0,,,,,,,2026-04-10T18:41:18Z,,false,true,false,,,,
+tritano/ultraviewer,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T08:14:49Z,29,false,false,0,0,0,0,0,0,0,0,0,0,1240867561,tritano/ultraviewer,false,4,1,1,2,TypeScript,main,MIT,,29,29,1,11,2026-05-16T17:07:32Z,2026-05-16T17:15:02Z,2026-07-08T08:58:39Z,,3,,,,,,,2026-05-16T17:15:02Z,90cc71d6cb0e2162ff0d676b5ab2a1af790522cb,true,false,false,,TypeScript;JavaScript,,anydesk-integration;download-ultraviewer;download-ultraviewer-for-windows;teamviewer;ultraviewer;ultraviewer-download;ultraviewer-download-for-windows;ultraviewer-for-windows;ultraviewer-pc;ultraviewer-unlock
+uwuncyan/NodeNexus,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T09:35:04Z,39,false,false,0,0,0,0,0,0,0,0,0,0,1284823291,uwuncyan/NodeNexus,false,7,2,0,0,TypeScript,main,MIT,,39,39,1,7,2026-06-30T08:21:05Z,2026-06-30T08:23:08Z,2026-07-10T06:10:34Z,,0,,,,,,,2026-06-30T08:23:08Z,ab8d84bf5fc91eee4e302015a16ad9b1a2f0899f,true,false,false,,TypeScript,,
+virt-s1/os-tests,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T09:53:02Z,13,false,true,0,0,0,0,0,0,0,0,0,0,290446899,virt-s1/os-tests,false,1669,5,0,26,Python,master,Apache-2.0,,13,13,37,459469,2020-08-26T08:58:38Z,2026-05-15T12:48:47Z,2026-05-15T12:49:02Z,,4,,,,,,,2026-05-15T12:48:47Z,e2089acf639bd2562a8db92a914b0f531f46f735,true,true,false,,Python;Shell;HTML;C;templ,,alicloud;amazon;aws;azure;centos;cloud;ec2;gcp;kernel;libvirt;linux;ltp;nutanix;oci;openstack;quality-assurance;rhel;test-automation
+weifuwan/seatunnel-web,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T10:07:04Z,1188,false,false,0,0,0,0,0,0,0,0,0,0,1154225023,weifuwan/seatunnel-web,false,787,3,3,126,TypeScript,main,Apache-2.0,https://doc.seatunnel-web.com,1188,1188,10,23207,2026-02-10T06:28:11Z,2026-07-09T07:21:31Z,2026-07-11T01:42:19Z,,26,,,,,,,2026-07-09T07:21:31Z,805989ff83a10312601e4f97ef91438c3c76baa6,true,false,false,,TypeScript;Java;Less;JavaScript;Shell;Dockerfile;CSS,,batch;dag;data-engineering;data-integration;data-pipeline;etl;pipeline;seatunnel;streaming
+weitse-hsu/ensemble_md,MULTIPLE,False,SKILL.md,,master,master,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T10:07:20Z,20,false,false,0,0,0,0,0,0,0,0,0,0,512248492,weitse-hsu/ensemble_md,false,700,4,10,4,Python,master,MIT,,20,20,2,77784,2022-07-09T17:39:31Z,2026-07-11T00:58:34Z,2026-07-10T23:41:49Z,,10,,,,,,,2026-07-11T00:58:34Z,d701e84c9b6d0e5dcf524567f6b26b5c7fd3d5cd,true,false,false,,Python;Shell,,advanced-sampling-methods;drug-design;expanded-ensembles;free-energy-calculations;molecular-dynamics;parallel-computing;protein-simulations;python;replica-exchange;statistical-mechanics
+wesm/spicytakes.org,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T10:08:51Z,21,false,false,0,0,0,0,0,0,0,0,0,0,1135942190,wesm/spicytakes.org,false,506,1,0,0,Python,main,MIT,https://spicytakes.org,21,21,2,140166,2026-01-16T20:15:01Z,2026-07-10T09:15:40Z,2026-07-10T09:16:21Z,,0,,,,,,,2026-07-10T09:15:40Z,68f07c645dc25f6a38b75b79b701a1a4df5f93d2,true,false,false,,Python;Svelte;TypeScript;Shell;JavaScript;CSS;Makefile;HTML,,
+worldmonitor/worldmonitor,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T10:21:48Z,97,false,false,0,0,0,0,0,0,0,0,0,0,1206229859,worldmonitor/worldmonitor,false,3,1,1,29,TypeScript,main,Apache-2.0,,97,97,1,2008,2026-04-09T17:52:12Z,2026-04-09T17:56:38Z,2026-07-10T19:12:59Z,,0,,,,,,,2026-04-09T17:56:38Z,910f8c5290127c80a3f5b9775b4784c3db1fe83c,false,false,false,,TypeScript;JavaScript,,world-monitor;world-monitor-download;world-monitor-install;worldmonitor;worldmonitor-download;worldmonitor-install
+xw7872081123/wallpaper-engine-steam,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T10:47:25Z,82,false,false,0,0,0,0,0,0,0,0,0,0,1242450421,xw7872081123/wallpaper-engine-steam,false,3,1,1,1,TypeScript,main,MIT,,82,82,1,9,2026-05-18T12:44:49Z,2026-05-18T12:50:58Z,2026-07-08T08:58:40Z,,1,,,,,,,2026-05-18T12:50:58Z,f2a3c9c8ede0784ca8fa24047a25e2d1ddb30d70,true,false,false,,TypeScript,,animated-wallpaper;best-wallpaper-engine;downloadwallpaperengine;free-wallpapers-engine;linux-wallpaperengine;live-wallpapers;steamwallpaper;steamwallpaperengine;wallpaper-engine-features;wallpaperengine-download;wallpaperenginefree;wallpaperenginepc;wallpaperenginesteam;wallpapers;wallpapersengine
+yellow-key/yellowkey-bitlocker,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T14:11:50Z,48,false,false,0,0,0,0,0,0,0,0,0,0,1295596797,yellow-key/yellowkey-bitlocker,false,4,1,1,0,TypeScript,main,MIT,,48,48,1,10,2026-07-09T17:32:32Z,2026-07-09T18:43:42Z,2026-07-11T01:46:26Z,,0,,,,,,,2026-07-09T18:43:42Z,30dfdf1428e50cbdf1f32fbeb932c08b1185abec,true,false,false,,TypeScript,,bitlocker;bitlocker-bypass;bitlocker-drive-encryption;bitlocker-drive-lock;bitlocker-drive-management;bitlocker-lock;bitlocker-yellowkey;cve-2026-45585;decryption-tool;full-disk-encryption;nightmare-eclipse;open-source-vulnerabilities;vulnerabilities;vulnerability;yellow;yellowkey;yellowkey-bitlocker;yellowkey-cve;yellowkey-exploit;yellowkey-vulnerability
+yoshican/NodeCore,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T14:20:46Z,11,false,false,0,0,0,0,0,0,0,0,0,0,1284796725,yoshican/NodeCore,false,5,2,0,0,Python,main,MIT,,11,11,1,6,2026-06-30T07:50:57Z,2026-06-30T07:52:40Z,2026-07-09T13:44:56Z,,0,,,,,,,2026-06-30T07:52:40Z,1f385cd2e8b50e025a66bb23e4366d2f11cdb841,true,false,false,,Python,,
+yoshican/VaultStream,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T14:20:47Z,53,false,false,0,0,0,0,0,0,0,0,0,0,1284819806,yoshican/VaultStream,false,7,2,0,0,TypeScript,main,MIT,,53,53,1,7,2026-06-30T08:17:31Z,2026-06-30T08:18:22Z,2026-07-10T18:41:40Z,,1,,,,,,,2026-06-30T08:18:22Z,54f1694567177dad12345f6b70d3b2ea9468232c,true,false,false,,TypeScript,,
+you922/telegram-mcp,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T14:21:05Z,26,false,false,0,0,0,0,0,0,0,0,0,0,1127140540,you922/telegram-mcp,false,21,5,2,10,Python,main,MIT,,26,26,3,258,2026-01-03T09:06:57Z,2026-06-07T12:10:39Z,2026-07-06T15:34:11Z,,5,,,,,,,2026-06-07T12:10:39Z,1dcd8934a0f12aa46a98d27059d59b56d95f0d81,true,false,false,,Python;HTML;Dockerfile;Shell,,ai;api-client;automation;bot-framework;bulk-messaging;chatbot;marketing;mcp;messaging;multi-account;python;scheduler;telegram;telegram-api;telegram-bot;telegram-client;telegram-marketing;telegram-tools;telethon;web-dashboard
+youversion/platform-sdk-reactnative,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T14:21:48Z,13,false,false,0,0,0,0,0,0,0,0,0,0,1094548215,youversion/platform-sdk-reactnative,false,68,19,11,2,TypeScript,main,Apache-2.0,,13,13,8,2841,2025-11-11T21:22:56Z,2026-04-22T19:05:28Z,2026-05-14T19:14:10Z,,4,,,,,,,2026-04-22T19:05:28Z,655a0f7ebbaeb554373f939110e4bb9ea68fc861,false,false,false,,TypeScript;Kotlin;Swift;Shell;JavaScript;Ruby,,
+yunawyner/NodeMesh,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T14:28:36Z,48,false,false,0,0,0,0,0,0,0,0,0,0,1284927719,yunawyner/NodeMesh,false,5,2,0,0,Python,main,MIT,,48,48,1,6,2026-06-30T10:17:09Z,2026-06-30T10:18:12Z,2026-07-10T06:11:14Z,,0,,,,,,,2026-06-30T10:18:12Z,a6ab950ab86b9b5e14f783899e48d318b742d870,true,false,false,,Python,,
+zoofai/Free-ai-video-generator,MULTIPLE,False,SKILL.md,,main,main,,,,,,tree_recursive,404,invalid_repo,Not Found,,,2026-07-17T16:02:20Z,171,false,false,0,0,0,0,0,0,0,0,0,0,1194872870,zoofai/Free-ai-video-generator,false,3,1,1,46,Python,main,MIT,,171,171,1,8,2026-03-28T23:23:25Z,2026-03-28T23:32:40Z,2026-07-10T09:39:31Z,,3,,,,,,,2026-03-28T23:32:40Z,059f73b1f8d2c43ea82e77c19c3364d73232ffe5,true,false,false,,Python,,comfyui;free-veo3;kling;kling-ai;local-ai-video;local-ai-video-generator;sora;veo3;veo3-fast;wan22

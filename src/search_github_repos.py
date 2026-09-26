@@ -70,6 +70,10 @@ log = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 
 DEFAULT_LANGUAGES = [
+    "TypeScript", "Python",
+]
+
+FULL_CORPUS_LANGUAGES = [
     "TypeScript", "Python", "C#", "Go", "C++",
     "JavaScript", "Java", "C", "PHP", "Rust",
 ]
@@ -707,8 +711,8 @@ def _combo_csv_path(out_csv: str, language: str, license_key: str) -> str:
     """
     Derive a per-(language, license) CSV path from the main output path.
 
-    Example: data/v1_2026-04-19/seart_csvs/github_search_results.csv + TypeScript + mit
-             → data/v1_2026-04-19/seart_csvs/github_search_results_typescript_mit.csv
+    Example: data/seart_csvs/github_search_results.csv + TypeScript + mit
+             → data/seart_csvs/github_search_results_typescript_mit.csv
     """
     base, ext = os.path.splitext(out_csv)
     lang_slug = _sanitize_name(language)
@@ -860,8 +864,8 @@ def _parse_args(argv: List[str]) -> argparse.Namespace:
     )
     p.add_argument(
         "--out-csv",
-        default="data/v1_2026-04-19/seart_csvs/github_search_results.csv",
-        help="Output CSV path (default: data/v1_2026-04-19/seart_csvs/github_search_results.csv)",
+        default="data/seart_csvs/github_search_results.csv",
+        help="Output CSV path (default: data/seart_csvs/github_search_results.csv)",
     )
     p.add_argument(
         "--min-stars",
@@ -886,7 +890,9 @@ def _parse_args(argv: List[str]) -> argparse.Namespace:
         metavar="LANG",
         help=(
             "Languages to search (space-separated). "
-            f"Default: {' '.join(DEFAULT_LANGUAGES)}"
+            f"Default: {' '.join(DEFAULT_LANGUAGES)}. "
+            "To reproduce the archived 11-language corpus, pass: "
+            f"{' '.join(FULL_CORPUS_LANGUAGES)}"
         ),
     )
     p.add_argument(

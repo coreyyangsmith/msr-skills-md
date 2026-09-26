@@ -1,0 +1,182 @@
+{
+  "n": 98771,
+  "metrics": {
+    "words": {
+      "min": 0,
+      "median": 666,
+      "mean": 1015.1612315355721,
+      "max": 139640,
+      "pct_nonzero": 99.9827884703,
+      "total": 100268490
+    },
+    "headings": {
+      "min": 0,
+      "median": 11,
+      "mean": 17.74357858075751,
+      "max": 2840,
+      "pct_nonzero": 97.28665296493911,
+      "total": 1752551
+    },
+    "h1": {
+      "min": 0,
+      "median": 1,
+      "mean": 4.002490609591884,
+      "max": 487,
+      "pct_nonzero": 91.28691620009921,
+      "total": 395330
+    },
+    "h2": {
+      "min": 0,
+      "median": 6,
+      "mean": 7.2715675653785015,
+      "max": 1028,
+      "pct_nonzero": 94.31412054145447,
+      "total": 718220
+    },
+    "h3": {
+      "min": 0,
+      "median": 3,
+      "mean": 5.963157202012736,
+      "max": 1311,
+      "pct_nonzero": 57.60901479179111,
+      "total": 588987
+    },
+    "bundled_files": {
+      "min": 0,
+      "median": 0,
+      "mean": 3.6837432039768756,
+      "max": 12138,
+      "pct_nonzero": 42.43047048222657,
+      "total": 363847
+    },
+    "all_refs": {
+      "min": 0,
+      "median": 3,
+      "mean": 6.0361442123700275,
+      "max": 488,
+      "pct_nonzero": 75.00987131850442,
+      "total": 596196,
+      "pct_of_refs": 100.0
+    },
+    "local_refs": {
+      "min": 0,
+      "median": 2,
+      "mean": 4.8693644895769,
+      "max": 271,
+      "pct_nonzero": 66.83135738222758,
+      "total": 480952,
+      "pct_of_refs": 80.67011519701575
+    },
+    "refs_bundle": {
+      "min": 0,
+      "median": 0,
+      "mean": 1.4161140415709064,
+      "max": 267,
+      "pct_nonzero": 25.814257221249154,
+      "total": 139871,
+      "pct_of_refs": 23.460573368489555
+    },
+    "refs_outside": {
+      "min": 0,
+      "median": 0,
+      "mean": 0.21291674681839812,
+      "max": 41,
+      "pct_nonzero": 9.165645786718773,
+      "total": 21030,
+      "pct_of_refs": 3.5273634844916772
+    },
+    "refs_dangling": {
+      "min": 0,
+      "median": 0,
+      "mean": 0.21801945915299026,
+      "max": 123,
+      "pct_nonzero": 8.372902977594638,
+      "total": 21534,
+      "pct_of_refs": 3.6118994424652295
+    },
+    "refs_agent_config": {
+      "min": 0,
+      "median": 0,
+      "mean": 0.16052282552571098,
+      "max": 42,
+      "pct_nonzero": 9.170708001336425,
+      "total": 15855,
+      "pct_of_refs": 2.659360344584667
+    },
+    "refs_unverified": {
+      "min": 0,
+      "median": 1,
+      "mean": 2.8617914165088942,
+      "max": 198,
+      "pct_nonzero": 53.483309878405606,
+      "total": 282662,
+      "pct_of_refs": 47.41091855698462
+    },
+    "refs_url": {
+      "min": 0,
+      "median": 0,
+      "mean": 1.1667797227931276,
+      "max": 488,
+      "pct_nonzero": 30.078666815158297,
+      "total": 115244,
+      "pct_of_refs": 19.329884802984253
+    },
+    "filtered_mentions": {
+      "min": 0,
+      "median": 0,
+      "mean": 0.4266231991171498,
+      "max": 23,
+      "pct_nonzero": 20.650798311245204,
+      "total": 42138,
+      "pct_of_file_mentions": 8.055592727828863
+    },
+    "refs_filtered_project": {
+      "min": 0,
+      "median": 0,
+      "mean": 0.2983466807058752,
+      "max": 23,
+      "pct_nonzero": 14.983142825323222,
+      "total": 29468,
+      "pct_of_file_mentions": 5.63344739910914
+    },
+    "refs_filtered_library": {
+      "min": 0,
+      "median": 0,
+      "mean": 0.010114304806066558,
+      "max": 5,
+      "pct_nonzero": 0.8970244302477448,
+      "total": 999,
+      "pct_of_file_mentions": 0.19098051960465695
+    },
+    "refs_filtered_placeholder": {
+      "min": 0,
+      "median": 0,
+      "mean": 0.11816221360520801,
+      "max": 16,
+      "pct_nonzero": 7.881868159682498,
+      "total": 11671,
+      "pct_of_file_mentions": 2.231164809115066
+    },
+    "orphan_files": {
+      "min": 0,
+      "median": 0,
+      "mean": 2.373743305221168,
+      "max": 12045,
+      "pct_nonzero": 26.558402770043838,
+      "total": 234457
+    }
+  },
+  "bundled_skills": {
+    "n": 41909,
+    "pct_bundle_files_orphaned": 64.43834908629177,
+    "pct_skills_with_orphan": 62.59276050490348
+  },
+  "spearman": {
+    "words~bundled_files": 0.21617168960469582,
+    "words~local_refs": 0.44605357461794765,
+    "words~refs_url": 0.30400600746429307,
+    "headings~bundled_files": 0.21108331453641468,
+    "headings~local_refs": 0.3753748029682224,
+    "headings~refs_url": 0.33339680515016495
+  }
+}

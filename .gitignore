@@ -1,8 +1,15 @@
-# Project Sepcific Filtering
+# Project-specific
 outputs/**/raw_data/
+outputs/cache/
 *.zip
+*.7z
+*.bak
 
 _*/
+.codex-tmp/
+.codex-smoke/
+.uv-cache/
+tests/tmp*/
 
 
 
@@ -168,3 +175,19 @@ cython_debug/
 
 
 .msr-labeling/
+
+
+outputs/raw_data
+outputs/*.7z
+outputs/rq3/labeling_samples/
+outputs/rq3/*.zip
+outputs/rq3/language_sample/
+
+# GitHub rejects blobs over 100 MB. Keep these outputs local.
+outputs/rq2/skill_documents.jsonl
+outputs/rq2/python/skill_documents.jsonl
+outputs/rq2/typescript/skill_documents.jsonl
+outputs/rq2/tfidf_sklearn_top_terms_per_document.csv
+outputs/rq2/dedup/tfidf_sklearn_top_terms_per_document.csv
+outputs/rq2/python/tfidf_sklearn_top_terms_per_document.csv
+outputs/rq2/typescript/tfidf_sklearn_top_terms_per_document.csv

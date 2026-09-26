@@ -25,30 +25,30 @@ appear in both files.
 
 Usage examples
 --------------
-Compare CY vs MV on the Python "both" set:
+Compare labeler A vs labeler B on the Python "both" set:
 
     uv run python src/rq3/calculate_agreement.py \\
-        outputs/v1_2026-04-19/rq3/results/2026-03-28_CY_Labels_Both_Python.json \\
-        outputs/v1_2026-04-19/rq3/results/2026-03-31_MV_Labels_Both_Python.json
+        outputs/v1_2026-04-19/rq3/results/2026-03-28_A_Labels_Both_Python.json \\
+        outputs/v1_2026-04-19/rq3/results/2026-03-31_B_Labels_Both_Python.json
 
-Compare CY Python vs CY TypeScript (same labeler, different language sets):
+Compare labeler A Python vs labeler A TypeScript (same labeler, different language sets):
 
     uv run python src/rq3/calculate_agreement.py \\
-        outputs/v1_2026-04-19/rq3/results/2026-03-28_CY_Labels_Both_Python.json \\
-        outputs/v1_2026-04-19/rq3/results/2026-03-29_CY_Labels_Both_TS.json
+        outputs/v1_2026-04-19/rq3/results/2026-03-28_A_Labels_Both_Python.json \\
+        outputs/v1_2026-04-19/rq3/results/2026-03-29_A_Labels_Both_TS.json
 
 Save results to a custom output file:
 
     uv run python src/rq3/calculate_agreement.py \\
-        outputs/v1_2026-04-19/rq3/results/2026-03-28_CY_Labels_Both_Python.json \\
-        outputs/v1_2026-04-19/rq3/results/2026-03-31_MV_Labels_Both_Python.json \\
-        --output outputs/v1_2026-04-19/rq3/results/kappa_CY_vs_MV_Python.json
+        outputs/v1_2026-04-19/rq3/results/2026-03-28_A_Labels_Both_Python.json \\
+        outputs/v1_2026-04-19/rq3/results/2026-03-31_B_Labels_Both_Python.json \\
+        --output outputs/v1_2026-04-19/rq3/results/kappa_A_vs_B_Python.json
 
 Show only labels that appear in at least one annotation (skip zero-support):
 
     uv run python src/rq3/calculate_agreement.py \\
-        outputs/v1_2026-04-19/rq3/results/2026-03-28_CY_Labels_Both_Python.json \\
-        outputs/v1_2026-04-19/rq3/results/2026-03-31_MV_Labels_Both_Python.json \\
+        outputs/v1_2026-04-19/rq3/results/2026-03-28_A_Labels_Both_Python.json \\
+        outputs/v1_2026-04-19/rq3/results/2026-03-31_B_Labels_Both_Python.json \\
         --min-support 1
 """
 

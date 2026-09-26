@@ -1,0 +1,898 @@
+{
+  "total_documents": 45162,
+  "unique_languages": 1,
+  "unique_repos": 4389,
+  "documents_by_language": {
+    "TypeScript": 45162
+  },
+  "top_20_repos_by_skill_file_count": [
+    [
+      "Intense-Visions__harness-engineering",
+      2808
+    ],
+    [
+      "rondoflow__rondoflow",
+      2320
+    ],
+    [
+      "jmagly__aiwg",
+      993
+    ],
+    [
+      "openteams-lab__openteams",
+      871
+    ],
+    [
+      "team-telnyx__ai",
+      708
+    ],
+    [
+      "wolfenazz__YzPzCode",
+      423
+    ],
+    [
+      "45ck__content-machine",
+      409
+    ],
+    [
+      "fanfan-de__anybox",
+      393
+    ],
+    [
+      "ruvnet__ruflo",
+      346
+    ],
+    [
+      "griddynamics__rosetta",
+      297
+    ],
+    [
+      "synthetic-sciences__openscience",
+      293
+    ],
+    [
+      "contextgo__contextgo",
+      289
+    ],
+    [
+      "involvex__youtube-music-cli",
+      270
+    ],
+    [
+      "conectlens__lenserfight",
+      258
+    ],
+    [
+      "ngocsangyem__MeowKit",
+      253
+    ],
+    [
+      "grandamenium__cortextos",
+      233
+    ],
+    [
+      "yonatangross__orchestkit",
+      228
+    ],
+    [
+      "OwnLabAI__ownlab",
+      176
+    ],
+    [
+      "ax-llm__ax",
+      169
+    ],
+    [
+      "stevehuang0115__crewly",
+      161
+    ]
+  ],
+  "text_length": {
+    "total_chars": 345179660,
+    "avg_chars": 7643.143793454674,
+    "total_words": 45920827,
+    "avg_words": 1016.8023338204686,
+    "median_words": 705.0,
+    "avg_lines": 192.84874451972897,
+    "median_lines": 133.0
+  },
+  "markdown_structure": {
+    "heading_h1_total": 145614,
+    "heading_h2_total": 326402,
+    "heading_h3_total": 252542,
+    "heading_h4_total": 20142,
+    "heading_h5_total": 712,
+    "heading_h6_total": 6,
+    "heading_total": 745418,
+    "list_total": 451087,
+    "avg_h1_per_doc": 3.2242593330676232,
+    "avg_h2_per_doc": 7.227359284354103,
+    "avg_h3_per_doc": 5.591913555644125,
+    "avg_h4_per_doc": 0.44599442008768436,
+    "avg_h5_per_doc": 0.015765466542668614,
+    "avg_h6_per_doc": 0.0001328550551348479,
+    "median_h1_per_doc": 1.0,
+    "median_h2_per_doc": 6.0,
+    "median_h3_per_doc": 3.0,
+    "median_h4_per_doc": 0.0,
+    "median_h5_per_doc": 0.0,
+    "median_h6_per_doc": 0.0,
+    "avg_heading_depth": 2.2003868970161706,
+    "median_heading_depth": 2.0,
+    "most_common_level": 2,
+    "max_depth_overall": 6,
+    "section_total": 670893,
+    "avg_section_length": 59.66746262071597,
+    "median_section_length": 51.833333333333336,
+    "max_section_length": 23904,
+    "median_max_section_length": 130.0,
+    "docs_with_headings": 43590,
+    "docs_without_headings": 1572,
+    "avg_lists_per_doc": 9.988198042602187,
+    "median_lists_per_doc": 7.0,
+    "docs_with_code": 42450,
+    "docs_without_code": 2712,
+    "code_usage_rate": 0.9399495150790488,
+    "avg_code_per_doc": 44.613945352287324,
+    "median_code_per_doc": 23.0,
+    "median_inline_code_per_doc": 18.0,
+    "median_fenced_code_blocks_per_doc": 2.0
+  },
+  "fenced_code_languages": {
+    "total_fenced_code_blocks": 264091,
+    "fenced_code_blocks_with_language": 211873,
+    "fenced_code_blocks_without_language": 52218,
+    "docs_with_fenced_code_blocks": 33555,
+    "docs_without_fenced_code_blocks": 11607,
+    "unique_fenced_code_languages": 244,
+    "top_20_fenced_code_languages": [
+      [
+        "bash",
+        86440
+      ],
+      [
+        "typescript",
+        37217
+      ],
+      [
+        "python",
+        13824
+      ],
+      [
+        "javascript",
+        11607
+      ],
+      [
+        "json",
+        11418
+      ],
+      [
+        "markdown",
+        8659
+      ],
+      [
+        "tsx",
+        7571
+      ],
+      [
+        "yaml",
+        5112
+      ],
+      [
+        "text",
+        3092
+      ],
+      [
+        "go",
+        3071
+      ],
+      [
+        "java",
+        3002
+      ],
+      [
+        "ruby",
+        2947
+      ],
+      [
+        "sql",
+        2652
+      ],
+      [
+        "css",
+        2002
+      ],
+      [
+        "html",
+        1945
+      ],
+      [
+        "powershell",
+        781
+      ],
+      [
+        "cypher",
+        742
+      ],
+      [
+        "http",
+        736
+      ],
+      [
+        "jsx",
+        638
+      ],
+      [
+        "xml",
+        551
+      ]
+    ],
+    "all_fenced_code_language_counts": {
+      "!": 27,
+      "\"": 7,
+      "\",": 3,
+      "$',": 1,
+      "$/gm,": 3,
+      "'": 4,
+      "',": 1,
+      ".": 2,
+      "/g,": 1,
+      "</tab>": 8,
+      "\\n": 2,
+      "\\n\\n**last": 3,
+      "\\n\\n<outro>\"": 1,
+      "\\n\\nexplanation:": 1,
+      "\\n\\nthis": 1,
+      "\\n\\nwhat": 1,
+      "abap": 88,
+      "abc": 11,
+      "acorn": 1,
+      "ag": 2,
+      "al": 1,
+      "and": 8,
+      "apache": 1,
+      "apex": 1,
+      "apl": 21,
+      "applescript": 16,
+      "astro": 127,
+      "base": 3,
+      "bash": 86440,
+      "bash#": 1,
+      "batch": 18,
+      "bibtex": 16,
+      "bicep": 14,
+      "blade": 4,
+      "block": 1,
+      "blocks.": 1,
+      "blocks;": 1,
+      "blueprint": 1,
+      "c": 53,
+      "caddy": 1,
+      "cairo": 118,
+      "cal": 24,
+      "cds": 12,
+      "cel": 10,
+      "chart": 1,
+      "claude": 4,
+      "cmake": 8,
+      "code": 1,
+      "command": 1,
+      "compact": 56,
+      "conf": 11,
+      "cpp": 69,
+      "cron": 5,
+      "csharp": 233,
+      "css": 2002,
+      "csv": 39,
+      "cypher": 742,
+      "d2": 3,
+      "dart": 143,
+      "datagrok-exec": 74,
+      "dataview": 12,
+      "dax": 18,
+      "dcl": 1,
+      "delphi": 8,
+      "diff": 196,
+      "diff\"": 1,
+      "django": 3,
+      "dlang": 15,
+      "dockerfile": 130,
+      "dockerignore": 1,
+      "dot": 291,
+      "dotenv": 1,
+      "edge": 2,
+      "ee/hogai/chat_agent/mode_manager.py": 1,
+      "elixir": 44,
+      "elo": 2,
+      "env": 63,
+      "env-spec": 6,
+      "erb": 6,
+      "erlang": 6,
+      "esql": 9,
+      "excel": 4,
+      "feature-map": 2,
+      "fences).": 1,
+      "fences:": 1,
+      "file": 1,
+      "fish": 2,
+      "for": 4,
+      "fountain": 27,
+      "ftl": 1,
+      "gdscript": 95,
+      "gherkin": 29,
+      "git": 2,
+      "gitattributes": 1,
+      "gitignore": 33,
+      "glsl": 31,
+      "go": 3071,
+      "gradle": 13,
+      "graphql": 265,
+      "graplix": 1,
+      "groovy": 19,
+      "groq": 3,
+      "gts": 8,
+      "handlebars": 2,
+      "haskell": 7,
+      "hbs": 5,
+      "hcl": 134,
+      "hs": 2,
+      "html": 1945,
+      "http": 736,
+      "ignore": 2,
+      "infographic": 13,
+      "ini": 80,
+      "isml": 3,
+      "java": 3002,
+      "javascript": 11607,
+      "jinja2": 1,
+      "jql": 18,
+      "json": 11418,
+      "json5": 48,
+      "jsonc": 416,
+      "jsonl": 69,
+      "jsx": 638,
+      "julia": 1,
+      "just": 1,
+      "kotlin": 304,
+      "kql": 22,
+      "lang": 4,
+      "langium": 9,
+      "language": 3,
+      "latex": 168,
+      "less": 3,
+      "ligo": 18,
+      "likec4": 5,
+      "lisp": 2,
+      "logql": 1,
+      "lookml": 21,
+      "lua": 2,
+      "m": 4,
+      "m3u": 2,
+      "makefile": 18,
+      "malloy": 112,
+      "markdown": 8659,
+      "markdown-template": 1,
+      "markers": 7,
+      "matches": 1,
+      "matlab": 45,
+      "mbt": 33,
+      "md": 409,
+      "mdc": 1,
+      "mdoc": 1,
+      "mdx": 183,
+      "mermaid": 241,
+      "moonbit": 10,
+      "move": 1,
+      "neon": 1,
+      "nextflow": 1,
+      "nginx": 49,
+      "node": 90,
+      "nu": 10,
+      "objc": 1,
+      "objective-c": 1,
+      "paper_lens_question": 1,
+      "pascal": 2,
+      "patch": 4,
+      "pcl": 4,
+      "perl": 44,
+      "php": 172,
+      "plaintext": 1,
+      "powershell": 781,
+      "prisma": 127,
+      "proguard": 3,
+      "prolog": 4,
+      "prompt": 1,
+      "promql": 15,
+      "properties": 7,
+      "prose": 8,
+      "protobuf": 3,
+      "pseudocode": 8,
+      "python": 13824,
+      "python,": 1,
+      "ql": 7,
+      "quint": 36,
+      "r": 15,
+      "razor": 2,
+      "react": 120,
+      "regex": 4,
+      "rst": 1,
+      "ruby": 2947,
+      "rust": 364,
+      "sas": 1,
+      "scad": 56,
+      "scala": 11,
+      "scheme": 6,
+      "scss": 171,
+      "shtml": 2,
+      "skill": 3,
+      "slang": 18,
+      "solidity": 25,
+      "sparql": 1,
+      "spice": 13,
+      "sql": 2652,
+      "stml": 1,
+      "stw-widget-project": 1,
+      "styl": 2,
+      "suggestion": 6,
+      "superlore-canvas": 4,
+      "svelte": 358,
+      "svg": 72,
+      "swift": 265,
+      "systemverilog": 14,
+      "tableau": 23,
+      "tape": 1,
+      "tcl": 12,
+      "terminal": 7,
+      "test": 16,
+      "text": 3092,
+      "to": 2,
+      "toml": 298,
+      "tonto": 13,
+      "tool_code": 1,
+      "toon": 3,
+      "tree": 1,
+      "tsv": 1,
+      "tsx": 7571,
+      "turtle": 1,
+      "txt": 76,
+      "typescript": 37217,
+      "typespec": 2,
+      "velocity": 1,
+      "verilog": 6,
+      "vim": 6,
+      "vtt": 1,
+      "vue": 172,
+      "waiver": 3,
+      "wgsl": 2,
+      "wire": 8,
+      "xml": 551,
+      "yaml": 5112,
+      "yaml**": 1,
+      "yaml-edit\"": 1,
+      "zig": 7,
+      "|": 2,
+      "で囲まれた部分）を全て抽出": 1
+    }
+  },
+  "references": {
+    "total_references": 291229,
+    "unique_references": 118030,
+    "docs_with_references": 36488,
+    "docs_without_references": 8674,
+    "reference_usage_rate": 0.8079358752933883,
+    "avg_references_per_doc": 6.448540808644435,
+    "median_references_per_doc": 3.0,
+    "num_scripts": 61712,
+    "num_docs": 119810,
+    "num_assets": 48446,
+    "num_urls": 61261,
+    "num_other": 0,
+    "top_50_file_reference_paths": [
+      [
+        "package.json",
+        3250
+      ],
+      [
+        "SKILL.md",
+        1942
+      ],
+      [
+        "AGENTS.md",
+        1728
+      ],
+      [
+        "CLAUDE.md",
+        1497
+      ],
+      [
+        "README.md",
+        1370
+      ],
+      [
+        "index.ts",
+        682
+      ],
+      [
+        "tsconfig.json",
+        655
+      ],
+      [
+        "tasks.md",
+        643
+      ],
+      [
+        "CHANGELOG.md",
+        617
+      ],
+      [
+        "design.md",
+        580
+      ],
+      [
+        "index.html",
+        536
+      ],
+      [
+        "test.ts",
+        516
+      ],
+      [
+        "spec.md",
+        489
+      ],
+      [
+        "src/index.ts",
+        475
+      ],
+      [
+        "LICENSE.txt",
+        458
+      ],
+      [
+        "package-lock.json",
+        428
+      ],
+      [
+        "pyproject.toml",
+        415
+      ],
+      [
+        "DESIGN.md",
+        376
+      ],
+      [
+        "response.json",
+        363
+      ],
+      [
+        "pnpm-lock.yaml",
+        342
+      ],
+      [
+        "config.json",
+        338
+      ],
+      [
+        "requirements.txt",
+        322
+      ],
+      [
+        "res.json",
+        313
+      ],
+      [
+        "Cargo.toml",
+        307
+      ],
+      [
+        "spec.ts",
+        295
+      ],
+      [
+        "proposal.md",
+        289
+      ],
+      [
+        "CONTEXT.md",
+        269
+      ],
+      [
+        "docs/schemas/skill.md",
+        260
+      ],
+      [
+        "MEMORY.md",
+        253
+      ],
+      [
+        "manifest.json",
+        251
+      ],
+      [
+        "CONTRIBUTING.md",
+        240
+      ],
+      [
+        "index.md",
+        239
+      ],
+      [
+        "AIWG_ROOT/docs/cli-reference.md",
+        234
+      ],
+      [
+        "types.ts",
+        233
+      ],
+      [
+        "page.tsx",
+        225
+      ],
+      [
+        "plan.md",
+        224
+      ],
+      [
+        "Three.js",
+        222
+      ],
+      [
+        "openspec.yaml",
+        221
+      ],
+      [
+        "d.ts",
+        204
+      ],
+      [
+        "config.yaml",
+        201
+      ],
+      [
+        "auth.ts",
+        200
+      ],
+      [
+        "references/troubleshooting.md",
+        196
+      ],
+      [
+        "REFERENCE.md",
+        193
+      ],
+      [
+        "claude/settings.json",
+        188
+      ],
+      [
+        "mcp.json",
+        187
+      ],
+      [
+        "tailwind.config.js",
+        187
+      ],
+      [
+        "rules/async-parallel.md",
+        187
+      ],
+      [
+        "rules/bundle-barrel-imports.md",
+        186
+      ],
+      [
+        "requirements.md",
+        184
+      ],
+      [
+        "references/workflows.md",
+        176
+      ]
+    ],
+    "top_50_url_references": [
+      [
+        "https://rube.app/mcp`",
+        810
+      ],
+      [
+        "https://composio.dev",
+        805
+      ],
+      [
+        "https://example.com",
+        307
+      ],
+      [
+        "https://example.com\"",
+        148
+      ],
+      [
+        "http://localhost:3000",
+        132
+      ],
+      [
+        "https://raw.githubusercontent.com/vercel-labs/web-interface-guidelines/main/command.md",
+        123
+      ],
+      [
+        "https://example.com/form",
+        107
+      ],
+      [
+        "https://github.com/geeks-accelerator/in-bed-ai",
+        98
+      ],
+      [
+        "https://inbed.ai",
+        98
+      ],
+      [
+        "https://inbed.ai/api/auth/register",
+        98
+      ],
+      [
+        "https://inbed.ai/api/chat/{{MATCH_ID}}/messages",
+        98
+      ],
+      [
+        "https://inbed.ai/api/swipes",
+        98
+      ],
+      [
+        "https://inbed.ai/docs/api",
+        98
+      ],
+      [
+        "https://inbed.ai`",
+        97
+      ],
+      [
+        "https://api.telnyx.com/v2/messages\"",
+        96
+      ],
+      [
+        "https://ui.shadcn.com",
+        92
+      ],
+      [
+        "https://garryslist.org/posts/boil-the-ocean",
+        90
+      ],
+      [
+        "https://garryslist.org/posts/boil-the-ocean\"",
+        90
+      ],
+      [
+        "https://inbed.ai/api/relationships",
+        88
+      ],
+      [
+        "https://lokuli.com/mcp/sse",
+        84
+      ],
+      [
+        "https://cnb.cool/tencent/cloud/cloudbase/cloudbase-skills/-/git/raw/main/skills/cloudbase/SKILL.md`",
+        84
+      ],
+      [
+        "https://`",
+        82
+      ],
+      [
+        "https://example.com`",
+        81
+      ],
+      [
+        "https://example.com\",",
+        81
+      ],
+      [
+        "http://localhost:3000`",
+        75
+      ],
+      [
+        "https://docs.convex.dev/",
+        73
+      ],
+      [
+        "https://docs.convex.dev/llms.txt",
+        73
+      ],
+      [
+        "https://github.com/antfu/skills",
+        64
+      ],
+      [
+        "https://...\"",
+        61
+      ],
+      [
+        "https://playwright.dev",
+        60
+      ],
+      [
+        "https://example.com/",
+        60
+      ],
+      [
+        "https://owasp.org/www-project-top-ten/",
+        57
+      ],
+      [
+        "https://example.com/page",
+        57
+      ],
+      [
+        "http://`",
+        55
+      ],
+      [
+        "https://skills.sh/",
+        55
+      ],
+      [
+        "https://github.com/Hack23/ISMS-PUBLIC/blob/main/Secure_Development_Policy.md",
+        54
+      ],
+      [
+        "https://app.example.com/login",
+        53
+      ],
+      [
+        "https://inbed.ai/api/agents/me",
+        53
+      ],
+      [
+        "https://github.com/lewislulu/html-ppt-skill",
+        53
+      ],
+      [
+        "https://api.example.com/**\"",
+        52
+      ],
+      [
+        "https://inbed.ai/api/agents/{{YOUR_AGENT_ID}}",
+        52
+      ],
+      [
+        "https://inbed.ai/api/discover?limit=20\"",
+        51
+      ],
+      [
+        "https://app.example.com/dashboard",
+        50
+      ],
+      [
+        "https://example.com/other",
+        50
+      ],
+      [
+        "https://github.com/Hack23/ISMS-PUBLIC/blob/main/Information_Security_Policy.md",
+        50
+      ],
+      [
+        "https://github.com/ruvnet/claude-flow",
+        49
+      ],
+      [
+        "https://agentdb.ruv.io",
+        48
+      ],
+      [
+        "https://github.com/ruvnet/agentic-flow/tree/main/packages/agentdb",
+        48
+      ],
+      [
+        "https://github.com/lewislulu/html-ppt-skill\"",
+        48
+      ],
+      [
+        "https://github.com/nexu-io/html-anything\"",
+        48
+      ]
+    ]
+  },
+  "language_filter": [
+    "TypeScript"
+  ]
+}

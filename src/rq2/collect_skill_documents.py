@@ -22,7 +22,7 @@ FENCED_CODE_RE = re.compile(r"```(?:[^\n`]*)\n[\s\S]*?\n```", re.DOTALL)
 FENCED_CODE_WITH_INFO_PATTERN = re.compile(r"```([^\n`]*)\n(.*?)```", re.DOTALL)
 WORD_RE = re.compile(r"\b\w+\b")
 FILE_PATH_PATTERN = re.compile(
-    r"\b(?:\.{0,2}/)?[\w\-./]+\.(?:py|js|ts|tsx|jsx|sh|yaml|yml|json|md|txt|css|html|xml|toml)\b"
+    r"(?<![\w\-./])(?:\.{0,2}/)?[\w\-./]+\.(?:py|js|ts|tsx|jsx|sh|yaml|yml|json|md|txt|css|html|xml|toml)\b"
 )
 URL_PATTERN = re.compile(r"https?://[^\s)]+")
 MARKDOWN_LINK_PATTERN = re.compile(r"\[[^\]]+\]\((https?://[^\)]+)\)")
@@ -32,17 +32,17 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Collect SKILL.md documents from raw_data into a normalized dataset.")
     parser.add_argument(
         "--raw-data-dir",
-        default="../../outputs/v1_2026-04-19/raw_data",
-        help="Root raw_data directory (default: outputs/v1_2026-04-19/raw_data)",
+        default="outputs/raw_data",
+        help="Root raw_data directory (default: outputs/raw_data)",
     )
     parser.add_argument(
         "--out-jsonl",
-        default="../../outputs/v1_2026-04-19/rq2/skill_documents.jsonl",
+        default="outputs/rq2/skill_documents.jsonl",
         help="Output JSONL path for collected SKILL.md documents",
     )
     parser.add_argument(
         "--out-stats-json",
-        default="../../outputs/v1_2026-04-19/rq2/skill_documents_stats.json",
+        default="outputs/rq2/skill_documents_stats.json",
         help="Output JSON path for collection statistics",
     )
     parser.add_argument(
@@ -191,7 +191,7 @@ def extract_fenced_code_languages(text: str) -> tuple[list[str], int]:
 
 
 def extract_file_paths(text: str) -> list[str]:
-    paths = FILE_PATH_PATTERN.findall(text)
+    paths = FILE_PATH_PATTERN.findall(URL_PATTERN.sub(" ", text))
     filtered_paths = [
         path
         for path in paths

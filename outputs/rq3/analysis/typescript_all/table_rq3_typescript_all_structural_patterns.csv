@@ -1,0 +1,10 @@
+file,dataset,label,count,pct_docs,retained_documents
+TypeScript_All.json,TypeScript All,purpose,264,99.62,265
+TypeScript_All.json,TypeScript All,activation,240,90.57,265
+TypeScript_All.json,TypeScript All,exclusion,80,30.19,265
+TypeScript_All.json,TypeScript All,workflow,188,70.94,265
+TypeScript_All.json,TypeScript All,decision-rule,249,93.96,265
+TypeScript_All.json,TypeScript All,action-directive,247,93.21,265
+TypeScript_All.json,TypeScript All,positive-example,194,73.21,265
+TypeScript_All.json,TypeScript All,negative-example,83,31.32,265
+TypeScript_All.json,TypeScript All,reference,182,68.68,265

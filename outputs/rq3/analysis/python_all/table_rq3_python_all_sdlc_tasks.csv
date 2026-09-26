@@ -1,25 +1,10 @@
 file,dataset,label,count,pct_docs,retained_documents
-2026-04-19_CY_Final_Labels_A_Python.json,Python A,Documentation,12,16.22,74
-2026-04-19_CY_Final_Labels_A_Python.json,Python A,Requirements,3,4.05,74
-2026-04-19_CY_Final_Labels_A_Python.json,Python A,Software Design,16,21.62,74
-2026-04-19_CY_Final_Labels_A_Python.json,Python A,Code Generation,15,20.27,74
-2026-04-19_CY_Final_Labels_A_Python.json,Python A,Software Testing,16,21.62,74
-2026-04-19_CY_Final_Labels_A_Python.json,Python A,DevOps,19,25.68,74
-2026-04-19_MV_Final_Labels_B_Python.json,Python B,Documentation,16,16.67,96
-2026-04-19_MV_Final_Labels_B_Python.json,Python B,Requirements,7,7.29,96
-2026-04-19_MV_Final_Labels_B_Python.json,Python B,Software Design,9,9.38,96
-2026-04-19_MV_Final_Labels_B_Python.json,Python B,Code Generation,32,33.33,96
-2026-04-19_MV_Final_Labels_B_Python.json,Python B,Software Testing,27,28.12,96
-2026-04-19_MV_Final_Labels_B_Python.json,Python B,DevOps,17,17.71,96
-2026-04-19_CY_Final_Labels_Both_Python.json,Python Both,Documentation,1,3.57,28
-2026-04-19_CY_Final_Labels_Both_Python.json,Python Both,Requirements,2,7.14,28
-2026-04-19_CY_Final_Labels_Both_Python.json,Python Both,Software Design,7,25.0,28
-2026-04-19_CY_Final_Labels_Both_Python.json,Python Both,Code Generation,7,25.0,28
-2026-04-19_CY_Final_Labels_Both_Python.json,Python Both,Software Testing,11,39.29,28
-2026-04-19_CY_Final_Labels_Both_Python.json,Python Both,DevOps,5,17.86,28
-Python_All.json,Python All,Documentation,29,14.65,198
-Python_All.json,Python All,Requirements,12,6.06,198
-Python_All.json,Python All,Software Design,32,16.16,198
-Python_All.json,Python All,Code Generation,54,27.27,198
-Python_All.json,Python All,Software Testing,54,27.27,198
-Python_All.json,Python All,DevOps,41,20.71,198
+Python_All.json,Python All,Requirements,17,9.39,181
+Python_All.json,Python All,Software Design,19,10.5,181
+Python_All.json,Python All,Code Implementation,63,34.81,181
+Python_All.json,Python All,Program Analysis,47,25.97,181
+Python_All.json,Python All,Testing,66,36.46,181
+Python_All.json,Python All,Debugging,21,11.6,181
+Python_All.json,Python All,Maintenance,60,33.15,181
+Python_All.json,Python All,DevOps,46,25.41,181
+Python_All.json,Python All,Documentation,38,20.99,181

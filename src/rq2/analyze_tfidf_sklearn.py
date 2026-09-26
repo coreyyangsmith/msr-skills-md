@@ -41,32 +41,32 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     )
     parser.add_argument(
         "--input",
-        default="../../outputs/rq2/skill_documents.jsonl",
+        default="outputs/rq2/skill_documents.jsonl",
         help="Path to input JSONL/JSON file with documents containing a 'text' field",
     )
     parser.add_argument(
         "--out-global",
-        default="../../outputs/rq2/tfidf_sklearn_top_terms_global.csv",
+        default="outputs/rq2/tfidf_sklearn_top_terms_global.csv",
         help="CSV output for top global TF-IDF terms",
     )
     parser.add_argument(
         "--out-global-unigrams",
-        default="../../outputs/rq2/tfidf_sklearn_top_terms_global_unigrams.csv",
+        default="outputs/rq2/tfidf_sklearn_top_terms_global_unigrams.csv",
         help="CSV output for top global unigram TF-IDF terms",
     )
     parser.add_argument(
         "--out-global-bigrams",
-        default="../../outputs/rq2/tfidf_sklearn_top_terms_global_bigrams.csv",
+        default="outputs/rq2/tfidf_sklearn_top_terms_global_bigrams.csv",
         help="CSV output for top global bigram TF-IDF terms",
     )
     parser.add_argument(
         "--out-per-doc",
-        default="../../outputs/rq2/tfidf_sklearn_top_terms_per_document.csv",
+        default="outputs/rq2/tfidf_sklearn_top_terms_per_document.csv",
         help="CSV output for top TF-IDF terms per document",
     )
     parser.add_argument(
         "--out-summary",
-        default="../../outputs/rq2/tfidf_sklearn_summary.json",
+        default="outputs/rq2/tfidf_sklearn_summary.json",
         help="JSON output for run summary",
     )
     parser.add_argument("--max-features", type=int, default=10000, help="Max vocabulary size for TF-IDF")
@@ -154,6 +154,16 @@ def iter_documents(input_path: Path) -> Any:
                 item = json.loads(line)
                 if isinstance(item, dict):
                     yield item
+
+
+def filter_documents_by_language(documents: list[dict[str, Any]], languages: set[str] | None) -> list[dict[str, Any]]:
+    if not languages:
+        return documents
+    return [
+        doc
+        for doc in documents
+        if str(doc.get("language", "")).strip().lower() in languages
+    ]
 
 
 def build_corpus_streaming(

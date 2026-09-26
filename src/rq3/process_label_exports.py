@@ -14,9 +14,10 @@ Processing rules
    - agent-skill
    - wrong-language
    - outside-scope
+   - filter-out
 
    then keep only a single special label for that skill. The priority is:
-   wrong-language > outside-scope > agent-skill
+   wrong-language > outside-scope > filter-out > agent-skill
 
 The processed JSON files are written to a sibling /processed folder and keep
 the same export-like structure so downstream scripts can consume them.

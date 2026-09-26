@@ -1,0 +1,82 @@
+instruction_type,sdlc_stage,count
+purpose,Requirements,21
+purpose,Software Design,57
+purpose,Code Implementation,136
+purpose,Program Analysis,65
+purpose,Testing,76
+purpose,Debugging,43
+purpose,Maintenance,65
+purpose,DevOps,44
+purpose,Documentation,54
+activation,Requirements,18
+activation,Software Design,52
+activation,Code Implementation,125
+activation,Program Analysis,60
+activation,Testing,69
+activation,Debugging,40
+activation,Maintenance,61
+activation,DevOps,42
+activation,Documentation,51
+exclusion,Requirements,9
+exclusion,Software Design,18
+exclusion,Code Implementation,43
+exclusion,Program Analysis,20
+exclusion,Testing,27
+exclusion,Debugging,18
+exclusion,Maintenance,19
+exclusion,DevOps,15
+exclusion,Documentation,17
+workflow,Requirements,19
+workflow,Software Design,42
+workflow,Code Implementation,84
+workflow,Program Analysis,53
+workflow,Testing,67
+workflow,Debugging,32
+workflow,Maintenance,46
+workflow,DevOps,40
+workflow,Documentation,50
+decision-rule,Requirements,20
+decision-rule,Software Design,55
+decision-rule,Code Implementation,126
+decision-rule,Program Analysis,65
+decision-rule,Testing,75
+decision-rule,Debugging,42
+decision-rule,Maintenance,62
+decision-rule,DevOps,42
+decision-rule,Documentation,53
+action-directive,Requirements,21
+action-directive,Software Design,55
+action-directive,Code Implementation,126
+action-directive,Program Analysis,64
+action-directive,Testing,75
+action-directive,Debugging,41
+action-directive,Maintenance,59
+action-directive,DevOps,42
+action-directive,Documentation,51
+positive-example,Requirements,19
+positive-example,Software Design,40
+positive-example,Code Implementation,102
+positive-example,Program Analysis,53
+positive-example,Testing,62
+positive-example,Debugging,35
+positive-example,Maintenance,45
+positive-example,DevOps,33
+positive-example,Documentation,38
+negative-example,Requirements,6
+negative-example,Software Design,17
+negative-example,Code Implementation,40
+negative-example,Program Analysis,24
+negative-example,Testing,29
+negative-example,Debugging,15
+negative-example,Maintenance,23
+negative-example,DevOps,13
+negative-example,Documentation,17
+reference,Requirements,13
+reference,Software Design,44
+reference,Code Implementation,94
+reference,Program Analysis,47
+reference,Testing,52
+reference,Debugging,32
+reference,Maintenance,51
+reference,DevOps,31
+reference,Documentation,37

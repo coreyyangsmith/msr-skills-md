@@ -14,7 +14,7 @@ full corpus and distributed into three labeling subfolders:
 
 Each subfolder mirrors the original relative path structure from *root*.
 
-The three bucket sizes are supplied via --both, --corey, and --marcel.
+The three bucket sizes are supplied via --both, --A, and --B.
 Sampling is done without replacement across all three buckets (i.e. the
 same SKILL.md will not appear in more than one bucket).
 
@@ -128,7 +128,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         description=(
             "Randomly split SKILL.md files from a root folder into three "
-            "labeling buckets: 'both', 'corey', and 'marcel'."
+            "labeling buckets: 'both', 'A', and 'B'."
         ),
     )
     parser.add_argument(

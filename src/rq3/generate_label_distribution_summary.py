@@ -118,7 +118,7 @@ def default_output_path(input_path: Path) -> Path:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Generate Markdown summaries for CY label distributions."
+        description="Generate Markdown summaries for labeler A label distributions."
     )
     parser.add_argument(
         "inputs",

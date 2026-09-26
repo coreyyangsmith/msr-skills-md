@@ -1,12 +1,44 @@
 # msr-skills-md
 
-Mine GitHub repositories for `SKILL.md` files. Given a list of repositories (from SEART CSV exports or scraped directly from the GitHub API), the recommended pipeline scans each repository with GitHub git-tree REST calls and writes a results CSV recording whether the target file was found, plus metadata about each repo.
+Replication package for an empirical study of agent skill files (`SKILL.md`) in open-source GitHub repositories. The study asks three questions:
 
-Designed for read-only, resumable, rate-limit-aware bulk scanning over large repository sets.
+- **RQ1 — Prevalence:** how common is `SKILL.md`, and how does adoption vary with language, repository scale, age, visibility, and co-occurring agent configuration files (ACFs)?
+- **RQ2 — Content:** what do `SKILL.md` files contain (size, structure, file references), and which terms characterize their declared names and descriptions?
+- **RQ3 — Manual labeling:** which SDLC tasks and instruction patterns do skills cover, based on a two-annotator labeled sample?
 
-Stage 2 records the exact commit SHA observed when a repository is matched, and stage 3 reuses that pinned ref by default so the two outputs stay comparable even if the default branch moves later.
+The collection pipeline is read-only, resumable, and rate-limit aware. Stage 2 pins each matched repository to a commit SHA, and Stage 3 reuses that ref so outputs stay comparable even if default branches move. [`DATA_COLLECTION.md`](DATA_COLLECTION.md) details the GitHub retrieval process, [`docs/pipeline.drawio`](docs/pipeline.drawio) diagrams it, and [`.cursor/skills/msr/SKILL.md`](.cursor/skills/msr/SKILL.md) holds the original design specification.
 
-See [`.cursor/skills/msr/SKILL.md`](.cursor/skills/msr/SKILL.md) for the full design specification.
+## Quick start
+
+```sh
+uv sync            # install dependencies from uv.lock
+uv run pytest -q   # run the test suite
+```
+
+Only Stages 1-3 call GitHub and need tokens. The RQ analyses run offline: RQ1 and the RQ3 label analyses need only the committed `data/` and `outputs/` files. RQ2 and RQ3 sampling also need the downloaded skill folders (`raw_data/`), which are available from the [Zenodo archive](#dataset).
+
+## Repository layout
+
+```
+src/                  Pipeline stages 1-3 and enrichment scripts
+  rq1/ rq2/ rq3/      Analysis scripts for each research question
+  github_client/      Token-pool GitHub REST client shared by all scrapers
+  utils/              raw_data housekeeping (counting, copying, reorganizing skill folders)
+utils/                One-off data-prep and maintenance helpers (dataset filtering, label consolidation, token checks)
+tests/                pytest suite
+data/                 Input datasets: repository population, SKILL.md shortlist, per-skill metrics, labels
+outputs/              Scan results and RQ1-RQ3 figures/tables; v1_*/v2_* hold archived study snapshots
+blacklist.txt         Repositories excluded from all stages
+relevance_terms.txt   Repo-name terms used by the relevance filter
+```
+
+## Contents
+
+- [Dataset](#dataset) and [Versioned runs](#versioned-runs)
+- [Prerequisites](#prerequisites) and [Installation](#installation)
+- [Data Processing Pipeline](#data-processing-pipeline) (Stages 1-3 and optional enrichment)
+- [RQ1](#rq1--prevalence-and-adoption-analysis), [RQ2](#rq2--content-analysis), [RQ3](#rq3--manual-labeling-and-category-analysis)
+- [CLI reference](#cli-reference), [Output CSV schema](#output-csv-schema), [Resume workflow](#resume-workflow), [Scan strategy](#scan-strategy)
 
 ---
 
@@ -21,9 +53,13 @@ The Zenodo archive contains:
 - `raw_data/` — downloaded skill folder trees, one subdirectory per primary language, mirroring the layout written by Stage 3 (`generate_dataset.py`).
 
 Within this repository, we also include:
-- `data/v1_2026-04-19/skill_files/full_skills.csv` — per-skill instance metrics CSV (Stage 3 output).
-- `data/v1_2026-04-19/skill_only_scan/skill_repositories.csv` — the filtered shortlist of repositories confirmed to contain `SKILL.md`.
-- `data/v1_2026-04-19/seart_csvs/` — the SEART-exported repository list used as the Stage 1 input.
+- `data/skill_files/full_skills.csv` — current main per-skill instance metrics (Python and TypeScript only).
+- `data/skill_only_scan/skill_repositories.csv` — current main shortlist of repositories confirmed to contain `SKILL.md`.
+- `data/seart_csvs/` — current main Stage 1 population, constrained to Python and TypeScript.
+- `data/v2_2026-09-17/` — archived full 11-language v2 corpus (same rows as the current main dataset plus the other languages).
+- `data/v1_2026-04-19/` — earlier v1 snapshot.
+
+The current main analysis dataset keeps repositories whose GitHub `mainLanguage` is Python or TypeScript. Secondary languages may still appear inside those repositories.
 
 ---
 
@@ -31,10 +67,12 @@ Within this repository, we also include:
 
 Study snapshots live under versioned folders named `vN_YYYY-MM-DD` (label + date):
 
-- **Data:** `data/v1_2026-04-19/` — SEART population, skill shortlist, full skills CSV, relevance-filtered baseline
-- **Outputs:** `outputs/v1_2026-04-19/` — raw skill trees, RQ1/RQ2/RQ3 analysis artifacts
+- **v1 data:** `data/v1_2026-04-19/` — earlier 10-language snapshot
+- **v1 outputs:** `outputs/v1_2026-04-19/` — v1 raw skill trees and analysis artifacts
+- **v2 full archive:** `data/v2_2026-09-17/` and `outputs/v2_2026-09-17/` — unfiltered 11-language corpus and its RQ1/RQ2 results
+- **Main working copy:** `data/seart_csvs/`, `data/skill_only_scan/`, `data/skill_files/`, `outputs/raw_data/`, `outputs/rq1/`, `outputs/rq2/` — Python + TypeScript only, derived from the v2 archive
 
-Each version folder includes a `MANIFEST.md` describing its contents. Pipeline defaults and docs currently target **v1_2026-04-19**. For a new collection run, create `data/v2_YYYY-MM-DD/` and `outputs/v2_YYYY-MM-DD/` and pass the corresponding paths via CLI flags.
+The main working copy was cut from the v2 archive with `utils/constrain_dataset_languages.py`, which filters dataset CSVs and `raw_data` folders to the selected primary languages (`--dry-run` reports counts without writing). Each version folder includes a `MANIFEST.md`. Pipeline defaults now target the Python/TypeScript main dataset. To reproduce the archived full v2 corpus, pass the original language list to Stage 1 (`TypeScript Python C# Go C++ JavaScript Java C PHP Rust`) and read from `data/v2_2026-09-17/` / `outputs/v2_2026-09-17/`.
 
 ---
 
@@ -83,8 +121,7 @@ $env:GH_TOKENS = "ghp_token1,ghp_token2,ghp_token3" # PowerShell
 ## Installation
 
 ```sh
-git clone https://github.com/your-org/msr-skills-md.git
-cd msr-skills-md
+cd msr-skills-md   # repository root (URL withheld for anonymous review)
 uv sync
 ```
 
@@ -101,7 +138,7 @@ GitHub API / SEART CSVs
         │
         ▼
   Stage 1 — Source repository list
-  data/v1_2026-04-19/seart_csvs/github_search_results.csv
+  data/seart_csvs/github_search_results.csv
         │
         ▼
   Stage 2 — Scan for SKILL.md
@@ -110,12 +147,12 @@ GitHub API / SEART CSVs
         │
         ▼
   Stage 2.5 — Filter active repositories
-  data/v1_2026-04-19/skill_only_scan/skill_repositories.csv
+  data/skill_only_scan/skill_repositories.csv
         │
         ▼
   Stage 3 — Extract skill artifacts
-  data/v1_2026-04-19/skill_files/full_skills.csv
-  outputs/v1_2026-04-19/raw_data/<Language>/<owner>__<repo>/
+  data/skill_files/full_skills.csv
+  outputs/raw_data/<Language>/<owner>__<repo>/
 ```
 
 ---
@@ -126,11 +163,11 @@ Use `search_github_repos.py` to build the initial repository list directly from 
 
 ```sh
 uv run python src/search_github_repos.py \
-  --out-csv data/v1_2026-04-19/seart_csvs/github_search_results.csv \
+  --out-csv data/seart_csvs/github_search_results.csv \
   --resume
 ```
 
-Default criteria applied: ≥ 10 stars · MIT/Apache 2.0/BSD-3-Clause/BSD-2-Clause license · TypeScript, Python, C#, Go, C++, JavaScript, Java, C, Rust or PHP · pushed since 2025-10-16.
+Default criteria applied: ≥ 10 stars · MIT/Apache 2.0/BSD-3-Clause/BSD-2-Clause license · TypeScript or Python · pushed since 2025-10-16.
 
 What the script does:
 
@@ -145,7 +182,7 @@ Useful examples:
 ```sh
 # Reproduce the default population search and enrichment.
 uv run python src/search_github_repos.py \
-  --out-csv data/v1_2026-04-19/seart_csvs/github_search_results.csv \
+  --out-csv data/seart_csvs/github_search_results.csv \
   --resume
 
 # Limit the crawl to selected languages/licenses.
@@ -155,16 +192,16 @@ uv run python src/search_github_repos.py \
   --min-stars 25 \
   --pushed-since 2025-10-16 \
   --end-date 2026-06-06 \
-  --out-csv data/v1_2026-04-19/seart_csvs/github_search_results_subset.csv
+  --out-csv data/seart_csvs/github_search_results_subset.csv
 
 # Scrape quickly and skip the slower per-repo enrichment phase.
 uv run python src/search_github_repos.py \
-  --out-csv data/v1_2026-04-19/seart_csvs/github_search_results.csv \
+  --out-csv data/seart_csvs/github_search_results.csv \
   --skip-enrich
 
 # Enrich an existing CSV without re-running GitHub repository search.
 uv run python src/search_github_repos.py \
-  --out-csv data/v1_2026-04-19/seart_csvs/github_search_results.csv \
+  --out-csv data/seart_csvs/github_search_results.csv \
   --enrich-only \
   --enrich-concurrency 8
 ```
@@ -182,7 +219,7 @@ Important flags:
 
 Average runtime: roughly 400 repository-search page requests across the default 40 language/license combinations at 30 repository-search requests/minute per token, plus the enrichment calls for rows that still have empty metadata fields.
 
-**Artifact produced:** `data/v1_2026-04-19/seart_csvs/github_search_results.csv` — one row per GitHub repository, with per-(language, license) split CSVs written alongside it.
+**Artifact produced:** `data/seart_csvs/github_search_results.csv` — one row per GitHub repository, with per-(language, license) split CSVs written alongside it.
 
 ---
 
@@ -192,7 +229,7 @@ Scan every repository in the Stage 1/SEART input for a `SKILL.md` file. The reco
 
 ```sh
 uv run python src/extract_skill_repos_tree.py \
-  --seart-dir data/v1_2026-04-19/seart_csvs \
+  --seart-dir data/seart_csvs \
   --out-csv outputs/skill_md_scan_results.csv \
   --resume \
   --concurrency 4 \
@@ -221,7 +258,7 @@ Useful examples:
 ```sh
 # Recommended tree-first scan with resumable output and default filename SKILL.md.
 uv run python src/extract_skill_repos_tree.py \
-  --seart-dir data/v1_2026-04-19/seart_csvs \
+  --seart-dir data/seart_csvs \
   --out-csv outputs/skill_md_scan_results.csv \
   --resume \
   --concurrency 4 \
@@ -229,7 +266,7 @@ uv run python src/extract_skill_repos_tree.py \
 
 # Smoke-test the scanner on the first 250 unique repos.
 uv run python src/extract_skill_repos_tree.py \
-  --seart-dir data/v1_2026-04-19/seart_csvs \
+  --seart-dir data/seart_csvs \
   --out-csv outputs/skill_md_scan_results_smoke.csv \
   --max-repos 250 \
   --resume \
@@ -237,19 +274,19 @@ uv run python src/extract_skill_repos_tree.py \
 
 # Search for another exact filename.
 uv run python src/extract_skill_repos_tree.py \
-  --seart-dir data/v1_2026-04-19/seart_csvs \
+  --seart-dir data/seart_csvs \
   --out-csv outputs/agents_md_scan_results.csv \
   --match-name AGENTS.md
 
 # Disable cache reads/writes for a fresh API-only run.
 uv run python src/extract_skill_repos_tree.py \
-  --seart-dir data/v1_2026-04-19/seart_csvs \
+  --seart-dir data/seart_csvs \
   --out-csv outputs/skill_md_scan_results.csv \
   --cache-mode off
 
 # Legacy Code Search scanner, retained for comparison or reruns of older methods.
 uv run python src/extract_skill_repos.py \
-  --seart-dir data/v1_2026-04-19/seart_csvs \
+  --seart-dir data/seart_csvs \
   --out-csv outputs/skill_md_scan_results_code_search.csv \
   --resume
 ```
@@ -290,7 +327,7 @@ uv run python utils/filter_active_repos.py \
   -o outputs/skill_md_scan_results_found_filtered.csv
 ```
 
-**Artifact produced:** `outputs/skill_md_scan_results_found_filtered.csv` → used as `data/v1_2026-04-19/skill_only_scan/skill_repositories.csv` — the final shortlist of active, non-forked repositories confirmed to contain `SKILL.md`.
+**Artifact produced:** `outputs/skill_md_scan_results_found_filtered.csv` → used as `data/skill_only_scan/skill_repositories.csv` — the final shortlist of active, non-forked repositories confirmed to contain `SKILL.md`.
 
 ---
 
@@ -302,7 +339,7 @@ Download the skill folder for each confirmed repository and compute per-skill fi
 uv run python src/generate_dataset.py \
   --found-csv outputs/skill_md_scan_results_found_filtered.csv \
   --out-csv outputs/full_skills_instances.csv \
-  --raw-data-dir outputs/v1_2026-04-19/raw_data \
+  --raw-data-dir outputs/raw_data \
   --resume
 ```
 
@@ -314,7 +351,7 @@ What the script does:
 - Prefers `commit_sha` from Stage 2, falling back to `default_branch` for older inputs.
 - Calls `GET /repos/{owner}/{repo}/git/trees/{ref}?recursive=1` and treats truncated trees as retryable failures.
 - Finds all exact-case `SKILL.md` blobs, groups files by the skill parent folder, and computes `references/`, `assets/`, `scripts/`, and `other` file counts.
-- Writes raw files under `outputs/v1_2026-04-19/raw_data/<Language>/<owner>__<repo>/<skill-folder>/`.
+- Writes raw files under `outputs/raw_data/<Language>/<owner>__<repo>/<skill-folder>/`.
 - Uses `root/` as the local folder name for root-level skills and sanitizes path components for Windows compatibility.
 - Writes `metadata.json` only after at least one skill is found, so zero-skill false negatives are retried on later `--resume` runs.
 - Applies the blacklist and relevance/name filters before processing unless `--no-name-filter` is passed.
@@ -326,7 +363,7 @@ Useful examples:
 uv run python src/generate_dataset.py \
   --found-csv outputs/skill_md_scan_results_found_filtered.csv \
   --out-csv outputs/full_skills_instances.csv \
-  --raw-data-dir outputs/v1_2026-04-19/raw_data \
+  --raw-data-dir outputs/raw_data \
   --resume \
   --concurrency 1
 
@@ -334,14 +371,14 @@ uv run python src/generate_dataset.py \
 uv run python src/generate_dataset.py \
   --found-csv outputs/skill_md_scan_results_found_filtered.csv \
   --out-csv outputs/full_skills_instances_no_name_filter.csv \
-  --raw-data-dir outputs/v1_2026-04-19/raw_data_no_name_filter \
+  --raw-data-dir outputs/raw_data_no_name_filter \
   --no-name-filter
 
 # Add extra exclusion words on top of relevance_terms.txt.
 uv run python src/generate_dataset.py \
   --found-csv outputs/skill_md_scan_results_found_filtered.csv \
   --out-csv outputs/full_skills_instances.csv \
-  --raw-data-dir outputs/v1_2026-04-19/raw_data \
+  --raw-data-dir outputs/raw_data \
   --name-filter-words demo,template,starter
 ```
 
@@ -365,12 +402,12 @@ Stage 3 writes `outputs/processing_failures.tsv` so repos missing from `full_ski
 
 | File/Directory | Description |
 |---|---|
-| `data/v1_2026-04-19/skill_files/full_skills.csv` | Per-skill instance metrics (one row per `SKILL.md` found) |
-| `outputs/v1_2026-04-19/raw_data/<Language>/<owner>__<repo>/` | Downloaded skill folder trees, one subdirectory per matched repository |
+| `data/skill_files/full_skills.csv` | Per-skill instance metrics (one row per `SKILL.md` found) |
+| `outputs/raw_data/<Language>/<owner>__<repo>/` | Downloaded skill folder trees, one subdirectory per matched repository |
 | `outputs/processing_failures.tsv` | Repos that produced no dataset rows and the reason |
 | `outputs/name_filtered_repos.tsv` | Repos skipped by the shared name filter |
 
-> **Full dataset on Zenodo:** The `outputs/v1_2026-04-19/raw_data/` tree and `data/v1_2026-04-19/skill_files/full_skills.csv` are large. The complete archive is available at the [Zenodo record](#dataset) above.
+> **Full dataset on Zenodo:** The `outputs/raw_data/` tree and `data/skill_files/full_skills.csv` are large. The complete archive is available at the [Zenodo record](#dataset) above. The unfiltered 11-language v2 snapshot is also kept locally under `data/v2_2026-09-17/` and `outputs/v2_2026-09-17/`.
 
 ---
 
@@ -416,7 +453,7 @@ If `outputs/skill_md_scan_results_with_contributors.csv` only contains `has_CLAU
 uv run python src/enrich_extended_acf_columns.py
 ```
 
-By default this reads `data/v1_2026-04-19/skill_only_scan/known_skill_repos.csv`, checks `.cursorrules.md`, `.instructions.md`, and `GEMINI.md` at each repo's pinned `acf_ref`/`commit_sha`, and merges those flags into `outputs/skill_md_scan_results_with_contributors.csv`. If that legacy input file is not present, pass `--input-known data/v1_2026-04-19/skill_only_scan/skill_repositories.csv` or another found-repo CSV with refs. Useful flags: `--input-known`, `--merge-into`, `--out-skill-only`, `--out-merged`, `--concurrency`, and `--dedupe-only`.
+By default this reads `data/skill_only_scan/known_skill_repos.csv`, checks `.cursorrules.md`, `.instructions.md`, and `GEMINI.md` at each repo's pinned `acf_ref`/`commit_sha`, and merges those flags into `outputs/skill_md_scan_results_with_contributors.csv`. If that legacy input file is not present, pass `--input-known data/skill_only_scan/skill_repositories.csv` or another found-repo CSV with refs. Useful flags: `--input-known`, `--merge-into`, `--out-skill-only`, `--out-merged`, `--concurrency`, and `--dedupe-only`.
 
 **Artifacts produced:** `outputs/skill_md_scan_results_skill_only_new_acfs.csv` and the merged `outputs/skill_md_scan_results_with_contributors_extended.csv`.
 
@@ -430,29 +467,37 @@ RQ1 asks how prevalent `SKILL.md` is across the sampled repository population an
 
 ```sh
 uv run python utils/build_rq1_scan_baseline_skill.py \
-  --population-csv data/v1_2026-04-19/data_after_relevance_filter/data_after_filter.csv \
-  --skill-csv data/v1_2026-04-19/skill_only_scan/skill_repositories.csv \
-  --out-csv outputs/v1_2026-04-19/rq1/rq1_scan_relevance_baseline_x_skill_only.csv
+  --population-csv data/seart_csvs/github_search_results.csv \
+  --skill-csv data/skill_only_scan/skill_repositories.csv \
+  --out-csv outputs/rq1/rq1_scan_baseline.csv \
+  --languages Python TypeScript
 ```
 
-This merges the full relevance-filtered population (denominator, ~157 k repos) with the SKILL.md-found shortlist (numerator, ~3 500 repos) into a single CSV where `found=True/False` drives all prevalence rate calculations.
+This merges the Python/TypeScript population (denominator) with the SKILL.md-found shortlist (numerator) into a single CSV where `found=True/False` drives all prevalence rate calculations.
 
 **Step 5 — Run all RQ1 figures and tables:**
 
 ```sh
 uv run python src/rq1/analyze_metadata.py \
-  --scan-csv outputs/v1_2026-04-19/rq1/rq1_scan_relevance_baseline_x_skill_only.csv \
-  --acf-scan-csv data/v1_2026-04-19/skill_only_scan/skill_repositories.csv \
-  --instances-csv data/v1_2026-04-19/skill_files/full_skills.csv \
-  --out-dir outputs/v1_2026-04-19/rq1 \
+  --scan-csv outputs/rq1/rq1_scan_baseline.csv \
+  --acf-scan-csv data/skill_only_scan/skill_repositories.csv \
+  --instances-csv data/skill_files/full_skills.csv \
+  --out-dir outputs/rq1 \
+  --languages Python TypeScript \
   --format png \
   --dpi 300
+
+uv run python src/rq1/skill_file_distribution.py \
+  --instances-csv data/skill_files/full_skills.csv \
+  --scan-csv outputs/rq1/rq1_scan_baseline.csv \
+  --out-dir outputs/rq1 \
+  --languages Python TypeScript
 ```
 
 - `--scan-csv` is the full-population baseline and drives all prevalence and ecosystem figures.
 - `--acf-scan-csv` is the SKILL-only shortlist and drives all ACF co-occurrence figures.
 - `--instances-csv` drives skill-file distribution and richness figures.
-- `--blacklist`, `--relevance-terms`, `--name-filter-words`, and `--no-name-filter` mirror the preprocessing filters for analysis inputs.
+- `--languages` defaults to `Python TypeScript` and is applied to scan, ACF, and instance inputs.
 - `--screening-decisions` and `--screening-mode {provisional,final}` optionally apply repo-level manual screening decisions before plotting.
 - `--format {png,pdf,svg}` and `--dpi N` control figure output.
 - If contributor enrichment was skipped, the wrapper still runs and writes a note file explaining that the contributor-count figure could not be generated.
@@ -464,8 +509,9 @@ Code/file map:
 - `src/rq1/fig1_prevalence_by_language.py` through `fig14_presence_by_project_age.py` cover prevalence, placement, temporal, topic, richness, license, maturity, contributor, size, and age views.
 - `src/rq1/acf_environment_analysis.py`, `fig21_scale_visibility_collaboration_age.py`, and `fig22_acf_intersections_language_heatmap.py` cover the extended ACF/ecosystem analyses.
 - `src/rq1/skill_file_distribution.py` is a smaller wrapper for skill-file-count tables/figures.
+- `src/rq1/table_repo_group_descriptives.py` compares repositories with and without `SKILL.md` (descriptive statistics plus Mann-Whitney U tests), writing `table_repo_descriptives_*.csv/.tex` and `table_repo_skill_presence_tests.csv`.
 
-**Artifacts produced in `outputs/v1_2026-04-19/rq1/`:**
+**Artifacts produced in `outputs/rq1/`:**
 
 | Artifact | Description |
 |---|---|
@@ -504,12 +550,13 @@ RQ2 asks what `SKILL.md` files contain and what terms characterize their declare
 
 ```sh
 uv run python src/rq2/collect_skill_documents.py \
-  --raw-data-dir outputs/v1_2026-04-19/raw_data \
-  --out-jsonl outputs/v1_2026-04-19/rq2/skill_documents.jsonl \
-  --out-stats-json outputs/v1_2026-04-19/rq2/skill_documents_stats.json
+  --raw-data-dir outputs/raw_data \
+  --languages Python TypeScript \
+  --out-jsonl outputs/rq2/skill_documents.jsonl \
+  --out-stats-json outputs/rq2/skill_documents_stats.json
 ```
 
-**Artifact produced:** `outputs/v1_2026-04-19/rq2/skill_documents.jsonl` (normalized SKILL.md content per document) and `outputs/v1_2026-04-19/rq2/skill_documents_stats.json` (corpus-level statistics).
+**Artifact produced:** `outputs/rq2/skill_documents.jsonl` (normalized SKILL.md content per document) and `outputs/rq2/skill_documents_stats.json` (corpus-level statistics).
 
 `src/rq2/collect_skill_documents.py` records language, repo folder, relative path, raw text, Markdown structure metrics, code-block counts, file/URL references, and reference-type summaries. Use `--raw-data-dir`, `--out-jsonl`, `--out-stats-json`, and `--log-level` to control inputs and outputs.
 
@@ -517,16 +564,16 @@ To generate language-scoped corpora for Python and TypeScript, pass `--languages
 
 ```sh
 uv run python src/rq2/collect_skill_documents.py \
-  --raw-data-dir outputs/v1_2026-04-19/raw_data \
+  --raw-data-dir outputs/raw_data \
   --languages Python \
-  --out-jsonl outputs/v1_2026-04-19/rq2/python/skill_documents.jsonl \
-  --out-stats-json outputs/v1_2026-04-19/rq2/python/skill_documents_stats.json
+  --out-jsonl outputs/rq2/python/skill_documents.jsonl \
+  --out-stats-json outputs/rq2/python/skill_documents_stats.json
 
 uv run python src/rq2/collect_skill_documents.py \
-  --raw-data-dir outputs/v1_2026-04-19/raw_data \
+  --raw-data-dir outputs/raw_data \
   --languages TypeScript \
-  --out-jsonl outputs/v1_2026-04-19/rq2/typescript/skill_documents.jsonl \
-  --out-stats-json outputs/v1_2026-04-19/rq2/typescript/skill_documents_stats.json
+  --out-jsonl outputs/rq2/typescript/skill_documents.jsonl \
+  --out-stats-json outputs/rq2/typescript/skill_documents_stats.json
 ```
 
 ---
@@ -535,12 +582,12 @@ uv run python src/rq2/collect_skill_documents.py \
 
 ```sh
 uv run python src/rq2/analyze_tfidf_sklearn.py \
-  --input outputs/v1_2026-04-19/rq2/skill_documents.jsonl \
-  --out-global outputs/v1_2026-04-19/rq2/tfidf_sklearn_top_terms_global.csv \
-  --out-global-unigrams outputs/v1_2026-04-19/rq2/tfidf_sklearn_top_terms_global_unigrams.csv \
-  --out-global-bigrams outputs/v1_2026-04-19/rq2/tfidf_sklearn_top_terms_global_bigrams.csv \
-  --out-per-doc outputs/v1_2026-04-19/rq2/tfidf_sklearn_top_terms_per_document.csv \
-  --out-summary outputs/v1_2026-04-19/rq2/tfidf_sklearn_summary.json
+  --input outputs/rq2/skill_documents.jsonl \
+  --out-global outputs/rq2/tfidf_sklearn_top_terms_global.csv \
+  --out-global-unigrams outputs/rq2/tfidf_sklearn_top_terms_global_unigrams.csv \
+  --out-global-bigrams outputs/rq2/tfidf_sklearn_top_terms_global_bigrams.csv \
+  --out-per-doc outputs/rq2/tfidf_sklearn_top_terms_per_document.csv \
+  --out-summary outputs/rq2/tfidf_sklearn_summary.json
 ```
 
 `src/rq2/analyze_tfidf_sklearn.py` extracts frontmatter `name` and `description`, lowercases text, removes English plus project-specific stopwords, builds unigram/bigram TF-IDF features, and writes global and per-document ranked terms. Useful tuning flags are `--max-features`, `--min-df`, `--max-df`, `--top-k-global`, and `--top-k-per-doc`.
@@ -549,50 +596,78 @@ The TF-IDF script can also filter an existing global JSONL corpus in place:
 
 ```sh
 uv run python src/rq2/analyze_tfidf_sklearn.py \
-  --input outputs/v1_2026-04-19/rq2/skill_documents.jsonl \
+  --input outputs/rq2/skill_documents.jsonl \
   --languages Python \
-  --out-global outputs/v1_2026-04-19/rq2/python/tfidf_sklearn_top_terms_global.csv \
-  --out-global-unigrams outputs/v1_2026-04-19/rq2/python/tfidf_sklearn_top_terms_global_unigrams.csv \
-  --out-global-bigrams outputs/v1_2026-04-19/rq2/python/tfidf_sklearn_top_terms_global_bigrams.csv \
-  --out-per-doc outputs/v1_2026-04-19/rq2/python/tfidf_sklearn_top_terms_per_document.csv \
-  --out-summary outputs/v1_2026-04-19/rq2/python/tfidf_sklearn_summary.json
+  --out-global outputs/rq2/python/tfidf_sklearn_top_terms_global.csv \
+  --out-global-unigrams outputs/rq2/python/tfidf_sklearn_top_terms_global_unigrams.csv \
+  --out-global-bigrams outputs/rq2/python/tfidf_sklearn_top_terms_global_bigrams.csv \
+  --out-per-doc outputs/rq2/python/tfidf_sklearn_top_terms_per_document.csv \
+  --out-summary outputs/rq2/python/tfidf_sklearn_summary.json
 
 uv run python src/rq2/analyze_tfidf_sklearn.py \
-  --input outputs/v1_2026-04-19/rq2/skill_documents.jsonl \
+  --input outputs/rq2/skill_documents.jsonl \
   --languages TypeScript \
-  --out-global outputs/v1_2026-04-19/rq2/typescript/tfidf_sklearn_top_terms_global.csv \
-  --out-global-unigrams outputs/v1_2026-04-19/rq2/typescript/tfidf_sklearn_top_terms_global_unigrams.csv \
-  --out-global-bigrams outputs/v1_2026-04-19/rq2/typescript/tfidf_sklearn_top_terms_global_bigrams.csv \
-  --out-per-doc outputs/v1_2026-04-19/rq2/typescript/tfidf_sklearn_top_terms_per_document.csv \
-  --out-summary outputs/v1_2026-04-19/rq2/typescript/tfidf_sklearn_summary.json
+  --out-global outputs/rq2/typescript/tfidf_sklearn_top_terms_global.csv \
+  --out-global-unigrams outputs/rq2/typescript/tfidf_sklearn_top_terms_global_unigrams.csv \
+  --out-global-bigrams outputs/rq2/typescript/tfidf_sklearn_top_terms_global_bigrams.csv \
+  --out-per-doc outputs/rq2/typescript/tfidf_sklearn_top_terms_per_document.csv \
+  --out-summary outputs/rq2/typescript/tfidf_sklearn_summary.json
 ```
 
 **Step 3 — Plot TF-IDF top terms:**
 
 ```sh
 uv run python src/rq2/create_diagrams.py \
-  --unigrams-csv outputs/v1_2026-04-19/rq2/tfidf_sklearn_top_terms_global_unigrams.csv \
-  --bigrams-csv outputs/v1_2026-04-19/rq2/tfidf_sklearn_top_terms_global_bigrams.csv \
-  --out-combined-image outputs/v1_2026-04-19/rq2/top10_tfidf_unigrams_bigrams_combined.png
+  --unigrams-csv outputs/rq2/tfidf_sklearn_top_terms_global_unigrams.csv \
+  --bigrams-csv outputs/rq2/tfidf_sklearn_top_terms_global_bigrams.csv \
+  --out-combined-image outputs/rq2/top10_tfidf_unigrams_bigrams_combined.png
 ```
 
-For language-scoped diagrams, point the CSV and image flags at the corresponding `outputs/v1_2026-04-19/rq2/python/` or `outputs/v1_2026-04-19/rq2/typescript/` paths.
+For language-scoped diagrams, point the CSV and image flags at the corresponding `outputs/rq2/python/` or `outputs/rq2/typescript/` paths.
 
 Use `--top-k N` to change the number of terms plotted, `--skip-separate` to write only the combined chart, and `--out-unigrams-image` / `--out-bigrams-image` to override the separate bar-chart paths.
 
-**Artifacts produced in `outputs/v1_2026-04-19/rq2/`:**
+**Artifacts produced in `outputs/rq2/` (and the same files under `outputs/rq2/python/` and `outputs/rq2/typescript/`):**
 
 | File | Description |
 |---|---|
+| `skill_documents.jsonl` | Normalized SKILL.md documents |
+| `skill_documents_stats.json` | Raw corpus statistics |
 | `tfidf_sklearn_top_terms_global.csv` | Top global TF-IDF terms (unigrams + bigrams) |
 | `tfidf_sklearn_top_terms_global_unigrams.csv` | Top global unigrams |
 | `tfidf_sklearn_top_terms_global_bigrams.csv` | Top global bigrams |
 | `tfidf_sklearn_top_terms_per_document.csv` | Top terms per SKILL.md document |
 | `tfidf_sklearn_summary.json` | Corpus-level TF-IDF summary statistics |
-| `skill_documents_stats.json` | Raw corpus statistics |
 | `top10_unigrams_tfidf_barh.png` | Horizontal bar chart of top unigram TF-IDF terms |
 | `top10_bigrams_tfidf_barh.png` | Horizontal bar chart of top bigram TF-IDF terms |
 | `top10_tfidf_unigrams_bigrams_combined.png` | Two-panel unigram/bigram TF-IDF chart |
+
+These files are produced by `collect_skill_documents.py`, `analyze_tfidf_sklearn.py`, and `create_diagrams.py`.
+
+---
+
+**Additional RQ2 analyses.** Each of these scripts defaults to the committed input/output paths, so it can be run without flags:
+
+```sh
+# Deduplicate documents by normalized name+description, then rerun TF-IDF on the result.
+uv run python src/rq2/dedup_analysis.py \
+  --input outputs/rq2/skill_documents.jsonl \
+  --out-dedup-jsonl outputs/rq2/skill_documents_dedup.jsonl
+uv run python src/rq2/analyze_tfidf_sklearn.py \
+  --input outputs/rq2/skill_documents_dedup.jsonl \
+  --out-global outputs/rq2/dedup/tfidf_sklearn_top_terms_global.csv \
+  --out-global-unigrams outputs/rq2/dedup/tfidf_sklearn_top_terms_global_unigrams.csv \
+  --out-global-bigrams outputs/rq2/dedup/tfidf_sklearn_top_terms_global_bigrams.csv \
+  --out-per-doc outputs/rq2/dedup/tfidf_sklearn_top_terms_per_document.csv \
+  --out-summary outputs/rq2/dedup/tfidf_sklearn_summary.json
+
+uv run python src/rq2/create_top5_tfidf_figure.py      # top5_unigrams_bigrams_{full,dedup}.png + coverage CSVs
+uv run python src/rq2/create_top10_tfidf_figure.py     # top10_unigrams_bigrams_all_vs_dedup.png
+uv run python src/rq2/create_comparison_diagram.py --help  # generic side-by-side comparison of two TF-IDF runs
+uv run python src/rq2/analyze_skill_dependencies.py    # outputs/rq2/dependencies/: size, headings, and file-reference coupling
+```
+
+`analyze_skill_dependencies.py` resolves every path-like mention in a `SKILL.md` against its skill folder and classifies it as bundled, outside the skill, dangling, an agent-config reference, or filtered (project file, library name, placeholder).
 
 ---
 
@@ -601,6 +676,37 @@ Use `--top-k N` to change the number of terms plotted, `--skip-separate` to writ
 RQ3 involves reproducible random sampling, manual labeling by two annotators, inter-rater agreement computation, and analysis of structural and SDLC-task patterns in SKILL.md files.
 
 At a high level, RQ3 uses `src/rq3/retrieve_language_metadata.py`, `generate_language_sample.py`, and `generate_labeling_samples.py` to construct the labeling sample; `calculate_agreement.py`, `process_label_exports.py`, and `analyze_processed_labels.py` to normalize and summarize manual labels; and `generate_processed_analysis_plots.py`, `build_python_all_dataset.py`, `generate_python_all_analysis.py`, and `fig1_prevalence_panels.py` to produce figures and tables. The combined-dataset steps now support both Python and TypeScript via language-aware CLI flags.
+
+### Current run (2026-09-19 labels)
+
+The results in `outputs/rq3/` come from the final Python and TypeScript label exports in `data/labelled_set/`. They reuse the scripts from Steps 5, 7, and 8 below:
+
+```sh
+uv run python src/rq3/process_label_exports.py \
+  --results-dir data/labelled_set \
+  --output-dir outputs/rq3/results/processed
+
+uv run python src/rq3/build_python_all_dataset.py \
+  --processed-dir outputs/rq3/results/processed \
+  --language Python --source-files 2026-09-19_PY_FINAL.json
+uv run python src/rq3/build_python_all_dataset.py \
+  --processed-dir outputs/rq3/results/processed \
+  --language TypeScript --source-files 2026-09-19_TS_FINAL.json
+
+uv run python src/rq3/generate_python_all_analysis.py \
+  --processed-dir outputs/rq3/results/processed \
+  --language Python --out-dir outputs/rq3/analysis/python_all
+uv run python src/rq3/generate_python_all_analysis.py \
+  --processed-dir outputs/rq3/results/processed \
+  --language TypeScript --out-dir outputs/rq3/analysis/typescript_all
+
+# Overall/Python/TypeScript side-by-side figure (defaults point at the tables above)
+uv run python src/rq3/fig1_combined_language_panels.py
+```
+
+**Artifact produced:** `outputs/rq3/analysis/fig1_overall_python_typescript.png`, plus its `_sdlc.csv` and `_structural.csv` data tables.
+
+Steps 1-8 below document the original v1 procedure (sampling, labeler split, agreement), whose artifacts are archived under `outputs/v1_2026-04-19/rq3/`.
 
 ### Step 1 — Generate per-language metadata summaries
 
@@ -681,9 +787,9 @@ Calculate per-label Cohen's kappa between two annotators on the shared `both` se
 
 ```sh
 uv run python src/rq3/calculate_agreement.py \
-  outputs/v1_2026-04-19/rq3/results/2026-04-19_CY_Final_Labels_Both_Python.json \
-  outputs/v1_2026-04-19/rq3/results/2026-04-19_MV_Final_Labels_Both_Python.json \
-  --output outputs/v1_2026-04-19/rq3/results/processed/kappa_CY_vs_MV_Both_Python.json
+  outputs/v1_2026-04-19/rq3/results/2026-04-19_A_Final_Labels_Both_Python.json \
+  outputs/v1_2026-04-19/rq3/results/2026-04-19_B_Final_Labels_Both_Python.json \
+  --output outputs/v1_2026-04-19/rq3/results/processed/kappa_A_vs_B_Both_Python.json
 ```
 
 **Artifact produced:** `outputs/v1_2026-04-19/rq3/results/processed/kappa_<comparison>.json`. If `--output` is omitted, `calculate_agreement.py` writes next to the first input file; copy or rerun with `--output` so Step 6 can find `kappa_*.json` in `outputs/v1_2026-04-19/rq3/results/processed/`.
@@ -749,9 +855,9 @@ Build the combined processed Python dataset, then generate structural and SDLC-t
 uv run python src/rq3/build_python_all_dataset.py \
   --processed-dir outputs/v1_2026-04-19/rq3/results/processed \
   --language Python \
-  --a-file 2026-04-19_CY_Final_Labels_A_Python.json \
-  --b-file 2026-04-19_MV_Final_Labels_B_Python.json \
-  --both-file 2026-04-19_CY_Final_Labels_Both_Python.json
+  --a-file 2026-04-19_A_Final_Labels_A_Python.json \
+  --b-file 2026-04-19_B_Final_Labels_B_Python.json \
+  --both-file 2026-04-19_A_Final_Labels_Both_Python.json
 ```
 
 Then run:
@@ -849,6 +955,12 @@ src/rq3/
   build_python_all_dataset.py              # Step 7: merge processed exports into <Language>_All datasets
   generate_python_all_analysis.py          # Step 7: full Python/TypeScript structural/SDLC analysis
   fig1_prevalence_panels.py                # Step 8: two-panel RQ3 figure 1 for a selected language
+  fig1_combined_language_panels.py         # Current run: overall/Python/TypeScript figure 1
+  label_processing.py                      # Shared label normalization used by Steps 5-7
+  preprocess_labels.py                     # Inspect/preprocess raw label exports
+  generate_label_distribution_summary.py   # Markdown summaries of label distributions
+  generate_labeling_samples_excluding_existing.py  # Relabeling sample that excludes already-labeled repos
+  extract_python_all_repo_skill_counts.py  # Step 7: per-repo skill counts for a <Language>_All dataset
 
 outputs/v1_2026-04-19/rq3/
   <Language>_summary.json                  # per-language metadata summary (Step 1)
@@ -871,11 +983,11 @@ Scrapes GitHub repositories via `GET /search/repositories` and writes a SEART-co
 
 | Flag | Default | Description |
 |---|---|---|
-| `--out-csv PATH` | `data/v1_2026-04-19/seart_csvs/github_search_results.csv` | Output CSV path |
+| `--out-csv PATH` | `data/seart_csvs/github_search_results.csv` | Output CSV path |
 | `--min-stars N` | `10` | Minimum star count |
 | `--pushed-since DATE` | `2025-10-16` | Only repos pushed on or after `YYYY-MM-DD` |
 | `--end-date DATE` | today | Only repos pushed on or before `YYYY-MM-DD`; freezes the crawl horizon |
-| `--languages LANG ...` | TypeScript Python C# Go C++ JavaScript Java C PHP Rust | Languages to query (space-separated) |
+| `--languages LANG ...` | TypeScript Python | Languages to query (space-separated). Pass the archived full list to reproduce v2_2026-09-17. |
 | `--licenses LICENSE ...` | `mit apache-2.0 bsd-3-clause bsd-2-clause` | License SPDX keys (space-separated) |
 | `--resume` | off | Append to existing `--out-csv`, skipping already-written repos |
 | `--github-token TOKEN` | *(env)* | Single GitHub PAT; overrides env vars |
@@ -973,6 +1085,7 @@ Legacy Stage 2 scanner retained for reproducing older Code Search based runs.
 | `--failures-log PATH` | `<out dir>/processing_failures.tsv` | TSV recording repos that produced no dataset rows because of tree or processing failures |
 | `--resume` | off | Skip repos already present in `--out-csv` or with successful metadata.json |
 | `--concurrency N` | `1` | Number of parallel worker threads |
+| `--languages LANG ...` | Python TypeScript | Primary languages to include. Pass the archived full list to reproduce v2_2026-09-17. |
 | `--github-token TOKEN` | *(env)* | Single GitHub token; overrides env vars |
 | `--github-tokens TOKENS` | *(env)* | Comma-separated GitHub tokens for multi-token rotation |
 | `--log-level LEVEL` | `INFO` | Logging verbosity (`DEBUG`, `INFO`, `WARNING`, `ERROR`) |
@@ -1013,7 +1126,7 @@ Stage 3 prefers the `commit_sha` column from stage 2 when it is present. Older f
 
 | Flag | Default | Description |
 |---|---|---|
-| `--input-known PATH` | `data/v1_2026-04-19/skill_only_scan/known_skill_repos.csv` | Skill-only input with found repos and refs; pass `data/v1_2026-04-19/skill_only_scan/skill_repositories.csv` if the legacy default is absent |
+| `--input-known PATH` | `data/skill_only_scan/known_skill_repos.csv` | Skill-only input with found repos and refs; pass `data/skill_only_scan/skill_repositories.csv` if the legacy default is absent |
 | `--merge-into PATH` | `outputs/skill_md_scan_results_with_contributors.csv` | Full scan CSV to merge into |
 | `--out-skill-only PATH` | `outputs/skill_md_scan_results_skill_only_new_acfs.csv` | Enriched skill-only scan output |
 | `--out-merged PATH` | `outputs/skill_md_scan_results_with_contributors_extended.csv` | Full merged output |
@@ -1056,7 +1169,7 @@ Repositories are deduplicated across all input CSVs. If a repo appears in more t
 | `match_url` | HTML URL to the file on GitHub |
 | `match_sha` | Git blob SHA of the matched file |
 | `match_size_bytes` | File size in bytes when fetched from the Contents API |
-| `scan_method` | Always `code_search` |
+| `scan_method` | `tree_recursive` or `tree_walk` (truncated-tree fallback) for the tree scanner; `code_search` for the legacy scanner |
 | `http_status` | HTTP status code from the API call that determined the final scan outcome |
 | `error_type` | `none`, `auth`, `rate_limited`, `network`, `invalid_repo`, `not_found`, reserved `filtered`, or `other` |
 | `error_message` | Short error detail (never contains secrets) |
@@ -1156,6 +1269,11 @@ src/
     collect_skill_documents.py    # RQ2 Step 1: collect and normalize SKILL.md documents
     analyze_tfidf_sklearn.py      # RQ2 Step 2: TF-IDF analysis on frontmatter
     create_diagrams.py            # RQ2 Step 3: TF-IDF unigram/bigram charts
+    dedup_analysis.py             # Deduplicated corpus for the TF-IDF rerun
+    create_top5_tfidf_figure.py   # Top-5 term figures (full and deduplicated corpora)
+    create_top10_tfidf_figure.py  # Top-10 full vs deduplicated comparison figure
+    create_comparison_diagram.py  # Generic side-by-side comparison of two TF-IDF runs
+    analyze_skill_dependencies.py # Size, structure, and file-reference coupling of skills
   rq3/
     retrieve_language_metadata.py            # RQ3 Step 1: per-language summaries
     generate_language_sample.py              # RQ3 Step 2: repo-first sample (one SKILL.md per repo)

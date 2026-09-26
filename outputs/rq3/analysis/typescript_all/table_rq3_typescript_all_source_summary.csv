@@ -1,0 +1,2 @@
+file,dataset,retained_documents,filtered_documents,total_documents,retained_pct,filtered_pct,avg_labels_per_retained_document,avg_labels_per_filtered_document,filter_source_document_counts
+TypeScript_All.json,TypeScript All,265,116,381,69.55,30.45,8.638,1.0,"{'agent-skill': 72, 'filter-out': 18, 'outside-scope': 0, 'wrong-language': 26}"

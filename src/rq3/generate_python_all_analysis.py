@@ -21,9 +21,9 @@ from rq3.label_processing import INSTRUCTION_TYPE_LABELS, SDLC_STAGE_LABELS
 
 log = logging.getLogger(__name__)
 
-DEFAULT_A_FILE = "2026-04-19_CY_Final_Labels_A_Python.json"
-DEFAULT_B_FILE = "2026-04-19_MV_Final_Labels_B_Python.json"
-DEFAULT_BOTH_FILE = "2026-04-19_CY_Final_Labels_Both_Python.json"
+DEFAULT_A_FILE = "2026-04-19_A_Final_Labels_A_Python.json"
+DEFAULT_B_FILE = "2026-04-19_B_Final_Labels_B_Python.json"
+DEFAULT_BOTH_FILE = "2026-04-19_A_Final_Labels_Both_Python.json"
 DEFAULT_ALL_FILE = "Python_All.json"
 
 
@@ -152,12 +152,12 @@ def plot_grouped_percent_bars(
     output_path: Path,
     dpi: int,
 ) -> None:
-    fig, ax = plt.subplots(figsize=(11, 5.8))
+    fig, ax = plt.subplots(figsize=(12.5, 6.2))
     sns.barplot(data=df, x="label", y="pct_docs", hue="dataset", ax=ax)
     ax.set_title(title)
     ax.set_xlabel("")
     ax.set_ylabel("% of retained docs")
-    ax.tick_params(axis="x", rotation=22)
+    ax.tick_params(axis="x", rotation=30)
     ax.legend(title="Dataset", fontsize=9, title_fontsize=10)
     savefig(fig, str(output_path), dpi)
 
@@ -172,7 +172,7 @@ def plot_language_all_focus(
     dpi: int,
 ) -> None:
     plot_df = df[df["dataset"] == dataset_label].sort_values("pct_docs", ascending=True)
-    fig, ax = plt.subplots(figsize=(8, 5.5))
+    fig, ax = plt.subplots(figsize=(8.5, 6.4))
     ax.barh(plot_df["label"], plot_df["pct_docs"], color=color, edgecolor="white")
     ax.set_xlabel("% of retained docs")
     ax.set_ylabel("")
@@ -212,11 +212,12 @@ def plot_retained_vs_filtered(summary_df: pd.DataFrame, output_path: Path, dpi: 
 def plot_filter_sources(filter_df: pd.DataFrame, output_path: Path, dpi: int, language: str) -> None:
     pivot = filter_df.pivot(index="dataset", columns="filter_source", values="count").fillna(0)
     fig, ax = plt.subplots(figsize=(8.8, 5.4))
+    palette = ["#5C6BC0", "#FFB74D", "#EF5350", "#26A69A", "#8D6E63"]
     pivot.plot(
         kind="bar",
         stacked=True,
         ax=ax,
-        color=["#5C6BC0", "#FFB74D", "#EF5350"],
+        color=palette[: len(pivot.columns)],
         edgecolor="white",
     )
     ax.set_ylabel("Filtered document count")
@@ -233,12 +234,12 @@ def plot_heatmap(heatmap_df: pd.DataFrame, output_path: Path, dpi: int, dataset_
         columns="sdlc_stage",
         values="count",
     ).reindex(index=INSTRUCTION_TYPE_LABELS, columns=SDLC_STAGE_LABELS, fill_value=0)
-    fig, ax = plt.subplots(figsize=(10.5, 5.4))
+    fig, ax = plt.subplots(figsize=(12.2, 7.0))
     sns.heatmap(matrix, annot=True, fmt=".0f", cmap="Blues", cbar=False, ax=ax)
     ax.set_title(f"{dataset_label}\nInstruction Type x SDLC Stage (Retained Docs)")
     ax.set_xlabel("SDLC stage")
     ax.set_ylabel("Instruction type")
-    ax.tick_params(axis="x", rotation=22)
+    ax.tick_params(axis="x", rotation=30)
     savefig(fig, str(output_path), dpi)
 
 
@@ -271,43 +272,55 @@ def write_analysis_report(
     weakest_stage = all_sdlc.iloc[-1]
     heatmap_top = heatmap_df.sort_values("count", ascending=False).head(8)
 
-    lines = [
-        f"# RQ3 {dataset_label} Analysis",
-        "",
-        f"- Selected `Both` source: `{both_file}`",
-        f"- Combined dataset: `{int(summary_all['total_documents'])}` docs",
-        f"- Retained after filtering: `{int(summary_all['retained_documents'])}` docs ({summary_all['retained_pct']:.2f}%)",
-        f"- Filtered out: `{int(summary_all['filtered_documents'])}` docs ({summary_all['filtered_pct']:.2f}%)",
-        f"- Filter source counts: `{summary_all['filter_source_document_counts']}`",
-        "",
-        "## Structural Patterns",
+    lines = [f"# RQ3 {dataset_label} Analysis", ""]
+    if both_file:
+        lines.append(f"- Selected `Both` source: `{both_file}`")
+    lines.append(f"- Combined dataset: `{int(summary_all['total_documents'])}` docs")
+    lines.append(
+        f"- Retained after filtering: `{int(summary_all['retained_documents'])}` docs ({summary_all['retained_pct']:.2f}%)"
+    )
+    lines.append(
+        f"- Filtered out: `{int(summary_all['filtered_documents'])}` docs ({summary_all['filtered_pct']:.2f}%)"
+    )
+    lines.append(f"- Filter source counts: `{summary_all['filter_source_document_counts']}`")
+    lines.append("")
+    lines.append("## Structural Patterns")
+    lines.append(
         f"- The dominant structural pattern in `{dataset_label}` is `{strongest_instruction['label']}` "
-        f"({strongest_instruction['count']} docs, {strongest_instruction['pct_docs']:.2f}% of retained docs).",
+        f"({strongest_instruction['count']} docs, {strongest_instruction['pct_docs']:.2f}% of retained docs)."
+    )
+    lines.append(
         f"- The second strongest is `{second_instruction['label']}` "
-        f"({second_instruction['count']} docs, {second_instruction['pct_docs']:.2f}%).",
-        "- `reference` remains common, while `negative-examples` is comparatively rare.",
-        "",
-        "## Software Engineering Tasks",
+        f"({second_instruction['count']} docs, {second_instruction['pct_docs']:.2f}%)."
+    )
+    lines.append("- `reference` remains common, while `negative-example` is comparatively rare.")
+    lines.append("")
+    lines.append("## Software Engineering Tasks")
+    lines.append(
         f"- The most common SDLC task family in `{dataset_label}` is `{strongest_stage['label']}` "
-        f"({strongest_stage['count']} docs, {strongest_stage['pct_docs']:.2f}% of retained docs).",
+        f"({strongest_stage['count']} docs, {strongest_stage['pct_docs']:.2f}% of retained docs)."
+    )
+    lines.append(
         f"- The second most common is `{second_stage['label']}` "
-        f"({second_stage['count']} docs, {second_stage['pct_docs']:.2f}%).",
-        f"- `{weakest_stage['label']}` is the least represented stage in the combined {language} dataset.",
-        "",
-        "## Cross-Source Notes",
-        *[
+        f"({second_stage['count']} docs, {second_stage['pct_docs']:.2f}%)."
+    )
+    lines.append(
+        f"- `{weakest_stage['label']}` is the least represented stage in the combined {language} dataset."
+    )
+    lines.append("")
+    lines.append("## Cross-Source Notes")
+    for _, row in summary_df.iterrows():
+        lines.append(
             f"- `{row['dataset']}`: {int(row['retained_documents'])} retained / "
             f"{int(row['filtered_documents'])} filtered ({row['filtered_pct']:.2f}% filtered)."
-            for _, row in summary_df.iterrows()
-        ],
-        "",
-        f"Most frequent instruction-type x SDLC-stage pairings in `{dataset_label}`:",
-        *[
-            f"- `{row['instruction_type']}` x `{row['sdlc_stage']}`: {int(row['count'])} docs"
-            for _, row in heatmap_top.iterrows()
-            if row["count"] > 0
-        ],
-    ]
+        )
+    lines.append("")
+    lines.append(f"Most frequent instruction-type x SDLC-stage pairings in `{dataset_label}`:")
+    for _, row in heatmap_top.iterrows():
+        if row["count"] > 0:
+            lines.append(
+                f"- `{row['instruction_type']}` x `{row['sdlc_stage']}`: {int(row['count'])} docs"
+            )
 
     output_path = out_dir / f"rq3_{slug}_analysis.md"
     output_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -387,16 +400,18 @@ def main(argv: list[str] | None = None) -> int:
     slug = language_slug(defaults.language) + "_all"
     out_dir = resolve_path(args.out_dir or f"outputs/v1_2026-04-19/rq3/analysis/{slug}")
     all_file = args.all_file or defaults.output_name
-    both_file = args.both_file or defaults.selected_both_file or ""
     if args.source_files:
         source_files = args.source_files
+        both_file = args.both_file or ""
     elif defaults.language == "Python":
+        both_file = args.both_file or DEFAULT_BOTH_FILE
         source_files = [
             args.a_file or DEFAULT_A_FILE,
             args.b_file or DEFAULT_B_FILE,
-            both_file or DEFAULT_BOTH_FILE,
+            both_file,
         ]
     else:
+        both_file = args.both_file or defaults.selected_both_file or ""
         source_files = defaults.source_files
     dataset_label = f"{defaults.language} All"
 

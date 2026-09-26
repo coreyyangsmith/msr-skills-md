@@ -1,0 +1,10 @@
+file,dataset,label,count,pct_docs,retained_documents
+TypeScript_All.json,TypeScript All,Requirements,21,7.92,265
+TypeScript_All.json,TypeScript All,Software Design,57,21.51,265
+TypeScript_All.json,TypeScript All,Code Implementation,137,51.7,265
+TypeScript_All.json,TypeScript All,Program Analysis,65,24.53,265
+TypeScript_All.json,TypeScript All,Testing,76,28.68,265
+TypeScript_All.json,TypeScript All,Debugging,43,16.23,265
+TypeScript_All.json,TypeScript All,Maintenance,65,24.53,265
+TypeScript_All.json,TypeScript All,DevOps,44,16.6,265
+TypeScript_All.json,TypeScript All,Documentation,54,20.38,265

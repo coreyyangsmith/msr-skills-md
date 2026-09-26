@@ -51,6 +51,19 @@ def _build_panel_tables(scan_df: pd.DataFrame) -> list[tuple[str, str, pd.DataFr
     if not star_table.empty:
         panels.append(("(a) Stars", "Stars", star_table))
 
+    if "size" in scan_df.columns and scan_df["size"].notna().any():
+        size_kb = pd.to_numeric(scan_df["size"], errors="coerce")
+        size_buckets = pd.cut(
+            size_kb,
+            bins=[0, 1024, 10240, 102400, float("inf")],
+            labels=SIZE_LABELS,
+            right=False,
+            include_lowest=True,
+        )
+        size_table = prevalence_by_bucket(scan_df, size_kb, "bucket", SIZE_LABELS, size_buckets)
+        if not size_table.empty:
+            panels.append(("(b) Repository Size", "Repository size", size_table))
+
     if "contributors" in scan_df.columns and scan_df["contributors"].notna().any():
         contributors = pd.to_numeric(scan_df["contributors"], errors="coerce")
         contributor_buckets = pd.cut(
@@ -68,20 +81,7 @@ def _build_panel_tables(scan_df: pd.DataFrame) -> list[tuple[str, str, pd.DataFr
             contributor_buckets,
         )
         if not contributor_table.empty:
-            panels.append(("(b) Contributors", "Contributors", contributor_table))
-
-    if "size" in scan_df.columns and scan_df["size"].notna().any():
-        size_kb = pd.to_numeric(scan_df["size"], errors="coerce")
-        size_buckets = pd.cut(
-            size_kb,
-            bins=[0, 1024, 10240, 102400, float("inf")],
-            labels=SIZE_LABELS,
-            right=False,
-            include_lowest=True,
-        )
-        size_table = prevalence_by_bucket(scan_df, size_kb, "bucket", SIZE_LABELS, size_buckets)
-        if not size_table.empty:
-            panels.append(("(c) Repository Size", "Repository size", size_table))
+            panels.append(("(c) Contributors", "Contributors", contributor_table))
 
     if "createdAt" in scan_df.columns and scan_df["createdAt"].notna().any():
         age_years = compute_project_age_years(scan_df)

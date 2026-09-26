@@ -10,47 +10,38 @@ if __package__ in {None, ""}:
     sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 
 from rq1.common import configure_logging, savefig, setup_style
+from rq3.label_processing import INSTRUCTION_TYPE_LABELS, SDLC_STAGE_LABELS
 
 log = logging.getLogger(__name__)
 
+SDLC_COLOR = "#2196F3"
+INSTRUCTION_COLOR = SDLC_COLOR
+BAR_HEIGHT = 0.20
+BAR_STEP = 0.22
 
-SDLC_LABEL_ORDER = [
-    "Software Testing",
-    "Code Generation",
-    "DevOps",
-    "Documentation",
-    "Software Design",
-    "Requirements",
-]
+
+SDLC_LABEL_ORDER = list(SDLC_STAGE_LABELS)
 
 SDLC_DISPLAY_NAMES = {
-    "Software Testing": "Testing",
-    "Code Generation": "Implementation",
-    "DevOps": "Deployment",
-    "Documentation": "Documentation",
-    "Software Design": "Design",
     "Requirements": "Requirements",
+    "Software Design": "Design",
+    "Code Implementation": "Implementation",
+    "Program Analysis": "Program Analysis",
+    "Testing": "Testing",
+    "Debugging": "Debugging",
+    "Maintenance": "Maintenance",
+    "DevOps": "DevOps",
+    "Documentation": "Documentation",
 }
 
-STRUCTURAL_LABEL_ORDER = [
-    "instructive",
-    "reference",
-    "descriptive",
-    "positive-examples",
-    "commands",
-    "negative-examples",
-]
+STRUCTURAL_LABEL_ORDER = list(INSTRUCTION_TYPE_LABELS)
 
 STRUCTURAL_DISPLAY_NAMES = {
-    "instructive": "Instructive",
-    "reference": "Reference",
-    "descriptive": "Descriptive",
-    "positive-examples": "Positive Examples",
-    "commands": "Commands",
-    "negative-examples": "Negative Examples",
+    label: label.replace("-", " ").title() for label in INSTRUCTION_TYPE_LABELS
 }
 
 
@@ -79,19 +70,77 @@ def load_language_all_table(path: Path, labels: list[str], dataset_name: str) ->
     return plot_df.sort_values(["pct_docs", "count"], ascending=[False, False]).reset_index(drop=True)
 
 
-def add_panel(ax: plt.Axes, df: pd.DataFrame, *, title: str, color: str, display_names: dict[str, str] | None = None) -> None:
+def combine_language_tables(python: pd.DataFrame, typescript: pd.DataFrame) -> pd.DataFrame:
+    """Return long-form Overall/Python/TypeScript prevalence rows."""
+    labels_python = set(python["label"])
+    labels_typescript = set(typescript["label"])
+    if labels_python != labels_typescript:
+        raise ValueError("Python and TypeScript tables must contain the same labels")
+
+    python_docs = set(python["retained_documents"].astype(int))
+    typescript_docs = set(typescript["retained_documents"].astype(int))
+    if len(python_docs) != 1 or len(typescript_docs) != 1:
+        raise ValueError("Each language table must use one retained-document denominator")
+
+    python_rows = python.copy()
+    python_rows["dataset"] = "Python"
+    typescript_rows = typescript.copy()
+    typescript_rows["dataset"] = "TypeScript"
+
+    counts = (
+        pd.concat([python, typescript], ignore_index=True)
+        .groupby("label", as_index=False)["count"]
+        .sum()
+    )
+    overall_docs = python_docs.pop() + typescript_docs.pop()
+    counts["retained_documents"] = overall_docs
+    counts["pct_docs"] = 100.0 * counts["count"] / overall_docs
+    counts["dataset"] = "Overall"
+
+    return pd.concat([counts, python_rows, typescript_rows], ignore_index=True)
+
+
+def overall_prevalence_table(python: pd.DataFrame, typescript: pd.DataFrame) -> pd.DataFrame:
+    combined = combine_language_tables(python, typescript)
+    overall = combined[combined["dataset"] == "Overall"].copy()
+    return overall.sort_values(["pct_docs", "count"], ascending=[False, False]).reset_index(drop=True)
+
+
+def add_panel(
+    ax: plt.Axes,
+    df: pd.DataFrame,
+    *,
+    title: str,
+    color: str,
+    display_names: dict[str, str] | None = None,
+) -> None:
     labels = [display_names.get(str(label), str(label)) if display_names else str(label) for label in df["label"]]
-    bars = ax.barh(labels, df["pct_docs"], color=color, edgecolor="white", linewidth=1.2)
+    y_positions = np.arange(len(labels)) * BAR_STEP
+    bars = ax.barh(
+        y_positions,
+        df["pct_docs"],
+        height=BAR_HEIGHT,
+        color=color,
+        alpha=0.85,
+        edgecolor="white",
+        linewidth=0.6,
+        zorder=2,
+    )
+    ax.set_yticks(y_positions)
+    ax.set_yticklabels(labels, fontsize=11)
     ax.invert_yaxis()
-    ax.set_title(title, loc="left", fontweight="bold", pad=10)
+    ax.set_title(title, loc="left", fontsize=13, fontweight="bold", pad=9)
     ax.set_xlabel("")
     ax.set_ylabel("")
-    ax.grid(axis="x", color="#d8d8d8", linewidth=0.8)
+    ax.set_axisbelow(True)
+    ax.grid(axis="x", color="#d0d0d0", linewidth=0.75, alpha=0.45)
     ax.grid(axis="y", visible=False)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
-    ax.spines["left"].set_visible(False)
-    ax.tick_params(axis="y", length=0)
+    for spine in ("bottom", "left"):
+        ax.spines[spine].set_color("#bdbdbd")
+        ax.spines[spine].set_linewidth(0.8)
+    ax.tick_params(axis="both", length=0, labelsize=10)
 
     for bar, (_, row) in zip(bars, df.iterrows()):
         width = float(row["pct_docs"])
@@ -102,36 +151,33 @@ def add_panel(ax: plt.Axes, df: pd.DataFrame, *, title: str, color: str, display
             f"{width:.1f}% (n={int(row['count'])})",
             va="center",
             ha="left",
-            fontsize=9.5,
-            color="#333333",
+            fontsize=10,
+            fontweight="bold",
+            color="#2b2b2b",
         )
 
 
 def plot_fig1(sdlc_df: pd.DataFrame, structural_df: pd.DataFrame, output_path: Path, dpi: int) -> None:
-    max_pct = max(float(sdlc_df["pct_docs"].max()), float(structural_df["pct_docs"].max()))
-    x_max = min(100, max(10, ((int(max_pct) // 10) + 2) * 10))
-    retained_counts = set(sdlc_df["retained_documents"].astype(int)) | set(structural_df["retained_documents"].astype(int))
-    denominator = retained_counts.pop() if len(retained_counts) == 1 else None
-
-    fig, axes = plt.subplots(1, 2, figsize=(12.8, 2.8), sharex=True, constrained_layout=False)
-    fig.subplots_adjust(left=0.10, right=0.98, top=0.88, bottom=0.14, wspace=0.30)
+    fig, axes = plt.subplots(1, 2, figsize=(13.0, 4.25), sharex=True, constrained_layout=False)
+    fig.subplots_adjust(left=0.15, right=0.985, top=0.90, bottom=0.12, wspace=0.42)
     add_panel(
         axes[0],
         sdlc_df,
         title="(a) SDLC label prevalence",
-        color="#3F6FA8",
+        color=SDLC_COLOR,
         display_names=SDLC_DISPLAY_NAMES,
     )
     add_panel(
         axes[1],
         structural_df,
         title="(b) Instruction-pattern prevalence",
-        color="#D47A2A",
+        color=INSTRUCTION_COLOR,
         display_names=STRUCTURAL_DISPLAY_NAMES,
     )
 
     for ax in axes:
-        ax.set_xlim(0, x_max)
+        ax.set_xlim(0, 110)
+        ax.set_xticks(np.arange(0, 101, 20))
         ax.xaxis.set_major_formatter(lambda x, _pos: f"{x:.0f}%")
 
     savefig(fig, str(output_path), dpi=dpi)
@@ -155,6 +201,21 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         help="Dataset label to select from the input tables, e.g. 'Python All' or 'TypeScript All'.",
     )
     parser.add_argument(
+        "--blend-sdlc-table",
+        default=None,
+        help="Optional second SDLC table to pool with --sdlc-table (document-weighted overall).",
+    )
+    parser.add_argument(
+        "--blend-structural-table",
+        default=None,
+        help="Optional second structural table to pool with --structural-table.",
+    )
+    parser.add_argument(
+        "--blend-dataset-name",
+        default="TypeScript All",
+        help="Dataset label to select from the blend tables.",
+    )
+    parser.add_argument(
         "--out",
         default="outputs/v1_2026-04-19/rq3/analysis/fig1.png",
         help="Output figure path.",
@@ -176,6 +237,21 @@ def main(argv: list[str] | None = None) -> int:
 
     sdlc_df = load_language_all_table(resolve_path(args.sdlc_table), SDLC_LABEL_ORDER, args.dataset_name)
     structural_df = load_language_all_table(resolve_path(args.structural_table), STRUCTURAL_LABEL_ORDER, args.dataset_name)
+    if args.blend_sdlc_table or args.blend_structural_table:
+        if not args.blend_sdlc_table or not args.blend_structural_table:
+            raise SystemExit("Pass both --blend-sdlc-table and --blend-structural-table.")
+        blend_sdlc = load_language_all_table(
+            resolve_path(args.blend_sdlc_table),
+            SDLC_LABEL_ORDER,
+            args.blend_dataset_name,
+        )
+        blend_structural = load_language_all_table(
+            resolve_path(args.blend_structural_table),
+            STRUCTURAL_LABEL_ORDER,
+            args.blend_dataset_name,
+        )
+        sdlc_df = overall_prevalence_table(sdlc_df, blend_sdlc)
+        structural_df = overall_prevalence_table(structural_df, blend_structural)
     output_path = resolve_path(args.out)
 
     plot_fig1(sdlc_df, structural_df, output_path, args.dpi)

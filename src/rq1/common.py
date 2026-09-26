@@ -23,6 +23,7 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 
 log = logging.getLogger(__name__)
 
+DEFAULT_ANALYSIS_LANGUAGES = ["Python", "TypeScript"]
 PALETTE_FOUND = "#2196F3"
 PALETTE_NOT_FOUND = "#E0E0E0"
 PALETTE_ACF = ["#FF5722", "#4CAF50", "#9C27B0", "#00ACC1", "#F9A825", "#6D4C41"]
@@ -220,6 +221,7 @@ def load_instances_csv(path: str) -> Optional[pd.DataFrame]:
         df,
         [
             "skill_count",
+            "total_files",
             "total_files_in_skills",
             "references_file_count",
             "assets_file_count",
@@ -241,6 +243,8 @@ def load_instances_csv(path: str) -> Optional[pd.DataFrame]:
     _coerce_datetime_columns(df, ["createdAt", "pushedAt", "updatedAt", "lastCommit", "scanned_at_utc"])
     if "mainLanguage" in df.columns:
         df["mainLanguage"] = df["mainLanguage"].fillna("Unknown").astype(str).replace("", "Unknown")
+    if "total_files_in_skills" not in df.columns and "total_files" in df.columns:
+        df["total_files_in_skills"] = df["total_files"]
     return df
 
 
@@ -429,10 +433,35 @@ def compute_project_age_years(df: pd.DataFrame, fallback_now: Optional[pd.Timest
     else:
         reference = pd.Series(pd.NaT, index=df.index, dtype="datetime64[ns, UTC]")
 
-    now = fallback_now or pd.Timestamp.now(tz="UTC")
-    reference = reference.fillna(now)
+    # Rows without a scan time (typically SKILL.md not found) share the dataset snapshot,
+    # not the analysis clock. An explicit fallback_now overrides that.
+    fill = fallback_now
+    if fill is None:
+        latest = reference.max()
+        fill = latest if pd.notna(latest) else pd.Timestamp.now(tz="UTC")
+    reference = reference.fillna(fill)
     ages = (reference - created).dt.total_seconds() / (365.25 * 24 * 60 * 60)
     return ages.where(ages >= 0)
+
+
+def filter_dataframe_by_languages(df: pd.DataFrame, languages: Optional[Sequence[str]]) -> pd.DataFrame:
+    if df is None or df.empty or not languages or "mainLanguage" not in df.columns:
+        return df
+    allowed = {str(language).strip().lower() for language in languages if str(language).strip()}
+    if not allowed:
+        return df
+    mask = df["mainLanguage"].fillna("").astype(str).str.strip().str.lower().isin(allowed)
+    return df.loc[mask].reset_index(drop=True)
+
+
+def add_language_args(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument(
+        "--languages",
+        nargs="+",
+        default=list(DEFAULT_ANALYSIS_LANGUAGES),
+        metavar="LANG",
+        help="Primary languages to include (default: Python TypeScript).",
+    )
 
 
 def add_scan_input_args(parser: argparse.ArgumentParser) -> None:
@@ -489,7 +518,7 @@ def add_screening_input_args(parser: argparse.ArgumentParser) -> None:
 
 
 def add_output_args(parser: argparse.ArgumentParser) -> None:
-    parser.add_argument("--out-dir", default="outputs/v1_2026-04-19/rq1", help="Output directory for figures and tables")
+    parser.add_argument("--out-dir", default="outputs/rq1", help="Output directory for figures and tables")
     parser.add_argument(
         "--format",
         dest="fig_format",

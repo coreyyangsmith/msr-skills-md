@@ -1,7 +1,7 @@
 [project]
 name = "msr-skills-md"
 version = "0.1.0"
-description = "Mine GitHub repositories for SKILL.md files using SEART CSV exports"
+description = "Replication package for an empirical study of SKILL.md agent skill files on GitHub"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
@@ -15,6 +15,9 @@ dependencies = [
     "seaborn>=0.13.0",
     "tqdm>=4.67.3",
 ]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
 
 [dependency-groups]
 dev = [

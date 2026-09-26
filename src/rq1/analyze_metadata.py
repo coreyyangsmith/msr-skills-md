@@ -34,16 +34,19 @@ from rq1 import (
     fig8b_stars_vs_skill_count,
     fig9_license_distribution,
     table1_dataset_summary,
+    table_repo_group_descriptives,
     table_top1000_repos_global,
 )
 from rq1.common import (
     add_instances_input_args,
+    add_language_args,
     add_output_args,
     add_screening_input_args,
     add_scan_input_args,
     aggregate_instances_to_repo,
     apply_screening_decisions,
     configure_logging,
+    filter_dataframe_by_languages,
     load_instances_csv,
     load_scan_csv,
     merge_repo_metadata,
@@ -69,6 +72,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     )
     add_instances_input_args(parser, required=True)
     add_screening_input_args(parser)
+    add_language_args(parser)
     add_output_args(parser)
     return parser.parse_args(argv)
 
@@ -83,17 +87,20 @@ def main(argv: list[str]) -> int:
     scan_df = load_scan_csv(args.scan_csv, blacklist=blacklist, filter_words=filter_words)
     screening_decisions = resolve_screening_decisions(args)
     scan_df = apply_screening_decisions(scan_df, screening_decisions, "scan CSV")
+    scan_df = filter_dataframe_by_languages(scan_df, args.languages)
 
     acf_scan_df = scan_df
     if args.acf_scan_csv:
         acf_scan_df = load_scan_csv(args.acf_scan_csv, blacklist=blacklist, filter_words=filter_words)
         acf_scan_df = apply_screening_decisions(acf_scan_df, screening_decisions, "ACF scan CSV")
+        acf_scan_df = filter_dataframe_by_languages(acf_scan_df, args.languages)
 
     raw_instances_df = load_instances_csv(args.instances_csv)
     if raw_instances_df is None:
         log.error("Instances CSV missing or unreadable: %s", args.instances_csv)
         return 2
     raw_instances_df = apply_screening_decisions(raw_instances_df, screening_decisions, "instances CSV")
+    raw_instances_df = filter_dataframe_by_languages(raw_instances_df, args.languages)
 
     repo_instances_df = aggregate_instances_to_repo(raw_instances_df)
     repo_instances_df = merge_repo_metadata(repo_instances_df, scan_df)
@@ -111,6 +118,7 @@ def main(argv: list[str]) -> int:
     fig8_skill_richness.generate(repo_instances_df, args.out_dir, args.fig_format, args.dpi)
     fig8b_stars_vs_skill_count.generate(repo_instances_df, args.out_dir, args.fig_format, args.dpi)
     table_top1000_repos_global.generate(repo_instances_df, args.out_dir)
+    table_repo_group_descriptives.generate(scan_df, args.out_dir, repo_instances_df)
 
     fig10_language_ecosystem.generate(scan_df, args.out_dir, args.fig_format, args.dpi)
     fig9_license_distribution.generate(scan_df, args.out_dir, args.fig_format, args.dpi)

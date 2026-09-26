@@ -67,13 +67,13 @@ class TestRq3BuildPythonAll(unittest.TestCase):
         }
 
         merged = merge_processed_exports(
-            [("2026-03-29_CY_Labels_Both_TS.json", export)],
+            [("2026-03-29_A_Labels_Both_TS.json", export)],
             root_name="TypeScript_All",
-            selected_both_file="2026-03-29_CY_Labels_Both_TS.json",
+            selected_both_file="2026-03-29_A_Labels_Both_TS.json",
         )
 
         self.assertEqual(merged["dataset"]["rootName"], "TypeScript_All")
-        self.assertEqual(merged["dataset"]["sourceFiles"], ["2026-03-29_CY_Labels_Both_TS.json"])
+        self.assertEqual(merged["dataset"]["sourceFiles"], ["2026-03-29_A_Labels_Both_TS.json"])
         self.assertEqual(len(merged["labels"]), 1)
 
     def test_language_defaults_include_python_and_typescript(self):
@@ -83,7 +83,7 @@ class TestRq3BuildPythonAll(unittest.TestCase):
         self.assertEqual(python_defaults.root_name, "Python_All")
         self.assertEqual(typescript_defaults.root_name, "TypeScript_All")
         self.assertEqual(typescript_defaults.output_name, "TypeScript_All.json")
-        self.assertIn("2026-03-29_CY_Labels_Both_TS.json", typescript_defaults.source_files)
+        self.assertIn("2026-03-29_A_Labels_Both_TS.json", typescript_defaults.source_files)
 
     def test_main_builds_typescript_all_from_default_source(self):
         export = {
@@ -95,14 +95,14 @@ class TestRq3BuildPythonAll(unittest.TestCase):
 
         with tempfile.TemporaryDirectory() as tmp:
             processed_dir = Path(tmp)
-            write_json(processed_dir / "2026-03-29_CY_Labels_Both_TS.json", export)
+            write_json(processed_dir / "2026-03-29_A_Labels_Both_TS.json", export)
 
             main(["--processed-dir", str(processed_dir), "--language", "TypeScript"])
 
             output = load_json(processed_dir / "TypeScript_All.json")
 
         self.assertEqual(output["dataset"]["rootName"], "TypeScript_All")
-        self.assertEqual(output["dataset"]["selectedBothFile"], "2026-03-29_CY_Labels_Both_TS.json")
+        self.assertEqual(output["dataset"]["selectedBothFile"], "2026-03-29_A_Labels_Both_TS.json")
 
     def test_merge_processed_exports_rejects_overlap(self):
         export = {

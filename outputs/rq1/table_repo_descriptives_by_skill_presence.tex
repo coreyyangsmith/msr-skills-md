@@ -1,0 +1,17 @@
+\begin{table}[t]
+\centering
+\caption{Repository descriptives for RQ1 candidate repositories, split by SKILL.md presence. Project age uses \texttt{createdAt} versus \texttt{scanned\_at\_utc}; not-found rows lack \texttt{scanned\_at\_utc} and use the latest scan time as the reference. $\delta$ is Cliff's delta from a two-sided Mann--Whitney U test, one test per metric reported independently; $\delta > 0$ means SKILL.md repositories tend to have higher values. SKILL.md file counts omit 12 found repositories with no instance row.}
+\label{tab:repo-descriptives-skill-presence}
+\begin{tabular}{l rrrr rrrr rr}
+\toprule
+ & \multicolumn{4}{c}{SKILL.md repos ($n=8,623$)} & \multicolumn{4}{c}{No SKILL.md ($n=101,634$)} & & \\
+Metric & Min & Mean & Median & Max & Min & Mean & Median & Max & $\delta$ & $p$ \\
+\midrule
+Stars & 10 & 1009.22 & 41.00 & 162460 & 10 & 381.70 & 34.00 & 451528 & +0.07 & $<$0.001 \\
+Contributors & 0 & 27.26 & 3.00 & 5574 & 0 & 13.41 & 3.00 & 6638 & -0.02 & 0.005 \\
+Repository size (MB) & 0.01 & 59.02 & 5.81 & 16828.61 & 0.00 & 39.67 & 2.47 & 96975.43 & +0.19 & $<$0.001 \\
+Project age (years) & 0.01 & 1.48 & 0.45 & 17.53 & 0.02 & 3.55 & 2.45 & 18.37 & -0.50 & $<$0.001 \\
+SKILL.md files & 1 & 14.73 & 3.00 & 6769 & 0 & 0.00 & 0.00 & 0 & --- & --- \\
+\bottomrule
+\end{tabular}
+\end{table}

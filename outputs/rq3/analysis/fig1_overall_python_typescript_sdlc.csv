@@ -1,0 +1,28 @@
+label,count,retained_documents,pct_docs,dataset
+Code Implementation,200,446,44.84304932735426,Overall
+Debugging,64,446,14.349775784753364,Overall
+DevOps,90,446,20.179372197309416,Overall
+Documentation,92,446,20.62780269058296,Overall
+Maintenance,125,446,28.026905829596412,Overall
+Program Analysis,112,446,25.112107623318387,Overall
+Requirements,38,446,8.52017937219731,Overall
+Software Design,76,446,17.04035874439462,Overall
+Testing,142,446,31.838565022421523,Overall
+Requirements,17,181,9.39,Python
+Software Design,19,181,10.5,Python
+Code Implementation,63,181,34.81,Python
+Program Analysis,47,181,25.97,Python
+Testing,66,181,36.46,Python
+Debugging,21,181,11.6,Python
+Maintenance,60,181,33.15,Python
+DevOps,46,181,25.41,Python
+Documentation,38,181,20.99,Python
+Requirements,21,265,7.92,TypeScript
+Software Design,57,265,21.51,TypeScript
+Code Implementation,137,265,51.7,TypeScript
+Program Analysis,65,265,24.53,TypeScript
+Testing,76,265,28.68,TypeScript
+Debugging,43,265,16.23,TypeScript
+Maintenance,65,265,24.53,TypeScript
+DevOps,44,265,16.6,TypeScript
+Documentation,54,265,20.38,TypeScript

@@ -1,5 +1,6 @@
 artifact,count,pct_of_skill_md_repos
-CLAUDE.md,1528,43.64
-AGENTS.md,1288,36.79
-copilot-instructions.md,355,10.14
-GEMINI.md,100,2.86
+AGENTS.md,3888,45.09
+CLAUDE.md,3806,44.14
+copilot-instructions.md,626,7.26
+GEMINI.md,338,3.92
+.instructions.md,2,0.02

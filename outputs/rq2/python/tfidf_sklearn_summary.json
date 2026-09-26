@@ -1,0 +1,45 @@
+{
+  "input_path": "C:\\Users\\yangs\\Desktop\\repos\\msr-skills-md\\outputs\\rq2\\python\\skill_documents.jsonl",
+  "documents_total_in_input": 53609,
+  "documents_after_language_filter": 53609,
+  "language_filter": [],
+  "documents_used_for_tfidf": 51948,
+  "vocabulary_size": 10000,
+  "matrix_shape": [
+    51948,
+    10000
+  ],
+  "params": {
+    "ngram_range": [
+      1,
+      2
+    ],
+    "custom_stopwords": [
+      "analysis",
+      "code",
+      "create",
+      "creates",
+      "creating",
+      "data",
+      "design",
+      "new",
+      "project",
+      "skill",
+      "use",
+      "used",
+      "user",
+      "using"
+    ],
+    "max_features": 10000,
+    "min_df": 2,
+    "max_df": 0.9,
+    "top_k_global": 200,
+    "top_k_per_doc": 30
+  },
+  "outputs": {
+    "global_terms_csv": "C:\\Users\\yangs\\Desktop\\repos\\msr-skills-md\\outputs\\rq2\\python\\tfidf_sklearn_top_terms_global.csv",
+    "global_unigram_terms_csv": "C:\\Users\\yangs\\Desktop\\repos\\msr-skills-md\\outputs\\rq2\\python\\tfidf_sklearn_top_terms_global_unigrams.csv",
+    "global_bigram_terms_csv": "C:\\Users\\yangs\\Desktop\\repos\\msr-skills-md\\outputs\\rq2\\python\\tfidf_sklearn_top_terms_global_bigrams.csv",
+    "per_document_terms_csv": "C:\\Users\\yangs\\Desktop\\repos\\msr-skills-md\\outputs\\rq2\\python\\tfidf_sklearn_top_terms_per_document.csv"
+  }
+}

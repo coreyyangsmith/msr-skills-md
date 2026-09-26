@@ -24,6 +24,10 @@ class TestRq3LabelProcessing(unittest.TestCase):
             process_doc_labels({"agent-skill", "commands"}),
             {"filter"},
         )
+        self.assertEqual(
+            process_doc_labels({"filter-out", "purpose", "testing"}),
+            {"filter"},
+        )
 
     def test_build_processed_export_normalises_and_collapses_labels(self):
         data = {
@@ -51,10 +55,10 @@ class TestRq3LabelProcessing(unittest.TestCase):
         self.assertEqual(
             tag_names,
             [
-                "Code Generation",
+                "Code Implementation",
                 "Documentation",
                 "Software Design",
-                "Software Testing",
+                "Testing",
                 "filter",
                 "instructive",
             ],
@@ -66,7 +70,12 @@ class TestRq3LabelProcessing(unittest.TestCase):
         )
         self.assertEqual(
             processed["processing"]["filter_source_document_counts"],
-            {"agent-skill": 0, "outside-scope": 1, "wrong-language": 1},
+            {
+                "agent-skill": 0,
+                "filter-out": 0,
+                "outside-scope": 1,
+                "wrong-language": 1,
+            },
         )
 
         doc_a_ids = processed["labels"]["doc-a"]["tagIds"]
@@ -76,9 +85,9 @@ class TestRq3LabelProcessing(unittest.TestCase):
 
     def test_analyze_helpers_split_filtered_and_build_matrix(self):
         doc_labels = {
-            "doc-a": {"commands", "Code Generation"},
+            "doc-a": {"action-directive", "Code Implementation"},
             "doc-b": {"filter"},
-            "doc-c": {"descriptive", "Software Design"},
+            "doc-c": {"purpose", "Software Design"},
         }
 
         retained, filtered = split_filtered_docs(doc_labels)
@@ -87,8 +96,64 @@ class TestRq3LabelProcessing(unittest.TestCase):
         self.assertEqual(set(filtered), {"doc-b"})
 
         matrix = instruction_sdlc_matrix(retained)
-        self.assertEqual(matrix["commands"]["Code Generation"], 1)
-        self.assertEqual(matrix["descriptive"]["Software Design"], 1)
+        self.assertEqual(matrix["action-directive"]["Code Implementation"], 1)
+        self.assertEqual(matrix["purpose"]["Software Design"], 1)
+
+    def test_new_codebook_export_keeps_instruction_types_and_fine_sdlc_stages(self):
+        data = {
+            "version": 1,
+            "dataset": {"rootName": "FINAL", "savedAt": "2026-09-19T00:00:00Z"},
+            "tags": [
+                {"id": "purpose", "name": "purpose"},
+                {"id": "action-directive", "name": "action-directive"},
+                {"id": "positive-examples", "name": "positive-examples"},
+                {"id": "code-implementation", "name": "code-implementation"},
+                {"id": "program-analysis", "name": "program-analysis"},
+                {"id": "testing", "name": "testing"},
+                {"id": "maintenance", "name": "maintenance"},
+                {"id": "debugging", "name": "debugging"},
+                {"id": "requirement", "name": "requirement"},
+                {"id": "filter-out", "name": "filter-out"},
+            ],
+            "labels": {
+                "doc-a": {
+                    "tagIds": [
+                        "purpose",
+                        "action-directive",
+                        "positive-examples",
+                        "code-implementation",
+                        "testing",
+                    ]
+                },
+                "doc-b": {"tagIds": ["filter-out"]},
+                "doc-c": {
+                    "tagIds": ["program-analysis", "maintenance", "debugging", "requirement"]
+                },
+            },
+        }
+
+        processed = build_processed_export(data, source_name="2026-09-19_PY_FINAL.json")
+        tag_names = {tag["name"] for tag in processed["tags"]}
+
+        self.assertEqual(
+            tag_names,
+            {
+                "Code Implementation",
+                "Debugging",
+                "Maintenance",
+                "Program Analysis",
+                "Requirements",
+                "Testing",
+                "action-directive",
+                "filter",
+                "positive-example",
+                "purpose",
+            },
+        )
+        self.assertEqual(
+            processed["processing"]["filter_source_document_counts"]["filter-out"],
+            1,
+        )
 
 
 if __name__ == "__main__":

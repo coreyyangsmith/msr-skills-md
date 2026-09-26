@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Merge original label JSON exports with relabel exports into Final_Labels files.
 
-See plan: outputs/v1_2026-04-19/rq3/results consolidation (CY/MV × A/B/both).
+See plan: outputs/v1_2026-04-19/rq3/results consolidation (labelers A/B × buckets A/B/both).
 """
 
 from __future__ import annotations
@@ -18,32 +18,32 @@ CSV_PATH = REPO_ROOT / "outputs" / "raw_data_filtered_out" / "removed_repos_in_p
 
 PAIRS: list[dict[str, str]] = [
     {
-        "original": "2026-04-06_CY_Labels_A_Python.json",
-        "relabel": "2026-04-19_CY_Relabels_A_Python.json",
-        "output": "2026-04-19_CY_Final_Labels_A_Python.json",
+        "original": "2026-04-06_A_Labels_A_Python.json",
+        "relabel": "2026-04-19_A_Relabels_A_Python.json",
+        "output": "2026-04-19_A_Final_Labels_A_Python.json",
         "bucket": "A",
-        "tag_mode": "cy",  # dedupe tags by name (case-insensitive)
+        "tag_mode": "a",  # dedupe tags by name (case-insensitive)
     },
     {
-        "original": "2026-04-02_CY_Labels_Both_Python.json",
-        "relabel": "2026-04-19_CY_Relabels_Both_Python.json",
-        "output": "2026-04-19_CY_Final_Labels_Both_Python.json",
+        "original": "2026-04-02_A_Labels_Both_Python.json",
+        "relabel": "2026-04-19_A_Relabels_Both_Python.json",
+        "output": "2026-04-19_A_Final_Labels_Both_Python.json",
         "bucket": "both",
-        "tag_mode": "cy",
+        "tag_mode": "a",
     },
     {
-        "original": "2026-04-06_MV_Labels_B_Python.json",
-        "relabel": "2026-04-19_MV_Relabels_B_Python.json",
-        "output": "2026-04-19_MV_Final_Labels_B_Python.json",
+        "original": "2026-04-06_B_Labels_B_Python.json",
+        "relabel": "2026-04-19_B_Relabels_B_Python.json",
+        "output": "2026-04-19_B_Final_Labels_B_Python.json",
         "bucket": "B",
-        "tag_mode": "mv",
+        "tag_mode": "b",
     },
     {
-        "original": "2026-03-31_MV_Labels_Both_Python.json",
-        "relabel": "2026-04-19-MV_Relabels_Both_Python.json",
-        "output": "2026-04-19_MV_Final_Labels_Both_Python.json",
+        "original": "2026-03-31_B_Labels_Both_Python.json",
+        "relabel": "2026-04-19-B_Relabels_Both_Python.json",
+        "output": "2026-04-19_B_Final_Labels_Both_Python.json",
         "bucket": "both",
-        "tag_mode": "mv",
+        "tag_mode": "b",
     },
 ]
 
@@ -78,7 +78,7 @@ def should_exclude_label_key(
     return (bucket, d) in excluded
 
 
-def build_tag_union_cy(
+def build_tag_union_a(
     original_tags: list[dict[str, Any]],
     relabel_tags: list[dict[str, Any]],
 ) -> tuple[list[dict[str, Any]], dict[str, str]]:
@@ -103,11 +103,11 @@ def build_tag_union_cy(
     return unified, relabel_id_to_canonical
 
 
-def build_tag_union_mv(
+def build_tag_union_b(
     original_tags: list[dict[str, Any]],
     relabel_tags: list[dict[str, Any]],
 ) -> tuple[list[dict[str, Any]], dict[str, str]]:
-    """Union by tag id; MV relabels reuse the same id namespace."""
+    """Union by tag id; labeler B relabels reuse the same id namespace."""
     seen_ids: set[str] = {t["id"] for t in original_tags}
     unified: list[dict[str, Any]] = [dict(t) for t in original_tags]
     relabel_id_to_canonical: dict[str, str] = {}
@@ -159,12 +159,12 @@ def consolidate_pair(
     with rel_path.open(encoding="utf-8") as f:
         relabel = json.load(f)
 
-    if tag_mode == "cy":
-        unified_tags, relabel_id_to_canonical = build_tag_union_cy(
+    if tag_mode == "a":
+        unified_tags, relabel_id_to_canonical = build_tag_union_a(
             original["tags"], relabel["tags"]
         )
-    elif tag_mode == "mv":
-        unified_tags, relabel_id_to_canonical = build_tag_union_mv(
+    elif tag_mode == "b":
+        unified_tags, relabel_id_to_canonical = build_tag_union_b(
             original["tags"], relabel["tags"]
         )
     else:
