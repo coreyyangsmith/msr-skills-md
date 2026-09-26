@@ -41,6 +41,31 @@ class TestConstrainDatasetLanguages(unittest.TestCase):
         )
         self.assertEqual(list(kept[0].keys()), fieldnames)
 
+    def test_filter_csv_rows_applies_repo_filter_and_keeps_last_skill_row(self) -> None:
+        rows = [
+            {"repo": "a/one", "skill_path": "s/SKILL.md", "mainLanguage": "Python", "scanned_at_utc": "old"},
+            {"repo": "a/agent-kit", "skill_path": "s/SKILL.md", "mainLanguage": "Python", "scanned_at_utc": "x"},
+            {"repo": "a/one", "skill_path": "s/SKILL.md", "mainLanguage": "Python", "scanned_at_utc": "new"},
+            {"repo": "a/one", "skill_path": "t/SKILL.md", "mainLanguage": "Python", "scanned_at_utc": "x"},
+        ]
+        fieldnames = ["repo", "skill_path", "mainLanguage", "scanned_at_utc"]
+        kept = filter_csv_rows(
+            rows,
+            fieldnames,
+            ["Python"],
+            exclude_repo=lambda repo: "agent" in repo.split("/", 1)[-1],
+            dedupe_skill_rows=True,
+        )
+        self.assertEqual(
+            [(row["skill_path"], row["scanned_at_utc"]) for row in kept],
+            [("s/SKILL.md", "new"), ("t/SKILL.md", "x")],
+        )
+
+    def test_repo_filter_matches_population_name_column(self) -> None:
+        from constrain_dataset_languages import row_repo
+
+        self.assertEqual(row_repo({"name": "a/b"}), "a/b")
+
     def test_count_duplicate_keys_does_not_drop_rows(self) -> None:
         rows = [
             {"repo": "a/one", "skill_path": "skills/a/SKILL.md"},

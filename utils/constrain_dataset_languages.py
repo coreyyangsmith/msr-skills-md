@@ -6,11 +6,17 @@ from __future__ import annotations
 import argparse
 import csv
 import shutil
+import sys
 from collections import Counter
 from pathlib import Path
-from typing import Iterable, Sequence
+from typing import Callable, Iterable, Optional, Sequence
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO_ROOT / "src"))
+
+from filters import is_repo_excluded, load_blacklist, load_relevance_terms  # noqa: E402
+
+SKILL_ROW_KEY = ("repo", "skill_path")
 ALLOWED_MAIN_LANGUAGES = ("Python", "TypeScript")
 CANONICAL_LANGUAGE_NAMES = {name.lower(): name for name in ALLOWED_MAIN_LANGUAGES}
 
@@ -32,17 +38,37 @@ def _language_allowed(value: object, allowed: set[str]) -> bool:
     return str(value or "").strip().lower() in allowed
 
 
+def row_repo(row: dict[str, str]) -> str:
+    return str(row.get("repo") or row.get("name") or "").strip()
+
+
+def repo_filter(blacklist_path: str, relevance_terms_path: str) -> Callable[[str], bool]:
+    """Return a predicate matching the blacklist + repo-name filter that RQ1 applies at load time."""
+    blacklist = load_blacklist(blacklist_path)
+    words = load_relevance_terms(relevance_terms_path)
+    return lambda repo: is_repo_excluded(repo, blacklist, words)[0]
+
+
 def filter_csv_rows(
     rows: Iterable[dict[str, str]],
     fieldnames: Sequence[str],
     languages: Sequence[str],
+    exclude_repo: Optional[Callable[[str], bool]] = None,
+    dedupe_skill_rows: bool = False,
 ) -> list[dict[str, str]]:
     allowed = {language.lower() for language in normalize_languages(languages)}
-    kept: list[dict[str, str]] = []
-    for row in rows:
-        if _language_allowed(row.get("mainLanguage", ""), allowed):
-            kept.append({name: row.get(name, "") for name in fieldnames})
-    return kept
+    kept: dict[object, dict[str, str]] = {}
+    for index, row in enumerate(rows):
+        if not _language_allowed(row.get("mainLanguage", ""), allowed):
+            continue
+        if exclude_repo and exclude_repo(row_repo(row)):
+            continue
+        key: object = index
+        if dedupe_skill_rows and all(column in fieldnames for column in SKILL_ROW_KEY):
+            key = tuple(str(row.get(column, "")) for column in SKILL_ROW_KEY)
+            kept.pop(key, None)
+        kept[key] = {name: row.get(name, "") for name in fieldnames}
+    return list(kept.values())
 
 
 def count_duplicate_keys(rows: Sequence[dict[str, str]], keys: Sequence[str]) -> int:
@@ -68,6 +94,8 @@ def filter_csv_file(
     dest: Path,
     languages: Sequence[str],
     dry_run: bool = False,
+    exclude_repo: Optional[Callable[[str], bool]] = None,
+    dedupe_skill_rows: bool = False,
 ) -> tuple[int, int]:
     with src.open("r", encoding="utf-8", newline="") as handle:
         reader = csv.DictReader(handle)
@@ -75,7 +103,7 @@ def filter_csv_file(
             raise ValueError(f"CSV has no header: {src}")
         fieldnames = list(reader.fieldnames)
         rows = list(reader)
-    kept = filter_csv_rows(rows, fieldnames, languages)
+    kept = filter_csv_rows(rows, fieldnames, languages, exclude_repo, dedupe_skill_rows)
     if not dry_run:
         dest.parent.mkdir(parents=True, exist_ok=True)
         with dest.open("w", encoding="utf-8", newline="") as handle:
@@ -128,6 +156,18 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         default=list(ALLOWED_MAIN_LANGUAGES),
         help="Primary languages to keep (default: Python TypeScript).",
     )
+    parser.add_argument(
+        "--apply-repo-filters",
+        action="store_true",
+        help="Also drop blacklisted and name-filtered repos (the filters RQ1 applies at load time).",
+    )
+    parser.add_argument("--blacklist", default=str(REPO_ROOT / "blacklist.txt"))
+    parser.add_argument("--relevance-terms", default=str(REPO_ROOT / "relevance_terms.txt"))
+    parser.add_argument(
+        "--dedupe-skill-rows",
+        action="store_true",
+        help="Keep only the last row per (repo, skill_path); Stage 3 --resume re-downloads append repeat rows.",
+    )
     parser.add_argument("--dry-run", action="store_true", help="Report counts without writing.")
     return parser.parse_args(argv)
 
@@ -138,14 +178,21 @@ def main(argv: list[str] | None = None) -> int:
     if len(args.src_csv) != len(args.dest_csv):
         raise ValueError("--src-csv and --dest-csv must be provided in matching pairs")
 
+    exclude_repo = repo_filter(args.blacklist, args.relevance_terms) if args.apply_repo_filters else None
     for src_csv, dest_csv in zip(args.src_csv, args.dest_csv, strict=True):
         src = Path(src_csv)
         dest = Path(dest_csv)
-        n_kept, n_total = filter_csv_file(src, dest, languages, dry_run=args.dry_run)
-        extras = 0
         with src.open("r", encoding="utf-8", newline="") as handle:
             rows = list(csv.DictReader(handle))
-        extras = count_duplicate_keys(rows, ("repo", "skill_path"))
+        extras = count_duplicate_keys(rows, SKILL_ROW_KEY) if rows and set(SKILL_ROW_KEY) <= rows[0].keys() else 0
+        n_kept, n_total = filter_csv_file(
+            src,
+            dest,
+            languages,
+            dry_run=args.dry_run,
+            exclude_repo=exclude_repo,
+            dedupe_skill_rows=args.dedupe_skill_rows,
+        )
         action = "would keep" if args.dry_run else "kept"
         print(f"{src} -> {dest}: {action} {n_kept}/{n_total} rows; duplicate (repo, skill_path) extras in source={extras}")
 

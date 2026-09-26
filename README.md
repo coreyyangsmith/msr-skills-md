@@ -53,9 +53,11 @@ The Zenodo archive contains:
 - `raw_data/` — downloaded skill folder trees, one subdirectory per primary language, mirroring the layout written by Stage 3 (`generate_dataset.py`).
 
 Within this repository, we also include:
-- `data/skill_files/full_skills.csv` — current main per-skill instance metrics (Python and TypeScript only).
-- `data/skill_only_scan/skill_repositories.csv` — current main shortlist of repositories confirmed to contain `SKILL.md`.
-- `data/seart_csvs/` — current main Stage 1 population, constrained to Python and TypeScript.
+- `data/skill_files/full_skills.csv` — current main per-skill instance metrics (Python and TypeScript only; 98,728 unique `SKILL.md` files across 8,611 repositories).
+- `data/skill_only_scan/skill_repositories.csv` — current main shortlist of repositories confirmed to contain `SKILL.md` (8,623 repositories).
+- `data/seart_csvs/github_search_results.csv` — current main Stage 1 population, constrained to Python and TypeScript (110,257 repositories).
+
+These files already have the blacklist and repository-name filters applied, and one row per `(repo, skill_path)`, so their row counts match the reported results.
 - `data/v2_2026-09-17/` — archived full 11-language v2 corpus (same rows as the current main dataset plus the other languages).
 - `data/v1_2026-04-19/` — earlier v1 snapshot.
 

@@ -15,6 +15,7 @@ from rq1.common import (
     aggregate_instances_to_repo,
     compute_project_age_years,
     filter_dataframe_by_languages,
+    load_instances_csv,
     merge_repo_metadata,
     write_missing_data_note,
 )
@@ -75,6 +76,21 @@ class TestRq1Common(unittest.TestCase):
         )
         ages = compute_project_age_years(df)
         self.assertAlmostEqual(float(ages.iloc[0]), float(ages.iloc[1]), places=4)
+
+    def test_load_instances_csv_drops_repeat_skill_rows(self):
+        tmpdir = Path.cwd() / "outputs" / f"_test_rq1_common_{uuid.uuid4().hex}"
+        tmpdir.mkdir(parents=True, exist_ok=True)
+        self.addCleanup(lambda: shutil.rmtree(tmpdir, ignore_errors=True))
+        path = tmpdir / "instances.csv"
+        pd.DataFrame(
+            [
+                {"repo": "a/b", "skill_path": "x/SKILL.md", "total_files": 1},
+                {"repo": "a/b", "skill_path": "x/SKILL.md", "total_files": 2},
+                {"repo": "a/b", "skill_path": "y/SKILL.md", "total_files": 3},
+            ]
+        ).to_csv(path, index=False)
+        df = load_instances_csv(str(path))
+        self.assertEqual(df["total_files"].tolist(), [2, 3])
 
     def test_filter_dataframe_by_languages_is_case_insensitive(self):
         df = pd.DataFrame(

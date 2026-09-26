@@ -77,10 +77,12 @@ uv run python utils/constrain_dataset_languages.py \
   --dest-csv outputs/full_skills_instances.csv \
   --raw-data-src outputs/v2_2026-09-17/raw_data \
   --raw-data-dest outputs/raw_data \
-  --languages Python TypeScript
+  --languages Python TypeScript \
+  --apply-repo-filters \
+  --dedupe-skill-rows
 ```
 
-The filter keeps duplicate `(repo, skill_path)` rows. Pass `--dry-run` first to print keep/total counts without writing.
+`--apply-repo-filters` drops blacklisted and name-filtered repositories (the same filters RQ1 applies at load time), and `--dedupe-skill-rows` keeps the last row per `(repo, skill_path)`; Stage 3 `--resume` re-downloads append repeat rows that differ only in `scanned_at_utc`. Without these flags, rows are kept as-is. Pass `--dry-run` first to print keep/total counts without writing.
 
 ---
 

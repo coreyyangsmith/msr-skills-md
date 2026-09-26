@@ -213,9 +213,11 @@ def load_instances_csv(path: str) -> Optional[pd.DataFrame]:
 
     df = pd.read_csv(path, low_memory=False)
     log.info("Loaded instances CSV: %s rows, %s cols from %s", len(df), len(df.columns), path)
-    log.info(
-        "Using all instance rows as in the file (scan CSV may still apply blacklist/name filters)."
-    )
+    if {"repo", "skill_path"}.issubset(df.columns):
+        before = len(df)
+        df = df.drop_duplicates(["repo", "skill_path"], keep="last").reset_index(drop=True)
+        if len(df) < before:
+            log.info("Dropped %d repeat (repo, skill_path) rows (%d -> %d)", before - len(df), before, len(df))
 
     _coerce_numeric_columns(
         df,
